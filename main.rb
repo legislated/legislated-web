@@ -1,9 +1,4 @@
-require_relative "src/setup"
+require_relative "src/setup" # for side-effects
 require_relative "src/scraper"
 
-def main
-  scraper = Scraper.new
-  scraper.run
-end
-
-main
+Scraper.run
