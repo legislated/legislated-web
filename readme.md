@@ -8,7 +8,7 @@ Install any necessary global dependencies:
 - bundler -> `gem install bundler`
 - phantomjs
 
-Then install local depdencies with bundler:
+Then install local dependencies with bundler:
 ```sh
 bundle
 ```
@@ -17,10 +17,10 @@ bundle
 
 You can run the script with:
 ```sh
-ruby scrape.rb
+./run
 ```
 
-You can use [pry](http://pryrepl.org/) to debug in-development scripts by adding breakpoints into the source itself:
+You can use [pry](http://pryrepl.org/) to debug by littering the source with breakpoints:
 
 ```ruby
 require "pry"; binding.pry
