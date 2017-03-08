@@ -1,5 +1,5 @@
 # Ideas
-1. 
+1. Find people who have tweeted about x, a bot asks them if they want to comment
 2. Text to Speech Synthesizer!!! for calling congresspeople.
 3. Post to Twitter or Reddits for people interested by topic
 
