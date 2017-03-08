@@ -1,4 +1,32 @@
-# Ideas
+# Witness Slips
+
+## Setup
+
+Install any necessary global dependencies:
+
+- ruby (2.3.0) -> [installation](https://github.com/rbenv/rbenv)
+- bundler -> `gem install bundler`
+- phantomjs
+
+Then install local depdencies with bundler:
+```sh
+bundle
+```
+
+## Development
+
+You can run the script with:
+```sh
+ruby scrape.rb
+```
+
+You can use [pry](http://pryrepl.org/) to debug in-development scripts by adding breakpoints into the source itself:
+
+```ruby
+require "pry"; binding.pry
+```
+
+## Ideas
 1. Find people who have tweeted about x, a bot asks them if they want to comment
 2. Text to Speech Synthesizer!!! for calling congresspeople.
 3. Post to Twitter or Reddits for people interested by topic
