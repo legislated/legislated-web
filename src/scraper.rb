@@ -1,5 +1,6 @@
 require "capybara"
 require "capybara/dsl"
+require "json"
 require_relative "./models/chamber"
 
 module Scraper
@@ -34,6 +35,8 @@ module Scraper
     puts "\n- finished scrape:"
     puts "  hearings: #{hearings.count}"
     puts "  bills: #{bills.count}"
+
+    { chambers: chambers }
   end
 
   private
@@ -132,7 +135,7 @@ module Scraper
     # construct the bill with available attributes
     # TODO: it looks like there might be an id in a hidden td
     bill = Bill.new
-    bill.document_number = columns[0]&.text
+    bill.number = columns[0]&.text
     bill.sponsor_name = columns[1]&.text
     bill.description = columns[2]&.text
     bill.witness_slip_url = witness_slip_link["href"]

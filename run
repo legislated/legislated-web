@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 require_relative "src/setup" # for side-effects
 require_relative "src/scraper"
+require_relative "src/serializer"
 
-Scraper.run
+result = Scraper.run
+Scraper::Serializer.serialize(result)
