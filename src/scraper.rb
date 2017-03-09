@@ -1,6 +1,6 @@
 require "capybara"
 require "capybara/dsl"
-require_relative "./hearing"
+require_relative "./models/chamber"
 
 module Scraper
   class << self
@@ -17,12 +17,18 @@ module Scraper
     # scrape and aggregate results from chamber pages
     puts "- starting scrape"
 
-    chamber_urls = [
-      "http://my.ilga.gov/Hearing/AllHearings?chamber=H",
-      "http://my.ilga.gov/Hearing/AllHearings?chamber=S"
-    ]
+    chambers = find_hearings_for_chambers([
+      Chamber.new(
+        name: "House",
+        url: "http://my.ilga.gov/Hearing/AllHearings?chamber=H"
+      ),
+      Chamber.new(
+        name: "Senate",
+        url: "http://my.ilga.gov/Hearing/AllHearings?chamber=S"
+      )
+    ])
 
-    hearings = hearings_from_chamber_pages(chamber_urls)
+    hearings = chambers.flat_map(&:hearings)
     bills = hearings.flat_map(&:bills)
 
     puts "\n- finished scrape:"
@@ -32,35 +38,35 @@ module Scraper
 
   private
 
-  def self.hearings_from_chamber_pages(chamber_urls)
-    chamber_urls.reduce([]) do |hearings, chamber_url|
-      hearings + hearings_from_chamber_page(chamber_url)
+  def self.find_hearings_for_chambers(chambers)
+    chambers.each do |chamber|
+      chamber.hearings = hearings_from_chamber_page(chamber.url)
     end
   end
 
   def self.hearings_from_chamber_page(url)
-    puts "\n- visit chamber"
-    puts "  url: #{url}"
-
     # committee data is pulled in by xhr so we have to sleep, we could try
     # hitting that api directly (its data is much richer)
     visit(url)
-    sleep(1)
 
     # click the month tab to view all the upcoming hearings
     month_tab = page.find("#CommitteeHearingTabstrip li a", text: "Month")
     month_tab.click
-    sleep(1)
+    sleep(2)
 
     # get the all hearings from the monthly tab
-    hearings_from_monthly_chamber_page
+    hearings_from_monthly_chamber_page(url)
   end
 
-  def self.hearings_from_monthly_chamber_page(url = nil)
-    # we're assumed to already be here if no url is given
-    if (!url.nil?)
+  def self.hearings_from_monthly_chamber_page(url, page_number = 0)
+    puts "\n- visit chamber"
+    puts "  url: #{url}"
+    puts "  page: #{page_number}"
+
+    # we're assumed to already be here on page_number 0
+    if page_number != 0
       visit(url)
-      sleep(1)
+      sleep(2)
     end
 
     # find all hearing links on this page
@@ -76,8 +82,7 @@ module Scraper
 
     # aggregate the next page's results if it's available
     next_page_url = find_next_page_url
-    puts "  next?: #{!next_page_url.nil?}"
-    next_page_url.nil? ? hearings : hearing + hearings_from_monthly_chamber_page(next_page_url)
+    next_page_url.nil? ? hearings : hearings + hearings_from_monthly_chamber_page(next_page_url, page_number + 1)
   end
 
   def self.hearing_from_row(row)
