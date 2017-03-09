@@ -1,6 +1,6 @@
 require "capybara"
 require "capybara/dsl"
-require_relative "./witness_slip"
+require_relative "./bill"
 
 module Scraper
   class << self
@@ -15,20 +15,20 @@ module Scraper
     }
 
     # scrape and aggregate results from chamber pages
-    witness_slip_urls = scrape_chamber_committees_pages([
+    bills = scrape_chamber_committees_pages([
       "http://my.ilga.gov/Hearing/AllHearings?chamber=H",
       "http://my.ilga.gov/Hearing/AllHearings?chamber=S"
     ])
 
     puts "\n- finished, findings:"
-    puts "  links: #{witness_slip_urls.count}"
+    puts "  bills: #{bills.count}"
   end
 
   private
 
   def self.scrape_chamber_committees_pages(chamber_urls)
-    chamber_urls.reduce([]) do |witness_slip_urls, chamber_url|
-      witness_slip_urls + scrape_chamber_committees_page(chamber_url)
+    chamber_urls.reduce([]) do |bills, chamber_url|
+      bills + scrape_chamber_committees_page(chamber_url)
     end
   end
 
@@ -43,9 +43,9 @@ module Scraper
     committee_links = page.find_all(".t-last a")
     committee_urls = committee_links.map { |link| link["href"] }
 
-    # scrape and aggregate witness slip links from the committee pages
-    committee_urls.reduce([]) do |witness_slip_urls, committee_url|
-      witness_slip_urls + scrape_committee_hearings_page(committee_url)
+    # scrape and aggregate bills from the committee pages
+    committee_urls.reduce([]) do |bills, committee_url|
+      bills + scrape_committee_hearings_page(committee_url)
     end
   end
 
@@ -55,12 +55,12 @@ module Scraper
 
     visit(url)
 
-    # find all witness slips on this page
-    witness_slip_rows = page.find_all("#GridCurrentCommittees tbody tr")
-    witness_slips = witness_slip_rows.map do |row|
-      witness_slip_from_row(row)
+    # find all bills on this page
+    bill_rows = page.find_all("#GridCurrentCommittees tbody tr")
+    bills = bill_rows.map do |row|
+      bill_from_row(row)
     end.compact
-    puts "  slips: #{witness_slips.count}"
+    puts "  bills: #{bills.count}"
 
     # find the next page button
     next_page_button = page.find(".t-arrow-next").first(:xpath, ".//..")
@@ -70,29 +70,29 @@ module Scraper
     # aggregate the next page's results if it's available
     if has_next_page
       next_page_url = next_page_button["href"]
-      return witness_slips + scrape_committee_hearings_page(next_page_url)
+      return bills + scrape_committee_hearings_page(next_page_url)
     else
-      return witness_slips
+      return bills
     end
   end
 
-  def self.witness_slip_from_row(row)
+  def self.bill_from_row(row)
     # short circuit if we can't find a link
-    link = row.first(".slipiconbutton")
-    if link.nil?
+    witness_slip_link = row.first(".slipiconbutton")
+    if witness_slip_link.nil?
       return nil
     end
 
     columns = row.find_all("td")
 
-    # construct the slip with available attributes
-    witness_slip = WitnessSlip.new
-    witness_slip.url = link["href"]
-    witness_slip.document_number = columns[0]&.text
-    witness_slip.sponsor_name = columns[1]&.text
-    witness_slip.description = columns[2]&.text
+    # construct the bill with available attributes
+    bill = Bill.new
+    bill.document_number = columns[0]&.text
+    bill.sponsor_name = columns[1]&.text
+    bill.description = columns[2]&.text
+    bill.witness_slip_url = witness_slip_link["href"]
 
-    witness_slip
+    bill
   end
 
   # helpers
