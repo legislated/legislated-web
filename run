@@ -1,7 +1,14 @@
 #!/usr/bin/env ruby
-require_relative "src/setup" # for side-effects
+require_relative "src/setup"
+require_relative "src/errors"
 require_relative "src/scraper"
 require_relative "src/serializer"
 
-result = Scraper.run
-Scraper::Serializer.serialize(result)
+begin
+  Scraper::initialize
+  chambers = Scraper.run
+  Scraper::Serializer.serialize({ chambers: chambers })
+rescue Scraper::Error => error
+  puts "[x] scraping failed:"
+  puts "[x] #{error.message}"
+end

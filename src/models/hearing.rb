@@ -1,24 +1,20 @@
 require "json"
 require_relative "./bill"
+require_relative "./committee"
 
 module Scraper
   class Hearing
-    attr_accessor :url, :committee_name, :location, :date_time, :bills
+    attr_accessor :id, :url, :location, :date_time, :allows_slips, :is_cancelled, :committee, :bills
 
-    def date
-      date_time&.split(" - ")&.first
-    end
-
-    def time
-      date_time&.split(" - ")&.last
-    end
-
+    # serialization
     def to_json(*a)
-      { url: url,
-        committee_name: committee_name,
+      { id: id,
+        url: url,
         location: location,
-        date: date,
-        time: time,
+        date: date_time.to_s,
+        is_cancelled: is_cancelled,
+        allows_slips: allows_slips,
+        committee: committee,
         bills: bills }.to_json(*a)
     end
   end
