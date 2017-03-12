@@ -1,12 +1,13 @@
 #!/usr/bin/env ruby
 require_relative "src/setup"
 require_relative "src/errors"
-require_relative "src/scraper"
+require_relative "src/task"
 require_relative "src/serializer"
 
 begin
   Scraper::initialize
-  chambers = Scraper.run
+  scraper = Scraper::Task.new({ skip_synopsis: true })
+  chambers = scraper.run
   Scraper::Serializer.serialize({ chambers: chambers })
 rescue Scraper::Error => error
   puts ""
