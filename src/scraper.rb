@@ -28,6 +28,7 @@ module Scraper
 
     hearings = chambers.flat_map(&:hearings)
     bills = hearings.flat_map(&:bills)
+    require "pry"; binding.pry
 
     puts "\n- finished scrape:"
     puts "  hearings: #{hearings.count}"
@@ -41,25 +42,25 @@ module Scraper
   # hearings
   def self.add_hearings_to_chambers(chambers)
     chambers.each do |chamber|
-      chamber.hearings = hearings_from_chamber_page(chamber)
+      chamber.hearings = all_hearings_from_chamber_page(chamber)
     end
   end
 
-  def self.hearings_from_chamber_page(chamber)
+  def self.all_hearings_from_chamber_page(chamber)
     # committee data is pulled in by xhr so we have to sleep, we could try
     # hitting that api directly (its data is much richer)
     visit(chamber.url)
 
     # click the month tab to view all the upcoming hearings
-    month_tab = page.find("#CommitteeHearingTabstrip li a", text: "Month")
-    month_tab.click
+    month_tab = page.first("#CommitteeHearingTabstrip li a", text: "Month")
+    month_tab&.click
     sleep(2)
 
     # get the all hearings from the monthly tab
-    hearings_from_monthly_chamber_page(chamber, chamber.url)
+    hearings_from_chamber_page(chamber, chamber.url)
   end
 
-  def self.hearings_from_monthly_chamber_page(chamber, url, page_number = 0)
+  def self.hearings_from_chamber_page(chamber, url, page_number = 0)
     puts "\n- visit chamber"
     puts "  name: #{chamber.name}"
     puts "  page: #{page_number}"
@@ -70,6 +71,14 @@ module Scraper
       sleep(2)
     end
 
+    # short-circuit when there are no rows
+    if page.has_css?(".t-no-data")
+      return []
+    end
+
+    # find the next page's url before traversing
+    next_page_url = find_next_page_url
+
     # create hearings, winding together scraped data and request data
     hearing_rows = page.find_all("#CommitteeHearingTabstrip tbody tr")
     hearings_map = CommitteeHearingsRequest.fetch(chamber, page_number)
@@ -78,8 +87,11 @@ module Scraper
       .each { |hearing| hearing.bills = bills_from_hearing_page(hearing, hearing.url) }
 
     # aggregate the next page's results if it's available
-    next_page_url = find_next_page_url
-    next_page_url.nil? ? hearings : hearings + hearings_from_monthly_chamber_page(next_page_url, page_number + 1)
+    if next_page_url.nil?
+      hearings
+    else
+      hearings + hearings_from_chamber_page(chamber, next_page_url, page_number + 1)
+    end
   end
 
   def self.create_hearing(row, hearings_map)
@@ -129,14 +141,14 @@ module Scraper
 
     visit(url)
 
+    # find the url of the next page before traversing
+    next_page_url = find_next_page_url
+    puts "  next?: #{!next_page_url.nil?}"
+
     # find all bills on this page
     bill_rows = page.find_all("#GridCurrentCommittees tbody tr")
     bills = bill_rows.map { |row| create_bill(row) }.compact
     puts "  bills: #{bills.count}"
-
-    # find the url of the next page
-    next_page_url = find_next_page_url
-    puts "  next?: #{!next_page_url.nil?}"
 
     # add bill details by scraping the bill page
     bills.each { |bill| add_details_to_bill(bill) }
@@ -166,14 +178,16 @@ module Scraper
   end
 
   def self.add_details_to_bill(bill)
-    # visit(bill.url)
-    # require "pry"; binding.pry
+    visit(bill.url)
+    # matching based on header text is only way to grab element right now
+    synopsis = page.first(:xpath, "//span[contains(text(),'Synopsis')]/following-sibling::span")
+    bill.synopsis = synopsis&.text
   end
 
   # helpers
   def self.find_next_page_url
-    next_page_button = page.find(".t-arrow-next").first(:xpath, ".//..")
-    has_next_page = !next_page_button[:class].include?("t-state-disabled")
+    next_page_button = page.first(".t-arrow-next")&.first(:xpath, ".//..")
+    has_next_page = next_page_button.present? && !next_page_button[:class].include?("t-state-disabled")
     has_next_page ? next_page_button["href"] : nil
   end
 

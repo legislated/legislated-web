@@ -9,6 +9,6 @@ begin
   chambers = Scraper.run
   Scraper::Serializer.serialize({ chambers: chambers })
 rescue Scraper::Error => error
-  puts "[x] scraping failed:"
-  puts "[x] #{error.message}"
+  puts ""
+  puts "[x] failed: #{error.message}"
 end
