@@ -2,8 +2,13 @@ describe ImportHearingsJob do
   subject { described_class.new }
 
   describe "#perform" do
-    it "returns 'Hello, world" do
-      expect(subject.perform).to eq("Hello, world")
+    before do
+      Chamber.create(name: "Senate", key: "S")
+    end
+
+    it "adds any new records" do
+      expect { subject.perform }.to change(Committee, :count)
+      require "pry"; binding.pry
     end
   end
 end

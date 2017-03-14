@@ -1,24 +1,38 @@
-# README
+# Witness Slips
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+Install any necessary global dependencies:
 
-* Ruby version
+- ruby (2.3.0) -> [installation](https://github.com/rbenv/rbenv)
+- bundler -> `gem install bundler`
+- foreman -> `gem install foreman`
+- postgresql
+- redis
+- phantomjs
 
-* System dependencies
+Then install local dependencies with bundler:
+```sh
+bundle
+```
 
-* Configuration
+## Development
 
-* Database creation
+Start the server with:
 
-* Database initialization
+```
+# make sure postgres and redis are started
+foreman start
+```
 
-* How to run the test suite
+The first time you run the application, you'll also need to setup the database. If you make any database changes you can also run this again:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+bundle exec rails db:reset
+```
 
-* Deployment instructions
+You can use [pry](http://pryrepl.org/) to debug by littering the source with breakpoints:
 
-* ...
+```ruby
+require "pry"; binding.pry
+```
