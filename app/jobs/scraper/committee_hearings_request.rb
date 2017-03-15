@@ -1,14 +1,14 @@
 require "httparty"
 
 module Scraper
-  module Requests
+  module CommitteeHearingsRequest
     # Fetches a page of committee hearings for the given chamber
     # Parameters:
     #   - chamber: a Chamber model to fetch hearings for
     #   - page_number: the page of committee hearings to fetch
     # Returns:
     #   - a map of committee id -> committee-hearing data
-    def self.fetch_committee_hearings(chamber, page_number)
+    def self.fetch(chamber, page_number)
       hearings_url = "http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange"
 
       # modeled after curl request extracted from chrome

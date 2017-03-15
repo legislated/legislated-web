@@ -18,12 +18,11 @@ ActiveRecord::Schema.define(version: 20170314004129) do
 
   create_table "bills", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "external_id",      null: false
-    t.string   "url",              null: false
     t.string   "document_name",    null: false
-    t.datetime "description",      null: false
-    t.boolean  "synopsis",         null: false
-    t.boolean  "sponsor_name",     null: false
-    t.string   "witness_slip_url", null: false
+    t.string   "description"
+    t.string   "synopsis"
+    t.string   "sponsor_name",     null: false
+    t.string   "witness_slip_url"
     t.uuid     "hearing_id",       null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false

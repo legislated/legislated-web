@@ -3,16 +3,17 @@ require "capybara/dsl"
 
 module Scraper
   class Task
-    attr_accessor :options
+    attr_reader :options, :logger
 
     include Capybara::DSL
 
     def initialize(options = {})
-      self.options = options
+      @options = options
+      @logger = Rails.logger
     end
 
     def run(chambers)
-      puts "- starting scrape"
+      logger.info("- starting scrape")
 
       # fake user agent to avoid getting redirected to error pages
       # find alternatives here: https://techblog.willshouse.com/2012/01/03/most-common-user-agents/
@@ -25,9 +26,9 @@ module Scraper
       hearings = chambers.flat_map(&:committees).flat_map(&:hearings)
       bills = hearings.flat_map(&:bills)
 
-      puts "\n- finished scrape:"
-      puts "  new hearings: #{hearings.count(&:new_record?)}"
-      puts "  new bills: #{bills.count(&:new_record?)}"
+      logger.info("\n- finished scrape:")
+      logger.info("  new hearings: #{hearings.count(&:new_record?)}")
+      logger.info("  new bills: #{bills.count(&:new_record?)}")
     end
 
     private
@@ -54,9 +55,9 @@ module Scraper
     end
 
     def scrape_committees_for_chamber(chamber, url, page_number = 0)
-      puts "\n- visit chamber"
-      puts "  name: #{chamber.name}"
-      puts "  page: #{page_number}"
+      logger.info("\n- visit chamber")
+      logger.info("  name: #{chamber.name}")
+      logger.info("  page: #{page_number}")
 
       # we're assumed to already be here on page_number 0
       if page_number != 0
@@ -73,12 +74,14 @@ module Scraper
       next_page_url = find_next_page_url
 
       # create hearings, winding together scraped data and request data
-      committee_hearings_reponse = Requests.fetch_committee_hearings(chamber, page_number)
+      committee_hearings_reponse = CommitteeHearingsRequest.fetch(chamber, page_number)
       committee_hearing_rows = page.find_all("#CommitteeHearingTabstrip tbody tr")
       committees = committee_hearing_rows
         .map { |row| build_committee_hearing(row, committee_hearings_reponse) }
+        .compact
         .map { |committee, hearing|
-          add_unsaved_records(hearing, :bills, scrape_bills_for_hearing(hearing, hearing.url))
+          bills = scrape_bills_for_hearing(hearing, hearing.url)
+          add_unsaved_records(hearing, :bills, bills)
           committee
         }
 
@@ -97,18 +100,19 @@ module Scraper
 
       committee_hearing_data = committee_hearings_reponse[committee_id]
       if committee_hearing_data.blank?
-        raise Error, "Failed to find hearing data for committee id: #{committee_id}"
+        logger.debug("Failed to find response data for committee id #{committee_id}, skipping")
+        return nil
       end
 
       # build / update models, attaching hearing to committee if necessary
-      committee = build_committee(committee_hearing_data)
+      committee = build_committee(columns, committee_hearing_data)
       hearing = build_hearing(columns, committee_hearing_data)
       add_unsaved_record(committee, :hearings, hearing)
 
       [committee, hearing]
     end
 
-    def build_committee(committee_hearing_data)
+    def build_committee(columns, committee_hearing_data)
       committee = Committee.find_or_initialize_by({
         external_id: committee_hearing_data[:CommitteeId]
       })
@@ -145,14 +149,19 @@ module Scraper
 
     # bills
     def scrape_bills_for_hearing(hearing, url)
-      puts "\n- visit hearing #{hearing.external_id}"
-      puts "  url: #{url}"
+      logger.info("\n- visit hearing #{hearing.external_id}")
+      logger.info("  url: #{url}")
 
       visit(url)
 
+      # short-circuit when there are no rows
+      if page.has_css?(".t-no-data")
+        return []
+      end
+
       # find the url of the next page before traversing
       next_page_url = find_next_page_url
-      puts "  next?: #{!next_page_url.blank?}"
+      logger.info("  next?: #{!next_page_url.blank?}")
 
       # build bills from each row on this page
       bill_rows = page.find_all("#GridCurrentCommittees tbody tr")
@@ -160,37 +169,45 @@ module Scraper
         .map { |row| build_bill(row) }
         .compact
         .each { |bill| update_bill_synopsis(bill) }
-      puts "  bills: #{bills.count}"
+      logger.info("  bills: #{bills.count}")
 
       # aggregate the next page's results if it's available
       next_page_url.blank? ? bills : bills + scrape_bills_for_hearing(hearing, next_page_url)
     end
 
     def build_bill(row)
-      # short circuit if we can't find a link
-      witness_slip_link = row.first(".slipiconbutton")
-      if witness_slip_link.blank?
-        return nil
-      end
-
       # there are ids in hidden columns
       columns = row.find_all("td", visible: false)
 
+      # extract basic information for debugging (if possible)
       external_id = columns[0]&.text(:all)
+      document_name = columns[2]&.text
+
+      # short circuit if we can't find a link
+      witness_slip_link = row.first(".slipiconbutton")
+      if witness_slip_link.blank?
+        logger.debug "- bill missing slip link: #{external_id} - #{document_name}"
+      end
+
       if external_id.blank?
         raise Error, "Failed to find bill id for row: #{row}"
       end
 
-      # update / build the bill with available data
-      bill = Bill.find_or_initialize_by({
-        external_id: columns[0]&.text(:all)
+      # skip sub-bills with hyphens in name for now
+      if document_name.include?(" - ")
+        logger.debug "- bill is modification: #{external_id} - #{document_name}, skipping"
+        return nil
+      end
+
+      bill ||= Bill.find_or_initialize_by({
+        external_id: external_id
       })
 
-      bill = bill.assign_attributes({
-        document_name: columns[2]&.text,
+      bill.assign_attributes({
+        document_name: document_name,
         sponsor_name: columns[3]&.text,
         description: columns[4]&.text,
-        witness_slip_url: witness_slip_link["href"],
+        witness_slip_url: witness_slip_link.present? ? witness_slip_link["href"] : nil,
       })
 
       bill
