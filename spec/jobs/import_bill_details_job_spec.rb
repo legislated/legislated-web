@@ -5,9 +5,10 @@ describe ImportBillDetailsJob do
     let(:bill) { build(:bill, :with_any_hearing) }
     let(:mock_scraper) { double("Scraper") }
     let(:expected_synopsis) { Faker::Company::bs }
+    let(:scraper_response) { { synopsis: expected_synopsis } }
 
     before do
-      allow(mock_scraper).to receive(:run).and_return({ synopsis: expected_synopsis })
+      allow(mock_scraper).to receive(:run).and_return(scraper_response)
       allow(subject).to receive(:scraper).and_return(mock_scraper)
     end
 

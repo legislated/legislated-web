@@ -5,6 +5,10 @@ class ImportBillsJob < ApplicationJob
     puts error
   end
 
+  def scraper
+    @scraper ||= Scraper::BillsTask.new
+  end
+
   def perform(hearing)
     bills_attrs = scraper.run(hearing)
     bills_attrs.each do |attrs|
@@ -15,9 +19,5 @@ class ImportBillsJob < ApplicationJob
 
       bill.save!
     end
-  end
-
-  def scraper
-    @scraper ||= Scraper::BillsTask.new
   end
 end

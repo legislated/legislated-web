@@ -5,12 +5,12 @@ class ImportBillDetailsJob < ApplicationJob
     puts error
   end
 
+  def scraper
+    @scraper ||= Scraper::BillDetailsTask.new
+  end
+
   def perform(bill)
     bill_attrs = scraper.run(bill)
     bill.update!(bill_attrs)
-  end
-
-  def scraper
-    @scraper ||= Scraper::BillDetailsTask.new
   end
 end

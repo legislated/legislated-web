@@ -7,10 +7,11 @@ describe ImportBillsJob do
 
     let(:existing_bill) { create(:bill, hearing: Hearing.second) }
     let(:existing_bill_attrs) { attributes_for(:bill, external_id: existing_bill.external_id) }
-    let(:expected_attrs) { [existing_bill_attrs] + attributes_for_list(:bill, 2) }
+
+    let(:scraper_response) { [existing_bill_attrs] + attributes_for_list(:bill, 2) }
 
     before do
-      allow(mock_scraper).to receive(:run).and_return(expected_attrs)
+      allow(mock_scraper).to receive(:run).and_return(scraper_response)
       allow(subject).to receive(:scraper).and_return(mock_scraper)
     end
 
