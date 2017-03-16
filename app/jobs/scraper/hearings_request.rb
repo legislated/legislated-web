@@ -1,7 +1,7 @@
 require "httparty"
 
 module Scraper
-  module CommitteeHearingsRequest
+  module HearingsRequest
     # Fetches a page of committee hearings for the given chamber
     # Parameters:
     #   - chamber: a Chamber model to fetch hearings for
