@@ -6,12 +6,11 @@ class ImportBillDetailsJob < ApplicationJob
   end
 
   def perform(bill)
-    scraper = make_scraper(bill)
     bill_attrs = scraper.run(bill)
     bill.update!(bill_attrs)
   end
 
-  def make_scraper(bill)
-    Scraper::BillDetailsTask.new(bill)
+  def scraper
+    @scraper ||= Scraper::BillDetailsTask.new
   end
 end

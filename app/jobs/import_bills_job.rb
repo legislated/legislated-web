@@ -6,7 +6,18 @@ class ImportBillsJob < ApplicationJob
   end
 
   def perform(hearing)
-    scraper = Scraper::BillsTask.new(hearing)
-    bill_attrs = scraper.run(hearing)
+    bills_attrs = scraper.run(hearing)
+    bills_attrs.each do |attrs|
+      bill = Bill.find_or_initialize_by(attrs.slice(:external_id))
+      bill.assign_attributes(attrs.merge({
+        hearing: hearing
+      }))
+
+      bill.save!
+    end
+  end
+
+  def scraper
+    @scraper ||= Scraper::BillsTask.new
   end
 end

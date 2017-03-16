@@ -11,11 +11,13 @@ gem "httparty", "~> 0.14"
 gem "poltergeist", "~> 1.10"
 
 group :development do
+  gem "awesome_print"
   gem "listen", "~> 3.0.5"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "pry"
   gem "pry-byebug"
+  gem "pry-rails"
 end
 
 group :development, :test do
