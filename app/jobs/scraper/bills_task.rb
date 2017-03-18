@@ -14,7 +14,7 @@ module Scraper
       info("  - name: #{hearing.committee.name}")
       info("  - page: #{page_number}")
 
-      visit(url)
+      page.visit(url)
 
       # short-circuit when there are no rows
       if page.has_css?(".t-no-data")

@@ -1,10 +1,7 @@
 require "capybara"
-require "capybara/dsl"
 
 module Scraper
   class Task
-    include Capybara::DSL
-
     def initialize
       # fake user agent to avoid getting redirected to error pages
       # find alternatives here: https://techblog.willshouse.com/2012/01/03/most-common-user-agents/
@@ -28,7 +25,11 @@ module Scraper
       self.class.name
     end
 
-    # helpers
+    # capybara
+    def page
+      Capybara.current_session
+    end
+
     def wait_for_ajax
       Timeout.timeout(Capybara.default_wait_time) do
         active = page.evaluate_script('jQuery.active')

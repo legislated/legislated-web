@@ -11,7 +11,7 @@ module Scraper
 
     def scrape_committee_hearings(chamber)
       info("\n> #{task_name}: visit chamber root")
-      visit(chamber.url)
+      page.visit(chamber.url)
 
       # click the month tab to view all the upcoming hearings
       month_tab = page.first("#CommitteeHearingTabstrip li a", text: "Month")
