@@ -30,7 +30,7 @@ module Scraper
       info("  - page: #{page_number}")
 
       # we should already be here on page 0
-      visit(url) if page_number != 0
+      page.visit(url) if page_number != 0
       # committee data is pulled in by xhr so we have wait
       wait_for_ajax
 
@@ -40,15 +40,15 @@ module Scraper
       end
 
       # build committee / hearing attribuets, winding together scraped and request data
-      committee_hearings_reponse = HearingsRequest.fetch(chamber, page_number)
+      committee_hearings_response = HearingsRequest.fetch(chamber, page_number)
       committee_hearing_rows = page.find_all("#CommitteeHearingTabstrip tbody tr")
       committee_hearing_attrs = committee_hearing_rows
-        .map { |row| build_committee_hearing_attrs(row, committee_hearings_reponse) }
+        .map { |row| build_committee_hearing_attrs(row, committee_hearings_response) }
         .compact
       info("  - committee-hearings: #{committee_hearing_attrs.count}")
 
       # find the next page link by ripping into its icon
-      next_page_link = page.first(".t-arrow-next")&.first(:xpath, ".//..")
+      next_page_link = page.first(:xpath, "//*[@class='t-arrow-next']/..")
 
       # aggregate the next page's results if it's available
       has_next_page = next_page_link.present? && !next_page_link[:class].include?("t-state-disabled")
@@ -62,16 +62,16 @@ module Scraper
       end
     end
 
-    def build_committee_hearing_attrs(row, committee_hearings_reponse)
+    def build_committee_hearing_attrs(row, committee_hearings_response)
       columns = row.find_all("td", visible: false)
 
       # validate data
       committee_id = columns[0]&.text(:all)&.to_i
       if committee_id.blank?
-        raise Error, "#{taks_name}: failed to find committee id for row #{row}"
+        raise Error, "#{task_name}: failed to find committee id for row #{row}"
       end
 
-      committee_hearing_data = committee_hearings_reponse[committee_id]
+      committee_hearing_data = committee_hearings_response[committee_id]
       if committee_hearing_data.blank?
         debug("#{task_name}: failed to find response data for committee_id #{committee_id}, skipping")
         return nil

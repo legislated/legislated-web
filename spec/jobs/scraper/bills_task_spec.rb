@@ -5,7 +5,7 @@ describe Scraper::BillsTask do
     let(:hearing) { build(:hearing, :with_any_committee) }
     let(:page) { double("page") }
     let(:result) { subject.scrape_paged_bills(hearing, hearing.url) }
-    let(:rows_page1) { [:row, :row] }
+    let(:rows) { [:row, :row] }
 
     rows_selector = "#GridCurrentCommittees tbody tr"
     link_selector = "//*[@class='t-arrow-next']/.."
@@ -16,7 +16,7 @@ describe Scraper::BillsTask do
 
       allow(page).to receive(:visit)
       allow(page).to receive(:first).and_return(nil)
-      allow(page).to receive(:find_all).and_return(rows_page1)
+      allow(page).to receive(:find_all).and_return(rows)
       allow(page).to receive(:has_css?).with(".t-no-data").and_return(false)
     end
 
@@ -26,14 +26,14 @@ describe Scraper::BillsTask do
     end
 
     context "normally" do
-      let(:bills_page2) { [:bill] }
       let(:next_page_link) { { class: "" } }
+      let(:next_page_result) { [:bill] }
 
       before do
         allow(subject).to receive(:scrape_paged_bills)
           .and_call_original
         allow(subject).to receive(:scrape_paged_bills)
-          .with(anything, anything, 1).and_return(bills_page2)
+          .with(hearing, anything, 1).and_return(next_page_result)
 
         allow(page).to receive(:first)
           .with(:xpath, link_selector).and_return(next_page_link)
@@ -65,7 +65,7 @@ describe Scraper::BillsTask do
       end
 
       it "does not page" do
-        expect(subject).to receive(:scrape_paged_bills).once.and_call_original
+        expect(subject).to receive(:scrape_paged_bills).once
         expect(result).to eq([:bill, :bill])
       end
     end
@@ -118,8 +118,8 @@ describe Scraper::BillsTask do
       end
     end
 
-    context "when the document looks like a 'modification'" do
-      let(:document_name) { "HB0000 - Modification" }
+    context "when the document appears to be an 'amendment'" do
+      let(:document_name) { "HB0000 - Amendment" }
 
       it "skips the row" do
         expect(result).to be_nil
