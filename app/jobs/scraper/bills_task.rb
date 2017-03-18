@@ -29,7 +29,7 @@ module Scraper
       info("  - bills: #{bills.count}")
 
       # find the next page link by ripping into its icon
-      next_page_link = page.first(".t-arrow-next")&.first(:xpath, ".//..")
+      next_page_link = page.first(:xpath, "//*[@class='t-arrow-next']/..")
 
       # aggregate the next page's results if it's available
       has_next_page = next_page_link.present? && !next_page_link[:class].include?("t-state-disabled")
