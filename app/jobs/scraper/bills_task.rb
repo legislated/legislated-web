@@ -3,7 +3,7 @@ module Scraper
     def run(hearing)
       info("> #{task_name}: start")
       info("  - hearing: #{hearing.id}")
-      result = scrape_paged_bills(hearing)
+      result = scrape_paged_bills(hearing, hearing.url)
 
       info("\n> #{task_name}: finished")
       result
