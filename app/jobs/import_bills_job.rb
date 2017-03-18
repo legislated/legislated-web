@@ -18,6 +18,9 @@ class ImportBillsJob < ApplicationJob
       }))
 
       bill.save!
+
+      # enqueue the details import
+      ImportBillDetailsJob.perform_later(bill)
     end
   end
 end

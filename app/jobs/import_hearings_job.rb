@@ -30,6 +30,9 @@ class ImportHearingsJob < ApplicationJob
       }))
 
       hearing.save!
+
+      # enqueue the bills import
+      ImportBillsJob.perform_later(hearing)
     end
   end
 end

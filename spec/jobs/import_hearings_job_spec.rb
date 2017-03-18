@@ -25,24 +25,26 @@ describe ImportHearingsJob do
     before do
       allow(mock_scraper).to receive(:run).and_return(scraper_response)
       allow(subject).to receive(:scraper).and_return(mock_scraper)
+      allow(ImportBillsJob).to receive(:perform_later)
     end
 
-    it "scrapes the chamber's hearing" do
+    it "scrapes the chamber's hearings" do
       subject.perform(chamber)
       expect(mock_scraper).to have_received(:run).with(chamber)
     end
 
-    it "updates committees that already exists" do
+    it "updates committees that already exist" do
       subject.perform(chamber)
       committee.reload
       expect(committee).to have_attributes(committee_attrs)
     end
 
-    it "updates hearings that already exists" do
+    it "updates hearings that already exist" do
       subject.perform(chamber)
       hearing.reload
       expect(hearing).to have_attributes(hearing_attrs)
     end
+
 
     it "creates committees that don't exist" do
       expect { subject.perform(chamber) }.to change(Committee, :count).by(2)
@@ -52,9 +54,14 @@ describe ImportHearingsJob do
       expect { subject.perform(chamber) }.to change(Hearing, :count).by(2)
     end
 
+    it "import bills for each hearing" do
+      subject.perform(chamber)
+      expect(ImportBillsJob).to have_received(:perform_later).exactly(3).times
+    end
+
     context "after catching a scraping error" do
       before do
-        allow(mock_scraper).to receive(:run).and_raise(Scraper::Task::Error.new)
+        allow(mock_scraper).to receive(:run).and_raise(Scraper::Task::Error)
       end
 
       xit "sends a slack notification" do
@@ -63,7 +70,11 @@ describe ImportHearingsJob do
 
     context "after catching an active record error" do
       before do
-        allow(mock_scraper).to receive(:run).and_raise(ActiveRecord::ActiveRecordError.new)
+        Hearing.any_instance.stub(:save!).and_raise(ActiveRecord::ActiveRecordError)
+      end
+
+      it "does not import bills" do
+        expect(ImportBillsJob).to_not have_received(:perform_later)
       end
 
       xit "sends a slack notification" do
