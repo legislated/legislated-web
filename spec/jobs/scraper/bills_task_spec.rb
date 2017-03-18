@@ -84,4 +84,54 @@ describe Scraper::BillsTask do
       end
     end
   end
+
+  describe "#build_bill_attrs" do
+    let(:row) { double("row") }
+    let(:cols) { 5.times.map { double("column") } }
+    let(:result) { subject.build_bill_attrs(row) }
+    let(:attrs) { attributes_for(:bill) }
+
+    let(:external_id) { attrs[:external_id] }
+    let(:document_name) { attrs[:document_name] }
+    let(:witness_slip_link) { { "href" => attrs[:witness_slip_url] } }
+
+    before do
+      allow(row).to receive(:find_all).and_return(cols)
+      allow(row).to receive(:first).and_return(witness_slip_link)
+
+      allow(cols[0]).to receive(:text).and_return(external_id)
+      allow(cols[2]).to receive(:text).and_return(document_name)
+      allow(cols[3]).to receive(:text).and_return(attrs[:sponsor_name])
+      allow(cols[4]).to receive(:text).and_return(attrs[:description])
+    end
+
+    it "return attributes for the bill" do
+      expected_attrs = attrs.slice(:external_id, :document_name, :sponsor_name, :description, :witness_slip_url)
+      expect(result).to eq(expected_attrs)
+    end
+
+    context "when the id is missing" do
+      let(:external_id) { nil }
+
+      it "raises an error" do
+        expect { subject.build_bill_attrs(row) }.to raise_error Scraper::Task::Error
+      end
+    end
+
+    context "when the document looks like a 'modification'" do
+      let(:document_name) { "HB0000 - Modification" }
+
+      it "skips the row" do
+        expect(result).to be_nil
+      end
+    end
+
+    context "when the witness slip link is missing" do
+      let(:witness_slip_link) { nil }
+
+      it "returns nil for the witness slip url" do
+        expect(result[:witness_slip_url]).to be_nil
+      end
+    end
+  end
 end
