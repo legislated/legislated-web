@@ -13,27 +13,33 @@ describe ImportBillsJob do
     before do
       allow(mock_scraper).to receive(:run).and_return(scraper_response)
       allow(subject).to receive(:scraper).and_return(mock_scraper)
-      allow(ImportBillDetailsJob).to receive(:perform_later)
+      allow(ImportBillDetailsJob).to receive(:perform_async)
     end
 
     it "scrapes the hearing's bills" do
-      subject.perform(hearing)
+      subject.perform(hearing.id)
       expect(mock_scraper).to have_received(:run).with(hearing)
     end
 
     it "updates bills that already exist" do
-      subject.perform(hearing)
+      subject.perform(hearing.id)
       existing_bill.reload
       expect(existing_bill).to have_attributes(existing_bill_attrs)
     end
 
     it "creates bills that don't exist" do
-      expect { subject.perform(hearing) }.to change(Bill, :count).by(2)
+      expect { subject.perform(hearing.id) }.to change(Bill, :count).by(2)
     end
 
     it "imports bill details for each bill" do
-      subject.perform(hearing)
-      expect(ImportBillDetailsJob).to have_received(:perform_later).exactly(3).times
+      subject.perform(hearing.id)
+      expect(ImportBillDetailsJob).to have_received(:perform_async).exactly(3).times
+    end
+
+    context "when the hearing doesn't exist" do
+      it "raises a not found error" do
+        expect { subject.perform(SecureRandom.uuid) }.to raise_error(ActiveRecord::RecordNotFound)
+      end
     end
 
     context "after catching a scraping error" do
@@ -51,7 +57,7 @@ describe ImportBillsJob do
       end
 
       it "does not import bills" do
-        expect(ImportBillDetailsJob).to_not have_received(:perform_later)
+        expect(ImportBillDetailsJob).to_not have_received(:perform_async)
       end
 
       xit "sends a slack notification" do

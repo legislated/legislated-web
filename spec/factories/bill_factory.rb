@@ -8,7 +8,7 @@ FactoryGirl.define do
     witness_slip_url { optional { Faker::Internet.url } }
 
     trait :with_any_hearing do
-      hearing Hearing.first
+      hearing { Hearing.first }
     end
 
     trait :with_hearing do

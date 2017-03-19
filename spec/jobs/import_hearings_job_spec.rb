@@ -25,38 +25,44 @@ describe ImportHearingsJob do
     before do
       allow(mock_scraper).to receive(:run).and_return(scraper_response)
       allow(subject).to receive(:scraper).and_return(mock_scraper)
-      allow(ImportBillsJob).to receive(:perform_later)
+      allow(ImportBillsJob).to receive(:perform_async)
     end
 
     it "scrapes the chamber's hearings" do
-      subject.perform(chamber)
+      subject.perform(chamber.id)
       expect(mock_scraper).to have_received(:run).with(chamber)
     end
 
     it "updates committees that already exist" do
-      subject.perform(chamber)
+      subject.perform(chamber.id)
       committee.reload
       expect(committee).to have_attributes(committee_attrs)
     end
 
     it "updates hearings that already exist" do
-      subject.perform(chamber)
+      subject.perform(chamber.id)
       hearing.reload
       expect(hearing).to have_attributes(hearing_attrs)
     end
 
 
     it "creates committees that don't exist" do
-      expect { subject.perform(chamber) }.to change(Committee, :count).by(2)
+      expect { subject.perform(chamber.id) }.to change(Committee, :count).by(2)
     end
 
     it "creates hearings that don't exist" do
-      expect { subject.perform(chamber) }.to change(Hearing, :count).by(2)
+      expect { subject.perform(chamber.id) }.to change(Hearing, :count).by(2)
     end
 
     it "import bills for each hearing" do
-      subject.perform(chamber)
-      expect(ImportBillsJob).to have_received(:perform_later).exactly(3).times
+      subject.perform(chamber.id)
+      expect(ImportBillsJob).to have_received(:perform_async).exactly(3).times
+    end
+
+    context "when the chamber doesn't exist" do
+      it "raises a not found error" do
+        expect { subject.perform(SecureRandom.uuid) }.to raise_error(ActiveRecord::RecordNotFound)
+      end
     end
 
     context "after catching a scraping error" do
@@ -74,7 +80,7 @@ describe ImportHearingsJob do
       end
 
       it "does not import bills" do
-        expect(ImportBillsJob).to_not have_received(:perform_later)
+        expect(ImportBillsJob).to_not have_received(:perform_async)
       end
 
       xit "sends a slack notification" do

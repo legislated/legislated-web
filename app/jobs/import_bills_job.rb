@@ -1,15 +1,13 @@
-class ImportBillsJob < ApplicationJob
-  queue_as :default
-
-  rescue_from(Scraper::Task::Error) do |error|
-    puts error
-  end
+class ImportBillsJob
+  include Sidekiq::Worker
 
   def scraper
     @scraper ||= Scraper::BillsTask.new
   end
 
-  def perform(hearing)
+  def perform(hearing_id)
+    hearing = Hearing.find(hearing_id)
+
     bills_attrs = scraper.run(hearing)
     bills_attrs.each do |attrs|
       bill = Bill.find_or_initialize_by(attrs.slice(:external_id))
@@ -20,7 +18,7 @@ class ImportBillsJob < ApplicationJob
       bill.save!
 
       # enqueue the details import
-      ImportBillDetailsJob.perform_later(bill)
+      ImportBillDetailsJob.perform_async(bill.id)
     end
   end
 end

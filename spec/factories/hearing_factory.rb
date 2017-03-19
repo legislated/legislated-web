@@ -8,7 +8,7 @@ FactoryGirl.define do
     is_cancelled false
 
     trait :with_any_committee do
-      committee Committee.first
+      committee { Committee.first }
     end
 
     trait :with_committee do

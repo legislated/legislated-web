@@ -4,7 +4,7 @@ FactoryGirl.define do
     name { Faker::Company.name }
 
     trait :with_any_chamber do
-      chamber Chamber.first
+      chamber { Chamber.first }
     end
 
     trait :with_chamber do

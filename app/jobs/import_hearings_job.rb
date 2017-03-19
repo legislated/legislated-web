@@ -1,15 +1,13 @@
-class ImportHearingsJob < ApplicationJob
-  queue_as :default
-
-  rescue_from(Scraper::Task::Error) do |error|
-    puts error
-  end
+class ImportHearingsJob
+  include Sidekiq::Worker
 
   def scraper
     @scraper ||= Scraper::HearingsTask.new
   end
 
-  def perform(chamber)
+  def perform(chamber_id)
+    chamber = Chamber.find(chamber_id)
+
     committee_hearings_attrs = scraper.run(chamber)
     committee_hearings_attrs.each do |attrs|
       # rip out the hearing attrs for now
@@ -32,7 +30,7 @@ class ImportHearingsJob < ApplicationJob
       hearing.save!
 
       # enqueue the bills import
-      ImportBillsJob.perform_later(hearing)
+      ImportBillsJob.perform_async(hearing.id)
     end
   end
 end

@@ -1,15 +1,12 @@
-class ImportBillDetailsJob < ApplicationJob
-  queue_as :default
-
-  rescue_from(Scraper::Task::Error) do |error|
-    puts error
-  end
+class ImportBillDetailsJob
+  include Sidekiq::Worker
 
   def scraper
     @scraper ||= Scraper::BillDetailsTask.new
   end
 
-  def perform(bill)
+  def perform(bill_id)
+    bill = Bill.find(bill_id)
     bill_attrs = scraper.run(bill)
     bill.update!(bill_attrs)
   end
