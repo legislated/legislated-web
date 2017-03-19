@@ -47,7 +47,7 @@ describe ImportBillsJob do
 
     context "after catching an active record error" do
       before do
-        Bill.any_instance.stub(:save!).and_raise(ActiveRecord::ActiveRecordError)
+        allow_any_instance_of(Bill).to receive(:save!).and_raise(ActiveRecord::ActiveRecordError)
       end
 
       it "does not import bills" do
