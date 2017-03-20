@@ -9,5 +9,10 @@ module Types
       description "All chambers"
       resolve -> (obj, ctx, args) { Chamber.all }
     end
+
+    connection :committees, -> { CommitteeType.connection_type } do
+      description "All committees"
+      resolve -> (obj, ctx, args) { Committee.all }
+    end
   end
 end

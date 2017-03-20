@@ -12,8 +12,14 @@ module Types
     # individual nodes
     field :chamber do
       type ChamberType
-      argument :id, !types.ID, "The id of the chamber"
+      argument :id, !types.ID, "The graph id of the chamber"
       resolve -> (obj, args, ctx) { Chamber.find(args["id"]) }
+    end
+
+    field :committee do
+      type CommitteeType
+      argument :id, !types.ID, "The graph id of the committee"
+      resolve -> (obj, args, ctx) { Committee.find(args["id"]) }
     end
   end
 end
