@@ -67,6 +67,9 @@ GEM
     ffi (1.9.18)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    graphiql-rails (1.4.1)
+      rails
+    graphql (1.5.2)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     i18n (0.8.1)
@@ -187,23 +190,28 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  capybara (~> 2.8)
+  capybara
   database_cleaner
   factory_girl_rails
   faker
-  httparty (~> 0.14)
+  graphiql-rails
+  graphql
+  httparty
   listen (~> 3.0.5)
-  pg (~> 0.18)
-  poltergeist (~> 1.10)
+  pg
+  poltergeist
   pry
   pry-byebug
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.2)
   rspec-rails
-  sidekiq (~> 4.2)
+  sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
+
+RUBY VERSION
+   ruby 2.3.0p0
 
 BUNDLED WITH
    1.14.6
