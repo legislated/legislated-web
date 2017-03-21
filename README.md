@@ -1,38 +1,20 @@
 # Witness Slips
 
-## Setup
+A GraphQL API, built on Rails, providing access to witness slip data for the Illinois state legislature, including contextual information about the associated committees, hearing, and bills.
 
-Install any necessary global dependencies:
+## Why?
 
-- ruby (2.3.0) -> [installation](https://github.com/rbenv/rbenv)
-- bundler -> `gem install bundler`
-- foreman -> `gem install foreman`
-- postgresql
-- redis
-- phantomjs
+A witness slip is a public record of individual citizen's position on a bill posted to the Illinois state legislative committee. Slips can be filled out through web forms such as [this one](https://web.archive.org/web/20170321020130/http://my.ilga.gov/WitnessSlip/Create/100577?committeeHearingId=14471&LegislationId=100577&HCommittees4%2F19%2F2017-page=1&committeeid=0&chamber=H&nodays=30&_=1490061655889), however it is exceedingly difficult for citizens to discover bills relevant to their interests.
 
-Then install local dependencies with bundler:
-```sh
-bundle
-```
+This API aims to provide reasonable access to these slips and a means of discovering relevant bills, as well as their associated contextual data.
 
-## Development
+## Contributing
 
-Start the server with:
+We welcome contributions from any interested parties. See the [HACKING](HACKING.md) document for information on getting your environment up and running.
 
-```
-# make sure postgres and redis are started
-foreman start
-```
+## Sources
 
-The first time you run the application, you'll also need to setup the database. If you make any database changes you can also run this again:
+Data is sourced from the following websites, and updated nightly:
 
-```
-bundle exec rails db:reset
-```
-
-You can use [pry](http://pryrepl.org/) to debug by littering the source with breakpoints:
-
-```ruby
-require "pry"; binding.pry
-```
+- http://my.ilga.gov/
+- http://www.ilga.gov/
