@@ -9,5 +9,11 @@ module Types
     field :id, !types.ID, "The graph id"
     field :externalId, !types.Int, "The external id", property: :external_id
     field :name, !types.String, "The display name"
+
+    # relationships
+    connection :hearings, -> { HearingType.connection_type } do
+      description "All of the committee's hearings"
+      resolve -> (committee, args, ctx) { committee.hearings }
+    end
   end
 end

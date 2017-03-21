@@ -14,5 +14,15 @@ module Types
       description "All committees"
       resolve -> (obj, ctx, args) { Committee.all }
     end
+
+    connection :hearings, -> { HearingType.connection_type } do
+      description "All hearings"
+      resolve -> (obj, ctx, args) { Hearing.all }
+    end
+
+    connection :bills, -> { BillType.connection_type } do
+      description "All bills"
+      resolve -> (obj, ctx, args) { Bill.all }
+    end
   end
 end
