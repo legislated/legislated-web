@@ -4,8 +4,8 @@ describe ImportBillDetailsJob do
   describe "#perform" do
     let(:bill) { create(:bill, :with_any_hearing) }
     let(:mock_scraper) { double("Scraper") }
-    let(:expected_synopsis) { Faker::Company::bs }
-    let(:scraper_response) { { synopsis: expected_synopsis } }
+    let(:expected_summary) { Faker::Company::bs }
+    let(:scraper_response) { { summary: expected_summary } }
 
     before do
       allow(mock_scraper).to receive(:run).and_return(scraper_response)
@@ -20,7 +20,7 @@ describe ImportBillDetailsJob do
     it "updates the bill with new details" do
       subject.perform(bill.id)
       bill.reload
-      expect(bill.synopsis).to eq(expected_synopsis)
+      expect(bill.summary).to eq(expected_summary)
     end
 
     context "after catching a scraping error" do

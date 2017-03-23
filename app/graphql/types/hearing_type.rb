@@ -9,9 +9,11 @@ module Types
     field :id, !types.ID, "The graph id"
     field :externalId, !types.Int, "The external id", property: :external_id
     field :location, !types.String, "The location"
-    field :datetime, !DateTimeType, "The date and time"
+    field :date, !DateTimeType, "The date and time"
 
     # relationships
+    field :committee, !CommitteeType, "The parent committee"
+
     connection :bills, -> { BillType.connection_type } do
       description "All of the hearing's bills"
       resolve -> (hearing, args, ctx) { hearing.bills }

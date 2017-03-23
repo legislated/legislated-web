@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314004129) do
+ActiveRecord::Schema.define(version: 20170323052502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20170314004129) do
 
   create_table "bills", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "external_id",      null: false
-    t.string   "document_name",    null: false
-    t.string   "description"
-    t.string   "synopsis"
+    t.string   "document_number",  null: false
+    t.string   "title"
+    t.string   "summary"
     t.string   "sponsor_name",     null: false
     t.string   "witness_slip_url"
     t.uuid     "hearing_id",       null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170314004129) do
 
   create_table "chambers", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name",       null: false
-    t.string   "key",        null: false
+    t.integer  "kind",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,8 +51,7 @@ ActiveRecord::Schema.define(version: 20170314004129) do
     t.integer  "external_id",  null: false
     t.string   "url",          null: false
     t.string   "location",     null: false
-    t.datetime "datetime",     null: false
-    t.boolean  "allows_slips", null: false
+    t.datetime "date",         null: false
     t.boolean  "is_cancelled", null: false
     t.uuid     "committee_id", null: false
     t.datetime "created_at",   null: false

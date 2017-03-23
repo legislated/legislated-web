@@ -92,7 +92,7 @@ describe Scraper::BillsTask do
     let(:attrs) { attributes_for(:bill) }
 
     let(:external_id) { attrs[:external_id] }
-    let(:document_name) { attrs[:document_name] }
+    let(:document_number) { attrs[:document_number] }
     let(:witness_slip_link) { { "href" => attrs[:witness_slip_url] } }
 
     before do
@@ -100,13 +100,13 @@ describe Scraper::BillsTask do
       allow(row).to receive(:first).and_return(witness_slip_link)
 
       allow(cols[0]).to receive(:text).and_return(external_id)
-      allow(cols[2]).to receive(:text).and_return(document_name)
+      allow(cols[2]).to receive(:text).and_return(document_number)
       allow(cols[3]).to receive(:text).and_return(attrs[:sponsor_name])
-      allow(cols[4]).to receive(:text).and_return(attrs[:description])
+      allow(cols[4]).to receive(:text).and_return(attrs[:title])
     end
 
-    it "return attributes for the bill" do
-      expected_attrs = attrs.slice(:external_id, :document_name, :sponsor_name, :description, :witness_slip_url)
+    it "returns attributes for the bill" do
+      expected_attrs = attrs.slice(:external_id, :document_number, :sponsor_name, :title, :witness_slip_url)
       expect(result).to eq(expected_attrs)
     end
 
@@ -119,7 +119,7 @@ describe Scraper::BillsTask do
     end
 
     context "when the document appears to be an 'amendment'" do
-      let(:document_name) { "HB0000 - Amendment" }
+      let(:document_number) { "HB0000 - Amendment" }
 
       it "skips the row" do
         expect(result).to be_nil

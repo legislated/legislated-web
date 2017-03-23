@@ -162,7 +162,7 @@ describe Scraper::HearingsTask do
       { CommitteeId: attrs[:external_id], CommitteeDescription: attrs[:name] }
     }
 
-    it "return attributes for the committee" do
+    it "returns attributes for the committee" do
       expect(result).to eq(attrs)
     end
   end
@@ -177,8 +177,7 @@ describe Scraper::HearingsTask do
       CommitteeHearing: {
         HearingId: attrs[:external_id],
         IsCancelled: attrs[:is_cancelled],
-        AllowSlips: attrs[:allows_slips],
-        ScheduledDateTime: attrs[:datetime]
+        ScheduledDateTime: attrs[:date]
       }
     }}
 
@@ -187,8 +186,8 @@ describe Scraper::HearingsTask do
       allow(subject).to receive(:parse_response_date) { |date| date }
     end
 
-    it "return attributes for the committee" do
-      expected_attrs = attrs.slice(:external_id, :url, :location, :is_cancelled, :allows_slips, :datetime)
+    it "returns attributes for hearing" do
+      expected_attrs = attrs.slice(:external_id, :url, :location, :is_cancelled, :date)
       expect(result).to eq(expected_attrs)
     end
   end

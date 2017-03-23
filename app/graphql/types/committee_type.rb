@@ -11,6 +11,8 @@ module Types
     field :name, !types.String, "The display name"
 
     # relationships
+    field :chamber, !ChamberType, "The parent chamber"
+
     connection :hearings, -> { HearingType.connection_type } do
       description "All of the committee's hearings"
       resolve -> (committee, args, ctx) { committee.hearings }

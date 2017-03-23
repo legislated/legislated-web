@@ -49,12 +49,12 @@ module Scraper
 
       # extract basic information for debugging (if possible)
       external_id = columns[0]&.text(:all)
-      document_name = columns[2]&.text
+      document_number = columns[2]&.text
 
       # short circuit if we can't find a link
       witness_slip_link = row.first(".slipiconbutton")
       if witness_slip_link.blank?
-        debug("  - bill missing slip link: #{external_id} - #{document_name}")
+        debug("  - bill missing slip link: #{external_id} - #{document_number}")
       end
 
       # blow up if we can't find an id for one of the bills
@@ -63,16 +63,16 @@ module Scraper
       end
 
       # skip sub-bills with hyphens in name for now
-      if document_name.include?(" - ")
-        debug "- bill is modification: #{external_id} - #{document_name}, skipping"
+      if document_number.include?(" - ")
+        debug "- bill is modification: #{external_id} - #{document_number}, skipping"
         return nil
       end
 
       attrs = {
         external_id: external_id,
-        document_name: document_name,
+        document_number: document_number,
         sponsor_name: columns[3]&.text,
-        description: columns[4]&.text,
+        title: columns[4]&.text,
         witness_slip_url: witness_slip_link.present? ? witness_slip_link["href"] : nil,
       }
 

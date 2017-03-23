@@ -11,14 +11,14 @@ module Scraper
 
     def scrape_bill_details(bill)
       info("\n> #{task_name}: visit bill details")
-      info("  - url: #{bill.url}")
+      info("  - url: #{bill.details_url}")
 
-      page.visit(bill.url)
+      page.visit(bill.details_url)
 
       # matching based on header text is only way to grab element right now
-      synopsis = page.first(:xpath, "//span[contains(text(),'Synopsis')]/following-sibling::span")
+      summary = page.first(:xpath, "//span[contains(text(),'Synopsis')]/following-sibling::span")
       attrs = {
-        synopsis: synopsis&.text
+        summary: summary&.text
       }
 
       attrs

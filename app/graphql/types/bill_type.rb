@@ -8,10 +8,13 @@ module Types
     # fields
     field :id, !types.ID, "The graph id"
     field :externalId, !types.Int, "The external id", property: :external_id
+    field :documentNumber, !types.String, "The number of the document, e.g. HB 1234", property: :document_number
+    field :title, types.String, "The document's title"
+    field :summary, types.String, "The document's synopsis"
     field :sponsorName, !types.String, "The name of the sponsoring legislator", property: :sponsor_name
-    field :documentName, !types.String, "The name of the document", property: :document_name
-    field :description, types.String, "The document's title"
-    field :synopsis, types.String, "The document's abstract"
     field :witnessSlipUrl, types.String, "The URL of the witness slip form", property: :witness_slip_url
+
+    # relationships
+    field :hearing, !HearingType, "The parent hearing"
   end
 end

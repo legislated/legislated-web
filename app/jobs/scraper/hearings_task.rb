@@ -101,8 +101,7 @@ module Scraper
         url: columns[3]&.find("a")["href"],
         location: committee_hearing_data[:Location],
         is_cancelled: hearing_data[:IsCancelled],
-        allows_slips: hearing_data[:AllowSlips],
-        datetime: parse_response_date(hearing_data[:ScheduledDateTime])
+        date: parse_response_date(hearing_data[:ScheduledDateTime])
       }
 
       attrs

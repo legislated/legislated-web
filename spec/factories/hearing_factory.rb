@@ -3,8 +3,7 @@ FactoryGirl.define do
     external_id { Faker::Number.unique.number(5) }
     url { Faker::Internet.url }
     location { Faker::Address.street_address }
-    datetime { Faker::Time.between(1.year.ago, Date.today) }
-    allows_slips true
+    date { Faker::Time.between(1.year.ago, Date.today) }
     is_cancelled false
 
     trait :with_any_committee do

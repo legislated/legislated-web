@@ -8,6 +8,7 @@ module Types
     # fields
     field :id, !types.ID, "The graph id"
     field :name, !types.String, "The display name"
+    field :type, !types.String, "The chamber type", property: :kind
 
     # relationships
     connection :committees, -> { CommitteeType.connection_type } do

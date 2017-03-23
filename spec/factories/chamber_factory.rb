@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :chamber do
     name { %w(Senate House).sample }
-    key { name.chars.first }
+    kind { name.downcase.to_sym }
   end
 end
