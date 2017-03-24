@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount Sidekiq::Web => "/sidekiq"
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 end

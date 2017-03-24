@@ -25,6 +25,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "faker"
   gem "graphiql-rails"
+  gem "letter_opener_web"
   gem "pry"
   gem "pry-byebug"
   gem "pry-rails"
