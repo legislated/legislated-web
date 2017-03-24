@@ -20,11 +20,13 @@ end
 
 group :development, :test do
   gem "awesome_print"
+  gem "dotenv-rails"
   gem "rspec-rails"
   gem "database_cleaner"
   gem "factory_girl_rails"
   gem "faker"
   gem "graphiql-rails"
+  gem "letter_opener_web"
   gem "pry"
   gem "pry-byebug"
   gem "pry-rails"

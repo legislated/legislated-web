@@ -4,4 +4,8 @@ namespace :jobs do
       ImportHearingsJob.perform_async(chamber.id)
     end
   end
+
+  task :"export-bills" => :environment do
+    BillsMailer.weekly_export_email.deliver_later
+  end
 end
