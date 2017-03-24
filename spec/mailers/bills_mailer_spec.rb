@@ -6,10 +6,14 @@ describe BillsMailer, type: :mailer do
     let(:csv) { Faker::Lorem.sentence }
     let(:start_date) { Time.new(1995, 5, 1) }
     let(:mail) { subject.weekly_export_email(service).deliver_now }
+    let(:env_recipients) { "  one@test.com ,  two@test.com" }
 
     before do
       allow(service).to receive(:serialize).and_return(csv)
       allow(service).to receive(:default_start_date).and_return(start_date)
+
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("EXPORT_MAILER_RECIPIENTS").and_return(env_recipients)
     end
 
     it "sets the subject" do
@@ -21,11 +25,11 @@ describe BillsMailer, type: :mailer do
     end
 
     it "sets the recipients" do
-      expect(mail.bcc).to eq(["foo@bar.com"])
+      expect(mail.bcc).to eq(["one@test.com", "two@test.com"])
     end
 
     it "populates the body" do
-      expect(mail.body.to_s).to match("95.05.01")
+      expect(mail.body.encoded).to match("95.05.01")
     end
 
     it "attaches the csv" do

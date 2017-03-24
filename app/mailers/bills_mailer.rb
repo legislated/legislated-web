@@ -17,7 +17,14 @@ class BillsMailer < ApplicationMailer
     # fire off mailer
     mail(
       subject: "Bills for Hearings #{@start_date}-#{@end_date}",
-      bcc: [ "foo@bar.com" ]
+      bcc: recipients
     )
+  end
+
+  private
+
+  def recipients
+    recipient_string = ENV["EXPORT_MAILER_RECIPIENTS"]
+    recipient_string.split(',')
   end
 end

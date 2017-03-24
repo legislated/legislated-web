@@ -20,6 +20,7 @@ end
 
 group :development, :test do
   gem "awesome_print"
+  gem "dotenv-rails"
   gem "rspec-rails"
   gem "database_cleaner"
   gem "factory_girl_rails"
