@@ -1,10 +1,10 @@
 class BillsMailer < ApplicationMailer
   default from: "noreply@billtracking.org"
 
-  def weekly_export_email
+  def weekly_export_email(csv_service = BillsCsvService.new)
     date = csv_service.default_start_date
 
-    # stringify date range
+    # expose stringified dates
     @start_date = date.to_s(:date_only)
     @end_date = (date + 1.week).to_s(:date_only)
 
@@ -15,12 +15,9 @@ class BillsMailer < ApplicationMailer
     }
 
     # fire off mailer
-    mail(subject: "Bills for Hearings #{@start_date}-#{@end_date}}", bcc: [
-      "foo@bar.com"
-    ])
-  end
-
-  def csv_service
-    @csv_service ||= BillsCsvService.new
+    mail(
+      subject: "Bills for Hearings #{@start_date}-#{@end_date}",
+      bcc: [ "foo@bar.com" ]
+    )
   end
 end
