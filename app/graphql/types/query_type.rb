@@ -10,7 +10,7 @@ module Types
     # viewer type for wrapping multi-node data structures
     field :viewer do
       type ViewerType
-      resolve -> (obj, args, ctx) { Object.new }
+      resolve -> (obj, args, ctx) { Viewer.instance }
     end
   end
 end

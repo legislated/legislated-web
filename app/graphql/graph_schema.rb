@@ -9,23 +9,18 @@ GraphSchema = GraphQL::Schema.define do
   }
 
   object_from_id -> (node_id, query_context) {
-    type_name, id = GraphQL::Schema::UniqueWithinType.decode(node_id)
-    record_type = ApplicationRecord.const_get(type_name)
-    record_type&.find_by(id: id)
+    model_name, id = GraphQL::Schema::UniqueWithinType.decode(node_id)
+
+    # viewer is a special case, since it's not a database model
+    if id == Viewer::ID
+      Viewer.instance
+    else
+      model_class = model_name.constantize
+      model_class.find_by(id: id)
+    end
   }
 
   resolve_type -> (object, query_context) {
-    case object
-    when Chamber
-      Types::ChamberType
-    when Committee
-      Types::CommitteeType
-    when Hearing
-      Types::HearingType
-    when Bill
-      Types::BillType
-    else
-      raise "Could not resolve Graph type for: #{object}"
-    end
+    "Types::#{object.class.name}Type".constantize
   }
 end
