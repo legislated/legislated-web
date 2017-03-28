@@ -1,17 +1,19 @@
 class BillsMailer < ApplicationMailer
   default from: "noreply@billtracking.org"
 
+  # sends a weekly export of bill data to a list of recipients stored in the
+  # EXPORT_MAILER_RECIPIENTS environment variable
   def weekly_export_email(csv_service = BillsCsvService.new)
-    date = csv_service.default_start_date
+    date = start_date
 
     # expose stringified dates
-    @start_date = date.to_s(:date_only)
+    @start_date = start_date.to_s(:date_only)
     @end_date = (date + 1.week).to_s(:date_only)
 
     # add csv as attachment
     attachments["il-bills-#{@start_date}-#{@end_date}.csv"] = {
       mime_type: "text/csv",
-      content: csv_service.serialize
+      content: csv_service.serialize(build_bills_query)
     }
 
     # fire off mailer
@@ -23,6 +25,19 @@ class BillsMailer < ApplicationMailer
 
   private
 
+  # attachment
+  def start_date
+    Time.now.beginning_of_week(:sunday)
+  end
+
+  def build_bills_query
+    Bill.includes(hearing: :committee)
+      .references(:hearings)
+      .where("hearings.date >= ?", start_date)
+      .order("hearings.date ASC")
+  end
+
+  # destination
   def recipients
     recipient_string = ENV["EXPORT_MAILER_RECIPIENTS"]
     recipient_string.split(',')

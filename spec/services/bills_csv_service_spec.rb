@@ -42,22 +42,4 @@ describe BillsCsvService do
       expect(rows.drop(1)).to eq(bill_rows)
     end
   end
-
-  describe "#build_bills_query" do
-    let!(:date) { bill1.hearing.date + 1.days }
-    let!(:bill1) { create(:bill, :with_any_hearing) }
-    let!(:bill3) { create(:bill, hearing: create(:hearing, :with_any_committee, date: date + 1.days)) }
-    let!(:bill2) { create(:bill, hearing: create(:hearing, :with_any_committee, date: date)) }
-
-    it "only includes bills after or on the datetime" do
-      bills = subject.build_bills_query(date).to_a
-      expect(bills).to eq([bill2, bill3])
-    end
-  end
-
-  describe "#default_start_date" do
-    it "is last sunday" do
-      expect(subject.default_start_date).to eq(Time.now.beginning_of_week(:sunday))
-    end
-  end
 end
