@@ -3,14 +3,10 @@ class Bill < ApplicationRecord
 
   # scopes
   scope :by_date, -> (range = {}) do
-    query = ordered_by_date
+    query = includes(:hearing).references(:hearings).order("hearings.date ASC")
     query = query.where("hearings.date >= ?", range[:start]) if range[:start]
     query = query.where("hearings.date <= ?", range[:end]) if range[:end]
     query
-  end
-
-  scope :ordered_by_date, -> do
-    includes(:hearing).references(:hearings).order("hearings.date ASC")
   end
 
   # accessors

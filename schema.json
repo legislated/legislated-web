@@ -246,6 +246,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "query",
+                  "description": "Returns bills whose title or summary match the query",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "from",
                   "description": "Returns bills whose hearing is on or after the date-time",
                   "type": {
