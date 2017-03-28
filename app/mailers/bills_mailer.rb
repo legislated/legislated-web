@@ -4,38 +4,36 @@ class BillsMailer < ApplicationMailer
   # sends a weekly export of bill data to a list of recipients stored in the
   # EXPORT_MAILER_RECIPIENTS environment variable
   def weekly_export_email(csv_service = BillsCsvService.new)
-    date = start_date
+    start = Time.now.next_week
+    date_range = { start: start, end: start.end_of_week }
 
     # expose stringified dates
-    @start_date = start_date.to_s(:date_only)
-    @end_date = (date + 1.week).to_s(:date_only)
+    @start_date = date_range[:start].to_s(:date_only)
+    @end_date = date_range[:end].to_s(:date_only)
 
     # add csv as attachment
     attachments["il-bills-#{@start_date}-#{@end_date}.csv"] = {
       mime_type: "text/csv",
-      content: csv_service.serialize(build_bills_query)
+      content: build_csv(csv_service, date_range)
     }
 
     # fire off mailer
     mail(
       subject: "Bills for Hearings #{@start_date}-#{@end_date}",
-      bcc: recipients
+      bcc: build_recipients
     )
   end
 
   private
 
   # attachment
-  def start_date
-    Time.now.beginning_of_week(:sunday)
-  end
-
-  def build_bills_query
-    Bill.includes(hearing: :committee).by_date(start_date)
+  def build_csv(csv_service, date_range)
+    query = Bill.includes(hearing: :committee).by_date(date_range)
+    csv_service.serialize(query)
   end
 
   # destination
-  def recipients
+  def build_recipients
     recipient_string = ENV["EXPORT_MAILER_RECIPIENTS"]
     recipient_string.split(',')
   end

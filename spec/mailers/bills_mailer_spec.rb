@@ -3,7 +3,7 @@ describe BillsMailer, type: :mailer do
 
   describe "#weekly_export_email" do
     let(:date) { Time.new(1995, 5, 3) }
-    let(:start_date) { date.beginning_of_week(:sunday) }
+    let(:start_date) { date.next_week }
     let(:recipients) { "  one@test.com ,  two@test.com" }
     let(:csv) { Faker::Lorem.sentence }
     let(:service) { double("csv-service") }
@@ -22,7 +22,7 @@ describe BillsMailer, type: :mailer do
     end
 
     it "sets the subject" do
-      expect(mail.subject).to eq("Bills for Hearings 95.04.30-95.05.07")
+      expect(mail.subject).to eq("Bills for Hearings 95.05.08-95.05.14")
     end
 
     it "sets the sender" do
@@ -34,13 +34,13 @@ describe BillsMailer, type: :mailer do
     end
 
     it "populates the body" do
-      expect(mail.body.encoded).to match("95.04.30")
+      expect(mail.body.encoded).to match("95.05.08")
     end
 
     it "attaches the csv" do
       attachment = mail.attachments[0]
       expect(attachment).to be_present
-      expect(attachment.filename).to eq("il-bills-95.04.30-95.05.07.csv")
+      expect(attachment.filename).to eq("il-bills-95.05.08-95.05.14.csv")
       expect(attachment.mime_type).to eq("text/csv" )
       expect(attachment.body.decoded).to eq(csv)
     end
