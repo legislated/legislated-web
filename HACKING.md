@@ -27,36 +27,55 @@ $ foreman start # make sure postgres and redis are started
 The first time you run the application, you'll also need to setup the database. If you make any database changes you can also run this again:
 
 ```sh
-$ bundle exec rails db:reset
+$ rails db:reset
 ```
 
 You can use the rails console to explore the database through using [ActiveRecord](http://guides.rubyonrails.org/active_record_querying.html):
 
 ```sh
-$ bundle exec rails console  
+$ rails console  
 ```
 
 You can use [pry](http://pryrepl.org/) to debug by littering the source with breakpoints:
 
 ```ruby
-require "pry"; binding.pry
+binding.pry # when running specs, we require pry up front
+require "pry"; binding.pry # otherwise, you'll want to require it
 ```
+
+## Testing
+
+Tests are written using [rspec](http://www.relishapp.com/rspec/rspec-expectations/v/3-5/docs), and live under the `spec` directory. Please add specs for any new features.
+
+Run all the specs using the rake task:
+
+```sh
+$ rails spec
+```
+
+Or run individual spec files using the `rspec` directly:
+
+```sh
+$ rspec spec/jobs/import_hearings_job_spec.rb
+```
+
+Many editors also have a rails-rspec plugin that will let you run specs from your editor, run just the example under your cursor, etc. If you're into that kind of thing.
 
 ## Hosting / Deployment
 
-The application is hosted on [Heroku](https://dashboard.heroku.com/apps/witness-slips). You can interface with the remote application, its database, etc. by installing the Heroku [toolbelt](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). In order to access our application, you'll need to ask somebody to be made a collaborator.
+The application is hosted on [Heroku](https://dashboard.heroku.com/apps/witness-slips). You can interface with the remote application, its database, etc. by installing the Heroku [toolbelt](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). In order to access our app, you'll need to ask somebody to make you a collaborator.
 
-Once that's set up, you can connect a Rails console to the application to explore its data:
+Once that's set up, you can connect a Rails console to explore the Heroku app's data:
 
 ```sh
 $ heroku login # enter your credentials
 $ heroku console -a witness-slips
 ```
 
-To deploying to Heroku, you can push to the remote `heroku` git source:
+To deploy to Heroku, push to the git remote `heroku` using our rake task:
 
 ```sh
-$ git push heroku master
+$ rails deploy:staging
 ```
 
 ## Technology
