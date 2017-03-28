@@ -49,11 +49,14 @@ module Types
     connection :bills, -> { BillType.connection_type } do
       description "All bills"
 
+      argument :query, types.String, "Returns bills whose title or summary match the query"
       argument :from, DateTimeType, "Returns bills whose hearing is on or after the date-time"
       argument :to, DateTimeType, "Returns bills whose hearings is on or before the date-time"
 
       resolve -> (obj, args, ctx) do
-        Bill.by_date(start: args[:from], end: args[:to])
+        bills_query = Bill.by_date(start: args[:from], end: args[:to])
+        bills_query = BillsSearchService.filter(bills_query, args[:query]) if args[:query].present?
+        bills_query
       end
     end
   end
