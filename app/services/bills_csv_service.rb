@@ -8,19 +8,6 @@ class BillsCsvService
     end
   end
 
-  def build_bills_query(start_date = default_start_date)
-    query = Bill.includes(hearing: :committee)
-      .references(:hearings)
-      .where("hearings.date >= ?", start_date)
-      .order("hearings.date ASC")
-
-    query
-  end
-
-  def default_start_date
-    Time.now.beginning_of_week(:sunday)
-  end
-
   private
 
   def columns
