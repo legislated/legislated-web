@@ -2,8 +2,11 @@ class Bill < ApplicationRecord
   belongs_to :hearing
 
   # scopes
-  scope :by_date, -> (start_date = nil) do
-    start_date.present? ? ordered_by_date.where("hearings.date >= ?", start_date) : ordered_by_date
+  scope :by_date, -> (range = {}) do
+    query = ordered_by_date
+    query = query.where("hearings.date >= ?", range[:start]) if range[:start]
+    query = query.where("hearings.date <= ?", range[:end]) if range[:end]
+    query
   end
 
   scope :ordered_by_date, -> do

@@ -4,8 +4,7 @@ describe Types::ViewerType do
   describe "#bills" do
     let(:resolve) { subject.fields["bills"].resolve_proc.instance_variable_get("@underlying_resolve") }
 
-    let(:from_date) { nil }
-    let(:args) { { from: from_date } }
+    let(:args) { { } }
     let(:result) { resolve.call(nil, args, nil) }
 
     let!(:date) { Time.now }
@@ -17,11 +16,11 @@ describe Types::ViewerType do
       expect(result).to eq([bill1, bill2, bill3])
     end
 
-    context "with a 'from' date" do
-      let(:from_date) { date }
+    context "with a date range" do
+      let(:args) { { from: date, to: date } }
 
       it "only returns bills after that date" do
-        expect(result).to eq([bill2, bill3])
+        expect(result).to eq([bill2])
       end
     end
   end

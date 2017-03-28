@@ -2,7 +2,7 @@ describe BillsCsvService do
   subject { described_class.new }
 
   def csv_row(string)
-    string.strip.gsub(/,\s+/, ",")
+    string.strip.gsub(/,$\s+/, ",")
   end
 
   describe "#serialize" do

@@ -48,8 +48,13 @@ module Types
 
     connection :bills, -> { BillType.connection_type } do
       description "All bills"
-      argument :from, DateTimeType
-      resolve -> (obj, args, ctx) { Bill.by_date(args[:from]) }
+
+      argument :from, DateTimeType, "Returns bills whose hearing is on or after the date-time"
+      argument :to, DateTimeType, "Returns bills whose hearings is on or before the date-time"
+
+      resolve -> (obj, args, ctx) do
+        Bill.by_date(start: args[:from], end: args[:to])
+      end
     end
   end
 end
