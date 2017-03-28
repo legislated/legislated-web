@@ -31,10 +31,7 @@ class BillsMailer < ApplicationMailer
   end
 
   def build_bills_query
-    Bill.includes(hearing: :committee)
-      .references(:hearings)
-      .where("hearings.date >= ?", start_date)
-      .order("hearings.date ASC")
+    Bill.includes(hearing: :committee).by_date(start_date)
   end
 
   # destination

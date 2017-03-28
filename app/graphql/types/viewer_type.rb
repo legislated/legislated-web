@@ -33,22 +33,23 @@ module Types
     # connections
     connection :chambers, -> { ChamberType.connection_type } do
       description "All chambers"
-      resolve -> (obj, ctx, args) { Chamber.all }
+      resolve -> (obj, args, ctx) { Chamber.all }
     end
 
     connection :committees, -> { CommitteeType.connection_type } do
       description "All committees"
-      resolve -> (obj, ctx, args) { Committee.all }
+      resolve -> (obj, args, ctx) { Committee.all }
     end
 
     connection :hearings, -> { HearingType.connection_type } do
       description "All hearings"
-      resolve -> (obj, ctx, args) { Hearing.all }
+      resolve -> (obj, args, ctx) { Hearing.all }
     end
 
     connection :bills, -> { BillType.connection_type } do
       description "All bills"
-      resolve -> (obj, ctx, args) { Bill.all }
+      argument :from, DateTimeType
+      resolve -> (obj, args, ctx) { Bill.by_date(args[:from]) }
     end
   end
 end

@@ -1,6 +1,15 @@
 class Bill < ApplicationRecord
   belongs_to :hearing
 
+  # scopes
+  scope :by_date, -> (start_date = nil) do
+    start_date.present? ? ordered_by_date.where("hearings.date >= ?", start_date) : ordered_by_date
+  end
+
+  scope :ordered_by_date, -> do
+    includes(:hearing).references(:hearings).order("hearings.date ASC")
+  end
+
   # accessors
   def details_url
     doc_number = document_number.split("-").first&.strip # strip off amendment
