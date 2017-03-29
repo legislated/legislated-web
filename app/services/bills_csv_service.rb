@@ -1,5 +1,5 @@
 class BillsCsvService
-  def serialize(bills = build_bills_query)
+  def serialize(bills)
     CSV.generate do |csv|
       csv << columns
       bills.each do |bill|

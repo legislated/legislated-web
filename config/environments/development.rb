@@ -1,4 +1,10 @@
 Rails.application.configure do
+  # push rails logs to stdout to combine with puma logs
+  config.logger = Logger.new(STDOUT)
+  # don't buffer stdout for foreman's sake
+  # https://github.com/ddollar/foreman/wiki/Missing-Output
+  $stdout.sync = true
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
