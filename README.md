@@ -10,6 +10,8 @@ This API aims to provide reasonable access to these slips and a means of discove
 
 ## Contributing
 
+Stories are [here](https://github.com/orgs/engage-il/projects/1).
+
 We welcome contributions from any interested parties. See the [HACKING](HACKING.md) document for information on getting your environment up and running.
 
 ## Sources
