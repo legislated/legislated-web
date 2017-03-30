@@ -4,6 +4,7 @@
 
 Install any necessary global dependencies. Some packages may need to be installed using the package manager(s) appropriate for your system:
 
+- readline -> **must** be installed before Ruby
 - ruby (2.3.0) -> [installation](https://github.com/rbenv/rbenv)
 - bundler -> `gem install bundler`
 - foreman -> `gem install foreman`
@@ -18,10 +19,10 @@ $ bundle
 
 ## Development
 
-Start the server with:
+Make sure Postgres and Redis are started, and then start the server with:
 
 ```sh
-$ foreman start # make sure postgres and redis are started
+$ foreman start
 ```
 
 The first time you run the application, you'll also need to setup the database. If you make any database changes you can also run this again:
@@ -78,9 +79,18 @@ To deploy to Heroku, push to the git remote `heroku` using our rake task:
 $ rails deploy:staging
 ```
 
-## Technology
+## Architecture
 
-See the following READMEs for detailed information about this application's involved technologies:
+If you've never worked with some of the technologies on this project, it may be worth reading up on them. Here's a rough breakdown the application architecture and major technologies:
 
-- [GraphQL](wiki/graphql.md)
-- [Sidekiq](wiki/sidekiq.md)
+#### [Web Server (Rails)](http://guides.rubyonrails.org/)
+
+Rails is a web-application framework, and we use it so serve our API, interact with the database, etc. If you've never worked with it, their documentation is a good place to start.
+
+#### [API (GraphQL)](wiki/api.md)
+
+Our API is built using GraphQL, a query language that is an alternative to REST. It offers a lot of flexibility to clients by allowing them to specify the exact data fields of the response. It's also simple to implement on Rails side. See the link for more info.
+
+#### [Data Import (Sidekiq, Capybara)](wiki/import.md)
+
+We use Sidekiq to scrape data nightly from Illinois government websites and throw it in our database. Sidekiq provides a queueing system, built on top of Redis, for running the import jobs in the background.
