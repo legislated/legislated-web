@@ -6,7 +6,7 @@ class ApiController < ApplicationController
     )
 
     logger.info("> result: ")
-    logger.ap(result, :info)
+    logger.info(result, :info)
 
     render json: result
   end
