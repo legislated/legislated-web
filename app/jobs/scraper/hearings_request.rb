@@ -22,7 +22,7 @@ module Scraper
           "X-Requested-With": "XMLHttpRequest"
         },
         query: {
-          chamber: chamber.key,
+          chamber: chamber_key(chamber),
           committeeid: 0,
           begindate: format_datetime(midnight),
           enddate: format_datetime(midnight + 30.days),
@@ -43,6 +43,11 @@ module Scraper
     end
 
     private
+
+    def self.chamber_key(chamber)
+      keys = { house: "H", senate: "S" }
+      keys[chamber.kind.to_sym]
+    end
 
     def self.format_datetime(datetime)
       datetime.strftime("%D %T")
