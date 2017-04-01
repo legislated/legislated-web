@@ -19,9 +19,10 @@ class BillsCsvService
       :witness_slip_url,
       :hearing_date,
       :committee_name,
-      :is_hidden,
+      :priority,
+      :human_summary,
       :proponent_position,
-      :opponent_position,
+      :opponent_position
     ]
   end
 
@@ -34,7 +35,8 @@ class BillsCsvService
       bill.witness_slip_url,
       bill.hearing.date,
       bill.hearing.committee.name,
-      false,
+      1,
+      nil,
       nil,
       nil
     ]

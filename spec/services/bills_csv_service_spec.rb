@@ -18,7 +18,8 @@ describe BillsCsvService do
         witness_slip_url,
         hearing_date,
         committee_name,
-        is_hidden,
+        priority,
+        human_summary,
         proponent_position,
         opponent_position
       "))
@@ -34,7 +35,8 @@ describe BillsCsvService do
           #{bill.witness_slip_url},
           #{bill.hearing.date},
           #{bill.hearing.committee.name},
-          false,
+          1,
+          ,
           ,
         ")
       end
