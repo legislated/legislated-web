@@ -64,13 +64,13 @@ Many editors also have a rails-rspec plugin that will let you run specs from you
 
 ## Hosting / Deployment
 
-The application is hosted on [Heroku](https://dashboard.heroku.com/apps/witness-slips). You can interface with the remote application, its database, etc. by installing the Heroku [toolbelt](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). In order to access our app, you'll need to ask somebody to make you a collaborator.
+The application is hosted on [Heroku](https://dashboard.heroku.com/apps/legislated). You can interface with the remote application, its database, etc. by installing the Heroku [toolbelt](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). In order to access our app, you'll need to ask somebody to make you a collaborator.
 
 Once that's set up, you can connect a Rails console to explore the Heroku app's data:
 
 ```sh
 $ heroku login # enter your credentials
-$ heroku console -a witness-slips
+$ heroku console -a legislated
 ```
 
 To deploy to Heroku, push to the git remote `heroku` using our rake task:
