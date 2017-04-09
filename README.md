@@ -1,4 +1,4 @@
-# Legislated API
+# Legislated API [![Build Status](https://travis-ci.org/legislated/legislated-api.svg?branch=master)](https://travis-ci.org/legislated/legislated-api)
 
 A GraphQL API, built on Rails, providing access to witness slip data for the Illinois state legislature, including contextual information about the associated committees, hearing, and bills.
 
