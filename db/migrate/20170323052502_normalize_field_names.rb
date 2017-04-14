@@ -9,8 +9,8 @@ class NormalizeFieldNames < ActiveRecord::Migration[5.0]
 
     reversible do |change|
       map = {
-        "H" => "0",
-        "S" => "1"
+        'H' => '0',
+        'S' => '1'
       }
 
       change.up do

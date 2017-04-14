@@ -14,12 +14,9 @@ module Scraper
       page.visit(chamber.url)
 
       # click the month tab to view all the upcoming hearings
-      month_tab = page.first("#CommitteeHearingTabstrip li a", text: "Month")
-      if month_tab.present?
-        month_tab.click
-      else
-        raise Error, "#{task_name}: couldn't find month 'tab'"
-      end
+      month_tab = page.first('#CommitteeHearingTabstrip li a', text: 'Month')
+      raise Error, "#{task_name}: couldn't find month 'tab'" if month_tab.blank?
+      month_tab.click
 
       scrape_paged_committee_hearings(chamber, chamber.url)
     end
@@ -35,13 +32,11 @@ module Scraper
       wait_for_ajax
 
       # short-circuit when there are no rows
-      if page.has_css?(".t-no-data")
-        return []
-      end
+      return [] if page.has_css?('.t-no-data')
 
       # build committee / hearing attribuets, winding together scraped and request data
       committee_hearings_response = HearingsRequest.fetch(chamber, page_number)
-      committee_hearing_rows = page.find_all("#CommitteeHearingTabstrip tbody tr")
+      committee_hearing_rows = page.find_all('#CommitteeHearingTabstrip tbody tr')
       committee_hearing_attrs = committee_hearing_rows
         .map { |row| build_committee_hearing_attrs(row, committee_hearings_response) }
         .compact
@@ -51,19 +46,19 @@ module Scraper
       next_page_link = page.first(:xpath, "//*[@class='t-arrow-next']/..")
 
       # aggregate the next page's results if it's available
-      has_next_page = next_page_link.present? && !next_page_link[:class].include?("t-state-disabled")
+      has_next_page = next_page_link.present? && !next_page_link[:class].include?('t-state-disabled')
       info("  - next?: #{has_next_page}")
 
       if has_next_page
         committee_hearing_attrs +
-          scrape_paged_committee_hearings(chamber, next_page_link["href"], page_number + 1)
+          scrape_paged_committee_hearings(chamber, next_page_link['href'], page_number + 1)
       else
         committee_hearing_attrs
       end
     end
 
     def build_committee_hearing_attrs(row, committee_hearings_response)
-      columns = row.find_all("td", visible: false)
+      columns = row.find_all('td', visible: false)
 
       # validate data
       committee_id = columns[0]&.text(:all)&.to_i
@@ -84,7 +79,7 @@ module Scraper
       committee_attrs
     end
 
-    def build_committee_attrs(columns, committee_hearing_data)
+    def build_committee_attrs(_columns, committee_hearing_data)
       attrs = {
         external_id: committee_hearing_data[:CommitteeId],
         name: committee_hearing_data[:CommitteeDescription]
@@ -98,7 +93,7 @@ module Scraper
 
       attrs = {
         external_id: hearing_data[:HearingId],
-        url: columns[3]&.find("a")["href"],
+        url: columns[3]&.find('a')&.[]('href'),
         location: committee_hearing_data[:Location],
         is_cancelled: hearing_data[:IsCancelled],
         date: parse_response_date(hearing_data[:ScheduledDateTime])

@@ -5,6 +5,10 @@ require_relative 'config/application'
 Rails.application.load_tasks
 
 if Rails.env.development? || Rails.env.test?
+  # add rubocop task
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new
+
   # set the default task
-  task(:default).clear.enhance(%w(graphql:schema spec))
+  task(:default).clear.enhance(%w[graphql:schema rubocop spec])
 end

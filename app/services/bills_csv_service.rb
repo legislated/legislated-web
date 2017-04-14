@@ -11,18 +11,18 @@ class BillsCsvService
   private
 
   def columns
-    [
-      :document_number,
-      :title,
-      :summary,
-      :details_url,
-      :witness_slip_url,
-      :hearing_date,
-      :committee_name,
-      :priority,
-      :human_summary,
-      :proponent_position,
-      :opponent_position
+    %i[
+      document_number
+      title
+      summary
+      details_url
+      witness_slip_url
+      hearing_date
+      committee_name
+      priority
+      human_summary
+      proponent_position
+      opponent_position
     ]
   end
 

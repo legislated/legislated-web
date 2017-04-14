@@ -3,7 +3,7 @@ FactoryGirl.define do
     external_id { Faker::Number.unique.number(5) }
     url { Faker::Internet.url }
     location { Faker::Address.street_address }
-    date { Faker::Time.between(Date.today, 1.month.from_now) }
+    date { Faker::Time.between(Time.zone.today, 1.month.from_now) }
     is_cancelled false
 
     trait :with_any_committee do

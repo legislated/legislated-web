@@ -2,14 +2,14 @@ describe BillsCsvService do
   subject { described_class.new }
 
   def csv_row(string)
-    string.strip.gsub(/,$\s+/, ",")
+    string.strip.gsub(/,$\s+/, ',')
   end
 
-  describe "#serialize" do
+  describe '#serialize' do
     let(:bills) { build_list(:bill, 2, :with_any_hearing) }
     let(:rows) { subject.serialize(bills).split("\n") }
 
-    it "has a header" do
+    it 'has a header' do
       expect(rows[0]).to eq(csv_row("
         document_number,
         title,
@@ -25,7 +25,7 @@ describe BillsCsvService do
       "))
     end
 
-    it "has a row for each bill" do
+    it 'has a row for each bill' do
       bill_rows = bills.map do |bill|
         csv_row("
           #{bill.document_number},

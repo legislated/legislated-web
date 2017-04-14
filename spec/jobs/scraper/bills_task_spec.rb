@@ -1,13 +1,13 @@
 describe Scraper::BillsTask do
   subject { described_class.new }
 
-  describe "#scrape_paged_bills" do
+  describe '#scrape_paged_bills' do
     let(:hearing) { build(:hearing, :with_any_committee) }
-    let(:page) { double("page") }
+    let(:page) { double('page') }
     let(:result) { subject.scrape_paged_bills(hearing, hearing.url) }
-    let(:rows) { [:row, :row] }
+    let(:rows) { %i[row row] }
 
-    rows_selector = "#GridCurrentCommittees tbody tr"
+    rows_selector = '#GridCurrentCommittees tbody tr'
     link_selector = "//*[@class='t-arrow-next']/.."
 
     before do
@@ -17,16 +17,16 @@ describe Scraper::BillsTask do
       allow(page).to receive(:visit)
       allow(page).to receive(:first).and_return(nil)
       allow(page).to receive(:find_all).and_return(rows)
-      allow(page).to receive(:has_css?).with(".t-no-data").and_return(false)
+      allow(page).to receive(:has_css?).with('.t-no-data').and_return(false)
     end
 
-    it "visits the hearing page" do
+    it 'visits the hearing page' do
       subject.scrape_paged_bills(hearing, hearing.url)
       expect(page).to have_received(:visit).with(hearing.url)
     end
 
-    context "normally" do
-      let(:next_page_link) { { class: "" } }
+    context 'normally' do
+      let(:next_page_link) { { class: '' } }
       let(:next_page_result) { [:bill] }
 
       before do
@@ -39,24 +39,24 @@ describe Scraper::BillsTask do
           .with(:xpath, link_selector).and_return(next_page_link)
       end
 
-      it "aggregates results from all pages" do
+      it 'aggregates results from all pages' do
         expect(page).to receive(:find_all).with(rows_selector)
-        expect(result).to eq([:bill, :bill, :bill])
+        expect(result).to eq(%i[bill bill bill])
       end
     end
 
-    context "when it has no data" do
+    context 'when it has no data' do
       before do
         allow(page).to receive(:has_css?)
-          .with(".t-no-data").and_return(true)
+          .with('.t-no-data').and_return(true)
       end
 
-      it "returns nothing" do
+      it 'returns nothing' do
         expect(result).to eq([])
       end
     end
 
-    context "when it has no paging link" do
+    context 'when it has no paging link' do
       before do
         allow(subject).to receive(:scrape_paged_bills)
           .and_call_original
@@ -64,36 +64,36 @@ describe Scraper::BillsTask do
           .with(:xpath, link_selector).and_return(nil)
       end
 
-      it "does not page" do
+      it 'does not page' do
         expect(subject).to receive(:scrape_paged_bills).once
-        expect(result).to eq([:bill, :bill])
+        expect(result).to eq(%i[bill bill])
       end
     end
 
-    context "when the paging link is disbaled" do
+    context 'when the paging link is disbaled' do
       before do
         allow(subject).to receive(:scrape_paged_bills)
           .and_call_original
         allow(page).to receive(:first)
-          .with(:xpath, link_selector).and_return({ class: "t-state-disabled" })
+          .with(:xpath, link_selector).and_return({ class: 't-state-disabled' })
       end
 
-      it "does not page" do
+      it 'does not page' do
         expect(subject).to receive(:scrape_paged_bills).once
-        expect(result).to eq([:bill, :bill])
+        expect(result).to eq(%i[bill bill])
       end
     end
   end
 
-  describe "#build_bill_attrs" do
-    let(:row) { double("row") }
-    let(:cols) { 5.times.map { double("column") } }
+  describe '#build_bill_attrs' do
+    let(:row) { double('row') }
+    let(:cols) { Array.new(5) { double('column') } }
     let(:result) { subject.build_bill_attrs(row) }
     let(:attrs) { attributes_for(:bill) }
 
     let(:external_id) { attrs[:external_id] }
     let(:document_number) { attrs[:document_number] }
-    let(:witness_slip_link) { { "href" => attrs[:witness_slip_url] } }
+    let(:witness_slip_link) { { 'href' => attrs[:witness_slip_url] } }
 
     before do
       allow(row).to receive(:find_all).and_return(cols)
@@ -105,31 +105,31 @@ describe Scraper::BillsTask do
       allow(cols[4]).to receive(:text).and_return(attrs[:title])
     end
 
-    it "returns attributes for the bill" do
+    it 'returns attributes for the bill' do
       expected_attrs = attrs.slice(:external_id, :document_number, :sponsor_name, :title, :witness_slip_url)
       expect(result).to eq(expected_attrs)
     end
 
-    context "when the id is missing" do
+    context 'when the id is missing' do
       let(:external_id) { nil }
 
-      it "raises an error" do
+      it 'raises an error' do
         expect { subject.build_bill_attrs(row) }.to raise_error Scraper::Task::Error
       end
     end
 
     context "when the document appears to be an 'amendment'" do
-      let(:document_number) { "HB0000 - Amendment" }
+      let(:document_number) { 'HB0000 - Amendment' }
 
-      it "skips the row" do
+      it 'skips the row' do
         expect(result).to be_nil
       end
     end
 
-    context "when the witness slip link is missing" do
+    context 'when the witness slip link is missing' do
       let(:witness_slip_link) { nil }
 
-      it "returns nil for the witness slip url" do
+      it 'returns nil for the witness slip url' do
         expect(result[:witness_slip_url]).to be_nil
       end
     end
