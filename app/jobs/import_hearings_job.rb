@@ -13,32 +13,24 @@ class ImportHearingsJob
       # rip out the hearing attrs for now
       hearing_attrs = attrs.delete(:hearing)
 
-      # create / update models
-      committee = upsert_committee(attrs, chamber)
-      hearing = upsert_hearing(hearing_attrs, committee)
+      # upsert committee
+      committee = Committee.find_or_initialize_by(attrs.slice(:external_id))
+      committee.assign_attributes(attrs.merge({
+        chamber: chamber
+      }))
+
+      committee.save!
+
+      # upsert hearing
+      hearing = Hearing.find_or_initialize_by(hearing_attrs.slice(:external_id))
+      hearing.assign_attributes(hearing_attrs.merge({
+        committee: committee
+      }))
+
+      hearing.save!
 
       # enqueue the bills import
       ImportBillsJob.perform_async(hearing.id)
     end
-  end
-
-  def upsert_committee(attrs, chamber)
-    committee = Committee.find_or_initialize_by(attrs.slice(:external_id))
-    committee.assign_attributes(attrs.merge({
-      chamber: chamber
-    }))
-
-    committee.save!
-    committee
-  end
-
-  def upsert_hearing(attrs, committee)
-    hearing = Hearing.find_or_initialize_by(attrs.slice(:external_id))
-    hearing.assign_attributes(attrs.merge({
-      committee: committee
-    }))
-
-    hearing.save!
-    hearing
   end
 end
