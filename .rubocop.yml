@@ -6,6 +6,7 @@ AllCops:
   Exclude:
     - tmp/**/*
     - db/**/*
+    - vendor/**/*
 
 Rails:
   Enabled: true
