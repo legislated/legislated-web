@@ -1,11 +1,11 @@
 class ApiController < ApplicationController
   def execute
-    result = GraphSchema.execute(params[:query],
+    result = GraphSchema.execute(params[:query], {
       variables: parse_variables(params[:variables]),
-      context: {}
-    )
+      context: parse_context
+    })
 
-    logger.info("> result: ")
+    logger.info('> result: ')
     logger.info(result)
 
     render json: result
@@ -24,5 +24,9 @@ class ApiController < ApplicationController
     else
       raise ArgumentError, "Unexpected parameter: #{variables}"
     end
+  end
+
+  def parse_context
+    {}
   end
 end

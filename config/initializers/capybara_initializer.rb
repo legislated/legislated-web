@@ -1,5 +1,5 @@
-require "capybara"
-require "capybara/poltergeist"
+require 'capybara'
+require 'capybara/poltergeist'
 
 # setup capybara with poltergeist (PhantomJS) as its rendering engine
 Capybara.register_driver :poltergeist do |app|

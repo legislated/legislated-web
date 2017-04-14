@@ -1,5 +1,5 @@
 class Viewer
-  ID = "VIEWER".freeze
+  ID = 'VIEWER'.freeze
 
   include Singleton
 

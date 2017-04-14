@@ -13,7 +13,7 @@ class ImportHearingsJob
       # rip out the hearing attrs for now
       hearing_attrs = attrs.delete(:hearing)
 
-      # create / update the committee
+      # upsert committee
       committee = Committee.find_or_initialize_by(attrs.slice(:external_id))
       committee.assign_attributes(attrs.merge({
         chamber: chamber
@@ -21,7 +21,7 @@ class ImportHearingsJob
 
       committee.save!
 
-      # create / update the hearing
+      # upsert hearing
       hearing = Hearing.find_or_initialize_by(hearing_attrs.slice(:external_id))
       hearing.assign_attributes(hearing_attrs.merge({
         committee: committee

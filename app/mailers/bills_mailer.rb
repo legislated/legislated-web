@@ -1,10 +1,10 @@
 class BillsMailer < ApplicationMailer
-  default from: "noreply@billtracking.org"
+  default from: 'noreply@billtracking.org'
 
   # sends a weekly export of bill data to a list of recipients stored in the
   # EXPORT_MAILER_RECIPIENTS environment variable
   def weekly_export_email(csv_service = BillsCsvService.new)
-    start = Time.now.next_week
+    start = Time.current.next_week
     date_range = { start: start, end: start.end_of_week }
 
     # expose stringified dates
@@ -13,7 +13,7 @@ class BillsMailer < ApplicationMailer
 
     # add csv as attachment
     attachments["il-bills-#{@start_date}-#{@end_date}.csv"] = {
-      mime_type: "text/csv",
+      mime_type: 'text/csv',
       content: build_csv(csv_service, date_range)
     }
 
@@ -34,7 +34,7 @@ class BillsMailer < ApplicationMailer
 
   # destination
   def build_recipients
-    recipient_string = ENV["EXPORT_MAILER_RECIPIENTS"]
+    recipient_string = ENV['EXPORT_MAILER_RECIPIENTS']
     recipient_string.split(',')
   end
 end
