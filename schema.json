@@ -1298,6 +1298,20 @@
           "description": "A bill",
           "fields": [
             {
+              "name": "detailsUrl",
+              "description": "The URL of the detail page",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "documentNumber",
               "description": "The number of the document, e.g. HB 1234",
               "args": [
@@ -1329,6 +1343,20 @@
                   "name": "Int",
                   "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "fullTextUrl",
+              "description": "The URL of the full text page",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
