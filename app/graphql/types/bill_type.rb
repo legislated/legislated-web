@@ -12,6 +12,8 @@ module Types
     field :title, types.String, "The document's title"
     field :summary, types.String, "The document's synopsis"
     field :sponsorName, !types.String, 'The name of the sponsoring legislator', property: :sponsor_name
+    field :detailsUrl, types.String, 'The URL of the detail page', property: :details_url
+    field :fullTextUrl, types.String, 'The URL of the full text page', property: :full_text_url
     field :witnessSlipUrl, types.String, 'The URL of the witness slip form', property: :witness_slip_url
 
     # relationships
