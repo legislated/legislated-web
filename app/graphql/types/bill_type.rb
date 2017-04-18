@@ -18,5 +18,13 @@ module Types
 
     # relationships
     field :hearing, !HearingType, 'The parent hearing'
+
+    field :committee, !CommitteeType, 'The parent committee' do
+      resolve -> (bill, _args, _ctx) { bill.hearing.committee }
+    end
+
+    field :chamber, !ChamberType, 'The parent chamber' do
+      resolve -> (bill, _args, _ctx) { bill.hearing.committee.chamber }
+    end
   end
 end
