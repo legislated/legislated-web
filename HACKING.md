@@ -1,6 +1,76 @@
 # Hacking
 
-## Setup
+## Setup - Ubuntu
+- Install the dev version of **Ruby** with: 
+```sh
+$ sudo apt-get install ruby-dev
+```
+- Install **rbenv**: [instructions here](https://github.com/rbenv/rbenv) (if you have RVM, you'll have to uninstall it first)
+- Install the **ruby-build** rbenv plugin by running:
+```sh
+$ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+```
+- Install **Ruby 2.3.0** with rbenv by running:
+```sh
+$ rbenv install 2.3.0
+```
+Install the following dependencies:
+- **Bundler**: `sudo gem install bundler`
+- **Foreman**: `sudo gem install foreman`
+- **PostgreSQL**: `sudo gem install postgresql`
+- **Redis**: `sudo gem install redis`
+- **PhantomJS**: `sudo gem install phantomjs`
+
+
+- Then run **bundler**:
+```sh
+$ bundler
+```
+- If you already have Redis installed on your machine, you can run build the database with: 
+```sh
+$ rails db:reset
+```
+- Then start the application with
+```sh
+$ foreman start
+```
+
+At this point and you should be ready to start development by accessing [localhost:5000](http://localhost:5000) in your browser. If you don't already have **Redis** installed, continue below:
+### Redis Setup
+- Install the **redis-server** package by running: 
+```sh
+$ sudo apt-get install redis-server
+```
+- Start **redis** with:
+```sh
+$ sudo systemctl start redis
+```
+- Build the database with:
+```sh
+$ rails db:reset
+```
+You should now be able to run `foreman start` inside the project directory and successfully access [localhost:5000](http://localhost:5000) in your browser.
+
+### (Optional) Redis Privileges Setup
+First time Redis users may encounter the following error: *Fatal: role "username" does not exist, couldn't create database*. This means that the *username* role needs to be created.
+
+- Open PostgreSQL by running:
+```sh
+$ sudo -u postgres -i
+```
+- Access the PSQL terminal by running:
+```sh
+$ psql
+```
+- Run the query (swapping out *username* with the relevant one):
+```sh
+$ ALTER USER username WITH SUPERUSER;
+```
+Run `\q` and then `exit` to quit out of the psql terminal and PostgreSQL.
+
+You should now be able to run `foreman start` inside the project directory and successfully access [localhost:5000](http://localhost:5000) in your browser.
+
+## Setup - Mac
 
 Install any necessary global dependencies. Some packages may need to be installed using the package manager(s) appropriate for your system:
 
