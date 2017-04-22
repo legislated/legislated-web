@@ -6,7 +6,8 @@ describe BillsCsvService do
   end
 
   describe '#serialize' do
-    let(:bills) { build_list(:bill, 2, :with_any_hearing) }
+    let(:committee) { build(:committee, name: 'no-comma') }
+    let(:bills) { build_list(:bill, 2, hearing: build(:hearing, committee: committee)) }
     let(:rows) { subject.serialize(bills).split("\n") }
 
     it 'has a header' do
