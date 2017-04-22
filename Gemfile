@@ -3,6 +3,7 @@ ruby '2.3.0'
 
 gem 'graphql'
 gem 'pg'
+gem 'pg_search'
 gem 'puma', '~> 3.0'
 gem 'rack-cors'
 gem 'rails', '~> 5.0.2'
