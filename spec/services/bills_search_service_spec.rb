@@ -2,8 +2,8 @@ describe BillsSearchService do
   subject { described_class }
 
   describe '#filter' do
-    def search (search_query)
-      subject.filter(Bill.all, search_query)
+    def search(search_query, query = Bill.all)
+      subject.filter(query, search_query)
     end
 
     context 'when the search query looks like plain text' do
@@ -55,6 +55,16 @@ describe BillsSearchService do
 
       it 'includes senate bills' do
         expect(search('SR')).to eq([resolution2])
+      end
+    end
+
+    context 'with eager-loaded hearings' do
+      let!(:bill) { create(:bill, :with_any_hearing) }
+      let(:date) { bill.hearing.date }
+
+      it 'does not raise an error' do
+        query = Bill.by_date(start: (date - 1.day).utc, end: (date + 1.day).utc)
+        expect { search('any query', query).to_a }.to_not raise_error
       end
     end
   end

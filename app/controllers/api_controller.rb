@@ -5,9 +5,6 @@ class ApiController < ApplicationController
       context: parse_context
     })
 
-    logger.info('> result: ')
-    logger.info(result)
-
     render json: result
   end
 

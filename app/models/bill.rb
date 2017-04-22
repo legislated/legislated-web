@@ -4,17 +4,19 @@ class Bill < ApplicationRecord
   belongs_to :hearing
 
   # scopes
-  pg_search_scope :by_keyword,
-    against: [:title, :summary],
+  pg_search_scope :by_keyword, {
+    against: %i[title summary],
     using: {
       tsearch: { prefix: true }
     }
+  }
 
-  pg_search_scope :by_fuzzy_title,
+  pg_search_scope :by_fuzzy_title, {
     against: :title,
     using: {
       trigram: { threshold: 0.1 }
     }
+  }
 
   scope :by_date, (-> (range = {}) do
     query = includes(:hearing).references(:hearings).order('hearings.date ASC')
