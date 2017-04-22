@@ -27,6 +27,6 @@ class ApiController < ApplicationController
   end
 
   def parse_context
-    {}
+    { is_admin: request.headers['Authorization'] == ENV['ADMIN_CREDENTIALS'] }
   end
 end

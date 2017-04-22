@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require 'base64'
+
+if ARGV.count != 2
+  puts 'usage: encode-basic-auth <username> <password>'
+  exit(-1)
+end
+
+username, password = ARGV
+credentials = Base64.encode64("#{username}:#{password}£")
+
+puts "Basic #{credentials}"
