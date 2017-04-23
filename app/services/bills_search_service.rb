@@ -11,6 +11,6 @@ class BillsSearchService
   end
 
   def self.document?(search_query)
-    search_query.match(/^[hs][br]\d*$/).present?
+    search_query.match(/^([hs](b|j?r)|eo|jsr|am)/).present?
   end
 end
