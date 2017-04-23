@@ -36,25 +36,61 @@ describe BillsSearchService do
     end
 
     context 'when the search query looks like a document number' do
-      let!(:bill1) { create(:bill, :with_any_hearing, document_number: 'HB1234') }
-      let!(:bill2) { create(:bill, :with_any_hearing, document_number: 'SB1234') }
-      let!(:resolution1) { create(:bill, :with_any_hearing, document_number: 'HR1234') }
-      let!(:resolution2) { create(:bill, :with_any_hearing, document_number: 'SR1234') }
+      let!(:unmatched_bill) { create(:bill, :with_any_hearing, document_number: 'fake') }
 
       it 'includes house bills' do
-        expect(search('HB')).to eq([bill1])
+        bill = create(:bill, :with_any_hearing, document_number: 'HB1234')
+        expect(search('HB')).to eq([bill])
       end
 
       it 'includes house resolutions' do
-        expect(search('HR')).to eq([resolution1])
+        bill = create(:bill, :with_any_hearing, document_number: 'HR1234')
+        expect(search('HR')).to eq([bill])
+      end
+
+      it 'includes house joint resolutions' do
+        bill = create(:bill, :with_any_hearing, document_number: 'HJR1234')
+        expect(search('HJR')).to eq([bill])
+      end
+
+      it 'includes house amendments' do
+        bill = create(:bill, :with_any_hearing, document_number: 'HJRCA1234')
+        expect(search('HJRCA')).to eq([bill])
       end
 
       it 'includes senate bills' do
-        expect(search('SB')).to eq([bill2])
+        bill = create(:bill, :with_any_hearing, document_number: 'SB1234')
+        expect(search('SB')).to eq([bill])
       end
 
-      it 'includes senate bills' do
-        expect(search('SR')).to eq([resolution2])
+      it 'includes senate resolutions' do
+        bill = create(:bill, :with_any_hearing, document_number: 'SR1234')
+        expect(search('SR')).to eq([bill])
+      end
+
+      it 'includes senate joint resolutions' do
+        bill = create(:bill, :with_any_hearing, document_number: 'SJR1234')
+        expect(search('SJR')).to eq([bill])
+      end
+
+      it 'includes senate amendments' do
+        bill = create(:bill, :with_any_hearing, document_number: 'SJRCA1234')
+        expect(search('SJRCA')).to eq([bill])
+      end
+
+      it 'includes executive orders' do
+        bill = create(:bill, :with_any_hearing, document_number: 'EO1234')
+        expect(search('EO')).to eq([bill])
+      end
+
+      it 'includes joint session resolutions' do
+        bill = create(:bill, :with_any_hearing, document_number: 'JSR1234')
+        expect(search('JSR')).to eq([bill])
+      end
+
+      it 'includes appointment messages' do
+        bill = create(:bill, :with_any_hearing, document_number: 'AM1234')
+        expect(search('AM')).to eq([bill])
       end
     end
 
