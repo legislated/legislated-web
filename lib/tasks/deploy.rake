@@ -6,7 +6,7 @@ namespace :deploy do
 
   desc 'Deploys a staging build to Heroku and runs any migrations'
   task staging: :environment do
-    fail "✘ deploy:staging - can only push to staging from 'master'" if branch_name != 'master'
+    raise "✘ deploy:staging - can only push to staging from 'master'" if branch_name != 'master'
     puts '○ deploy:staging - deploying to heroku...'
     sh 'git push staging master'
     sh 'heroku run rails db:migrate'
@@ -16,7 +16,7 @@ namespace :deploy do
 
   desc 'Deploys a prod build to Heroku and runs any migrations'
   task :prod do
-    fail "✘ deploy:prod - can only push to prod from 'production'" if branch_name != 'production'
+    raise "✘ deploy:prod - can only push to prod from 'production'" if branch_name != 'production'
     puts '○ deploy:prod - deploying to heroku...'
     sh 'git push production master'
     sh 'heroku run rails db:migrate'
