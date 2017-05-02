@@ -15,6 +15,7 @@ module Types
     field :detailsUrl, types.String, 'The URL of the detail page', property: :details_url
     field :fullTextUrl, types.String, 'The URL of the full text page', property: :full_text_url
     field :witnessSlipUrl, types.String, 'The URL of the witness slip form', property: :witness_slip_url
+    field :witnessSlipResultUrl, types.String, 'The URL of the witness slip result', property: :witness_slip_result_url
 
     # relationships
     field :hearing, !HearingType, 'The parent hearing'

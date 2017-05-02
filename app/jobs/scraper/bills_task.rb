@@ -49,29 +49,32 @@ module Scraper
       external_id = columns[0]&.text(:all)
       document_number = columns[2]&.text
 
-      # short circuit if we can't find a link
+      # check for links
       witness_slip_link = row.first('.slipiconbutton')
+      witness_slip_result_link = row.first('.viewiconbutton')
+
       if witness_slip_link.blank?
         debug("  - bill missing slip link: #{external_id} - #{document_number}")
       end
 
-      # blow up if we can't find an id for one of the bills
+      # blow up if we can't find an id for any bill
       if external_id.blank?
         raise Error, "#{task_name}: failed to find bill id for row: #{row}"
       end
 
-      # skip sub-bills with hyphens in name for now
+      # skip amendments for now
       if document_number.include?(' - ')
-        debug "- bill is modification: #{external_id} - #{document_number}, skipping"
+        debug "- bill is amendment: #{external_id} - #{document_number}, skipping"
         return nil
       end
 
       attrs = {
         external_id: external_id,
         document_number: document_number,
-        sponsor_name: columns[3]&.text,
         title: columns[4]&.text,
-        witness_slip_url: witness_slip_link.present? ? witness_slip_link['href'] : nil
+        sponsor_name: columns[3]&.text,
+        witness_slip_url: witness_slip_link&.[]('href'),
+        witness_slip_result_url: witness_slip_result_link&.[]('href')
       }
 
       attrs
