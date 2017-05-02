@@ -1,14 +1,14 @@
 language: ruby
 rvm:
-- 2.3.0
+  - 2.3.0
 services:
-- postgresql
+  - postgresql
 branches:
   only:
     - master
     - production
 before_script:
-- psql -c 'create database legislated_test;' -U postgres
+  - psql -c 'create database legislated_test;' -U postgres
 deploy:
   provider: heroku
   run: "rake db:migrate"

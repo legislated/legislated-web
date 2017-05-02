@@ -6,6 +6,7 @@ FactoryGirl.define do
     summary { optional { Faker::Lorem.paragraph(6) } }
     sponsor_name { Faker::Name.name }
     witness_slip_url { optional { Faker::Internet.url } }
+    witness_slip_result_url { optional { Faker::Internet.url } }
 
     trait :with_any_hearing do
       hearing { Hearing.first }

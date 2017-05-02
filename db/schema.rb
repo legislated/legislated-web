@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422074202) do
+ActiveRecord::Schema.define(version: 20170502084107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,15 +18,16 @@ ActiveRecord::Schema.define(version: 20170422074202) do
   enable_extension "pg_trgm"
 
   create_table "bills", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "external_id",      null: false
-    t.string   "document_number",  null: false
+    t.integer  "external_id",             null: false
+    t.string   "document_number",         null: false
     t.string   "title"
     t.string   "summary"
-    t.string   "sponsor_name",     null: false
+    t.string   "sponsor_name",            null: false
     t.string   "witness_slip_url"
-    t.uuid     "hearing_id",       null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.uuid     "hearing_id",              null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "witness_slip_result_url"
     t.index ["external_id"], name: "index_bills_on_external_id", unique: true, using: :btree
     t.index ["hearing_id"], name: "index_bills_on_hearing_id", using: :btree
   end

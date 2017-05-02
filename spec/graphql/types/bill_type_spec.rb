@@ -9,7 +9,8 @@ describe Types::BillType do
       sponsor_name: 'sponsorName',
       details_url: 'detailsUrl',
       full_text_url: 'fullTextUrl',
-      witness_slip_url: 'witnessSlipUrl'
+      witness_slip_url: 'witnessSlipUrl',
+      witness_slip_result_url: 'witnessSlipResultUrl'
     }
 
     map.each do |key, graph_key|

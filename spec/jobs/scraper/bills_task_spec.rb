@@ -94,10 +94,12 @@ describe Scraper::BillsTask do
     let(:external_id) { attrs[:external_id] }
     let(:document_number) { attrs[:document_number] }
     let(:witness_slip_link) { { 'href' => attrs[:witness_slip_url] } }
+    let(:witness_slip_result_link) { { 'href' => attrs[:witness_slip_result_url] } }
 
     before do
       allow(row).to receive(:find_all).and_return(cols)
-      allow(row).to receive(:first).and_return(witness_slip_link)
+      allow(row).to receive(:first).with('.slipiconbutton').and_return(witness_slip_link)
+      allow(row).to receive(:first).with('.viewiconbutton').and_return(witness_slip_result_link)
 
       allow(cols[0]).to receive(:text).and_return(external_id)
       allow(cols[2]).to receive(:text).and_return(document_number)
@@ -106,7 +108,15 @@ describe Scraper::BillsTask do
     end
 
     it 'returns attributes for the bill' do
-      expected_attrs = attrs.slice(:external_id, :document_number, :sponsor_name, :title, :witness_slip_url)
+      expected_attrs = attrs.slice(
+        :external_id,
+        :document_number,
+        :title,
+        :sponsor_name,
+        :witness_slip_url,
+        :witness_slip_result_url
+      )
+
       expect(result).to eq(expected_attrs)
     end
 
@@ -131,6 +141,14 @@ describe Scraper::BillsTask do
 
       it 'returns nil for the witness slip url' do
         expect(result[:witness_slip_url]).to be_nil
+      end
+    end
+
+    context 'when the witness slip result link is missing' do
+      let(:witness_slip_result_link) { nil }
+
+      it 'returns nil for the witness slip result url' do
+        expect(result[:witness_slip_result_url]).to be_nil
       end
     end
   end
