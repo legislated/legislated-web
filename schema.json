@@ -1480,8 +1480,8 @@
               "deprecationReason": null
             },
             {
-              "name": "witnessSlipUrl",
-              "description": "The URL of the witness slip form",
+              "name": "witnessSlipResultUrl",
+              "description": "The URL of the witness slip result",
               "args": [
 
               ],
@@ -1494,8 +1494,8 @@
               "deprecationReason": null
             },
             {
-              "name": "witnessSlipVotesUrl",
-              "description": "The URL of the witness slip ",
+              "name": "witnessSlipUrl",
+              "description": "The URL of the witness slip form",
               "args": [
 
               ],
