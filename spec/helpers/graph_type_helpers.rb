@@ -8,12 +8,12 @@ module GraphTypeHelpers
       resolver_for(name).instance_variable_get('@underlying_resolve')
     end
 
-    def field(name)
-      resolver_for(name).call(model, nil, nil)
+    def field(name, object: model, args: {}, context: nil)
+      resolver_for(name).call(object, args, context)
     end
 
-    def connection(name)
-      underlying_resolver_for(name).call(model, nil, nil)
+    def connection(name, object: model, args: {}, context: nil)
+      underlying_resolver_for(name).call(object, args, context)
     end
   end
 

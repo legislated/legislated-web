@@ -18,7 +18,7 @@ describe 'A committee query', graphql: :request do
       }
     eos
 
-    body = request_query(query)
+    body = request_graph_query(query)
     expect(body[:errors]).to be_blank
 
     data = body.dig(:data, :viewer, :committee)
@@ -40,7 +40,7 @@ describe 'A committee query', graphql: :request do
       }
     eos
 
-    body = request_query(query)
+    body = request_graph_query(query)
     expect(body[:errors]).to be_blank
 
     nodes = body.dig(:data, :viewer, :committees, :edges)
