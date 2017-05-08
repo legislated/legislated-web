@@ -1,31 +1,22 @@
-describe Types::BillType do
+describe Types::BillType, :graphql do
   subject { described_class }
 
-  let(:bill) { build(:bill, :with_any_hearing) }
+  let(:model) { build(:bill, :with_any_hearing) }
 
-  it 'maps the fields correctly' do
-    map = {
-      external_id: 'externalId',
-      sponsor_name: 'sponsorName',
-      details_url: 'detailsUrl',
-      full_text_url: 'fullTextUrl',
-      witness_slip_url: 'witnessSlipUrl',
-      witness_slip_result_url: 'witnessSlipResultUrl'
-    }
-
-    map.each do |key, graph_key|
-      value = subject.fields[graph_key].resolve(bill, nil, nil)
-      expect(value).to eq(bill.send(key))
-    end
-  end
+  it_maps_fields({
+    external_id: 'externalId',
+    sponsor_name: 'sponsorName',
+    details_url: 'detailsUrl',
+    full_text_url: 'fullTextUrl',
+    witness_slip_url: 'witnessSlipUrl',
+    witness_slip_result_url: 'witnessSlipResultUrl'
+  })
 
   it 'exposes the committee' do
-    committee = subject.fields['committee'].resolve(bill, nil, nil)
-    expect(committee).to eq(bill.hearing.committee)
+    expect(field(:committee)).to eq(model.hearing.committee)
   end
 
   it 'exposes the chamber' do
-    chamber = subject.fields['chamber'].resolve(bill, nil, nil)
-    expect(chamber).to eq(bill.hearing.committee.chamber)
+    expect(field(:chamber)).to eq(model.hearing.committee.chamber)
   end
 end

@@ -1,4 +1,4 @@
-describe GraphSchema do
+describe GraphSchema, :graphql do
   subject { described_class }
 
   shared_examples 'a relay node provider' do |graph_type|

@@ -1,4 +1,4 @@
-describe Types::ViewerType do
+describe Types::ViewerType, :graphql do
   subject { described_class }
 
   describe '#bills' do
@@ -8,8 +8,7 @@ describe Types::ViewerType do
     let!(:bill2) { create(:bill, hearing: create(:hearing, :with_any_committee, date: date)) }
 
     def resolve(args = { query: '' })
-      handler = subject.fields['bills'].resolve_proc.instance_variable_get('@underlying_resolve')
-      handler.call(nil, args, nil)
+      underlying_resolver_for(:bills).call(nil, args, nil)
     end
 
     before do
