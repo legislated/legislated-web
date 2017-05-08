@@ -1,4 +1,4 @@
-describe Types::ChamberType, :graphql do
+describe Types::ChamberType, graphql: :type do
   subject { described_class }
 
   let(:model) { build(:chamber) }

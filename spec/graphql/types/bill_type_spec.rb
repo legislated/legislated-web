@@ -1,4 +1,4 @@
-describe Types::BillType, :graphql do
+describe Types::BillType, graphql: :type do
   subject { described_class }
 
   let(:model) { build(:bill, :with_any_hearing) }

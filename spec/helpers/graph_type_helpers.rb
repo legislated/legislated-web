@@ -1,4 +1,4 @@
-module GraphHelpers
+module GraphTypeHelpers
   module Example
     def resolver_for(name)
       subject.fields[name.to_s].resolve_proc

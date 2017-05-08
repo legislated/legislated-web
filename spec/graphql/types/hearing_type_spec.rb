@@ -1,4 +1,4 @@
-describe Types::HearingType, :graphql do
+describe Types::HearingType, graphql: :type do
   subject { described_class }
 
   let(:model) { build(:hearing, :with_any_committee) }

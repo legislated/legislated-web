@@ -1,4 +1,4 @@
-describe Types::ViewerType, :graphql do
+describe Types::ViewerType, graphql: :type do
   subject { described_class }
 
   describe '#bills' do
