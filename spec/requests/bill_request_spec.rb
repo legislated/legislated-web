@@ -1,4 +1,4 @@
-describe 'A bill query', graphql: :request do
+describe 'A bill request', graphql: :request do
   it 'fetches a single bill' do
     bill = create(:bill, :with_any_hearing)
 

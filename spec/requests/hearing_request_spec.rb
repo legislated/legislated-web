@@ -1,4 +1,4 @@
-describe 'A hearing query', graphql: :request do
+describe 'A hearing request', graphql: :request do
   it 'fetches a single hearing' do
     hearing = create(:hearing, :with_any_committee)
 
