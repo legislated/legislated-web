@@ -1,5 +1,6 @@
 GraphSchema = GraphQL::Schema.define do
   query ::Types::QueryType
+  mutation ::Mutations::MutationType
 
   # relay node interface lookup
   GraphQL::Schema::UniqueWithinType.default_id_separator = '|'

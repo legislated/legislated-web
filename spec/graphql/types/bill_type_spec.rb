@@ -5,6 +5,7 @@ describe Types::BillType, graphql: :type do
 
   it_maps_fields({
     external_id: 'externalId',
+    human_summary: 'humanSummary',
     sponsor_name: 'sponsorName',
     details_url: 'detailsUrl',
     full_text_url: 'fullTextUrl',

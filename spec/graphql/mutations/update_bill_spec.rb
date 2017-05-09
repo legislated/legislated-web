@@ -9,7 +9,6 @@ describe Mutations::UpdateBill, graphql: :type do
     end
   end
 
-
   describe 'when signed-in as an admin' do
     let(:context) { { is_admin: true } }
 
@@ -22,7 +21,7 @@ describe Mutations::UpdateBill, graphql: :type do
     it 'updates the bill' do
       bill = create(:bill, :with_any_hearing)
       mutate({
-        args: { id: bill.id, human_summary: 'Fleece sweaters for all.' },
+        args: { id: bill.id, humanSummary: 'Fleece sweaters for all.' },
         context: { is_admin: true }
       })
 
