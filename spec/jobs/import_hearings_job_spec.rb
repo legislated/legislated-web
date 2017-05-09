@@ -68,9 +68,6 @@ describe ImportHearingsJob do
       before do
         allow(mock_scraper).to receive(:run).and_raise(Scraper::Task::Error)
       end
-
-      xit 'sends a slack notification' do
-      end
     end
 
     context 'after catching an active record error' do
@@ -80,9 +77,6 @@ describe ImportHearingsJob do
 
       it 'does not import bills' do
         expect(ImportBillsJob).to_not have_received(:perform_async)
-      end
-
-      xit 'sends a slack notification' do
       end
     end
   end

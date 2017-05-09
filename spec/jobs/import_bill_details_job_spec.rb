@@ -27,17 +27,11 @@ describe ImportBillDetailsJob do
       before do
         allow(mock_scraper).to receive(:run).and_raise(Scraper::Task::Error)
       end
-
-      xit 'sends a slack notification' do
-      end
     end
 
     context 'after catching an active record error' do
       before do
         allow_any_instance_of(Hearing).to receive(:save!).and_raise(ActiveRecord::ActiveRecordError)
-      end
-
-      xit 'sends a slack notification' do
       end
     end
   end
