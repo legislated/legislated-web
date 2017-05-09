@@ -1,6 +1,12 @@
 require 'pry'
+require 'helpers/graph_type_helpers'
+require 'helpers/graph_request_helpers'
 
 RSpec.configure do |config|
+  config.include GraphRequestHelpers, graphql: :request
+  config.include GraphTypeHelpers::Example, graphql: :type
+  config.extend GraphTypeHelpers::Group, graphql: :type
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
