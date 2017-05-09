@@ -10,9 +10,6 @@ require 'helpers/factory_helpers'
 
 ActiveRecord::Migration.maintain_test_schema!
 
-# sprinkle in some factory girl utilities
-FactoryGirl::SyntaxRunner.send(:include, FactoryHelpers)
-
 # configure rspec
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods

@@ -3,3 +3,5 @@ module FactoryHelpers
     rand < chance ? nil : yield
   end
 end
+
+FactoryGirl::SyntaxRunner.send(:include, FactoryHelpers)

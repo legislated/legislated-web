@@ -1,4 +1,4 @@
-require './spec/factory_helper'
+require './spec/helpers/factory_helpers'
 include FactoryGirl::Syntax::Methods
 
 chambers = [
