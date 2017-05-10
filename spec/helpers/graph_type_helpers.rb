@@ -4,16 +4,18 @@ module GraphTypeHelpers
       subject.fields[name.to_s].resolve_proc
     end
 
-    def underlying_resolver_for(name)
-      resolver_for(name).instance_variable_get('@underlying_resolve')
-    end
-
     def field(name, object: model, args: {}, context: nil)
       resolver_for(name).call(object, args, context)
     end
 
     def connection(name, object: model, args: {}, context: nil)
-      underlying_resolver_for(name).call(object, args, context)
+      handler = resolver_for(name).instance_variable_get('@underlying_resolve')
+      handler.call(object, args, context)
+    end
+
+    def mutate(object: nil, args: {}, context: nil)
+      handler = subject.field.resolve_proc.instance_variable_get('@resolve')
+      handler.call(object, args, context)
     end
   end
 

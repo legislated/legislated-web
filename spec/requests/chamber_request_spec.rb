@@ -1,24 +1,17 @@
-describe 'A bill query', graphql: :request do
-  it 'fetches a single bill' do
-    bill = create(:bill, :with_any_hearing)
+describe 'A chamber request', graphql: :request do
+  it 'fetches a single chamber' do
+    chamber = create(:chamber)
 
     fields = %w[
       id
-      externalId
-      documentNumber
-      title
-      summary
-      sponsorName
-      detailsUrl
-      fullTextUrl
-      witnessSlipUrl
-      witnessSlipResultUrl
+      name
+      type
     ]
 
     query = <<-eos
       query {
         viewer {
-          bill(id: "#{bill.id}") {
+          chamber(id: "#{chamber.id}") {
             #{fields.join("\n")}
           }
         }
@@ -28,17 +21,15 @@ describe 'A bill query', graphql: :request do
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
 
-    data = body.dig(:data, :viewer, :bill)
+    data = body.dig(:data, :viewer, :chamber)
     expect(data.keys).to eq(fields)
   end
 
-  it 'fetches multiple bills' do
-    create_list(:bill, 2, :with_any_hearing)
-
+  it 'fetches multiple chambers' do
     query = <<-eos
       query {
         viewer {
-          bills {
+          chambers {
             edges {
               node {
                 id
@@ -52,7 +43,7 @@ describe 'A bill query', graphql: :request do
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
 
-    nodes = body.dig(:data, :viewer, :bills, :edges)
+    nodes = body.dig(:data, :viewer, :chambers, :edges)
     expect(nodes.length).to eq(2)
   end
 end

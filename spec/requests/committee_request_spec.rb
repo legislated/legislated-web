@@ -1,4 +1,4 @@
-describe 'A committee query', graphql: :request do
+describe 'A committee request', graphql: :request do
   it 'fetches a single committee' do
     committee = create(:committee, :with_any_chamber)
 

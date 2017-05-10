@@ -1,18 +1,24 @@
-describe 'A hearing query', graphql: :request do
-  it 'fetches a single hearing' do
-    hearing = create(:hearing, :with_any_committee)
+describe 'A bill request', graphql: :request do
+  it 'fetches a single bill' do
+    bill = create(:bill, :with_any_hearing)
 
     fields = %w[
       id
       externalId
-      location
-      date
+      documentNumber
+      title
+      summary
+      sponsorName
+      detailsUrl
+      fullTextUrl
+      witnessSlipUrl
+      witnessSlipResultUrl
     ]
 
     query = <<-eos
       query {
         viewer {
-          hearing(id: "#{hearing.id}") {
+          bill(id: "#{bill.id}") {
             #{fields.join("\n")}
           }
         }
@@ -22,15 +28,17 @@ describe 'A hearing query', graphql: :request do
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
 
-    data = body.dig(:data, :viewer, :hearing)
+    data = body.dig(:data, :viewer, :bill)
     expect(data.keys).to eq(fields)
   end
 
-  it 'fetches multiple hearings' do
+  it 'fetches multiple bills' do
+    create_list(:bill, 2, :with_any_hearing)
+
     query = <<-eos
       query {
         viewer {
-          hearings {
+          bills {
             edges {
               node {
                 id
@@ -44,7 +52,7 @@ describe 'A hearing query', graphql: :request do
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
 
-    nodes = body.dig(:data, :viewer, :hearings, :edges)
+    nodes = body.dig(:data, :viewer, :bills, :edges)
     expect(nodes.length).to eq(2)
   end
 end

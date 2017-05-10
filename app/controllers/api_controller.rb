@@ -1,8 +1,9 @@
 class ApiController < ApplicationController
   def execute
     result = GraphSchema.execute(params[:query], {
+      context: parse_context,
       variables: parse_variables(params[:variables]),
-      context: parse_context
+      only: GraphWhitelist
     })
 
     render json: result

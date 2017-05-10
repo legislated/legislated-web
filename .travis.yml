@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - 2.3.0
+env:
+  - ADMIN_CREDENTIALS="Basic YWRtaW46cGFzc3dvcmTCow=="
 services:
   - postgresql
 branches:
