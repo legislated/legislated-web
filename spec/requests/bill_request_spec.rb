@@ -38,7 +38,8 @@ describe 'A bill request', graphql: :request do
     query = <<-eos
       query {
         viewer {
-          bills {
+          bills(first: 1) {
+            count
             edges {
               node {
                 id
@@ -52,7 +53,8 @@ describe 'A bill request', graphql: :request do
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
 
-    nodes = body.dig(:data, :viewer, :bills, :edges)
-    expect(nodes.length).to eq(2)
+    connection = body.dig(:data, :viewer, :bills)
+    expect(connection[:count]).to eq(2)
+    expect(connection[:edges].length).to eq(1)
   end
 end
