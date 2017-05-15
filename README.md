@@ -20,3 +20,18 @@ Data is sourced from the following websites, and updated nightly:
 
 - http://my.ilga.gov/
 - http://www.ilga.gov/
+
+## Setup
+# Dependencies
+`brew install phantomjs redis`
+# prepare database
+`bundle exec rake db:create db:schema:load db:seed db:test:prepare`
+# Importing Hearings and bills
+`bundle exec rake import-hearings`
+`bundle exec rake export-bills`
+
+## Run Services
+# Web Server
+`bundle exec rails server`
+# Background Jobs
+`bundle exec sidekiq`
