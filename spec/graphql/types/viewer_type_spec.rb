@@ -3,6 +3,18 @@ describe Types::ViewerType, graphql: :type do
 
   let(:model) { Viewer.instance }
 
+  describe '#isAdmin' do
+    it 'is true when the user is an admin' do
+      context = { is_admin: true }
+      expect(field(:isAdmin, context: context)).to be(true)
+    end
+
+    it 'is false when the user is not an admin' do
+      context = { is_admin: false }
+      expect(field(:isAdmin, context: context)).to be(false)
+    end
+  end
+
   describe '#bills' do
     let!(:date) { Time.current }
     let!(:bill1) { create(:bill, hearing: create(:hearing, :with_any_committee, date: date - 1.day)) }

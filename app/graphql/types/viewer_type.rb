@@ -5,6 +5,13 @@ module Types
     global_id_field :id
     interfaces [GraphQL::Relay::Node.interface]
 
+    # fields
+    field :isAdmin do
+      type types.Boolean
+      description 'Indicates if the current user is an admin'
+      resolve -> (_obj, _args, ctx) { ctx[:is_admin].present? }
+    end
+
     # entities
     field :chamber do
       type ChamberType
