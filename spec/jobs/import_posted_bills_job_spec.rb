@@ -1,4 +1,4 @@
-describe ImportBillsJob do
+describe ImportPostedBillsJob do
   subject { described_class.new }
 
   describe '#perform' do
