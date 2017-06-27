@@ -21,6 +21,9 @@ class ImportBillsJob
       bill = Bill.find_or_initialize_by(attrs.slice(:external_id))
       bill.assign_attributes(attrs)
       bill.save!
+
+      # enqueue the details import
+      ImportBillDetailsJob.perform_async(bill.id)
     end
 
     redis.set(:import_bills_job_date, Time.zone.now)

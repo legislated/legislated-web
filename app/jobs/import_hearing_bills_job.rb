@@ -16,9 +16,6 @@ class ImportHearingBillsJob
       }))
 
       bill.save!
-
-      # enqueue the details import
-      ImportBillDetailsJob.perform_async(bill.id)
     end
   end
 end
