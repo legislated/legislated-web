@@ -1,4 +1,4 @@
-class ImportPostedBillsJob
+class ImportHearingBillsJob
   include Sidekiq::Worker
 
   def scraper

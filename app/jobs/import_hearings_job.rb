@@ -30,7 +30,7 @@ class ImportHearingsJob
       hearing.save!
 
       # enqueue the bills import
-      ImportPostedBillsJob.perform_async(hearing.id)
+      ImportHearingBillsJob.perform_async(hearing.id)
     end
   end
 end

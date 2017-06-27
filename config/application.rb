@@ -21,7 +21,7 @@ module Legislated
   class Application < Rails::Application
     config.api_only = true
     config.time_zone = 'Central Time (US & Canada)'
-    config.autoload_paths << Rails.root.join('app', 'jobs', 'scraper')
+    config.autoload_paths << Rails.root.join('app', 'services', 'scraper')
 
     if ENV['ADMIN_CREDENTIALS'].blank?
       raise 'ADMIN_CREDENTIALS environment variable required to run the server. Maybe you forgot to copy the .env.sample to .env?'
