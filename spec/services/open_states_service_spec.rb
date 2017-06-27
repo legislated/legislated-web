@@ -9,6 +9,10 @@ describe OpenStatesService do
   end
 
   describe '#fetch_bills' do
+    def fetch_bills(params = {})
+      subject.fetch_bills(params).to_a
+    end
+
     before do
       allow(ENV).to receive(:[]).and_call_original
       allow(ENV).to receive(:[]).with('OPEN_STATES_KEY').and_return(api_key)
@@ -16,12 +20,12 @@ describe OpenStatesService do
     end
 
     it 'requests the correct endpoint' do
-      subject.fetch_bills
+      fetch_bills
       expect(klass).to have_received(:get).with('/bills', any_args)
     end
 
-    it 'has the correct headers' do
-      subject.fetch_bills
+    it 'requests the correct headers' do
+      fetch_bills
       expect(klass).to have_received(:get).with(anything, hash_including({
         headers: {
           'X-API-KEY': api_key
@@ -29,25 +33,40 @@ describe OpenStatesService do
       }))
     end
 
-    it 'requests paged bills by state' do
-      subject.fetch_bills
+    it 'requests paged bills by state and session' do
+      fetch_bills
       expect(klass).to have_received(:get).with(anything, hash_including({
         query: {
           state: 'il',
+          search_window: 'session',
           page: 1,
           per_page: 50
         }
       }))
     end
 
+    it 'serializes date parameters' do
+      date = Date.new(1995, 3, 1)
+      Timecop.freeze(date)
+
+      fetch_bills(updated_since: date)
+      expect(klass).to have_received(:get).with(anything, hash_including({
+        query: hash_including({
+          updated_since: '1995-03-01'
+        })
+      }))
+
+      Timecop.return
+    end
+
     it 'applies additional query parameters' do
-      subject.fetch_bills(extra: 'parameter')
+      fetch_bills(extra: 'parameter')
       expect(klass).to have_received(:get).with(anything, hash_including({
         query: hash_including(extra: 'parameter')
       }))
     end
 
-    it 'aggregates all the pages of bills' do
+    it 'enumerates all the pages of bills' do
       pages = [[1, [:a]], [2, [:b]], [3, nil]]
       pages.each do |number, page|
         query = hash_including({
@@ -57,8 +76,7 @@ describe OpenStatesService do
         allow(klass).to receive(:get).with(anything, query).and_return(page)
       end
 
-      bills = subject.fetch_bills
-      expect(bills).to eq(%i[a b])
+      expect(fetch_bills).to eq(%i[a b])
     end
   end
 end

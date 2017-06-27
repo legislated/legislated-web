@@ -13,20 +13,31 @@ class OpenStatesService
   end
 
   def fetch_bills(query = {})
-    result = []
-    page = nil
-    page_number = 1
+    query = parse_query(query)
 
-    loop do
-      page = fetch_bills_page(page_number, query)
-      page_number += 1
+    enumerator = Enumerator.new do |y|
+      page_number = 1
 
-      return result if page.blank?
-      result.concat(page)
+      loop do
+        page = fetch_bills_page(page_number, query)
+        break if page.blank?
+        page_number += 1
+        page.each { |bill| y.yield(bill) }
+      end
     end
+
+    enumerator.lazy
   end
 
   private
+
+  def parse_query(query)
+    if updated_since ||= query[:updated_since]
+      query[:updated_since] = updated_since.strftime('%Y-%m-%d') if updated_since
+    end
+
+    query
+  end
 
   def fetch_bills_page(page_number, query)
     base_query = {
