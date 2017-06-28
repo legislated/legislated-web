@@ -1,9 +1,10 @@
 describe ImportHearingsJob do
-  subject { described_class.new }
+  subject { described_class.new(mock_scraper) }
+
+  let(:mock_scraper) { double('Scraper') }
 
   describe '#perform' do
     let(:chamber) { Chamber.first }
-    let(:mock_scraper) { double('Scraper') }
 
     let(:hearing) { create(:hearing, :with_any_committee) }
     let(:hearing_attrs) { attributes_for(:hearing, external_id: hearing.external_id) }
@@ -24,7 +25,6 @@ describe ImportHearingsJob do
 
     before do
       allow(mock_scraper).to receive(:run).and_return(scraper_response)
-      allow(subject).to receive(:scraper).and_return(mock_scraper)
       allow(ImportHearingBillsJob).to receive(:perform_async)
     end
 

@@ -1,17 +1,14 @@
 describe ImportBillsJob do
-  subject { described_class.new }
+  subject { described_class.new(mock_redis, mock_service) }
 
-  let(:mock_redis) { double }
-  let(:mock_service) { double }
+  let(:mock_redis) { double('Redis') }
+  let(:mock_service) { double('Service') }
 
   describe '#perform' do
     let(:date) { Time.zone.now }
 
     before do
       Timecop.freeze(date)
-
-      allow(subject).to receive(:redis).and_return(mock_redis)
-      allow(subject).to receive(:service).and_return(mock_service)
 
       allow(mock_redis).to receive(:get).with(:import_bills_job_date)
       allow(mock_redis).to receive(:set).with(:import_bills_job_date, anything)

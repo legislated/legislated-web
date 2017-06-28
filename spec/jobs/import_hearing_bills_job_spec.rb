@@ -1,18 +1,16 @@
 describe ImportHearingBillsJob do
-  subject { described_class.new }
+  subject { described_class.new(mock_scraper) }
+
+  let(:mock_scraper) { double('Scraper') }
 
   describe '#perform' do
     let(:hearing) { Hearing.first }
-    let(:mock_scraper) { double('Scraper') }
-
     let(:existing_bill) { create(:bill, hearing: Hearing.second) }
     let(:existing_bill_attrs) { attributes_for(:bill, external_id: existing_bill.external_id) }
-
     let(:scraper_response) { [existing_bill_attrs] + attributes_for_list(:bill, 2) }
 
     before do
       allow(mock_scraper).to receive(:run).and_return(scraper_response)
-      allow(subject).to receive(:scraper).and_return(mock_scraper)
     end
 
     it "scrapes the hearing's bills" do

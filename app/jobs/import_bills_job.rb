@@ -1,18 +1,15 @@
 class ImportBillsJob
   include Worker
 
-  def redis
-    @redis ||= Redis.new
-  end
-
-  def service
-    @service ||= OpenStatesService.new
+  def initialize(redis = Redis.new, service = OpenStatesService.new)
+    @redis = redis
+    @service = service
   end
 
   def perform
-    import_date = redis.get(:import_bills_job_date)&.to_time
+    import_date = @redis.get(:import_bills_job_date)&.to_time
 
-    bill_attrs = service
+    bill_attrs = @service
       .fetch_bills(fields: fields, updated_since: import_date)
       .map { |data| parse_attributes(data) }
       .compact
@@ -23,7 +20,7 @@ class ImportBillsJob
       ImportBillDetailsJob.perform_async(bill.id)
     end
 
-    redis.set(:import_bills_job_date, Time.zone.now)
+    @redis.set(:import_bills_job_date, Time.zone.now)
   end
 
   private
