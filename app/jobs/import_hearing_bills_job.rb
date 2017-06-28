@@ -10,12 +10,9 @@ class ImportHearingBillsJob
 
     bills_attrs = scraper.run(hearing)
     bills_attrs.each do |attrs|
-      bill = Bill.find_or_initialize_by(attrs.slice(:external_id))
-      bill.assign_attributes(attrs.merge({
+      Bill.upsert_by!(:external_id, attrs.merge(
         hearing: hearing
-      }))
-
-      bill.save!
+      ))
     end
   end
 end

@@ -18,10 +18,7 @@ class ImportBillsJob
       .compact
 
     bill_attrs.each do |attrs|
-      bill = Bill.find_or_initialize_by(attrs.slice(:external_id))
-      bill.assign_attributes(attrs)
-      bill.save!
-
+      bill = Bill.upsert_by!(:external_id, attrs)
       # enqueue the details import
       ImportBillDetailsJob.perform_async(bill.id)
     end
