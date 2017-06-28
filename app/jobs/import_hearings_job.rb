@@ -1,5 +1,5 @@
 class ImportHearingsJob
-  include Sidekiq::Worker
+  include Worker
 
   def scraper
     @scraper ||= Scraper::HearingsTask.new

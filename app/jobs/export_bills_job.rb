@@ -1,5 +1,5 @@
 class ExportBillsJob
-  include Sidekiq::Worker
+  include Worker
 
   def perform
     BillsMailer.weekly_export_email.deliver_later if Time.current.saturday?
