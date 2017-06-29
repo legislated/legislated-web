@@ -1,79 +1,21 @@
 # Hacking
 
-## Setup - Ubuntu
-- Install the dev version of **Ruby** with: 
-```sh
-$ sudo apt-get install ruby-dev
-```
-- Install **rbenv**: [instructions here](https://github.com/rbenv/rbenv) (if you have RVM, you'll have to uninstall it first)
-- Install the **ruby-build** rbenv plugin by running:
-```sh
-$ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-```
-- Install **Ruby 2.3.0** with rbenv by running:
-```sh
-$ rbenv install 2.3.0
-```
-Install the following dependencies:
-- **Bundler**: `sudo gem install bundler`
-- **Foreman**: `sudo gem install foreman`
-- **PostgreSQL**: `sudo gem install postgresql`
-- **Redis**: `sudo gem install redis`
-- **PhantomJS**: `sudo gem install phantomjs`
+## Table of Contents
 
+- [Setup](#setup)
+- [Development](#development)
+- [Testing](#testing)
+- [Hosting / Deployment](#hosting--deployment)
+- [Architecture](#architecture)
 
-- Then run **bundler**:
-```sh
-$ bundler
-```
-- If you already have Redis installed on your machine, you can run build the database with: 
-```sh
-$ rails db:reset
-```
-- Then start the application with
-```sh
-$ foreman start
-```
+## Setup
 
-At this point and you should be ready to start development by accessing [localhost:5000](http://localhost:5000) in your browser. If you don't already have **Redis** installed, continue below:
-### Redis Setup
-- Install the **redis-server** package by running: 
-```sh
-$ sudo apt-get install redis-server
-```
-- Start **redis** with:
-```sh
-$ sudo systemctl start redis
-```
-- Build the database with:
-```sh
-$ rails db:reset
-```
-You should now be able to run `foreman start` inside the project directory and successfully access [localhost:5000](http://localhost:5000) in your browser.
+A quick foreword (**please don't ignore this**):
+- If you don't use rbenv/rvm to manage ruby versions, [install one now](https://github.com/rbenv/rbenv)
+- Some packages need to be installed using your system's package manager
+- You can find some platform-specific documentation for [Mac](wiki/osx.md) and [Ubuntu](wiki/ubuntu.md)
 
-### (Optional) Redis Privileges Setup
-First time Redis users may encounter the following error: *Fatal: role "username" does not exist, couldn't create database*. This means that the *username* role needs to be created.
-
-- Open PostgreSQL by running:
-```sh
-$ sudo -u postgres -i
-```
-- Access the PSQL terminal by running:
-```sh
-$ psql
-```
-- Run the query (swapping out *username* with the relevant one):
-```sh
-$ ALTER USER username WITH SUPERUSER;
-```
-Run `\q` and then `exit` to quit out of the psql terminal and PostgreSQL.
-
-You should now be able to run `foreman start` inside the project directory and successfully access [localhost:5000](http://localhost:5000) in your browser.
-
-## Setup - Mac
-
-Install any necessary global dependencies. Some packages may need to be installed using the package manager(s) appropriate for your system:
-
+Install the necessary global dependencies.
 - readline -> **must** be installed before Ruby
 - ruby (2.3.0) -> [installation](https://github.com/rbenv/rbenv)
 - bundler -> `gem install bundler`
@@ -134,19 +76,15 @@ Many editors also have a rails-rspec plugin that will let you run specs from you
 
 ## Hosting / Deployment
 
-The application is hosted on [Heroku](https://dashboard.heroku.com/apps/legislated). You can interface with the remote application, its database, etc. by installing the Heroku [toolbelt](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). In order to access our app, you'll need to ask somebody to make you a collaborator.
+The application is hosted on [Heroku](https://dashboard.heroku.com/apps/legislated). We practice continuous deployment. When a commit is pushed to master, it is automatically deployed to our staging server. When a commit is pushed to production, it is automatically deployed to our production server.
+
+You can interface with the remote apps, their database's, etc. by installing the Heroku [toolbelt](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). However, in order to access our app, you'll need to ask somebody to make you a collaborator.
 
 Once that's set up, you can connect a Rails console to explore the Heroku app's data:
 
 ```sh
 $ heroku login # enter your credentials
-$ heroku console -a legislated
-```
-
-To deploy to Heroku, push to the git remote `heroku` using our rake task:
-
-```sh
-$ rails deploy:staging
+$ heroku console -a legislated-staging
 ```
 
 ## Architecture
