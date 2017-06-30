@@ -8,10 +8,10 @@
 - [Hosting / Deployment](#hosting--deployment)
 - [Architecture](#architecture)
 
-## Setup
+## Setup [↑](#table-of-contents)
 
 A quick foreword (**please don't ignore this**):
-- If you don't use rbenv/rvm to manage ruby versions, [install one now](https://github.com/rbenv/rbenv)
+- If you don't use a ruby version manager like rbenv/rvm, please [install one now](https://github.com/rbenv/rbenv)
 - Some packages need to be installed using your system's package manager
 - You can find some platform-specific documentation for [Mac](wiki/osx.md) and [Ubuntu](wiki/ubuntu.md)
 
@@ -29,7 +29,7 @@ Then install local dependencies with bundler:
 $ bundle
 ```
 
-## Development
+## Development [↑](#table-of-contents)
 
 Make sure Postgres and Redis are started, and then start the server with:
 
@@ -56,7 +56,14 @@ binding.pry # when running specs, we require pry up front
 require "pry"; binding.pry # otherwise, you'll want to require it
 ```
 
-## Testing
+Before pushing anything, please make sure to run the linter and tests using `rake`.
+
+```sh
+$ rake
+$ rubocop -a # automatically fixes all possible linter issues
+```
+
+## Testing [↑](#table-of-contents)
 
 Tests are written using [rspec](http://www.relishapp.com/rspec/rspec-expectations/v/3-5/docs), and live under the `spec` directory. Please add specs for any new features.
 
@@ -74,7 +81,7 @@ $ rspec spec/jobs/import_hearings_job_spec.rb
 
 Many editors also have a rails-rspec plugin that will let you run specs from your editor, run just the example under your cursor, etc. If you're into that kind of thing.
 
-## Hosting / Deployment
+## Hosting / Deployment [↑](#table-of-contents)
 
 The application is hosted on [Heroku](https://dashboard.heroku.com/apps/legislated). We practice continuous deployment. When a commit is pushed to master, it is automatically deployed to our staging server. When a commit is pushed to production, it is automatically deployed to our production server.
 
@@ -87,7 +94,7 @@ $ heroku login # enter your credentials
 $ heroku console -a legislated-staging
 ```
 
-## Architecture
+## Architecture [↑](#table-of-contents)
 
 If you've never worked with some of the technologies on this project, it may be worth reading up on them. Here's a rough breakdown the application architecture and major technologies:
 
