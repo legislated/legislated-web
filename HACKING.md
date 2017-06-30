@@ -83,9 +83,9 @@ Many editors also have a rails-rspec plugin that will let you run specs from you
 
 ## Hosting / Deployment [↑](#table-of-contents)
 
-The application is hosted on [Heroku](https://dashboard.heroku.com/apps/legislated). We practice continuous deployment. When a commit is pushed to master, it is automatically deployed to our staging server. When a commit is pushed to production, it is automatically deployed to our production server.
+The application is hosted on [Heroku](https://dashboard.heroku.com/apps/legislated). When a commit is pushed to master, it is automatically deployed to our staging server. When a commit is pushed to production, it is automatically deployed to our production server.
 
-You can interface with the remote apps, their database's, etc. by installing the Heroku [toolbelt](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). However, in order to access our app, you'll need to ask somebody to make you a collaborator.
+You can interface with the remote apps, their databases, etc. by installing the Heroku [toolbelt](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). However, in order to access our app, you'll need to ask somebody to make you a collaborator.
 
 Once that's set up, you can connect a Rails console to explore the Heroku app's data:
 
