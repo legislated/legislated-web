@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
-- [Setup](#setup)
-- [Development](#development)
-- [Testing](#testing)
-- [Hosting / Deployment](#hosting--deployment)
-- [Architecture](#architecture)
+- [Setup](#setup-)
+- [Development](#development-)
+- [Testing](#testing-)
+- [Hosting / Deployment](#hosting--deployment-)
+- [Architecture](#architecture-)
 
 ## Setup [↑](#table-of-contents)
 
