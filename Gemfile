@@ -8,9 +8,10 @@ gem 'pg_search'
 gem 'puma', '~> 3.0'
 gem 'rack-cors'
 gem 'rails', '~> 5.0.2'
+gem 'redis'
 gem 'sidekiq'
 
-# scraping
+# import
 gem 'capybara'
 gem 'httparty'
 gem 'poltergeist'

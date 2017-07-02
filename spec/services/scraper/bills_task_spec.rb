@@ -110,9 +110,6 @@ describe Scraper::BillsTask do
     it 'returns attributes for the bill' do
       expected_attrs = attrs.slice(
         :external_id,
-        :document_number,
-        :title,
-        :sponsor_name,
         :witness_slip_url,
         :witness_slip_result_url
       )

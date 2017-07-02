@@ -1,17 +1,15 @@
 namespace :jobs do
-  desc 'Enqueues import job'
-  task "import-hearings": :environment do
-    puts '○ job:import-hearings - starting import jobs...'
-    job_ids = Chamber.all.map.each do |chamber|
-      ImportHearingsJob.perform_async(chamber.id)
-    end
-    puts "✔ job:import-hearings - started jobs: #{job_ids}"
+  desc 'Enqueues import jobs'
+  task 'import-data': :environment do
+    puts '○ job:import-data - starting import job...'
+    job_id = ImportJob.perform_async
+    puts "✔ job:import-data - started job: #{job_id}"
   end
 
-  desc 'Enqueues export job'
-  task "export-bills": :environment do
-    puts '○ job:export-bills - starting export-job...'
+  desc 'Enqueues export bills job'
+  task 'export-bills': :environment do
+    puts '○ job:export-bills - starting export job...'
     job_id = ExportBillsJob.perform_async
-    puts "✔ job:export-bills - started export-job: #{job_id}"
+    puts "✔ job:export-bills - started job: #{job_id}"
   end
 end

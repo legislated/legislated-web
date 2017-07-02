@@ -70,9 +70,6 @@ module Scraper
 
       attrs = {
         external_id: external_id,
-        document_number: document_number,
-        title: columns[4]&.text,
-        sponsor_name: columns[3]&.text,
         witness_slip_url: witness_slip_link&.[]('href'),
         witness_slip_result_url: witness_slip_result_link&.[]('href')
       }

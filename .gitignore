@@ -1,4 +1,5 @@
-.env
+/.env
+/latest.dump
 
 # Ignore bundler config.
 /.bundle

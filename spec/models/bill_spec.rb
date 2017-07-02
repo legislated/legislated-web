@@ -26,7 +26,13 @@ describe Bill do
     end
   end
 
-  shared_examples_for 'an ilga url' do |page|
+  shared_examples_for 'an ilga url' do |page, url_key|
+    let(:url) { subject.send(url_key) }
+
+    before do
+      subject[url_key] = nil
+    end
+
     it 'is the correct page' do
       expect(url).to match(page)
     end
@@ -42,14 +48,10 @@ describe Bill do
   end
 
   describe '#details_url' do
-    it_behaves_like('an ilga url', 'billstatus') do
-      let(:url) { subject.details_url }
-    end
+    it_behaves_like('an ilga url', 'billstatus', :details_url)
   end
 
   describe '#full_text_url' do
-    it_behaves_like('an ilga url', 'fulltext') do
-      let(:url) { subject.full_text_url }
-    end
+    it_behaves_like('an ilga url', 'fulltext', :full_text_url)
   end
 end
