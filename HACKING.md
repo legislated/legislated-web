@@ -1,9 +1,21 @@
 # Hacking
 
-## Setup
+## Table of Contents
 
-Install any necessary global dependencies. Some packages may need to be installed using the package manager(s) appropriate for your system:
+- [Setup](#setup-)
+- [Development](#development-)
+- [Testing](#testing-)
+- [Hosting / Deployment](#hosting--deployment-)
+- [Architecture](#architecture-)
 
+## Setup [↑](#table-of-contents)
+
+A quick foreword (**please don't ignore this**):
+- If you don't use a ruby version manager like rbenv/rvm, please [install one now](https://github.com/rbenv/rbenv)
+- Some packages need to be installed using your system's package manager
+- You can find some platform-specific documentation for [Mac](wiki/osx.md) and [Ubuntu](wiki/ubuntu.md)
+
+Install the necessary global dependencies.
 - readline -> **must** be installed before Ruby
 - ruby (2.3.0) -> [installation](https://github.com/rbenv/rbenv)
 - bundler -> `gem install bundler`
@@ -17,15 +29,15 @@ Then install local dependencies with bundler:
 $ bundle
 ```
 
-## Development
+## Development [↑](#table-of-contents)
 
-Make sure Postgres and Redis are started, and then start the server with:
+Make **sure** Postgres and Redis are started, and then start the server with:
 
 ```sh
 $ foreman start
 ```
 
-The first time you run the application, you'll also need to setup the database. If you make any database changes you can also run this again:
+The first time you run the application, you'll also need to setup the database (if you make any database changes you can also run this again):
 
 ```sh
 $ rails db:reset
@@ -37,14 +49,20 @@ You can use the rails console to explore the database through using [ActiveRecor
 $ rails console  
 ```
 
-You can use [pry](http://pryrepl.org/) to debug by littering the source with breakpoints:
+You can use the interactive debugger [pry](http://pryrepl.org/) to set breakpoints and explore the code at runtime:
 
 ```ruby
-binding.pry # when running specs, we require pry up front
-require "pry"; binding.pry # otherwise, you'll want to require it
+binding.pry
 ```
 
-## Testing
+Before pushing anything, please make sure to run the linter and tests using `rake`.
+
+```sh
+$ rake
+$ rubocop -a # if rubocop fails, this fixes any possible linter issues
+```
+
+## Testing [↑](#table-of-contents)
 
 Tests are written using [rspec](http://www.relishapp.com/rspec/rspec-expectations/v/3-5/docs), and live under the `spec` directory. Please add specs for any new features.
 
@@ -62,24 +80,20 @@ $ rspec spec/jobs/import_hearings_job_spec.rb
 
 Many editors also have a rails-rspec plugin that will let you run specs from your editor, run just the example under your cursor, etc. If you're into that kind of thing.
 
-## Hosting / Deployment
+## Hosting / Deployment [↑](#table-of-contents)
 
-The application is hosted on [Heroku](https://dashboard.heroku.com/apps/legislated). You can interface with the remote application, its database, etc. by installing the Heroku [toolbelt](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). In order to access our app, you'll need to ask somebody to make you a collaborator.
+The application is hosted on [Heroku](https://dashboard.heroku.com/apps/legislated). When a commit is pushed to master, it is automatically deployed to our staging server. When a commit is pushed to production, it is automatically deployed to our production server.
+
+You can interface with the remote apps, their databases, etc. by installing the Heroku [toolbelt](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). However, in order to access our app, you'll need to ask somebody to make you a collaborator.
 
 Once that's set up, you can connect a Rails console to explore the Heroku app's data:
 
 ```sh
 $ heroku login # enter your credentials
-$ heroku console -a legislated
+$ heroku console -a legislated-staging
 ```
 
-To deploy to Heroku, push to the git remote `heroku` using our rake task:
-
-```sh
-$ rails deploy:staging
-```
-
-## Architecture
+## Architecture [↑](#table-of-contents)
 
 If you've never worked with some of the technologies on this project, it may be worth reading up on them. Here's a rough breakdown the application architecture and major technologies:
 

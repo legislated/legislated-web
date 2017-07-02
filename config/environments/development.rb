@@ -1,6 +1,9 @@
 Rails.application.configure do
+  require 'pry'
+
   # push rails logs to stdout to combine with puma logs
   config.logger = Logger.new(STDOUT)
+
   # don't buffer stdout for foreman's sake
   # https://github.com/ddollar/foreman/wiki/Missing-Output
   $stdout.sync = true
