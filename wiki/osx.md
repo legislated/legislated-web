@@ -2,7 +2,11 @@
 
 ## Homebrew
 
-If you don't have [homebrew](https://brew.sh/), you'll need it. Install that first.
+If you don't have [homebrew](https://brew.sh/), you'll need it. Install that first:
+
+```sh
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
 You also need brew services to install postgres/redis:
 
@@ -12,7 +16,7 @@ $ brew tap homebrew/services
 
 ## Ruby
 
-If you have already use a tool for installing rubies, use that to install version **2.3.0** and skip this section. If you have a dysfunctional `rvm`/`rbenv` setup, uninstall it first. Once you have no existing tool for installing rubies...
+If you already have a tool for installing rubies, use that to install version **2.3.0** and skip this section. If you have a dysfunctional `rvm`/`rbenv` setup, uninstall it first. Once you have no existing tool for installing rubies...
 
 Install [rbenv](https://github.com/rbenv/rbenv):
 
@@ -20,6 +24,12 @@ Install [rbenv](https://github.com/rbenv/rbenv):
 $ brew update
 $ brew install rbenv
 $ rbenv init
+```
+
+If you don't have readline installed, install that now:
+
+```sh
+$ brew install readline
 ```
 
 Install Ruby 2.3.0:

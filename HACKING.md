@@ -31,13 +31,13 @@ $ bundle
 
 ## Development [↑](#table-of-contents)
 
-Make sure Postgres and Redis are started, and then start the server with:
+Make **sure** Postgres and Redis are started, and then start the server with:
 
 ```sh
 $ foreman start
 ```
 
-The first time you run the application, you'll also need to setup the database. If you make any database changes you can also run this again:
+The first time you run the application, you'll also need to setup the database (if you make any database changes you can also run this again):
 
 ```sh
 $ rails db:reset
@@ -49,18 +49,17 @@ You can use the rails console to explore the database through using [ActiveRecor
 $ rails console  
 ```
 
-You can use [pry](http://pryrepl.org/) to debug by littering the source with breakpoints:
+You can use the interactive debugger [pry](http://pryrepl.org/) to set breakpoints and explore the code at runtime:
 
 ```ruby
-binding.pry # when running specs, we require pry up front
-require "pry"; binding.pry # otherwise, you'll want to require it
+binding.pry
 ```
 
 Before pushing anything, please make sure to run the linter and tests using `rake`.
 
 ```sh
 $ rake
-$ rubocop -a # automatically fixes all possible linter issues
+$ rubocop -a # if rubocop fails, this fixes any possible linter issues
 ```
 
 ## Testing [↑](#table-of-contents)

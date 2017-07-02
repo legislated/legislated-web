@@ -2,7 +2,7 @@
 
 ## Ruby
 
-If you have already use a tool for installing rubies, use that to install version **2.3.0** and skip this section. If you have a dysfunctional `rvm`/`rbenv` setup, uninstall it first. Once you have no existing tool for installing rubies, let's install `rbenv`:
+If you already have a tool for installing rubies, use that to install version **2.3.0** and skip this section. If you have a dysfunctional `rvm`/`rbenv` setup, uninstall it first. Once you have no existing tool for installing rubies...
 
 Install ruby-dev:
 
