@@ -10,7 +10,12 @@ describe ImportLegislatorsJob do
     before do
       Timecop.freeze(date)
 
-      allow(mock_redis).to receive(:get).with(:import_legislators_job)
+      # job date setup
+      allow(mock_redis).to receive(:get).with(:import_legislators_job_date)
+      allow(mock_redis).to receive(:set).with(:import_legislators_job_date, anything)
+      allow(mock_service).to receive(:fetch_legislators).and_return([])
+
+      allow(ImportBillDetailsJob).to receive(:perform_async)
     end
 
     after do
@@ -22,5 +27,18 @@ describe ImportLegislatorsJob do
       expect(mock_service).to have_received(:fetch_legislators) do |args|
         fields = ''
     end
+
+    it 'fetches legislators since last import' do
+
+    end
+
+    it 'sets the last import date when job was done' do
+
+    end
+
+    context 'when upserting a legislator' do
+      let(:legislator)
+    end
+
   end
 end
