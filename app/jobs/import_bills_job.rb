@@ -12,7 +12,7 @@ class ImportBillsJob
     bill_attrs = @service
       .fetch_bills(fields: fields, updated_since: import_date)
       .map { |data| parse_attributes(data) }
-      .compact
+      .reject(&:nil?)
 
     bill_attrs.each do |attrs|
       bill = Bill.upsert_by!(:external_id, attrs)
