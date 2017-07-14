@@ -15,7 +15,7 @@ describe ImportLegislatorsJob do
       allow(mock_redis).to receive(:set).with(:import_legislators_job_date, anything)
       allow(mock_service).to receive(:fetch_legislators).and_return([])
 
-      allow(ImportBillDetailsJob).to receive(:perform_async)
+      allow(ImportLegislatorsJob).to receive(:perform_async)
     end
 
     after do
@@ -29,15 +29,43 @@ describe ImportLegislatorsJob do
     end
 
     it 'fetches legislators since last import' do
-
+      allow(mock_redis).to receive(:get).with(:import_legislators_job_date).and_return(date)
+      subject.perform
+      expect(mock_service).to have_received(:fetch_legislators) do |args|
+        expect(args[:updated_since]).to eq date
+      end
     end
 
     it 'sets the last import date when job was done' do
-
+      subject.perform
+      expect(mock_redis).to have_received(:set).with(:import_legislators_job_date, date)
     end
 
     context 'when upserting a legislator' do
-      let(:legislator)
+      let(:legislator) { create(:legislator) }
+      let(:attrs) { attributes_for(:legislator, external_id: legislator.external_id)}
+
+      def perform
+        subject.perform
+        legislator.reload
+      end
+
+      def response(attrs = {})
+
+      end
+
+      it "sets the legislator's core attributes" do
+
+      end
+
+      it "sets the legislator's source-url derived attributes" do
+
+      end
+
+      it 'creates the legislator if it does not exist' do
+
+      end
+      
     end
 
   end
