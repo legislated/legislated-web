@@ -24,7 +24,14 @@ Install the necessary global dependencies.
 - redis
 - phantomjs
 
+Copy over the development .env file:
+
+```sh
+$ cp .env.sample .env
+```
+
 Then install local dependencies with bundler:
+
 ```sh
 $ bundle
 ```

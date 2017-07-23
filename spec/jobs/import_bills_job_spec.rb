@@ -12,7 +12,7 @@ describe ImportBillsJob do
 
       allow(mock_redis).to receive(:get).with(:import_bills_job_date)
       allow(mock_redis).to receive(:set).with(:import_bills_job_date, anything)
-      allow(mock_service).to receive(:fetch_bills).and_return([])
+      allow(mock_service).to receive(:fetch_bills).and_return([].lazy)
 
       allow(ImportBillDetailsJob).to receive(:perform_async)
     end
@@ -63,7 +63,7 @@ describe ImportBillsJob do
           'sponsors' => []
         }
 
-        Array.wrap(base_response.merge(attrs))
+        Array.wrap(base_response.merge(attrs)).lazy
       end
 
       it "sets the bill's core attributes" do
