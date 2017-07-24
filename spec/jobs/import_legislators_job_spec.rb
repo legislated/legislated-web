@@ -51,11 +51,32 @@ describe ImportLegislatorsJob do
       end
 
       def response(attrs = {})
+        base_response = {
+          'leg_id' => '',
+          'first_name' => '',
+          'last_name' => '',
+          'district' => '',
+          'url' => "http://dccouncil.us/council/#{legislator.first_name}-#{legislator.last_name}"
+          'roles' => []
+        }
 
+        Array.wrap(base_response.merge(attrs))
       end
 
       it "sets the legislator's core attributes" do
+        allow(mock_service).to receive(:fetch_legislators).and_return(response(
+          'leg_id' => attrs[],
+          'first_name' => attrs[:first_name],
+          'last_name' => attrs[:last_name],
+          'district' => attrs[:district]
+        ))
 
+        perform
+        expect(legislator).to have_attributes(attrs.slice(
+          :first_name,
+          :last_name,
+          :district
+        ))
       end
 
       it "sets the legislator's source-url derived attributes" do
@@ -65,7 +86,7 @@ describe ImportLegislatorsJob do
       it 'creates the legislator if it does not exist' do
 
       end
-      
+
     end
 
   end
