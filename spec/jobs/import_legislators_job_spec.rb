@@ -84,7 +84,15 @@ describe ImportLegislatorsJob do
       end
 
       it 'creates the legislator if it does not exist' do
+        attrs_copy = attributes_for(:legislator)
 
+        allow(mock_service).to receive(:fetch_bills).and_return(response(
+          'sources' => [{
+            'url' => "http://dccouncil.us/council/#{legislator.first_name}-#{legislator.last_name}"
+          }]
+        ))
+
+        expect { perform }.to change(Legislator, :count).by(1)
       end
 
     end
