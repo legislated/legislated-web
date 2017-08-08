@@ -6,6 +6,20 @@ class ImportLegislatorsJob
     @service = service
   end
 
+  def perform
+    import_date = @redis.get(:import_bills_job_date)&.to_time
+
+    legislator_attrs = @service
+      .fetch_bills(fields: fields, updated_since: import_date)
+      .map { |data| parse_attributes(data) }
+      .reject(&:nil?)
+
+    legislator_attrs.each do |attrs|
+      bill = Bill.upsert_by!(:external_id, attrs)
+      # enqueue the details import
+      ImportBillDetailsJob.perform_async(bill.id)
+    end
+
   def fields
     @fields ||= begin
       fields = %i[

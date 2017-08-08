@@ -80,7 +80,9 @@ describe ImportLegislatorsJob do
       end
 
       it "sets the legislator's source-url derived attributes" do
-
+        allow(mock_service).to receive(:fetch_legislators).and_return(response)
+        perform
+        expect(ImportLegislatorsJob).to have_received(:perform_async).exactly(1).times
       end
 
       it 'creates the legislator if it does not exist' do
