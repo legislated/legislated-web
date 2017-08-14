@@ -1,6 +1,8 @@
 class Bill < ApplicationRecord
   include PgSearch
 
+  # relationships
+  has_many :documents
   belongs_to :hearing
 
   # scopes
@@ -31,7 +33,7 @@ class Bill < ApplicationRecord
   end
 
   def full_text_url
-    self[:full_text_url] || ilga_url('legislation/fulltext.asp')
+    documents.first&.full_text_url
   end
 
   private
