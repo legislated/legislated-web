@@ -19,6 +19,7 @@ class ImportLegislatorsJob
       # enqueue the details import
       ImportBillDetailsJob.perform_async(bill.id)
     end
+  end
 
   def fields
     @fields ||= begin
@@ -37,5 +38,4 @@ class ImportLegislatorsJob
       fields.join(',')
     end
   end
-
 end

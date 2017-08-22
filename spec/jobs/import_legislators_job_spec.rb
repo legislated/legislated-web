@@ -57,7 +57,6 @@ describe ImportLegislatorsJob do
           'last_name' => '',
           'district' => '',
           'url' => "http://dccouncil.us/council/#{legislator.first_name}-#{legislator.last_name}"
-          'roles' => []
         }
 
         Array.wrap(base_response.merge(attrs))
@@ -96,7 +95,6 @@ describe ImportLegislatorsJob do
 
         expect { perform }.to change(Legislator, :count).by(1)
       end
-
     end
 
   end
