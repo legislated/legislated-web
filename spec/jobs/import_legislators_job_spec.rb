@@ -26,6 +26,7 @@ describe ImportLegislatorsJob do
       subject.perform
       expect(mock_service).to have_received(:fetch_legislators) do |args|
         fields = ''
+      end
     end
 
     it 'fetches legislators since last import' do
@@ -43,7 +44,7 @@ describe ImportLegislatorsJob do
 
     context 'when upserting a legislator' do
       let(:legislator) { create(:legislator) }
-      let(:attrs) { attributes_for(:legislator, external_id: legislator.external_id)}
+      let(:attrs) { attributes_for(:legislator, external_id: legislator.external_id) }
 
       def perform
         subject.perform
@@ -87,7 +88,7 @@ describe ImportLegislatorsJob do
       it 'creates the legislator if it does not exist' do
         attrs_copy = attributes_for(:legislator)
 
-        allow(mock_service).to receive(:fetch_bills).and_return(response(
+        allow(mock_service).to receive(:fetch_legislators).and_return(response(
           'sources' => [{
             'url' => "http://dccouncil.us/council/#{legislator.first_name}-#{legislator.last_name}"
           }]
