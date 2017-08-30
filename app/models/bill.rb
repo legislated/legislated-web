@@ -32,15 +32,11 @@ class Bill < ApplicationRecord
     self[:details_url] || ilga_url('legislation/billstatus.asp')
   end
 
-  def full_text_url
-    documents.first&.full_text_url
-  end
-
   private
 
-  # tacks on bill-identifiying query params
   def ilga_url(page)
-    return nil if document_number.blank?
+    document_number = documents.first&.number
+    return nil unless document_number
     document_type, document_index = document_number.match(/(\D+)(\d+)/).captures
     "http://www.ilga.gov/#{page}?DocNum=#{document_index}&GAID=14&DocTypeID=#{document_type}&SessionID=91"
   end

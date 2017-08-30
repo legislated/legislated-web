@@ -1,57 +1,51 @@
 describe Bill do
-  subject { build(:bill) }
+  subject { build(:bill, :with_documents) }
 
   describe 'scopes' do
     describe '#by_date' do
-      let!(:date) { Time.current }
-      let!(:bill2) { create(:bill, hearing: create(:hearing, :with_any_committee, date: date)) }
-      let!(:bill3) { create(:bill, hearing: create(:hearing, :with_any_committee, date: date + 1.day)) }
-      let!(:bill1) { create(:bill, hearing: create(:hearing, :with_any_committee, date: date - 1.day)) }
+      let(:date) { Time.current }
+      let(:bill2) { create_bill(date) }
+      let(:bill3) { create_bill(date + 1.day) }
+      let(:bill1) { create_bill(date - 1.day) }
+      let(:bills) { Bill.where(id: [bill2.id, bill3.id, bill1.id]) }
+
+      def create_bill(date)
+        create(:bill, :with_documents, hearing: create(:hearing, :with_any_committee, date: date))
+      end
 
       it 'sorts the bills by ascending hearing date' do
-        expect(Bill.by_date).to eq([bill1, bill2, bill3])
+        expect(bills.by_date).to eq([bill1, bill2, bill3])
       end
 
-      context 'with a start date' do
-        it 'only returns bills at or after that date' do
-          expect(Bill.by_date(start: date)).to eq([bill2, bill3])
-        end
+      it 'only returns bills at or after the start date' do
+        expect(bills.by_date(start: date)).to eq([bill2, bill3])
       end
 
-      context 'with an end date' do
-        it 'only returns bills at or before that date' do
-          expect(Bill.by_date(end: date)).to eq([bill1, bill2])
-        end
+      it 'only returns bills at or before the end date' do
+        expect(bills.by_date(end: date)).to eq([bill1, bill2])
       end
-    end
-  end
-
-  shared_examples_for 'an ilga url' do |page, url_key|
-    let(:url) { subject.send(url_key) }
-
-    before do
-      subject[url_key] = nil
-    end
-
-    it 'is the correct page' do
-      expect(url).to match(page)
-    end
-
-    it 'has the correct parameters' do
-      doc_type, doc_number = subject.document_number.match(/(\D+)(\d+)/).captures
-
-      expect(url).to match("DocNum=#{doc_number}")
-      expect(url).to match("DocTypeID=#{doc_type}")
-      expect(url).to match('GAID=14')
-      expect(url).to match('SessionID=91')
     end
   end
 
   describe '#details_url' do
-    it_behaves_like('an ilga url', 'billstatus', :details_url)
-  end
+    let(:url) { subject.details_url }
 
-  describe '#full_text_url' do
-    it_behaves_like('an ilga url', 'fulltext', :full_text_url)
+    before do
+      subject[:details_url] = nil
+    end
+
+    it 'is the correct page' do
+      expect(url).to match('billstatus')
+    end
+
+    it 'has the correct parameters' do
+      document_number = subject.documents.first&.number
+      type, number = document_number.match(/(\D+)(\d+)/).captures
+
+      expect(url).to match("DocNum=#{number}")
+      expect(url).to match("DocTypeID=#{type}")
+      expect(url).to match('GAID=14')
+      expect(url).to match('SessionID=91')
+    end
   end
 end
