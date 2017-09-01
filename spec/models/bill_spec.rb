@@ -3,26 +3,25 @@ describe Bill do
 
   describe 'scopes' do
     describe '#by_date' do
-      let(:date) { Time.current }
-      let(:bill2) { create_bill(date) }
-      let(:bill3) { create_bill(date + 1.day) }
-      let(:bill1) { create_bill(date - 1.day) }
-      let(:bills) { Bill.where(id: [bill2.id, bill3.id, bill1.id]) }
+      let!(:date) { Time.current }
+      let!(:bill2) { create_bill(date) }
+      let!(:bill3) { create_bill(date + 1.day) }
+      let!(:bill1) { create_bill(date - 1.day) }
 
       def create_bill(date)
         create(:bill, :with_documents, hearing: create(:hearing, :with_any_committee, date: date))
       end
 
       it 'sorts the bills by ascending hearing date' do
-        expect(bills.by_date).to eq([bill1, bill2, bill3])
+        expect(Bill.by_date).to eq([bill1, bill2, bill3])
       end
 
       it 'only returns bills at or after the start date' do
-        expect(bills.by_date(start: date)).to eq([bill2, bill3])
+        expect(Bill.by_date(start: date)).to eq([bill2, bill3])
       end
 
       it 'only returns bills at or before the end date' do
-        expect(bills.by_date(end: date)).to eq([bill1, bill2])
+        expect(Bill.by_date(end: date)).to eq([bill1, bill2])
       end
     end
   end

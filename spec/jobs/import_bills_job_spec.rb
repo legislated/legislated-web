@@ -45,7 +45,7 @@ describe ImportBillsJob do
     context 'when upserting' do
       let(:bill) { create(:bill) }
       let(:bill_attrs) { attributes_for(:bill, external_id: bill.external_id) }
-      let(:document) { create(:document, :with_any_bill) }
+      let(:document) { create(:document, bill: bill) }
       let(:document_attrs) { attributes_for(:document, number: document.number) }
 
       def response(attrs = {})
