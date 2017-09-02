@@ -63,7 +63,7 @@ module Scraper
 
       attrs = {
         external_id: external_id,
-        document_number: document_number,
+        number: document_number,
         slip_url: slip_link&.[]('href'),
         slip_results_url: slip_reuslts_link&.[]('href')
       }

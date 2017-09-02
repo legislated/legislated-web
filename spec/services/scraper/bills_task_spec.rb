@@ -18,11 +18,10 @@ describe Scraper::BillsTask do
     def mock_dom_paging(next_page: nil, next_page_link: nil)
       link_selector = "//*[@class='t-arrow-next']/.."
 
-      allow(subject).to receive(:scrape_paged_bills).and_call_original
-
+      allow(subject).to receive(:scrape_paged_bills)
+        .and_call_original
       allow(subject).to receive(:scrape_paged_bills)
         .with(hearing, anything, 1).and_return(next_page)
-
       allow(page).to receive(:first)
         .with(:xpath, link_selector).and_return(next_page_link)
     end
@@ -74,12 +73,7 @@ describe Scraper::BillsTask do
   describe '#build_bill_attrs' do
     let(:row) { double('row') }
     let(:cols) { Array.new(5) { double('column') } }
-    let(:attrs) {{
-      external_id: Faker::Number.number(5),
-      document_number: "#{%w[H S].sample}B#{Faker::Number.number(4)}",
-      slip_url: Faker::Internet.url,
-      slip_results_url: Faker::Internet.url,
-    }}
+    let(:attrs) { build(:scraped_bill) }
 
     def href(url)
       url && { 'href' => url }
@@ -93,7 +87,7 @@ describe Scraper::BillsTask do
       allow(row).to receive(:first).with('.viewiconbutton').and_return(href(attrs[:slip_results_url]))
 
       allow(cols[0]).to receive(:text).and_return(attrs[:external_id])
-      allow(cols[2]).to receive(:text).and_return(attrs[:document_number])
+      allow(cols[2]).to receive(:text).and_return(attrs[:number])
     end
 
     it 'returns attributes for the bill/document' do
@@ -102,14 +96,14 @@ describe Scraper::BillsTask do
       result = subject.build_bill_attrs(row)
       expect(result).to eq(attrs.slice(
         :external_id,
-        :document_number,
+        :number,
         :slip_url,
         :slip_results_url
       ))
     end
 
     it 'raises an error when the document number is missing' do
-      attrs[:document_number] = nil
+      attrs[:number] = nil
       mock_dom
       expect { subject.build_bill_attrs(row) }.to raise_error Scraper::Task::Error
     end
