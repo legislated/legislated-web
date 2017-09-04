@@ -25,7 +25,8 @@ describe ImportLegislatorsJob do
     it 'fetches legislators with the correct fields' do
       subject.perform
       expect(mock_service).to have_received(:fetch_legislators) do |args|
-        fields = ''
+        fields = 'external_id,os_id,first_name,last_name,email,phone_number,twitter_username,district,chamber'
+        expect(args[:fields]).to eq fields
       end
     end
 

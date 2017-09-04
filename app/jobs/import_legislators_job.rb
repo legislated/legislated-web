@@ -7,10 +7,10 @@ class ImportLegislatorsJob
   end
 
   def perform
-    import_date = @redis.get(:import_bills_job_date)&.to_time
+    import_date = @redis.get(:import_legislators_job_date)&.to_time
 
     legislator_attrs = @service
-      .fetch_bills(fields: fields, updated_since: import_date)
+      .fetch_legislators(fields: fields, updated_since: import_date)
       .map { |data| parse_attributes(data) }
       .reject(&:nil?)
 
