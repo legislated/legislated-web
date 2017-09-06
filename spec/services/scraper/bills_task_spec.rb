@@ -80,8 +80,6 @@ describe Scraper::BillsTask do
     end
 
     def mock_dom
-      slip_link = attrs[:slip_url]
-
       allow(row).to receive(:find_all).and_return(cols)
       allow(row).to receive(:first).with('.slipiconbutton').and_return(href(attrs[:slip_url]))
       allow(row).to receive(:first).with('.viewiconbutton').and_return(href(attrs[:slip_results_url]))

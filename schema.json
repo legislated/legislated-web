@@ -1388,8 +1388,8 @@
                   "ofType": null
                 }
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "moved to DocumentType"
             },
             {
               "name": "externalId",
@@ -1420,8 +1420,8 @@
                 "name": "String",
                 "ofType": null
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "moved to DocumentType"
             },
             {
               "name": "hearing",
@@ -1530,8 +1530,8 @@
                 "name": "String",
                 "ofType": null
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "moved to DocumentType"
             },
             {
               "name": "witnessSlipUrl",
@@ -1544,8 +1544,8 @@
                 "name": "String",
                 "ofType": null
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "moved to DocumentType"
             }
           ],
           "inputFields": null,
