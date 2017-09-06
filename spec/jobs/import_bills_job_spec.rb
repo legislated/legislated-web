@@ -129,6 +129,21 @@ describe ImportBillsJob do
           subject.perform
           expect(ImportBillDetailsJob).to have_received(:perform_async).exactly(1).times
         end
+
+        it 'imports actions for the bill' do
+          allow(mock_service).to receive(:fetch_bills).and_return(response(
+            'actions' => [{
+              "date" => "2016-12-05 00:00:00",
+              "action" => "Prefiled with Clerk by Rep. Michael J. Madigan",
+              "type" => [
+                "bill:filed"
+              ],
+              "related_entities" => [],
+              "actor" => "lower"
+              }]
+          ))
+          subject.perform
+        end
       end
 
       describe 'a document' do

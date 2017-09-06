@@ -2,7 +2,7 @@ class ImportBillsJob
   include Worker
 
   class Attributes
-    attr_accessor :bill, :documents
+    attr_accessor :bill, :documents, :actions
   end
 
   def initialize(redis = Redis.new, service = OpenStatesService.new)
@@ -52,7 +52,9 @@ class ImportBillsJob
 
     # update the attrs map with extracted bill / document data
     attrs = Attributes.new
-    attrs.bill = parse_bill_attributes(source_url, data)
+    response = parse_bill_attributes(source_url, data)
+    attrs.bill = response['bill_attrs']
+    attrs.actions = response['actions']
     attrs.documents = data['versions'].map do |version_data|
       parse_document_attributes(version_data, data)
     end
@@ -79,7 +81,11 @@ class ImportBillsJob
     sponsor = data['sponsors'].find { |s| s['type'] == 'primary' }
     bill_attrs[:sponsor_name] = sponsor['name'] if sponsor.present?
 
-    bill_attrs
+    {
+    'bill_attrs' => bill_attrs,
+    'actions' => data['actions']
+    }
+
   end
 
   def parse_document_attributes(version_data, data)
