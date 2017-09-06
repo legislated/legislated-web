@@ -1,6 +1,6 @@
 describe 'A bill request', graphql: :request do
   it 'fetches a single bill' do
-    bill = create(:bill, :with_any_hearing)
+    bill = create(:bill, :with_any_hearing, :with_documents)
 
     fields = %w[
       id

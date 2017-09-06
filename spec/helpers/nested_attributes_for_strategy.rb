@@ -16,7 +16,6 @@ class NestedAttributesForStrategy
     association_keys = model.class.reflections.keys
       .map(&:to_sym)
       .select { |key| attrs.key? key }
-      .map { |key| model.association(key).reader }
 
     association_attrs = association_keys.map do |key|
       association = model.association(key).reader
