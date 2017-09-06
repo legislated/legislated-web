@@ -24,6 +24,7 @@ module Scraper
       bills = bill_rows
         .map { |row| build_bill_attrs(row) }
         .compact
+
       info("  - bills: #{bills.count}")
 
       # find the next page link by ripping into its icon
@@ -45,33 +46,26 @@ module Scraper
       # there are ids in hidden columns
       columns = row.find_all('td', visible: false)
 
-      # extract basic information for debugging (if possible)
+      # scrape required data
       external_id = columns[0]&.text(:all)
       document_number = columns[2]&.text
 
-      # check for links
-      witness_slip_link = row.first('.slipiconbutton')
-      witness_slip_result_link = row.first('.viewiconbutton')
+      assert_exists!(external_id, 'external_id', row)
+      assert_exists!(document_number, 'document_number', row)
 
-      if witness_slip_link.blank?
+      # scrape links
+      slip_link = row.first('.slipiconbutton')
+      slip_reuslts_link = row.first('.viewiconbutton')
+
+      if slip_link.blank?
         debug("  - bill missing slip link: #{external_id} - #{document_number}")
-      end
-
-      # blow up if we can't find an id for any bill
-      if external_id.blank?
-        raise Error, "#{task_name}: failed to find bill id for row: #{row}"
-      end
-
-      # skip amendments for now
-      if document_number.include?(' - ')
-        debug "- bill is amendment: #{external_id} - #{document_number}, skipping"
-        return nil
       end
 
       attrs = {
         external_id: external_id,
-        witness_slip_url: witness_slip_link&.[]('href'),
-        witness_slip_result_url: witness_slip_result_link&.[]('href')
+        number: document_number,
+        slip_url: slip_link&.[]('href'),
+        slip_results_url: slip_reuslts_link&.[]('href')
       }
 
       attrs

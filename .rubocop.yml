@@ -2,6 +2,7 @@ AllCops:
   Include:
     - Rakefile
     - Gemfile
+    - Guardfile
     - config.ru
   Exclude:
     - tmp/**/*

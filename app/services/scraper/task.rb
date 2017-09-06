@@ -10,6 +10,10 @@ module Scraper
       }
     end
 
+    def task_name
+      self.class.name
+    end
+
     # logging / errors
     class Error < StandardError; end
 
@@ -21,8 +25,8 @@ module Scraper
       Rails.logger.debug(message)
     end
 
-    def task_name
-      self.class.name
+    def assert_exists!(value, name, data)
+      raise Error, "#{task_name}: failed to find #{name} for data: #{data}" if value.blank?
     end
 
     # capybara

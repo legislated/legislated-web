@@ -1,4 +1,3 @@
-class Hearing < ApplicationRecord
-  belongs_to :committee
-  has_many :bills
+class Action < ApplicationRecord
+  belongs_to :bill
 end
