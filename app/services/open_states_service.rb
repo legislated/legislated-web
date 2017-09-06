@@ -15,14 +15,14 @@ class OpenStatesService
   def enumerate_all(fetch_by_page, query = {})
     query = parse_query(query)
 
-    enumerator = Enumerator.new do |y|
+    enumerator = Enumerator.new do |item|
       page_number = 1
 
       loop do
         page = fetch_by_page.call(page_number, query)
         break if page.blank?
         page_number += 1
-        page.each { |record| y.yield(record) }
+        page.each { |record| item.yield(record) }
       end
     end
 
@@ -47,17 +47,7 @@ class OpenStatesService
   end
 
   def fetch_legislators(query = {})
-    query = parse_query(query)
-
-    enumerator = Enumerator.new do |y|
-      page_number = 1
-
-      loop do
-        page = fetch_legislators_page(page_number, query)
-      end
-    end
-
-    enumerator.lazy
+    enumerate_all(method( :fetch_legislators_page ), query)
   end
 
   private

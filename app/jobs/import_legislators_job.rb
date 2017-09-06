@@ -15,9 +15,9 @@ class ImportLegislatorsJob
       .reject(&:nil?)
 
     legislator_attrs.each do |attrs|
-      bill = Bill.upsert_by!(:external_id, attrs)
+      legislator = Legislator.upsert_by!(:external_id, attrs)
       # enqueue the details import
-      ImportBillDetailsJob.perform_async(bill.id)
+      ImportBillDetailsJob.perform_async(legislator.id)
     end
   end
 
