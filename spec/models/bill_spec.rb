@@ -38,7 +38,7 @@ describe Bill do
     end
 
     it 'has the correct parameters' do
-      document_number = subject.documents.first&.number
+      document_number = subject.document&.number
       type, number = document_number.match(/(\D+)(\d+)/).captures
 
       expect(url).to match("DocNum=#{number}")

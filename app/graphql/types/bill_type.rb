@@ -28,22 +28,22 @@ module Types
     # deprecated
     field :documentNumber, !types.String, 'The number of the document, e.g. HB 1234' do
       deprecation_reason 'moved to DocumentType'
-      resolve -> (bill, _args, _ctx) { bill.documents.first&.number }
+      resolve -> (bill, _args, _ctx) { bill.document&.number }
     end
 
     field :fullTextUrl, types.String, 'The URL of the full text page' do
       deprecation_reason 'moved to DocumentType'
-      resolve -> (bill, _args, _ctx) { bill.documents.first&.full_text_url }
+      resolve -> (bill, _args, _ctx) { bill.document&.full_text_url }
     end
 
     field :witnessSlipUrl, types.String, 'The URL of the witness slip form' do
       deprecation_reason 'moved to DocumentType'
-      resolve -> (bill, _args, _ctx) { bill.documents.first&.slip_url }
+      resolve -> (bill, _args, _ctx) { bill.document&.slip_url }
     end
 
     field :witnessSlipResultUrl, types.String, 'The URL of the witness slip result' do
       deprecation_reason 'moved to DocumentType'
-      resolve -> (bill, _args, _ctx) { bill.documents.first&.slip_results_url }
+      resolve -> (bill, _args, _ctx) { bill.document&.slip_results_url }
     end
   end
 end

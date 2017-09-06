@@ -28,6 +28,10 @@ class Bill < ApplicationRecord
   end)
 
   # accessors
+  def document
+    documents.first
+  end
+
   def details_url
     self[:details_url] || ilga_url('legislation/billstatus.asp')
   end
@@ -35,7 +39,7 @@ class Bill < ApplicationRecord
   private
 
   def ilga_url(page)
-    document_number = documents.first&.number
+    document_number = document&.number
     return nil unless document_number
     document_type, document_index = document_number.match(/(\D+)(\d+)/).captures
     "http://www.ilga.gov/#{page}?DocNum=#{document_index}&GAID=14&DocTypeID=#{document_type}&SessionID=91"
