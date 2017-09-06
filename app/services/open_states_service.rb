@@ -12,6 +12,23 @@ class OpenStatesService
     }
   end
 
+  def enumerate_all(fetch_by_page, query = {})
+    query = parse_query(query)
+
+    enumerator = Enumerator.new do |y|
+      page_number = 1
+
+      loop do
+        page = fetch_by_page.call(page_number, query)
+        break if page.blank?
+        page_number += 1
+        page.each { |record| y.yield(record) }
+      end
+    end
+
+    enumerator.lazy
+  end
+
   def fetch_bills(query = {})
     query = parse_query(query)
 
