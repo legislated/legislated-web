@@ -2,6 +2,7 @@ class Bill < ApplicationRecord
   include PgSearch
 
   belongs_to :hearing
+  has_many :actions
 
   # scopes
   pg_search_scope :by_keyword, {

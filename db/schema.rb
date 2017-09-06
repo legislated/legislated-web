@@ -10,12 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627152840) do
+ActiveRecord::Schema.define(version: 20170726012707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_trgm"
   enable_extension "uuid-ossp"
+  enable_extension "pg_trgm"
+
+  create_table "actions", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "bill_id",    null: false
+    t.string   "stage",      null: false
+    t.string   "type",       null: false
+    t.datetime "datetime",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_actions_on_bill_id", using: :btree
+    t.index ["stage"], name: "index_actions_on_stage", using: :btree
+  end
 
   create_table "bills", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "external_id",             null: false
