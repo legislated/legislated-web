@@ -8,14 +8,15 @@ module Types
     # fields
     field :id, !types.ID, 'The graph id'
     field :externalId, !types.Int, 'The external id', property: :external_id
-    field :title, types.String, "The document's title"
-    field :summary, types.String, "The document's official synopsis"
-    field :humanSummary, types.String, "The document's human-readable summary", property: :human_summary
+    field :title, types.String, 'The title'
+    field :summary, types.String, 'The official synopsis'
+    field :humanSummary, types.String, 'The human-readable summary', property: :human_summary
     field :sponsorName, !types.String, 'The name of the sponsoring legislator', property: :sponsor_name
     field :detailsUrl, types.String, 'The URL of the detail page', property: :details_url
 
     # relationships
     field :hearing, !HearingType, 'The parent hearing'
+    field :documents, !DocumentType.to_list_type, "The versions of the bill's document"
 
     field :committee, !CommitteeType, 'The parent committee' do
       resolve -> (bill, _args, _ctx) { bill.hearing.committee }
