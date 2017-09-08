@@ -7,7 +7,6 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'helpers/factory_helpers'
-require 'helpers/nested_attributes_for_strategy'
 
 ActiveRecord::Migration.maintain_test_schema!
 

@@ -13,7 +13,7 @@ class ImportHearingsJob
       # rip out the hearing attrs for now
       hearing_attrs = attrs.delete(:hearing)
 
-      # upsert committeee
+      # upsert committee
       committee = Committee.upsert_by!(:external_id, attrs.merge(
         chamber: chamber
       ))
