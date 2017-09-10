@@ -19,6 +19,8 @@ class ImportLegislatorsJob
       # enqueue the details import
       ImportBillDetailsJob.perform_async(legislator.id)
     end
+
+    @redis.set(:import_legislators_job_date, Time.zone.now)
   end
 
   def fields
