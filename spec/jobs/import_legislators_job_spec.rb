@@ -54,6 +54,7 @@ describe ImportLegislatorsJob do
 
       def response(attrs = {})
         base_response = {
+          'id' => '',
           'leg_id' => '',
           'first_name' => '',
           'last_name' => '',
@@ -66,6 +67,7 @@ describe ImportLegislatorsJob do
 
       it "sets the legislator's core attributes" do
         allow(mock_service).to receive(:fetch_legislators).and_return(response(
+          'id' => attrs[:os_id],
           'leg_id' => attrs[],
           'first_name' => attrs[:first_name],
           'last_name' => attrs[:last_name],

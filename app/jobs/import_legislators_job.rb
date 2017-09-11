@@ -17,7 +17,6 @@ class ImportLegislatorsJob
     legislator_attrs.each do |attrs|
       legislator = Legislator.upsert_by!(:external_id, attrs)
       # enqueue the details import
-      ImportBillDetailsJob.perform_async(legislator.id)
     end
 
     @redis.set(:import_legislators_job_date, Time.zone.now)
@@ -26,8 +25,8 @@ class ImportLegislatorsJob
   def fields
     @fields ||= begin
       fields = %i[
-        external_id
-        os_id
+        id
+        leg_id
         first_name
         last_name
         email
