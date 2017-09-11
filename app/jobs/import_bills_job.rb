@@ -22,6 +22,12 @@ class ImportBillsJob
     # upsert the records
     parsed_attributes.each do |attributes|
       bill = Bill.upsert_by!(:external_id, attributes.bill)
+      bill.actions.delete_all
+
+      attributes.actions.each do |attrs|
+        action_attrs = attrs.merge(bill: bill)
+        Action.create!(action_attrs)
+      end
 
       attributes.documents.each do |attrs|
         doc_attrs = attrs.merge(bill: bill)
@@ -54,7 +60,11 @@ class ImportBillsJob
     attrs = Attributes.new
     response = parse_bill_attributes(source_url, data)
     attrs.bill = response['bill_attrs']
-    attrs.actions = response['actions']
+
+    attrs.actions = response['actions'].map do |action_data|
+      parse_action_attributes(action_data)
+    end
+
     attrs.documents = data['versions'].map do |version_data|
       parse_document_attributes(version_data, data)
     end
@@ -88,6 +98,17 @@ class ImportBillsJob
 
   end
 
+  def parse_action_attributes(action_data)
+    action_attrs = {
+      name: action_data['action'],
+      stage: action_data['actor'],
+      action_type: action_data['type'].last,
+      datetime: DateTime.parse(action_data['date'])
+    }
+
+    action_attrs
+  end
+
   def parse_document_attributes(version_data, data)
     document_attrs = {
       os_id: version_data['doc_id'],
@@ -111,6 +132,7 @@ class ImportBillsJob
         session
         title
         chamber
+        actions
         versions
         sources
         sponsors

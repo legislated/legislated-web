@@ -16,6 +16,7 @@ module Types
 
     # relationships
     field :hearing, !HearingType, 'The parent hearing'
+    field :actions, !ActionType.to_list_type, 'The actions on the bill'
 
     field :committee, !CommitteeType, 'The parent committee' do
       resolve -> (bill, _args, _ctx) { bill.hearing.committee }
