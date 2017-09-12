@@ -19,5 +19,9 @@ FactoryGirl.define do
     trait :with_documents do
       documents { build_list(:document, 1) }
     end
+
+    trait :with_actions do
+      actions { build_list(:action, 1) }
+    end
   end
 end

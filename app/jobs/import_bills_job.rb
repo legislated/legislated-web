@@ -22,7 +22,7 @@ class ImportBillsJob
     # upsert the records
     parsed_attributes.each do |attributes|
       bill = Bill.upsert_by!(:external_id, attributes.bill)
-      bill.actions.delete_all
+      bill.actions.destroy_all # Dangerously skipping callbacks!!
 
       attributes.actions.each do |attrs|
         action_attrs = attrs.merge(bill: bill)

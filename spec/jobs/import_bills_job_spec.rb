@@ -1,3 +1,6 @@
+def mock_action_api
+end
+
 describe ImportBillsJob do
   subject { described_class.new(mock_redis, mock_service) }
 
@@ -43,11 +46,12 @@ describe ImportBillsJob do
     end
 
     context 'when upserting' do
+      
       let(:bill) { create(:bill) }
       let(:bill_attrs) { attributes_for(:bill, external_id: bill.external_id) }
       let(:document) { create(:document, bill: bill) }
       let(:document_attrs) { attributes_for(:document, number: document.number) }
-
+      
       def response(attrs = {})
         base_response = {
           'id' => '',
@@ -130,20 +134,41 @@ describe ImportBillsJob do
           subject.perform
           expect(ImportBillDetailsJob).to have_received(:perform_async).exactly(1).times
         end
+      end
 
-        it 'imports actions for the bill' do
+      describe 'actions' do
+        it 'creates new actions' do
+          num_actions = 5
+          bill_attrs = attributes_for(:bill)
+          actions_attrs = attributes_for_list(:open_states_action, num_actions)
+          
           allow(mock_service).to receive(:fetch_bills).and_return(response(
-            'actions' => [{
-              "date" => "2016-12-05 00:00:00",
-              "action" => "Prefiled with Clerk by Rep. Michael J. Madigan",
-              "type" => [
-                "bill:filed"
-              ],
-              "related_entities" => [],
-              "actor" => "lower"
-              }]
+            'sources' => [{
+              'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{bill_attrs[:external_id]}"
+            }],
+            'actions' => actions_attrs.map(&:stringify_keys)
           ))
-          expect { subject.perform }.to change(Action, :count).by(1)
+
+          expect { subject.perform }.to change(Action, :count).by(num_actions)
+        end
+
+        it 'replaces existing actions' do
+          num_orig_actions =3
+          create_list(:action, num_orig_actions, bill: bill)
+
+          num_new_actions = 5
+          actions_attrs = attributes_for_list(:open_states_action, num_new_actions)
+          
+          allow(mock_service).to receive(:fetch_bills).and_return(response(
+            'id' => bill.id,
+            'actions' => actions_attrs.map(&:stringify_keys)
+          ))
+    
+          expect { subject.perform }.to change(Action, :count).by(num_new_actions - num_orig_actions)
+        
+          # this is brittle and subject to change but for now lets just
+          # verify this by comparing the name to the action
+          expect(bill.reload.actions.map(&:name)).to match(actions_attrs.map do |a| a[:action] end)
         end
       end
 
