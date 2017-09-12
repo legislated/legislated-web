@@ -8,21 +8,21 @@ describe BillsSearchService do
 
     context 'when the search query looks like plain text' do
       it 'includes the bill if the title prefix matches' do
-        bill1 = create(:bill, :with_any_hearing, title: 'MoTor AwAY')
-        bill2 = create(:bill, :with_any_hearing, title: 'I am a ScIEntiSt')
-        expect(search('MOTO')).to eq([bill1])
+        bill = create(:bill, :with_any_hearing, title: 'MoTor AwAY')
+        create(:bill, :with_any_hearing, title: 'I am a ScIEntiSt')
+        expect(search('MOTO')).to eq([bill])
       end
 
       it 'includes the bill if the title fuzzy matches' do
-        bill1 = create(:bill, :with_any_hearing, title: 'MoTor AwAY')
-        bill2 = create(:bill, :with_any_hearing, title: 'I am a ScIEntiSt')
-        expect(search('OTOR')).to eq([bill1])
+        bill = create(:bill, :with_any_hearing, title: 'MoTor AwAY')
+        create(:bill, :with_any_hearing, title: 'I am a ScIEntiSt')
+        expect(search('OTOR')).to eq([bill])
       end
 
       it 'includes the bill if the summary prefixes' do
-        bill1 = create(:bill, :with_any_hearing, summary: '...dOwn the ICy stREets.')
-        bill2 = create(:bill, :with_any_hearing, summary: '...I seEK to uNDeRstand me')
-        expect(search('STREE')).to eq([bill1])
+        bill = create(:bill, :with_any_hearing, summary: '...dOwn the ICy stREets.')
+        create(:bill, :with_any_hearing, summary: '...I seEK to uNDeRstand me')
+        expect(search('STREE')).to eq([bill])
       end
     end
 

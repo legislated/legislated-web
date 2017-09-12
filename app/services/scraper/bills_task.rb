@@ -55,7 +55,7 @@ module Scraper
 
       # scrape links
       slip_link = row.first('.slipiconbutton')
-      slip_reuslts_link = row.first('.viewiconbutton')
+      slip_results_link = row.first('.viewiconbutton')
 
       if slip_link.blank?
         debug("  - bill missing slip link: #{external_id} - #{document_number}")
@@ -65,7 +65,8 @@ module Scraper
         external_id: external_id,
         number: document_number,
         slip_url: slip_link&.[]('href'),
-        slip_results_url: slip_reuslts_link&.[]('href')
+        slip_results_url: slip_results_link&.[]('href'),
+        is_amendment: document_number.include?(' - ')
       }
 
       attrs

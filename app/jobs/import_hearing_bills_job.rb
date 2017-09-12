@@ -10,10 +10,10 @@ class ImportHearingBillsJob
 
     scraped_attrs = @scraper.run(hearing)
     scraped_attrs.each do |attrs|
-      bill = Bill.upsert_by!(:external_id,
-        hearing: hearing,
-        external_id: attrs.delete(:external_id)
-      )
+      bill_attrs = attrs.extract!(:external_id)
+      bill = Bill.upsert_by!(:external_id, bill_attrs.merge(
+        hearing: hearing
+      ))
 
       Document.upsert_by!(:number, attrs.merge(
         bill: bill

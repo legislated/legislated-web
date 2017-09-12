@@ -73,15 +73,13 @@ describe Scraper::BillsTask do
   describe '#build_bill_attrs' do
     let(:row) { double('row') }
     let(:cols) { Array.new(5) { double('column') } }
-    let(:attrs) { build(:scraped_bill) }
+    let(:attrs) { build(:scraped_bill, is_amendment: false) }
 
     def href(url)
       url && { 'href' => url }
     end
 
     def mock_dom
-      slip_link = attrs[:slip_url]
-
       allow(row).to receive(:find_all).and_return(cols)
       allow(row).to receive(:first).with('.slipiconbutton').and_return(href(attrs[:slip_url]))
       allow(row).to receive(:first).with('.viewiconbutton').and_return(href(attrs[:slip_results_url]))
@@ -98,8 +96,16 @@ describe Scraper::BillsTask do
         :external_id,
         :number,
         :slip_url,
-        :slip_results_url
+        :slip_results_url,
+        :is_amendment
       ))
+    end
+
+    it 'identifies documents that are amendments' do
+      attrs[:number] = 'HB1234 - Amend'
+      mock_dom
+      result = subject.build_bill_attrs(row)
+      expect(result[:is_amendment]).to be(true)
     end
 
     it 'raises an error when the document number is missing' do
