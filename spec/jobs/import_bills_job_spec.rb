@@ -24,7 +24,7 @@ describe ImportBillsJob do
     it 'fetches bills with the correct fields' do
       subject.perform
       expect(mock_service).to have_received(:fetch_bills) do |args|
-        fields = 'id,bill_id,session,title,chamber,versions,sources,sponsors,type'
+        fields = 'id,bill_id,session,title,chamber,actions,versions,sources,sponsors,type'
         expect(args[:fields]).to eq fields
       end
     end
