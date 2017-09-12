@@ -57,6 +57,7 @@ describe ImportBillsJob do
           'sources' => [{
             'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{bill.external_id}"
           }],
+          'actions' => [],
           'sponsors' => [],
           'versions' => []
         }
@@ -142,7 +143,7 @@ describe ImportBillsJob do
               "actor" => "lower"
               }]
           ))
-          subject.perform
+          expect { subject.perform }.to change(Action, :count).by(1)
         end
       end
 
