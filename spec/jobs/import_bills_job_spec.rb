@@ -42,14 +42,11 @@ describe ImportBillsJob do
       expect(mock_redis).to have_received(:set).with(:import_bills_job_date, date)
     end
 
-    context 'when upserting a bill' do
+    context 'when upserting' do
       let(:bill) { create(:bill) }
-      let(:attrs) { attributes_for(:bill, external_id: bill.external_id) }
-
-      def perform
-        subject.perform
-        bill.reload
-      end
+      let(:bill_attrs) { attributes_for(:bill, external_id: bill.external_id) }
+      let(:document) { create(:document, bill: bill) }
+      let(:document_attrs) { attributes_for(:document, number: document.number) }
 
       def response(attrs = {})
         base_response = {
@@ -60,76 +57,112 @@ describe ImportBillsJob do
           'sources' => [{
             'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{bill.external_id}"
           }],
-          'sponsors' => []
+          'sponsors' => [],
+          'versions' => []
         }
 
         Array.wrap(base_response.merge(attrs)).lazy
       end
 
-      it "sets the bill's core attributes" do
-        allow(mock_service).to receive(:fetch_bills).and_return(response(
-          'id' => attrs[:os_id],
-          'title' => attrs[:title],
-          'bill_id' => attrs[:document_number].gsub(/[A-Z]+/, '\0 '),
-          'session' => "#{attrs[:session_number]}th"
-        ))
+      describe 'a bill' do
+        it 'creates the bill if it does not exist' do
+          attrs = attributes_for(:bill)
 
-        perform
-        expect(bill).to have_attributes(attrs.slice(
-          :os_id,
-          :title,
-          :document_number,
-          :session_number
-        ))
+          allow(mock_service).to receive(:fetch_bills).and_return(response(
+            'sources' => [{
+              'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{attrs[:external_id]}"
+            }]
+          ))
+
+          expect { subject.perform }.to change(Bill, :count).by(1)
+        end
+
+        it "sets the bill's core attributes" do
+          allow(mock_service).to receive(:fetch_bills).and_return(response(
+            'id' => bill_attrs[:os_id],
+            'title' => bill_attrs[:title],
+            'bill_id' => document_attrs[:number].gsub(/[A-Z]+/, '\0 '),
+            'session' => "#{bill_attrs[:session_number]}th"
+          ))
+
+          subject.perform
+          expect(bill.reload).to have_attributes(bill_attrs.slice(
+            :os_id,
+            :title,
+            :document_number,
+            :session_number
+          ))
+        end
+
+        it "sets the bill's source-url derived attributes" do
+          query = 'DocNum=1234&DocTypeID=SB&GAID=2&SessionID=3'
+
+          allow(mock_service).to receive(:fetch_bills).and_return(response(
+            'sources' => [{
+              'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{bill_attrs[:external_id]}&#{query}"
+            }]
+          ))
+
+          subject.perform
+          expect(bill.reload).to have_attributes(
+            external_id: bill_attrs[:external_id],
+            details_url: "http://www.ilga.gov/legislation/billstatus.asp?#{query}"
+          )
+        end
+
+        it "sets the bill's primary sponsor name" do
+          allow(mock_service).to receive(:fetch_bills).and_return(response(
+            'sponsors' => [{
+              'type' => 'primary',
+              'name' => bill_attrs[:sponsor_name]
+            }]
+          ))
+
+          subject.perform
+          expect(bill.reload).to have_attributes(bill_attrs.slice(
+            :sponsor_name
+          ))
+        end
+
+        it 'imports details for the bill' do
+          allow(mock_service).to receive(:fetch_bills).and_return(response)
+          subject.perform
+          expect(ImportBillDetailsJob).to have_received(:perform_async).exactly(1).times
+        end
       end
 
-      it "sets the bill's source-url derived attributes" do
-        query = 'DocNum=1234&DocTypeID=SB&GAID=2&SessionID=3'
+      describe 'a document' do
+        it 'creates the document if it does not exist' do
+          attrs = attributes_for(:bill, :with_documents)
+          doc_attrs = attrs[:documents].first
 
-        allow(mock_service).to receive(:fetch_bills).and_return(response(
-          'sources' => [{
-            'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{attrs[:external_id]}&#{query}"
-          }]
-        ))
+          allow(mock_service).to receive(:fetch_bills).and_return(response(
+            'bill_id' => doc_attrs[:number],
+            'versions' => [{}],
+            'sources' => [{
+              'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{attrs[:external_id]}"
+            }]
+          ))
 
-        perform
-        expect(bill).to have_attributes(
-          external_id: attrs[:external_id],
-          details_url: "http://www.ilga.gov/legislation/billstatus.asp?#{query}",
-          full_text_url: "http://www.ilga.gov/legislation/fulltext.asp?#{query}"
-        )
-      end
+          expect { subject.perform }.to change(Document, :count).by(1)
+        end
 
-      it "sets the bill's primary sponsor name" do
-        allow(mock_service).to receive(:fetch_bills).and_return(response(
-          'sponsors' => [{
-            'type' => 'primary',
-            'name' => attrs[:sponsor_name]
-          }]
-        ))
+        it "sets the document's core attributes" do
+          allow(mock_service).to receive(:fetch_bills).and_return(response(
+            'bill_id' => document_attrs[:number],
+            'versions' => [{
+              'doc_id' => document_attrs[:os_id],
+              'url' => document_attrs[:full_text_url]
+            }]
+          ))
 
-        perform
-        expect(bill).to have_attributes(attrs.slice(
-          :sponsor_name
-        ))
-      end
-
-      it 'imports details for the bill' do
-        allow(mock_service).to receive(:fetch_bills).and_return(response)
-        perform
-        expect(ImportBillDetailsJob).to have_received(:perform_async).exactly(1).times
-      end
-
-      it 'creates the bill if it does not exist' do
-        attrs2 = attributes_for(:bill)
-
-        allow(mock_service).to receive(:fetch_bills).and_return(response(
-          'sources' => [{
-            'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{attrs2[:external_id]}"
-          }]
-        ))
-
-        expect { perform }.to change(Bill, :count).by(1)
+          subject.perform
+          expect(document.reload).to have_attributes(document_attrs.slice(
+            :os_id,
+            :number,
+            :full_text_url
+          ))
+        end
       end
     end
   end

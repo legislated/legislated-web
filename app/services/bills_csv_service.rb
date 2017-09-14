@@ -28,11 +28,11 @@ class BillsCsvService
 
   def row_from_bill(bill)
     [
-      bill.document_number,
+      bill.document&.number,
       bill.title,
       bill.summary,
       bill.details_url,
-      bill.witness_slip_url,
+      bill.document&.slip_url,
       bill.hearing.date,
       bill.hearing.committee.name,
       1,

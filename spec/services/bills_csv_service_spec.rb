@@ -7,7 +7,7 @@ describe BillsCsvService do
 
   describe '#serialize' do
     let(:committee) { build(:committee, name: 'no-comma') }
-    let(:bills) { build_list(:bill, 2, hearing: build(:hearing, committee: committee)) }
+    let(:bills) { build_list(:bill, 2, :with_documents, hearing: build(:hearing, committee: committee)) }
     let(:rows) { subject.serialize(bills).split("\n") }
 
     it 'has a header' do
@@ -29,11 +29,11 @@ describe BillsCsvService do
     it 'has a row for each bill' do
       bill_rows = bills.map do |bill|
         csv_row("
-          #{bill.document_number},
+          #{bill.document&.number},
           #{bill.title},
           #{bill.summary},
           #{bill.details_url},
-          #{bill.witness_slip_url},
+          #{bill.document&.slip_url},
           #{bill.hearing.date},
           #{bill.hearing.committee.name},
           1,
