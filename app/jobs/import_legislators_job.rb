@@ -22,6 +22,22 @@ class ImportLegislatorsJob
     @redis.set(:import_legislators_job_date, Time.zone.now)
   end
 
+  private
+
+  def parse_attributes(data)
+    attrs = {
+      external_id: data['id'],
+      os_id: data['leg_id'],
+      first_name: data['first_name'],
+      last_name: data['last_name'],
+      email: data['email'],
+      district: data['district'],
+      chamber: data['chamber']
+    }
+
+    attrs
+  end
+
   def fields
     @fields ||= begin
       fields = %i[

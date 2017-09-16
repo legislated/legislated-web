@@ -68,7 +68,6 @@ describe ImportLegislatorsJob do
       it "sets the legislator's core attributes" do
         allow(mock_service).to receive(:fetch_legislators).and_return(response(
           'id' => attrs[:os_id],
-          'leg_id' => attrs[],
           'first_name' => attrs[:first_name],
           'last_name' => attrs[:last_name],
           'district' => attrs[:district]
@@ -76,17 +75,18 @@ describe ImportLegislatorsJob do
 
         perform
         expect(legislator).to have_attributes(attrs.slice(
+          :os_id,
           :first_name,
           :last_name,
           :district
         ))
       end
 
-      it "sets the legislator's source-url derived attributes" do
-        allow(mock_service).to receive(:fetch_legislators).and_return(response)
-        perform
-        expect(ImportLegislatorsJob).to have_received(:perform_async).exactly(1).times
-      end
+      # it "sets the legislator's source-url derived attributes" do
+      #   allow(mock_service).to receive(:fetch_legislators).and_return(response)
+      #   perform
+      #   expect(ImportLegislatorsJob).to have_received(:perform_async).exactly(1).times
+      # end
 
       it 'creates the legislator if it does not exist' do
         attrs_copy = attributes_for(:legislator)

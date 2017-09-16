@@ -76,7 +76,6 @@ class OpenStatesService
   def fetch_legislators_page(page_number, query)
     base_query = {
       state: 'il',
-      search_window: 'session',
       page: page_number,
       per_page: 50
     }
