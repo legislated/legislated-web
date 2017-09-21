@@ -46,12 +46,12 @@ describe ImportBillsJob do
     end
 
     context 'when upserting' do
-      
+
       let(:bill) { create(:bill) }
       let(:bill_attrs) { attributes_for(:bill, external_id: bill.external_id) }
       let(:document) { create(:document, bill: bill) }
       let(:document_attrs) { attributes_for(:document, number: document.number) }
-      
+
       def response(attrs = {})
         base_response = {
           'id' => '',
@@ -99,6 +99,86 @@ describe ImportBillsJob do
           ))
         end
 
+        it "sets the bill's raw_actions" do
+          num_actions = 5
+          actions_attrs = attributes_for_list(:open_states_action, num_actions)
+
+          allow(mock_service).to receive(:fetch_bills).and_return(response(
+            'id' => bill_attrs[:os_id],
+            'actions' => actions_attrs.map(&:stringify_keys)
+          ))
+
+          subject.perform
+          expect(bill.reload).to have_attributes({
+            :os_id => bill_attrs[:os_id],
+            :raw_actions => actions_attrs.map(&:stringify_keys)
+          })
+        end
+
+        it "sets the bill's stages" do
+          actions_attrs = [{
+              'date' => "2017-02-10 00:00:00",
+              'action' => "Assigned to Criminal Law",
+              'type' => ["bill:filed"],
+              'actor' => "upper"
+              },
+              {
+              'date' => "2017-02-10 00:00:00",
+              'action' => "Assigned to Criminal Law",
+              'type' => ["bill:reading:1"],
+              'actor' => "upper"
+              },
+              {
+              'date' => "2017-02-10 00:00:00",
+              'action' => "Referred to Assignments",
+              'type' => ["committee:referred"],
+              'actor' => "upper"
+              },
+              {
+              'date' => "2017-02-28 00:00:00",
+              'action' => "Assigned to Criminal Law",
+              'type' => ["committee:referred"],
+              'actor' => "upper"
+              },
+              {
+              'date' => "2017-03-08 00:00:00",
+              'action' => "Assigned to Criminal Law",
+              'type' => ["committee:passed"],
+              'actor' => "committee"
+              },
+              {
+              'actor' => "lower",
+              'action' => "Assigned to Criminal Law",
+              'date' => "2017-04-27 00:00:00",
+              'type' => ["bill:reading:3","bill:introduced","bill:passed"],
+              }]
+
+          expected_stages = [{
+              'introduced_date' => "2017-02-10 00:00:00",
+              'name' => "upper"
+              },
+              {
+              'introduced_date' => "2017-02-28 00:00:00",
+              'name' => "upper:committee"
+              },
+              {
+              'name' => "lower",
+              'introduced_date' => "2017-04-27 00:00:00"
+              }]
+
+          allow(mock_service).to receive(:fetch_bills).and_return(response(
+            'id' => bill_attrs[:os_id],
+            'actions' => actions_attrs
+          ))
+
+          subject.perform
+          expect(bill.reload).to have_attributes({
+            :os_id => bill_attrs[:os_id],
+            :raw_actions => actions_attrs,
+            :stages => expected_stages
+          })
+        end
+
         it "sets the bill's source-url derived attributes" do
           query = 'DocNum=1234&DocTypeID=SB&GAID=2&SessionID=3'
 
@@ -141,7 +221,7 @@ describe ImportBillsJob do
           num_actions = 5
           bill_attrs = attributes_for(:bill)
           actions_attrs = attributes_for_list(:open_states_action, num_actions)
-          
+
           allow(mock_service).to receive(:fetch_bills).and_return(response(
             'sources' => [{
               'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{bill_attrs[:external_id]}"
@@ -158,14 +238,14 @@ describe ImportBillsJob do
 
           num_new_actions = 5
           actions_attrs = attributes_for_list(:open_states_action, num_new_actions)
-          
+
           allow(mock_service).to receive(:fetch_bills).and_return(response(
             'id' => bill.id,
             'actions' => actions_attrs.map(&:stringify_keys)
           ))
-    
+
           expect { subject.perform }.to change(Action, :count).by(num_new_actions - num_orig_actions)
-        
+
           # this is brittle and subject to change but for now lets just
           # verify this by comparing the name to the action
           expect(bill.reload.actions.map(&:name)).to match(actions_attrs.map do |a| a[:action] end)

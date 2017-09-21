@@ -76,9 +76,38 @@ class ImportBillsJob
     params = CGI.parse(URI.parse(source_url).query)
       .transform_values(&:first)
 
+    introduced_types = [
+      'bill:filed',
+      'bill:introduced',
+      'committee:referred'
+    ]
+
+    introduced_actions = data['actions'].select do |action|
+      is_introduction = action['type'].any? do |type|
+        introduced_types.include? type
+      end
+      is_substantive = !action['action'].match(/(Assignments|Rules)$/)
+
+       is_introduction && is_substantive
+    end
+
+    stages = introduced_actions.map do |action|
+      name = action['actor']
+      if action['type'].include? 'committee:referred'
+        name += ':committee'
+      end
+
+      {
+        introduced_date: action['date'],
+        name: name
+      }
+    end
+
     bill_attrs = {
       external_id: params['LegId'],
       os_id: data['id'],
+      raw_actions: data['actions'],
+      stages: stages,
       title: data['title'],
       session_number: data['session'].gsub(/[a-z]+/, '')
     }
