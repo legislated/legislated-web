@@ -23,6 +23,7 @@ Install the necessary global dependencies.
 - postgresql
 - redis
 - phantomjs
+- libpq-dev
 
 Copy over the development .env file:
 
