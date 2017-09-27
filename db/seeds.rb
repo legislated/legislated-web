@@ -15,5 +15,5 @@ hearings = committees.flat_map do |committee|
 end
 
 hearings.flat_map do |hearing|
-  create_list(:bill, 10, hearing: hearing)
+  create_list(:bill, 10, :with_documents, hearing: hearing)
 end
