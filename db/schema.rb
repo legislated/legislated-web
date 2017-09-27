@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20170909210000) do
 
   create_table "legislators", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "external_id",      null: false
+    t.integer  "os_id"
     t.string   "first_name",       null: false
     t.string   "last_name",        null: false
     t.string   "email"
