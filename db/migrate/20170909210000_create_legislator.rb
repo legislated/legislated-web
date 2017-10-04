@@ -2,7 +2,7 @@ class CreateLegislator < ActiveRecord::Migration[5.0]
   def change
     create_table :legislators, id: :uuid do |t|
       t.column :external_id, :integer, null: false
-      t.column :os_id, :integer
+      t.column :os_id, :string
       t.column :first_name, :string, null: false
       t.column :last_name, :string, null: false
       t.column :email, :string

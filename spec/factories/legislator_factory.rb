@@ -6,7 +6,7 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     email { Faker::Internet.email }
     phone_number { Faker::PhoneNumber }
-    twitter_username { Faker::Twitter.user }
+    twitter_username { optional { Faker::Twitter.user } }
     district { '6A' }
     chamber { 'upper' }
   end
