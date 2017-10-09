@@ -67,10 +67,11 @@ describe ImportLegislatorsJob do
 
       it "sets the legislator's core attributes" do
         allow(mock_service).to receive(:fetch_legislators).and_return(response(
-          # 'id' => attrs[:os_id],
-          # 'first_name' => attrs[:first_name],
-          # 'last_name' => attrs[:last_name],
-          # 'district' => attrs[:district]
+          'leg_id' => attrs[:os_id],
+          'id' => attrs[:external_id],
+          'first_name' => attrs[:first_name],
+          'last_name' => attrs[:last_name],
+          'district' => attrs[:district]
         ))
 
         perform
@@ -92,6 +93,7 @@ describe ImportLegislatorsJob do
         attrs_copy = attributes_for(:legislator)
 
         allow(mock_service).to receive(:fetch_legislators).and_return(response(
+          'id' => attrs[:external_id],
           'sources' => [{
             'url' => "http://dccouncil.us/council/#{attrs_copy[:first_name]}-#{attrs_copy[:last_name]}"
           }]
