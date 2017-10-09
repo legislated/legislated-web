@@ -79,8 +79,30 @@ class ImportBillsJob
     introduced_types = [
       'bill:filed',
       'bill:introduced',
-      'committee:referred'
+      'committee:referred',
+      'governor:received'
     ]
+
+    passed_types = [
+      'committee:passed',
+      'committee:passed:favorable',
+      'committee:passed:unfavorable',
+      'bill:passed',
+      'governor:signed',
+      'bill:veto_override:passed'
+    ]
+
+    failed_types = [
+      'committee:failed',
+      'bill:failed',
+      'governor:vetoed',
+      'governor:vetoed:line-item',
+      'bill:veto_override:failed'
+    ]
+
+    completed_types = []
+    completed_types << passed_types
+    completed_types << failed_types
 
     introduced_actions = data['actions'].select do |action|
       is_introduction = action['type'].any? do |type|
@@ -88,19 +110,34 @@ class ImportBillsJob
       end
       is_substantive = !action['action'].match(/(Assignments|Rules)$/)
 
-       is_introduction && is_substantive
+      is_introduction && is_substantive
+    end
+
+    completed_actions = data['actions'].select do |action|
+      is_completed = action['type'].any? do |type|
+        completed_types.include? type
+      end
+      is_completed
     end
 
     stages = introduced_actions.map do |action|
-      name = action['actor']
-      if action['type'].include? 'committee:referred'
-        name += ':committee'
-      end
-
       {
         introduced_date: action['date'],
-        name: name
+        name: get_stage_name(action)
       }
+    end
+
+    completed_actions.map do |action|
+      stage = get_stage_for_completed_action(action, stages)
+      if stage.nil?
+        stage = {name: get_stage_name(action)}
+        stages << stage
+      end
+      did_pass = action['type'].any? do |type|
+        passed_types.include? type
+      end
+      stage[:pass_fail] = did_pass ? 'pass' : 'fail'
+      stage[:completed_date] = action['date']
     end
 
     bill_attrs = {
@@ -125,6 +162,59 @@ class ImportBillsJob
     'actions' => data['actions']
     }
 
+  end
+
+  def get_stage_name(action)
+    committe_types = [
+      'committee:referred',
+      'committee:passed',
+      'committee:passed:favorable',
+      'committee:passed:unfavorable',
+      'committee:failed'
+    ]
+
+    governor_types = [
+      'governor:received',
+      'governor:signed',
+      'governor:vetoed',
+      'governor:vetoed:line-item'
+    ]
+
+    veto_types = [
+      'bill:veto_override:passed',
+      'bill:veto_override:failed'
+    ]
+
+    name = action['actor']
+    name = action['type'].any? do |type|
+      if committe_types.include? type
+        name += ':committee'
+      end
+
+      if governor_types.include? type
+        name = 'governor'
+      end
+
+      if veto_types.include? type
+        name = 'veto'
+      end
+
+      name
+    end
+  end
+
+  def get_stage_for_completed_action(completed_action, stages)
+    stage_name = get_stage_name(completed_action)
+    stage = stages.select do |next_stage|
+      if next_stage['name'] == stage_name
+        unless next_stage['introduced'] > completed_action['date']
+          if stage.nil? || stage['introduced'] < next_stage['introduced']
+            stage = next_stage
+          end
+        end
+      end
+      stage
+    end
   end
 
   def parse_action_attributes(action_data)
