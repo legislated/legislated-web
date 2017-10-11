@@ -3,6 +3,7 @@ class ImportJob
 
   def perform
     ImportBillsJob.perform_async
+    ImportLegislatorsJob.perform_async
     chambers = Chamber.all
     chambers.each { |c| ImportHearingsJob.perform_async(c.id) }
   end
