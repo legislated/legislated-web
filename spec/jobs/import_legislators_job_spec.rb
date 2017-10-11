@@ -45,7 +45,7 @@ describe ImportLegislatorsJob do
 
     context 'when upserting a legislator' do
       let(:legislator) { create(:legislator) }
-      let(:attrs) { attributes_for(:legislator, external_id: legislator.external_id) }
+      let(:attrs) { attributes_for(:legislator, os_id: legislator.os_id) }
 
       def perform
         subject.perform
@@ -68,7 +68,6 @@ describe ImportLegislatorsJob do
       it "sets the legislator's core attributes" do
         allow(mock_service).to receive(:fetch_legislators).and_return(response(
           'leg_id' => attrs[:os_id],
-          'id' => attrs[:external_id],
           'first_name' => attrs[:first_name],
           'last_name' => attrs[:last_name],
           'district' => attrs[:district]
@@ -83,19 +82,13 @@ describe ImportLegislatorsJob do
         ))
       end
 
-      # it "sets the legislator's source-url derived attributes" do
-      #   allow(mock_service).to receive(:fetch_legislators).and_return(response)
-      #   perform
-      #   expect(ImportLegislatorsJob).to have_received(:perform_async).exactly(1).times
-      # end
-
       it 'creates the legislator if it does not exist' do
-        attrs_copy = attributes_for(:legislator)
+        attrs = attributes_for(:legislator)
 
         allow(mock_service).to receive(:fetch_legislators).and_return(response(
-          'id' => attrs[:external_id],
+          'leg_id' => attrs[:os_id],
           'sources' => [{
-            'url' => "http://dccouncil.us/council/#{attrs_copy[:first_name]}-#{attrs_copy[:last_name]}"
+            'url' => "http://dccouncil.us/council/#{attrs[:first_name]}-#{attrs[:last_name]}"
           }]
         ))
 

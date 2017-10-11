@@ -15,7 +15,7 @@ class ImportLegislatorsJob
       .reject(&:nil?)
 
     legislator_attrs.each do |attrs|
-      Legislator.upsert_by!(:external_id, attrs)
+      Legislator.upsert_by!(:os_id, attrs)
     end
 
     @redis.set(:import_legislators_job_date, Time.zone.now)
@@ -25,7 +25,6 @@ class ImportLegislatorsJob
 
   def parse_attributes(data)
     attrs = {
-      external_id: data['id'],
       os_id: data['leg_id'],
       first_name: data['first_name'],
       last_name: data['last_name'],
