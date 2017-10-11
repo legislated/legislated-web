@@ -50,31 +50,35 @@ class BillsActionsService
   end
 
   def self.compute_stages(actions)
-    introduced_actions = actions.select do |action|
-      has_introduced_action_type?(action['type']) && is_substantive_action?(action['action'])
-    end
-
-    completed_actions = actions.select do |action|
-      has_completed_action_type?(action['type'])
-    end
-
-    stages = introduced_actions.map do |action|
-      {
-        introduced_date: action['date'],
-        name: get_stage_name(action)
-      }
-    end
-
-    completed_actions.map do |action|
-      stage = get_stage_for_completed_action(action, stages)
-      if stage.nil?
-        stage = {name: get_stage_name(action)}
-        stages << stage
+    # create a stage for each introduced action
+    stages = actions
+      .select { |action| is_introduced_action?(action) }
+      .map do |introduced_action|
+        {
+          introduced_date: introduced_action['date'],
+          name: get_stage_name(introduced_action)
+        }
       end
-      stage[:completed_date] = action['date']
-      stage[:failed] = !has_passed_action_type?(action['type'])
-    end
 
+    # for each completed action, updated the existing stage for the corresponding
+    # introduced action or create a new one
+    actions
+      .select { |action| has_completed_action_type?(action['type']) }
+      .each do |completed_action|
+        # find the existing stage for the corresponding introduced action
+        stage = get_stage_for_completed_action(completed_action, stages)
+        
+        # create a new stage if there is not one for a corresponding introduced action
+        if stage.nil?
+          stage = { name: get_stage_name(completed_action) }
+          stages << stage
+        end
+        
+        stage[:completed_date] = completed_action['date']
+        stage[:failed] = !has_passed_action_type?(completed_action['type'])
+      end
+
+    # return the stages
     stages
   end
    
@@ -95,7 +99,7 @@ class BillsActionsService
     end
   end
 
-  # find the last corresponding introduced action by name for a completed action
+  # find the last corresponding introduced action by stage name for a completed action
   # TODO - more advanced logic to handle committee actors
   def self.get_stage_for_completed_action(completed_action, stages)
     stage_name = get_stage_name(completed_action)
@@ -105,6 +109,10 @@ class BillsActionsService
     end
 
     eligible_stages.last
+  end
+
+  def self.is_introduced_action?(action)
+    has_introduced_action_type?(action['type']) && is_substantive_action?(action['action'])
   end
 
   def self.is_substantive_action?(action)
