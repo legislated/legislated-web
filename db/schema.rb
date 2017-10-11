@@ -17,32 +17,20 @@ ActiveRecord::Schema.define(version: 20170921193023) do
   enable_extension "uuid-ossp"
   enable_extension "pg_trgm"
 
-  create_table "actions", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.uuid     "bill_id",     null: false
-    t.string   "name",        null: false
-    t.string   "stage",       null: false
-    t.string   "action_type", null: false
-    t.datetime "datetime",    null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["bill_id"], name: "index_actions_on_bill_id", using: :btree
-    t.index ["stage"], name: "index_actions_on_stage", using: :btree
-  end
-
   create_table "bills", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "external_id",                   null: false
+    t.integer  "external_id",                 null: false
     t.string   "title"
     t.string   "summary"
     t.string   "sponsor_name"
     t.uuid     "hearing_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "human_summary"
     t.string   "os_id"
     t.integer  "session_number"
     t.string   "details_url"
-    t.jsonb    "raw_actions",    default: "{}"
-    t.jsonb    "stages",         default: "{}"
+    t.jsonb    "raw_actions",    default: []
+    t.jsonb    "stages",         default: []
     t.index ["external_id"], name: "index_bills_on_external_id", unique: true, using: :btree
     t.index ["hearing_id"], name: "index_bills_on_hearing_id", using: :btree
     t.index ["os_id"], name: "index_bills_on_os_id", unique: true, using: :btree
