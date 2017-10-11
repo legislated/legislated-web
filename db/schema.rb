@@ -18,21 +18,17 @@ ActiveRecord::Schema.define(version: 20170909210000) do
   enable_extension "uuid-ossp"
 
   create_table "bills", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "external_id",             null: false
-    t.string   "document_number",         null: false
+    t.integer  "external_id",    null: false
     t.string   "title"
     t.string   "summary"
     t.string   "sponsor_name"
-    t.string   "witness_slip_url"
     t.uuid     "hearing_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "witness_slip_result_url"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "human_summary"
     t.string   "os_id"
     t.integer  "session_number"
     t.string   "details_url"
-    t.string   "full_text_url"
     t.index ["external_id"], name: "index_bills_on_external_id", unique: true, using: :btree
     t.index ["hearing_id"], name: "index_bills_on_hearing_id", using: :btree
     t.index ["os_id"], name: "index_bills_on_os_id", unique: true, using: :btree
@@ -53,6 +49,19 @@ ActiveRecord::Schema.define(version: 20170909210000) do
     t.datetime "updated_at",  null: false
     t.index ["chamber_id"], name: "index_committees_on_chamber_id", using: :btree
     t.index ["external_id"], name: "index_committees_on_external_id", unique: true, using: :btree
+  end
+
+  create_table "documents", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "os_id"
+    t.string   "number",                           null: false
+    t.string   "full_text_url"
+    t.string   "slip_url"
+    t.string   "slip_results_url"
+    t.boolean  "is_amendment",     default: false
+    t.uuid     "bill_id",                          null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["bill_id"], name: "index_documents_on_bill_id", using: :btree
   end
 
   create_table "hearings", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

@@ -35,14 +35,12 @@ describe ImportHearingsJob do
 
     it 'updates committees that already exist' do
       subject.perform(chamber.id)
-      committee.reload
-      expect(committee).to have_attributes(committee_attrs)
+      expect(committee.reload).to have_attributes(committee_attrs)
     end
 
     it 'updates hearings that already exist' do
       subject.perform(chamber.id)
-      hearing.reload
-      expect(hearing).to have_attributes(hearing_attrs)
+      expect(hearing.reload).to have_attributes(hearing_attrs)
     end
 
     it "creates committees that don't exist" do
@@ -61,12 +59,6 @@ describe ImportHearingsJob do
     context "when the chamber doesn't exist" do
       it 'raises a not found error' do
         expect { subject.perform(SecureRandom.uuid) }.to raise_error(ActiveRecord::RecordNotFound)
-      end
-    end
-
-    context 'after catching a scraping error' do
-      before do
-        allow(mock_scraper).to receive(:run).and_raise(Scraper::Task::Error)
       end
     end
 

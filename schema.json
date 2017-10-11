@@ -151,6 +151,11 @@
             },
             {
               "kind": "OBJECT",
+              "name": "Document",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
               "name": "Hearing",
               "ofType": null
             },
@@ -1388,6 +1393,28 @@
                   "ofType": null
                 }
               },
+              "isDeprecated": true,
+              "deprecationReason": "moved to DocumentType"
+            },
+            {
+              "name": "documents",
+              "description": "The versions of the bill's document",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Document",
+                    "ofType": null
+                  }
+                }
+              },
               "isDeprecated": false,
               "deprecationReason": null
             },
@@ -1420,8 +1447,8 @@
                 "name": "String",
                 "ofType": null
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "moved to DocumentType"
             },
             {
               "name": "hearing",
@@ -1443,7 +1470,7 @@
             },
             {
               "name": "humanSummary",
-              "description": "The document's human-readable summary",
+              "description": "The human-readable summary",
               "args": [
 
               ],
@@ -1493,7 +1520,7 @@
             },
             {
               "name": "summary",
-              "description": "The document's official synopsis",
+              "description": "The official synopsis",
               "args": [
 
               ],
@@ -1507,7 +1534,7 @@
             },
             {
               "name": "title",
-              "description": "The document's title",
+              "description": "The title",
               "args": [
 
               ],
@@ -1530,11 +1557,142 @@
                 "name": "String",
                 "ofType": null
               },
+              "isDeprecated": true,
+              "deprecationReason": "moved to DocumentType"
+            },
+            {
+              "name": "witnessSlipUrl",
+              "description": "The URL of the witness slip form",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": true,
+              "deprecationReason": "moved to DocumentType"
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            }
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Document",
+          "description": "A version of a bill's text",
+          "fields": [
+            {
+              "name": "bill",
+              "description": "The parent bill",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Bill",
+                  "ofType": null
+                }
+              },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "witnessSlipUrl",
+              "name": "fullTextUrl",
+              "description": "The URL of the full text page",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "id",
+              "description": "The graph id",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "isAmendment",
+              "description": "Whether or not the document is an amendment",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "number",
+              "description": "The number of the document, e.g. HB 1234",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "slipResultsUrl",
+              "description": "The URL of the witness slip submission history",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "slipUrl",
               "description": "The URL of the witness slip form",
               "args": [
 

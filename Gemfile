@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
+# core
 gem 'graphql'
 gem 'honeybadger'
 gem 'pg'
@@ -29,6 +30,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'graphiql-rails'
+  gem 'guard-rspec'
   gem 'letter_opener_web'
   gem 'pry'
   gem 'pry-byebug'
