@@ -16,7 +16,6 @@ module Types
 
     # relationships
     field :hearing, !HearingType, 'The parent hearing'
-    field :actions, !ActionType.to_list_type, 'The actions on the bill'
     field :documents, !DocumentType.to_list_type, "The versions of the bill's document"
 
     field :committee, !CommitteeType, 'The parent committee' do
