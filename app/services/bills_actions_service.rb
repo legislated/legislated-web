@@ -87,6 +87,7 @@ class BillsActionsService
         action['actor'] + ':committee'
       when has_governor_stage_type?(types)
         'governor'
+      # TODO - handle veto
       # when has_veto_stage_type?(types)
       #   'veto'
       else
@@ -95,6 +96,7 @@ class BillsActionsService
   end
 
   # find the last corresponding introduced action by name for a completed action
+  # TODO - more advanced logic to handle committee actors
   def self.get_stage_for_completed_action(completed_action, stages)
     stage_name = get_stage_name(completed_action)
 
@@ -103,17 +105,6 @@ class BillsActionsService
     end
 
     eligible_stages.last
-
-    # stage = stages.select do |next_stage|
-    #   if next_stage['name'] == stage_name
-    #     unless next_stage['introduced'] > completed_action['date']
-    #       if stage.nil? || stage['introduced'] < next_stage['introduced']
-    #         stage = next_stage
-    #       end
-    #     end
-    #   end
-    #   stage
-    # end
   end
 
   def self.is_substantive_action?(action)
