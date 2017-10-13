@@ -136,6 +136,6 @@ class BillsActionsService
   end
 
   def self.has_type?(action_types, type_defs)
-    action_types.any? { |type| type_defs.include? type }
+    !(action_types & type_defs).empty?
   end
 end
