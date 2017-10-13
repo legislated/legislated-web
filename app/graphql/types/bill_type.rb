@@ -14,7 +14,7 @@ module Types
     field :sponsorName, !types.String, 'The name of the sponsoring legislator', property: :sponsor_name
     field :detailsUrl, types.String, 'The URL of the detail page', property: :details_url
     field :stages, !types[!StageType], 'The stages'
-    
+
     # relationships
     field :hearing, !HearingType, 'The parent hearing'
     field :documents, !DocumentType.to_list_type, "The versions of the bill's document"

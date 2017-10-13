@@ -51,13 +51,14 @@ class ImportBillsJob
     end
 
     # return the attrs map with extracted bill / document data
-    Attributes.new.tap do |attrs|
-      attrs.bill = parse_bill_attributes(source_url, data)
+    attrs = Attributes.new
+    attrs.bill = parse_bill_attributes(source_url, data)
 
-      attrs.documents = data['versions'].map do |version_data|
-        parse_document_attributes(version_data, data)
-      end
+    attrs.documents = data['versions'].map do |version_data|
+      parse_document_attributes(version_data, data)
     end
+
+    attrs
   end
 
   def parse_bill_attributes(source_url, data)
@@ -83,7 +84,7 @@ class ImportBillsJob
     sponsor = data['sponsors'].find { |s| s['type'] == 'primary' }
     bill_attrs[:sponsor_name] = sponsor['name'] if sponsor.present?
 
-    return bill_attrs
+    bill_attrs
   end
 
   def parse_document_attributes(version_data, data)
