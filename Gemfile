@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-# core
+# api
 gem 'graphql'
 gem 'honeybadger'
 gem 'pg'
@@ -17,6 +17,10 @@ gem 'capybara'
 gem 'httparty'
 gem 'poltergeist'
 
+# client
+gem 'webpacker'
+
+# development
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
