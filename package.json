@@ -100,7 +100,8 @@
     ],
     "moduleNameMapper": {
       "^shared/(.*)$": "<rootDir>/app/javascript/src/shared/$1",
-      "^mocks/(.*)$": "<rootDir>/app/javascript/test/mocks/$1"
+      "^mocks/(.*)$": "<rootDir>/app/javascript/test/mocks/$1",
+      ".*\\.png$": "<rootDir>/app/javascript/test/stubs/image.js"
     },
     "clearMocks": true
   },

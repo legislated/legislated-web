@@ -46,7 +46,7 @@ describe('#render', () => {
   describe('normally', () => {
     beforeEach(loadSubject)
 
-    it('shows the title', () => {
+    fit('shows the title', () => {
       expect(element.title()).toHaveText(bill.title)
     })
 

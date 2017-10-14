@@ -30,11 +30,12 @@ describe('#render', () => {
   beforeEach(() => {
     // TODO: add rosie.js factories
     bill = {
+      id: '1234',
       documentNumber: 'HB1234',
       title: 'Foo',
       summary: 'A bill, fantastic',
       witnessSlipUrl: 'http://www.test.com/slip',
-      billDetailsUrl: 'http://www.test.com/details',
+      detailsUrl: 'http://www.test.com/details',
       fullTextUrl: 'http://www.test.com/text',
       hearing: {
         date: '2010-01-01T00:00:00-06:00'
@@ -66,7 +67,7 @@ describe('#render', () => {
     })
 
     it('shows the details page link', () => {
-      expect(element.detailsLink()).toHaveProp('to', bill.detailsUrl)
+      expect(element.detailsLink()).toHaveProp('to', `bill/${bill.id}`)
     })
   })
 
