@@ -9,15 +9,13 @@
     "start": "./bin/webpack-dev-server",
     "build:staging": "webpack -p --env.env=staging",
     "build:prod": "webpack -p --env.env=production",
-    "deploy:staging": "yarn build:staging && yarn deploy:staging:sync",
-    "deploy:staging:sync": "aws s3 sync --acl public-read dist/ s3://staging.legislated.org --profile legislated-bucket-staging",
-    "deploy:prod": "yarn build:prod && yarn deploy:prod:sync",
-    "deploy:prod:sync": "aws s3 sync --acl public-read dist/ s3://legislated.org --profile legislated-bucket-production",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect --debug-brk ./node_modules/.bin/jest --runInBand",
-    "lint": "standard | snazzy",
-    "lint:fix": "standard --fix | snazzy",
+    "lint": "yarn lint:bare | snazzy",
+    "lint:fix": "yarn lint:bare --fix | snazzy",
+    "lint:bare": "standard './app/javascript/**/*.js'",
+    "flow": "flow",
     "flow:restart": "flow stop && flow",
     "validate": "yarn lint && yarn flow && yarn test",
     "relay": "relay-compiler --src ./src --schema schema.json",
@@ -80,40 +78,31 @@
   },
   "babel": {
     "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "browsers": [
-              "last 2 versions"
-            ]
-          }
-        }
-      ],
+      ["env", {
+        "targets": { "browsers": [ "last 2 versions" ] }
+      }],
       "react"
     ],
     "plugins": [
-      [
-        "relay",
-        {
-          "compat": true,
-          "schema": "schema.json"
-        }
-      ],
+      ["relay", { "schema": "schema.json" }],
       "transform-flow-strip-types",
       "transform-class-properties",
       "transform-object-rest-spread"
     ]
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./test/setupFramework.js",
+    "setupTestFrameworkScriptFile": "./app/javascript/test/setupFramework.js",
     "setupFiles": [
-      "./test/setup.js"
+      "./app/javascript/test/setup.js"
+    ],
+    "roots": [
+      "./app/javascript"
     ],
     "moduleNameMapper": {
-      "^shared/(.*)$": "<rootDir>/src/shared/$1",
-      "^mocks/(.*)$": "<rootDir>/test/mocks/$1"
-    }
+      "^shared/(.*)$": "<rootDir>/app/javascript/src/shared/$1",
+      "^mocks/(.*)$": "<rootDir>/app/javascript/test/mocks/$1"
+    },
+    "clearMocks": true
   },
   "standard": {
     "parser": "babel-eslint",
