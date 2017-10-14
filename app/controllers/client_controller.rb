@@ -1,4 +1,3 @@
 class ClientController < ActionController::Base
-  def index
-  end
+  def index; end
 end

@@ -10,6 +10,7 @@ AllCops:
     - db/**/*
     - vendor/**/*
     - spec/**/*
+    - node_modules/**/*
 
 # rails
 Rails:
