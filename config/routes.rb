@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   root to: 'client#index'
-  post '/graphql', to: 'api#execute'
+  post '/api/graphql', to: 'api#execute'
 
   if Rails.env.development?
     mount Sidekiq::Web => '/sidekiq'

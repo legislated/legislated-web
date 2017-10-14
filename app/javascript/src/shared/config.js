@@ -9,13 +9,13 @@ type Config = {|
 export function loadConfig () {
   const configs: { [key: string]: Config } = {
     development: {
-      graphUrl: 'http://localhost:5000/graphql'
+      graphUrl: 'http://localhost:3000/api/graphql'
     },
     staging: {
-      graphUrl: 'https://legislated-staging.herokuapp.com/graphql'
+      graphUrl: 'https://legislated-staging.herokuapp.com/api/graphql'
     },
     production: {
-      graphUrl: 'https://legislated.herokuapp.com/graphql'
+      graphUrl: 'https://legislated.herokuapp.com/api/graphql'
     }
   }
 

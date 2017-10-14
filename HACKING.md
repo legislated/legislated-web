@@ -11,18 +11,18 @@
 ## Setup [↑](#table-of-contents)
 
 A quick foreword (**please don't ignore this**):
-- If you don't use a ruby version manager like rbenv/rvm, please [install one now](https://github.com/rbenv/rbenv)
-- Some packages need to be installed using your system's package manager
+- If you don't use a tool to manage multiple ruby versions, please [install rbenv](https://github.com/rbenv/rbenv)
+- Some packages must be installed using your system's package manager
 - You can find some platform-specific documentation for [Mac](wiki/osx.md) and [Ubuntu](wiki/ubuntu.md)
 
-Install the necessary global dependencies.
-- readline -> **must** be installed before Ruby
+Install the global dependencies:
 - ruby (2.3.0) -> [installation](https://github.com/rbenv/rbenv)
 - bundler -> `gem install bundler`
-- foreman -> `gem install foreman`
 - postgresql
-- redis
-- phantomjs
+
+Install the optional global dependencies (to get going faster, skip this for now):
+- phantomjs (intially optional, needed for specs / scraping)
+- redis (intially optional, needed for background jobs)
 
 Copy over the development .env file:
 
@@ -36,18 +36,31 @@ Then install local dependencies with bundler:
 $ bundle
 ```
 
-## Development [↑](#table-of-contents)
-
-Make **sure** Postgres and Redis are started, and then start the server with:
-
-```sh
-$ foreman start
-```
-
-The first time you run the application, you'll also need to setup the database (if you make any database changes you can also run this again):
+Make **sure** Postgres is started, and then setup the local database:
 
 ```sh
 $ rails db:reset
+```
+
+
+## Development [↑](#table-of-contents)
+
+Start the server with:
+
+```sh
+$ rails s
+```
+
+You can re-seed the database to get fresh (fake) data at any time using:
+
+```sh
+$ rails db:reset
+```
+
+If you're working on a background job and want it to actually run, make **sure** redis is is started and then run:
+
+```sh
+$ bundle exec sidekiq
 ```
 
 You can use the rails console to explore the database through using [ActiveRecord](http://guides.rubyonrails.org/active_record_querying.html):
@@ -59,7 +72,9 @@ $ rails console
 You can use the interactive debugger [pry](http://pryrepl.org/) to set breakpoints and explore the code at runtime:
 
 ```ruby
-binding.pry
+def method
+  binding.pry # <- breakpoint, like 'debugger' in javascript
+end
 ```
 
 Before pushing anything, please make sure to run the linter and tests using `rake`.

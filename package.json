@@ -6,7 +6,7 @@
   "author": "Ty Cobb",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --debug --hot --inline --env.env=development",
+    "start": "./bin/webpack-dev-server",
     "build:staging": "webpack -p --env.env=staging",
     "build:prod": "webpack -p --env.env=production",
     "deploy:staging": "yarn build:staging && yarn deploy:staging:sync",

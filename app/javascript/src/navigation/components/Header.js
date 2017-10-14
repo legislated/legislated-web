@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom'
 import { MobileNav } from './MobileNav'
 import { NavLinkList } from './NavLinkList'
 import { stylesheet, colors, alpha, mixins } from 'shared/styles'
+import logo from '../../../images/logo.png'
 
 export class Header extends Component {
   // lifecycle
   render () {
     return <div {...rules.container}>
       <Link {...rules.logoLink} to='/'>
-        <img src='/assets/logo.png' alt='Legislated' height='40' width='40' />
+        <img src={logo} alt='Legislated' height='40' width='40' />
         <span>LEGISLATED</span>
       </Link>
       <MobileNav />
