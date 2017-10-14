@@ -22,6 +22,9 @@ Rails/Output:
 Rails/HasManyOrHasOneDependent:
   Enabled: false
 
+Rails/Delegate:
+  Enabled: false
+
 # relaxed ruby style
 Style/Alias:
   Enabled: false
