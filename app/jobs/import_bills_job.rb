@@ -5,16 +5,17 @@ class ImportBillsJob
     attr_accessor :bill, :documents
   end
 
-  def initialize(redis = Redis.new, service = OpenStatesService.new)
+  def initialize(redis = Redis.new, open_states_service = OpenStatesService.new, steps_parser = StepsParser.new)
     @redis = redis
-    @service = service
+    @open_states_service = open_states_service
+    @steps_parser = steps_parser
   end
 
   def perform
     import_date = @redis.get(:import_bills_job_date)&.to_time
 
     # collect the attributes
-    parsed_attributes = @service
+    parsed_attributes = @open_states_service
       .fetch_bills(fields: fields, updated_since: import_date)
       .map { |data| parse_attributes(data) }
       .reject(&:nil?)
@@ -65,13 +66,11 @@ class ImportBillsJob
     params = CGI.parse(URI.parse(source_url).query)
       .transform_values(&:first)
 
-    stages = BillsActionsService.compute_stages(data['actions'])
-
     bill_attrs = {
       external_id: params['LegId'],
       os_id: data['id'],
-      raw_actions: data['actions'],
-      stages: stages,
+      actions: data['actions'],
+      steps: @steps_parser.parse_actions(data['actions']),
       title: data['title'],
       session_number: data['session'].gsub(/[a-z]+/, '')
     }

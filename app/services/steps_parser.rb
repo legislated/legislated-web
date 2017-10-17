@@ -1,4 +1,4 @@
-class BillsActionsService
+class StepsParser
   module ActionTypes
     INTRODUCED = %w[
       bill:filed
@@ -49,7 +49,7 @@ class BillsActionsService
     ].freeze
   end
 
-  def self.compute_stages(actions)
+  def parse_actions(actions)
     # create a stage for each introduced action
     stages = actions
       .select { |action| introduced_action?(action) }

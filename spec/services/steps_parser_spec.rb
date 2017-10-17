@@ -1,5 +1,5 @@
-describe BillsActionsService do
-  subject { described_class }
+describe StepsParser do
+  subject { described_class.new }
 
   describe '#has_type?' do
     it 'is false when none of the action types exists in the type definitions' do
@@ -36,7 +36,7 @@ describe BillsActionsService do
       action = {
         'actor' => actor,
         'type' => [
-          BillsActionsService::StageTypes::GOVERNOR[0],
+          StepsParser::StageTypes::GOVERNOR[0],
           'foobarbaz:barbaz'
         ]
       }
@@ -49,7 +49,7 @@ describe BillsActionsService do
       action = {
         'actor' => actor,
         'type' => [
-          BillsActionsService::StageTypes::COMMITTEE[0],
+          StepsParser::StageTypes::COMMITTEE[0],
           'foobarbaz:barbaz'
         ]
       }
@@ -110,7 +110,7 @@ describe BillsActionsService do
     end
   end
 
-  describe '#compute_stages' do
+  describe '#parse_actions' do
     it 'works' do
       actions_attrs = [{
         'date' => '2017-02-10 00:00:00',
@@ -159,7 +159,7 @@ describe BillsActionsService do
         failed: false
       }]
 
-      expect(subject.compute_stages(actions_attrs)).to contain_exactly(*expected_stages)
+      expect(subject.parse_actions(actions_attrs)).to contain_exactly(*expected_stages)
     end
   end
 end

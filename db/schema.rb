@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921193023) do
+ActiveRecord::Schema.define(version: 20171017225846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20170921193023) do
     t.string   "os_id"
     t.integer  "session_number"
     t.string   "details_url"
-    t.jsonb    "raw_actions",    default: []
-    t.jsonb    "stages",         default: []
+    t.jsonb    "actions",        default: []
+    t.jsonb    "steps",          default: []
     t.index ["external_id"], name: "index_bills_on_external_id", unique: true, using: :btree
     t.index ["hearing_id"], name: "index_bills_on_hearing_id", using: :btree
     t.index ["os_id"], name: "index_bills_on_os_id", unique: true, using: :btree
