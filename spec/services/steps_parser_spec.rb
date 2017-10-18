@@ -112,7 +112,7 @@ describe StepsParser do
 
   describe '#parse_actions' do
     it 'works' do
-      actions_attrs = [{
+      actions = [{
         'date' => '2017-02-10 00:00:00',
         'action' => 'Assigned to Criminal Law',
         'type' => ['bill:filed'],
@@ -136,30 +136,62 @@ describe StepsParser do
         'date' => '2017-03-08 00:00:00',
         'action' => 'Assigned to Criminal Law',
         'type' => ['committee:passed'],
-        'actor' => 'upper'
+        'actor' => 'committee'
       }, {
         'actor' => 'lower',
         'action' => 'Assigned to Criminal Law',
         'date' => '2017-04-28 00:00:00',
         'type' => ['bill:reading:3', 'bill:introduced', 'bill:passed']
       }]
+      # }, {
+      #   "date": "2017-06-05 00:00:00",
+      #   "action": "Sent to the Governor",
+      #   "type": [ "governor:received" ],
+      #   "actor": "lower"
+      # }, {
+      #   "date": "2017-06-09 00:00:00",
+      #   "action": "Governor Approved",
+      #   "type": [ "governor:signed" ],
+      #   "actor": "lower"
+      # }]
 
-      expected_stages = [{
-        introduced_date: '2017-02-10 00:00:00',
-        name: 'upper'
+      expected_steps = [{
+        actor: 'upper',
+        action: 'introduced',
+        resolution: 'n/a',
+        date: '2017-02-10 00:00:00'
       }, {
-        introduced_date: '2017-02-28 00:00:00',
-        name: 'upper:committee',
-        completed_date: '2017-03-08 00:00:00',
-        failed: false
+        actor: 'upper:committee',
+        action: 'introduced',
+        resolution: 'n/a',
+        date: '2017-02-28 00:00:00'
       }, {
-        name: 'lower',
-        introduced_date: '2017-04-28 00:00:00',
-        completed_date: '2017-04-28 00:00:00',
-        failed: false
+        actor: 'upper:committee',
+        action: 'resolved',
+        resolution: 'passed',
+        date: '2017-03-08 00:00:00'
+      }, {
+        actor: 'lower',
+        action: 'introduced',
+        resolution: 'n/a',
+        date: '2017-04-28 00:00:00'
+      }, {
+        actor: 'lower',
+        action: 'resolved',
+        resolution: 'passed',
+        date: '2017-04-28 00:00:00'
       }]
+      # }, {
+      #   name: 'governor:introduced',
+      #   resolution: 'n/a',
+      #   date: '2017-06-05 00:00:00'
+      # }, {
+      #   name: 'governor:resolved',
+      #   resolution: 'signed',
+      #   date: '2017-06-09 00:00:00'
+      # }]
 
-      expect(subject.parse_actions(actions_attrs)).to contain_exactly(*expected_stages)
+      expect(subject.parse_actions(actions)).to eq(expected_steps)
     end
   end
 end
