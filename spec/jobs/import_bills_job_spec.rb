@@ -140,14 +140,12 @@ describe ImportBillsJob do
         end
 
         it "sets the bill's stages" do
-          steps = %w[step1 step2]
+          steps = [{ actor: 'actor-1' }, { actor: 'actor-2' }]
           allow(mock_steps_parser).to receive(:parse).and_return(steps)
           allow(mock_open_states_service).to receive(:fetch_bills).and_return(response)
 
           subject.perform
-          expect(bill.reload).to have_attributes({
-            steps: steps
-          })
+          expect(bill.reload.steps.map(&:actor)).to eq(steps.map { |s| s[:actor] })
         end
 
         it 'imports details for the bill' do

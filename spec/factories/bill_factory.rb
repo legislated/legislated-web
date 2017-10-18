@@ -20,17 +20,15 @@ FactoryGirl.define do
       documents { build_list(:document, 1) }
     end
 
-    trait :with_actions do
-      actions { build_list(:action, 1) }
+    trait :with_steps do
+      steps { attributes_for_list(:step, 1) }
     end
   end
 
-  factory :open_states_action, class: Hash do
-    action { 'Drink ' + Faker::Beer.name }
-    actor 'Upper'
-    type ['bill:introduced']
+  factory :step, class: Hash do
+    actor { 'lower' }
+    action { 'introduced' }
+    resolution { 'n/a' }
     date { Faker::Time.between(1.month.ago, Time.zone.today).to_s }
-
-    initialize_with { attributes.stringify_keys }
   end
 end

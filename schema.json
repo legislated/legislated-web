@@ -1519,8 +1519,8 @@
               "deprecationReason": null
             },
             {
-              "name": "stages",
-              "description": "The stages",
+              "name": "steps",
+              "description": "The procedural steps a bill can take",
               "args": [
 
               ],
@@ -1531,13 +1531,9 @@
                   "kind": "LIST",
                   "name": null,
                   "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Stage",
-                      "ofType": null
-                    }
+                    "kind": "OBJECT",
+                    "name": "Step",
+                    "ofType": null
                   }
                 }
               },
@@ -1614,54 +1610,48 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Stage",
-          "description": "A bill stage",
+          "name": "Step",
+          "description": "A procedural step for a bill",
           "fields": [
             {
-              "name": "completed_date",
-              "description": "The completed date",
+              "name": "action",
+              "description": null,
               "args": [
 
               ],
               "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "StepAction",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "failed",
-              "description": "THe failure status",
+              "name": "actor",
+              "description": null,
               "args": [
 
               ],
               "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "StepActor",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "introduced_date",
-              "description": "The introduced date",
-              "args": [
-
-              ],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "name",
-              "description": "The stage name",
+              "name": "date",
+              "description": null,
               "args": [
 
               ],
@@ -1670,7 +1660,25 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Time",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "resolution",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "StepResolution",
                   "ofType": null
                 }
               },
@@ -1683,6 +1691,111 @@
 
           ],
           "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "StepActor",
+          "description": "All possible actors for a step",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "lower",
+              "description": "The lower chamber (House)",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "lower:committee",
+              "description": "A committee in the lower chamber",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "upper",
+              "description": "The upper chamber (Senate)",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "upper:committee",
+              "description": "A committee in the upper chamber",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "governor",
+              "description": "The governor",
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "StepAction",
+          "description": "All possible events an actor can experience",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "introduced",
+              "description": "The actor introduced the bill",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "resolved",
+              "description": "The actor resolved the bill",
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "StepResolution",
+          "description": "All possible resolution states for an action",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "passed",
+              "description": "The bill passed a vote",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "failed",
+              "description": "The bill failed a vote",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "signed",
+              "description": "The governor signed the bill",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "vetoed",
+              "description": "The governor vetoed the bill",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "vetoed:line",
+              "description": "The governor line-item vetoed the bill",
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
           "possibleTypes": null
         },
         {

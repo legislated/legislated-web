@@ -13,10 +13,11 @@ module Types
     field :humanSummary, types.String, 'The human-readable summary', property: :human_summary
     field :sponsorName, !types.String, 'The name of the sponsoring legislator', property: :sponsor_name
     field :detailsUrl, types.String, 'The URL of the detail page', property: :details_url
-    field :stages, !types[!StageType], 'The stages'
+    field :steps, !types[StepType], 'The procedural steps a bill can take'
 
     # relationships
     field :hearing, !HearingType, 'The parent hearing'
+
     field :documents, !DocumentType.to_list_type, "The versions of the bill's document"
 
     field :committee, !CommitteeType, 'The parent committee' do
