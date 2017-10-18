@@ -1,36 +1,116 @@
 class StepsParser
+  def parse(actions)
+    actions = actions
+      .map(&:with_indifferent_access)
+      .reject { |action| nonessential_action?(action) }
+      .flat_map { |action| expand_action(action) }
+
+    actions
+      .zip(parse_actors(actions))
+      .map { |action, actor| parse_step(action, actor) }
+      .compact
+  end
+
+  private
+
+  # preparation
+  def nonessential_action?(action)
+    action[:action].match(/(Assignments|Rules)$/)
+  end
+
+  def expand_action(action)
+    attrs = action.slice(:actor, :date)
+    action[:type].map do |type|
+      attrs.merge(type: type)
+    end
+  end
+
+  # step
+  def parse_step(action, actor)
+    action_name = parse_action(action[:type])
+    return nil if action_name.nil?
+
+    step = {
+      actor: actor,
+      action: action_name,
+      resolution: parse_resolution(action[:type]),
+      date: action[:date]
+    }
+
+    step
+  end
+
+  # fields
+  def parse_actors(actions)
+    actions.reduce([]) do |actors, action|
+      actors + [parse_actor(action, actors)]
+    end
+  end
+
+  def parse_actor(action, actors)
+    actor, action_type = action.values_at(:actor, :type)
+
+    # use an explicit governor instead of chamber
+    if action_type.start_with?('governor')
+      'governor'
+    # prepend the chamber the first committee action
+    elsif action_type == 'committee:referred'
+      "#{actor}:committee"
+    # use the previous chamber:committee actor subsequently
+    elsif actor == 'committee'
+      actors.last
+    # use the chamber otherwise
+    else
+      actor
+    end
+  end
+
+  def parse_action(action_type)
+    find_mapping(action_type, STEP_ACTIONS)
+  end
+
+  def parse_resolution(action_type)
+    find_mapping(action_type, STEP_RESOLUTIONS) || 'n/a'
+  end
+
+  # mappings
+  def find_mapping(action_type, mappings)
+    key, _ = mappings.find { |_, action_types| action_types.include?(action_type) }
+    key&.to_s
+  end
+
   STEP_RESOLUTIONS = {
-    'passed' => [
+    passed: [
       'committee:passed',
       'committee:passed:favorable',
       'committee:passed:unfavorable',
       'bill:passed',
       'bill:veto_override:passed'
     ],
-    'failed' => [
+    failed: [
       'committee:failed',
       'bill:failed',
-      'bill:veto_override:failed',
+      'bill:veto_override:failed'
     ],
-    'signed' => [
+    signed: [
       'governor:signed'
     ],
-    'vetoed' => [
+    vetoed: [
       'governor:vetoed'
     ],
-    'line-vetoed' => [
+    line_vetoed: [
       'governor:vetoed:line-item'
     ]
   }
 
   STEP_ACTIONS = {
-    'introduced' => [
+    introduced: [
       'bill:filed',
       'bill:introduced',
       'committee:referred',
       'governor:received'
     ],
-    'resolved' => [
+    resolved: [
       'committee:failed',
       'committee:passed',
       'committee:passed:favorable',
@@ -44,70 +124,4 @@ class StepsParser
       'governor:signed'
     ]
   }
-
-  def parse_actions(actions)
-    actions = flatten_actions(actions)
-    actors = parse_actors(actions)
-
-    actions
-      .map.with_index { |action, index|
-        action_name = parse_action(action[:type])
-
-        if action_name.nil?
-          nil
-        else
-          {
-            actor: actors[index],
-            action: action_name,
-            resolution: parse_resolution(action[:type]),
-            date: action[:date]
-          }
-        end
-      }
-      .compact
-  end
-
-  # preparation
-  def flatten_actions(actions)
-    actions
-      .map(&:with_indifferent_access)
-      .reject { |a| a[:action].match(/(Assignments|Rules)$/) }
-      .flat_map { |a|
-        a[:type].map { |type| a.slice(:actor, :date).merge(type: type) }
-      }
-  end
-
-  # fields
-  def parse_actors(actions)
-    actions.reduce([]) do |actors, action|
-      actor, type = action[:actor], action[:type]
-
-      # use an explicit governor instead of chamber
-      if type.start_with?('governor')
-        actors + ['governor']
-      # prepend the chamber for the first committee actor
-      elsif type == 'committee:referred'
-        actors + ["#{actor}:committee"]
-      # use the last committe actor (already prepended with chamber)
-      elsif actor == 'committee'
-        actors + [actors.last]
-      else
-        actors + [actor]
-      end
-    end
-  end
-
-  def parse_action(type)
-    STEP_ACTIONS
-      .find { |_, action_types| action_types.include?(type) }
-      .try(:first)
-  end
-
-  def parse_resolution(type)
-    resolution = STEP_RESOLUTIONS
-      .find { |_, action_types| action_types.include?(type) }
-      .try(:first)
-
-    resolution || 'n/a'
-  end
 end

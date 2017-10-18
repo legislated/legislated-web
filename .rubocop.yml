@@ -57,17 +57,17 @@ Style/NumericLiterals:
 Style/Lambda:
   EnforcedStyle: literal
 
-Style/SpaceInLambdaLiteral:
-  EnforcedStyle: require_space
-
 Style/BracesAroundHashParameters:
   Enabled: false
 
-Style/IndentHash:
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
+
+Layout/IndentHash:
   EnforcedStyle: consistent
 
-Style/MultilineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
-Style/FirstParameterIndentation:
+Layout/FirstParameterIndentation:
   Enabled: false
