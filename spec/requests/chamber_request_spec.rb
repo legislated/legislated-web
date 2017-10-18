@@ -8,7 +8,7 @@ describe 'A chamber request', graphql: :request do
       type
     ]
 
-    query = <<-eos
+    query = <<-QUERY
       query {
         viewer {
           chamber(id: "#{chamber.id}") {
@@ -16,7 +16,7 @@ describe 'A chamber request', graphql: :request do
           }
         }
       }
-    eos
+    QUERY
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
@@ -26,7 +26,7 @@ describe 'A chamber request', graphql: :request do
   end
 
   it 'fetches multiple chambers' do
-    query = <<-eos
+    query = <<-QUERY
       query {
         viewer {
           chambers {
@@ -38,7 +38,7 @@ describe 'A chamber request', graphql: :request do
           }
         }
       }
-    eos
+    QUERY
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank

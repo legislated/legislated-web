@@ -15,7 +15,7 @@ describe 'A bill request', graphql: :request do
       witnessSlipResultUrl
     ]
 
-    query = <<-eos
+    query = <<-QUERY
       query {
         viewer {
           bill(id: "#{bill.id}") {
@@ -23,7 +23,7 @@ describe 'A bill request', graphql: :request do
           }
         }
       }
-    eos
+    QUERY
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
@@ -35,7 +35,7 @@ describe 'A bill request', graphql: :request do
   it 'fetches multiple bills' do
     create_list(:bill, 2, :with_any_hearing)
 
-    query = <<-eos
+    query = <<-QUERY
       query {
         viewer {
           bills(first: 1) {
@@ -48,7 +48,7 @@ describe 'A bill request', graphql: :request do
           }
         }
       }
-    eos
+    QUERY
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank

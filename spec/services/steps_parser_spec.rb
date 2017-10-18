@@ -34,15 +34,15 @@ describe StepsParser do
         'date' => '2017-04-28 00:00:00',
         'type' => ['bill:reading:3', 'bill:introduced', 'bill:passed']
       }, {
-        "date": "2017-06-05 00:00:00",
-        "action": "Sent to the Governor",
-        "type": [ "governor:received" ],
-        "actor": "lower"
+        "date": '2017-06-05 00:00:00',
+        "action": 'Sent to the Governor',
+        "type": ['governor:received'],
+        "actor": 'lower'
       }, {
-        "date": "2017-06-09 00:00:00",
-        "action": "Governor Approved",
-        "type": [ "governor:signed" ],
-        "actor": "lower"
+        "date": '2017-06-09 00:00:00',
+        "action": 'Governor Approved',
+        "type": ['governor:signed'],
+        "actor": 'lower'
       }]
 
       expect(subject.parse(actions)).to eq([{

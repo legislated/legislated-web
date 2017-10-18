@@ -54,7 +54,6 @@ class ImportBillsJob
     # return the attrs map with extracted bill / document data
     attrs = Attributes.new
     attrs.bill = parse_bill_attributes(source_url, data)
-
     attrs.documents = data['versions'].map do |version_data|
       parse_document_attributes(version_data, data)
     end
@@ -70,7 +69,7 @@ class ImportBillsJob
       external_id: params['LegId'],
       os_id: data['id'],
       actions: data['actions'],
-      steps: @steps_parser.parse_actions(data['actions']),
+      steps: @steps_parser.parse(data['actions']),
       title: data['title'],
       session_number: data['session'].gsub(/[a-z]+/, '')
     }

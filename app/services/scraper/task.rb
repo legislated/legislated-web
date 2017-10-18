@@ -39,7 +39,7 @@ module Scraper
         active = page.evaluate_script('jQuery.active')
         active = page.evaluate_script('jQuery.active') until active.zero?
       end
-    rescue
+    rescue StandardError
       raise Error, "#{task_name}: timed-out waiting ajax to finish"
     end
   end

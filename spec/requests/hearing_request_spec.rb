@@ -9,7 +9,7 @@ describe 'A hearing request', graphql: :request do
       date
     ]
 
-    query = <<-eos
+    query = <<-QUERY
       query {
         viewer {
           hearing(id: "#{hearing.id}") {
@@ -17,7 +17,7 @@ describe 'A hearing request', graphql: :request do
           }
         }
       }
-    eos
+    QUERY
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
@@ -27,7 +27,7 @@ describe 'A hearing request', graphql: :request do
   end
 
   it 'fetches multiple hearings' do
-    query = <<-eos
+    query = <<-QUERY
       query {
         viewer {
           hearings {
@@ -39,7 +39,7 @@ describe 'A hearing request', graphql: :request do
           }
         }
       }
-    eos
+    QUERY
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank

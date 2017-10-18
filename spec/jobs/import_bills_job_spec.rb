@@ -3,7 +3,7 @@ describe ImportBillsJob do
 
   let(:mock_redis) { double('Redis') }
   let(:mock_open_states_service) { double('OpenStatesService') }
-  let(:mock_steps_parser) { double('StepsParesr') }
+  let(:mock_steps_parser) { double('StepsParser') }
 
   describe '#perform' do
     let(:date) { Time.zone.now }
@@ -14,7 +14,7 @@ describe ImportBillsJob do
       allow(mock_redis).to receive(:get).with(:import_bills_job_date)
       allow(mock_redis).to receive(:set).with(:import_bills_job_date, anything)
       allow(mock_open_states_service).to receive(:fetch_bills).and_return([].lazy)
-      allow(mock_steps_parser).to receive(:parse_actions).and_return([])
+      allow(mock_steps_parser).to receive(:parse).and_return([])
 
       allow(ImportBillDetailsJob).to receive(:perform_async)
     end
@@ -97,44 +97,6 @@ describe ImportBillsJob do
           ))
         end
 
-        xit "sets the bill's raw_actions" do
-          num_actions = 5
-          actions_attrs = attributes_for_list(:open_states_action, num_actions)
-
-          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
-            'id' => bill_attrs[:os_id],
-            'actions' => actions_attrs.map(&:stringify_keys)
-          ))
-
-          subject.perform
-          expect(bill.reload).to have_attributes({
-            os_id: bill_attrs[:os_id],
-            raw_actions: actions_attrs.map(&:stringify_keys)
-          })
-        end
-
-        xit "sets the bill's stages" do
-          actions_attrs = [{
-            'date' => '2017-02-10 00:00:00',
-            'action' => 'Assigned to Criminal Law',
-            'type' => ['bill:filed'],
-            'actor' => 'upper'
-          }, {
-            'actor' => 'lower',
-            'action' => 'Assigned to Criminal Law',
-            'date' => '2017-04-27 00:00:00',
-            'type' => ['bill:reading:3', 'bill:introduced', 'bill:passed']
-          }]
-
-          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
-            'id' => bill_attrs[:os_id],
-            'actions' => actions_attrs
-          ))
-
-          subject.perform
-          expect(bill.reload[:stages]).to_not be_empty
-        end
-
         it "sets the bill's source-url derived attributes" do
           query = 'DocNum=1234&DocTypeID=SB&GAID=2&SessionID=3'
 
@@ -163,6 +125,29 @@ describe ImportBillsJob do
           expect(bill.reload).to have_attributes(bill_attrs.slice(
             :sponsor_name
           ))
+        end
+
+        it "sets the bill's actions" do
+          actions = %w[action1 action2]
+          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
+            'actions' => actions
+          ))
+
+          subject.perform
+          expect(bill.reload).to have_attributes({
+            actions: actions
+          })
+        end
+
+        it "sets the bill's stages" do
+          steps = %w[step1 step2]
+          allow(mock_steps_parser).to receive(:parse).and_return(steps)
+          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response)
+
+          subject.perform
+          expect(bill.reload).to have_attributes({
+            steps: steps
+          })
         end
 
         it 'imports details for the bill' do

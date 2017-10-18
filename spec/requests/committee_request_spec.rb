@@ -8,7 +8,7 @@ describe 'A committee request', graphql: :request do
       name
     ]
 
-    query = <<-eos
+    query = <<-QUERY
       query {
         viewer {
           committee(id: "#{committee.id}") {
@@ -16,7 +16,7 @@ describe 'A committee request', graphql: :request do
           }
         }
       }
-    eos
+    QUERY
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
@@ -26,7 +26,7 @@ describe 'A committee request', graphql: :request do
   end
 
   it 'fetches multiple committees' do
-    query = <<-eos
+    query = <<-QUERY
       query {
         viewer {
           committees {
@@ -38,7 +38,7 @@ describe 'A committee request', graphql: :request do
           }
         }
       }
-    eos
+    QUERY
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank

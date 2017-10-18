@@ -60,14 +60,17 @@ Style/Lambda:
 Style/BracesAroundHashParameters:
   Enabled: false
 
-Layout/SpaceInLambdaLiteral:
+Style/TrailingUnderscoreVariable:
+  Enabled: false
+
+Style/SpaceInLambdaLiteral:
   EnforcedStyle: require_space
 
-Layout/IndentHash:
+Style/IndentHash:
   EnforcedStyle: consistent
 
-Layout/MultilineMethodCallIndentation:
+Style/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
-Layout/FirstParameterIndentation:
+Style/FirstParameterIndentation:
   Enabled: false

@@ -1,10 +1,12 @@
 class StepsParser
   def parse(actions)
+    # prepare and expand actions based so that each has a single type
     actions = actions
       .map(&:with_indifferent_access)
       .reject { |action| nonessential_action?(action) }
       .flat_map { |action| expand_action(action) }
 
+    # wind together actions with actors and build steps
     actions
       .zip(parse_actors(actions))
       .map { |action, actor| parse_step(action, actor) }
@@ -50,7 +52,7 @@ class StepsParser
   def parse_actor(action, actors)
     actor, action_type = action.values_at(:actor, :type)
 
-    # use an explicit governor instead of chamber
+    # use 'governor' instead of chamber
     if action_type.start_with?('governor')
       'governor'
     # prepend the chamber the first committee action
@@ -101,7 +103,7 @@ class StepsParser
     line_vetoed: [
       'governor:vetoed:line-item'
     ]
-  }
+  }.freeze
 
   STEP_ACTIONS = {
     introduced: [
@@ -123,5 +125,5 @@ class StepsParser
       'governor:vetoed:line-item',
       'governor:signed'
     ]
-  }
+  }.freeze
 end
