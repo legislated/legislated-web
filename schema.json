@@ -1696,37 +1696,37 @@
         {
           "kind": "ENUM",
           "name": "StepActor",
-          "description": "All possible actors for a step",
+          "description": "The governing body that took this step",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
           "enumValues": [
             {
-              "name": "lower",
+              "name": "LOWER",
               "description": "The lower chamber (House)",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "lower:committee",
+              "name": "LOWER_COMMITTEE",
               "description": "A committee in the lower chamber",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "upper",
+              "name": "UPPER",
               "description": "The upper chamber (Senate)",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "upper:committee",
+              "name": "UPPER_COMMITTEE",
               "description": "A committee in the upper chamber",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "governor",
+              "name": "GOVERNOR",
               "description": "The governor",
               "isDeprecated": false,
               "deprecationReason": null
@@ -1737,19 +1737,19 @@
         {
           "kind": "ENUM",
           "name": "StepAction",
-          "description": "All possible events an actor can experience",
+          "description": "The actions an actor can take",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
           "enumValues": [
             {
-              "name": "introduced",
+              "name": "INTRODUCED",
               "description": "The actor introduced the bill",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "resolved",
+              "name": "RESOLVED",
               "description": "The actor resolved the bill",
               "isDeprecated": false,
               "deprecationReason": null
@@ -1760,38 +1760,44 @@
         {
           "kind": "ENUM",
           "name": "StepResolution",
-          "description": "All possible resolution states for an action",
+          "description": "The resolutions for an action can have",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
           "enumValues": [
             {
-              "name": "passed",
+              "name": "PASSED",
               "description": "The bill passed a vote",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "failed",
+              "name": "FAILED",
               "description": "The bill failed a vote",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "signed",
+              "name": "SIGNED",
               "description": "The governor signed the bill",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "vetoed",
+              "name": "VETOED",
               "description": "The governor vetoed the bill",
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "vetoed:line",
+              "name": "VETOED_LINE",
               "description": "The governor line-item vetoed the bill",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "NONE",
+              "description": "The action has no resolution",
               "isDeprecated": false,
               "deprecationReason": null
             }

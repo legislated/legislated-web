@@ -36,7 +36,7 @@ class StepsParser
       actor: actor,
       action: action_name,
       resolution: parse_resolution(action[:type]),
-      date: action[:date]
+      date: parse_date(action[:date])
     }
 
     step
@@ -45,7 +45,8 @@ class StepsParser
   # fields
   def parse_actors(actions)
     actions.reduce([]) do |actors, action|
-      actors + [parse_actor(action, actors)]
+      actor = parse_actor(action, actors)
+      actors + [Step::Actors.coerce!(actor)]
     end
   end
 
@@ -72,47 +73,52 @@ class StepsParser
   end
 
   def parse_resolution(action_type)
-    find_mapping(action_type, STEP_RESOLUTIONS) || 'n/a'
+    find_mapping(action_type, STEP_RESOLUTIONS) || Step::Resolutions::NONE
+  end
+
+  def parse_date(date)
+    date.to_time.iso8601
   end
 
   # mappings
   def find_mapping(action_type, mappings)
-    key, _ = mappings.find { |_, action_types| action_types.include?(action_type) }
-    key&.to_s
+    mappings
+      .find { |_, action_types| action_types.include?(action_type) }
+      .try(:first)
   end
 
   STEP_RESOLUTIONS = {
-    passed: [
+    Step::Resolutions::PASSED => [
       'committee:passed',
       'committee:passed:favorable',
       'committee:passed:unfavorable',
       'bill:passed',
       'bill:veto_override:passed'
     ],
-    failed: [
+    Step::Resolutions::FAILED => [
       'committee:failed',
       'bill:failed',
       'bill:veto_override:failed'
     ],
-    signed: [
+    Step::Resolutions::SIGNED => [
       'governor:signed'
     ],
-    vetoed: [
+    Step::Resolutions::VETOED => [
       'governor:vetoed'
     ],
-    line_vetoed: [
+    Step::Resolutions::VETOED_LINE => [
       'governor:vetoed:line-item'
     ]
   }.freeze
 
   STEP_ACTIONS = {
-    introduced: [
+    Step::Actions::INTRODUCED => [
       'bill:filed',
       'bill:introduced',
       'committee:referred',
       'governor:received'
     ],
-    resolved: [
+    Step::Actions::RESOLVED => [
       'committee:failed',
       'committee:passed',
       'committee:passed:favorable',

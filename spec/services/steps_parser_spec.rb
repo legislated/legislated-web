@@ -48,38 +48,38 @@ describe StepsParser do
       expect(subject.parse(actions)).to eq([{
         actor: 'upper',
         action: 'introduced',
-        resolution: 'n/a',
-        date: '2017-02-10 00:00:00'
+        resolution: 'none',
+        date: '2017-02-10T00:00:00-06:00'
       }, {
         actor: 'upper:committee',
         action: 'introduced',
-        resolution: 'n/a',
-        date: '2017-02-28 00:00:00'
+        resolution: 'none',
+        date: '2017-02-28T00:00:00-06:00'
       }, {
         actor: 'upper:committee',
         action: 'resolved',
         resolution: 'passed',
-        date: '2017-03-08 00:00:00'
+        date: '2017-03-08T00:00:00-06:00'
       }, {
         actor: 'lower',
         action: 'introduced',
-        resolution: 'n/a',
-        date: '2017-04-28 00:00:00'
+        resolution: 'none',
+        date: '2017-04-28T00:00:00-05:00'
       }, {
         actor: 'lower',
         action: 'resolved',
         resolution: 'passed',
-        date: '2017-04-28 00:00:00'
+        date: '2017-04-28T00:00:00-05:00'
       }, {
         actor: 'governor',
         action: 'introduced',
-        resolution: 'n/a',
-        date: '2017-06-05 00:00:00'
+        resolution: 'none',
+        date: '2017-06-05T00:00:00-05:00'
       }, {
         actor: 'governor',
         action: 'resolved',
         resolution: 'signed',
-        date: '2017-06-09 00:00:00'
+        date: '2017-06-09T00:00:00-05:00'
       }])
     end
   end

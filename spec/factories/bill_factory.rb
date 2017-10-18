@@ -24,11 +24,4 @@ FactoryGirl.define do
       steps { attributes_for_list(:step, 1) }
     end
   end
-
-  factory :step, class: Hash do
-    actor { 'lower' }
-    action { 'introduced' }
-    resolution { 'n/a' }
-    date { Faker::Time.between(1.month.ago, Time.zone.today).to_s }
-  end
 end

@@ -145,7 +145,7 @@ describe ImportBillsJob do
           allow(mock_open_states_service).to receive(:fetch_bills).and_return(response)
 
           subject.perform
-          expect(bill.reload.steps.map(&:actor)).to eq(steps.map { |s| s[:actor] })
+          expect(bill.reload.steps.pluck('actor')).to eq(steps.pluck(:actor))
         end
 
         it 'imports details for the bill' do

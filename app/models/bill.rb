@@ -32,10 +32,6 @@ class Bill < ApplicationRecord
     documents.first
   end
 
-  def steps
-    self[:steps].map { |attrs| Step.new(attrs) }
-  end
-
   def details_url
     self[:details_url] || ilga_url('legislation/billstatus.asp')
   end
