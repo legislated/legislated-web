@@ -51,7 +51,7 @@ class ImportBillsJob
       return nil
     end
 
-    # return the attrs map with extracted bill / document data
+    # return an attrs object with extracted bill / document data
     attrs = Attributes.new
     attrs.bill = parse_bill_attributes(source_url, data)
     attrs.documents = data['versions'].map do |version_data|

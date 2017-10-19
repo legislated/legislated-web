@@ -56,10 +56,10 @@ class StepsParser
     # use 'governor' instead of chamber
     if action_type.start_with?('governor')
       'governor'
-    # prepend the chamber the first committee action
+    # prepend the first committee action with the chamber
     elsif action_type == 'committee:referred'
       "#{actor}:committee"
-    # use the previous chamber:committee actor subsequently
+    # use the previous [chamber]:committee actor subsequently
     elsif actor == 'committee'
       actors.last
     # use the chamber otherwise
