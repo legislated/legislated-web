@@ -11,6 +11,7 @@ branches:
     - master
     - production
 before_script:
+  - export TZ=America/Chicago
   - psql -c 'create database legislated_test;' -U postgres
 deploy:
   provider: heroku
