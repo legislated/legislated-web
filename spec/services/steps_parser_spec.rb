@@ -45,6 +45,7 @@ describe StepsParser do
         "actor": 'lower'
       }]
 
+      puts "zone: #{Time.zone}"
       expect(subject.parse(actions)).to eq([{
         actor: 'upper',
         action: 'introduced',
