@@ -1,25 +1,33 @@
 describe 'A bill request', graphql: :request do
   it 'fetches a single bill' do
-    bill = create(:bill, :with_any_hearing, :with_documents)
-
-    fields = %w[
-      id
-      externalId
-      documentNumber
-      title
-      summary
-      sponsorName
-      detailsUrl
-      fullTextUrl
-      witnessSlipUrl
-      witnessSlipResultUrl
-    ]
+    bill = create(:bill, :with_any_hearing, :with_documents, :with_steps)
 
     query = <<-QUERY
       query {
         viewer {
           bill(id: "#{bill.id}") {
-            #{fields.join("\n")}
+            id
+            externalId
+            documentNumber
+            title
+            summary
+            humanSummary
+            sponsorName
+            detailsUrl
+            documents {
+              id
+              number
+              fullTextUrl
+              slipUrl
+              slipResultsUrl
+              isAmendment
+            }
+            steps {
+              actor
+              action
+              resolution
+              date
+            }
           }
         }
       }
@@ -29,7 +37,7 @@ describe 'A bill request', graphql: :request do
     expect(body[:errors]).to be_blank
 
     data = body.dig(:data, :viewer, :bill)
-    expect(data.keys).to eq(fields)
+    expect(data).to be_present
   end
 
   it 'fetches multiple bills' do
