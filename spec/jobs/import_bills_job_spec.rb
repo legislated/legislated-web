@@ -1,8 +1,9 @@
 describe ImportBillsJob do
-  subject { described_class.new(mock_redis, mock_service) }
+  subject { described_class.new(mock_redis, mock_open_states_service, mock_steps_parser) }
 
   let(:mock_redis) { double('Redis') }
-  let(:mock_service) { double('Service') }
+  let(:mock_open_states_service) { double('OpenStatesService') }
+  let(:mock_steps_parser) { double('StepsParser') }
 
   describe '#perform' do
     let(:date) { Time.zone.now }
@@ -12,7 +13,8 @@ describe ImportBillsJob do
 
       allow(mock_redis).to receive(:get).with(:import_bills_job_date)
       allow(mock_redis).to receive(:set).with(:import_bills_job_date, anything)
-      allow(mock_service).to receive(:fetch_bills).and_return([].lazy)
+      allow(mock_open_states_service).to receive(:fetch_bills).and_return([].lazy)
+      allow(mock_steps_parser).to receive(:parse).and_return([])
 
       allow(ImportBillDetailsJob).to receive(:perform_async)
     end
@@ -23,8 +25,8 @@ describe ImportBillsJob do
 
     it 'fetches bills with the correct fields' do
       subject.perform
-      expect(mock_service).to have_received(:fetch_bills) do |args|
-        fields = 'id,bill_id,session,title,chamber,versions,sources,sponsors,type'
+      expect(mock_open_states_service).to have_received(:fetch_bills) do |args|
+        fields = 'id,bill_id,session,title,chamber,actions,versions,sources,sponsors,type'
         expect(args[:fields]).to eq fields
       end
     end
@@ -32,7 +34,7 @@ describe ImportBillsJob do
     it 'fetches bills since the last import' do
       allow(mock_redis).to receive(:get).with(:import_bills_job_date).and_return(date)
       subject.perform
-      expect(mock_service).to have_received(:fetch_bills) do |args|
+      expect(mock_open_states_service).to have_received(:fetch_bills) do |args|
         expect(args[:updated_since]).to eq date
       end
     end
@@ -57,6 +59,7 @@ describe ImportBillsJob do
           'sources' => [{
             'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{bill.external_id}"
           }],
+          'actions' => [],
           'sponsors' => [],
           'versions' => []
         }
@@ -68,7 +71,7 @@ describe ImportBillsJob do
         it 'creates the bill if it does not exist' do
           attrs = attributes_for(:bill)
 
-          allow(mock_service).to receive(:fetch_bills).and_return(response(
+          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
             'sources' => [{
               'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{attrs[:external_id]}"
             }]
@@ -78,7 +81,7 @@ describe ImportBillsJob do
         end
 
         it "sets the bill's core attributes" do
-          allow(mock_service).to receive(:fetch_bills).and_return(response(
+          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
             'id' => bill_attrs[:os_id],
             'title' => bill_attrs[:title],
             'bill_id' => document_attrs[:number].gsub(/[A-Z]+/, '\0 '),
@@ -97,7 +100,7 @@ describe ImportBillsJob do
         it "sets the bill's source-url derived attributes" do
           query = 'DocNum=1234&DocTypeID=SB&GAID=2&SessionID=3'
 
-          allow(mock_service).to receive(:fetch_bills).and_return(response(
+          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
             'sources' => [{
               'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{bill_attrs[:external_id]}&#{query}"
             }]
@@ -111,7 +114,7 @@ describe ImportBillsJob do
         end
 
         it "sets the bill's primary sponsor name" do
-          allow(mock_service).to receive(:fetch_bills).and_return(response(
+          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
             'sponsors' => [{
               'type' => 'primary',
               'name' => bill_attrs[:sponsor_name]
@@ -124,8 +127,29 @@ describe ImportBillsJob do
           ))
         end
 
+        it "sets the bill's actions" do
+          actions = %w[action1 action2]
+          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
+            'actions' => actions
+          ))
+
+          subject.perform
+          expect(bill.reload).to have_attributes({
+            actions: actions
+          })
+        end
+
+        it "sets the bill's stages" do
+          steps = [{ actor: 'actor-1' }, { actor: 'actor-2' }]
+          allow(mock_steps_parser).to receive(:parse).and_return(steps)
+          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response)
+
+          subject.perform
+          expect(bill.reload.steps.pluck('actor')).to eq(steps.pluck(:actor))
+        end
+
         it 'imports details for the bill' do
-          allow(mock_service).to receive(:fetch_bills).and_return(response)
+          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response)
           subject.perform
           expect(ImportBillDetailsJob).to have_received(:perform_async).exactly(1).times
         end
@@ -136,7 +160,7 @@ describe ImportBillsJob do
           attrs = attributes_for(:bill, :with_documents)
           doc_attrs = attrs[:documents].first
 
-          allow(mock_service).to receive(:fetch_bills).and_return(response(
+          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
             'bill_id' => doc_attrs[:number],
             'versions' => [{}],
             'sources' => [{
@@ -148,7 +172,7 @@ describe ImportBillsJob do
         end
 
         it "sets the document's core attributes" do
-          allow(mock_service).to receive(:fetch_bills).and_return(response(
+          allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
             'bill_id' => document_attrs[:number],
             'versions' => [{
               'doc_id' => document_attrs[:os_id],
