@@ -1,4 +1,4 @@
-describe 'An update bill request', graphql: :request do
+describe 'requesting a bill update', graphql: :request do
   it 'updates the bill' do
     bill = create(:bill, :with_any_hearing)
 
