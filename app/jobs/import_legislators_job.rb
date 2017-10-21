@@ -1,15 +1,12 @@
 class ImportLegislatorsJob
   include Worker
 
-  def initialize(redis = Redis.new, service = OpenStatesService.new)
-    @redis = redis
-    @service = service
+  def initialize(open_states_service = OpenStatesService.new)
+    @open_states_service = open_states_service
   end
 
   def perform
-    import_date = @redis.get(:import_legislators_job_date)&.to_time
-
-    legislator_attrs = @service
+    legislator_attrs = @open_states_service
       .fetch_legislators(fields: fields, updated_since: import_date)
       .map { |data| parse_attributes(data) }
       .reject(&:nil?)
@@ -17,8 +14,6 @@ class ImportLegislatorsJob
     legislator_attrs.each do |attrs|
       Legislator.upsert_by!(:os_id, attrs)
     end
-
-    @redis.set(:import_legislators_job_date, Time.zone.now)
   end
 
   private
