@@ -1,13 +1,17 @@
 class ImportLegislatorsJob
   include Worker
 
+  def self.scheduled?
+    Time.current.day == 1
+  end
+
   def initialize(open_states_service = OpenStatesService.new)
     @open_states_service = open_states_service
   end
 
   def perform
     legislator_attrs = @open_states_service
-      .fetch_legislators(fields: fields, updated_since: import_date)
+      .fetch_legislators(fields: fields)
       .map { |data| parse_attributes(data) }
       .reject(&:nil?)
 

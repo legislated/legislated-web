@@ -12,9 +12,12 @@ class OpenStatesService
     }
   end
 
-
   def fetch_bills(query = {})
-    query[:updated_since] = query[:updated_since]&.strftime('%Y-%m-%d')
+    updated_since = query[:updated_since]
+    if updated_since
+      query[:updated_since] = updated_since.strftime('%Y-%m-%d')
+    end
+
     enumerate_pages do |page_number|
       fetch_bills_page(page_number, query)
     end
