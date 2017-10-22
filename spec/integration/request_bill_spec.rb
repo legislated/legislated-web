@@ -41,12 +41,12 @@ describe 'requesting bills', graphql: :request do
   end
 
   it 'fetches multiple bills' do
-    create_list(:bill, 2, :with_any_hearing)
+    create_list(:bill, 3, :with_any_hearing)
 
     query = <<-QUERY
       query {
         viewer {
-          bills(first: 1) {
+          bills(first: 2) {
             count
             edges {
               node {
@@ -62,7 +62,7 @@ describe 'requesting bills', graphql: :request do
     expect(body[:errors]).to be_blank
 
     connection = body.dig(:data, :viewer, :bills)
-    expect(connection[:count]).to eq(2)
-    expect(connection[:edges].length).to eq(1)
+    expect(connection[:count]).to eq(3)
+    expect(connection[:edges].length).to eq(2)
   end
 end

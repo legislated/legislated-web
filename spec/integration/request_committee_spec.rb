@@ -29,7 +29,7 @@ describe 'requesting committees', graphql: :request do
     query = <<-QUERY
       query {
         viewer {
-          committees {
+          committees(first: 2) {
             edges {
               node {
                 id

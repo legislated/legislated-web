@@ -30,7 +30,7 @@ describe 'requesting hearings', graphql: :request do
     query = <<-QUERY
       query {
         viewer {
-          hearings {
+          hearings(first: 2) {
             edges {
               node {
                 id
