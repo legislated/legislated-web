@@ -1,65 +1,34 @@
 describe ImportLegislatorsJob do
-  subject { described_class.new(mock_redis, mock_service) }
+  subject { described_class.new(mock_service) }
 
-  let(:mock_redis) { double('Redis') }
-  let(:mock_service) { double('Service') }
+  let(:mock_service) { double('OpenStatesService') }
 
   describe '#perform' do
-    let(:date) { Time.zone.now }
-
     before do
-      Timecop.freeze(date)
-
-      # job date setup
-      allow(mock_redis).to receive(:get).with(:import_legislators_job_date)
-      allow(mock_redis).to receive(:set).with(:import_legislators_job_date, anything)
       allow(mock_service).to receive(:fetch_legislators).and_return([])
-
-      allow(ImportLegislatorsJob).to receive(:perform_async)
-    end
-
-    after do
-      Timecop.return
     end
 
     it 'fetches legislators with the correct fields' do
       subject.perform
       expect(mock_service).to have_received(:fetch_legislators) do |args|
-        fields = 'id,leg_id,first_name,last_name,email,phone_number,twitter_username,district,chamber'
+        fields = 'id,leg_id,active,first_name,middle_name,last_name,suffixes,party,chamber,district,url,email'
         expect(args[:fields]).to eq fields
       end
-    end
-
-    it 'fetches legislators since last import' do
-      allow(mock_redis).to receive(:get).with(:import_legislators_job_date).and_return(date)
-      subject.perform
-      expect(mock_service).to have_received(:fetch_legislators) do |args|
-        expect(args[:updated_since]).to eq date
-      end
-    end
-
-    it 'sets the last import date when job was done' do
-      subject.perform
-      expect(mock_redis).to have_received(:set).with(:import_legislators_job_date, date)
     end
 
     context 'when upserting a legislator' do
       let(:legislator) { create(:legislator) }
       let(:attrs) { attributes_for(:legislator, os_id: legislator.os_id) }
 
-      def perform
-        subject.perform
-        legislator.reload
-      end
-
       def response(attrs = {})
         base_response = {
-          'id' => '',
-          'leg_id' => '',
           'first_name' => '',
           'last_name' => '',
+          'middle_name' => '',
+          'suffixes' => '',
+          'party' => '',
+          'chamber' => '',
           'district' => '',
-          'url' => "http://dccouncil.us/council/#{legislator.first_name}-#{legislator.last_name}"
         }
 
         Array.wrap(base_response.merge(attrs))
@@ -68,17 +37,31 @@ describe ImportLegislatorsJob do
       it "sets the legislator's core attributes" do
         allow(mock_service).to receive(:fetch_legislators).and_return(response(
           'leg_id' => attrs[:os_id],
+          'active' => attrs[:active],
           'first_name' => attrs[:first_name],
           'last_name' => attrs[:last_name],
-          'district' => attrs[:district]
+          'middle_name' => attrs[:middle_name],
+          'suffixes' => attrs[:suffixes],
+          'party' => attrs[:party],
+          'chamber' => attrs[:chamber],
+          'district' => attrs[:district],
+          'url' => attrs[:website_url],
+          'email' => attrs[:email]
         ))
 
-        perform
-        expect(legislator).to have_attributes(attrs.slice(
+        subject.perform
+        expect(legislator.reload).to have_attributes(attrs.slice(
           :os_id,
+          :active,
           :first_name,
           :last_name,
-          :district
+          :middle_name,
+          :suffixes,
+          :party,
+          :chamber,
+          :district,
+          :website_url,
+          :email
         ))
       end
 
@@ -86,15 +69,11 @@ describe ImportLegislatorsJob do
         attrs = attributes_for(:legislator)
 
         allow(mock_service).to receive(:fetch_legislators).and_return(response(
-          'leg_id' => attrs[:os_id],
-          'sources' => [{
-            'url' => "http://dccouncil.us/council/#{attrs[:first_name]}-#{attrs[:last_name]}"
-          }]
+          'leg_id' => attrs[:os_id]
         ))
 
-        expect { perform }.to change(Legislator, :count).by(1)
+        expect { subject.perform }.to change(Legislator, :count).by(1)
       end
     end
-
   end
 end

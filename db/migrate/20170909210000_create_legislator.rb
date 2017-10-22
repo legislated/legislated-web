@@ -12,7 +12,5 @@ class CreateLegislator < ActiveRecord::Migration[5.0]
       t.column :chamber, :string
       t.timestamps
     end
-
-    add_index :legislators, :external_id, unique: true
   end
 end
