@@ -82,5 +82,10 @@ module Types
         bills_query
       end
     end
+
+    connection :legislators, LegislatorType.connection_type do
+      description 'All legislators'
+      resolve -> (_obj, _args, _ctx) { Chamber.all }
+    end
   end
 end

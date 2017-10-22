@@ -7,7 +7,7 @@ module Types
 
     # fields
     field :id, !types.ID, 'The graph id'
-    field :osId, !types.Int, 'The OpenStates id', property: :os_id
+    field :osId, !types.String, 'The OpenStates id', property: :os_id
     field :active, !types.Boolean, 'Whether or not the legislator is in office'
     field :name, !types.String, 'The full display name' do
       resolve -> (legislator, _args, _ctx) {

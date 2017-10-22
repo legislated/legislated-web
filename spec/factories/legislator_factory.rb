@@ -11,6 +11,6 @@ FactoryGirl.define do
     district { '9' }
     website_url { optional { Faker::Internet.url } }
     email { optional { Faker::Internet.email } }
-    twitter { optional { Faker::Twitter.user } }
+    twitter { optional { "@#{Faker::Twitter.screen_name }" } }
   end
 end

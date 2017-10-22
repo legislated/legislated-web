@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 20171017225846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "uuid-ossp"
   enable_extension "pg_trgm"
+  enable_extension "uuid-ossp"
 
   create_table "bills", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "external_id",                 null: false

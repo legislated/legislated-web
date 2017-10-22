@@ -1,9 +1,11 @@
 require 'pry'
 require 'helpers/graph_type_helpers'
 require 'helpers/graph_request_helpers'
+require 'helpers/json_snapshot_helpers'
 
 RSpec.configure do |config|
-  config.include GraphRequestHelpers, graphql: :request
+  config.include JsonSnapshotHelpers::Example, :json_snapshot
+  config.include GraphRequestHelpers::Example, graphql: :request
   config.include GraphTypeHelpers::Example, graphql: :type
   config.extend GraphTypeHelpers::Group, graphql: :type
 

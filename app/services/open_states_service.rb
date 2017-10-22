@@ -24,9 +24,15 @@ class OpenStatesService
   end
 
   def fetch_legislators(query = {})
-    enumerate_pages do |page_number|
-      fetch_legislators_page(page_number, query)
-    end
+    base_query = {
+      state: 'il'
+    }
+
+    result = self.class.get('/legislators', @options.deep_merge({
+      query: base_query.merge(query)
+    }))
+
+    result.lazy
   end
 
   private
@@ -55,18 +61,6 @@ class OpenStatesService
     }
 
     self.class.get('/bills', @options.deep_merge({
-      query: base_query.merge(query)
-    }))
-  end
-
-  def fetch_legislators_page(page_number, query)
-    base_query = {
-      state: 'il',
-      page: page_number,
-      per_page: 50
-    }
-
-    self.class.get('/legislators', @options.deep_merge({
       query: base_query.merge(query)
     }))
   end
