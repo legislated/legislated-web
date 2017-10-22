@@ -1,35 +1,35 @@
-describe 'A committee request', graphql: :request do
-  it 'fetches a single committee' do
-    committee = create(:committee, :with_any_chamber)
+describe 'requesting chambers', graphql: :request do
+  it 'fetches a single chamber' do
+    chamber = create(:chamber)
 
     fields = %w[
       id
-      externalId
       name
+      type
     ]
 
-    query = <<-eos
+    query = <<-QUERY
       query {
         viewer {
-          committee(id: "#{committee.id}") {
+          chamber(id: "#{chamber.id}") {
             #{fields.join("\n")}
           }
         }
       }
-    eos
+    QUERY
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
 
-    data = body.dig(:data, :viewer, :committee)
+    data = body.dig(:data, :viewer, :chamber)
     expect(data.keys).to eq(fields)
   end
 
-  it 'fetches multiple committees' do
-    query = <<-eos
+  it 'fetches multiple chambers' do
+    query = <<-QUERY
       query {
         viewer {
-          committees {
+          chambers {
             edges {
               node {
                 id
@@ -38,12 +38,12 @@ describe 'A committee request', graphql: :request do
           }
         }
       }
-    eos
+    QUERY
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
 
-    nodes = body.dig(:data, :viewer, :committees, :edges)
+    nodes = body.dig(:data, :viewer, :chambers, :edges)
     expect(nodes.length).to eq(2)
   end
 end

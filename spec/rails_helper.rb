@@ -31,4 +31,13 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  # vcr
+  VCR.configure do |c|
+    c.cassette_library_dir = 'spec/fixtures/cassettes'
+    c.hook_into :webmock
+    c.allow_http_connections_when_no_cassette = true
+    c.filter_sensitive_data('<OPENSTATES_API_KEY>') { ENV['OPEN_STATES_KEY'] }
+    c.configure_rspec_metadata!
+  end
 end

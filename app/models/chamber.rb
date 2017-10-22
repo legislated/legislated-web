@@ -2,7 +2,7 @@ class Chamber < ApplicationRecord
   enum kind: %i[house senate]
 
   # relationships
-  has_many :committees
+  has_many :committees, dependent: :destroy
 
   # accessors
   def url

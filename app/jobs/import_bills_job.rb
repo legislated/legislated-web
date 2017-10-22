@@ -5,16 +5,17 @@ class ImportBillsJob
     attr_accessor :bill, :documents
   end
 
-  def initialize(redis = Redis.new, service = OpenStatesService.new)
+  def initialize(redis = Redis.new, open_states_service = OpenStatesService.new, steps_parser = StepsParser.new)
     @redis = redis
-    @service = service
+    @open_states_service = open_states_service
+    @steps_parser = steps_parser
   end
 
   def perform
     import_date = @redis.get(:import_bills_job_date)&.to_time
 
     # collect the attributes
-    parsed_attributes = @service
+    parsed_attributes = @open_states_service
       .fetch_bills(fields: fields, updated_since: import_date)
       .map { |data| parse_attributes(data) }
       .reject(&:nil?)
@@ -50,7 +51,7 @@ class ImportBillsJob
       return nil
     end
 
-    # update the attrs map with extracted bill / document data
+    # return an attrs object with extracted bill / document data
     attrs = Attributes.new
     attrs.bill = parse_bill_attributes(source_url, data)
     attrs.documents = data['versions'].map do |version_data|
@@ -67,6 +68,8 @@ class ImportBillsJob
     bill_attrs = {
       external_id: params['LegId'],
       os_id: data['id'],
+      actions: data['actions'],
+      steps: @steps_parser.parse(data['actions']),
       title: data['title'],
       session_number: data['session'].gsub(/[a-z]+/, '')
     }
@@ -105,6 +108,7 @@ class ImportBillsJob
         session
         title
         chamber
+        actions
         versions
         sources
         sponsors
