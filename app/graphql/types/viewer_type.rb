@@ -37,6 +37,12 @@ module Types
       resolve -> (_obj, args, _ctx) { Bill.find(args['id']) }
     end
 
+    field :legislator do
+      type LegislatorType
+      argument :id, !types.ID, 'The graph id of the legislator'
+      resolve -> (_obj, args, _ctx) { Legislator.find(args['id']) }
+    end
+
     # connections
     connection :chambers, ChamberType.connection_type do
       description 'All chambers'
