@@ -23,7 +23,6 @@ Install the necessary global dependencies.
 - postgresql
 - redis
 - phantomjs
-- libpq-dev
 
 Copy over the development .env file:
 
@@ -54,7 +53,7 @@ $ rails db:reset
 You can use the rails console to explore the database through using [ActiveRecord](http://guides.rubyonrails.org/active_record_querying.html):
 
 ```sh
-$ rails console  
+$ rails console
 ```
 
 You can use the interactive debugger [pry](http://pryrepl.org/) to set breakpoints and explore the code at runtime:
