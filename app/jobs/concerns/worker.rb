@@ -15,4 +15,15 @@ module Worker
   def debug(message)
     Rails.logger.debug(message)
   end
+
+  # class methods
+  class_methods do
+    def schedule(*args)
+      perform_async(*args) if scheduled?
+    end
+
+    def scheduled?
+      true
+    end
+  end
 end

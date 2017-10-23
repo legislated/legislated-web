@@ -19,9 +19,6 @@ Rails:
 Rails/Output:
   Enabled: false
 
-Rails/HasManyOrHasOneDependent:
-  Enabled: false
-
 Rails/Delegate:
   Enabled: false
 
@@ -201,11 +198,14 @@ Style/EachWithObject:
 Style/NumericLiterals:
   Enabled: false
 
-Layout/SpaceInLambdaLiteral:
-  EnforcedStyle: require_space
-
 Style/BracesAroundHashParameters:
   Enabled: false
+
+Style/TrailingUnderscoreVariable:
+  Enabled: false
+
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
 
 Layout/IndentHash:
   EnforcedStyle: consistent

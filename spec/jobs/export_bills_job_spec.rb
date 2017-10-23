@@ -1,20 +1,10 @@
 describe ExportBillsJob do
-  subject { described_class.new }
-
-  describe '#perform' do
-    let(:mailer) { double('weekly_export_email') }
-
-    before do
-      allow(BillsMailer).to receive(:weekly_export_email).and_return(mailer)
-      allow(mailer).to receive(:deliver_later)
-    end
+  describe '.schedule' do
+    subject { described_class }
 
     context "when it's saturday" do
-      let(:date) { Time.current.sunday - 1.day }
-      let(:start_date) { date.beginning_of_week(:sunday) }
-
       before do
-        Timecop.freeze(date)
+        Timecop.freeze(Time.current.sunday - 1.day)
       end
 
       after do
@@ -22,19 +12,19 @@ describe ExportBillsJob do
       end
 
       it 'sends the export mailer' do
-        subject.perform
-        expect(mailer).to have_received(:deliver_later)
+        expect(subject).to receive(:perform_async)
+        subject.schedule
       end
     end
 
-    context 'when it is not saturday' do
+    context "when it's not saturday" do
       before do
         allow(Time).to receive(:now).and_return(Time.current.monday)
       end
 
       it 'does not send the mailer' do
-        subject.perform
-        expect(mailer).to_not have_received(:deliver_later)
+        expect(subject).to_not receive(:perform_async)
+        subject.schedule
       end
     end
   end

@@ -13,30 +13,43 @@ class OpenStatesService
   end
 
   def fetch_bills(query = {})
-    query = parse_query(query)
-
-    enumerator = Enumerator.new do |y|
-      page_number = 1
-
-      loop do
-        page = fetch_bills_page(page_number, query)
-        break if page.blank?
-        page_number += 1
-        page.each { |bill| y.yield(bill) }
-      end
+    updated_since = query[:updated_since]
+    if updated_since
+      query[:updated_since] = updated_since.strftime('%Y-%m-%d')
     end
 
-    enumerator.lazy
+    enumerate_pages do |page_number|
+      fetch_bills_page(page_number, query)
+    end
+  end
+
+  def fetch_legislators(query = {})
+    base_query = {
+      state: 'il'
+    }
+
+    result = self.class.get('/legislators', @options.deep_merge({
+      query: base_query.merge(query)
+    }))
+
+    result.lazy
   end
 
   private
 
-  def parse_query(query)
-    if updated_since ||= query[:updated_since]
-      query[:updated_since] = updated_since.strftime('%Y-%m-%d') if updated_since
+  def enumerate_pages
+    enumerator = Enumerator.new do |item|
+      page_number = 1
+
+      loop do
+        page = yield(page_number)
+        break if page.blank?
+        page_number += 1
+        page.each { |record| item.yield(record) }
+      end
     end
 
-    query
+    enumerator.lazy
   end
 
   def fetch_bills_page(page_number, query)
