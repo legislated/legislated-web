@@ -1,11 +1,13 @@
 module GraphRequestHelpers
   module Example
     def request_graph_query(query, variables: {}, is_admin: false)
-      headers = {}
-      headers[:Authorization] = 'Basic YWRtaW46cGFzc3dvcmTCow==' if is_admin
+      response = GraphSchema.execute(query, {
+        variables: variables.deep_stringify_keys,
+        context: { is_admin: is_admin },
+        only: GraphWhitelist
+      })
 
-      post '/graphql', params: { query: query, variables: variables }, headers: headers
-      HashWithIndifferentAccess.new(JSON.parse(response.body))
+      response.with_indifferent_access
     end
   end
 end

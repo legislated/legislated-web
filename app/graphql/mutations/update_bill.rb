@@ -11,8 +11,10 @@ module Mutations
     resolve -> (_object, args, context) do
       raise Errors::AuthorizationError unless context[:is_admin]
 
+      args = args.parse_graphql_data
+
       bill = Bill.find(args[:id])
-      bill.update(human_summary: args[:humanSummary])
+      bill.update(args)
 
       { bill: bill }
     end

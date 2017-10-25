@@ -10,12 +10,16 @@ AllCops:
     - db/**/*
     - vendor/**/*
     - spec/**/*
+    - node_modules/**/*
 
 # rails
 Rails:
   Enabled: true
 
 Rails/Output:
+  Enabled: false
+
+Rails/Delegate:
   Enabled: false
 
 # relaxed ruby style

@@ -1,4 +1,4 @@
-class ApiController < ApplicationController
+class ApiController < ActionController::API
   def execute
     result = GraphSchema.execute(params[:query], {
       context: parse_context,
