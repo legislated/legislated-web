@@ -2,8 +2,10 @@ class ImportJob
   include Worker
 
   def perform
-    ImportBillsJob.perform_async
+    ImportBillsJob.schedule
+    ImportLegislatorsJob.schedule
+
     chambers = Chamber.all
-    chambers.each { |c| ImportHearingsJob.perform_async(c.id) }
+    chambers.each { |c| ImportHearingsJob.schedule(c.id) }
   end
 end

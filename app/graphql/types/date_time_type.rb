@@ -3,6 +3,6 @@ module Types
     name 'Time'
     description 'Time since epoch in seconds'
     coerce_input -> (value) { Time.iso8601(value) }
-    coerce_result -> (value) { value.iso8601 }
+    coerce_result -> (value) { value.to_time.iso8601 }
   end
 end

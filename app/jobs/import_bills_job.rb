@@ -1,22 +1,35 @@
 class ImportBillsJob
   include Worker
 
-  def initialize(redis = Redis.new, service = OpenStatesService.new)
+  class Attributes
+    attr_accessor :bill, :documents
+  end
+
+  def initialize(redis = Redis.new, open_states_service = OpenStatesService.new, steps_parser = StepsParser.new)
     @redis = redis
-    @service = service
+    @open_states_service = open_states_service
+    @steps_parser = steps_parser
   end
 
   def perform
     import_date = @redis.get(:import_bills_job_date)&.to_time
 
-    bill_attrs = @service
+    # collect the attributes
+    parsed_attributes = @open_states_service
       .fetch_bills(fields: fields, updated_since: import_date)
       .map { |data| parse_attributes(data) }
-      .compact
+      .reject(&:nil?)
 
-    bill_attrs.each do |attrs|
-      bill = Bill.upsert_by!(:external_id, attrs)
-      # enqueue the details import
+    # upsert the records
+    parsed_attributes.each do |attributes|
+      bill = Bill.upsert_by!(:external_id, attributes.bill)
+
+      attributes.documents.each do |attrs|
+        doc_attrs = attrs.merge(bill: bill)
+        Document.upsert_by!(:number, doc_attrs)
+      end
+
+      # enqueue the details job for each bill
       ImportBillDetailsJob.perform_async(bill.id)
     end
 
@@ -32,33 +45,55 @@ class ImportBillsJob
       memo || url if url.starts_with?('http://ilga.gov/legislation/BillStatus.asp')
     end
 
-    # throw out this entry if we can't find a
-    if source_url.blank?
+    # throw out this entry if we can't find a source url
+    if source_url.nil?
       info("> failed to find ilga url for #{data['bill_id']}")
       return nil
     end
 
+    # return an attrs object with extracted bill / document data
+    attrs = Attributes.new
+    attrs.bill = parse_bill_attributes(source_url, data)
+    attrs.documents = data['versions'].map do |version_data|
+      parse_document_attributes(version_data, data)
+    end
+
+    attrs
+  end
+
+  def parse_bill_attributes(source_url, data)
     params = CGI.parse(URI.parse(source_url).query)
       .transform_values(&:first)
 
-    attrs = {
+    bill_attrs = {
       external_id: params['LegId'],
       os_id: data['id'],
+      actions: data['actions'],
+      steps: @steps_parser.parse(data['actions']),
       title: data['title'],
-      document_number: data['bill_id'].gsub(/\s+/, ''),
       session_number: data['session'].gsub(/[a-z]+/, '')
     }
 
     # use the ilga source params to generate other useful urls
     query = params.slice('GAID', 'SessionID', 'DocTypeID', 'DocNum').to_query
-    attrs[:details_url] = ilga_url('legislation/billstatus.asp', query)
-    attrs[:full_text_url] = ilga_url('legislation/fulltext.asp', query)
+    bill_attrs[:details_url] = ilga_url('legislation/billstatus.asp', query)
 
     # use the first primary sponsor for now
     sponsor = data['sponsors'].find { |s| s['type'] == 'primary' }
-    attrs[:sponsor_name] = sponsor['name'] if sponsor.present?
+    bill_attrs[:sponsor_name] = sponsor['name'] if sponsor.present?
 
-    attrs
+    bill_attrs
+  end
+
+  def parse_document_attributes(version_data, data)
+    document_attrs = {
+      os_id: version_data['doc_id'],
+      number: data['bill_id'].gsub(/\s+/, ''),
+      full_text_url: version_data['url'],
+      is_amendment: false
+    }
+
+    document_attrs
   end
 
   def ilga_url(page, query)
@@ -73,6 +108,7 @@ class ImportBillsJob
         session
         title
         chamber
+        actions
         versions
         sources
         sponsors

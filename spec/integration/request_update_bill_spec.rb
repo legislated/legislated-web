@@ -1,8 +1,8 @@
-describe 'An update bill request', graphql: :request do
+describe 'requesting a bill update', graphql: :request do
   it 'updates the bill' do
     bill = create(:bill, :with_any_hearing)
 
-    query = <<-eos
+    query = <<-QUERY
       mutation($input: UpdateBillInput!) {
         updateBill(input: $input) {
           clientMutationId
@@ -12,7 +12,7 @@ describe 'An update bill request', graphql: :request do
           }
         }
       }
-    eos
+    QUERY
 
     variables = {
       input: {

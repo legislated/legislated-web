@@ -28,7 +28,11 @@ class BillsMailer < ApplicationMailer
 
   # attachment
   def build_csv(csv_service, date_range)
-    query = Bill.includes(hearing: :committee).by_date(date_range)
+    query = Bill
+      .includes(:documents)
+      .includes(hearing: :committee)
+      .by_date(date_range)
+
     csv_service.serialize(query)
   end
 

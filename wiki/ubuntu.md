@@ -1,5 +1,8 @@
 # Setup - Ubuntu
 
+## Dependencies
+- libpq-dev
+
 ## Ruby
 
 If you already have a tool for installing rubies, use that to install version **2.3.0** and skip this section. If you have a dysfunctional `rvm`/`rbenv` setup, uninstall it first. Once you have no existing tool for installing rubies...

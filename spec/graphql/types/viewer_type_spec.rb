@@ -25,29 +25,23 @@ describe Types::ViewerType, graphql: :type do
       allow(BillsSearchService).to receive(:filter) { |q| q }
     end
 
-    context 'normally' do
-      it 'sorts bills by date' do
-        expect(connection(:bills)).to eq([bill1, bill2, bill3])
-      end
-
-      it 'does not filter bills by query' do
-        connection(:bills, args: { query: '' })
-        expect(BillsSearchService).to_not have_received(:filter)
-      end
+    it 'sorts bills by date' do
+      expect(connection(:bills)).to eq([bill1, bill2, bill3])
     end
 
-    context 'with a date range' do
-      it 'only returns bills in the range' do
-        filter = { from: date, to: date }
-        expect(connection(:bills, args: filter)).to eq([bill2])
-      end
+    it 'does not filter bills by query' do
+      connection(:bills, args: { query: '' })
+      expect(BillsSearchService).to_not have_received(:filter)
     end
 
-    context 'with a search query' do
-      it 'only returns bills that match the search query' do
-        connection(:bills, args: { query: 'foo' })
-        expect(BillsSearchService).to have_received(:filter).with(anything, 'foo')
-      end
+    it 'only returns bills in the date range when passed' do
+      filter = { from: date, to: date }
+      expect(connection(:bills, args: filter)).to eq([bill2])
+    end
+
+    it 'only returns bills that match the search query when passed' do
+      connection(:bills, args: { query: 'foo' })
+      expect(BillsSearchService).to have_received(:filter).with(anything, 'foo')
     end
   end
 end
