@@ -1,6 +1,12 @@
 # Legislated API [![Build Status](https://travis-ci.org/legislated/legislated-api.svg?branch=master)](https://travis-ci.org/legislated/legislated-api)
 
-A GraphQL API, built on Rails, providing access to legislative data for the Illinois state government. Serves data for active bills, including contextual information about the associated committees, hearings, legislators, witness slips, an so much more.
+## About
+
+A Rails/React/Relay app providing access to legislative data for the Illinois state government. Provides a usable interface for finding important / interesting active bills in the state legislature, learning about them, and taking effective action on them easily.
+
+## Setup
+
+Check out [HACKING.md](HACKING.md)!
 
 ## Contributing
 
@@ -11,7 +17,7 @@ We'd love your help! See the [HACKING](HACKING.md) document for information on g
 
 ## Sources
 
-Data is sourced from the following websites, and updated nightly:
+Data is sourced from the following places, and updated as needed:
 
 - http://my.ilga.gov/
 - http://www.ilga.gov/
