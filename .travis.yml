@@ -1,18 +1,18 @@
 sudo: required
 
 language: ruby
+
 rvm:
   - 2.3.0
 services:
   - postgresql
+env:
+  - ADMIN_CREDENTIALS="Basic YWRtaW46cGFzc3dvcmTCow==" TZ=America/Chicago
 cache:
   bundler: true
   yarn: true
   directories:
     - node_modules
-env:
-  - ADMIN_CREDENTIALS="Basic YWRtaW46cGFzc3dvcmTCow=="
-  - TZ=America/Chicago
 
 branches:
   only:
