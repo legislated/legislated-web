@@ -1,4 +1,4 @@
-# Legislated API [![Build Status](https://travis-ci.org/legislated/legislated-api.svg?branch=master)](https://travis-ci.org/legislated/legislated-api)
+# Legislated [![Build Status](https://travis-ci.org/legislated/legislated-api.svg?branch=master)](https://travis-ci.org/legislated/legislated-api)
 
 ## About
 
