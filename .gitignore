@@ -10,8 +10,10 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore Byebug command history file.
-.byebug_history
+# webpacker
 /public/packs
 /public/packs-test
 /node_modules
+
+# Ignore Byebug command history file.
+.byebug_history
