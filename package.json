@@ -79,26 +79,12 @@
   },
   "babel": {
     "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "browsers": [
-              "last 2 versions"
-            ]
-          }
-        }
-      ],
+      [ "env", { "targets": { "browsers": [ "last 2 versions" ] } } ],
       "react"
     ],
     "plugins": [
       "lodash",
-      [
-        "relay",
-        {
-          "schema": "schema.json"
-        }
-      ],
+      [ "relay", { "schema": "schema.json" } ],
       "transform-flow-strip-types",
       "transform-class-properties",
       "transform-object-rest-spread"
