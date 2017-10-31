@@ -46,6 +46,7 @@
     "babel-eslint": "7.2.0",
     "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.1",
+    "babel-plugin-lodash": "^3.2.11",
     "babel-plugin-relay": "^1.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
@@ -82,6 +83,7 @@
       "react"
     ],
     "plugins": [
+      "lodash",
       [ "relay", { "schema": "schema.json" } ],
       "transform-flow-strip-types",
       "transform-class-properties",
