@@ -5,16 +5,16 @@ import { BillsList } from '../BillsList'
 import { routerProps } from 'mocks/routerProps'
 import { session } from 'shared/storage'
 import { relayPaginationProp } from 'mocks/relayProps'
-
 const { anything } = expect
 
 // mocks
 jest.mock('../../searchRoute', () => {
-  const moment = require('moment')
+  const addMonths = require('date-fns/add_months')
+  const addDays = require('date-fns/add_days')
   const constants = {
     count: 999,
-    startDate: moment().month(4).date(1),
-    endDate: moment().month(4).date(7)
+    startDate: addMonths(new Date(2016, 12, 1), 4),
+    endDate: addDays(addMonths(new Date(2016, 12, 1), 4), 6),
   }
 
   return { constants }
@@ -25,11 +25,11 @@ let subject
 let viewer
 let animated
 
-function loadSubject () {
+function loadSubject() {
   subject = shallow(<BillsList viewer={viewer} animated={animated} />).dive().dive()
 }
 
-function edges (nodes) {
+function edges(nodes) {
   return nodes.map((node) => ({ node }))
 }
 

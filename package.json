@@ -24,11 +24,11 @@
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
     "color": "^2.0.0",
+    "date-fns": "^1.29.0",
     "eventemitter3": "^2.0.3",
     "glamor": "2.20.25",
     "js-base64": "^2.1.9",
     "lodash": "^4.17.2",
-    "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.6.0",
     "react-copy-to-clipboard": "^5.0.0",
@@ -79,12 +79,26 @@
   },
   "babel": {
     "presets": [
-      [ "env", { "targets": { "browsers": [ "last 2 versions" ] } } ],
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 versions"
+            ]
+          }
+        }
+      ],
       "react"
     ],
     "plugins": [
       "lodash",
-      [ "relay", { "schema": "schema.json" } ],
+      [
+        "relay",
+        {
+          "schema": "schema.json"
+        }
+      ],
       "transform-flow-strip-types",
       "transform-class-properties",
       "transform-object-rest-spread"

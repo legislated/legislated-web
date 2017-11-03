@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
-import moment from 'moment'
+import { default as dateFormat } from 'date-fns/format'
 import { css } from 'glamor'
 import type { Rule } from 'glamor'
 import type { Bill } from 'shared/types'
@@ -15,18 +15,18 @@ let BillCell = class BillCell extends Component {
   }
 
   // lifecycle
-  render () {
+  render() {
     const { bill, styles } = this.props
-    const date = moment(bill.hearing.date)
+    const formattedDate = dateFormat(bill.hearing.date, 'DD/MM/YYYY')
 
-    return <div {...css(rules.container, styles)}>
+    return <div {...css(rules.container, styles) }>
       <div {...rules.info}>
         <div {...rules.header}>
           <div {...rules.document}>
             <h3>{bill.title}</h3>
             <span>{bill.documentNumber}</span>
           </div>
-          <p>{date.calendar()}</p>
+          <p>{formattedDate}</p>
         </div>
         {bill.summary && <p {...rules.summary}>{bill.summary}</p>}
       </div>

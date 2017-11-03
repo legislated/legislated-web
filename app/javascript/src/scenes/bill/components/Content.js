@@ -1,7 +1,9 @@
 // @flow
 import React, { Component } from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
-import moment from 'moment'
+import { default as parseDate } from 'date-fns/parse'
+import differenceInHours from 'date-fns/difference_in_hours'
+import { default as dateFormat } from 'date-fns/format'
 import { Actions } from './Actions'
 import { Element } from './Element'
 import { CopyLink } from 'shared/components'
@@ -16,12 +18,13 @@ let Content = class Content extends Component {
   }
 
   // lifecycle
-  render () {
+  render() {
     const { bill } = this.props
 
-    const now = moment()
-    const date = moment(bill.hearing.date)
-    const hoursLeft = floor(date.diff(now, 'hours', true))
+    const now = new Date()
+    const date = parseDate(bill.hearing.date)
+    const hoursLeft = differenceInHours(date, now)
+    const formattedDate = dateFormat(date, 'M/D/YY h:mm A')
 
     return <div>
       <div {...rules.header}>
@@ -39,8 +42,8 @@ let Content = class Content extends Component {
         </div>
         <div {...rules.column}>
           <Element label='Hearing Date'>
-            <span>{date.calendar()}</span>
-            {hoursLeft < 24 && <span {...rules.hoursLeft}>
+            <span>{formattedDate}</span>
+            {hoursLeft < 24 && hoursLeft > 0 && <span {...rules.hoursLeft}>
               {`(${hoursLeft} hours left)`}
             </span>}
           </Element>
