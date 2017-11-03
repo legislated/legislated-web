@@ -27,7 +27,7 @@ export const searchRoute: RelayRouteConfig = {
       }
     }
   `,
-  getInitialVariables(props) {
+  getInitialVariables (props) {
     // use the last search count on pop so that we can restore to the correct
     // scroll position
     let count = null
@@ -48,7 +48,7 @@ export const searchRoute: RelayRouteConfig = {
     queryId: 'BillsConnection',
     queryPathToConnection: ['viewer', 'bills']
   }),
-  render(props) {
+  render (props) {
     if (props) {
       return <SearchScene {...props} />
     } else {

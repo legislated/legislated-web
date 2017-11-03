@@ -10,15 +10,13 @@ import { CopyLink } from 'shared/components'
 import { stylesheet, colors, mixins } from 'shared/styles'
 import type { Bill } from 'shared/types'
 
-const { floor } = Math
-
 let Content = class Content extends Component {
   props: {
     bill: Bill
   }
 
   // lifecycle
-  render() {
+  render () {
     const { bill } = this.props
 
     const now = new Date()

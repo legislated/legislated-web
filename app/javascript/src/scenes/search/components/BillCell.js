@@ -15,11 +15,11 @@ let BillCell = class BillCell extends Component {
   }
 
   // lifecycle
-  render() {
+  render () {
     const { bill, styles } = this.props
     const formattedDate = dateFormat(bill.hearing.date, 'DD/MM/YYYY')
 
-    return <div {...css(rules.container, styles) }>
+    return <div {...css(rules.container, styles)}>
       <div {...rules.info}>
         <div {...rules.header}>
           <div {...rules.document}>

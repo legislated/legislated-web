@@ -14,7 +14,7 @@ jest.mock('../../searchRoute', () => {
   const constants = {
     count: 999,
     startDate: addMonths(new Date(2016, 12, 1), 4),
-    endDate: addDays(addMonths(new Date(2016, 12, 1), 4), 6),
+    endDate: addDays(addMonths(new Date(2016, 12, 1), 4), 6)
   }
 
   return { constants }
@@ -25,11 +25,11 @@ let subject
 let viewer
 let animated
 
-function loadSubject() {
+function loadSubject () {
   subject = shallow(<BillsList viewer={viewer} animated={animated} />).dive().dive()
 }
 
-function edges(nodes) {
+function edges (nodes) {
   return nodes.map((node) => ({ node }))
 }
 

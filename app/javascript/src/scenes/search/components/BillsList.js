@@ -14,7 +14,7 @@ import { session } from 'shared/storage'
 import { stylesheet, mixins } from 'shared/styles'
 import type { Viewer } from 'shared/types'
 
-function format(date: Date): string {
+function format (date: Date): string {
   return dateFormat(date, 'MMM Do')
 }
 
@@ -44,26 +44,26 @@ let BillsList = class BillsList extends Component {
   }
 
   // lifecycle
-  componentWillMount() {
+  componentWillMount () {
     if (this.props.history.action === 'POP') {
       this.setState({ disableAnimations: true })
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if (this.props.history.action === 'POP') {
       this.setState({ disableAnimations: false })
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     const { viewer } = this.props
     if (viewer) {
       session.set('last-search-count', `${viewer.bills.edges.length}`)
     }
   }
 
-  render() {
+  render () {
     const { disableAnimations } = this.state
     const { relay, viewer, animated } = this.props
     const { bills } = viewer
@@ -87,7 +87,7 @@ let BillsList = class BillsList extends Component {
     </div>
   }
 
-  renderBills(bills): Array<React$Element<*>> {
+  renderBills (bills): Array<React$Element<*>> {
     return bills.map((bill, i) => {
       return <BillCell key={bill.id} styles={billRule} bill={bill} />
     })
@@ -116,7 +116,7 @@ BillsList = createPaginationContainer(withRouter(BillsList),
     }
   `,
   withLoadMoreArgs({
-    getConnectionFromProps(props) {
+    getConnectionFromProps (props) {
       return props.viewer && props.viewer.bills
     },
     query: graphql`
