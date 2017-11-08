@@ -13,26 +13,32 @@ describe Types::BillType, graphql: :type do
   })
 
   it 'exposes the committee' do
-    expect(field(:committee)).to eq(model.hearing.committee)
+    committee = resolve_field(:committee, obj: model)
+    expect(committee).to eq(model.hearing.committee)
   end
 
   it 'exposes the chamber' do
-    expect(field(:chamber)).to eq(hearing.committee.chamber)
+    chamber = resolve_field(:chamber, obj: model)
+    expect(chamber).to eq(hearing.committee.chamber)
   end
 
   it 'deprecates the document number' do
-    expect(field(:documentNumber)).to eq(document&.number)
+    document_number = resolve_field(:documentNumber, obj: model)
+    expect(document_number).to eq(document&.number)
   end
 
   it 'deprecates the full text url' do
-    expect(field(:fullTextUrl)).to eq(document&.full_text_url)
+    full_text_url = resolve_field(:fullTextUrl, obj: model)
+    expect(full_text_url).to eq(document&.full_text_url)
   end
 
   it 'deprecates the slip url' do
-    expect(field(:witnessSlipUrl)).to eq(document&.slip_url)
+    witness_slip_url = resolve_field(:witnessSlipUrl, obj: model)
+    expect(witness_slip_url).to eq(document&.slip_url)
   end
 
   it 'deprecates the slip results url' do
-    expect(field(:witnessSlipResultUrl)).to eq(document&.slip_results_url)
+    witness_slip_result_url = resolve_field(:witnessSlipResultUrl, obj: model)
+    expect(witness_slip_result_url).to eq(document&.slip_results_url)
   end
 end

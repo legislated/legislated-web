@@ -5,13 +5,13 @@ describe Types::ViewerType, graphql: :type do
 
   describe '#isAdmin' do
     it 'is true when the user is an admin' do
-      context = { is_admin: true }
-      expect(field(:isAdmin, context: context)).to be(true)
+      result = resolve_field(:isAdmin, obj: model, ctx: { is_admin: true })
+      expect(result).to be(true)
     end
 
     it 'is false when the user is not an admin' do
-      context = { is_admin: false }
-      expect(field(:isAdmin, context: context)).to be(false)
+      result = resolve_field(:isAdmin, obj: model, ctx: { is_admin: false })
+      expect(result).to be(false)
     end
   end
 
@@ -26,21 +26,21 @@ describe Types::ViewerType, graphql: :type do
     end
 
     it 'sorts bills by date' do
-      expect(connection(:bills)).to eq([bill1, bill2, bill3])
+      expect(resolve_field(:bills, args: {})).to eq([bill1, bill2, bill3])
     end
 
     it 'does not filter bills by query' do
-      connection(:bills, args: { query: '' })
+      resolve_field(:bills, args: { query: '' })
       expect(BillsSearchService).to_not have_received(:filter)
     end
 
     it 'only returns bills in the date range when passed' do
-      filter = { from: date, to: date }
-      expect(connection(:bills, args: filter)).to eq([bill2])
+      result = resolve_field(:bills, args: { from: date, to: date })
+      expect(result).to eq([bill2])
     end
 
     it 'only returns bills that match the search query when passed' do
-      connection(:bills, args: { query: 'foo' })
+      resolve_field(:bills, args: { query: 'foo' })
       expect(BillsSearchService).to have_received(:filter).with(anything, 'foo')
     end
   end

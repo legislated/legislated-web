@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :legislator do
     os_id { "ILB0000#{Faker::Number.unique.number(6)}" }
     active { Faker::Boolean.boolean }
@@ -9,8 +9,8 @@ FactoryGirl.define do
     party { %w[democrat republican independent].sample }
     chamber { %w[upper lower].sample }
     district { '9' }
-    website_url { optional { Faker::Internet.url } }
-    email { optional { Faker::Internet.email } }
-    twitter { optional { "@#{Faker::Twitter.screen_name }" } }
+    website_url { Faker::Internet.url }
+    email { Faker::Internet.email }
+    twitter { "@#{Faker::Twitter.screen_name }" }
   end
 end

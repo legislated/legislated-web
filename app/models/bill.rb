@@ -3,7 +3,7 @@ class Bill < ApplicationRecord
 
   # relationships
   has_many :documents, dependent: :destroy
-  belongs_to :hearing
+  belongs_to :hearing, optional: true
 
   # scopes
   pg_search_scope :by_keyword, {

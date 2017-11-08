@@ -11,3 +11,6 @@ module GraphRequestHelpers
     end
   end
 end
+
+RSpec.configuration.include GraphRequestHelpers::Example, graphql: :request
+

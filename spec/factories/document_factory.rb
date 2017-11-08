@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :document do
     os_id { "ILB0000#{Faker::Number.unique.number(6)}" }
     number { "#{%w[H S].sample}B#{Faker::Number.number(4)}" }

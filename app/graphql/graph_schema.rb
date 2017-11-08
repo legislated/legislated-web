@@ -5,11 +5,11 @@ GraphSchema = GraphQL::Schema.define do
   # relay node interface lookup
   GraphQL::Schema::UniqueWithinType.default_id_separator = '|'
 
-  id_from_object -> (object, type_definition, _query_context) {
-    GraphQL::Schema::UniqueWithinType.encode(type_definition.name, object.id)
+  id_from_object -> (obj, type_def, _ctx) {
+    GraphQL::Schema::UniqueWithinType.encode(type_def.name, obj.id)
   }
 
-  object_from_id -> (node_id, _query_context) {
+  object_from_id -> (node_id, _ctx) {
     model_name, id = GraphQL::Schema::UniqueWithinType.decode(node_id)
 
     # viewer is a special case, since it's not a database model
@@ -21,7 +21,7 @@ GraphSchema = GraphQL::Schema.define do
     end
   }
 
-  resolve_type -> (object, _query_context) {
-    "Types::#{object.class.name}Type".constantize
+  resolve_type -> (_type, obj, _ctx) {
+    "Types::#{obj.class.name}Type".constantize
   }
 end
