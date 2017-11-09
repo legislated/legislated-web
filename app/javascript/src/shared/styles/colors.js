@@ -11,7 +11,8 @@ export const colors = {
   primary: '#5498f7',
   primaryShadow: '#457dcb',
   primaryHighlight: '#6ba8ff',
-  secondary: '#ff7575'
+  secondary: '#ff7575',
+  newPrimary: 'EE5D45'
 }
 
 export function alpha (hex: string, value: number): string {

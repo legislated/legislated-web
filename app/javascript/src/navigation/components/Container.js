@@ -3,8 +3,8 @@ import 'shared/styles/globals'
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import { StickyContainer, Sticky } from 'react-sticky'
-import { Header } from './Header'
+import { StickyContainer } from 'react-sticky'
+import { Header } from './Header2'
 import { NotificationView } from 'shared/components'
 import { stylesheet, mixins } from 'shared/styles'
 import { local } from 'shared/storage'
@@ -36,15 +36,15 @@ let Container = class Container extends Component {
   render () {
     const { children } = this.props
 
-    return <StickyContainer id='container' {...rules.container}>
-      <Sticky {...rules.header}>
+    return (
+      <StickyContainer id='container' {...rules.container}>
         <Header />
-      </Sticky>
-      <div id='content' {...rules.content}>
-        {children}
-        <NotificationView />
-      </div>
-    </StickyContainer>
+        <div id='content' {...rules.content}>
+          {children}
+          <NotificationView />
+        </div>
+      </StickyContainer>
+    )
   }
 }
 

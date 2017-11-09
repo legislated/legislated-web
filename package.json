@@ -37,7 +37,7 @@
     "react-relay": "^1.1.0",
     "react-router-dom": "^4.1.2",
     "react-router-scroll": "ytase/react-router-scroll#build",
-    "react-sticky": "5.0.8",
+    "react-sticky": "6.0.1",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
@@ -79,12 +79,26 @@
   },
   "babel": {
     "presets": [
-      [ "env", { "targets": { "browsers": [ "last 2 versions" ] } } ],
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 versions"
+            ]
+          }
+        }
+      ],
       "react"
     ],
     "plugins": [
       "lodash",
-      [ "relay", { "schema": "schema.json" } ],
+      [
+        "relay",
+        {
+          "schema": "schema.json"
+        }
+      ],
       "transform-flow-strip-types",
       "transform-class-properties",
       "transform-object-rest-spread"
