@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { css } from 'glamor'
-import { Sticky } from 'react-sticky'
+import { Sticky } from 'shared/components'
 import { stylesheet, colors, alpha, mixins } from 'shared/styles'
 import logo from '../../../images/logo.png'
 

@@ -29,6 +29,8 @@
     "js-base64": "^2.1.9",
     "lodash": "^4.17.2",
     "moment": "^2.18.1",
+    "prop-types": "^15.6.0",
+    "raf": "^3.4.0",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.6.0",
     "react-copy-to-clipboard": "^5.0.0",
@@ -37,7 +39,6 @@
     "react-relay": "^1.1.0",
     "react-router-dom": "^4.1.2",
     "react-router-scroll": "ytase/react-router-scroll#build",
-    "react-sticky": "6.0.1",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
