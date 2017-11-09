@@ -1,7 +1,6 @@
 /* eslint-env jest */
 import React from 'react'
-import addHours from 'date-fns/add_hours'
-import { default as dateFormat } from 'date-fns/format'
+import { addHours, formatDate } from 'shared/date'
 import { shallow } from 'enzyme'
 import { Content } from '../Content'
 
@@ -9,7 +8,7 @@ import { Content } from '../Content'
 let subject
 let bill
 
-function loadSubject () {
+function loadSubject() {
   subject = shallow(<Content bill={bill} />).dive()
 }
 
@@ -60,7 +59,7 @@ describe('#render', () => {
     })
 
     it('shows the hearing date', () => {
-      expect(element.date()).toHaveText(dateFormat(bill.hearing.date, 'D/M/YY'))
+      expect(element.date()).toHaveText(formatDate(bill.hearing.date, 'D/M/YY'))
     })
 
     it('shows the hours left', () => {

@@ -4,7 +4,7 @@ import { createPaginationContainer, graphql } from 'react-relay'
 import type { RelayPaginationProp } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import { default as dateFormat } from 'date-fns/format'
+import { formatDate } from 'shared/date'
 import { BillCell } from './BillCell'
 import { BillAnimation, billRule } from './BillAnimation'
 import { LoadMoreButton } from './LoadMoreButton'
@@ -15,7 +15,7 @@ import { stylesheet, mixins } from 'shared/styles'
 import type { Viewer } from 'shared/types'
 
 function format (date: Date): string {
-  return dateFormat(date, 'MMM Do')
+  return formatDate(date, 'MMM Do')
 }
 
 let BillsList = class BillsList extends Component {

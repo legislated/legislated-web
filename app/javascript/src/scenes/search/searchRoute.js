@@ -1,9 +1,7 @@
 // @flow
 import React from 'react'
 import { graphql } from 'react-relay'
-import addDays from 'date-fns/add_days'
-import endOfDay from 'date-fns/end_of_day'
-import startOfDay from 'date-fns/start_of_day'
+import { addDays, endOfDay, startOfDay } from 'shared/date'
 import { SearchScene } from './SearchScene'
 import { createPaginationCacheResolver } from 'shared/relay'
 import { session } from 'shared/storage'
