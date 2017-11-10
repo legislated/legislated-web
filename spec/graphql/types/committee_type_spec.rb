@@ -8,6 +8,7 @@ describe Types::CommitteeType, graphql: :type do
   })
 
   it 'exposes the hearings' do
-    expect(connection(:hearings)).to eq(model.hearings)
+    result = resolve_field(:hearings, obj: model)
+    expect(result).to eq(model.hearings)
   end
 end

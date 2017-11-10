@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :hearing do
     external_id { Faker::Number.unique.number(5) }
     url { Faker::Internet.url }

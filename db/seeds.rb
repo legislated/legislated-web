@@ -1,5 +1,5 @@
 require './spec/helpers/factory_helpers'
-include FactoryGirl::Syntax::Methods
+include FactoryBot::Syntax::Methods
 
 chambers = [
   create(:chamber, name: 'House'),

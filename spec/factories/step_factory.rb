@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :step, class: Hash do
     actor { Step::Actors.all.sample }
     action { Step::Actions.all.sample }

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :scraped_bill, class: Hash do
     initialize_with { attributes }
 

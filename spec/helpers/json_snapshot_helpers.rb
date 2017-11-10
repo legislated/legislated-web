@@ -19,3 +19,5 @@ module JsonSnapshotHelpers
     end
   end
 end
+
+RSpec.configuration.include JsonSnapshotHelpers::Example, :json_snapshot
