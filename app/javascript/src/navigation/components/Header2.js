@@ -1,13 +1,12 @@
 // @flow
 import React, { Component } from 'react'
-import { withRouter } from 'react-router'
 import { Link, NavLink } from 'react-router-dom'
 import { css } from 'glamor'
 import { Sticky } from 'shared/components'
 import { stylesheet, colors, alpha, mixins } from 'shared/styles'
 import logo from '../../../images/logo.png'
 
-class _Header extends Component {
+export class Header extends Component {
   // lifecycle
   render () {
     const navLinkClasses = {
@@ -48,8 +47,6 @@ class _Header extends Component {
     )
   }
 }
-
-export const Header = withRouter(_Header)
 
 const rules = stylesheet({
   logoLink: {
