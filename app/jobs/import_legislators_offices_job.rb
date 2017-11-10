@@ -19,7 +19,8 @@ class ImportLegislatorsJob
       .reject(&:nil?)
 
     office_attrs.each do |attrs|
-      Legislator.upsert_by!(:os_id, attrs)
+    	# upsert is basically find_or_create_by
+      Office.upsert_by!(:os_id, attrs)
     end
   end
 
