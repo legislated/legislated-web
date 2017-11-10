@@ -4,7 +4,7 @@ import { createPaginationContainer, graphql } from 'react-relay'
 import type { RelayPaginationProp } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import type moment from 'moment'
+import { formatDate } from 'shared/date'
 import { BillCell } from './BillCell'
 import { BillAnimation, billRule } from './BillAnimation'
 import { LoadMoreButton } from './LoadMoreButton'
@@ -14,8 +14,8 @@ import { session } from 'shared/storage'
 import { stylesheet, mixins } from 'shared/styles'
 import type { Viewer } from 'shared/types'
 
-function format (date: moment): string {
-  return date.format('MMM Do')
+function format (date: Date): string {
+  return formatDate(date, 'MMM Do')
 }
 
 let BillsList = class BillsList extends Component {
