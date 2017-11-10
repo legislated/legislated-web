@@ -1,14 +1,20 @@
 // @flow
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
+import { Link, NavLink } from 'react-router-dom'
 import { css } from 'glamor'
 import { Sticky } from 'shared/components'
 import { stylesheet, colors, alpha, mixins } from 'shared/styles'
 import logo from '../../../images/logo.png'
 
-export class Header extends Component {
+class _Header extends Component {
   // lifecycle
   render () {
+    const navLinkClasses = {
+      className: `${rules.headerNavLink}`,
+      activeClassName: `${rules.activeLink}`
+    }
+
     return (
       <div>
         <div {...rules.headerLogo}>
@@ -30,10 +36,9 @@ export class Header extends Component {
                   </Link>
                 </div>
                 <div {...rules.headerNavCenter}>
-                  <Link to='/'>Home</Link>
-                  <Link to='/'>Bills</Link>
-                  <Link to='/'>FAQ</Link>
-                  <Link to='/'>About</Link>
+                  <NavLink to='/' exact {...navLinkClasses}>Home</NavLink>
+                  <NavLink to='/faq' exact {...navLinkClasses}>FAQ</NavLink>
+                  <NavLink to='/about' exact {...navLinkClasses}>About</NavLink>
                 </div>
               </div>
             )
@@ -43,6 +48,8 @@ export class Header extends Component {
     )
   }
 }
+
+export const Header = withRouter(_Header)
 
 const rules = stylesheet({
   logoLink: {
@@ -84,16 +91,23 @@ const rules = stylesheet({
   headerNavCenter: {
     flex: '0 1 50%',
     display: 'flex',
-    flexFlow: 'row nowrap',
-    '> a': {
-      flex: '1 1 auto',
-      textAlign: 'center',
-      textTransform: 'uppercase',
-      borderBottom: '7px solid white',
-      display: 'flex',
-      flexFlow: 'column nowrap',
-      justifyContent: 'center'
-    }
+    flexFlow: 'row nowrap'
+  },
+  headerNavLink: {
+    flex: '1 1 auto',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    borderBottom: '7px solid white',
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    justifyContent: 'center',
+    textDecoration: 'none',
+    color: colors.light,
+    fontWeight: mixins.fonts.light
+  },
+  activeLink: {
+    color: colors.newPrimary,
+    borderBottom: `7px solid ${colors.newPrimary}`
   },
   headerLogo: {
     height: 280,
