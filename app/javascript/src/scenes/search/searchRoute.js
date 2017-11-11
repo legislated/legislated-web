@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { graphql } from 'react-relay'
-import moment from 'moment'
+import { addDays, endOfDay, startOfDay } from 'shared/date'
 import { SearchScene } from './SearchScene'
 import { createPaginationCacheResolver } from 'shared/relay'
 import { session } from 'shared/storage'
@@ -10,8 +10,8 @@ import type { RelayRouteConfig } from 'shared/types'
 export const constants = {
   query: '',
   count: 20,
-  startDate: moment().startOf('day'),
-  endDate: moment().add(6, 'days').endOf('day')
+  startDate: startOfDay(new Date()),
+  endDate: endOfDay(addDays(new Date(), 6))
 }
 
 export const searchRoute: RelayRouteConfig = {
