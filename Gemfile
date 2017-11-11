@@ -19,6 +19,7 @@ gem 'poltergeist'
 
 # client
 gem 'webpacker'
+gem 'hypernova'
 
 # development
 group :development do
