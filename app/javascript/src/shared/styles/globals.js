@@ -28,7 +28,7 @@ globals({
   },
   body: {
     backgroundColor: colors.background,
-    ...mixins.fonts.regularSans
+    ...mixins.fonts.regular
   },
   'p, h1, h2, h3, h4, h5, h6, ul': {
     margin: 0
@@ -37,28 +37,28 @@ globals({
     lineHeight: 1.4
   },
   h1: {
-    ...mixins.fonts.regularSerif,
+    ...mixins.fonts.regularSlab,
     fontSize: 28
   },
   h2: {
-    ...mixins.fonts.regularSerif,    
+    ...mixins.fonts.regularSlab,
     fontSize: 24
   },
   h3: {
-    ...mixins.fonts.regularSerif,    
+    ...mixins.fonts.regularSlab,
     fontSize: 20
   },
   h4: {
-    ...mixins.fonts.regularSerif,
+    ...mixins.fonts.regularSlab,
     fontSize: 20
   },
   h5: {
-    ...mixins.fonts.regularSerif,
+    ...mixins.fonts.regularSlab,
     fontSize: 16
   },
   h6: {
-    ...mixins.fonts.regularSerif,
-    fontSize: 13    
+    ...mixins.fonts.regularSlab,
+    fontSize: 13
   },
   a: {
     cursor: 'pointer'

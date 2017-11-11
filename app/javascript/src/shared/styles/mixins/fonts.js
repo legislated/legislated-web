@@ -5,25 +5,25 @@ type FontFace = {|
 |}
 
 const fontFamilies = {
-  serif:'Zilla Slab, serif',
-  sans:'Roboto, sans-serif'
+  slab: 'Zilla Slab, serif',
+  sans: 'Roboto, sans-serif'
 }
 
-export const fonts: { lightSans: FontFace, regularSans:FontFace, boldSans: FontFace, regularSerif: FontFace } = {
-  lightSans: {
+export const fonts: { light: FontFace, regular:FontFace, bold: FontFace, regularSlab: FontFace } = {
+  light: {
     fontFamily: fontFamilies.sans,
     fontWeight: 300
   },
-  regularSans: {
+  regular: {
     fontFamily: fontFamilies.sans,
     fontWeight: 400
   },
-  boldSans: {
+  bold: {
     fontFamily: fontFamilies.sans,
     fontWeight: 700
   },
-  regularSerif: {
-    fontFamily: fontFamilies.serif,
+  regularSlab: {
+    fontFamily: fontFamilies.slab,
     fontWeight: 400
   }
 }
