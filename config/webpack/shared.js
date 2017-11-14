@@ -1,20 +1,23 @@
+require('./mapEnv')
+
 const { environment } = require('@rails/webpacker')
 
-const merge = require('webpack-merge')
 const path = require('path')
-const RelayCompilerPlugin = require('relay-compiler-webpack-plugin')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const constants = require('./constants')
 
-const client = './app/javascript'
 const config = merge(environment.toWebpackConfig(), {
   resolve: {
     alias: {
-      shared: path.resolve(client, './src/shared')
+      shared: path.resolve(constants.client, './src/shared')
     }
   },
   plugins: [
-    new RelayCompilerPlugin({
-      src: path.resolve(client, './src'),
-      schema: path.resolve('./schema.json')
+    new webpack.DefinePlugin({
+      'process.env': {
+        'ENVIRONMENT': JSON.stringify(process.env.WEBPACK_ENV)
+      }
     })
   ]
 })

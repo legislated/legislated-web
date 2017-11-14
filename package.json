@@ -7,8 +7,11 @@
   "license": "MIT",
   "scripts": {
     "start": "./bin/webpack-dev-server",
+    "start:server": "NODE_ENV=server WEBPACKER_DEV_SERVER_INLINE=false ./bin/webpack-dev-server",
     "build:staging": "webpack -p --env.env=staging",
     "build:prod": "webpack -p --env.env=production",
+    "hypernova": "NODE_ENV=server node hypernova",
+    "hypernova:debug": "NODE_ENV=server node inspect hypernova",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect --debug-brk ./node_modules/.bin/jest --runInBand",
@@ -17,9 +20,9 @@
     "lint:bare": "standard './app/javascript/**/*.js'",
     "flow": "flow",
     "flow:restart": "flow stop && flow",
-    "validate": "yarn lint && yarn flow && yarn test",
     "relay": "relay-compiler --src ./src --schema schema.json",
-    "relay:watch": "yarn relay -- --watch"
+    "relay:watch": "yarn relay -- --watch",
+    "validate": "yarn lint && yarn flow && yarn test"
   },
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
@@ -55,6 +58,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
+    "concat-stream": "^1.6.0",
     "copy-webpack-plugin": "^4.0.1",
     "enzyme": "^2.9.1",
     "eslint": "^4.2.0",
@@ -74,7 +78,8 @@
     "standard": "^10.0.2",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.9.3",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "webpack-node-externals": "^1.6.0"
   },
   "graphql": {
     "file": "./schema.json"

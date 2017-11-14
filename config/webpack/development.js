@@ -1,13 +1,14 @@
-const webpack = require('webpack')
+const path = require('path')
 const merge = require('webpack-merge')
+const RelayCompilerPlugin = require('relay-compiler-webpack-plugin')
 const shared = require('./shared')
+const constants = require('./constants')
 
 const config = merge(shared, {
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'ENVIRONMENT': JSON.stringify('development')
-      }
+    new RelayCompilerPlugin({
+      src: path.resolve(constants.client, './src'),
+      schema: path.resolve('./schema.json')
     })
   ]
 })

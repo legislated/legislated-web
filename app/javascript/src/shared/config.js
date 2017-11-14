@@ -16,6 +16,9 @@ export function loadConfig () {
     },
     production: {
       graphUrl: 'https://legislated.herokuapp.com/api/graphql'
+    },
+    server: {
+      graphUrl: 'http://localhost:3000/api/graphql'
     }
   }
 
