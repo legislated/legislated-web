@@ -2,4 +2,4 @@
 import { renderReact } from 'hypernova-react'
 import { App } from '../src/App'
 
-renderReact('client', App)
+export default renderReact('client', App)

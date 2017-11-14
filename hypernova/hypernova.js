@@ -8,7 +8,7 @@ const { path: packsPath } = output
 const devServerUrl = `http://${devServer.host}:${devServer.port}`
 
 // run
-const { run } = hypernova.createVM({ cacheSize: 1 })
+const { run } = hypernova.createVM({ cacheSize: 0 })
 
 // start hypernova server
 hypernova({
@@ -23,7 +23,7 @@ hypernova({
     const pack = await requireFromUrl(filePath)
     console.log(`ssr [name: ${name}] loading pack`)
 
-    const Component = run(name, pack)
+    const { default: Component } = run(name, pack)
     console.log(`ssr [name: ${name}] loaded:`, Component)
 
     return Component
