@@ -68,7 +68,7 @@ describe('the container', () => {
     })
   })
 
-  describe('#componentWillMount', () => {
+  describe('#componentDidMount', () => {
     it('adds the cache resolver if it exists', () => {
       config = { cacheResolver: { foo: 'bar' } }
       loadContainer()

@@ -25,7 +25,7 @@ let Container = class Container extends Component {
   }
 
   // lifecycle
-  componentWillMount () {
+  componentDidMount () {
     this.clearVisitedIntro()
   }
 

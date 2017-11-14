@@ -28,9 +28,10 @@ describe('#state', () => {
   })
 })
 
-describe('#componentWillMount', () => {
+describe('#componentDidMount', () => {
   it('marks the intro as visited', () => {
     loadSubject()
+    subject.instance().componentDidMount()
     expect(local.get('intro-visited')).toEqual('true')
   })
 })
@@ -43,7 +44,7 @@ describe('#render', () => {
   })
 })
 
-describe('when the user clicks accept', () => {
+describe('clicking accept', () => {
   it('hides the intro', () => {
     loadSubject()
     element.accept().simulate('click')
@@ -53,6 +54,6 @@ describe('when the user clicks accept', () => {
   it('marks the intro as visited', () => {
     loadSubject()
     element.accept().simulate('click')
-    expect(local.get('intro-visited')).toEqual('true')
+    expect(local.get('intro-cleared')).toEqual('true')
   })
 })

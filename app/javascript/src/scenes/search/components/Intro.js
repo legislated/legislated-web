@@ -25,7 +25,7 @@ export class Intro extends Component {
   }
 
   // lifecycle
-  componentWillMount () {
+  componentDidMount () {
     local.set('intro-visited', 'true')
   }
 

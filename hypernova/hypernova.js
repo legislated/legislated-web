@@ -21,16 +21,11 @@ hypernova({
     console.log(`ssr [name: ${name}] fetching ${filePath}`)
 
     const pack = await requireFromUrl(filePath)
-    console.log(`ssr [name: ${name}] rendering pack`)
+    console.log(`ssr [name: ${name}] loading pack`)
 
-    try {
-      const Component = run(name, pack)
-      console.log(`ssr [name: ${name}] rendered ${Component}`)
-      return Component
-    } catch (error) {
-      console.error(`ssr [name: ${name}] rendering failed with error:`)
-      console.error(error)
-      return null
-    }
+    const Component = run(name, pack)
+    console.log(`ssr [name: ${name}] loaded:`, Component)
+
+    return Component
   }
 })
