@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017225846) do
+ActiveRecord::Schema.define(version: 20171110030537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,18 @@ ActiveRecord::Schema.define(version: 20171017225846) do
     t.string   "party",                       null: false
     t.string   "website_url"
     t.index ["os_id"], name: "index_legislators_on_os_id", unique: true, using: :btree
+  end
+
+  create_table "offices", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "legislator_id", null: false
+    t.string   "location",      null: false
+    t.string   "building"
+    t.string   "address",       null: false
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "email"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
