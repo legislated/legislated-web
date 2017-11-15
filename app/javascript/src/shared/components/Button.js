@@ -18,13 +18,16 @@ export class Button extends Component {
   // lifecycle
   render () {
     const { type, label, iconName, styles, ...linkProps } = this.props
-    const isSolid = type === 'solid'
 
+    const isSolid = type === 'solid'
     const linkRule = css(rules.button, isSolid && rules.solid, styles)
-    return <Link styles={linkRule} {...linkProps}>
-      <FontAwesome {...rules.icon} name={iconName} />
-      <span>{label}</span>
-    </Link>
+
+    return (
+      <Link styles={linkRule} {...linkProps}>
+        <FontAwesome {...rules.icon} name={iconName} />
+        <span>{label}</span>
+      </Link>
+    )
   }
 }
 

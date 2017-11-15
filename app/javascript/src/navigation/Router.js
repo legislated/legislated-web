@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import { ScrollContext } from 'react-router-scroll'
+import { ScrollContext } from 'react-router-scroll-4'
 import { Routes } from './Routes'
 import { Container } from './components'
 

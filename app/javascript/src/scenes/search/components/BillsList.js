@@ -26,7 +26,7 @@ let BillsList = class BillsList extends Component {
   } & ContextRouter
 
   state = {
-    disableAnimations: false
+    disableAnimations: this.props.history.action === 'POP'
   }
 
   // events
@@ -44,12 +44,6 @@ let BillsList = class BillsList extends Component {
   }
 
   // lifecycle
-  componentWillMount () {
-    if (this.props.history.action === 'POP') {
-      this.setState({ disableAnimations: true })
-    }
-  }
-
   componentDidMount () {
     if (this.props.history.action === 'POP') {
       this.setState({ disableAnimations: false })

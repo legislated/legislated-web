@@ -38,7 +38,7 @@ let Container = class Container extends Component {
 
     return <StickyContainer id='container' {...rules.container}>
       <Sticky {...rules.header}>
-        <Header />
+        {() => <Header />}
       </Sticky>
       <div id='content' {...rules.content}>
         {children}

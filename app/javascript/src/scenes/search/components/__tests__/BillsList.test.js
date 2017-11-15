@@ -64,11 +64,11 @@ describe('#state', () => {
   })
 })
 
-describe('#componentWillMount', () => {
+xdescribe('#componentWillMount', () => {
   it('disables animations on pop', () => {
     routerProps.history.action = 'POP'
     loadSubject()
-    expect(element.animation()).toHaveProp('disable', true)
+    expect(subject).toHaveState('disableAnimations', true)
   })
 })
 
@@ -76,8 +76,9 @@ describe('#componentDidMount', () => {
   it('re-enables animations on pop', () => {
     routerProps.history.action = 'POP'
     loadSubject()
+    subject.setState({ disableAnimations: true })
     subject.instance().componentDidMount()
-    expect(element.animation()).toHaveProp('disable', false)
+    expect(subject).toHaveState('disableAnimations', false)
   })
 })
 

@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react'
-import TransitionGroup from 'react-addons-css-transition-group'
+import TransitionGroup from 'react-transition-group'
 import { stylesheet } from 'shared/styles'
 
 const translation = 50
