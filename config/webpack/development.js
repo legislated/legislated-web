@@ -1,6 +1,6 @@
 const path = require('path')
 const merge = require('webpack-merge')
-const RelayCompilerPlugin = require('relay-compiler-webpack-plugin')
+const RelayCompilerPlugin = require('@dhau/relay-compiler-webpack-plugin')
 const shared = require('./shared')
 const constants = require('./constants')
 

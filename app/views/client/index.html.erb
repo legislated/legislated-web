@@ -17,5 +17,5 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
 </head>
 <body>
-  <%= render_react_component('client') %>
+  <%= render_react_component('server', location: request.fullpath) %>
 </body>

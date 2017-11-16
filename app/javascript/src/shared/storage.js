@@ -15,31 +15,31 @@ function namespaceKey (key: string): string {
 }
 
 class Store<K: string> {
-  storage: () => Storage
+  storage: Storage
 
-  constructor (storage: () => Storage) {
+  constructor (storage: Storage) {
     this.storage = storage
   }
 
   get (key: K): ?string {
     const actualKey = namespaceKey(key)
-    return this.storage().getItem(actualKey)
+    return this.storage.getItem(actualKey)
   }
 
   set (key: K, value: ?string) {
     const actualKey = namespaceKey(key)
 
     if (value) {
-      this.storage().setItem(actualKey, value)
+      this.storage.setItem(actualKey, value)
     } else {
-      this.storage().removeItem(actualKey)
+      this.storage.removeItem(actualKey)
     }
   }
 }
 
 // store instances
 export const local: Store<LocalStoreKey> =
-  new Store(() => localStorage)
+  new Store(localStorage)
 
 export const session: Store<SessionStoreKey> =
-  new Store(() => sessionStorage)
+  new Store(sessionStorage)

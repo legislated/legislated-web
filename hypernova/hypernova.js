@@ -17,6 +17,11 @@ hypernova({
   getComponent: async (name) => {
     const manifest = require(resolve(packsPath, 'manifest.json'))
     const packName = manifest[`${name}.js`]
+
+    if (packName == null) {
+      console.log(`ssr [name: ${name}] missing pack in manifest`, manifest)
+    }
+
     const filePath = `${devServerUrl}${packName}`
     console.log(`ssr [name: ${name}] fetching ${filePath}`)
 

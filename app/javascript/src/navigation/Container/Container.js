@@ -1,13 +1,12 @@
 // @flow
-import 'shared/styles/globals'
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import type { ContextRouter } from 'react-router-dom'
 import { StickyContainer, Sticky } from 'react-sticky'
 import { Header } from './Header'
 import { NotificationView } from 'shared/components'
 import { stylesheet, mixins } from 'shared/styles'
 import { local } from 'shared/storage'
+import type { ContextRouter } from 'react-router-dom'
 
 type ContainerProps = {
   children?: any

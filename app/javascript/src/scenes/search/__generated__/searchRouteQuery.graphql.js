@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 5f2fc6556576e0589e2c8f46281315d3
+ * @relayHash 3e2445f7bd2256d508ab5d386545bfb8
  */
 
 /* eslint-disable */
@@ -46,14 +46,12 @@ fragment BillsList_viewer on Viewer {
     pageInfo {
       hasNextPage
       endCursor
-      hasPreviousPage
-      startCursor
     }
     edges {
       node {
+        __typename
         id
         ...BillCell_bill
-        __typename
       }
       cursor
     }
@@ -240,6 +238,13 @@ const batch /*: ConcreteBatch*/ = {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
+                        "name": "__typename",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
                         "name": "id",
                         "storageKey": null
                       },
@@ -309,13 +314,6 @@ const batch /*: ConcreteBatch*/ = {
                           }
                         ],
                         "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "__typename",
-                        "storageKey": null
                       }
                     ],
                     "storageKey": null
@@ -357,20 +355,6 @@ const batch /*: ConcreteBatch*/ = {
                     "alias": null,
                     "args": null,
                     "name": "endCursor",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "hasPreviousPage",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "startCursor",
                     "storageKey": null
                   }
                 ],
@@ -435,7 +419,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query searchRouteQuery(\n  $count: Int!\n  $cursor: String!\n  $query: String!\n  $startDate: Time!\n  $endDate: Time!\n) {\n  viewer {\n    ...SearchScene_viewer\n    id\n  }\n}\n\nfragment SearchScene_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n  ...BillsList_viewer\n}\n\nfragment BillsList_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        ...BillCell_bill\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  witnessSlipUrl\n  detailsUrl\n  fullTextUrl\n  hearing {\n    date\n    id\n  }\n}\n"
+  "text": "query searchRouteQuery(\n  $count: Int!\n  $cursor: String!\n  $query: String!\n  $startDate: Time!\n  $endDate: Time!\n) {\n  viewer {\n    ...SearchScene_viewer\n    id\n  }\n}\n\nfragment SearchScene_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n  ...BillsList_viewer\n}\n\nfragment BillsList_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  witnessSlipUrl\n  detailsUrl\n  fullTextUrl\n  hearing {\n    date\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

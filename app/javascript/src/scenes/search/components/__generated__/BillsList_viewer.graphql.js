@@ -154,8 +154,22 @@ const fragment /*: ConcreteFragment*/ = {
                   "kind": "FragmentSpread",
                   "name": "BillCell_bill",
                   "args": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "args": null,
+                  "name": "__typename",
+                  "storageKey": null
                 }
               ],
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "cursor",
               "storageKey": null
             }
           ],

@@ -2,8 +2,8 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { RelayRoute } from './RelayRoute'
-import { NotFoundView } from './components'
 import { AdminRoutes } from './AdminRoutes'
+import { NotFoundView } from './NotFoundView'
 import * as scenes from '../scenes'
 
 export const Routes = () => (
