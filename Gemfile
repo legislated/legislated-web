@@ -31,7 +31,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'database_cleaner'
   gem 'dotenv-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'graphiql-rails'
   gem 'guard-rspec'

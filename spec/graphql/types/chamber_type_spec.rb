@@ -8,6 +8,6 @@ describe Types::ChamberType, graphql: :type do
   })
 
   it 'exposes the committees' do
-    expect(connection(:committees)).to eq(model.committees)
+    expect(resolve_field(:committees, obj: model)).to eq(model.committees)
   end
 end

@@ -5,10 +5,10 @@ describe Types::DateTimeType, graphql: :type do
   let(:string) { date.iso8601 }
 
   it 'coerces string input into a time' do
-    expect(subject.coerce_non_null_input(string)).to eq(date)
+    expect(subject.coerce_isolated_input(string)).to eq(date)
   end
 
   it 'coerces time output into a string' do
-    expect(subject.coerce_result(date)).to eq(string)
+    expect(subject.coerce_isolated_result(date)).to eq(string)
   end
 end

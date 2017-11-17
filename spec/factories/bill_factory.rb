@@ -1,9 +1,9 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :bill do
     external_id { Faker::Number.unique.number(5) }
     os_id { "ILB0000#{Faker::Number.unique.number(6)}" }
-    title { optional { Faker::Company.catch_phrase } }
-    summary { optional { Faker::Lorem.paragraph(6) } }
+    title { Faker::Company.catch_phrase }
+    summary { Faker::Lorem.paragraph(6) }
     session_number { 99 }
     sponsor_name { Faker::Name.name }
     details_url { Faker::Internet.url }

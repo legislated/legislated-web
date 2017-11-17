@@ -9,6 +9,7 @@ describe Types::LegislatorType, graphql: :type do
   })
 
   it 'provides a display name' do
-    expect(field(:name)).to eq("#{model.first_name} #{model.middle_name} #{model.last_name} #{model.suffixes}")
+    result = resolve_field(:name, obj: model)
+    expect(result).to eq("#{model.first_name} #{model.middle_name} #{model.last_name} #{model.suffixes}")
   end
 end

@@ -8,6 +8,6 @@ describe Types::HearingType, graphql: :type do
   })
 
   it 'exposes the bills' do
-    expect(connection(:bills)).to eq(model.bills)
+    expect(resolve_field(:bills, obj: model)).to eq(model.bills)
   end
 end
