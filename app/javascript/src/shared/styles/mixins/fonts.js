@@ -6,7 +6,7 @@ type FontFace = {|
 
 const fontFamily = 'Nunito, sans-serif'
 
-export const fonts: { regular: FontFace, bold: FontFace } = {
+export const fonts: { light: FontFace, regular: FontFace, bold: FontFace } = {
   light: {
     fontFamily,
     fontWeight: 200

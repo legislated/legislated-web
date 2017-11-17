@@ -14,5 +14,10 @@ export const utils = {
   }),
   inset: (value: number): Object => ({
     margin: value
-  })
+  }),
+  centerVertically: {
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    justifyContent: 'center'
+  }
 }
