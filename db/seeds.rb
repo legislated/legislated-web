@@ -1,4 +1,3 @@
-require './spec/helpers/factory_helpers'
 include FactoryBot::Syntax::Methods
 
 chambers = [

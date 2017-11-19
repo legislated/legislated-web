@@ -9,13 +9,11 @@ type Props = {
   location: string
 }
 
-export default renderReact('server', ({ location }: Props) => {
-  return (
-    <StaticRouter
-      location={location}
-      context={{}}
-    >
-      <App />
-    </StaticRouter>
-  )
-})
+export default renderReact('server', ({ location }: Props) => (
+  <StaticRouter
+    location={location}
+    context={{}}
+  >
+    <App />
+  </StaticRouter>
+))

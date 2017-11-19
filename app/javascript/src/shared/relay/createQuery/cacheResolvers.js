@@ -1,7 +1,7 @@
 // @flow
+import { pull } from 'lodash'
 import type { ConcreteBatch } from 'relay-runtime'
 import type { RelayCacheResovler } from 'shared/types'
-import { pull } from 'lodash'
 
 // HACK: stop-gap caching solution for paginated data while waiting for relay
 // to implement actual caching
