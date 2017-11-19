@@ -24,10 +24,8 @@ hypernova({
 
     const filePath = `${devServerUrl}${packName}`
     console.log(`ssr [name: ${name}] fetching ${filePath}`)
-
     const pack = await requireFromUrl(filePath)
     console.log(`ssr [name: ${name}] loading pack`)
-
     const { default: Component } = run(name, pack)
     console.log(`ssr [name: ${name}] loaded:`, Component)
 
