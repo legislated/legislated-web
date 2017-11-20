@@ -8,7 +8,7 @@ import { Content } from '../Content'
 let subject
 let bill
 
-function loadSubject() {
+function loadSubject () {
   subject = shallow(<Content bill={bill} />).dive()
 }
 
