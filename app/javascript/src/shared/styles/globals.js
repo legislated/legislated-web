@@ -5,6 +5,7 @@ import { css } from 'glamor'
 import { mixins } from './mixins'
 import { colors } from './colors'
 import { query } from './mixins/mobile'
+import './fontfaces'
 
 // extra resets
 css.insert(`
