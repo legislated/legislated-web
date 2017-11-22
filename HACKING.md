@@ -158,7 +158,7 @@ If you've never worked with some of the technologies on this project, it may be 
 
 #### [Web Server (Rails)](http://guides.rubyonrails.org/)
 
-Rails is a web-application framework, and we use it so serve our API, interact with the database, etc. If you've never worked with it, their documentation is a good place to start.
+Rails is a web-application framework, and we use it to serve our API, interact with the database, etc. If you've never worked with it, their documentation is a good place to start.
 
 #### [API (GraphQL)](wiki/api.md)
 

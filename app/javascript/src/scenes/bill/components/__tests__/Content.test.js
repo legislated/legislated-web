@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import React from 'react'
-import moment from 'moment'
+import { addHours, formatDate } from 'shared/date'
 import { shallow } from 'enzyme'
 import { Content } from '../Content'
 
@@ -30,7 +30,7 @@ beforeEach(() => {
     title: 'Foo',
     summary: 'A bill, fantastic',
     hearing: {
-      date: moment().add(11.9, 'hours').utc()
+      date: addHours(new Date(), 11.9)
     },
     committee: {
       name: 'Many Pointed Bills'
@@ -59,7 +59,7 @@ describe('#render', () => {
     })
 
     it('shows the hearing date', () => {
-      expect(element.date()).toHaveText(moment(bill.hearing.date).calendar())
+      expect(element.date()).toHaveText(formatDate(bill.hearing.date, 'D/M/YY'))
     })
 
     it('shows the hours left', () => {
@@ -77,7 +77,7 @@ describe('#render', () => {
 
   describe('when the date is over 23 hours away', () => {
     it('does not show the hours left', () => {
-      bill.hearing.date = moment().add(24.1, 'hours').utc()
+      bill.hearing.date = addHours(new Date(), 24.1)
       loadSubject()
       expect(element.hoursLeft().get(0)).toBeFalsy()
     })

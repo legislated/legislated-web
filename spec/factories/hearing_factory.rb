@@ -13,5 +13,13 @@ FactoryBot.define do
     trait :with_committee do
       committee
     end
+
+    trait :this_week do
+      date { Faker::Time.between(Time.zone.today, 1.week.from_now) }
+    end
+
+    trait :after_this_week do
+      date { Faker::Time.between(1.week.from_now, 1.month.from_now) }
+    end
   end
 end

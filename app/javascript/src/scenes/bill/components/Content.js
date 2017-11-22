@@ -1,14 +1,12 @@
 // @flow
 import React, { Component } from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
-import moment from 'moment'
+import { differenceInHours, formatDate, parseDate } from 'shared/date'
 import { Actions } from './Actions'
 import { Element } from './Element'
 import { CopyLink } from 'shared/components'
 import { stylesheet, colors, mixins } from 'shared/styles'
 import type { Bill } from 'shared/types'
-
-const { floor } = Math
 
 let Content = class Content extends Component {
   props: {
@@ -19,9 +17,10 @@ let Content = class Content extends Component {
   render () {
     const { bill } = this.props
 
-    const now = moment()
-    const date = moment(bill.hearing.date)
-    const hoursLeft = floor(date.diff(now, 'hours', true))
+    const now = new Date()
+    const date = parseDate(bill.hearing.date)
+    const hoursLeft = differenceInHours(date, now)
+    const formattedDate = formatDate(date, 'M/D/YY h:mm A')
 
     return <div>
       <div {...rules.header}>
@@ -39,8 +38,8 @@ let Content = class Content extends Component {
         </div>
         <div {...rules.column}>
           <Element label='Hearing Date'>
-            <span>{date.calendar()}</span>
-            {hoursLeft < 24 && <span {...rules.hoursLeft}>
+            <span>{formattedDate}</span>
+            {hoursLeft < 24 && hoursLeft > 0 && <span {...rules.hoursLeft}>
               {`(${hoursLeft} hours left)`}
             </span>}
           </Element>
