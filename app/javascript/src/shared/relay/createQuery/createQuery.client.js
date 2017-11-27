@@ -4,6 +4,23 @@ import type { QueryResult, QueryPayload, FetchFunction } from 'relay-runtime'
 import { getCacheResolver } from './cacheResolvers'
 import config from 'shared/config'
 
+// ssr request replay
+function getPayloads () {
+  const payloadData = global._payloads
+  global._payloads = null
+  return payloadData ? JSON.parse(payloadData) : []
+}
+
+// helpers
+function asPayload (result: ?QueryResult): ?QueryPayload {
+  return result && result.data ? { data: result.data } : null
+}
+
+function asResult (payload: QueryPayload): QueryResult {
+  return { data: payload.data }
+}
+
+// query factory
 // see: https://facebook.github.io/relay/docs/network-layer.html
 // see: https://github.com/facebook/relay/issues/1688#issuecomment-302931855
 export function createQuery (extraHeaders: Object): FetchFunction {
@@ -13,21 +30,27 @@ export function createQuery (extraHeaders: Object): FetchFunction {
     ...extraHeaders
   }
 
+  const payloads = getPayloads()
+
   return async function query (operation, variables) {
+    // first, check for an ssr payload to replay
+    let payload: ?QueryPayload = payloads.shift()
+    if (payload != null) {
+      return asResult(payload)
+    }
+
     // find an applicable stop-gap cache resolver (if any)
     const resolver = getCacheResolver(operation, variables)
-    // default to operation name for queryId if nothing matches
-    const { name: queryId } = operation
 
-    // first, check the cache for a response
-    let payload: ?QueryPayload
+    // check the cache for a response, using the operation name as the query id
+    const { name: queryId } = operation
     if (resolver) {
       payload = resolver.getCachedResponse(operation, variables, cache)
     } else {
       payload = cache.get(queryId, variables)
     }
 
-    if (payload) {
+    if (payload != null) {
       return asResult(payload)
     }
 
@@ -55,13 +78,4 @@ export function createQuery (extraHeaders: Object): FetchFunction {
 
     return result
   }
-}
-
-// helpers
-function asPayload (result: ?QueryResult): ?QueryPayload {
-  return result && result.data ? { data: result.data } : null
-}
-
-function asResult (payload: QueryPayload): QueryResult {
-  return { data: payload.data }
 }

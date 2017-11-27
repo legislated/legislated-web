@@ -13,10 +13,11 @@
   <meta name='twitter:title' content='Legislated' />
   <meta name='twitter:description' content='Your seat in state government' />
   <meta name='twitter:image' content="<%= image_path('logotitle.png') %>" />
-  <%# <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> %>
-  <%# <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet"> %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
   <%= favicon_link_tag %>
 </head>
 <body>
   <%= render_react_component('server', location: request.fullpath) %>
+  <%= javascript_pack_tag('client') %>
 </body>

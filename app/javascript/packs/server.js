@@ -5,6 +5,7 @@ import { renderReact } from 'hypernova-react'
 import { StaticRouter } from 'react-router-dom'
 import { renderStatic } from 'glamor/server'
 import { App } from '../src/App'
+import { getPayloads } from '../src/shared/relay/createQuery/createQuery.server'
 
 type Props = {
   location: string
@@ -26,6 +27,7 @@ export default renderReact('server', ({ location }: Props) => (
       <body>
         ${serializeHtml(html)}
         <script>window._glam = ${JSON.stringify(ids)}</script>
+        <script>window._payloads = ${JSON.stringify(getPayloads())}</script>
       </body>
     `
   }
