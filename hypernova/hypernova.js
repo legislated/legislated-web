@@ -3,8 +3,10 @@ const hypernova = require('hypernova/server')
 const requireFromUrl = require('./requireFromUrl')
 
 // load webpack config
-const { devServer, output } = require(resolve(`./config/webpack`, process.env.NODE_ENV))
+const configs = require(resolve(`./config/webpack`, process.env.NODE_ENV))
+const { devServer, output } = configs[0]
 const { path: packsPath } = output
+console.log('manifest at', packsPath)
 const devServerUrl = `http://${devServer.host}:${devServer.port}`
 
 // run

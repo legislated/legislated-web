@@ -84,26 +84,12 @@
   },
   "babel": {
     "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "browsers": [
-              "last 2 versions"
-            ]
-          }
-        }
-      ],
+      [ "env", { "targets": { "browsers": [ "last 2 versions" ] } } ],
       "react",
       "stage-2"
     ],
     "plugins": [
-      [
-        "relay",
-        {
-          "schema": "schema.json"
-        }
-      ],
+      [ "relay", { "schema": "schema.json" } ],
       "lodash",
       "transform-runtime"
     ]
