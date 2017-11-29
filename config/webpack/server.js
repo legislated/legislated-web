@@ -30,6 +30,7 @@ const manifestPlugin = () => new ManifestPlugin({
 // create a server config to only render the ssr bundle
 const server = config({
   target: 'node',
+  devtool: false,
   entry: pick(shared.entry, [
     'server'
   ]),

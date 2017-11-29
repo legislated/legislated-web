@@ -11,7 +11,7 @@ type Props = {
   location: string
 }
 
-export default renderReact('server', ({ location }: Props) => (
+export default renderReact('client', ({ location }: Props) => (
   <StaticRouter
     location={location}
     context={{}}
@@ -19,13 +19,13 @@ export default renderReact('server', ({ location }: Props) => (
     <App />
   </StaticRouter>
 ), {
-  serialize (renderToString, serializeHtml) {
-    const { html, css, ids } = renderStatic(renderToString)
+  serialize (markup, serializeRoot) {
+    const { html, css, ids } = renderStatic(() => markup)
 
     return `
       <head><style>${css}</style></head>
       <body>
-        ${serializeHtml(html)}
+        ${serializeRoot(html)}
         <script>window._glam = ${JSON.stringify(ids)}</script>
         <script>window._payloads = ${JSON.stringify(getPayloads())}</script>
       </body>

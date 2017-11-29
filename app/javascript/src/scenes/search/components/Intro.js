@@ -4,7 +4,7 @@ import FontAwesome from 'react-fontawesome'
 import { css } from 'glamor'
 import type { Rule } from 'glamor'
 import { BillAnimation } from './BillAnimation'
-import { Link } from 'shared/components'
+import { Link, Defer } from 'shared/components'
 import { local } from 'shared/storage'
 import { stylesheet, mixins } from 'shared/styles'
 
@@ -30,9 +30,15 @@ export class Intro extends Component {
   }
 
   render () {
-    return local.get('intro-cleared') ? null : <BillAnimation>
-      {this.renderContent()}
-    </BillAnimation>
+    return (
+      <Defer>
+        {local.get('intro-cleared') ? null : (
+          <BillAnimation
+            children={this.renderContent()}
+          />
+        )}
+      </Defer>
+    )
   }
 
   renderContent (): ?React$Element<*> {

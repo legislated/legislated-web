@@ -6,7 +6,6 @@ const requireFromUrl = require('./requireFromUrl')
 const configs = require(resolve(`./config/webpack`, process.env.NODE_ENV))
 const { devServer, output } = configs[0]
 const { path: packsPath } = output
-console.log('manifest at', packsPath)
 const devServerUrl = `http://${devServer.host}:${devServer.port}`
 
 // run
@@ -29,7 +28,12 @@ hypernova({
     const pack = await requireFromUrl(filePath)
     console.log(`ssr [name: ${name}] loading pack`)
     const { default: Component } = run(name, pack)
-    console.log(`ssr [name: ${name}] loaded:`, Component)
+
+    if (Component !== null) {
+      console.log(`ssr [name: ${name}] loaded!`)
+    } else {
+      console.log(`ssr [name: ${name}] failed to load`)
+    }
 
     return Component
   }
