@@ -7,19 +7,29 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const constants = require('./constants')
 
-const config = merge(environment.toWebpackConfig(), {
-  resolve: {
-    alias: {
-      shared: path.resolve(constants.client, './src/shared')
-    }
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'ENVIRONMENT': JSON.stringify(process.env.WEBPACK_ENV)
-      }
-    })
-  ]
-})
+function config (preprocess) {
+  if (preprocess) {
+    preprocess(environment)
+  }
 
-module.exports = config
+  return merge(environment.toWebpackConfig(), {
+    resolve: {
+      alias: {
+        shared: path.resolve(constants.client, './src/shared')
+      }
+    }
+  })
+}
+
+function environmentPlugin (value) {
+  return new webpack.DefinePlugin({
+    'process.env': {
+      'ENVIRONMENT': JSON.stringify(value)
+    }
+  })
+}
+
+module.exports = {
+  config,
+  environmentPlugin
+}

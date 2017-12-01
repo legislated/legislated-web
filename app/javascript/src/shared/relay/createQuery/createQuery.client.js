@@ -8,7 +8,7 @@ import config from 'shared/config'
 function getPayloads () {
   const payloadData = global._payloads
   global._payloads = null
-  return payloadData ? JSON.parse(payloadData) : []
+  return payloadData
 }
 
 // helpers

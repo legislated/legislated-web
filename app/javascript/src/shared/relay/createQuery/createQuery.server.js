@@ -4,10 +4,12 @@ import type { FetchFunction } from 'relay-runtime'
 import config from 'shared/config'
 
 // ssr request storage
-const payloads = []
+let payloads = []
 
 export function getPayloads () {
-  return payloads
+  const reference = payloads
+  payloads = []
+  return reference
 }
 
 // query factory
