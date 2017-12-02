@@ -10,6 +10,10 @@ class ImportLegislatorsJob
   end
 
   def perform
+    p "FIELDS FIELDS FIELDS FIELDS"
+    p fields
+    p "******************"
+
     legislator_attrs = @open_states_service
       .fetch_legislators(fields: fields)
       .map { |data| parse_attributes(data) }
@@ -17,6 +21,10 @@ class ImportLegislatorsJob
 
     legislator_attrs.each do |attrs|
       Legislator.upsert_by!(:os_id, attrs)
+    end
+
+    office_attrs.each do |attrs|
+      Office.upsert_by!(:os_id, )
     end
   end
 
@@ -40,7 +48,27 @@ class ImportLegislatorsJob
     attrs
   end
 
+
   def fields
+    office_fields + legislator_fields
+  end
+
+  def office_fields
+    @fields ||= begin
+      fields = %i[
+        type
+        name
+        address
+        phone
+        fax
+        email
+      ]
+
+      fields.join(',')
+    end
+  end
+
+  def legislator_fields
     @fields ||= begin
       fields = %i[
         id
