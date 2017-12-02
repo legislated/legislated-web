@@ -14,7 +14,11 @@ export class BillAnimation extends Component {
   }
 
   render () {
-    const { disable, disableAppear } = this.props
+    const {
+      disable,
+      disableAppear,
+      children
+    } = this.props
 
     const name = {
       enter: String(rules.enter),
@@ -33,9 +37,8 @@ export class BillAnimation extends Component {
       transitionAppearTimeout={duration}
       transitionEnterTimeout={duration}
       transitionLeaveTimeout={duration}
-    >
-      {this.props.children}
-    </CSSTransitionGroup>
+      children={children}
+    />
   }
 }
 

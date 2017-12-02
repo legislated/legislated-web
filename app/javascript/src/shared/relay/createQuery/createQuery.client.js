@@ -4,13 +4,6 @@ import type { QueryResult, QueryPayload, FetchFunction } from 'relay-runtime'
 import { getCacheResolver } from './cacheResolvers'
 import config from 'shared/config'
 
-// ssr request replay
-function getPayloads () {
-  const payloadData = global._payloads
-  global._payloads = null
-  return payloadData
-}
-
 // helpers
 function asPayload (result: ?QueryResult): ?QueryPayload {
   return result && result.data ? { data: result.data } : null
@@ -30,31 +23,38 @@ export function createQuery (extraHeaders: Object): FetchFunction {
     ...extraHeaders
   }
 
-  const payloads = getPayloads()
+  // ssr request replay
+  const serverPayloads: QueryPayload[] = global._payloads || []
+  global._payloads = null
 
-  return async function query (operation, variables) {
-    // first, check for an ssr payload to replay
-    let payload: ?QueryPayload = payloads.shift()
-    if (payload != null) {
-      return asResult(payload)
-    }
+  function getServerPayload () {
+    return serverPayloads.shift()
+  }
 
-    // find an applicable stop-gap cache resolver (if any)
-    const resolver = getCacheResolver(operation, variables)
+  // caching
+  function getQueryId (operation) {
+    return operation.name
+  }
 
-    // check the cache for a response, using the operation name as the query id
-    const { name: queryId } = operation
+  function getCachedPayload (operation, variables, resolver) {
     if (resolver) {
-      payload = resolver.getCachedResponse(operation, variables, cache)
+      return resolver.getCachedResponse(operation, variables, cache)
     } else {
-      payload = cache.get(queryId, variables)
+      return cache.get(getQueryId(operation), variables)
     }
+  }
 
-    if (payload != null) {
-      return asResult(payload)
+  function setCachedPayload (payload, operation, variables, resolver) {
+    if (resolver) {
+      resolver.setCachedResponse(operation, variables, payload, cache)
+    } else {
+      cache.set(getQueryId(operation), variables, payload)
     }
+  }
 
-    // fetch data from network if missed
+  // async portion of query
+  async function remoteQuery (operation, variables, resolver) {
+    // fetch data from network
     const response = await fetch(config.graphUrl, {
       method: 'POST',
       headers,
@@ -64,18 +64,34 @@ export function createQuery (extraHeaders: Object): FetchFunction {
       })
     })
 
-    const result = await response.json()
+    const result: ?QueryResult = await response.json()
 
     // cache response payload if success
-    payload = asPayload(result)
+    const payload = asPayload(result)
     if (payload) {
-      if (resolver) {
-        resolver.setCachedResponse(operation, variables, payload, cache)
-      } else {
-        cache.set(queryId, variables, payload)
-      }
+      setCachedPayload(payload, operation, variables, resolver)
     }
 
     return result
+  }
+
+  return function query (operation, variables) {
+    // resolve synchronously with the ssr payload if available
+    let payload = getServerPayload()
+    if (payload != null) {
+      return asResult(payload)
+    }
+
+    // check for an applicable cache resolver
+    const resolver = getCacheResolver(operation, variables)
+
+    // resolve synchronously with the cached payload if available
+    payload = getCachedPayload(operation, variables, resolver)
+    if (payload != null) {
+      return asResult(payload)
+    }
+
+    // fetch the remote payload on a miss
+    return remoteQuery(operation, variables, resolver)
   }
 }
