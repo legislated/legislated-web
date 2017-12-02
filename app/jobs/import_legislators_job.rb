@@ -23,9 +23,9 @@ class ImportLegislatorsJob
       Legislator.upsert_by!(:os_id, attrs)
     end
 
-    office_attrs.each do |attrs|
-      Office.upsert_by!(:os_id, )
-    end
+    # office_attrs.each do |attrs|
+    #   Office.upsert_by!(:os_id, attrs)
+    # end
   end
 
   private
@@ -42,15 +42,15 @@ class ImportLegislatorsJob
       chamber: data['chamber'],
       district: data['district'],
       website_url: data['url'],
-      email: data['email']
+      email: data['email'],
+      offices: data['offices']
     }
 
     attrs
   end
 
-
   def fields
-    office_fields + legislator_fields
+    legislator_fields
   end
 
   def office_fields
@@ -83,6 +83,7 @@ class ImportLegislatorsJob
         district
         url
         email
+        offices
       ]
 
       fields.join(',')
