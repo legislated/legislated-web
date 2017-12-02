@@ -14,18 +14,17 @@ class ImportLegislatorsJob
     p fields
     p "******************"
 
-    legislator_attrs = @open_states_service
+    resp = @open_states_service
       .fetch_legislators(fields: fields)
-      .map { |data| parse_attributes(data) }
+
+    pp resp.to_a
+
+    legislator_attrs = resp.map { |data| parse_attributes(data) }
       .reject(&:nil?)
 
     legislator_attrs.each do |attrs|
       Legislator.upsert_by!(:os_id, attrs)
     end
-
-    # office_attrs.each do |attrs|
-    #   Office.upsert_by!(:os_id, attrs)
-    # end
   end
 
   private
@@ -43,29 +42,18 @@ class ImportLegislatorsJob
       district: data['district'],
       website_url: data['url'],
       email: data['email'],
-      offices: data['offices']
+      offices: data['offices'].map { |off_attrs| Office.new(off_attrs)}
     }
 
     attrs
   end
 
-  def fields
-    legislator_fields
+  def create_offices(data)
+
   end
 
-  def office_fields
-    @fields ||= begin
-      fields = %i[
-        type
-        name
-        address
-        phone
-        fax
-        email
-      ]
-
-      fields.join(',')
-    end
+  def fields
+    legislator_fields
   end
 
   def legislator_fields
