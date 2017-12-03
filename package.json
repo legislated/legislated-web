@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start": "run-p dev-server hypernova",
-    "dev-server": "WEBPACKER_DEV_SERVER_INLINE=false ./bin/webpack-dev-server",
-    "dev-server:debug": "WEBPACKER_DEV_SERVER_INLINE=false ./bin/webpack-dev-server",
+    "start:debug": "DEBUG=true yarn start",
+    "dev-server": "./bin/webpack-dev-server",
     "hypernova": "node hypernova",
     "hypernova:debug": "node inspect hypernova",
     "build:staging": "webpack -p --env.env=staging",

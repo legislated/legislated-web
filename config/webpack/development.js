@@ -49,19 +49,23 @@ const server = merge2(base, {
     libraryTarget: 'commonjs2'
   },
   plugins: [
-    manifestPlugin(),
-    environmentPlugin('server')
+    environmentPlugin('server'),
+    manifestPlugin()
   ]
 })
 
 // create a client config to render all non-ssr bundles
 const client = merge2(base, {
+  devtool: 'sourcemap',
+  devServer: {
+    inline: true
+  },
   entry: omit(base.entry, [
     'server'
   ]),
   plugins: [
-    manifestPlugin(),
-    environmentPlugin('development')
+    environmentPlugin('development'),
+    manifestPlugin()
   ]
 })
 

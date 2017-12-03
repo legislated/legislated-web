@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import FontAwesome from 'react-fontawesome'
 import { css } from 'glamor'
 import { Link } from './Link'
-import type { LinkProps } from './Link'
 import { stylesheet, colors, mixins } from 'shared/styles'
+import type { LinkProps } from './Link'
 
 type ButtonType = 'solid' | 'outline'
 
