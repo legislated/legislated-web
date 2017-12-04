@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render hides the summary when missing 1`] = `
+<div
+  data-css-1n4vje7=""
+>
+  <div
+    data-css-154k5mk=""
+  >
+    <div
+      data-css-1t62idy=""
+    >
+      <div
+        data-css-102sxgz=""
+      >
+        <h3>
+          Foo
+        </h3>
+        <span>
+          HB1234
+        </span>
+      </div>
+      <p>
+        01/01/2010
+      </p>
+    </div>
+  </div>
+  <div
+    data-css-1e193l7=""
+  >
+    <Button
+      iconName="pencil-square-o"
+      label="Take Action"
+      styles={
+        Object {
+          "data-css-wkh0gw": "",
+        }
+      }
+      to="http://www.test.com/slip"
+      type="solid"
+    />
+    <Button
+      iconName="file-text-o"
+      label="More Info"
+      styles={
+        Object {
+          "data-css-wkh0gw": "",
+        }
+      }
+      to="/bill/1234"
+    />
+  </div>
+</div>
+`;
+
+exports[`#render renders properly 1`] = `
+<div
+  data-css-1n4vje7=""
+>
+  <div
+    data-css-154k5mk=""
+  >
+    <div
+      data-css-1t62idy=""
+    >
+      <div
+        data-css-102sxgz=""
+      >
+        <h3>
+          Foo
+        </h3>
+        <span>
+          HB1234
+        </span>
+      </div>
+      <p>
+        01/01/2010
+      </p>
+    </div>
+    <p
+      data-css-jpl8hl=""
+    >
+      A bill, fantastic
+    </p>
+  </div>
+  <div
+    data-css-1e193l7=""
+  >
+    <Button
+      iconName="pencil-square-o"
+      label="Take Action"
+      styles={
+        Object {
+          "data-css-wkh0gw": "",
+        }
+      }
+      to="http://www.test.com/slip"
+      type="solid"
+    />
+    <Button
+      iconName="file-text-o"
+      label="More Info"
+      styles={
+        Object {
+          "data-css-wkh0gw": "",
+        }
+      }
+      to="/bill/1234"
+    />
+  </div>
+</div>
+`;

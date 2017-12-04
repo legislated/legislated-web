@@ -3,11 +3,11 @@ import React, { Component } from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import { differenceInHours, formatDate, parseDate } from 'shared/date'
 import { Actions } from './Actions'
 import { Element } from './Element'
 import { CopyLink } from 'shared/components'
 import { stylesheet, colors, mixins } from 'shared/styles'
+import { now, differenceInHours, formatDate, parseDate } from 'shared/date'
 import type { Bill } from 'shared/types'
 
 let Content = class Content extends Component {
@@ -19,9 +19,8 @@ let Content = class Content extends Component {
   render () {
     const { bill, location } = this.props
 
-    const now = new Date()
     const date = parseDate(bill.hearing.date)
-    const hoursLeft = differenceInHours(date, now)
+    const hoursLeft = differenceInHours(date, now())
     const formattedDate = formatDate(date, 'M/D/YY h:mm A')
 
     return <div>
@@ -53,7 +52,7 @@ let Content = class Content extends Component {
   }
 }
 
-Content = createFragmentContainer(Content, graphql`
+Content = createFragmentContainer(withRouter(Content), graphql`
   fragment Content_bill on Bill {
     documentNumber
     title
@@ -121,7 +120,5 @@ const rules = stylesheet({
     color: colors.secondary
   }
 })
-
-Content = withRouter(Content)
 
 export { Content }

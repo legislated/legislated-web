@@ -18,8 +18,8 @@ gem 'httparty'
 gem 'poltergeist'
 
 # client
-gem 'webpacker'
 gem 'hypernova'
+gem 'webpacker'
 
 # development
 group :development do

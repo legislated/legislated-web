@@ -30,13 +30,15 @@ export class Intro extends Component {
   }
 
   render () {
+    if (local.get('intro-cleared')) {
+      return null
+    }
+
     return (
       <Defer>
-        {local.get('intro-cleared') ? null : (
-          <BillAnimation
-            children={this.renderContent()}
-          />
-        )}
+        <BillAnimation
+          children={this.renderContent()}
+        />
       </Defer>
     )
   }
