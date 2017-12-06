@@ -6,6 +6,7 @@ describe ImportLegislatorsJob do
   describe '#perform' do
     before do
       allow(mock_service).to receive(:fetch_legislators).and_return([])
+
     end
 
     it 'fetches legislators with the correct fields' do
@@ -74,6 +75,14 @@ describe ImportLegislatorsJob do
 
         expect { subject.perform }.to change(Legislator, :count).by(1)
       end
+
+      it 'creates committee if it does not exist' do
+        attrs = attributes_for(:legislator)
+
+        allow(mock_service).to receive(:fetch_)
+      end
+
+
     end
   end
 end
