@@ -11,7 +11,7 @@ exports[`#render hides the summary when missing 1`] = `
       data-css-1t62idy=""
     >
       <div
-        data-css-102sxgz=""
+        data-css-qvpwi4=""
       >
         <h3>
           Foo
@@ -64,7 +64,7 @@ exports[`#render renders properly 1`] = `
       data-css-1t62idy=""
     >
       <div
-        data-css-102sxgz=""
+        data-css-qvpwi4=""
       >
         <h3>
           Foo

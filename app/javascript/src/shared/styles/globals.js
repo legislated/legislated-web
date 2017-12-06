@@ -5,6 +5,7 @@ import { css } from 'glamor'
 import { mixins } from './mixins'
 import { colors } from './colors'
 import { query } from './mixins/mobile'
+import './fontfaces'
 
 // extra resets
 css.insert(`
@@ -27,7 +28,8 @@ globals({
     lineHeight: 1.3
   },
   body: {
-    backgroundColor: colors.background
+    backgroundColor: colors.background,
+    ...mixins.fonts.regular
   },
   'p, h1, h2, h3, h4, h5, h6, ul': {
     margin: 0
@@ -36,21 +38,28 @@ globals({
     lineHeight: 1.4
   },
   h1: {
+    ...mixins.fonts.regularSlab,
     fontSize: 28
   },
   h2: {
+    ...mixins.fonts.regularSlab,
     fontSize: 24
   },
   h3: {
+    ...mixins.fonts.regularSlab,
     fontSize: 20
   },
   h4: {
-    ...mixins.fonts.regular,
+    ...mixins.fonts.regularSlab,
     fontSize: 20
   },
   h5: {
-    ...mixins.fonts.bold,
+    ...mixins.fonts.regularSlab,
     fontSize: 16
+  },
+  h6: {
+    ...mixins.fonts.regularSlab,
+    fontSize: 13
   },
   a: {
     cursor: 'pointer'

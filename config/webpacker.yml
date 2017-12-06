@@ -10,6 +10,9 @@ default: &default
     - .js
     - .jsx
     - .png
+    - .ttf
+    - .woff
+    - .woff2
 
 development:
   <<: *default

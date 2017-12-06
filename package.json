@@ -15,6 +15,7 @@
     "build:prod": "webpack -p --env.env=production",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:snapshot": "jest -u",
     "test:debug": "node --inspect --debug-brk ./node_modules/.bin/jest --runInBand",
     "lint": "yarn lint:bare | snazzy",
     "lint:fix": "yarn lint:bare --fix | snazzy",
@@ -107,7 +108,10 @@
     "moduleNameMapper": {
       "^shared/(.*)$": "<rootDir>/app/javascript/src/shared/$1",
       "^mocks/(.*)$": "<rootDir>/app/javascript/test/mocks/$1",
-      ".*\\.png$": "<rootDir>/app/javascript/test/stubs/image.js"
+      ".*\\.png$": "<rootDir>/app/javascript/test/stubs/image.js",
+      ".*\\.woff2$": "<rootDir>/app/javascript/test/stubs/fonts.js",
+      ".*\\.woff$": "<rootDir>/app/javascript/test/stubs/fonts.js",
+      ".*\\.ttf$": "<rootDir>/app/javascript/test/stubs/fonts.js"
     },
     "clearMocks": true
   },
