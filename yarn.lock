@@ -3717,10 +3717,6 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
-hypernova-react@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/hypernova-react/-/hypernova-react-2.0.0.tgz#633cc1581a3dd8feb053fd79e4fa380bcda0353b"
-
 "hypernova-react@https://github.com/legislated/hypernova-react.git":
   version "2.0.1"
   resolved "https://github.com/legislated/hypernova-react.git#5f1f55bf2beabbddeae831e4a5b5fdafcb77992f"

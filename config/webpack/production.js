@@ -1,10 +1,6 @@
-const merge = require('webpack-merge')
-const { config, environmentPlugin } = require('./shared')
+const { server, client } = require('./universal')
 
-const production = merge(config(), {
-  plugins: [
-    environmentPlugin('production')
-  ]
-})
-
-module.exports = production
+module.exports = [
+  server,
+  client
+]
