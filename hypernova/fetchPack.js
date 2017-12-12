@@ -19,12 +19,12 @@ function packNameFromManifest (manifest, name) {
 }
 
 // require branches
-function requireFromDevServer ({ host, port }) {
+function fetchPackFromDevServer ({ host, port }) {
   const devServerUrl = `http://${host}:${port}`
 
   return async (name) => {
     const packFile = packNameFromManifest(requireManifest(), name)
-    const filePath = `${devServerUrl}${packFile}`
+    const url = `${devServerUrl}${packFile}`
 
     return new Promise((resolve, reject) => {
       http.get(url, (res) => {
@@ -37,7 +37,7 @@ function requireFromDevServer ({ host, port }) {
   }
 }
 
-function requireFromFileSystem () {
+function fetchPackFromFileSystem () {
   const manifest = requireManifest()
 
   return async (name) => {
@@ -57,4 +57,4 @@ function requireFromFileSystem () {
   }
 }
 
-module.exports = devServer ? requireFromDevServer(devServer) : requireFromFileSystem()
+module.exports = devServer ? fetchPackFromDevServer(devServer) : fetchPackFromFileSystem()
