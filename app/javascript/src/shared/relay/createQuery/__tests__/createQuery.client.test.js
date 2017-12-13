@@ -1,6 +1,6 @@
 /* eslint-env jest */
-import { createQuery } from '../createQuery'
 import { QueryResponseCache } from 'relay-runtime'
+import { createQuery } from '../createQuery.client'
 import { getCacheResolver } from '../cacheResolvers'
 
 const { anything, objectContaining } = expect

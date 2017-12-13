@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react'
-import TransitionGroup from 'react-addons-css-transition-group'
+import { CSSTransitionGroup } from 'react-transition-group'
 import { stylesheet } from 'shared/styles'
 
 const translation = 50
@@ -14,7 +14,11 @@ export class BillAnimation extends Component {
   }
 
   render () {
-    const { disable, disableAppear } = this.props
+    const {
+      disable,
+      disableAppear,
+      children
+    } = this.props
 
     const name = {
       enter: String(rules.enter),
@@ -25,7 +29,7 @@ export class BillAnimation extends Component {
       leaveActive: String(rules.leaveActive)
     }
 
-    return <TransitionGroup
+    return <CSSTransitionGroup
       transitionName={name}
       transitionAppear={!disable && !disableAppear}
       transitionEnter={!disable}
@@ -33,9 +37,8 @@ export class BillAnimation extends Component {
       transitionAppearTimeout={duration}
       transitionEnterTimeout={duration}
       transitionLeaveTimeout={duration}
-    >
-      {this.props.children}
-    </TransitionGroup>
+      children={children}
+    />
   }
 }
 

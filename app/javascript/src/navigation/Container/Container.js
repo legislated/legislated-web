@@ -1,13 +1,12 @@
 // @flow
-import 'shared/styles/globals'
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import type { ContextRouter } from 'react-router-dom'
 import { StickyContainer, Sticky } from 'react-sticky'
 import { Header } from './Header'
 import { NotificationView } from 'shared/components'
 import { stylesheet, mixins } from 'shared/styles'
 import { local } from 'shared/storage'
+import type { ContextRouter } from 'react-router-dom'
 
 type ContainerProps = {
   children?: any
@@ -25,7 +24,7 @@ let Container = class Container extends Component {
   }
 
   // lifecycle
-  componentWillMount () {
+  componentDidMount () {
     this.clearVisitedIntro()
   }
 
@@ -38,7 +37,7 @@ let Container = class Container extends Component {
 
     return <StickyContainer id='container' {...rules.container}>
       <Sticky {...rules.header}>
-        <Header />
+        {() => <Header />}
       </Sticky>
       <div id='content' {...rules.content}>
         {children}

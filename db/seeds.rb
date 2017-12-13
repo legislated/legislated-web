@@ -11,7 +11,7 @@ end
 
 hearings = committees.flat_map do |committee|
   [
-    create(:hearing, :this_week, committee: committee)
+    create(:hearing, :this_week, committee: committee),
     create(:hearing, :after_this_week, committee: committee)
   ]
 end

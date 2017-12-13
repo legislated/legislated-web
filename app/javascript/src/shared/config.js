@@ -1,36 +1,49 @@
 // @flow
-// set this to your desired env key; try not to check in changes to this value
-const debugEnv = null
-
+/* globals $Keys */
 type Config = {|
   graphUrl: string,
 |}
 
+const configs = {
+  development: {
+    graphUrl: 'http://localhost:3000/api/graphql'
+  },
+  staging: {
+    graphUrl: 'https://legislated-staging.herokuapp.com/api/graphql'
+  },
+  production: {
+    graphUrl: 'https://legislated.herokuapp.com/api/graphql'
+  },
+  server: {
+    graphUrl: 'http://localhost:3000/api/graphql'
+  }
+}
+
+type Environment
+  = $Keys<typeof configs>
+
+function getEnv (): Environment {
+  const env = process.env.ENVIRONMENT
+
+  switch (env) {
+    case 'development':
+    case 'staging':
+    case 'production':
+    case 'server':
+      return env
+    default:
+      throw new Error(`Invalid environment specified: ${env || 'null'}`)
+  }
+}
+
 export function loadConfig () {
-  const configs: { [key: string]: Config } = {
-    development: {
-      graphUrl: 'http://localhost:3000/api/graphql'
-    },
-    staging: {
-      graphUrl: 'https://legislated-staging.herokuapp.com/api/graphql'
-    },
-    production: {
-      graphUrl: 'https://legislated.herokuapp.com/api/graphql'
-    }
-  }
+  let env = getEnv()
+  const config: Config = configs[env]
 
-  const buildEnv = process.env.ENVIRONMENT
-  const env = buildEnv === 'development' ? debugEnv || buildEnv : buildEnv
-  if (!env) {
-    throw new Error('No environment specified!')
+  return {
+    ...config,
+    env
   }
-
-  const config = configs[env]
-  if (!config) {
-    throw new Error(`No config for environment: ${env}!`)
-  }
-
-  return config
 }
 
 export default loadConfig()

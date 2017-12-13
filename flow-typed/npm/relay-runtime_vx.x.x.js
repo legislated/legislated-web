@@ -44,7 +44,7 @@ declare module 'relay-runtime' {
   declare export type FetchFunction = (
     operation: ConcreteBatch,
     variables: Variables
-  ) => Promise<QueryResult>
+  ) => QueryResult | Promise<QueryResult>
 
   declare export class Network {
     static create(fetch: FetchFunction): Network;
