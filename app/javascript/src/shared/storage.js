@@ -1,6 +1,15 @@
 /* globals Storage, localStorage, sessionStorage */
 // @flow
+// keys
+type LocalStoreKey
+  = 'intro-visited'
+  | 'intro-cleared'
 
+type SessionStoreKey
+  = 'last-search-count'
+  | 'admin-header'
+
+// store type
 function namespaceKey (key: string): string {
   return `@@legislated/${key}`
 }
@@ -12,6 +21,11 @@ class Store<K: string> {
     this.storage = storage
   }
 
+  get (key: K): ?string {
+    const actualKey = namespaceKey(key)
+    return this.storage.getItem(actualKey)
+  }
+
   set (key: K, value: ?string) {
     const actualKey = namespaceKey(key)
 
@@ -21,20 +35,11 @@ class Store<K: string> {
       this.storage.removeItem(actualKey)
     }
   }
-
-  get (key: K): ?string {
-    const actualKey = namespaceKey(key)
-    return this.storage.getItem(actualKey)
-  }
 }
 
-type LocalStoreKey
-  = 'intro-visited'
-  | 'intro-cleared'
+// store instances
+export const local: Store<LocalStoreKey> =
+  new Store(localStorage)
 
-type SessionStoreKey
-  = 'last-search-count'
-  | 'admin-header'
-
-export const local: Store<LocalStoreKey> = new Store(localStorage)
-export const session: Store<SessionStoreKey> = new Store(sessionStorage)
+export const session: Store<SessionStoreKey> =
+  new Store(sessionStorage)

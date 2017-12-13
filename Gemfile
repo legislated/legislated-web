@@ -18,6 +18,7 @@ gem 'httparty'
 gem 'poltergeist'
 
 # client
+gem 'hypernova'
 gem 'webpacker'
 
 # development

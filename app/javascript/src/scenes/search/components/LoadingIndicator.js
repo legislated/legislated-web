@@ -11,9 +11,12 @@ export class LoadingIndicator extends Component {
 
   // lifecycle
   render () {
-    return <BillAnimation disableAppear>
-      {this.renderIndicator()}
-    </BillAnimation>
+    return (
+      <BillAnimation
+        disableAppear
+        children={this.renderIndicator()}
+      />
+    )
   }
 
   renderIndicator (): ?React$Element<*> {
@@ -21,10 +24,12 @@ export class LoadingIndicator extends Component {
       return null
     }
 
-    return <div key='indicator' {...css(rules.container, billRule)}>
-      <div {...rules.topBar} />
-      <div {...rules.bottomBar} />
-    </div>
+    return (
+      <div key='indicator' {...css(rules.container, billRule)}>
+        <div {...rules.topBar} />
+        <div {...rules.bottomBar} />
+      </div>
+    )
   }
 }
 

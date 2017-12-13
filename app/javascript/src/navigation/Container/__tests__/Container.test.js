@@ -13,12 +13,13 @@ function loadSubject () {
 }
 
 // spec
-describe('#componentWillMount', () => {
+describe('#componentDidMount', () => {
   it(`clears the intro after it's visited and not on the search screen`, () => {
     routerProps.location.pathname = '/faq'
     local.set('intro-visited', 'true')
     loadSubject()
 
+    subject.instance().componentDidUpdate()
     expect(local.get('intro-cleared')).toBe('true')
   })
 })

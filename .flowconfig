@@ -3,7 +3,7 @@
 .*/node_modules/graphql/.*
 .*/node_modules/jest-enzyme/.*
 .*/node_modules/enzyme-matchers/.*
-.*/node_modules/relay-compiler-webpack-plugin/.*
+.*/node_modules/@dhau/relay-compiler-webpack-plugin/.*
 
 [include]
 ./app/javascript

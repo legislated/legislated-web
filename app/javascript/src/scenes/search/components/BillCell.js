@@ -40,7 +40,7 @@ let BillCell = class BillCell extends Component {
         />
         <Button
           styles={rules.button}
-          to={`bill/${bill.id}`}
+          to={`/bill/${bill.id}`}
           label='More Info'
           iconName='file-text-o'
         />

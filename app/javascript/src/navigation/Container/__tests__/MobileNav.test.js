@@ -30,7 +30,7 @@ describe('#state', () => {
   it('shows the menu when open', () => {
     loadSubject()
     subject.setState({ isOpen: true })
-    expect(element.overlay()).toMatchRule('nzpuq9')
+    expect(element.overlay()).toMatchRule(/ox69fs/)
   })
 })
 

@@ -1,5 +1,4 @@
 // @flow
-import 'shared/styles/globals'
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
@@ -24,7 +23,7 @@ let Container = class Container extends Component {
   }
 
   // lifecycle
-  componentWillMount () {
+  componentDidMount () {
     this.clearVisitedIntro()
   }
 

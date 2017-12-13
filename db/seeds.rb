@@ -1,4 +1,3 @@
-require './spec/helpers/factory_helpers'
 include FactoryBot::Syntax::Methods
 
 chambers = [
@@ -11,7 +10,10 @@ committees = chambers.flat_map do |chamber|
 end
 
 hearings = committees.flat_map do |committee|
-  create_list(:hearing, 2, committee: committee)
+  [
+    create(:hearing, :this_week, committee: committee),
+    create(:hearing, :after_this_week, committee: committee)
+  ]
 end
 
 hearings.flat_map do |hearing|

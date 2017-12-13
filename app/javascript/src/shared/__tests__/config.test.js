@@ -15,10 +15,10 @@ it('loads a different config per environment', () => {
 
 it('raises an error when there is no environment', () => {
   delete process.env.ENVIRONMENT
-  expect(loadConfig).toThrow('No environment specified!')
+  expect(loadConfig).toThrow('Invalid environment specified: null')
 })
 
 it('raises an error when there is no matching config', () => {
   process.env.ENVIRONMENT = 'foo'
-  expect(loadConfig).toThrow('No config for environment: foo!')
+  expect(loadConfig).toThrow('Invalid environment specified: foo')
 })
