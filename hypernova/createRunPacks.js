@@ -7,30 +7,24 @@ function createPackUtils (nameMap) {
     cacheSize: keys(nameMap).length
   })
 
-  function fetch (name) {
-    return fetchPack(nameMap[name])
+  return {
+    fetch (name) {
+      return fetchPack(nameMap[name])
+    },
+    run (name, pack) {
+      return runPack(name, pack).default
+    },
+    async resolve (name) {
+      const pack = await this.fetch(name)
+      return this.run(name, pack)
+    }
   }
-
-  function run (name, pack) {
-    return runPack(name, pack).default
-  }
-
-  async function resolve (name) {
-    const pack = await fetch(name)
-    return run(name, pack)
-  }
-
-  return { fetch, run, resolve }
 }
 
 // creates a function that runs a named pack w/ no cache
 function createRunPacks (nameMap) {
   const { resolve } = createPackUtils(nameMap)
-
-  return async (name) => {
-    const Component = await resolve(name)
-    return Component
-  }
+  return resolve
 }
 
 // creates a function that runs a named pack w/ cache (based heavily on
