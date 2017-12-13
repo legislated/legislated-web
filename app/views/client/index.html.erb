@@ -18,6 +18,6 @@
   <%= favicon_link_tag %>
 </head>
 <body>
-  <%= render_react_component('server', location: request.fullpath) %>
+  <%= render_react_component('client', location: request.fullpath) %>
   <%= javascript_pack_tag('client') %>
 </body>

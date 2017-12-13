@@ -1,35 +1,46 @@
 const { createVM } = require('hypernova/server')
 const fetchPack = require('./fetchPack')
+const { keys } = Object
 
-// runs a named pack and returns its component
-function createRunPack (names) {
-  const { run } = createVM({ cacheSize: names.length })
+function createPackUtils (nameMap) {
+  const { run: runPack } = createVM({
+    cacheSize: keys(nameMap).length
+  })
 
-  return (name, pack) => {
-    return run(name, pack).default
+  function fetch (name) {
+    return fetchPack(nameMap[name])
   }
+
+  function run (name, pack) {
+    return runPack(name, pack).default
+  }
+
+  async function resolve (name) {
+    const pack = await fetch(name)
+    return run(name, pack)
+  }
+
+  return { fetch, run, resolve }
 }
 
 // creates a function that runs a named pack w/ no cache
-function createRunPacks (names) {
-  const runPack = createRunPack(names)
+function createRunPacks (nameMap) {
+  const { resolve } = createPackUtils(nameMap)
 
   return async (name) => {
-    const pack = await fetchPack(name)
-    const Component = runPack(name, pack)
+    const Component = await resolve(name)
     return Component
   }
 }
 
 // creates a function that runs a named pack w/ cache (based heavily on
 // createGetComponent from hypernova)
-function createRunPacksCached (names) {
-  const runPack = createRunPack(names)
+function createRunPacksCached (nameMap) {
+  const { run, resolve } = createPackUtils(nameMap)
 
-  const getPacks = names.reduce(async (memo, name) => {
+  const getPacks = keys(nameMap).reduce(async (memo, name) => {
     try {
-      const pack = await fetchPack(name)
-      runPack(name, pack)
+      const pack = await resolve(name)
       memo[name] = pack
     } catch (err) {
       console.error(err.stack)
@@ -45,10 +56,11 @@ function createRunPacksCached (names) {
 
   return async (name) => {
     const pack = await getPack(name)
+
     if (pack == null) {
       return null
     } else {
-      return runPack(name, pack)
+      return run(name, pack)
     }
   }
 }

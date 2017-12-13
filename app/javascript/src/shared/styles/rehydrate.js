@@ -1,3 +1,5 @@
 import { rehydrate } from 'glamor'
 
-rehydrate(window._glam)
+if (window._glam != null) {
+  rehydrate(window._glam)
+}

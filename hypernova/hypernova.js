@@ -1,9 +1,9 @@
 const hypernova = require('hypernova/server')
 const createRunPacks = require('./createRunPacks')
 
-const runPack = createRunPacks([
-  'server'
-])
+const runPack = createRunPacks({
+  client: 'server'
+})
 
 // start hypernova server
 hypernova({
