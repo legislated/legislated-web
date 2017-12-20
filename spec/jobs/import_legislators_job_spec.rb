@@ -76,11 +76,11 @@ describe ImportLegislatorsJob do
         expect { subject.perform }.to change(Legislator, :count).by(1)
       end
 
-      it 'creates committee if it does not exist' do
+      it 'creates committee based on legislator role if it does not exist' do
         attrs = attributes_for(:committee)
 
-        allow(mock_service).to receive(:fetch_committees).and_return(response(
-          'role.committee_id' => attrs[:os_id]
+        allow(mock_service).to receive(:fetch_legislators).and_return(response(
+          'role.committee_id' =>
         ))
 
         expect { subject.perform }.to change(Committee, :count).by(1)

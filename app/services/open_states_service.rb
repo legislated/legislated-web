@@ -35,6 +35,18 @@ class OpenStatesService
     result.lazy
   end
 
+  def fetch_committees(query = {})
+    base_query = {
+      state: 'il'
+    }
+
+    result = self.class.get('/committees', @options.deep_merge({
+      query: base_query.merge(query)
+    }))
+
+    result.lazy
+  end
+
   private
 
   def enumerate_pages
