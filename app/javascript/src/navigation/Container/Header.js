@@ -1,176 +1,119 @@
 // @flow
-import React, { Component } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import styled, { css } from 'react-emotion'
-import { Sticky } from 'shared/components'
-import { colors, alpha, mixins } from 'shared/styles'
-import logo from '../../../images/logo.png'
-import { MobileNav } from './MobileNav'
+import * as React from 'react'
+import { findDOMNode as findDomNode } from 'react-dom'
+import styled from 'react-emotion'
+import { NavLinkList } from './NavLinkList'
+import { logo } from '../../../images'
+import { colors } from 'shared/styles'
 
-export class Header extends Component {
+type State = {
+  isSticky: boolean
+}
+
+export class Header extends React.Component<*, *, State> {
+  state = {
+    isSticky: false
+  }
+
+  // refs
+  navbar: ?Object = null
+
+  // actions
+  setStickyHeader = (navbar: ?Object) => {
+    this.navbar = navbar
+    navbar && this.invalidateIsSticky(navbar)
+  }
+
+  invalidateIsSticky = (navbar: ?Object) => {
+    this.setState(() => {
+      const node = findDomNode(navbar)
+      const parent = node && node.parentElement
+      const isSticky = parent && parent.getBoundingClientRect().top < 0
+      return { isSticky }
+    })
+  }
+
+  // events
+  didScroll = () => {
+    this.invalidateIsSticky(this.navbar)
+  }
+
   // lifecycle
+  componentDidMount () {
+    window.addEventListener('scroll', this.didScroll)
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('scroll', this.didScroll)
+  }
+
   render () {
+    const { isSticky } = this.state
+
     return (
-      <div>
-        <DesktopHeader>
-          <HeroLogo>
-            <LogoLink to='/'>
-              <img src={logo} alt='Legislated' height='64' width='64' />
-            </LogoLink>
-            <LogoLink to='/'>
-              <span>Legislated</span>
-            </LogoLink>
-          </HeroLogo>
-          <Sticky topOffset={280}>
-            {({ isSticky, style }) => {
-              return (
-                <HeaderNav isSticky={isSticky} style={style}>
-                  {isSticky && <StickyLogo>
-                    <LogoLink to='/'>
-                      <img src={logo} alt='Legislated' height='40' width='40' />
-                    </LogoLink>
-                    <LogoLink to='/'>
-                      <span>LEGISLATED</span>
-                    </LogoLink>
-                  </StickyLogo>}
-                  <HeaderNavCenter>
-                    <NavLink to='/' exact>Home</NavLink>
-                    <NavLink to='/faq' exact>FAQ</NavLink>
-                    <NavLink to='/about' exact>About</NavLink>
-                  </HeaderNavCenter>
-                </HeaderNav>
-              )
-            }}
+      <Container>
+        <Icon
+          src={logo}
+          alt='Quill and Paper'
+          width='73'
+          height='61'
+        />
+        <Title
+          children='Legislated'
+        />
+        <Navbar>
+          <Sticky
+            style={isSticky ? ({
+              position: 'fixed',
+              top: '0px'
+            }) : {}}
+            ref={(ref) => { this.navbar = ref }}
+          >
+            <NavLinkList />
           </Sticky>
-        </DesktopHeader>
-        <MobileHeader>
-          <div>
-            <LogoLink to='/'>
-              <img src={logo} alt='Legislated' height='40' width='40' />
-            </LogoLink>
-            <LogoLink to='/'>
-              <span>LEGISLATED</span>
-            </LogoLink>
-          </div>
-          <MobileNav />
-        </MobileHeader>
-      </div>
+        </Navbar>
+      </Container>
     )
   }
 }
 
-const DesktopHeader = styled.div`
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 70px;
+
   @media (max-width: 700px) {
     display: none;
   }
 `
 
-const HeroLogo = styled.div`
-  height: 280;
-  background-color: white;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-evenly;
-  align-items: center;
-
-  > a {
-    font-size: 64px;
-  }
+const Icon = styled.img`
+  width: 73px;
+  height: 61px;
+  margin-bottom: 20px;
 `
 
-const HeaderNav = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: ${props => props.isSticky ? 'space-between' : 'center'};
-  height: 85px;
-  background-color: white;
-  z-index: 2;
+const Title = styled.h1`
+  margin-bottom: 45px;
 `
 
-const StickyLogo = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  padding-left: 27px;
-
-  > *:first-child {
-    margin-right: 15px;
-  }
-
-  > a {
-    font-size: 32px;
-  }
-`
-
-// Includes a hack to style the active links due to a specificity issue
-// causing the styles not to applied. This is not ideal as its tied to
-// the aria-current attribute
-const HeaderNavCenter = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-
-  > a {
-    flex: 0 1 auto;
-    padding: 0 27px;
-    text-transform: uppercase;
-    border-bottom: 7px solid white;
-    ${css(mixins.centerVertically)};
-    text-decoration: none;
-    color: ${colors.light};
-    ${css(mixins.fonts.light)};
-
-    &[aria-current="true"] {
-      color: ${colors.newPrimary};
-      border-bottom: 7px solid ${colors.newPrimary};  
-    }
-  }
-`
-
-const MobileHeader = styled.div`
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  height: 60px;
-  background-color: white;
-  display: none;
-  padding: 0 7px;
-  z-index: 2;
+const height = '78px'
+const Navbar = styled.div`
   position: relative;
-  
-  > * {
-    &:first-child {
-      display: flex;
-      flex-flow: row nowrap;
-    }
-  
-    &:last-child {
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: center;
-    }
-  }
-
-  a {
-    font-size: 28px;
-
-    &:first-child {
-      margin-right: 15px;
-    }
-  }
-
-  @media (max-width: 700px) {
-    display: flex;
-  }
+  height: ${height};
+  width: 100%;
 `
 
-const LogoLink = styled(Link)`
-  color: ${colors.black};
-  ${css(mixins.fonts.bold)};
-  text-decoration: none;
-  transition: color 0.25s;
-  letter-spacing: 5;
-  ${css(mixins.centerVertically)};
-
-  & :hover {
-    color: ${alpha(colors.black, 0.6)};
-  }
+const Sticky = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: ${height};
+  background-color: ${colors.background};
+  z-index: 1;
 `

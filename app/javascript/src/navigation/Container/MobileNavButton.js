@@ -9,11 +9,17 @@ export class MobileNavButton extends Component {
 
   // lifecycle
   render () {
-    return <button type='button' {...rules.hamburger} {...this.props}>
-      <span />
-      <span />
-      <span />
-    </button>
+    return (
+      <button
+        {...rules.hamburger}
+        type='button'
+        {...this.props}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+    )
   }
 }
 

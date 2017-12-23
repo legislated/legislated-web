@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import { NotificationView } from '../NotificationView'
 import { events } from 'shared/events'
 
-jest.mock('shared/async', () => ({
+jest.mock('shared/functions', () => ({
   sleep: () => Promise.resolve()
 }))
 

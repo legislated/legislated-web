@@ -1,19 +1,19 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import { withRouter } from 'react-router-dom'
+import styled, { css } from 'react-emotion'
 import type { ContextRouter } from 'react-router-dom'
 import { Header } from './Header'
-import { NotificationView, StickyContainer } from 'shared/components'
-import { stylesheet, mixins } from 'shared/styles'
+import { MobileHeader } from './MobileHeader'
+import { NotificationView } from 'shared/components'
+import { mixins } from 'shared/styles'
 import { local } from 'shared/storage'
 
-type ContainerProps = {
+type Props = {
   children?: any
 } & ContextRouter
 
-let Container = class Container extends Component {
-  props: ContainerProps
-
+let Container = class Container extends React.Component<*, Props, *> {
   clearVisitedIntro () {
     // mark the intro as cleared if we've seen it and left the search scene
     const { pathname } = this.props.location
@@ -27,7 +27,7 @@ let Container = class Container extends Component {
     this.clearVisitedIntro()
   }
 
-  componentDidUpdate (prevProps: ContainerProps) {
+  componentDidUpdate () {
     this.clearVisitedIntro()
   }
 
@@ -35,34 +35,32 @@ let Container = class Container extends Component {
     const { children } = this.props
 
     return (
-      <StickyContainer id='container' {...rules.container}>
+      <Wrapper>
         <Header />
-        <div id='content' {...rules.content}>
+        <MobileHeader />
+        <Content>
           {children}
           <NotificationView />
-        </div>
-      </StickyContainer>
+        </Content>
+      </Wrapper>
     )
   }
 }
 
-const rules = stylesheet({
-  container: {
-    ...mixins.fonts.regular,
-    position: 'relative',
-    minHeight: '100vh'
-  },
-  content: {
-    padding: 30,
-    ...mixins.mobile({
-      padding: 15,
-      paddingBottom: 20
-    })
-  },
-  header: {
-    zIndex: 1
+const Wrapper = styled.section`
+  ${css(mixins.fonts.regular)};
+  position: relative;
+  min-height: 100vh;
+`
+
+const Content = styled.div`
+  padding: 30px;
+
+  @media (max-width: 700px) {
+    padding: 15px;
+    padding-bottom: 30px;
   }
-})
+`
 
 Container = withRouter(Container)
 

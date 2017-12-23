@@ -26,14 +26,26 @@ export class MobileNav extends Component {
   // lifecycle
   render () {
     const { isOpen } = this.state
-    return <div {...rules.mobile}>
-      <MobileNavButton onClick={this.didClickButton} />
-      <div {...css(rules.nav, isOpen && rules.open)} onClick={this.didClickOverlay}>
-        <div>
-          <NavLinkList styles={rules.links} onClick={this.didClickLink} showsIcons />
+
+    return (
+      <div {...rules.mobile}>
+        <MobileNavButton
+          onClick={this.didClickButton}
+        />
+        <div
+          {...css(rules.nav, isOpen && rules.open)}
+          onClick={this.didClickOverlay}
+        >
+          <div>
+            <NavLinkList
+              styles={rules.links}
+              onClick={this.didClickLink}
+              showsIcons
+            />
+          </div>
         </div>
       </div>
-    </div>
+    )
   }
 }
 

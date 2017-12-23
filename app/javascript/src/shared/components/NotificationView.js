@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { css } from 'glamor'
 import { events } from 'shared/events'
-import { sleep } from 'shared/async'
+import { sleep } from 'shared/functions'
 import type { Notification } from 'shared/types'
 import { stylesheet, colors, mixins } from 'shared/styles'
 
