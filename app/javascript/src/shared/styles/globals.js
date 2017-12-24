@@ -43,7 +43,7 @@ globals({
   },
   h2: {
     ...mixins.fonts.slabRegular,
-    fontSize: 24
+    fontSize: 36
   },
   h3: {
     ...mixins.fonts.slabRegular,

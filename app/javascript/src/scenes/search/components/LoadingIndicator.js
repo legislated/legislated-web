@@ -1,36 +1,24 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import { css } from 'glamor'
-import { BillAnimation, billRule } from './BillAnimation'
+import { TranslateAndFade } from 'shared/components'
 import { stylesheet, colors, mixins } from 'shared/styles'
 
-export class LoadingIndicator extends Component {
-  props: {
-    isLoading: boolean
-  }
+type Props = {
+  isLoading: boolean
+}
 
-  // lifecycle
-  render () {
-    return (
-      <BillAnimation
-        disableAppear
-        children={this.renderIndicator()}
-      />
-    )
-  }
-
-  renderIndicator (): ?React$Element<*> {
-    if (!this.props.isLoading) {
-      return null
-    }
-
-    return (
-      <div key='indicator' {...css(rules.container, billRule)}>
-        <div {...rules.topBar} />
-        <div {...rules.bottomBar} />
-      </div>
-    )
-  }
+export function LoadingIndicator ({ isLoading }: Props) {
+  return (
+    <TranslateAndFade disableAppear>
+      {isLoading && (
+        <div key='indicator' {...css(rules.container)}>
+          <div {...rules.topBar} />
+          <div {...rules.bottomBar} />
+        </div>
+      )}
+    </TranslateAndFade>
+  )
 }
 
 function animation (start: string, end: string, duration: number): Object {

@@ -1,14 +1,13 @@
 // @flow
 import * as React from 'react'
 import styled from 'react-emotion'
-import { withRouter } from 'react-router-dom'
 import { NavLink } from './NavLink'
 
 type Props = {
   onClick?: Function
 }
 
-let NavLinkList = function NavLinkList ({ onClick, location }: Props) {
+export function NavLinkList ({ onClick, location }: Props) {
   const linkProps = {
     onClick
   }
@@ -25,9 +24,8 @@ let NavLinkList = function NavLinkList ({ onClick, location }: Props) {
 
 const Nav = styled.nav`
   display: flex;
-  justify-content: center;
 
-  > a + a {
+  > * + * {
     margin-left: 30px;
   }
 
@@ -35,7 +33,3 @@ const Nav = styled.nav`
     flex-direction: column;
   }
 `
-
-NavLinkList = withRouter(NavLinkList)
-
-export { NavLinkList }

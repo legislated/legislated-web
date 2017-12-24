@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react'
 import { findDOMNode as findDomNode } from 'react-dom'
-import styled from 'react-emotion'
+import styled, { css } from 'react-emotion'
+import { HeaderIcon } from './HeaderIcon'
 import { NavLinkList } from './NavLinkList'
-import { logo } from '../../../images'
 import { colors } from 'shared/styles'
+import { TranslateAndFade } from 'shared/components'
 
 type State = {
   isSticky: boolean
@@ -52,23 +53,23 @@ export class Header extends React.Component<*, *, State> {
 
     return (
       <Container>
-        <Icon
-          src={logo}
-          alt='Quill and Paper'
-          width='73'
-          height='61'
-        />
-        <Title
-          children='Legislated'
-        />
+        <Logo>
+          <HeaderIcon width={73} height={61} />
+          <h1>Legislated</h1>
+        </Logo>
         <Navbar>
           <Sticky
-            style={isSticky ? ({
-              position: 'fixed',
-              top: '0px'
-            }) : {}}
             ref={(ref) => { this.navbar = ref }}
+            style={isSticky ? { position: 'fixed', top: '0px' } : {}}
           >
+            <TranslateAndFade component={StickyLogoWrapper} direction='down'>
+              {isSticky && (
+                <StickyLogo>
+                  <HeaderIcon width={62} height={52} />
+                  <h2>Legislated</h2>
+                </StickyLogo>
+              )}
+            </TranslateAndFade>
             <NavLinkList />
           </Sticky>
         </Navbar>
@@ -77,10 +78,14 @@ export class Header extends React.Component<*, *, State> {
   }
 }
 
-const Container = styled.div`
+const column = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+const Container = styled.div`
+  ${column}
   padding-top: 70px;
 
   @media (max-width: 700px) {
@@ -88,14 +93,13 @@ const Container = styled.div`
   }
 `
 
-const Icon = styled.img`
-  width: 73px;
-  height: 61px;
-  margin-bottom: 20px;
-`
-
-const Title = styled.h1`
+const Logo = styled.div`
+  ${column}
   margin-bottom: 45px;
+
+  > img {
+    margin-bottom: 20px;
+  }
 `
 
 const height = '78px'
@@ -108,7 +112,6 @@ const Navbar = styled.div`
 const Sticky = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -116,4 +119,19 @@ const Sticky = styled.div`
   height: ${height};
   background-color: ${colors.background};
   z-index: 1;
+`
+
+const StickyLogoWrapper = styled.div`
+  align-self: center;
+  position: absolute;
+  left: 20px;
+`
+
+const StickyLogo = styled.div`
+  display: flex;
+  align-items: center;
+
+  > img {
+    margin-right: 20px;
+  }
 `
