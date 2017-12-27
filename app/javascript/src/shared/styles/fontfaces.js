@@ -1,8 +1,8 @@
 // @flow
-import { css } from 'glamor'
+import { injectGlobal } from 'react-emotion'
 import * as fonts from '../../../fonts'
 
-css.insert(`
+injectGlobal`
   @font-face {
     font-family: 'Roboto';
     font-style: normal;
@@ -35,4 +35,4 @@ css.insert(`
         url('${fonts.zillaSlabRegularWoff2}') format('woff2'),
         url('${fonts.zillaSlabRegularWoff}') format('woff');
   }
-`)
+`

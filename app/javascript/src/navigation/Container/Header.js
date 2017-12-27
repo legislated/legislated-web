@@ -5,7 +5,7 @@ import styled, { css } from 'react-emotion'
 import { HeaderIcon } from './HeaderIcon'
 import { NavLinkList } from './NavLinkList'
 import { colors } from 'shared/styles'
-import { TranslateAndFade } from 'shared/components'
+import { Link, TranslateAndFade } from 'shared/components'
 
 type State = {
   isSticky: boolean
@@ -64,10 +64,12 @@ export class Header extends React.Component<*, *, State> {
           >
             <TranslateAndFade component={StickyLogoWrapper} direction='down'>
               {isSticky && (
-                <StickyLogo>
-                  <HeaderIcon width={62} height={52} />
-                  <h2>Legislated</h2>
-                </StickyLogo>
+                <div>
+                  <StickyLogo to='/'>
+                    <HeaderIcon width={62} height={52} />
+                    <h2>Legislated</h2>
+                  </StickyLogo>
+                </div>
               )}
             </TranslateAndFade>
             <NavLinkList />
@@ -111,25 +113,36 @@ const Navbar = styled.div`
 
 const Sticky = styled.div`
   display: flex;
-  justify-content: center;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: ${height};
+  padding: 0 20px;
   background-color: ${colors.background};
   z-index: 1;
+
+  &:after {
+    content: '';
+    flex: 1;
+  }
 `
 
 const StickyLogoWrapper = styled.div`
-  align-self: center;
-  position: absolute;
-  left: 20px;
-`
-
-const StickyLogo = styled.div`
+  flex: 1;
   display: flex;
   align-items: center;
+`
+
+const StickyLogo = styled(Link)`
+  display: flex;
+  align-items: center;
+  color: ${colors.black};
+  text-decoration: none;
+
+  &:hover {
+    color: ${colors.primary};
+  }
 
   > img {
     margin-right: 20px;

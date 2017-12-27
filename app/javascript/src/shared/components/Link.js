@@ -40,7 +40,6 @@ export function Link ({
 }
 
 const linkClass = css`
-  display: inline-block;
   color: ${colors.primary};
   transition: color 0.1s;
 

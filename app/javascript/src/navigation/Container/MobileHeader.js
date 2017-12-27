@@ -2,16 +2,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled, { css } from 'react-emotion'
+import { HeaderIcon } from './HeaderIcon'
 import { MobileNav } from './MobileNav'
-import { logo } from '../../../images'
 import { colors, alpha, mixins } from 'shared/styles'
 
 export function MobileHeader () {
   return (
     <Header>
       <LogoLink to='/'>
-        <img src={logo} alt='Legislated' height='40' width='40' />
-        <span>LEGISLATED</span>
+        <HeaderIcon height={40} width={40} />
+        <h1>LEGISLATED</h1>
       </LogoLink>
       <MobileNav />
     </Header>
@@ -19,7 +19,7 @@ export function MobileHeader () {
 }
 
 const Header = styled.header`
-  flex-flow: row nowrap;
+  flex-flow: row;
   justify-content: space-between;
   height: 60px;
   background-color: white;
@@ -55,14 +55,6 @@ const Header = styled.header`
 `
 
 const LogoLink = styled(Link)`
-  color: ${colors.black};
-  ${css(mixins.fonts.bold)};
-  text-decoration: none;
-  transition: color 0.25s;
-  letter-spacing: 5;
-  ${css(mixins.centerVertically)};
-
-  &:hover {
-    color: ${alpha(colors.black, 0.6)};
-  }
+  display: flex;
+  align-items: center;
 `
