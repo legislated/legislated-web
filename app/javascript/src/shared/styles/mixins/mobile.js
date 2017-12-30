@@ -1,6 +1,14 @@
 // @flow
-export const query = '@media (max-width: 700px)'
+import { css } from 'react-emotion'
 
-export function mobile (styles: Object): Object {
+const query = '@media (max-width: 700px)'
+
+export const mobile = (...args: mixed[]) => css`
+  ${query} {
+    ${css(...args)};
+  }
+`
+
+mobile.glam = function mobile (styles: Object): Object {
   return { [query]: { ...styles } }
 }

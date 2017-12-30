@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Container } from '../Container'
+import { Layout } from '../Layout'
 import { local } from 'shared/storage'
 import { routerProps } from 'mocks/routerProps'
 
@@ -9,7 +9,7 @@ import { routerProps } from 'mocks/routerProps'
 let subject
 
 function loadSubject () {
-  subject = shallow(<Container />).dive()
+  subject = shallow(<Layout />).dive()
 }
 
 // spec

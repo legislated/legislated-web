@@ -1,14 +1,7 @@
 // @flow
-import { borders } from './borders'
-import { fonts } from './fonts'
-import { shadows } from './shadows'
-import { utils } from './utils'
-import { mobile } from './mobile'
-
-export const mixins = {
-  ...utils,
-  mobile,
-  fonts,
-  borders,
-  shadows
-}
+import { column, fill } from './utils'
+export { column, fill }
+export { borders } from './borders'
+export { fonts } from './fonts'
+export { shadows } from './shadows'
+export { mobile } from './mobile'

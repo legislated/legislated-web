@@ -62,7 +62,7 @@ const rules = stylesheet({
     '> div + div': {
       marginLeft: 10
     },
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       flexDirection: 'column',
       '> div + div': {
         marginLeft: 0,
@@ -75,7 +75,7 @@ const rules = stylesheet({
     ':last-child': {
       marginRight: 0
     },
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       flex: 1,
       overflow: 'hidden',
       ':last-child': {

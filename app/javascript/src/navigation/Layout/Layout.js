@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import styled, { css } from 'react-emotion'
 import type { ContextRouter } from 'react-router-dom'
 import { Header } from './Header'
-import { MobileHeader } from './MobileHeader'
+import { MobileHeader, MOBILE_HEADER_HEIGHT } from './MobileHeader'
 import { NotificationView } from 'shared/components'
 import { mixins } from 'shared/styles'
 import { local } from 'shared/storage'
@@ -13,7 +13,7 @@ type Props = {
   children?: any
 } & ContextRouter
 
-let Container = class Container extends React.Component<*, Props, *> {
+let Layout = class Layout extends React.Component<*, Props, *> {
   clearVisitedIntro () {
     // mark the intro as cleared if we've seen it and left the search scene
     const { pathname } = this.props.location
@@ -35,33 +35,38 @@ let Container = class Container extends React.Component<*, Props, *> {
     const { children } = this.props
 
     return (
-      <Wrapper>
+      <Container>
         <Header />
         <MobileHeader />
         <Content>
           {children}
           <NotificationView />
         </Content>
-      </Wrapper>
+      </Container>
     )
   }
 }
 
-const Wrapper = styled.section`
+const Container = styled.div`
   ${css(mixins.fonts.regular)};
+
   position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 `
 
 const Content = styled.div`
+  flex: 1;
   padding: 30px;
 
-  @media (max-width: 700px) {
+  ${mixins.mobile`
+    margin-top: ${MOBILE_HEADER_HEIGHT}px;
     padding: 15px;
     padding-bottom: 30px;
-  }
+  `}
 `
 
-Container = withRouter(Container)
+Layout = withRouter(Layout)
 
-export { Container }
+export { Layout }

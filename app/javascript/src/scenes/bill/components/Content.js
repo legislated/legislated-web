@@ -80,7 +80,7 @@ const rules = stylesheet({
       display: 'flex',
       flexDirection: 'column'
     },
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       flexDirection: 'column',
       '> section:first-child': {
         marginBottom: 10
@@ -96,7 +96,7 @@ const rules = stylesheet({
     flexBasis: 0,
     paddingBottom: 15,
     marginBottom: 15,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       flexDirection: 'column'
     })
   },
@@ -108,7 +108,7 @@ const rules = stylesheet({
     '> *:not(:last-child)': {
       marginBottom: 10
     },
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       marginBottom: 15,
       ':last-child': {
         marginBottom: 0

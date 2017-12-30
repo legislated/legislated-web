@@ -8,7 +8,7 @@ type Props = {
   className?: string
 }
 
-export function HeaderIcon (props: Props) {
+export function Logo (props: Props) {
   return (
     <img
       src={logo}

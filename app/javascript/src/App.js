@@ -1,10 +1,10 @@
 // @flow
 import 'shared/styles/globals'
 import React from 'react'
-import { Container, Routes } from './navigation'
+import { Layout, Routes } from './navigation'
 
 export const App = () => (
-  <Container>
+  <Layout>
     <Routes />
-  </Container>
+  </Layout>
 )

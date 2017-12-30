@@ -70,7 +70,7 @@ const rules = stylesheet({
   },
   actionLinks: {
     marginLeft: 10,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       display: 'block',
       marginTop: 10,
       marginLeft: 0

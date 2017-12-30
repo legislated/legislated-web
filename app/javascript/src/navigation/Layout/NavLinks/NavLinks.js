@@ -2,18 +2,23 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { NavLink } from './NavLink'
+import { mixins } from 'shared/styles'
 
 type Props = {
-  onClick?: Function
+  onClick?: Function,
+  className?: string
 }
 
-export function NavLinkList ({ onClick, location }: Props) {
+export function NavLinks ({
+  onClick,
+  className
+}: Props) {
   const linkProps = {
     onClick
   }
 
   return (
-    <Nav>
+    <Nav className={className}>
       <NavLink {...linkProps} to='/' children='Home' />
       <NavLink {...linkProps} to='#' children='Bills' />
       <NavLink {...linkProps} to='/faq' children='FAQ' />
@@ -29,7 +34,12 @@ const Nav = styled.nav`
     margin-left: 30px;
   }
 
-  @media (max-width: 700px) {
+  ${mixins.mobile`
     flex-direction: column;
-  }
+
+    > * + * {
+      margin-left: 0;
+      margin-top: 15px;
+    }
+  `}
 `

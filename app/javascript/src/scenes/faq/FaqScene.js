@@ -187,7 +187,7 @@ const rules = stylesheet({
   },
   video: {
     marginBottom: 10,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       position: 'relative',
       paddingBottom: '50%',
       paddingTop: 30,
@@ -196,7 +196,7 @@ const rules = stylesheet({
     })
   },
   iframe: {
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       position: 'absolute',
       top: 0,
       left: 0,

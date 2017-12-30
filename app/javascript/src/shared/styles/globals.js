@@ -1,7 +1,7 @@
 // @flow
 import './fontFaces'
 import { injectGlobal } from 'react-emotion'
-import { mixins } from './mixins'
+import { fonts } from './mixins'
 import { colors } from './colors'
 
 // extra resets
@@ -39,12 +39,12 @@ injectGlobal`
 // global rules
 injectGlobal`
   body {
-    ${mixins.fonts.regular};
+    ${fonts.regular};
     background-color: ${colors.background};
   }
 
   h1 {
-    ${mixins.fonts.slabRegular};
+    ${fonts.slabRegular};
     font-size: 64px;
 
     @media (max-width: 700px) {
@@ -53,7 +53,7 @@ injectGlobal`
   }
 
   h2 {
-    ${mixins.fonts.slabRegular};
+    ${fonts.slabRegular};
     font-size: 36px;
 
     @media (max-width: 700px) {
@@ -62,7 +62,7 @@ injectGlobal`
   }
 
   h3 {
-    ${mixins.fonts.slabRegular};
+    ${fonts.slabRegular};
     font-size: 20px;
 
     @media (max-width: 700px) {
@@ -71,17 +71,17 @@ injectGlobal`
   }
 
   h4 {
-    ${mixins.fonts.slabRegular};
+    ${fonts.slabRegular};
     font-size: 20px
   }
 
   h5 {
-    ${mixins.fonts.slabRegular};
+    ${fonts.slabRegular};
     font-size: 16px
   }
 
   h6 {
-    ${mixins.fonts.slabRegular};
+    ${fonts.slabRegular};
     font-size: 13px
   }
 

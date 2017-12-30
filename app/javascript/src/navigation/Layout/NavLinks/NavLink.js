@@ -31,6 +31,10 @@ const Container = styled.div`
   align-items: center;
   position: relative;
 
+  ${mixins.mobile`
+    padding-bottom: 10px;
+  `}
+
   &[aria-current='page'] {
     &:after {
       content: '';

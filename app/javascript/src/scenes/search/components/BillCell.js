@@ -13,7 +13,7 @@ type Props = {
 }
 
 let BillCell = function BillCell ({
-  bill,
+  bill
 }: Props) {
   const formattedDate = formatDate(bill.hearing.date, 'DD/MM/YYYY')
 
@@ -74,7 +74,7 @@ const rules = stylesheet({
     '&:last-child': {
       marginBottom: 0
     },
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       flexDirection: 'column'
     })
   },
@@ -82,7 +82,7 @@ const rules = stylesheet({
     ...mixins.borders.low(['right']),
     flex: 1,
     paddingRight: 15,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       ...mixins.borders.low(['bottom']),
       paddingRight: 0,
       paddingBottom: 15,
@@ -108,7 +108,7 @@ const rules = stylesheet({
     display: 'flex',
     flexDirection: 'column',
     paddingLeft: 15,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       flexDirection: 'row',
       paddingLeft: 0
     })
@@ -119,7 +119,7 @@ const rules = stylesheet({
     ':last-child': {
       marginBottom: 0
     },
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       flex: 1,
       width: 'auto',
       marginBottom: 0,

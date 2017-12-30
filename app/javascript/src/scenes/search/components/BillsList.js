@@ -139,7 +139,7 @@ const rules = stylesheet({
     '> h2': {
       display: 'inline-block',
       marginBottom: 5,
-      ...mixins.mobile({
+      ...mixins.mobile.glam({
         marginBottom: 0
       })
     },
@@ -149,7 +149,7 @@ const rules = stylesheet({
         display: 'inline-block',
         marginLeft: 5
       },
-      ...mixins.mobile({
+      ...mixins.mobile.glam({
         fontSize: 16,
         ':first-of-type': {
           display: 'none'
@@ -160,7 +160,7 @@ const rules = stylesheet({
   loadMoreButton: {
     alignSelf: 'center',
     marginTop: 30,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       marginTop: 20
     })
   }

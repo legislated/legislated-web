@@ -101,7 +101,7 @@ const rules = stylesheet({
   header: {
     position: 'relative',
     marginBottom: 30,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       marginBottom: 15
     })
   },
@@ -113,13 +113,13 @@ const rules = stylesheet({
     width: '100vw',
     zIndex: -1,
     backgroundColor: colors.backgroundAccent,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       left: -15
     })
   },
   section: {
     marginBottom: 30,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       marginBottom: 15
     })
   },
@@ -130,7 +130,7 @@ const rules = stylesheet({
   loadMoreButton: {
     alignSelf: 'center',
     marginTop: 30,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       marginTop: 20
     })
   },
