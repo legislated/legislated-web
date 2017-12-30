@@ -40,7 +40,7 @@ const rules = stylesheet({
     borderRadius: 3,
     fontSize: 16,
     textDecoration: 'none',
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       padding: 9
     })
   },

@@ -1,20 +1,23 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import FontAwesome from 'react-fontawesome'
 import { css } from 'glamor'
 import type { Rule } from 'glamor'
-import { BillAnimation } from './BillAnimation'
 import { Link, Defer } from 'shared/components'
 import { local } from 'shared/storage'
 import { stylesheet, mixins } from 'shared/styles'
 
-export class Intro extends Component {
-  props: {
-    styles?: Rule
-  }
+type Props = {
+  styles?: Rule
+}
 
+type State = {
+  isAccepted: boolean
+}
+
+export class Intro extends React.Component<*, Props, State> {
   state = {
-    isAccepted: false
+    isAccepted: !!local.get('intro-cleared')
   }
 
   // events
@@ -30,42 +33,32 @@ export class Intro extends Component {
   }
 
   render () {
-    if (local.get('intro-cleared')) {
-      return null
-    }
-
-    return (
-      <Defer>
-        <BillAnimation
-          children={this.renderContent()}
-        />
-      </Defer>
-    )
-  }
-
-  renderContent (): ?React$Element<*> {
     if (this.state.isAccepted) {
       return null
     }
 
     const { styles } = this.props
 
-    return <div {...css(rules.intro, styles)}>
-      <h1>Hey, welcome to Legislated!</h1>
-      <p>
-        Never heard of a witness slip? As a resident of Illinois, it's a tool
-        that allows you to voice your opinion on the laws your representatives
-        write. Search for a bill you care about and let the legislature know
-        how you feel. <strong>Want to learn more?</strong>
-        <span {...rules.actionLinks}>
-          <Link to='/faq'>Visit our FAQs</Link>
-          <Link styles={rules.accept} onClick={this.didClickAccept}>
-            <FontAwesome name='check' />
-            <span>Got it.</span>
-          </Link>
-        </span>
-      </p>
-    </div>
+    return (
+      <Defer>
+        <div {...css(rules.intro, styles)}>
+          <h1>Hey, welcome to Legislated!</h1>
+          <p>
+            Never heard of a witness slip? As a resident of Illinois, it's a tool
+            that allows you to voice your opinion on the laws your representatives
+            write. Search for a bill you care about and let the legislature know
+            how you feel. <strong>Want to learn more?</strong>
+            <span {...rules.actionLinks}>
+              <Link to='/faq'>Visit our FAQs</Link>
+              <Link styles={rules.accept} onClick={this.didClickAccept}>
+                <FontAwesome name='check' />
+                <span>Got it.</span>
+              </Link>
+            </span>
+          </p>
+        </div>
+      </Defer>
+    )
   }
 }
 
@@ -78,7 +71,7 @@ const rules = stylesheet({
   },
   actionLinks: {
     marginLeft: 10,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       display: 'block',
       marginTop: 10,
       marginLeft: 0

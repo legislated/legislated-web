@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the nav links 1`] = `
+<Styled(nav)
+  className="test-class"
+>
+  <NavLink
+    onClick={[Function]}
+    to="/"
+  >
+    Home
+  </NavLink>
+  <NavLink
+    onClick={[Function]}
+    to="#"
+  >
+    Bills
+  </NavLink>
+  <NavLink
+    onClick={[Function]}
+    to="/faq"
+  >
+    FAQ
+  </NavLink>
+  <NavLink
+    onClick={[Function]}
+    to="/about"
+  >
+    About Us
+  </NavLink>
+</Styled(nav)>
+`;

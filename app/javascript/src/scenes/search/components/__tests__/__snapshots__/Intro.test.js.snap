@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render is blank it's already cleared 1`] = `""`;
+
+exports[`#render shows the intro 1`] = `
+<Defer>
+  <div
+    data-css-k92j1l=""
+  >
+    <h1>
+      Hey, welcome to Legislated!
+    </h1>
+    <p>
+      Never heard of a witness slip? As a resident of Illinois, it's a tool that allows you to voice your opinion on the laws your representatives write. Search for a bill you care about and let the legislature know how you feel. 
+      <strong>
+        Want to learn more?
+      </strong>
+      <span
+        data-css-1flwhvu=""
+      >
+        <Link
+          to="/faq"
+        >
+          Visit our FAQs
+        </Link>
+        <Link
+          onClick={[Function]}
+          styles={
+            Object {
+              "data-css-16kle8p": "",
+            }
+          }
+        >
+          <FontAwesome
+            name="check"
+          />
+          <span>
+            Got it.
+          </span>
+        </Link>
+      </span>
+    </p>
+  </div>
+</Defer>
+`;

@@ -1,3 +1,3 @@
 // @flow
-export { Container } from './Container'
+export { Layout } from './Layout'
 export { Routes } from './Routes'

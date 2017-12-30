@@ -1,18 +1,15 @@
 // @flow
-export const utils = {
-  column: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'stretch'
-  },
-  fill: (inset: number = 0): Object => ({
-    position: 'absolute',
-    top: inset,
-    left: inset,
-    right: inset,
-    bottom: inset
-  }),
-  inset: (value: number): Object => ({
-    margin: value
-  })
+import { css } from 'react-emotion'
+
+export const column = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'stretch'
 }
+
+export const fill = css`
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`

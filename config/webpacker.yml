@@ -9,8 +9,8 @@ default: &default
   extensions:
     - .js
     - .jsx
+    - .svg
     - .png
-    - .ttf
     - .woff
     - .woff2
 

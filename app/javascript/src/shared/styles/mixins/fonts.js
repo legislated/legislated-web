@@ -4,26 +4,31 @@ type FontFace = {|
   fontWeight?: number | string
 |}
 
-const fontFamilies = {
-  slab: 'Zilla Slab, serif',
-  sans: 'Roboto, sans-serif'
-}
+type Fonts = {|
+  light: FontFace,
+  regular: FontFace,
+  bold: FontFace,
+  slabRegular: FontFace
+|}
 
-export const fonts: { light: FontFace, regular:FontFace, bold: FontFace, regularSlab: FontFace } = {
+const sans = 'Roboto, sans-serif'
+const slab = 'Zilla Slab, serif'
+
+export const fonts: Fonts = {
   light: {
-    fontFamily: fontFamilies.sans,
+    fontFamily: sans,
     fontWeight: 300
   },
   regular: {
-    fontFamily: fontFamilies.sans,
+    fontFamily: sans,
     fontWeight: 400
   },
   bold: {
-    fontFamily: fontFamilies.sans,
+    fontFamily: sans,
     fontWeight: 700
   },
-  regularSlab: {
-    fontFamily: fontFamilies.slab,
+  slabRegular: {
+    fontFamily: slab,
     fontWeight: 400
   }
 }

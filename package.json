@@ -14,9 +14,9 @@
     "hypernova:debug": "node inspect hypernova",
     "build:staging": "RAILS_ENV=staging rails assets:precompile",
     "build:prod": "RAILS_ENV=production rails assets:precompile",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:snapshot": "jest -u",
+    "test": "TZ=America/Chicago jest",
+    "test:watch": "yarn test --watch",
+    "test:snapshot": "yarn test -u",
     "test:debug": "node --inspect --debug-brk ./node_modules/.bin/jest --runInBand",
     "lint": "yarn lint:bare | snazzy",
     "lint:fix": "yarn lint:bare --fix | snazzy",
@@ -29,24 +29,26 @@
   },
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
+    "babel-plugin-emotion": "^8.0.10",
     "babel-runtime": "^6.26.0",
     "color": "^2.0.0",
     "date-fns": "^1.29.0",
+    "emotion": "^8.0.10",
     "eventemitter3": "^2.0.3",
     "glamor": "2.20.40",
     "hypernova-react": "https://github.com/legislated/hypernova-react.git",
     "isomorphic-fetch": "^2.2.1",
     "js-base64": "^2.1.9",
     "lodash": "^4.17.2",
-    "prop-types": "^15.6.0",
+    "raf": "^3.4.0",
     "react": "^16.1.1",
     "react-copy-to-clipboard": "^5.0.0",
     "react-dom": "^16.1.1",
+    "react-emotion": "^8.0.10",
     "react-fontawesome": "^1.6.1",
     "react-relay": "^1.4.1",
     "react-router-dom": "^4.1.2",
     "react-router-scroll-4": "^1.0.0-beta.1",
-    "react-sticky": "6.0.1",
     "react-transition-group": "1.x",
     "sync-request": "^4.1.0"
   },
@@ -95,6 +97,7 @@
     "plugins": [
       [ "relay", { "schema": "schema.json" } ],
       "lodash",
+      "emotion",
       "transform-runtime"
     ]
   },
@@ -109,7 +112,7 @@
     "moduleNameMapper": {
       "^shared/(.*)$": "<rootDir>/app/javascript/src/shared/$1",
       "^mocks/(.*)$": "<rootDir>/app/javascript/test/mocks/$1",
-      ".*\\.png$": "<rootDir>/app/javascript/test/stubs/image.js",
+      ".*\\.(svg|png)$": "<rootDir>/app/javascript/test/stubs/image.js",
       ".*\\.(woff|woff2)$": "<rootDir>/app/javascript/test/stubs/fonts.js"
     },
     "clearMocks": true

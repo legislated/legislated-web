@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the link as active when the page matches 1`] = `
+<NavLink
+  className="test-class"
+  history={
+    Object {
+      "action": "PUSH",
+      "replace": [Function],
+    }
+  }
+  local={
+    Object {
+      "pathname": "",
+    }
+  }
+  location={
+    Object {
+      "pathname": "test-url-1",
+    }
+  }
+  match={
+    Object {
+      "params": Object {},
+    }
+  }
+  to="test-url-1"
+/>
+`;
+
+exports[`#render shows the link as inactive 1`] = `
+<NavLink
+  className="test-class"
+  history={
+    Object {
+      "action": "PUSH",
+      "replace": [Function],
+    }
+  }
+  local={
+    Object {
+      "pathname": "",
+    }
+  }
+  location={
+    Object {
+      "pathname": "test-url-2",
+    }
+  }
+  match={
+    Object {
+      "params": Object {},
+    }
+  }
+  to="test-url-1"
+/>
+`;

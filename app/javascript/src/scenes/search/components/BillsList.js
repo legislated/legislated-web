@@ -1,30 +1,34 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import { createPaginationContainer, graphql } from 'react-relay'
 import type { RelayPaginationProp } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import { formatDate } from 'shared/date'
 import { BillCell } from './BillCell'
-import { BillAnimation, billRule } from './BillAnimation'
 import { LoadMoreButton } from './LoadMoreButton'
 import { constants } from '../searchRoute'
-import { withLoadMoreArgs, unwrap } from 'shared/relay'
+import { TranslateAndFade } from 'shared/components'
+import { formatDate } from 'shared/date'
 import { session } from 'shared/storage'
 import { stylesheet, mixins } from 'shared/styles'
+import { withLoadMoreArgs } from 'shared/relay'
 import type { Viewer } from 'shared/types'
+
+type Props = {
+  relay: RelayPaginationProp,
+  viewer: Viewer,
+  animated: Boolean
+} & ContextRouter
+
+type State = {
+  disableAnimations: boolean
+}
 
 function format (date: Date): string {
   return formatDate(date, 'MMM Do')
 }
 
-let BillsList = class BillsList extends Component {
-  props: {
-    viewer: Viewer,
-    animated: Boolean,
-    relay: RelayPaginationProp
-  } & ContextRouter
-
+let BillsList = class BillsList extends React.Component<*, Props, State> {
   state = {
     disableAnimations: this.props.history.action === 'POP'
   }
@@ -70,21 +74,19 @@ let BillsList = class BillsList extends Component {
         <div>{`${format(startDate)} to ${format(endDate)}`}</div>
         <div>{`Found ${count} result${count === 1 ? '' : 's'}.`}</div>
       </div>
-      <BillAnimation disable={!animated || disableAnimations}>
-        {this.renderBills(unwrap(bills))}
-      </BillAnimation>
+      <TranslateAndFade
+        disable={!animated || disableAnimations}
+      >
+        {bills.edges.map(({ node }) => (
+          <BillCell key={node.id} bill={node} />
+        ))}
+      </TranslateAndFade>
       <LoadMoreButton
         styles={rules.loadMoreButton}
         hasMore={relay.hasMore()}
         onClick={this.didClickLoadMore}
       />
     </div>
-  }
-
-  renderBills (bills): Array<React$Element<*>> {
-    return bills.map((bill, i) => {
-      return <BillCell key={bill.id} styles={billRule} bill={bill} />
-    })
   }
 }
 
@@ -137,7 +139,7 @@ const rules = stylesheet({
     '> h2': {
       display: 'inline-block',
       marginBottom: 5,
-      ...mixins.mobile({
+      ...mixins.mobile.glam({
         marginBottom: 0
       })
     },
@@ -147,7 +149,7 @@ const rules = stylesheet({
         display: 'inline-block',
         marginLeft: 5
       },
-      ...mixins.mobile({
+      ...mixins.mobile.glam({
         fontSize: 16,
         ':first-of-type': {
           display: 'none'
@@ -158,7 +160,7 @@ const rules = stylesheet({
   loadMoreButton: {
     alignSelf: 'center',
     marginTop: 30,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       marginTop: 20
     })
   }

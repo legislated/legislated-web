@@ -74,7 +74,7 @@ const rules = stylesheet({
       marginRight: 15,
       transition: 'color 0.25'
     },
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       width: 'auto'
     })
   },

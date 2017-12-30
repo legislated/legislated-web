@@ -1,25 +1,24 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
-import { formatDate } from 'shared/date'
 import { css } from 'glamor'
-import type { Rule } from 'glamor'
+import { formatDate } from 'shared/date'
 import type { Bill } from 'shared/types'
 import { Button } from 'shared/components'
 import { stylesheet, colors, mixins } from 'shared/styles'
 
-let BillCell = class BillCell extends Component {
-  props: {
-    bill: Bill,
-    styles?: Rule
-  }
+type Props = {
+  bill: Bill,
+  className?: string
+}
 
-  // lifecycle
-  render () {
-    const { bill, styles } = this.props
-    const formattedDate = formatDate(bill.hearing.date, 'DD/MM/YYYY')
+let BillCell = function BillCell ({
+  bill
+}: Props) {
+  const formattedDate = formatDate(bill.hearing.date, 'DD/MM/YYYY')
 
-    return <div {...css(rules.container, styles)}>
+  return (
+    <div {...css(rules.container)}>
       <div {...rules.info}>
         <div {...rules.header}>
           <div {...rules.document}>
@@ -46,7 +45,7 @@ let BillCell = class BillCell extends Component {
         />
       </div>
     </div>
-  }
+  )
 }
 
 BillCell = createFragmentContainer(BillCell, graphql`
@@ -75,7 +74,7 @@ const rules = stylesheet({
     '&:last-child': {
       marginBottom: 0
     },
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       flexDirection: 'column'
     })
   },
@@ -83,7 +82,7 @@ const rules = stylesheet({
     ...mixins.borders.low(['right']),
     flex: 1,
     paddingRight: 15,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       ...mixins.borders.low(['bottom']),
       paddingRight: 0,
       paddingBottom: 15,
@@ -109,7 +108,7 @@ const rules = stylesheet({
     display: 'flex',
     flexDirection: 'column',
     paddingLeft: 15,
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       flexDirection: 'row',
       paddingLeft: 0
     })
@@ -120,7 +119,7 @@ const rules = stylesheet({
     ':last-child': {
       marginBottom: 0
     },
-    ...mixins.mobile({
+    ...mixins.mobile.glam({
       flex: 1,
       width: 'auto',
       marginBottom: 0,
