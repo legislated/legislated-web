@@ -2,35 +2,51 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Layout } from '../Layout'
+import { defaultsDeep } from 'lodash'
 import { local } from 'shared/storage'
-import { routerProps } from 'mocks/routerProps'
 
 // subject
 let subject
 
-function loadSubject () {
-  subject = shallow(<Layout />).dive()
+const defaults = {
+  location: {
+    pathname: '/'
+  }
+}
+
+function loadSubject (props = {}) {
+  subject = shallow(<Layout {...defaultsDeep(props, defaults)} />).dive()
 }
 
 // spec
-describe('#componentDidMount', () => {
-  it(`clears the intro after it's visited and not on the search screen`, () => {
-    routerProps.location.pathname = '/faq'
-    local.set('intro-visited', 'true')
-    loadSubject()
+afterEach(() => {
+  subject = null
+})
 
-    subject.instance().componentDidUpdate()
+describe('#componentDidMount', () => {
+  it('clears the intro after it has been visited', () => {
+    local.set('intro-visited', 'true')
+    loadSubject({
+      location: {
+        pathname: '/faq'
+      }
+    })
+
     expect(local.get('intro-cleared')).toBe('true')
   })
 })
 
 describe('#componentDidUpdate', () => {
-  it(`clears the intro after it's visited and not on the search screen`, () => {
-    loadSubject()
-    routerProps.location.pathname = '/faq'
+  it('clears the intro after it has been visited', () => {
     local.set('intro-visited', 'true')
+    loadSubject()
 
-    subject.instance().componentDidUpdate({})
+    subject.setProps({
+      location: {
+        pathname: '/faq'
+      }
+    })
+
     expect(local.get('intro-cleared')).toBe('true')
   })
 })

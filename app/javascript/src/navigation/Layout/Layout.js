@@ -16,8 +16,8 @@ type Props = {
 let Layout = class Layout extends React.Component<*, Props, *> {
   clearVisitedIntro () {
     // mark the intro as cleared if we've seen it and left the search scene
-    const { pathname } = this.props.location
-    if (local.get('intro-visited') && pathname !== '/') {
+    const { location } = this.props
+    if (local.get('intro-visited') && location.pathname !== '/') {
       local.set('intro-cleared', 'true')
     }
   }

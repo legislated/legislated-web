@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the closed menu 1`] = `
+<Styled(header)>
+  <Styled(Link)
+    to="/"
+  >
+    <Logo
+      height={40}
+      width={40}
+    />
+    <h1>
+      LEGISLATED
+    </h1>
+  </Styled(Link)>
+  <MobileMenuButton
+    onClick={[Function]}
+  />
+  <MobileMenuTransition />
+</Styled(header)>
+`;
+
+exports[`#render shows the open menu 1`] = `
+<Styled(header)>
+  <Styled(Link)
+    to="/"
+  >
+    <Logo
+      height={40}
+      width={40}
+    />
+    <h1>
+      LEGISLATED
+    </h1>
+  </Styled(Link)>
+  <MobileMenuButton
+    onClick={[Function]}
+  />
+  <MobileMenuTransition>
+    <MobileMenu
+      onClose={[Function]}
+    />
+  </MobileMenuTransition>
+</Styled(header)>
+`;

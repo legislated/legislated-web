@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the header 1`] = `
+<Styled(div)>
+  <Styled(div)>
+    <Logo
+      height={61}
+      width={73}
+    />
+    <h1>
+      Legislated
+    </h1>
+  </Styled(div)>
+  <Styled(div)>
+    <Styled(header)
+      style={Object {}}
+    >
+      <TranslateAndFade
+        component={[Function]}
+        direction="down"
+      />
+      <NavLinks />
+    </Styled(header)>
+  </Styled(div)>
+</Styled(div)>
+`;

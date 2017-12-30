@@ -48,7 +48,7 @@ describe('#render', () => {
     })
 
     it('adds the style to the field', () => {
-      expect(element.field()).toMatchRule(/f3qh70/)
+      expect(element.field()).toMatchRule(/q4ese1/)
     })
   })
 })

@@ -37,7 +37,7 @@ const element = {
   bills: () => subject.find('BillCell'),
   date: () => subject.find('div > div > div').at(0),
   count: () => subject.find('div > div > div').at(1),
-  animation: () => subject.find('BillAnimation'),
+  animation: () => subject.find('TranslateAndFade'),
   loadButton: () => subject.find('LoadMoreButton')
 }
 
