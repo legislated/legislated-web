@@ -1,45 +1,37 @@
 sudo: required
-
 language: ruby
-
 rvm:
-  - 2.3.0
+- 2.3.0
 services:
-  - postgresql
+- postgresql
 env:
-  - ADMIN_CREDENTIALS="Basic YWRtaW46cGFzc3dvcmTCow==" TZ=America/Chicago
-
+- ADMIN_CREDENTIALS="Basic YWRtaW46cGFzc3dvcmTCow==" TZ=America/Chicago
 cache:
   bundler: true
   yarn: true
   directories:
-    - node_modules
-
+  - node_modules
 branches:
   only:
-    - master
-    - production
-
+  - master
+  - production
 install:
-  - bundle
-  - nvm install node
-  - node -v
-  - npm i -g yarn
-  - yarn
-
+- bundle
+- nvm install node
+- node -v
+- npm i -g yarn
+- yarn
 before_script:
-  - psql -c 'create database legislated_test;' -U postgres
-  - chmod +x ./scripts/ci-watchman.sh
-  - ./scripts/ci-watchman.sh
-
+- psql -c 'create database legislated_test;' -U postgres
+- chmod +x ./scripts/ci-watchman.sh
+- "./scripts/ci-watchman.sh"
 deploy:
   provider: heroku
-  run: "rake db:migrate"
+  run: rake db:migrate
   api_key:
-    secure: QYKsgpbt9g27cPQMHmLp2mjvhfrNRQZF6AzWDOrgBEbZILI0LAr5lsSPbfUqxxlDTwLecpABBLi1GmLhMoncjzxQEdzXj0vFZIVoeG4SGShZ0J6z2V/G1bndDH+P7v9ykzICMAfzoJsZUW81ASPC+N35uE2djpu4+qE8OKPo6V+XiBf4xi0w+HWu8WIrdqIwT9os+kCgNZxjDYqslHbttySHo6jiGEtGDBC+UZFrzJ57gzH46lKZjjBkdZ16XCZN0pPjONVTUMJRSv9Jp/4w30hXP+Ckb95aXk11uWwWenWfHoBUR8/jz1lnvcXnLwjhFnfZ/bhlc3MUexxDknmAgmd9MTAdwqTwf4OuXmvOsHF5RI4tbyx4jZgjkvITcpnUx9OnvyF8CTfhUbY8hcboQvG38ndlKy0csCSkbWRx4ZqPzERCqeoLkyTpIKa0L7COB+MFYHhpS9AdgtR6JJb/OFw5DvkyjuLa52QEik+9tyK2zTTxOZRshIy5Gygnb38ISMlO6fKK5Qe66ojz87iUWEMUWVG4ctdnUDblmTFfPbxqbDOleCUsMmGr8GJ+YFvS1eN886TG+VW45fNr403AEK7yzTbuhGkyOSZ4Lq7oIj1lE10U0eMhqz/ihDPMAW87FCzThahtC+2OG0cCObfHaQzpU/IUzPzr47j/hK4UEWU=
+    secure: eA7ZQ67rS6pdwPSsGJHffUb01j5sKXU+VCtUG3XvehIA8mN9OzX9duJUV7xayTkRWYB0RAzQlc/DHpBDfN5Tkp3pJoTdC61EFVEE7PAy5lXi7QupYoBRGlFQB97AY300uNi2X71Fpf2/8XZ5xgp5rGQ3IWCvF52no23Rpy+KlqrdQ4HNqHOOMST7XKrkUxP0hTQqO5iNC2DJdlD7S5exDXboO1XwtpK45VOewUccho66XfjZQoHKmMxSWePvTeC/KveSXcBz+5V2w0Dcem5HKb85vACPmPy+HhZrM6bAP7mIC/aa2hHWlaKyEPtRsk0lNgLcA82LfozedVi6cYEjIDpoB8WnC13Y1Y9YtSMBML72nugqbcVtOwfXIcVNpo7Ylci3D7s0NbtrjjdsDD9IMkW+Ip+9ZO/C0jlPjehKLM3HdQ6cGhkepnVN2cTyJe9yyQEv26X/cpp8UTl16mUJjwaxdjryZIdHeg8kFcToN8QOQoVeOn/R0IFqldf7z9sNV/bRYkZGgA/tGJsvEP0IKvxZCJmIpwRd6ENqDxS9IMAmsqQ1GU/GyGCnHGZGQkweNLbmMFNedmd8qyywGlxAqnhkHXvKBKCn3GYJ6Jp0ulVknIMJX73hmG7CTIszjcr6BjNtnIVo9S286E5HHf/esRcLHNZ1wSYq05ZBzhsK4qE=
   app:
     master: legislated-staging
     production: legislated
-
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
