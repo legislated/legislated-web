@@ -1,30 +1,30 @@
 sudo: required
 language: ruby
 rvm:
-- 2.3.0
+  - 2.3.0
 services:
-- postgresql
+  - postgresql
 env:
-- ADMIN_CREDENTIALS="Basic YWRtaW46cGFzc3dvcmTCow==" TZ=America/Chicago
+  - ADMIN_CREDENTIALS="Basic YWRtaW46cGFzc3dvcmTCow==" TZ=America/Chicago
 cache:
   bundler: true
   yarn: true
   directories:
-  - node_modules
+    - node_modules
 branches:
   only:
-  - master
-  - production
+    - master
+    - production
 install:
-- bundle
-- nvm install node
-- node -v
-- npm i -g yarn
-- yarn
+  - bundle
+  - nvm install node
+  - node -v
+  - npm i -g yarn
+  - yarn
 before_script:
-- psql -c 'create database legislated_test;' -U postgres
-- chmod +x ./scripts/ci-watchman.sh
-- "./scripts/ci-watchman.sh"
+  - psql -c 'create database legislated_test;' -U postgres
+  - chmod +x ./scripts/ci-watchman.sh
+  - "./scripts/ci-watchman.sh"
 deploy:
   provider: heroku
   run: rake db:migrate
