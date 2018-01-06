@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import { findDOMNode as findDomNode } from 'react-dom'
-import styled, { css } from 'react-emotion'
+import styled from 'react-emotion'
 import { Logo } from './Logo'
 import { LogoLink } from './LogoLink'
 import { NavLinks } from './NavLinks'
@@ -59,7 +59,7 @@ export class Header extends React.Component<*, *, State> {
           <h1>Legislated</h1>
         </Hero>
         <Navbar>
-          <Sticky
+          <StickyBar
             ref={(ref) => { this.navbar = ref }}
             style={isSticky ? { position: 'fixed', top: '0px' } : {}}
           >
@@ -73,22 +73,18 @@ export class Header extends React.Component<*, *, State> {
                 </div>
               )}
             </TranslateAndFade>
-            <NavLinks />
-          </Sticky>
+            <Nav />
+          </StickyBar>
         </Navbar>
       </Container>
     )
   }
 }
 
-const column = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
+const Container = styled.header`
+  ${mixins.flexColumn};
 
-const Container = styled.div`
-  ${column};
+  align-items: center;
   padding-top: 70px;
 
   ${mixins.mobile`
@@ -97,7 +93,9 @@ const Container = styled.div`
 `
 
 const Hero = styled.div`
-  ${column}
+  ${mixins.flexColumn};
+
+  align-items: center;
   margin-bottom: 45px;
 
   > img {
@@ -105,23 +103,24 @@ const Hero = styled.div`
   }
 `
 
-const height = '78px'
+const height = 78
 const Navbar = styled.div`
   position: relative;
-  height: ${height};
+  height: ${height}px;
   width: 100%;
 `
 
-const Sticky = styled.header`
-  display: flex;
+const StickyBar = styled.div`
+  ${mixins.flexRow};
+
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: ${height};
+  height: ${height}px;
   padding: 0 20px;
-  background-color: ${colors.background};
   z-index: 1;
+  background-color: ${colors.background};
 
   &:after {
     content: '';
@@ -133,5 +132,8 @@ const StickyLogo = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
-  padding-right: 30px;
+`
+
+const Nav = styled(NavLinks)`
+  margin: 0 30px;
 `

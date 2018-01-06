@@ -40,8 +40,8 @@ const Container = styled.div`
       content: '';
       position: absolute;
       width: 100%;
-      height: 3px;
-      bottom: 0;
+      height: 4px;
+      bottom: -2px;
       background-color: ${colors.primary} ;
     }
 

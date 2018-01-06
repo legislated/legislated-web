@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
-    "babel-plugin-emotion": "^8.0.10",
+    "babel-preset-stage-2": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "color": "^2.0.0",
     "date-fns": "^1.29.0",
@@ -44,7 +44,6 @@
     "react-copy-to-clipboard": "^5.0.0",
     "react-dom": "^16.1.1",
     "react-emotion": "^8.0.10",
-    "react-fontawesome": "^1.6.1",
     "react-relay": "^1.4.1",
     "react-router-dom": "^4.1.2",
     "react-router-scroll-4": "^1.0.0-beta.1",
@@ -58,13 +57,12 @@
     "babel-eslint": "8.0.2",
     "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.1",
+    "babel-plugin-emotion": "^8.0.10",
     "babel-plugin-lodash": "^3.2.11",
     "babel-plugin-relay": "^1.1.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
     "concat-stream": "^1.6.0",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
@@ -95,9 +93,9 @@
     ],
     "plugins": [
       [ "relay", { "schema": "schema.json" } ],
-      "lodash",
+      "transform-runtime",
       "emotion",
-      "transform-runtime"
+      "lodash"
     ]
   },
   "jest": {
@@ -122,8 +120,6 @@
       "flow-typed/"
     ],
     "globals": [
-      "fetch",
-      "requestAnimationFrame",
       "Class",
       "React$Element",
       "React$Component"

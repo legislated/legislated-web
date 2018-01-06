@@ -51,8 +51,8 @@ export class NotificationView extends Component {
 
 const rules = stylesheet({
   notification: {
+    ...mixins.shadows.low,
     ...mixins.borders.low(),
-    ...mixins.shadows.low(),
     position: 'fixed',
     bottom: 30,
     right: -245,

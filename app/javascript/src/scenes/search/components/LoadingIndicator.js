@@ -38,7 +38,7 @@ const bar = {
 
 const rules = stylesheet({
   container: {
-    ...mixins.shadows.low(),
+    ...mixins.shadows.low,
     ...mixins.borders.low(),
     height: 49,
     padding: 15,

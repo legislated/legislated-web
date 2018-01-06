@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from 'react'
-import FontAwesome from 'react-fontawesome'
 import { css } from 'glamor'
 import { Link } from './Link'
 import { stylesheet, colors, mixins } from 'shared/styles'
@@ -24,7 +23,6 @@ export class Button extends Component {
 
     return (
       <Link styles={linkRule} {...linkProps}>
-        <FontAwesome {...rules.icon} name={iconName} />
         <span>{label}</span>
       </Link>
     )

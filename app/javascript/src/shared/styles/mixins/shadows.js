@@ -6,15 +6,12 @@ type ShadowStyle = {|
   boxShadow: string
 |}
 
-function make (color: string, height: number): ShadowStyle {
+export function make (color: string, height: number): ShadowStyle {
   return {
     borderRadius: height,
     boxShadow: `${color} 0 ${height}px 0 0`
   }
 }
 
-export const shadows = {
-  make,
-  low: () => make(colors.neutralShadow, 3),
-  high: () => make(colors.primaryHighlight, 4)
-}
+export const low = make(colors.neutral, 3)
+export const high = make(colors.primaryHighlight, 4)

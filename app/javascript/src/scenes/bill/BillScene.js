@@ -37,7 +37,7 @@ const rules = stylesheet({
     flexDirection: 'column'
   },
   content: {
-    ...mixins.shadows.low(),
+    ...mixins.shadows.low,
     ...mixins.borders.low(),
     padding: 15,
     backgroundColor: colors.neutral

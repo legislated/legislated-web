@@ -65,7 +65,7 @@ BillCell = createFragmentContainer(BillCell, graphql`
 
 const rules = stylesheet({
   container: {
-    ...mixins.shadows.low(),
+    ...mixins.shadows.low,
     ...mixins.borders.low(),
     display: 'flex',
     padding: 15,

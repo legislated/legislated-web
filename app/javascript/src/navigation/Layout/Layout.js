@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import { withRouter } from 'react-router-dom'
-import styled, { css } from 'react-emotion'
+import styled from 'react-emotion'
 import type { ContextRouter } from 'react-router-dom'
 import { Header } from './Header'
 import { MobileHeader, MOBILE_HEADER_HEIGHT } from './MobileHeader'
@@ -48,11 +48,9 @@ let Layout = class Layout extends React.Component<*, Props, *> {
 }
 
 const Container = styled.div`
-  ${css(mixins.fonts.regular)};
+  ${mixins.flexColumn};
 
   position: relative;
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
 `
 

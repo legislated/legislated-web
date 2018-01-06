@@ -2,12 +2,13 @@
 import React, { Component } from 'react'
 import { createRefetchContainer, graphql } from 'react-relay'
 import type { RelayRefetchProp } from 'react-relay'
+import { css } from 'react-emotion'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
 import { throttle } from 'lodash'
 import { constants } from './searchRoute'
 import { Intro, SearchField, BillsList, LoadingIndicator } from './components'
-import { stylesheet, colors, mixins } from 'shared/styles'
+import { stylesheet, mixins } from 'shared/styles'
 import type { Viewer } from 'shared/types'
 
 let SearchScene = class SearchScene extends Component {
@@ -36,7 +37,7 @@ let SearchScene = class SearchScene extends Component {
       }
 
       // completion comes back before render
-      requestAnimationFrame(() => {
+      global.requestAnimationFrame(() => {
         this.setState({ disableAnimations: false })
       })
     })
@@ -50,7 +51,9 @@ let SearchScene = class SearchScene extends Component {
     return <div {...rules.container}>
       <div {...rules.header}>
         <div {...rules.background} />
-        <Intro styles={rules.section} />
+        <Intro
+          className={section}
+        />
         <SearchField
           styles={rules.section}
           value={query}
@@ -94,27 +97,28 @@ SearchScene = createRefetchContainer(withRouter(SearchScene),
   `
 )
 
+const section = css`
+  margin-bottom: 30px;
+
+  ${mixins.mobile`
+    margin-bottom: 15px;
+  `}
+`
+
+const column = {
+  display: 'flex',
+  flexDirection: 'column'
+}
+
 const rules = stylesheet({
   container: {
-    ...mixins.column
+    ...column
   },
   header: {
     position: 'relative',
     marginBottom: 30,
     ...mixins.mobile.glam({
       marginBottom: 15
-    })
-  },
-  background: {
-    position: 'absolute',
-    top: -30,
-    bottom: 0,
-    left: -30,
-    width: '100vw',
-    zIndex: -1,
-    backgroundColor: colors.backgroundAccent,
-    ...mixins.mobile.glam({
-      left: -15
     })
   },
   section: {
@@ -124,7 +128,7 @@ const rules = stylesheet({
     })
   },
   content: {
-    ...mixins.column,
+    ...column,
     position: 'relative'
   },
   loadMoreButton: {
@@ -139,7 +143,7 @@ const rules = stylesheet({
     top: 0,
     left: 0,
     right: 0,
-    ...mixins.column
+    ...column
   }
 })
 
