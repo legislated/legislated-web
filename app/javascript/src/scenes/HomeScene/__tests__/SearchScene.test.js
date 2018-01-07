@@ -16,7 +16,7 @@ function loadSubject (options = { mount: false }) {
 }
 
 const element = {
-  list: () => subject.find('BillsList'),
+  list: () => subject.find('BillList'),
   searchField: () => subject.find('SearchField'),
   indicator: () => subject.find('LoadingIndicator')
 }

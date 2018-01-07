@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a3e02db9253a3f8ca4f1283412bbe15d
+ * @relayHash 47c7cf4a1827225403d274bf723def0c
  */
 
 /* eslint-disable */
@@ -9,14 +9,14 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type BillsListQueryResponse = {|
+export type BillSearchQueryResponse = {|
   +viewer: ?{| |};
 |};
 */
 
 
 /*
-query BillsListQuery(
+query BillSearchQuery(
   $count: Int!
   $cursor: String!
   $query: String!
@@ -24,12 +24,23 @@ query BillsListQuery(
   $endDate: Time!
 ) {
   viewer {
-    ...BillsList_viewer
+    ...BillSearch_viewer
     id
   }
 }
 
-fragment BillsList_viewer on Viewer {
+fragment BillSearch_viewer on Viewer {
+  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+  ...BillList_viewer
+}
+
+fragment BillList_viewer on Viewer {
   bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {
     count
     pageInfo {
@@ -98,7 +109,7 @@ const batch /*: ConcreteBatch*/ = {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "BillsListQuery",
+    "name": "BillSearchQuery",
     "selections": [
       {
         "kind": "LinkedField",
@@ -110,7 +121,7 @@ const batch /*: ConcreteBatch*/ = {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "BillsList_viewer",
+            "name": "BillSearch_viewer",
             "args": null
           }
         ],
@@ -122,7 +133,7 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "BillsListQuery",
+  "name": "BillSearchQuery",
   "query": {
     "argumentDefinitions": [
       {
@@ -157,7 +168,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ],
     "kind": "Root",
-    "name": "BillsListQuery",
+    "name": "BillSearchQuery",
     "operation": "query",
     "selections": [
       {
@@ -207,38 +218,6 @@ const batch /*: ConcreteBatch*/ = {
             "name": "bills",
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "count",
-                "storageKey": null
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "args": null,
-                "concreteType": "PageInfo",
-                "name": "pageInfo",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "hasNextPage",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "endCursor",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              },
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -348,6 +327,38 @@ const batch /*: ConcreteBatch*/ = {
                   }
                 ],
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "count",
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "name": "pageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "hasNextPage",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "endCursor",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -389,7 +400,7 @@ const batch /*: ConcreteBatch*/ = {
             ],
             "handle": "connection",
             "name": "bills",
-            "key": "BillsList_bills",
+            "key": "BillList_bills",
             "filters": [
               "query",
               "from",
@@ -408,7 +419,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query BillsListQuery(\n  $count: Int!\n  $cursor: String!\n  $query: String!\n  $startDate: Time!\n  $endDate: Time!\n) {\n  viewer {\n    ...BillsList_viewer\n    id\n  }\n}\n\nfragment BillsList_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  witnessSlipUrl\n  detailsUrl\n  fullTextUrl\n  hearing {\n    date\n    id\n  }\n}\n"
+  "text": "query BillSearchQuery(\n  $count: Int!\n  $cursor: String!\n  $query: String!\n  $startDate: Time!\n  $endDate: Time!\n) {\n  viewer {\n    ...BillSearch_viewer\n    id\n  }\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  witnessSlipUrl\n  detailsUrl\n  fullTextUrl\n  hearing {\n    date\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

@@ -1,27 +1,20 @@
 // @flow
 import React from 'react'
 import { graphql } from 'react-relay'
-import { addDays, endOfDay, startOfDay } from 'shared/date'
-import { SearchScene } from './SearchScene'
+import { HomeScene } from './HomeScene'
+import { billSearchInitialVariables } from 'shared/components'
 import { createPaginationCacheResolver } from 'shared/relay'
 import { session } from 'shared/storage'
 import type { RelayRouteConfig } from 'shared/types'
 
-export const constants = {
-  query: '',
-  count: 20,
-  startDate: startOfDay(new Date()),
-  endDate: endOfDay(addDays(new Date(), 6))
-}
-
-export const searchRoute: RelayRouteConfig = {
+export const homeRoute: RelayRouteConfig = {
   query: graphql`
-    query searchRouteQuery(
+    query homeRouteQuery(
       $count: Int!, $cursor: String!
       $query: String!, $startDate: Time!, $endDate: Time!
     ) {
       viewer {
-        ...SearchScene_viewer
+        ...HomeScene_viewer
       }
     }
   `,
@@ -36,21 +29,21 @@ export const searchRoute: RelayRouteConfig = {
     session.set('last-search-count', null)
 
     return {
-      ...constants,
-      count: count || constants.count,
+      ...billSearchInitialVariables,
+      count: count || billSearchInitialVariables.count,
       cursor: ''
     }
   },
   cacheResolver: createPaginationCacheResolver({
-    count: constants.count,
+    count: billSearchInitialVariables.count,
     queryId: 'BillsConnection',
     queryPathToConnection: ['viewer', 'bills']
   }),
   render (props) {
     if (props) {
-      return <SearchScene {...props} />
+      return <HomeScene {...props} />
     } else {
-      return <SearchScene viewer={null} />
+      return <HomeScene viewer={null} />
     }
   }
 }

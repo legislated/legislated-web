@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import React from 'react'
 import { shallow } from 'enzyme'
-import { BillsList } from '../BillsList'
+import { BillList } from '../BillList'
 import { routerProps } from 'mocks/routerProps'
 import { session } from 'shared/storage'
 import { relayPaginationProp } from 'mocks/relayProps'
@@ -26,7 +26,7 @@ let viewer
 let animated
 
 function loadSubject () {
-  subject = shallow(<BillsList viewer={viewer} animated={animated} />).dive().dive()
+  subject = shallow(<BillList viewer={viewer} animated={animated} />).dive().dive()
 }
 
 function edges (nodes) {
@@ -150,11 +150,11 @@ describe('on clicking load more', () => {
 
 describe('the relay container', () => {
   it('exists', () => {
-    expect(BillsList.container).toBeTruthy()
+    expect(BillList.container).toBeTruthy()
   })
 
   it('exposes the connection', () => {
-    const { getConnectionFromProps } = BillsList.container.options
+    const { getConnectionFromProps } = BillList.container.options
     expect(getConnectionFromProps({ viewer })).toBe(viewer.bills)
   })
 })

@@ -8,7 +8,7 @@
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type SearchScene_viewer = {|
+export type BillSearch_viewer = {|
   +bills: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
@@ -50,7 +50,7 @@ const fragment /*: ConcreteFragment*/ = {
   ],
   "kind": "Fragment",
   "metadata": null,
-  "name": "SearchScene_viewer",
+  "name": "BillSearch_viewer",
   "selections": [
     {
       "kind": "LinkedField",
@@ -125,7 +125,7 @@ const fragment /*: ConcreteFragment*/ = {
     },
     {
       "kind": "FragmentSpread",
-      "name": "BillsList_viewer",
+      "name": "BillList_viewer",
       "args": null
     }
   ],

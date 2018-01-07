@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 5f93ea7f88be07944e4bff09f53ef58d
+ * @relayHash 7b646ed11517cdc5819459c614cb07ee
  */
 
 /* eslint-disable */
@@ -9,14 +9,14 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type SearchSceneQueryResponse = {|
+export type homeRouteQueryResponse = {|
   +viewer: ?{| |};
 |};
 */
 
 
 /*
-query SearchSceneQuery(
+query homeRouteQuery(
   $count: Int!
   $cursor: String!
   $query: String!
@@ -24,12 +24,16 @@ query SearchSceneQuery(
   $endDate: Time!
 ) {
   viewer {
-    ...SearchScene_viewer
+    ...HomeScene_viewer
     id
   }
 }
 
-fragment SearchScene_viewer on Viewer {
+fragment HomeScene_viewer on Viewer {
+  ...BillSearch_viewer
+}
+
+fragment BillSearch_viewer on Viewer {
   bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {
     edges {
       node {
@@ -37,10 +41,10 @@ fragment SearchScene_viewer on Viewer {
       }
     }
   }
-  ...BillsList_viewer
+  ...BillList_viewer
 }
 
-fragment BillsList_viewer on Viewer {
+fragment BillList_viewer on Viewer {
   bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {
     count
     pageInfo {
@@ -109,7 +113,7 @@ const batch /*: ConcreteBatch*/ = {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "SearchSceneQuery",
+    "name": "homeRouteQuery",
     "selections": [
       {
         "kind": "LinkedField",
@@ -121,7 +125,7 @@ const batch /*: ConcreteBatch*/ = {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "SearchScene_viewer",
+            "name": "HomeScene_viewer",
             "args": null
           }
         ],
@@ -133,7 +137,7 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "SearchSceneQuery",
+  "name": "homeRouteQuery",
   "query": {
     "argumentDefinitions": [
       {
@@ -168,7 +172,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ],
     "kind": "Root",
-    "name": "SearchSceneQuery",
+    "name": "homeRouteQuery",
     "operation": "query",
     "selections": [
       {
@@ -400,7 +404,7 @@ const batch /*: ConcreteBatch*/ = {
             ],
             "handle": "connection",
             "name": "bills",
-            "key": "BillsList_bills",
+            "key": "BillList_bills",
             "filters": [
               "query",
               "from",
@@ -419,7 +423,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SearchSceneQuery(\n  $count: Int!\n  $cursor: String!\n  $query: String!\n  $startDate: Time!\n  $endDate: Time!\n) {\n  viewer {\n    ...SearchScene_viewer\n    id\n  }\n}\n\nfragment SearchScene_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n  ...BillsList_viewer\n}\n\nfragment BillsList_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  witnessSlipUrl\n  detailsUrl\n  fullTextUrl\n  hearing {\n    date\n    id\n  }\n}\n"
+  "text": "query homeRouteQuery(\n  $count: Int!\n  $cursor: String!\n  $query: String!\n  $startDate: Time!\n  $endDate: Time!\n) {\n  viewer {\n    ...HomeScene_viewer\n    id\n  }\n}\n\nfragment HomeScene_viewer on Viewer {\n  ...BillSearch_viewer\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  witnessSlipUrl\n  detailsUrl\n  fullTextUrl\n  hearing {\n    date\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

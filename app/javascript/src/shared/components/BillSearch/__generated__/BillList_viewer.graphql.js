@@ -8,7 +8,7 @@
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type BillsList_viewer = {|
+export type BillList_viewer = {|
   +bills: ?{|
     +count: number;
     +pageInfo: {|
@@ -66,7 +66,7 @@ const fragment /*: ConcreteFragment*/ = {
       }
     ]
   },
-  "name": "BillsList_viewer",
+  "name": "BillList_viewer",
   "selections": [
     {
       "kind": "LinkedField",
@@ -92,7 +92,7 @@ const fragment /*: ConcreteFragment*/ = {
         }
       ],
       "concreteType": "BillSearchConnection",
-      "name": "__BillsList_bills_connection",
+      "name": "__BillList_bills_connection",
       "plural": false,
       "selections": [
         {

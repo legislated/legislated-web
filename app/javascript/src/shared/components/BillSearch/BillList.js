@@ -4,9 +4,9 @@ import { createPaginationContainer, graphql } from 'react-relay'
 import type { RelayPaginationProp } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
+import { initialVariables } from './BillSearch'
 import { BillCell } from './BillCell'
 import { LoadMoreButton } from './LoadMoreButton'
-import { constants } from '../searchRoute'
 import { TranslateAndFade } from 'shared/components'
 import { formatDate } from 'shared/date'
 import { session } from 'shared/storage'
@@ -28,7 +28,7 @@ function format (date: Date): string {
   return formatDate(date, 'MMM Do')
 }
 
-let BillsList = class BillsList extends React.Component<*, Props, State> {
+let BillList = class BillList extends React.Component<*, Props, State> {
   state = {
     disableAnimations: this.props.history.action === 'POP'
   }
@@ -40,7 +40,7 @@ let BillsList = class BillsList extends React.Component<*, Props, State> {
       return
     }
 
-    relay.loadMore(constants.count, (error: ?Error) => {
+    relay.loadMore(initialVariables.count, (error: ?Error) => {
       if (error) {
         console.error(`error loading next page: ${error.toString()}`)
       }
@@ -66,7 +66,7 @@ let BillsList = class BillsList extends React.Component<*, Props, State> {
     const { relay, viewer, animated } = this.props
     const { bills } = viewer
     const { count } = bills
-    const { startDate, endDate } = constants
+    const { startDate, endDate } = initialVariables
 
     return <div {...rules.container}>
       <div {...rules.header}>
@@ -90,13 +90,13 @@ let BillsList = class BillsList extends React.Component<*, Props, State> {
   }
 }
 
-BillsList = createPaginationContainer(withRouter(BillsList),
+BillList = createPaginationContainer(withRouter(BillList),
   graphql`
-    fragment BillsList_viewer on Viewer {
+    fragment BillList_viewer on Viewer {
       bills(
         first: $count, after: $cursor,
         query: $query, from: $startDate, to: $endDate
-      ) @connection(key: "BillsList_bills") {
+      ) @connection(key: "BillList_bills") {
         count
         pageInfo {
           hasNextPage
@@ -116,7 +116,7 @@ BillsList = createPaginationContainer(withRouter(BillsList),
       return props.viewer && props.viewer.bills
     },
     query: graphql`
-      query BillsListQuery(
+      query BillListQuery(
         $count: Int!, $cursor: String!,
         $query: String!, $startDate: Time!, $endDate: Time!
       ) {
@@ -166,4 +166,4 @@ const rules = stylesheet({
   }
 })
 
-export { BillsList }
+export { BillList }
