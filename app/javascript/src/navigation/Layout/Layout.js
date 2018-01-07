@@ -56,7 +56,6 @@ const Container = styled.div`
 
 const Content = styled.div`
   flex: 1;
-  padding: 30px;
 
   ${mixins.mobile`
     margin-top: ${MOBILE_HEADER_HEIGHT}px;

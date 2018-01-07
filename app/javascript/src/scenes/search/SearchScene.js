@@ -7,7 +7,8 @@ import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
 import { throttle } from 'lodash'
 import { constants } from './searchRoute'
-import { Intro, SearchField, BillsList, LoadingIndicator } from './components'
+import { Intro } from './Intro'
+import { SearchField, BillsList, LoadingIndicator } from './components'
 import { stylesheet, mixins } from 'shared/styles'
 import type { Viewer } from 'shared/types'
 
@@ -115,6 +116,7 @@ const rules = stylesheet({
     ...column
   },
   header: {
+    ...column,
     position: 'relative',
     marginBottom: 30,
     ...mixins.mobile.glam({

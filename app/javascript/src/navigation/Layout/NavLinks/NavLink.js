@@ -6,7 +6,7 @@ import type { ContextRouter } from 'react-router-dom'
 import { Link } from 'shared/components'
 import type { LinkProps } from 'shared/components'
 import { mixins, colors } from 'shared/styles'
-import { withoutRouter } from 'shared/functions'
+import { removeRouterProps } from 'shared/functions'
 
 type Props
   = LinkProps
@@ -18,7 +18,7 @@ let NavLink = function NavLink ({ to: url, className, location, ...otherProps }:
       aria-current={location.pathname === url ? 'page' : false}
     >
       <Link
-        {...withoutRouter(otherProps)}
+        {...removeRouterProps(otherProps)}
         to={url}
         className={cx(linkClass, className)}
       />

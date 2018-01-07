@@ -19,26 +19,28 @@ let Actions = class Actions extends Component {
         <Button
           styles={rules.button}
           to={bill.witnessSlipUrl}
-          label='Take Action'
-          iconName='pencil-square-o'
-          type='solid' />
+          children='Take Action'
+        />
         <Button
           styles={rules.button}
           to={bill.witnessSlipResultUrl}
-          label='View Results'
-          iconName='list-ul' />
+          isSecondary
+          children='View Results'
+        />
       </div>
       <div>
         <Button
           styles={rules.button}
           to={bill.detailsUrl}
-          label='View Details'
-          iconName='info-circle' />
+          isSecondary
+          children='View Details'
+        />
         <Button
           styles={rules.button}
           to={bill.fullTextUrl}
-          label='View Full Text'
-          iconName='file-text-o' />
+          isSecondary
+          children='View Full Text'
+        />
       </div>
     </div>
   }

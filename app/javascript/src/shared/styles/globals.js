@@ -2,7 +2,7 @@
 import './fontFaces'
 import { injectGlobal } from 'react-emotion'
 import { fonts } from './mixins'
-import { colors } from './colors'
+import { white } from './colors'
 
 // extra resets
 injectGlobal`
@@ -41,7 +41,7 @@ injectGlobal`
   body {
     ${fonts.regular};
     font-size: 18px;
-    background-color: ${colors.background};
+    background-color: ${white};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -89,7 +89,7 @@ injectGlobal`
   }
 
   a, button {
-    cursor: 'pointer'
+    cursor: pointer;
   }
 
   ol {

@@ -5,8 +5,8 @@ import styled from 'react-emotion'
 import { Logo } from './Logo'
 import { LogoLink } from './LogoLink'
 import { NavLinks } from './NavLinks'
-import { mixins, colors } from 'shared/styles'
 import { TranslateAndFade } from 'shared/components'
+import { mixins, colors, values } from 'shared/styles'
 
 type State = {
   isSticky: boolean
@@ -118,9 +118,10 @@ const StickyBar = styled.div`
   left: 0;
   width: 100%;
   height: ${height}px;
-  padding: 0 20px;
+  padding: 0 ${values.margin - 10}px;
   z-index: 1;
-  background-color: ${colors.background};
+  background-color: ${colors.white};
+  border-bottom: 1px solid ${colors.gray4};
 
   &:after {
     content: '';

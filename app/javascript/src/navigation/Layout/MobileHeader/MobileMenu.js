@@ -2,7 +2,8 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { NavLinks } from '../NavLinks'
-import { colors, alpha, mixins } from 'shared/styles'
+import { colors, mixins } from 'shared/styles'
+import { alpha } from 'shared/functions'
 
 export const MOBILE_MENU_WIDTH = 260
 

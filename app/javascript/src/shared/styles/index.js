@@ -1,7 +1,7 @@
 // @flow
 import * as mixins from './mixins'
+import * as colors from './colors'
+import * as values from './values'
 
-export { mixins }
+export { mixins, colors, values }
 export { stylesheet } from './stylesheet'
-export { combine } from './combine'
-export { colors, alpha } from './colors'
