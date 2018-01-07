@@ -2,7 +2,7 @@
 import './fontFaces'
 import { injectGlobal } from 'react-emotion'
 import { fonts } from './mixins'
-import { colors } from './colors'
+import { white } from './colors'
 
 // extra resets
 injectGlobal`
@@ -40,11 +40,14 @@ injectGlobal`
 injectGlobal`
   body {
     ${fonts.regular};
-    background-color: ${colors.background};
+    font-size: 18px;
+    background-color: ${white};
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1 {
-    ${fonts.slabRegular};
+    ${fonts.regularSlab};
     font-size: 64px;
 
     @media (max-width: 700px) {
@@ -53,8 +56,8 @@ injectGlobal`
   }
 
   h2 {
-    ${fonts.slabRegular};
-    font-size: 36px;
+    ${fonts.regularSlab};
+    font-size: 48px;
 
     @media (max-width: 700px) {
       font-size: 20px;
@@ -62,8 +65,8 @@ injectGlobal`
   }
 
   h3 {
-    ${fonts.slabRegular};
-    font-size: 20px;
+    ${fonts.regularSlab};
+    font-size: 32px;
 
     @media (max-width: 700px) {
       font-size: 18px;
@@ -71,22 +74,22 @@ injectGlobal`
   }
 
   h4 {
-    ${fonts.slabRegular};
-    font-size: 20px
+    ${fonts.regular};
+    font-size: 30px;
   }
 
   h5 {
-    ${fonts.slabRegular};
-    font-size: 16px
+    ${fonts.regular};
+    font-size: 24px;
   }
 
   h6 {
-    ${fonts.slabRegular};
-    font-size: 13px
+    ${fonts.bold};
+    font-size: 18px;
   }
 
   a, button {
-    cursor: 'pointer'
+    cursor: pointer;
   }
 
   ol {

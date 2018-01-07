@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render shows the header 1`] = `
-<Styled(div)>
+<Styled(header)>
   <Styled(div)>
     <Logo
       height={61}
@@ -12,15 +12,15 @@ exports[`#render shows the header 1`] = `
     </h1>
   </Styled(div)>
   <Styled(div)>
-    <Styled(header)
+    <Styled(div)
       style={Object {}}
     >
       <TranslateAndFade
         component={[Function]}
         direction="down"
       />
-      <NavLinks />
-    </Styled(header)>
+      <Styled(NavLinks) />
+    </Styled(div)>
   </Styled(div)>
-</Styled(div)>
+</Styled(header)>
 `;

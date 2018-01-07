@@ -1,34 +1,25 @@
 // @flow
-type FontFace = {|
-  fontFamily: string,
-  fontWeight?: number | string
-|}
-
-type Fonts = {|
-  light: FontFace,
-  regular: FontFace,
-  bold: FontFace,
-  slabRegular: FontFace
-|}
+import { css } from 'react-emotion'
 
 const sans = 'Roboto, sans-serif'
 const slab = 'Zilla Slab, serif'
 
-export const fonts: Fonts = {
-  light: {
-    fontFamily: sans,
-    fontWeight: 300
-  },
-  regular: {
-    fontFamily: sans,
-    fontWeight: 400
-  },
-  bold: {
-    fontFamily: sans,
-    fontWeight: 700
-  },
-  slabRegular: {
-    fontFamily: slab,
-    fontWeight: 400
-  }
-}
+export const light = css`
+  font-family: ${sans};
+  font-weight: 300;
+`
+
+export const regular = css`
+  font-family: ${sans};
+  font-weight: 400;
+`
+
+export const bold = css`
+  font-family: ${sans};
+  font-weight: 700;
+`
+
+export const regularSlab = css`
+  font-family: ${slab};
+  font-weight: 400;
+`

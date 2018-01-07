@@ -35,7 +35,11 @@ let AdminAuthScene = class AdminAuthScene extends Component {
         <input name='username' onChange={this.didUpdateField} />
         <label htmlFor='password'>Password</label>
         <input type='password' name='password' onChange={this.didUpdateField} />
-        <Button styles={rules.action} label='Sign In' iconName='sign-in' onClick={this.didClickSignIn} />
+        <Button
+          styles={rules.action}
+          children='Sign In'
+          onClick={this.didClickSignIn}
+        />
       </form>
     </div>
   }

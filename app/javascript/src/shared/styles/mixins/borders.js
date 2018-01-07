@@ -1,6 +1,6 @@
 // @flow
 import { capitalize } from 'lodash'
-import { colors } from '../colors'
+import { primary, neutralShadow } from '../colors'
 
 type BorderStyle = {
   borderTop?: string,
@@ -9,8 +9,14 @@ type BorderStyle = {
   borderRight?: string,
 }
 
-type BorderEdge = 'top' | 'bottom' | 'left' | 'right'
-type BorderCreator = (edges?: Array<BorderEdge>) => BorderStyle
+type BorderEdge
+  = 'top'
+  | 'bottom'
+  | 'left'
+  | 'right'
+
+type BorderCreator
+  = (edges?: Array<BorderEdge>) => BorderStyle
 
 // creator
 function borderCreator (color: string): BorderCreator {
@@ -25,7 +31,5 @@ function borderCreator (color: string): BorderCreator {
 }
 
 // exports
-export const borders = {
-  low: borderCreator(colors.neutralShadow),
-  high: borderCreator(colors.primary)
-}
+export const low = borderCreator(neutralShadow)
+export const high = borderCreator(primary)

@@ -31,7 +31,10 @@ let AdminBillsScene = class AdminBillsScene extends Component {
 
   render () {
     return <div>
-      <Button label='Sign Out' iconName='sign-out' onClick={this.signOut} />
+      <Button
+        onClick={this.signOut}
+        children='Sign Out'
+      />
       Hello Admin Bills
     </div>
   }

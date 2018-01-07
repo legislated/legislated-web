@@ -10,7 +10,7 @@ export type LinkProps = {
   onClick?: () => void,
   styles?: Rule,
   className?: string,
-  children?: any
+  children?: React.Node
 }
 
 export function Link ({
@@ -25,7 +25,7 @@ export function Link ({
   }
 
   const linkProps = {
-    className: cx(linkClass, className),
+    className: cx(link, className),
     onClick,
     children,
     ...otherProps
@@ -35,11 +35,12 @@ export function Link ({
   if (!url || /https?:\/\//.test(url)) {
     return <a {...linkProps} href={url} target='_blank' />
   } else {
+    // $FlowFixMe: update react-router-dom flow libdefs
     return <RouterLink {...linkProps} to={url} />
   }
 }
 
-const linkClass = css`
+const link = css`
   color: ${colors.primary};
   transition: color 0.1s;
 

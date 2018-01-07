@@ -1,21 +1,17 @@
 // @flow
-import color from 'color'
+export const white = '#ffffff'
+export const black = '#1a1a1a'
+export const gray1 = '#4a4a4a'
+export const gray2 = '#5c5c5c'
+export const gray3 = '#979797'
+export const gray4 = '#c9c9c9'
+export const gray5 = '#d1d1d1'
 
-export const colors = {
-  black: '#1a1a1a',
-  white: '#f9fdff',
-  background: '#f9fdff',
-  backgroundAccent: '#ebf5ff',
-  neutral: '#ffffff',
-  neutralShadow: '#def0fb',
-  primary: '#ee5d45',
-  primaryShadow: '#457dcb',
-  primaryHighlight: '#6ba8ff',
-  secondary: '#ff7575',
-  newPrimary: '#EE5D45',
-  light: '#1A1A1A'
-}
-
-export function alpha (hex: string, value: number): string {
-  return color(hex).alpha(value).string()
-}
+export const background = '#f9fdff'
+export const backgroundAccent = '#ebf5ff'
+export const neutral = '#ffffff'
+export const neutralShadow = '#def0fb'
+export const primary = '#ee5d45'
+export const primaryShadow = '#457dcb'
+export const primaryHighlight = '#6ba8ff'
+export const secondary = '#ff7575'

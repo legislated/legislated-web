@@ -1,7 +1,14 @@
 // @flow
-import { column, fill } from './utils'
-export { column, fill }
-export { borders } from './borders'
-export { fonts } from './fonts'
-export { shadows } from './shadows'
+import * as fonts from './fonts'
+import * as shadows from './shadows'
+import * as borders from './borders'
+
+export { fonts, shadows, borders }
 export { mobile } from './mobile'
+export {
+  pageWidth,
+  pageMargin,
+  flexRow,
+  flexColumn,
+  fill
+} from './utils'

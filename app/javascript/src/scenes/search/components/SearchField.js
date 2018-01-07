@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from 'react'
-import FontAwesome from 'react-fontawesome'
 import { css } from 'glamor'
 import { stylesheet, colors, mixins } from 'shared/styles'
 
@@ -34,7 +33,6 @@ export class SearchField extends Component {
       <div {...rules.background} />
       <h1>What's important to you?</h1>
       <div {...css(rules.field, isFocused && rules.focused)}>
-        <FontAwesome name='search' />
         <input
           {...rules.input}
           type='text'
@@ -43,7 +41,8 @@ export class SearchField extends Component {
           placeholder={`health care, HB2364`}
           onChange={this.inputDidChange}
           onFocus={() => this.inputDidChangeFocus(true)}
-          onBlur={() => this.inputDidChangeFocus(false)} />
+          onBlur={() => this.inputDidChangeFocus(false)}
+        />
       </div>
     </div>
   }
@@ -58,7 +57,7 @@ const rules = stylesheet({
     }
   },
   field: {
-    ...mixins.shadows.low(),
+    ...mixins.shadows.low,
     ...mixins.borders.low(),
     display: 'flex',
     alignItems: 'center',
@@ -79,7 +78,7 @@ const rules = stylesheet({
     })
   },
   focused: {
-    ...mixins.shadows.high(),
+    ...mixins.shadows.high,
     ...mixins.borders.high(),
     transform: 'perspective(200px) translateZ(1px)',
     ' .fa': {

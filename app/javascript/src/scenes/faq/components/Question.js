@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from 'react'
-import FontAwesome from 'react-fontawesome'
 import { stylesheet, mixins } from 'shared/styles'
 
 export class Question extends Component {
@@ -13,7 +12,7 @@ export class Question extends Component {
   render () {
     const { title, children } = this.props
     return <div {...rules.question}>
-      <h3><FontAwesome {...rules.icon} name='question-circle' />{title}</h3>
+      <h3>{title}</h3>
       {children}
     </div>
   }

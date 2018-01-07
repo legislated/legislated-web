@@ -31,17 +31,15 @@ let BillCell = function BillCell ({
       </div>
       <div {...rules.actions}>
         <Button
-          type='solid'
           styles={rules.button}
           to={bill.witnessSlipUrl}
-          label='Take Action'
-          iconName='pencil-square-o'
+          children='Take Action'
         />
         <Button
           styles={rules.button}
           to={`/bill/${bill.id}`}
-          label='More Info'
-          iconName='file-text-o'
+          isSecondary
+          children='More Info'
         />
       </div>
     </div>
@@ -65,7 +63,7 @@ BillCell = createFragmentContainer(BillCell, graphql`
 
 const rules = stylesheet({
   container: {
-    ...mixins.shadows.low(),
+    ...mixins.shadows.low,
     ...mixins.borders.low(),
     display: 'flex',
     padding: 15,
