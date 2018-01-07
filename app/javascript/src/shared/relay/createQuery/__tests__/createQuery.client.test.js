@@ -42,7 +42,7 @@ describe('on a cache miss', () => {
   let data
 
   beforeEach(() => {
-    fetch.mockReturnValueOnce(Promise.resolve({
+    global.fetch.mockReturnValueOnce(Promise.resolve({
       json: () => Promise.resolve({ data })
     }))
   })
@@ -53,13 +53,13 @@ describe('on a cache miss', () => {
 
   it('fetches the request from the graph endpoint', () => {
     execute()
-    expect(fetch).toHaveBeenCalledWith('http://test.com/graphql', anything())
+    expect(global.fetch).toHaveBeenCalledWith('http://test.com/graphql', anything())
   })
 
   it('fetches the reqeust with the correct headers', () => {
     headers = { foo: 'bar' }
     execute()
-    expect(fetch).toHaveBeenCalledWith(anything(), objectContaining({
+    expect(global.fetch).toHaveBeenCalledWith(anything(), objectContaining({
       headers: objectContaining(headers)
     }))
   })
@@ -97,7 +97,7 @@ describe('on a cache hit', () => {
     cache.get.mockReturnValueOnce(payload)
 
     const result = await execute()
-    expect(fetch).not.toHaveBeenCalled()
+    expect(global.fetch).not.toHaveBeenCalled()
     expect(result).toEqual(payload)
   })
 
