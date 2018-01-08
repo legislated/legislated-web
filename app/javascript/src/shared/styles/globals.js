@@ -19,11 +19,24 @@ injectGlobal`
   }
 
   button {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: none;
     text-transform: none;
+  }
+
+  button, input {
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: inherit;
+    font-family: inherit;
+  }
+
+  a, button, input {
+    cursor: pointer;
+  }
+
+  input:focus {
+    cursor: text;
+    outline: none;
   }
 
   ul {

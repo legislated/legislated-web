@@ -1,6 +1,15 @@
 // @flow
-export { NotificationView } from './NotificationView'
 export { Defer } from './Defer'
 export { TranslateAndFade } from './TranslateAndFade'
-export { Link, CopyLink, Button, CloseButton } from './actions'
-export type { LinkProps } from './actions'
+export { NotificationView } from './NotificationView'
+
+export { Link } from './Link'
+export type { LinkProps } from './Link'
+export { CopyLink } from './CopyLink'
+export { Button } from './Button'
+export { CloseButton } from './CloseButton'
+
+export {
+  BillSearch,
+  initialVariables as billSearchInitialVariables
+} from './BillSearch'

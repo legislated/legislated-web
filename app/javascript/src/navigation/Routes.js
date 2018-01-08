@@ -8,7 +8,7 @@ import * as scenes from '../scenes'
 
 export const Routes = () => (
   <Switch>
-    <RelayRoute path='/' exact {...scenes.search} />
+    <RelayRoute path='/' exact {...scenes.home} />
     <Route path='/about' {...scenes.about} />
     <Route path='/faq' {...scenes.faq} />
     <RelayRoute path='/bill/:id' {...scenes.bill} />

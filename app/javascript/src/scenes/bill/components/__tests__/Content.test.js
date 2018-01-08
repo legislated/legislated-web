@@ -1,31 +1,25 @@
 /* eslint-env jest */
-import React from 'react'
+import * as React from 'react'
 import { shallow } from 'enzyme'
+import { defaultsDeep } from 'lodash'
 import { Content } from '../Content'
 import { now, addHours } from 'shared/date'
 
 jest.mock('shared/date', () => {
   const actual = require.requireActual('shared/date')
-  const date = new Date(2017, 2, 14, 5, 30, 35, 500)
+  const date = new Date(2017, 2, 14, 5, 0, 0, 0)
 
   return {
     ...actual,
-    now: jest.fn(() => date)
+    now: () => date
   }
 })
 
 // subject
 let subject
-let bill
 
-function loadSubject () {
-  subject = shallow(<Content bill={bill} />).dive().dive()
-}
-
-// specs
-beforeEach(() => {
-  // TODO: build rosie.js factories
-  bill = {
+const defaults = {
+  bill: {
     documentNumber: 'HB1234',
     title: 'Foo',
     summary: 'A bill, fantastic',
@@ -35,9 +29,17 @@ beforeEach(() => {
     committee: {
       name: 'Many Pointed Bills'
     }
+  },
+  location: {
+    pathname: '/test-path'
   }
-})
+}
 
+function loadSubject (props = {}) {
+  subject = shallow(<Content {...defaultsDeep(props, defaults)} />)
+}
+
+// specs
 afterEach(() => {
   subject = null
 })
@@ -49,14 +51,12 @@ describe('#render', () => {
   })
 
   it('does not show the hours left when over 23 hours away', () => {
-    bill.hearing.date = addHours(now(), 24.1)
-    loadSubject()
-    expect(subject).toMatchSnapshot()
-  })
-})
+    loadSubject({
+      bill: {
+        hearing: { date: addHours(now(), 24.1) }
+      }
+    })
 
-describe('the relay container', () => {
-  it('exists', () => {
-    expect(Content.container.fragment).toBeTruthy()
+    expect(subject).toMatchSnapshot()
   })
 })
