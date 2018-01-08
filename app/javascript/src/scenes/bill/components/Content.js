@@ -3,11 +3,12 @@ import React, { Component } from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
+import { formatDate, parseDate, differenceInHours } from 'date-fns'
 import { Actions } from './Actions'
 import { Element } from './Element'
 import { CopyLink } from 'shared/components'
+import { now } from 'shared/functions'
 import { stylesheet, colors, mixins } from 'shared/styles'
-import { now, differenceInHours, formatDate, parseDate } from 'shared/date'
 import type { Bill } from 'shared/types'
 
 let Content = class Content extends Component {

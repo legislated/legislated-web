@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
 import { Button } from 'shared/components'
 import { stylesheet } from 'shared/styles'
-import { auth } from 'shared/auth'
+import { auth } from 'shared/functions'
 
 let AdminAuthScene = class AdminAuthScene extends Component {
   props: {

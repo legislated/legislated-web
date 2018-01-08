@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
 import { RelayRoute } from './RelayRoute'
 import * as scenes from '../scenes'
-import { auth } from 'shared/auth'
+import { auth } from 'shared/functions'
 
 const Filter = (props: ContextRouter) => {
   const didMatchSignIn = props.location.pathname === '/admin/sign-in'

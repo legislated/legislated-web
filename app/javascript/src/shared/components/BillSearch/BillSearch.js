@@ -3,13 +3,13 @@ import * as React from 'react'
 import { createRefetchContainer, graphql } from 'react-relay'
 import type { RelayRefetchProp } from 'react-relay'
 import styled from 'react-emotion'
+import { addDays, endOfDay, startOfDay } from 'date-fns'
 import { throttle } from 'lodash'
 import { SearchField } from './SearchField'
 import { BillList } from './BillList'
 import { LoadingIndicator } from '../LoadingIndicator'
 import type { Viewer } from 'shared/types'
 import { mixins } from 'shared/styles'
-import { addDays, endOfDay, startOfDay } from 'shared/date'
 
 type Props = {
   viewer: ?Viewer,

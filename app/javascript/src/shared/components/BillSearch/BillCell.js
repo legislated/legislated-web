@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { css } from 'glamor'
-import { formatDate } from 'shared/date'
+import { formatDate } from 'date-fns'
 import type { Bill } from 'shared/types'
 import { Button } from 'shared/components'
 import { stylesheet, colors, mixins } from 'shared/styles'
