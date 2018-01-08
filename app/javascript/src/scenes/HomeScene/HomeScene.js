@@ -30,6 +30,7 @@ HomeScene = createFragmentContainer(HomeScene, graphql`
 
 const Section = styled.section`
   ${mixins.flexColumn};
+  position: relative;
 `
 
 export { HomeScene }

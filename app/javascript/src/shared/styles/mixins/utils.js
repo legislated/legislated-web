@@ -20,6 +20,11 @@ export const flexColumn = css`
   flex-direction: column;
 `
 
+export const flexCenter = css`
+  justify-content: center;
+  align-items: center;
+`
+
 export const fill = css`
   top: 0;
   bottom: 0;

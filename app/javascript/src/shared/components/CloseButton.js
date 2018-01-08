@@ -11,6 +11,7 @@ const line = css`
   top: 50%;
   left: -18%;
   background-color: ${colors.primary};
+  transition: background-color 0.15s;
 `
 
 export const CloseButton = styled(Link)`
@@ -26,5 +27,11 @@ export const CloseButton = styled(Link)`
   &:after {
     ${line};
     transform: rotate(-45deg);
+  }
+
+  &:hover {
+    &:before, &:after {
+      background-color: ${colors.primaryHighlight};
+    }
   }
 `

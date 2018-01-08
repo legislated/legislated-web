@@ -1,21 +1,19 @@
 /* eslint-env jest */
 import React from 'react'
 import { shallow } from 'enzyme'
+import { defaultsDeep } from 'lodash'
 import { SearchField } from '../SearchField'
 
 // subject
 let subject
-let onChange
 
-function loadSubject () {
-  onChange = jest.fn()
-  subject = shallow(<SearchField value={'test value'} onChange={onChange} />)
+const defaults = {
+  value: 'test-value',
+  onChange: jest.fn()
 }
 
-const element = {
-  field: () => subject.find('div > div').at(1),
-  input: () => subject.find(`input[name='search-field']`),
-  icon: () => subject.find('FontAwesome')
+function loadSubject (props = {}) {
+  subject = shallow(<SearchField {...defaultsDeep(props, defaults)} />)
 }
 
 // specs

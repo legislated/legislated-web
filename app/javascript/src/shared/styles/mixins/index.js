@@ -10,5 +10,6 @@ export {
   pageMargin,
   flexRow,
   flexColumn,
+  flexCenter,
   fill
 } from './utils'

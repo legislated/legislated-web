@@ -5,7 +5,7 @@ import { cx, css } from 'react-emotion'
 import type { Rule } from 'glamor'
 import { colors } from 'shared/styles'
 
-export type LinkProps = {
+type Props = {
   to?: string,
   onClick?: () => void,
   styles?: Rule,
@@ -19,7 +19,7 @@ export function Link ({
   className,
   children,
   ...otherProps
-}: LinkProps) {
+}: Props) {
   if (!url && !onClick) {
     return null
   }
@@ -48,3 +48,5 @@ const link = css`
     color: ${colors.primaryHighlight};
   }
 `
+
+export type { Props as LinkProps }

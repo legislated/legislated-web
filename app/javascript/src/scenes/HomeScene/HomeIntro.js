@@ -37,21 +37,21 @@ export class HomeIntro extends React.Component<*, Props, State> {
     return (
       <Defer>
         {!isAccepted && (
-          <Intro className={className}>
+          <Container className={className}>
             <h2>It's time the government went digital.</h2>
             <h4>You should be heard by your representatives, and you should know how they represent you.</h4>
             <h4><Link to='#'>See the bills</Link> that impact your life and get in touch with your congress people today.</h4>
             <CloseButton
               onClick={this.didClickAccept}
             />
-          </Intro>
+          </Container>
         )}
       </Defer>
     )
   }
 }
 
-const Intro = styled.div`
+const Container = styled.div`
   ${mixins.pageWidth};
   ${mixins.pageMargin};
 

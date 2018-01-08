@@ -1,6 +1,7 @@
 /* eslint-env jest */
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
+import { defaultsDeep } from 'lodash'
 import { SearchScene } from '../SearchScene'
 import { relayRefetchProp } from 'mocks/relayProps'
 
@@ -8,11 +9,13 @@ const { anything } = expect
 
 // subject
 let subject
-let viewer
 
-function loadSubject (options = { mount: false }) {
-  const renderer = options.mount ? mount : (component) => shallow(component).dive().dive()
-  subject = renderer(<SearchScene viewer={viewer} />)
+const defaults = {
+  viewer:
+}
+
+function loadSubject (props = {}) {
+  subject = shallow(<SearchScene {...defaultsDeep(props, defaults)} />)
 }
 
 const element = {

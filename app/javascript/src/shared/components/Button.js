@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import styled, { css, cx } from 'react-emotion'
-import { Link as LinkBase } from './Link'
+import { Link as Link$ } from './Link'
 import type { LinkProps } from './Link'
 import { colors } from 'shared/styles'
 
@@ -25,7 +25,7 @@ export function Button ({
   )
 }
 
-const Link = styled(LinkBase)`
+const Link = styled(Link$)`
   display: flex;
   align-items: center;
   justify-content: center;

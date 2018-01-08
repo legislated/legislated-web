@@ -1,14 +1,14 @@
 /* eslint-env jest */
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Intro } from '../Intro'
+import { HomeIntro } from '../HomeIntro'
 import { local } from 'shared/storage'
 
 // subject
 let subject
 
 function loadSubject () {
-  subject = shallow(<Intro />)
+  subject = shallow(<HomeIntro />)
 }
 
 // spec
@@ -29,7 +29,7 @@ describe('#render', () => {
     expect(subject).toMatchSnapshot()
   })
 
-  it('is blank it\'s already cleared', () => {
+  it('hides the intro when cleared', () => {
     local.set('intro-cleared', 'true')
     loadSubject()
     expect(subject).toMatchSnapshot()
@@ -37,7 +37,7 @@ describe('#render', () => {
 })
 
 describe('clicking accept', () => {
-  it('marks the intro as visited', () => {
+  it('marks the intro as cleared', () => {
     loadSubject()
     subject.instance().didClickAccept()
     expect(subject).toHaveState('isAccepted', true)

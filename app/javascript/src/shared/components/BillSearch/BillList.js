@@ -74,9 +74,7 @@ let BillList = class BillList extends React.Component<*, Props, State> {
         <div>{`${format(startDate)} to ${format(endDate)}`}</div>
         <div>{`Found ${count} result${count === 1 ? '' : 's'}.`}</div>
       </div>
-      <TranslateAndFade
-        disable={!animated || disableAnimations}
-      >
+      <TranslateAndFade disable={!animated || disableAnimations}>
         {bills.edges.map(({ node }) => (
           <BillCell key={node.id} bill={node} />
         ))}
