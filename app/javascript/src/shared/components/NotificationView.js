@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from 'react'
 import { css } from 'glamor'
-import { events } from 'shared/events'
-import { sleep } from 'shared/functions'
-import type { Notification } from 'shared/types'
-import { stylesheet, colors, mixins } from 'shared/styles'
+import { events } from '@/events'
+import { sleep } from '@/functions'
+import type { Notification } from '@/types'
+import { stylesheet, colors, mixins } from '@/styles'
 
 const animationDuration = 300
 

@@ -4,10 +4,10 @@ import { shallow } from 'enzyme'
 import { defaultsDeep } from 'lodash'
 import { addHours } from 'date-fns'
 import { Content } from '../Content'
-import { now } from 'shared/functions'
+import { now } from '@/functions'
 
-jest.mock('shared/functions', () => {
-  const actual = require.requireActual('shared/functions')
+jest.mock('@/functions', () => {
+  const actual = require.requireActual('@/functions')
   const date = new Date(2017, 2, 14, 5, 0, 0, 0)
 
   return {

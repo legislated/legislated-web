@@ -6,10 +6,10 @@ import type { ContextRouter } from 'react-router-dom'
 import { formatDate, parseDate, differenceInHours } from 'date-fns'
 import { Actions } from './Actions'
 import { Element } from './Element'
-import { CopyLink } from 'shared/components'
-import { now } from 'shared/functions'
-import { stylesheet, colors, mixins } from 'shared/styles'
-import type { Bill } from 'shared/types'
+import { CopyLink } from '@/components'
+import { now } from '@/functions'
+import { stylesheet, colors, mixins } from '@/styles'
+import type { Bill } from '@/types'
 
 let Content = class Content extends Component {
   props: {

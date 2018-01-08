@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import { cx, css } from 'react-emotion'
 import type { Rule } from 'glamor'
-import { colors } from 'shared/styles'
+import { colors } from '@/styles'
 
 type Props = {
   to?: string,

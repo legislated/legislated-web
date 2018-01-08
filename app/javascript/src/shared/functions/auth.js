@@ -1,7 +1,7 @@
 // @flow
 import { Base64 } from 'js-base64'
-import { session } from 'shared/storage'
-import { events } from 'shared/events'
+import { session } from '@/storage'
+import { events } from '@/events'
 
 export function isSignedIn () {
   return !!session.get('admin-header')

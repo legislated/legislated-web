@@ -8,7 +8,7 @@ const { anything, objectContaining } = expect
 // mocks
 jest.mock('relay-runtime')
 jest.mock('../cacheResolvers')
-jest.mock('shared/config', () => ({
+jest.mock('@/config', () => ({
   graphUrl: 'http://test.com/graphql'
 }))
 

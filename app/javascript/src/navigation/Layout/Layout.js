@@ -5,9 +5,9 @@ import styled from 'react-emotion'
 import type { ContextRouter } from 'react-router-dom'
 import { Header } from './Header'
 import { MobileHeader, MOBILE_HEADER_HEIGHT } from './MobileHeader'
-import { NotificationView } from 'shared/components'
-import { mixins } from 'shared/styles'
-import { local } from 'shared/storage'
+import { NotificationView } from '@/components'
+import { mixins } from '@/styles'
+import { local } from '@/storage'
 
 type Props = {
   children?: any

@@ -8,11 +8,11 @@ import { formatDate } from 'date-fns'
 import { initialVariables } from './BillSearch'
 import { BillCell } from './BillCell'
 import { LoadMoreButton } from './LoadMoreButton'
-import { TranslateAndFade } from 'shared/components'
-import { session } from 'shared/storage'
-import { withLoadMoreArgs } from 'shared/relay'
-import { stylesheet, mixins } from 'shared/styles'
-import type { Viewer } from 'shared/types'
+import { TranslateAndFade } from '@/components'
+import { session } from '@/storage'
+import { withLoadMoreArgs } from '@/relay'
+import { stylesheet, mixins } from '@/styles'
+import type { Viewer } from '@/types'
 
 type Props = {
   relay: RelayPaginationProp,

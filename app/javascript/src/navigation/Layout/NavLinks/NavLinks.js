@@ -2,7 +2,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { NavLink } from './NavLink'
-import { mixins } from 'shared/styles'
+import { mixins } from '@/styles'
 
 type Props = {
   onClick?: Function,

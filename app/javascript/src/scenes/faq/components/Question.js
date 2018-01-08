@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react'
-import { stylesheet, mixins } from 'shared/styles'
+import { stylesheet, mixins } from '@/styles'
 
 export class Question extends Component {
   props: {

@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { Layout } from '../Layout'
 import { defaultsDeep } from 'lodash'
-import { local } from 'shared/storage'
+import { local } from '@/storage'
 
 // subject
 let subject

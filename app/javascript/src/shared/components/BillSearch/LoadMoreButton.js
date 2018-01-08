@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { css } from 'glamor'
 import type { Rule } from 'glamor'
-import { stylesheet, colors, mixins } from 'shared/styles'
+import { stylesheet, colors, mixins } from '@/styles'
 
 export class LoadMoreButton extends Component {
   props: {

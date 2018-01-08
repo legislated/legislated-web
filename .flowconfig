@@ -19,14 +19,9 @@ suppress_type=$FlowIssue
 suppress_type=$FlowFixMe
 suppress_type=$FixMe
 
+; mappers
+module.name_mapper='^@\/\(.*\)$' -> '<PROJECT_ROOT>/app/javascript/src/shared/\1'
+
 ; optional features
 esproposal.decorators=ignore
-esproposal.export_star_as=enable
 unsafe.enable_getters_and_setters=true
-
-; we'd like to do this, but it doesn't seem to work:
-; module.name_mapper='^shared/(.*)$' -> '<PROJECT_ROOT>/src/shared/\1'
-; https://github.com/facebook/flow/issues/1068
-; use the entire src directory as a resolve root in the meantime
-module.system.node.resolve_dirname=node_modules
-module.system.node.resolve_dirname=src

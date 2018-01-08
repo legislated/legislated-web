@@ -1,6 +1,6 @@
 // @flow
 import { Environment, RecordSource, Store, Network } from 'relay-runtime'
-import { events } from 'shared/events'
+import { events } from '@/events'
 import { createQuery } from './createQuery'
 
 // current environment

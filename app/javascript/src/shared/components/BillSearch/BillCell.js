@@ -3,9 +3,9 @@ import * as React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { css } from 'glamor'
 import { formatDate } from 'date-fns'
-import type { Bill } from 'shared/types'
-import { Button } from 'shared/components'
-import { stylesheet, colors, mixins } from 'shared/styles'
+import type { Bill } from '@/types'
+import { Button } from '@/components'
+import { stylesheet, colors, mixins } from '@/styles'
 
 type Props = {
   bill: Bill,

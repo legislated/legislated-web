@@ -8,8 +8,8 @@ import { throttle } from 'lodash'
 import { SearchField } from './SearchField'
 import { BillList } from './BillList'
 import { LoadingIndicator } from '../LoadingIndicator'
-import type { Viewer } from 'shared/types'
-import { mixins } from 'shared/styles'
+import type { Viewer } from '@/types'
+import { mixins } from '@/styles'
 
 type Props = {
   viewer: ?Viewer,

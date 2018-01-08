@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react'
 import styled from 'react-emotion'
-import { Link, CloseButton as CloseButton$, Defer } from 'shared/components'
-import { local } from 'shared/storage'
-import { mixins } from 'shared/styles'
+import { Link, CloseButton as CloseButton$, Defer } from '@/components'
+import { local } from '@/storage'
+import { mixins } from '@/styles'
 
 type Props = {
   className?: string

@@ -5,8 +5,8 @@ import styled from 'react-emotion'
 import { Logo } from './Logo'
 import { LogoLink } from './LogoLink'
 import { NavLinks } from './NavLinks'
-import { TranslateAndFade } from 'shared/components'
-import { mixins, colors, values } from 'shared/styles'
+import { TranslateAndFade } from '@/components'
+import { mixins, colors, values } from '@/styles'
 
 type State = {
   isSticky: boolean

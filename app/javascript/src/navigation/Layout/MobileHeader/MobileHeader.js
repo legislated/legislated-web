@@ -6,7 +6,7 @@ import { MobileMenuButton } from './MobileMenuButton'
 import { MobileMenuTransition } from './MobileMenuTransition'
 import { Logo } from '../Logo'
 import { LogoLink } from '../LogoLink'
-import { mixins, colors } from 'shared/styles'
+import { mixins, colors } from '@/styles'
 
 export const MOBILE_HEADER_HEIGHT = 60
 

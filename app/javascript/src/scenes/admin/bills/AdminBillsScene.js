@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import { auth } from 'shared/functions'
-import { Button } from 'shared/components'
-import type { Viewer } from 'shared/types'
+import { signOut } from '@/functions'
+import { Button } from '@/components'
+import type { Viewer } from '@/types'
 
 type AdminBillsProps = {
   viewer: ?Viewer,
@@ -16,7 +16,7 @@ let AdminBillsScene = class AdminBillsScene extends Component {
 
   // helpers
   signOut = () => {
-    auth.signOut()
+    signOut()
     this.props.history.replace('/admin/sign-in')
   }
 

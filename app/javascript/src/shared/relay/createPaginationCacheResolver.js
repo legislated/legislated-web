@@ -1,6 +1,6 @@
 // @flow
 import { get, last } from 'lodash'
-import type { Connection, RelayCacheResovler } from 'shared/types'
+import type { Connection, RelayCacheResovler } from '@/types'
 
 type AnyConnection = Connection<mixed>
 type PaginationCacheResolver = (config: {

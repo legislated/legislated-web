@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react'
-import { Link } from 'shared/components'
-import { stylesheet, colors, mixins } from 'shared/styles'
+import { Link } from '@/components'
+import { stylesheet, colors, mixins } from '@/styles'
 
 export class AboutScene extends Component {
   render () {

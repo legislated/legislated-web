@@ -3,7 +3,7 @@ import * as React from 'react'
 import { shallow } from 'enzyme'
 import { defaultsDeep } from 'lodash'
 import { BillList } from '../BillList'
-import { session } from 'shared/storage'
+import { session } from '@/storage'
 
 const { anything } = expect
 

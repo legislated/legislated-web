@@ -2,7 +2,7 @@
 import React from 'react'
 import { graphql } from 'react-relay'
 import { BillScene } from './BillScene'
-import type { RelayRouteConfig } from 'shared/types'
+import type { RelayRouteConfig } from '@/types'
 
 export const billRoute: RelayRouteConfig = {
   query: graphql`

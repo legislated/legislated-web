@@ -3,9 +3,9 @@ import * as React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import styled from 'react-emotion'
 import { HomeIntro } from './HomeIntro'
-import { BillSearch } from 'shared/components'
-import type { Viewer } from 'shared/types'
-import { mixins } from 'shared/styles'
+import { BillSearch } from '@/components'
+import type { Viewer } from '@/types'
+import { mixins } from '@/styles'
 
 type Props = {
   viewer: ?Viewer

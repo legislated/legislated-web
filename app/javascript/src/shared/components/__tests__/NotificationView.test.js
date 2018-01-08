@@ -2,9 +2,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { NotificationView } from '../NotificationView'
-import { events } from 'shared/events'
+import { events } from '@/events'
 
-jest.mock('shared/functions', () => ({
+jest.mock('@/functions', () => ({
   sleep: () => Promise.resolve()
 }))
 

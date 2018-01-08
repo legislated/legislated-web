@@ -1,10 +1,10 @@
 /* eslint-env jest */
 import { auth } from '../auth'
 import { Base64 } from 'js-base64'
-import { events } from 'shared/events'
+import { events } from '@/events'
 
 // mocks
-jest.mock('shared/events', () => ({
+jest.mock('@/events', () => ({
   events: {
     emit: jest.fn(),
     setAuthHeader: 'set-auth-header'

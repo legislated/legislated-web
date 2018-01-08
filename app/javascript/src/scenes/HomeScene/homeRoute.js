@@ -2,10 +2,10 @@
 import React from 'react'
 import { graphql } from 'react-relay'
 import { HomeScene } from './HomeScene'
-import { billSearchInitialVariables } from 'shared/components'
-import { createPaginationCacheResolver } from 'shared/relay'
-import { session } from 'shared/storage'
-import type { RelayRouteConfig } from 'shared/types'
+import { billSearchInitialVariables } from '@/components'
+import { createPaginationCacheResolver } from '@/relay'
+import { session } from '@/storage'
+import type { RelayRouteConfig } from '@/types'
 
 export const homeRoute: RelayRouteConfig = {
   query: graphql`
