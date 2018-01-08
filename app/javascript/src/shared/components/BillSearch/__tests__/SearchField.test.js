@@ -21,68 +21,25 @@ afterEach(() => {
   subject = null
 })
 
-describe('#state', () => {
-  beforeEach(loadSubject)
-
-  it('starts unfocused', () => {
-    expect(subject).toHaveState('isFocused', false)
-  })
-})
-
 describe('#render', () => {
-  beforeEach(loadSubject)
-
-  it(`sets in the input's value`, () => {
-    expect(element.input()).toHaveValue('test value')
-  })
-
-  it('does not have the focused style', () => {
-    expect(element.field()).not.toMatchRule(/174vovc/)
-  })
-
-  describe(`when it's focused`, () => {
-    beforeEach(() => {
-      subject.setState({ isFocused: true })
-    })
-
-    it('adds the style to the field', () => {
-      expect(element.field()).toMatchRule(/q4ese1/)
-    })
+  it('shows the search field', () => {
+    loadSubject()
+    expect(subject).toMatchSnapshot()
   })
 })
 
-describe('when the value changes', () => {
-  beforeEach(() => {
-    loadSubject()
-    subject.setState({ isFocused: true })
-    const event = { target: { value: 'foo' } }
-    element.input().prop('onChange')(event)
-  })
-
+describe('entering a value', () => {
   it('notifies its parent', () => {
-    expect(onChange).toHaveBeenLastCalledWith('foo')
+    loadSubject()
+    subject.instance().inputDidChange({ target: { value: 'foo' } })
+    expect(defaults.onChange).toHaveBeenCalledWith('foo')
   })
 })
 
-describe('when the input is foucsed', () => {
-  beforeEach(() => {
-    loadSubject()
-    element.input().prop('onFocus')()
-  })
-
+describe('focusing the input', () => {
   it('focuses the component', () => {
-    expect(subject).toHaveState('isFocused', true)
-  })
-})
-
-describe('when the input is blurred', () => {
-  beforeEach(() => {
     loadSubject()
-    subject.setState({ isFocused: true })
-    element.input().prop('onBlur')()
-  })
-
-  it('unfocuses the component', () => {
-    expect(subject).toHaveState('isFocused', false)
+    subject.instance().inputDidChangeFocus(true)()
+    expect(subject).toHaveState('isFocused', true)
   })
 })

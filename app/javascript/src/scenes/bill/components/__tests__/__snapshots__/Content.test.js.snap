@@ -15,7 +15,7 @@ exports[`#render does not show the hours left when over 23 hours away 1`] = `
     </section>
     <section>
       <CopyLink
-        value="placeholder"
+        value="/test-path"
       />
     </section>
   </div>
@@ -38,7 +38,7 @@ exports[`#render does not show the hours left when over 23 hours away 1`] = `
         label="Hearing Date"
       >
         <span>
-          3/15/17 5:36 AM
+          3/15/17 5:06 AM
         </span>
       </Element>
       <Element
@@ -56,7 +56,7 @@ exports[`#render does not show the hours left when over 23 hours away 1`] = `
         },
         "documentNumber": "HB1234",
         "hearing": Object {
-          "date": 2017-03-15T10:36:35.500Z,
+          "date": 2017-03-15T10:06:00.000Z,
         },
         "summary": "A bill, fantastic",
         "title": "Foo",
@@ -81,7 +81,7 @@ exports[`#render renders properly 1`] = `
     </section>
     <section>
       <CopyLink
-        value="placeholder"
+        value="/test-path"
       />
     </section>
   </div>
@@ -104,7 +104,7 @@ exports[`#render renders properly 1`] = `
         label="Hearing Date"
       >
         <span>
-          3/14/17 5:24 PM
+          3/14/17 4:54 PM
         </span>
         <span
           data-css-1fo47jf=""
@@ -127,7 +127,7 @@ exports[`#render renders properly 1`] = `
         },
         "documentNumber": "HB1234",
         "hearing": Object {
-          "date": 2017-03-14T22:24:35.500Z,
+          "date": 2017-03-14T21:54:00.000Z,
         },
         "summary": "A bill, fantastic",
         "title": "Foo",

@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the actions 1`] = `
+<div
+  data-css-2jmw69=""
+>
+  <div>
+    <Button
+      styles={
+        Object {
+          "data-css-1h39hs6": "",
+        }
+      }
+      to="http://www.test.com/slip"
+    >
+      Take Action
+    </Button>
+    <Button
+      isSecondary={true}
+      styles={
+        Object {
+          "data-css-1h39hs6": "",
+        }
+      }
+      to="http://www.test.com/result"
+    >
+      View Results
+    </Button>
+  </div>
+  <div>
+    <Button
+      isSecondary={true}
+      styles={
+        Object {
+          "data-css-1h39hs6": "",
+        }
+      }
+    >
+      View Details
+    </Button>
+    <Button
+      isSecondary={true}
+      styles={
+        Object {
+          "data-css-1h39hs6": "",
+        }
+      }
+      to="http://www.test.com/text"
+    >
+      View Full Text
+    </Button>
+  </div>
+</div>
+`;

@@ -15,7 +15,7 @@ const defaults = {
 }
 
 function loadSubject (props = {}) {
-  subject = shallow(<Layout {...defaultsDeep(props, defaults)} />).dive()
+  subject = shallow(<Layout {...defaultsDeep(props, defaults)} />)
 }
 
 // spec
@@ -32,7 +32,7 @@ describe('#componentDidMount', () => {
       }
     })
 
-    expect(local.get('intro-cleared')).toBe('true')
+    expect(local.get('intro-cleared')).toEqual('true')
   })
 })
 
@@ -47,6 +47,6 @@ describe('#componentDidUpdate', () => {
       }
     })
 
-    expect(local.get('intro-cleared')).toBe('true')
+    expect(local.get('intro-cleared')).toEqual('true')
   })
 })

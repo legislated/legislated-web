@@ -1,52 +1,47 @@
 /* eslint-env jest */
-import { assign } from 'lodash'
-import React from 'react'
+import * as React from 'react'
+import { defaultsDeep } from 'lodash'
 import { shallow } from 'enzyme'
 import { BillCell } from '../BillCell'
 
 // subject
 let subject
-let bill
 
-function loadSubject () {
-  subject = shallow(<BillCell bill={bill} />).dive()
+const defaults = {
+  bill: {
+    id: '1234',
+    documentNumber: 'HB1234',
+    title: 'Foo',
+    summary: 'A bill, fantastic',
+    witnessSlipUrl: 'http://www.test.com/slip',
+    detailsUrl: 'http://www.test.com/details',
+    fullTextUrl: 'http://www.test.com/text',
+    hearing: {
+      date: '2010-01-01T00:00:00-06:00'
+    }
+  }
+}
+
+function loadSubject (props = {}) {
+  subject = shallow(<BillCell {...defaultsDeep(props, defaults)} />)
 }
 
 // specs
-beforeEach(() => {
+afterEach(() => {
   subject = null
 })
 
 describe('#render', () => {
-  beforeEach(() => {
-    bill = {
-      id: '1234',
-      documentNumber: 'HB1234',
-      title: 'Foo',
-      summary: 'A bill, fantastic',
-      witnessSlipUrl: 'http://www.test.com/slip',
-      detailsUrl: 'http://www.test.com/details',
-      fullTextUrl: 'http://www.test.com/text',
-      hearing: {
-        date: '2010-01-01T00:00:00-06:00'
-      }
-    }
-  })
-
   it('renders properly', () => {
     loadSubject()
     expect(subject).toMatchSnapshot()
   })
 
   it('hides the summary when missing', () => {
-    assign(bill, { summary: '' })
-    loadSubject()
-    expect(subject).toMatchSnapshot()
-  })
-})
+    loadSubject({
+      bill: { summary: '' }
+    })
 
-describe('the relay container', () => {
-  it('exists', () => {
-    expect(BillCell.container).toBeTruthy()
+    expect(subject).toMatchSnapshot()
   })
 })

@@ -2,8 +2,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { defaultsDeep } from 'lodash'
-import { SearchScene } from '../SearchScene'
-import { relayRefetchProp } from 'mocks/relayProps'
+import { BillSearch } from '../BillSearch'
 
 const { anything } = expect
 
@@ -11,97 +10,55 @@ const { anything } = expect
 let subject
 
 const defaults = {
-  viewer:
+  viewer: 'test-viewer',
+  relay: {
+    refetch: jest.fn()
+  }
 }
 
 function loadSubject (props = {}) {
-  subject = shallow(<SearchScene {...defaultsDeep(props, defaults)} />)
-}
-
-const element = {
-  list: () => subject.find('BillList'),
-  searchField: () => subject.find('SearchField'),
-  indicator: () => subject.find('LoadingIndicator')
+  subject = shallow(<BillSearch {...defaultsDeep(props, defaults)} />)
 }
 
 // specs
-beforeEach(() => {
-  // TODO: build rosie.js factories
-  viewer = {
-    bills: {
-      edges: []
-    }
-  }
-})
-
 afterEach(() => {
   subject = null
 })
 
-describe('#state', () => {
-  beforeEach(loadSubject)
-
-  it('initially has a blank query', () => {
-    expect(subject).toHaveState('query', '')
-  })
-})
-
 describe('#render', () => {
-  it('shows the search field with the current query', () => {
+  it('shows the search view', () => {
     loadSubject()
-    subject.setState({ query: 'foo' })
-    expect(element.searchField()).toHaveValue('foo')
+    expect(subject).toMatchSnapshot()
   })
 
-  it('shows the bills list', () => {
-    loadSubject()
-    const list = element.list()
-    expect(list).toBePresent()
-    expect(list).toHaveProp('viewer', viewer)
-  })
-
-  it('hides the loading indicator', () => {
-    loadSubject()
-    expect(element.indicator()).toHaveProp('isLoading', false)
-  })
-
-  describe('when loading', () => {
-    it('shows the loading indicator', () => {
-      viewer = null
-      loadSubject()
-      expect(element.indicator()).toHaveProp('isLoading', true)
-    })
-
-    it('hides the bills list', () => {
-      viewer = null
-      loadSubject()
-      expect(element.list()).toBeEmpty()
-    })
+  it('shows the loading indicator when loading', () => {
+    loadSubject({ viewer: null })
+    expect(subject).toMatchSnapshot()
   })
 })
 
-describe('on search field change', () => {
-  it('updates the visible query', () => {
-    loadSubject()
-    element.searchField().simulate('change', 'foo')
-    expect(subject).toHaveState('query', 'foo')
-  })
-
+describe('#filterBillsForQuery', () => {
   it('disables animations', () => {
     loadSubject()
-    element.searchField().simulate('change', 'foo')
-    expect(element.list()).toHaveProp('animated', false)
+    subject.instance().filterBillsForQuery('foo')
+    expect(subject).toHaveState('disableAnimations', true)
   })
 
-  it('refetches the relay query', () => {
+  it('reteches the bills', () => {
     loadSubject()
-    element.searchField().simulate('change', 'foo')
-    expect(relayRefetchProp.refetch).toHaveBeenLastCalledWith({ query: 'foo' }, null, anything())
+    subject.instance().filterBillsForQuery('foo')
+    expect(defaults.relay.refetch).toHaveBeenCalledWith({ query: 'foo' }, null, anything())
   })
 })
 
-describe('the relay container', () => {
-  it('exists', () => {
-    expect(SearchScene.container).toBeTruthy()
+describe('entering a query', () => {
+  it('filters bills by the query', () => {
+    loadSubject()
+    const instance = subject.instance()
+    instance.filterBillsForQuery = jest.fn()
+
+    instance.searchFieldDidChange('foo')
+    expect(subject).toHaveState('query', 'foo')
+    expect(instance.filterBillsForQuery).toHaveBeenCalled()
   })
 })

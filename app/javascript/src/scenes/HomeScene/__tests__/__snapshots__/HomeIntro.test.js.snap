@@ -2,10 +2,6 @@
 
 exports[`#render hides the intro when cleared 1`] = `<Defer />`;
 
-exports[`#render is blank it's already cleared 1`] = `<Defer />`;
-
-exports[`#render shows nothing blank when cleared 1`] = `<Defer />`;
-
 exports[`#render shows the intro 1`] = `
 <Defer>
   <Styled(div)>

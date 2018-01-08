@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the list 1`] = `
+<div
+  data-css-1szwbq4=""
+>
+  <div
+    data-css-t7v3vx=""
+  >
+    <h2>
+      Upcoming Bills
+    </h2>
+    <div>
+      Jan 1st to Jan 7th
+    </div>
+    <div>
+      Found 2 results.
+    </div>
+  </div>
+  <TranslateAndFade
+    disable={false}
+  >
+    <BillCell
+      bill={
+        Object {
+          "id": 1,
+        }
+      }
+      key="1"
+    />
+    <BillCell
+      bill={
+        Object {
+          "id": 2,
+        }
+      }
+      key="2"
+    />
+  </TranslateAndFade>
+  <LoadMoreButton
+    hasMore={true}
+    onClick={[Function]}
+    styles={
+      Object {
+        "data-css-1n5n5pb": "",
+      }
+    }
+  />
+</div>
+`;

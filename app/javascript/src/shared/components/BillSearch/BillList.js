@@ -28,6 +28,10 @@ function format (date: Date): string {
   return formatDate(date, 'MMM Do')
 }
 
+function formatCount ({ bills }: Viewer) {
+  return `Found ${bills.count} result${bills.count === 1 ? '' : 's'}.`
+}
+
 let BillList = class BillList extends React.Component<*, Props, State> {
   state = {
     disableAnimations: this.props.history.action === 'POP'
@@ -49,7 +53,8 @@ let BillList = class BillList extends React.Component<*, Props, State> {
 
   // lifecycle
   componentDidMount () {
-    if (this.props.history.action === 'POP') {
+    const { history } = this.props
+    if (history.action === 'POP') {
       this.setState({ disableAnimations: false })
     }
   }
@@ -64,18 +69,16 @@ let BillList = class BillList extends React.Component<*, Props, State> {
   render () {
     const { disableAnimations } = this.state
     const { relay, viewer, animated } = this.props
-    const { bills } = viewer
-    const { count } = bills
     const { startDate, endDate } = initialVariables
 
     return <div {...rules.container}>
       <div {...rules.header}>
         <h2>Upcoming Bills</h2>
         <div>{`${format(startDate)} to ${format(endDate)}`}</div>
-        <div>{`Found ${count} result${count === 1 ? '' : 's'}.`}</div>
+        <div>{formatCount(viewer)}</div>
       </div>
       <TranslateAndFade disable={!animated || disableAnimations}>
-        {bills.edges.map(({ node }) => (
+        {viewer.bills.edges.map(({ node }) => (
           <BillCell key={node.id} bill={node} />
         ))}
       </TranslateAndFade>

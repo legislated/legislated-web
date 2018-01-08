@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the loading indicator when loading 1`] = `
+<Styled(div)>
+  <SearchField
+    onChange={[Function]}
+    value=""
+  />
+  <Styled(div)>
+    <LoadingIndicator
+      isLoading={true}
+    />
+  </Styled(div)>
+</Styled(div)>
+`;
+
+exports[`#render shows the search view 1`] = `
+<Styled(div)>
+  <SearchField
+    onChange={[Function]}
+    value=""
+  />
+  <Styled(div)>
+    <LoadingIndicator
+      isLoading={false}
+    />
+    <BillList
+      animated={true}
+      viewer="test-viewer"
+    />
+  </Styled(div)>
+</Styled(div)>
+`;

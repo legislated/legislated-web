@@ -24,7 +24,7 @@ export class SearchField extends React.Component<*, Props, State> {
     onChange(event.target.value)
   }
 
-  inputDidChangeFocus = (isFocused: boolean) => {
+  inputDidChangeFocus = (isFocused: boolean) => () => {
     this.setState({ isFocused })
   }
 
@@ -42,8 +42,8 @@ export class SearchField extends React.Component<*, Props, State> {
             value={value}
             placeholder={`health care, HB2364`}
             onChange={this.inputDidChange}
-            onFocus={() => this.inputDidChangeFocus(true)}
-            onBlur={() => this.inputDidChangeFocus(false)}
+            onFocus={this.inputDidChangeFocus(true)}
+            onBlur={this.inputDidChangeFocus(false)}
           />
           <Button
             onClick={() => {}}
