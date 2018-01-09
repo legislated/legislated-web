@@ -3,7 +3,7 @@ import * as React from 'react'
 import styled, { css, cx } from 'react-emotion'
 import { Link as Link$ } from './Link'
 import type { LinkProps } from './Link'
-import { colors } from 'shared/styles'
+import { colors } from '@/styles'
 
 type Props = {
   isSecondary?: boolean,

@@ -1,8 +1,7 @@
 require('./mapEnv')
 
 const { environment } = require('@rails/webpacker')
-
-const path = require('path')
+const { resolve } = require('path')
 const merge = require('webpack-merge')
 const constants = require('./constants')
 
@@ -12,9 +11,11 @@ environment.plugins.delete('Manifest')
 const base = merge(environment.toWebpackConfig(), {
   resolve: {
     alias: {
-      shared: path.resolve(constants.client, './src/shared')
+      '@': resolve(constants.client, './src/shared')
     }
   }
 })
+
+console.log(base)
 
 module.exports = base

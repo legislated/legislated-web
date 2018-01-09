@@ -2,10 +2,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { CopyLink } from '../CopyLink'
-import { events } from 'shared/events'
+import { events } from '@/events'
 
 // mocks
-jest.mock('shared/events', () => ({
+jest.mock('@/events', () => ({
   events: {
     emit: jest.fn(),
     showNotification: 'show-notification'

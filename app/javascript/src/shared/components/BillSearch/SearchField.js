@@ -2,7 +2,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { Link } from '../Link'
-import { colors, mixins } from 'shared/styles'
+import { colors, mixins } from '@/styles'
 
 type Props = {
   value: string,

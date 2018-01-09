@@ -2,7 +2,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { HomeIntro } from '../HomeIntro'
-import { local } from 'shared/storage'
+import { local } from '@/storage'
 
 // subject
 let subject

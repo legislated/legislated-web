@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react'
 import { css } from 'glamor'
-import { TranslateAndFade } from 'shared/components'
-import { stylesheet, colors, mixins } from 'shared/styles'
+import { TranslateAndFade } from '@/components'
+import { stylesheet, colors, mixins } from '@/styles'
 
 type Props = {
   isLoading: boolean

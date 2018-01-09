@@ -3,10 +3,10 @@ import * as React from 'react'
 import styled, { cx, css } from 'react-emotion'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import { Link } from 'shared/components'
-import type { LinkProps } from 'shared/components'
-import { mixins, colors } from 'shared/styles'
-import { removeRouterProps } from 'shared/functions'
+import { Link } from '@/components'
+import type { LinkProps } from '@/components'
+import { mixins, colors } from '@/styles'
+import { removeRouterProps } from '@/functions'
 
 type Props
   = LinkProps

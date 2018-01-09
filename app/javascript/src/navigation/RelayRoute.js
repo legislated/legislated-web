@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import { QueryRenderer } from 'react-relay'
 import { Route } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import { currentEnvironment, cacheResolvers } from 'shared/relay'
-import { events } from 'shared/events'
-import type { RelayRouteConfig } from 'shared/types'
+import { currentEnvironment, cacheResolvers } from '@/relay'
+import { events } from '@/events'
+import type { RelayRouteConfig } from '@/types'
 
 export class RelayRoute extends Component {
   props: {

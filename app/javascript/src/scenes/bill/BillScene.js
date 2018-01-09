@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import { Content } from './components'
-import { stylesheet, colors, mixins } from 'shared/styles'
-import type { Viewer } from 'shared/types'
+import { stylesheet, colors, mixins } from '@/styles'
+import type { Viewer } from '@/types'
 
 let BillScene = class BillScene extends Component {
   props: {

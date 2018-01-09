@@ -2,6 +2,10 @@
 import color from 'color'
 import { omit } from 'lodash'
 
+export function now () {
+  return new Date()
+}
+
 export function sleep (duration: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, duration))
 }

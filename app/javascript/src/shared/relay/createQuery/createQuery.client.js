@@ -2,7 +2,7 @@
 import { QueryResponseCache } from 'relay-runtime'
 import type { QueryResult, QueryPayload, FetchFunction } from 'relay-runtime'
 import { getCacheResolver } from './cacheResolvers'
-import config from 'shared/config'
+import config from '@/config'
 
 // helpers
 function asPayload (result: ?QueryResult): ?QueryPayload {

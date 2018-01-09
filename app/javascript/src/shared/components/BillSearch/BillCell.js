@@ -2,10 +2,10 @@
 import * as React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { css } from 'glamor'
-import { formatDate } from 'shared/date'
-import type { Bill } from 'shared/types'
-import { Button } from 'shared/components'
-import { stylesheet, colors, mixins } from 'shared/styles'
+import { format } from 'date-fns'
+import type { Bill } from '@/types'
+import { Button } from '@/components'
+import { stylesheet, colors, mixins } from '@/styles'
 
 type Props = {
   bill: Bill,
@@ -15,7 +15,7 @@ type Props = {
 let BillCell = function BillCell ({
   bill
 }: Props) {
-  const formattedDate = formatDate(bill.hearing.date, 'DD/MM/YYYY')
+  const formattedDate = format(bill.hearing.date, 'DD/MM/YYYY')
 
   return (
     <div {...css(rules.container)}>

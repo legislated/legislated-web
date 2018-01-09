@@ -3,13 +3,13 @@ import * as React from 'react'
 import { shallow } from 'enzyme'
 import { defaultsDeep } from 'lodash'
 import { BillList } from '../BillList'
-import { session } from 'shared/storage'
+import { session } from '@/storage'
 
 const { anything } = expect
 
 // mocks
 jest.mock('../BillSearch', () => {
-  const { addDays } = require('shared/date')
+  const { addDays } = require('date-fns')
 
   const initialVariables = {
     count: 999,

@@ -5,7 +5,7 @@ import { renderReact } from 'hypernova-react'
 import { StaticRouter } from 'react-router-dom'
 import { renderStatic } from 'glamor/server'
 import { App } from '../src/App'
-import { getPayloads } from '../src/shared/relay/createQuery/createQuery.server'
+import { getPayloads } from '@/relay/createQuery/createQuery.server'
 
 type Props = {
   location: string

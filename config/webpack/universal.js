@@ -1,11 +1,9 @@
-const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const nodeExternals = require('webpack-node-externals')
+const ManifestPlugin = require('webpack-manifest-plugin')
 const { pick, omit } = require('lodash')
-const ManifestPlugin = require('@rails/webpacker/node_modules/webpack-manifest-plugin')
 const base = require('./shared')
-const constants = require('./constants')
 
 // shared plugins
 const environmentPlugin = (value) => new webpack.DefinePlugin({
@@ -61,4 +59,3 @@ module.exports = {
   server,
   client
 }
-

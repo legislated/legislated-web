@@ -1,7 +1,7 @@
 // @flow
 import request from 'sync-request'
 import type { FetchFunction } from 'relay-runtime'
-import config from 'shared/config'
+import config from '@/config'
 
 // ssr request storage
 let payloads = []

@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import styled from 'react-emotion'
-import { colors } from 'shared/styles'
+import { colors } from '@/styles'
 
 type Props = {|
   onClick: Function

@@ -1,7 +1,7 @@
 // @flow
 import styled, { css } from 'react-emotion'
 import { Link } from './Link'
-import { colors } from 'shared/styles'
+import { colors } from '@/styles'
 
 const line = css`
   content: '';

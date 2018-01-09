@@ -2,9 +2,9 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import { Button } from 'shared/components'
-import { stylesheet } from 'shared/styles'
-import { auth } from 'shared/auth'
+import { Button } from '@/components'
+import { stylesheet } from '@/styles'
+import { signIn } from '@/functions'
 
 let AdminAuthScene = class AdminAuthScene extends Component {
   props: {
@@ -22,7 +22,7 @@ let AdminAuthScene = class AdminAuthScene extends Component {
 
   didClickSignIn = () => {
     const { username, password } = this.state
-    auth.signIn(username, password)
+    signIn(username, password)
     this.props.history.replace('/admin/bills')
   }
 
