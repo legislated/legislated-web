@@ -4,7 +4,7 @@ import { createPaginationContainer, graphql } from 'react-relay'
 import type { RelayPaginationProp } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import { formatDate } from 'date-fns'
+import { format } from 'date-fns'
 import { initialVariables } from './BillSearch'
 import { BillCell } from './BillCell'
 import { LoadMoreButton } from './LoadMoreButton'
@@ -24,8 +24,8 @@ type State = {
   disableAnimations: boolean
 }
 
-function format (date: Date): string {
-  return formatDate(date, 'MMM Do')
+function formatDate (date: Date): string {
+  return format(date, 'MMM Do')
 }
 
 function formatCount ({ bills }: Viewer) {
@@ -74,7 +74,7 @@ let BillList = class BillList extends React.Component<*, Props, State> {
     return <div {...rules.container}>
       <div {...rules.header}>
         <h2>Upcoming Bills</h2>
-        <div>{`${format(startDate)} to ${format(endDate)}`}</div>
+        <div>{`${formatDate(startDate)} to ${formatDate(endDate)}`}</div>
         <div>{formatCount(viewer)}</div>
       </div>
       <TranslateAndFade disable={!animated || disableAnimations}>

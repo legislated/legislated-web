@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { auth } from '../auth'
+import { isSignedIn, signIn, signOut } from '../auth'
 import { Base64 } from 'js-base64'
 import { events } from '@/events'
 
@@ -11,31 +11,16 @@ jest.mock('@/events', () => ({
   }
 }))
 
-// subject
-let subject = auth
-
 // spec
-describe('#isSignedIn', () => {
-  it('is true when the user is signed in', () => {
-    subject.signIn('username', 'password')
-    expect(subject.isSignedIn).toBe(true)
-  })
-
-  it('is false when the user is signed out', () => {
-    subject.signOut()
-    expect(subject.isSignedIn).toBe(false)
-  })
-})
-
 describe('#signIn', () => {
   it('signs the user in', () => {
-    expect(subject.isSignedIn).toBe(false)
-    subject.signIn('username', 'password')
-    expect(subject.isSignedIn).toBe(true)
+    expect(isSignedIn()).toBe(false)
+    signIn('username', 'password')
+    expect(isSignedIn()).toBe(true)
   })
 
   it('emits the set auth header on signin', () => {
-    subject.signIn('username', 'password')
+    signIn('username', 'password')
     const authValue = Base64.encode('username:password£')
     const authHeader = `Basic ${authValue}`
     expect(events.emit).toHaveBeenCalledWith(events.setAuthHeader, authHeader)
@@ -44,12 +29,13 @@ describe('#signIn', () => {
 
 describe('#signOut', () => {
   it('signs the user out', () => {
-    subject.signOut()
-    expect(subject.isSignedIn).toBe(false)
+    signIn('username', 'password')
+    signOut()
+    expect(isSignedIn()).toBe(false)
   })
 
   it('emits the set auth header on signout', () => {
-    subject.signOut()
+    signOut()
     expect(events.emit).toHaveBeenCalledWith(events.setAuthHeader, null)
   })
 })
