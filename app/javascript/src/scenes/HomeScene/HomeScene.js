@@ -13,12 +13,12 @@ type Props = {
 
 let HomeScene = function HomeScene ({ viewer }: Props) {
   return (
-    <Section>
+    <Scene>
       <HomeIntro />
       <BillSearch
         viewer={viewer}
       />
-    </Section>
+    </Scene>
   )
 }
 
@@ -28,7 +28,7 @@ HomeScene = createFragmentContainer(HomeScene, graphql`
   }
 `)
 
-const Section = styled.section`
+const Scene = styled.section`
   ${mixins.flexColumn};
   position: relative;
 `

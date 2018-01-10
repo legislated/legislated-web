@@ -63,7 +63,7 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
     const { query, disableAnimations } = this.state
 
     return (
-      <Section>
+      <Search>
         <SearchField
           value={query}
           onChange={this.searchFieldDidChange}
@@ -79,7 +79,7 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
             />
           )}
         </Bills>
-      </Section>
+      </Search>
     )
   }
 }
@@ -108,12 +108,16 @@ BillSearch = createRefetchContainer(BillSearch,
   `
 )
 
-const Section = styled.div`
+const Search = styled.div`
   ${mixins.flexColumn};
 `
 
 const Bills = styled.div`
+  ${mixins.pageWidth};
+
   position: relative;
+  align-self: center;
+  margin-top: 50px;
 `
 
 export { BillSearch }

@@ -4,28 +4,23 @@ import { createPaginationContainer, graphql } from 'react-relay'
 import type { RelayPaginationProp } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import { format } from 'date-fns'
+import styled from 'react-emotion'
 import { initialVariables } from './BillSearch'
 import { BillCell } from './BillCell'
-import { LoadMoreButton } from './LoadMoreButton'
-import { TranslateAndFade } from '@/components'
+import { TranslateAndFade, Button } from '@/components'
 import { session } from '@/storage'
 import { withLoadMoreArgs } from '@/relay'
-import { stylesheet, mixins } from '@/styles'
+import { colors, mixins } from '@/styles'
 import type { Viewer } from '@/types'
 
 type Props = {
   relay: RelayPaginationProp,
   viewer: Viewer,
-  animated: Boolean
+  isAnimated: Boolean
 } & ContextRouter
 
 type State = {
   disableAnimations: boolean
-}
-
-function formatDate (date: Date): string {
-  return format(date, 'MMM Do')
 }
 
 function formatCount ({ bills }: Viewer) {
@@ -67,27 +62,29 @@ let BillList = class BillList extends React.Component<*, Props, State> {
   }
 
   render () {
+    const { relay, viewer, isAnimated } = this.props
     const { disableAnimations } = this.state
-    const { relay, viewer, animated } = this.props
-    const { startDate, endDate } = initialVariables
 
-    return <div {...rules.container}>
-      <div {...rules.header}>
-        <h2>Upcoming Bills</h2>
-        <div>{`${formatDate(startDate)} to ${formatDate(endDate)}`}</div>
-        <div>{formatCount(viewer)}</div>
-      </div>
-      <TranslateAndFade disable={!animated || disableAnimations}>
-        {viewer.bills.edges.map(({ node }) => (
-          <BillCell key={node.id} bill={node} />
-        ))}
-      </TranslateAndFade>
-      <LoadMoreButton
-        styles={rules.loadMoreButton}
-        hasMore={relay.hasMore()}
-        onClick={this.didClickLoadMore}
-      />
-    </div>
+    return (
+      <Bills>
+        <h5>{formatCount(viewer)}</h5>
+        <TranslateAndFade
+          component={List}
+          disable={!isAnimated || disableAnimations}
+        >
+          {viewer.bills.edges.map(({ node }) => (
+            <BillCell key={node.id} bill={node} />
+          ))}
+        </TranslateAndFade>
+        {relay.hasMore() && (
+          <ActionButton
+            isSecondary
+            onClick={this.didClickLoadMore}
+            children='Load More'
+          />
+        )}
+      </Bills>
+    )
   }
 }
 
@@ -129,42 +126,24 @@ BillList = createPaginationContainer(withRouter(BillList),
   })
 )
 
-const rules = stylesheet({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'stretch'
-  },
-  header: {
-    marginBottom: 15,
-    '> h2': {
-      display: 'inline-block',
-      marginBottom: 5,
-      ...mixins.mobile.glam({
-        marginBottom: 0
-      })
-    },
-    '> div': {
-      fontSize: 18,
-      ':first-of-type': {
-        display: 'inline-block',
-        marginLeft: 5
-      },
-      ...mixins.mobile.glam({
-        fontSize: 16,
-        ':first-of-type': {
-          display: 'none'
-        }
-      })
-    }
-  },
-  loadMoreButton: {
-    alignSelf: 'center',
-    marginTop: 30,
-    ...mixins.mobile.glam({
-      marginTop: 20
-    })
+const Bills = styled.div`
+  ${mixins.flexColumn};
+
+  > h5 {
+    margin-bottom: 50px;
   }
-})
+`
+
+const List = styled.div`
+  > * + * {
+    margin-top: 50px;
+    padding-top: 50px;
+    border-top: 1px solid ${colors.gray4};
+  }
+`
+
+const ActionButton = styled(Button)`
+  align-self: center;
+`
 
 export { BillList }
