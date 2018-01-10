@@ -6,7 +6,7 @@ class ImportCommitteesJob
   end
 
   def self.scheduled?
-    Time.current.saturday?
+    Time.current.mday==1
   end
 
   def perform
