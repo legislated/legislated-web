@@ -16,11 +16,11 @@ import type { Viewer } from '@/types'
 type Props = {
   relay: RelayPaginationProp,
   viewer: Viewer,
-  isAnimated: Boolean
+  isAnimated: boolean,
 } & ContextRouter
 
 type State = {
-  disableAnimations: boolean
+  disablesAnimation: boolean
 }
 
 function formatCount ({ bills }: Viewer) {
@@ -29,7 +29,7 @@ function formatCount ({ bills }: Viewer) {
 
 let BillList = class BillList extends React.Component<*, Props, State> {
   state = {
-    disableAnimations: this.props.history.action === 'POP'
+    disablesAnimation: this.props.history.action === 'POP'
   }
 
   // events
@@ -50,7 +50,7 @@ let BillList = class BillList extends React.Component<*, Props, State> {
   componentDidMount () {
     const { history } = this.props
     if (history.action === 'POP') {
-      this.setState({ disableAnimations: false })
+      this.setState({ disablesAnimation: false })
     }
   }
 
@@ -63,17 +63,19 @@ let BillList = class BillList extends React.Component<*, Props, State> {
 
   render () {
     const { relay, viewer, isAnimated } = this.props
-    const { disableAnimations } = this.state
+    const { disablesAnimation } = this.state
 
     return (
       <Bills>
         <h5>{formatCount(viewer)}</h5>
         <TranslateAndFade
           component={List}
-          disable={!isAnimated || disableAnimations}
+          disable={!isAnimated || disablesAnimation}
         >
           {viewer.bills.edges.map(({ node }) => (
-            <BillCell key={node.id} bill={node} />
+            <div key={node.id}>
+              <BillCell bill={node} />
+            </div>
           ))}
         </TranslateAndFade>
         {relay.hasMore() && (
@@ -126,24 +128,27 @@ BillList = createPaginationContainer(withRouter(BillList),
   })
 )
 
+const spacing = 50
+
 const Bills = styled.div`
   ${mixins.flexColumn};
 
   > h5 {
-    margin-bottom: 50px;
+    margin-bottom: ${spacing}px;
   }
 `
 
 const List = styled.div`
-  > * + * {
-    margin-top: 50px;
-    padding-top: 50px;
-    border-top: 1px solid ${colors.gray4};
+  > * {
+    margin-bottom: ${spacing}px;
+    padding-bottom: ${spacing}px;
+    border-bottom: 1px solid ${colors.gray4};
   }
 `
 
 const ActionButton = styled(Button)`
   align-self: center;
+  margin-bottom: 90px;
 `
 
 export { BillList }

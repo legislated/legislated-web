@@ -3,6 +3,7 @@ import { css } from 'react-emotion'
 import { margin } from '../values'
 
 export const pageWidth = css`
+  width: 100%;
   max-width: 1140px;
 `
 

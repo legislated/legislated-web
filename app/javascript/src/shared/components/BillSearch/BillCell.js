@@ -52,7 +52,9 @@ const spacing = css`
 
 const Cell = styled.div`
   ${mixins.flexColumn};
+
   align-items: flex-start;
+  max-width: 960px;
 
   > h3, > p {
     ${spacing};

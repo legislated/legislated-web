@@ -18,7 +18,7 @@ type Props = {
 
 type State = {
   query: string,
-  disableAnimations: boolean
+  disablesAnimation: boolean
 }
 
 export const initialVariables = {
@@ -31,14 +31,14 @@ export const initialVariables = {
 let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   state = {
     query: initialVariables.query,
-    disableAnimations: false
+    disablesAnimation: false
   }
 
   // actions
   filterBillsForQuery = throttle((query: string) => {
     const { relay } = this.props
 
-    this.setState({ disableAnimations: true })
+    this.setState({ disablesAnimation: true })
     relay.refetch({ query }, null, (error: ?Error) => {
       if (error) {
         console.error(`error updaing query: ${error.toString()}`)
@@ -46,7 +46,7 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
 
       // completion comes back before render
       global.requestAnimationFrame(() => {
-        this.setState({ disableAnimations: false })
+        this.setState({ disablesAnimation: false })
       })
     })
   }, 300)
@@ -60,7 +60,7 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   // lifecycle
   render () {
     const { viewer } = this.props
-    const { query, disableAnimations } = this.state
+    const { query, disablesAnimation } = this.state
 
     return (
       <Search>
@@ -75,7 +75,7 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
           {viewer && (
             <BillList
               viewer={viewer}
-              animated={!disableAnimations}
+              isAnimated={!disablesAnimation}
             />
           )}
         </Bills>
