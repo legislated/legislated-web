@@ -82,7 +82,7 @@ const withRelay = (config: RelayRouteConfig) => (
         variables={variables}
         render={({ error, props }: { error: ?Error, props: ?Object }) => {
           if (error) {
-            throw new Error(error) // TODO: show error view
+            throw error
           }
 
           return render(props)

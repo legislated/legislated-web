@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import { RelayRoute } from './RelayRoute'
 import { AdminRoutes } from './AdminRoutes'
 import { NotFoundView } from './NotFoundView'
-import * as scenes from '../scenes'
+import * as scenes from '../../scenes'
 
 export const Routes = () => (
   <Switch>

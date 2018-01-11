@@ -3,7 +3,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
 import { RelayRoute } from './RelayRoute'
-import * as scenes from '../scenes'
+import * as scenes from '../../scenes'
 import { isSignedIn } from '@/functions'
 
 const Filter = (props: ContextRouter) => {
