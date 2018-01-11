@@ -13,9 +13,7 @@ export type BillCell_bill = {|
   +documentNumber: string;
   +title: ?string;
   +summary: ?string;
-  +witnessSlipUrl: ?string;
-  +detailsUrl: ?string;
-  +fullTextUrl: ?string;
+  +updatedAt: any;
   +hearing: {|
     +date: any;
   |};
@@ -61,21 +59,7 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "witnessSlipUrl",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "detailsUrl",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "fullTextUrl",
+      "name": "updatedAt",
       "storageKey": null
     },
     {

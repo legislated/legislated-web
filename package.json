@@ -23,7 +23,7 @@
     "lint:bare": "standard './app/javascript/**/*.js'",
     "flow": "flow",
     "flow:restart": "flow stop && flow",
-    "relay": "relay-compiler --src ./src --schema schema.json",
+    "relay": "relay-compiler --src ./app/javascript/src --schema schema.json",
     "relay:watch": "yarn relay --watch",
     "validate": "yarn lint && yarn flow && yarn test"
   },

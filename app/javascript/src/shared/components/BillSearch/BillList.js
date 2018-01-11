@@ -5,7 +5,6 @@ import type { RelayPaginationProp } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
 import styled from 'react-emotion'
-import { initialVariables } from './BillSearch'
 import { BillCell } from './BillCell'
 import { TranslateAndFade, Button } from '@/components'
 import { session } from '@/storage'
@@ -14,9 +13,10 @@ import { colors, mixins } from '@/styles'
 import type { Viewer } from '@/types'
 
 type Props = {
-  relay: RelayPaginationProp,
   viewer: Viewer,
   isAnimated: boolean,
+  pageSize?: number,
+  relay: RelayPaginationProp
 } & ContextRouter
 
 type State = {
@@ -29,17 +29,22 @@ function formatCount ({ bills }: Viewer) {
 
 let BillList = class BillList extends React.Component<*, Props, State> {
   state = {
-    disablesAnimation: this.props.history.action === 'POP'
+    disablesAnimation: this.isFromPop
+  }
+
+  // accessors
+  get isFromPop () {
+    return this.props.history.action === 'POP'
   }
 
   // events
   didClickLoadMore = () => {
-    const { relay } = this.props
+    const { relay, pageSize } = this.props
     if (!relay.hasMore() || relay.isLoading()) {
       return
     }
 
-    relay.loadMore(initialVariables.count, (error: ?Error) => {
+    pageSize && relay.loadMore(pageSize, (error: ?Error) => {
       if (error) {
         console.error(`error loading next page: ${error.toString()}`)
       }
@@ -48,21 +53,18 @@ let BillList = class BillList extends React.Component<*, Props, State> {
 
   // lifecycle
   componentDidMount () {
-    const { history } = this.props
-    if (history.action === 'POP') {
+    if (this.isFromPop) {
       this.setState({ disablesAnimation: false })
     }
   }
 
   componentWillUnmount () {
     const { viewer } = this.props
-    if (viewer) {
-      session.set('last-search-count', `${viewer.bills.edges.length}`)
-    }
+    viewer && session.set('last-search-count', `${viewer.bills.edges.length}`)
   }
 
   render () {
-    const { relay, viewer, isAnimated } = this.props
+    const { viewer, isAnimated, pageSize, relay } = this.props
     const { disablesAnimation } = this.state
 
     return (
@@ -78,7 +80,7 @@ let BillList = class BillList extends React.Component<*, Props, State> {
             </div>
           ))}
         </TranslateAndFade>
-        {relay.hasMore() && (
+        {pageSize && relay.hasMore() && (
           <ActionButton
             isSecondary
             onClick={this.didClickLoadMore}
@@ -94,8 +96,9 @@ BillList = createPaginationContainer(withRouter(BillList),
   graphql`
     fragment BillList_viewer on Viewer {
       bills(
-        first: $count, after: $cursor,
-        query: $query, from: $startDate, to: $endDate
+        filter: $filter,
+        first: $count,
+        after: $cursor
       ) @connection(key: "BillList_bills") {
         count
         pageInfo {
@@ -117,11 +120,12 @@ BillList = createPaginationContainer(withRouter(BillList),
     },
     query: graphql`
       query BillListQuery(
-        $count: Int!, $cursor: String!,
-        $query: String!, $startDate: Time!, $endDate: Time!
+        $filter: BillsSearchFilter!,
+        $count: Int!,
+        $cursor: String!
       ) {
         viewer {
-          ...BillsList_viewer
+          ...BillList_viewer
         }
       }
     `

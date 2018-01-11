@@ -2,16 +2,14 @@
 import React from 'react'
 import { graphql } from 'react-relay'
 import { HomeScene } from './HomeScene'
-import { billSearchInitialVariables } from '@/components'
-import { createPaginationCacheResolver } from '@/relay'
-import { session } from '@/storage'
 import type { RelayRouteConfig } from '@/types'
 
 export const homeRoute: RelayRouteConfig = {
   query: graphql`
     query homeRouteQuery(
-      $count: Int!, $cursor: String!
-      $query: String!, $startDate: Time!, $endDate: Time!
+      $filter: BillsSearchFilter!,
+      $count: Int!,
+      $cursor: String!
     ) {
       viewer {
         ...HomeScene_viewer
@@ -19,26 +17,14 @@ export const homeRoute: RelayRouteConfig = {
     }
   `,
   getInitialVariables (props) {
-    // use the last search count on pop so that we can restore to the correct
-    // scroll position
-    let count = null
-    if (props.history.action === 'POP') {
-      count = parseInt(session.get('last-search-count'))
-    }
-
-    session.set('last-search-count', null)
-
     return {
-      ...billSearchInitialVariables,
-      count: count || billSearchInitialVariables.count,
-      cursor: ''
+      cursor: '',
+      count: 3,
+      filter: {
+        query: ''
+      }
     }
   },
-  cacheResolver: createPaginationCacheResolver({
-    count: billSearchInitialVariables.count,
-    queryId: 'BillsConnection',
-    queryPathToConnection: ['viewer', 'bills']
-  }),
   render (props) {
     if (props) {
       return <HomeScene {...props} />

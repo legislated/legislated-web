@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 01c2c6fbd46d76de8c33b8d8131a0579
+ * @relayHash 703a04db8ecb1ace280872b1f4f4df60
  */
 
 /* eslint-disable */
@@ -97,7 +97,7 @@ const batch /*: ConcreteBatch*/ = {
                 "type": "Int"
               }
             ],
-            "concreteType": "BillSearchConnection",
+            "concreteType": "BillsSearch",
             "name": "bills",
             "plural": false,
             "selections": [

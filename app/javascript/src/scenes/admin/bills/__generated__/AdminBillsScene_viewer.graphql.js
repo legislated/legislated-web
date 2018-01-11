@@ -45,7 +45,7 @@ const fragment /*: ConcreteFragment*/ = {
           "type": "Int"
         }
       ],
-      "concreteType": "BillSearchConnection",
+      "concreteType": "BillsSearch",
       "name": "bills",
       "plural": false,
       "selections": [

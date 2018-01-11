@@ -24,6 +24,11 @@ const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [
     {
       "kind": "RootArgument",
+      "name": "filter",
+      "type": "BillsSearchFilter"
+    },
+    {
+      "kind": "RootArgument",
       "name": "count",
       "type": "Int"
     },
@@ -31,21 +36,6 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "RootArgument",
       "name": "cursor",
       "type": "String"
-    },
-    {
-      "kind": "RootArgument",
-      "name": "query",
-      "type": "String"
-    },
-    {
-      "kind": "RootArgument",
-      "name": "startDate",
-      "type": "Time"
-    },
-    {
-      "kind": "RootArgument",
-      "name": "endDate",
-      "type": "Time"
     }
   ],
   "kind": "Fragment",
@@ -64,30 +54,18 @@ const fragment /*: ConcreteFragment*/ = {
         },
         {
           "kind": "Variable",
+          "name": "filter",
+          "variableName": "filter",
+          "type": "BillsSearchFilter"
+        },
+        {
+          "kind": "Variable",
           "name": "first",
           "variableName": "count",
           "type": "Int"
-        },
-        {
-          "kind": "Variable",
-          "name": "from",
-          "variableName": "startDate",
-          "type": "Time"
-        },
-        {
-          "kind": "Variable",
-          "name": "query",
-          "variableName": "query",
-          "type": "String"
-        },
-        {
-          "kind": "Variable",
-          "name": "to",
-          "variableName": "endDate",
-          "type": "Time"
         }
       ],
-      "concreteType": "BillSearchConnection",
+      "concreteType": "BillsSearch",
       "name": "bills",
       "plural": false,
       "selections": [

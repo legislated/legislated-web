@@ -3,7 +3,6 @@ import * as React from 'react'
 import { createRefetchContainer, graphql } from 'react-relay'
 import type { RelayRefetchProp } from 'react-relay'
 import styled from 'react-emotion'
-import { addDays, endOfDay, startOfDay } from 'date-fns'
 import { throttle } from 'lodash'
 import { SearchField } from './SearchField'
 import { BillList } from './BillList'
@@ -12,6 +11,7 @@ import type { Viewer } from '@/types'
 import { mixins } from '@/styles'
 
 type Props = {
+  pageSize?: number,
   viewer: ?Viewer,
   relay: RelayRefetchProp
 }
@@ -21,16 +21,9 @@ type State = {
   disablesAnimation: boolean
 }
 
-export const initialVariables = {
-  query: '',
-  count: 20,
-  startDate: startOfDay(new Date()),
-  endDate: endOfDay(addDays(new Date(), 6))
-}
-
 let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   state = {
-    query: initialVariables.query,
+    query: '',
     disablesAnimation: false
   }
 
@@ -38,8 +31,12 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   filterBillsForQuery = throttle((query: string) => {
     const { relay } = this.props
 
+    const variables = {
+      filter: { query }
+    }
+
     this.setState({ disablesAnimation: true })
-    relay.refetch({ query }, null, (error: ?Error) => {
+    relay.refetch(variables, null, (error: ?Error) => {
       if (error) {
         console.error(`error updaing query: ${error.toString()}`)
       }
@@ -88,8 +85,9 @@ BillSearch = createRefetchContainer(BillSearch,
   graphql`
     fragment BillSearch_viewer on Viewer {
       bills(
-        first: $count, after: $cursor,
-        query: $query, from: $startDate, to: $endDate
+        filter: $filter,
+        first: $count,
+        after: $cursor
       ) {
         edges { node { id } }
       }
@@ -98,8 +96,9 @@ BillSearch = createRefetchContainer(BillSearch,
   `,
   graphql`
     query BillSearchQuery(
-      $count: Int!, $cursor: String!,
-      $query: String!, $startDate: Time!, $endDate: Time!
+      $filter: BillsSearchFilter!,
+      $count: Int!,
+      $cursor: String!
     ) {
       viewer {
         ...BillSearch_viewer
