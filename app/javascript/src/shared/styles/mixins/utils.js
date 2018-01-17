@@ -1,6 +1,5 @@
 // @flow
 import { css } from 'react-emotion'
-import { margin } from '../values'
 
 export const pageWidth = css`
   width: 100%;
@@ -8,8 +7,8 @@ export const pageWidth = css`
 `
 
 export const pageMargin = css`
-  margin-left: ${margin}px;
-  margin-right: ${margin}px;
+  margin-left: 30px;
+  margin-right: 30px;
 `
 
 export const flexRow = css`

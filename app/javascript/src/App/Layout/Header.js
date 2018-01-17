@@ -55,7 +55,7 @@ export class Header extends React.Component<*, *, State> {
     return (
       <Container>
         <Hero>
-          <Logo width={73} height={61} />
+          <Logo width={58} height={49} />
           <h1>Legislated</h1>
         </Hero>
         <Navbar>
@@ -67,7 +67,7 @@ export class Header extends React.Component<*, *, State> {
               {isSticky && (
                 <div>
                   <LogoLink to='/'>
-                    <Logo width={62} height={52} />
+                    <Logo width={40} height={34} />
                     <h2>Legislated</h2>
                   </LogoLink>
                 </div>
@@ -96,14 +96,14 @@ const Hero = styled.div`
   ${mixins.flexColumn};
 
   align-items: center;
-  margin-bottom: 45px;
+  margin-bottom: 30px;
 
   > img {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 `
 
-const height = 78
+const height = 70
 const Navbar = styled.div`
   position: relative;
   height: ${height}px;
@@ -118,7 +118,7 @@ const StickyBar = styled.div`
   left: 0;
   width: 100%;
   height: ${height}px;
-  padding: 0 ${values.margin - 10}px;
+  padding: 0 25px;
   z-index: 1;
   background-color: ${colors.white};
   border-bottom: 1px solid ${colors.gray4};
@@ -136,5 +136,5 @@ const StickyLogo = styled.div`
 `
 
 const Nav = styled(NavLinks)`
-  margin: 0 30px;
+  margin: 0 25px;
 `

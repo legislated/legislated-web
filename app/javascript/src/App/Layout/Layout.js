@@ -60,7 +60,7 @@ const Content = styled.div`
   ${mixins.mobile`
     margin-top: ${MOBILE_HEADER_HEIGHT}px;
     padding: 15px;
-    padding-bottom: 30px;
+    padding-bottom: 25px;
   `}
 `
 

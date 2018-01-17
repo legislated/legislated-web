@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
 import { Link } from '@/components'
 import type { LinkProps } from '@/components'
-import { mixins, colors } from '@/styles'
+import { mixins, colors, values } from '@/styles'
 import { removeRouterProps } from '@/functions'
 
 type Props
@@ -54,7 +54,7 @@ const Container = styled.div`
 const linkClass = css`
   ${css(mixins.fonts.light)};
 
-  font-size: 24px;
+  font-size: 20px;
   text-transform: uppercase;
   text-decoration: none;
   color: ${colors.black};

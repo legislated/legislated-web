@@ -38,6 +38,6 @@ const Links = styled(NavLinks)`
   width: ${MOBILE_MENU_WIDTH}px;
   height: 100%;
   right: 0;
-  padding: 20px;
+  padding: 15px;
   background-color: ${colors.white};
 `

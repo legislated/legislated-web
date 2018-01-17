@@ -54,7 +54,7 @@ const Scene = styled.section`
 
 const BillsButton = styled(Button)`
   align-self: center;
-  margin-bottom: 90px;
+  margin-bottom: 70px;
 `
 
 export function HomeRenderer () {

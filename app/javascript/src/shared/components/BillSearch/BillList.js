@@ -132,7 +132,7 @@ BillList = createPaginationContainer(withRouter(BillList),
   })
 )
 
-const spacing = 50
+const spacing = 40
 
 const Bills = styled.div`
   ${mixins.flexColumn};
@@ -152,7 +152,7 @@ const List = styled.div`
 
 const ActionButton = styled(Button)`
   align-self: center;
-  margin-bottom: 90px;
+  margin-bottom: 70px;
 `
 
 export { BillList }

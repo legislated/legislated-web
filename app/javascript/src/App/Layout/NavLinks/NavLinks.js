@@ -2,7 +2,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { NavLink } from './NavLink'
-import { mixins } from '@/styles'
+import { mixins, values } from '@/styles'
 
 type Props = {
   onClick?: Function,
@@ -31,7 +31,7 @@ const Nav = styled.nav`
   display: flex;
 
   > * + * {
-    margin-left: 30px;
+    margin-left: 25px;
   }
 
   ${mixins.mobile`

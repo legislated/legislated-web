@@ -116,7 +116,7 @@ const Bills = styled.div`
 
   position: relative;
   align-self: center;
-  margin-top: 50px;
+  margin-top: 40px;
 `
 
 export { BillSearch }

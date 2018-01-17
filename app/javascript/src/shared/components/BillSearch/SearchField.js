@@ -34,56 +34,64 @@ export class SearchField extends React.Component<*, Props, State> {
     const { isFocused } = this.state
 
     return (
-      <Container>
-        <Field isFocused={isFocused}>
-          <Input
-            type='text'
-            name='search-field'
-            value={value}
-            placeholder={`health care, HB2364`}
-            onChange={this.inputDidChange}
-            onFocus={this.inputDidChangeFocus(true)}
-            onBlur={this.inputDidChangeFocus(false)}
-          />
-          <Button
-            onClick={() => {}}
-            children='Search'
-          />
-        </Field>
-      </Container>
+      <Search>
+        <FieldContainer>
+          <Field isFocused={isFocused}>
+            <Input
+              type='text'
+              name='search-field'
+              value={value}
+              placeholder={`health care, HB2364`}
+              onChange={this.inputDidChange}
+              onFocus={this.inputDidChangeFocus(true)}
+              onBlur={this.inputDidChangeFocus(false)}
+            />
+            <Button
+              onClick={() => {}}
+              children='Search'
+            />
+          </Field>
+        </FieldContainer>
+      </Search>
     )
   }
 }
 
-const Container = styled.div`
+const Search = styled.div`
   ${mixins.flexRow};
 
   justify-content: center;
   align-items: center;
-  height: 190px;
+  height: 150px;
   background-color: ${colors.primary};
+`
+
+const FieldContainer = styled.div`
+  ${mixins.flexRow};
+  ${mixins.pageWidth};
+
+  flex: 1;
+  height: 56px;
+  padding: 0 70px;
 `
 
 const Field = styled.div`
   ${mixins.flexRow};
-  ${mixins.pageWidth};
-  ${mixins.pageMargin};
 
   flex: 1;
-  height: 70px;
   border: solid ${colors.white};
   border-width: ${({ isFocused }: State) => isFocused ? 2 : 1}px;
   border-radius: 10px;
   overflow: hidden;
   transform: perspective(200px) translateZ(${({ isFocused }: State) => isFocused ? 1 : 0}px);
-  font-size: 24px;
+  font-size: 20px;
   color: ${colors.white};
   transition: border-width 0.15s, transform 0.15s;
 `
 
 const Input = styled.input`
   flex: 1;
-  padding: 0 30px;
+  padding: 0 25px;
   color: inherit;
   background-color: transparent;
   font-size: inherit;

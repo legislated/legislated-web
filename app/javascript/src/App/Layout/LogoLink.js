@@ -1,7 +1,7 @@
 // @flow
 import { Link } from 'react-router-dom'
 import styled from 'react-emotion'
-import { colors } from '@/styles'
+import { colors, values } from '@/styles'
 
 export const LogoLink = styled(Link)`
   display: flex;
@@ -14,6 +14,6 @@ export const LogoLink = styled(Link)`
   }
 
   > img {
-    margin-right: 20px;
+    margin-right: 15px;
   }
 `

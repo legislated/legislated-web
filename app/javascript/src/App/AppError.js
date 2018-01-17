@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import styled from 'react-emotion'
-import { mixins } from '@/styles'
+import { mixins, values } from '@/styles'
 
 type Props = {
   children?: React.Node
@@ -43,9 +43,9 @@ const Container = styled.section`
 
   justify-content: center;
   min-height: 100vh;
-  padding: 40px;
+  padding: 25px;
 
   > h1 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 `

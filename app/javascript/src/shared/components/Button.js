@@ -33,9 +33,9 @@ const Link = styled(Link$)`
   ${mixins.flexCenter};
   ${mixins.fonts.light};
 
-  height: 60px;
-  padding: 0 45px;
-  border-radius: 30px;
+  height: 48px;
+  padding: 15px 30px;
+  border-radius: 24px;
   color: ${colors.white};
   background-color: ${colors.primary};
   text-transform: uppercase;
@@ -43,10 +43,10 @@ const Link = styled(Link$)`
 `
 
 const small = css`
-  height: 44px;
-  padding: 13px 25px;
-  border-radius: 22px;
-  font-size: 16px;
+  height: 36px;
+  padding: 10px 20px;
+  border-radius: 18px;
+  font-size: 14px;
 `
 
 const secondary = css`
