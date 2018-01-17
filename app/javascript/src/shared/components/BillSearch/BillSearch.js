@@ -7,12 +7,13 @@ import { throttle } from 'lodash'
 import { SearchField } from './SearchField'
 import { BillList } from './BillList'
 import { LoadingIndicator } from '../LoadingIndicator'
-import type { Viewer } from '@/types'
+import type { Viewer, SearchParams } from '@/types'
 import { mixins } from '@/styles'
 
 type Props = {
-  pageSize?: number,
   viewer: ?Viewer,
+  onFilter?: (SearchParams) => void,
+  pageSize?: number,
   relay: RelayRefetchProp
 }
 
@@ -29,14 +30,13 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
 
   // actions
   filterBillsForQuery = throttle((query: string) => {
-    const { relay } = this.props
+    const { onFilter, relay } = this.props
 
-    const variables = {
-      filter: { query }
-    }
+    const filter = { query }
+    onFilter && onFilter(filter)
 
     this.setState({ disablesAnimation: true })
-    relay.refetch(variables, null, (error: ?Error) => {
+    relay.refetch({ filter }, null, (error: ?Error) => {
       if (error) {
         console.error(`error updaing query: ${error.toString()}`)
       }

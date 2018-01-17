@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { graphql } from 'react-relay'
-import { HomeScene } from './HomeScene'
+import { Home } from './Home'
 import type { RelayRouteConfig } from '@/types'
 
 export const homeRoute: RelayRouteConfig = {
@@ -18,8 +18,8 @@ export const homeRoute: RelayRouteConfig = {
   `,
   getInitialVariables (props) {
     return {
-      cursor: '',
       count: 3,
+      cursor: '',
       filter: {
         query: ''
       }
@@ -27,9 +27,9 @@ export const homeRoute: RelayRouteConfig = {
   },
   render (props) {
     if (props) {
-      return <HomeScene {...props} />
+      return <Home {...props} />
     } else {
-      return <HomeScene viewer={null} />
+      return <Home viewer={null} />
     }
   }
 }
