@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d675cab6716ce2e0ca1c29a9dcb282ee
+ * @relayHash f3beb893ef4bd4224af2ec6e65b9468b
  */
 
 /* eslint-disable */
@@ -9,26 +9,22 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type homeRouteQueryResponse = {|
+export type HomeRendererQueryResponse = {|
   +viewer: ?{| |};
 |};
 */
 
 
 /*
-query homeRouteQuery(
+query HomeRendererQuery(
   $filter: BillsSearchFilter!
   $count: Int!
   $cursor: String!
 ) {
   viewer {
-    ...HomeScene_viewer
+    ...BillSearch_viewer
     id
   }
-}
-
-fragment HomeScene_viewer on Viewer {
-  ...BillSearch_viewer
 }
 
 fragment BillSearch_viewer on Viewer {
@@ -97,7 +93,7 @@ const batch /*: ConcreteBatch*/ = {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "homeRouteQuery",
+    "name": "HomeRendererQuery",
     "selections": [
       {
         "kind": "LinkedField",
@@ -109,7 +105,7 @@ const batch /*: ConcreteBatch*/ = {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "HomeScene_viewer",
+            "name": "BillSearch_viewer",
             "args": null
           }
         ],
@@ -121,7 +117,7 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "homeRouteQuery",
+  "name": "HomeRendererQuery",
   "query": {
     "argumentDefinitions": [
       {
@@ -144,7 +140,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ],
     "kind": "Root",
-    "name": "homeRouteQuery",
+    "name": "HomeRendererQuery",
     "operation": "query",
     "selections": [
       {
@@ -355,7 +351,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query homeRouteQuery(\n  $filter: BillsSearchFilter!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...HomeScene_viewer\n    id\n  }\n}\n\nfragment HomeScene_viewer on Viewer {\n  ...BillSearch_viewer\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  updatedAt\n  hearing {\n    date\n    id\n  }\n}\n"
+  "text": "query HomeRendererQuery(\n  $filter: BillsSearchFilter!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillSearch_viewer\n    id\n  }\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  updatedAt\n  hearing {\n    date\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

@@ -1,2 +1,4 @@
 // @flow
-export { homeRoute } from './homeRoute'
+export {
+  HomeRenderer as Home
+} from './Home'

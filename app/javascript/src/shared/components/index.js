@@ -1,5 +1,6 @@
 // @flow
 export { Defer } from './Defer'
+export { RelayRenderer } from './RelayRenderer'
 export { TranslateAndFade } from './TranslateAndFade'
 export { NotificationView } from './NotificationView'
 

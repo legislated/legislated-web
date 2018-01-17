@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react'
-import { createFragmentContainer, graphql } from 'react-relay'
+import { graphql } from 'react-relay'
 import styled from 'react-emotion'
 import { HomeIntro } from './HomeIntro'
-import { BillSearch, Button } from '@/components'
+import { RelayRenderer, BillSearch, Button } from '@/components'
 import type { Viewer, SearchParams } from '@/types'
 import { mixins } from '@/styles'
 
@@ -11,11 +11,11 @@ type Props = {
   viewer: ?Viewer
 }
 
-let Home = class Home extends React.Component<*, Props, *> {
+export class Home extends React.Component<*, Props, *> {
   params: SearchParams
 
   // events
-  didChangeParams = (params) => {
+  didChangeParams = (params: SearchParams) => {
     this.params = params
   }
 
@@ -45,12 +45,6 @@ let Home = class Home extends React.Component<*, Props, *> {
   }
 }
 
-Home = createFragmentContainer(Home, graphql`
-  fragment HomeScene_viewer on Viewer {
-    ...BillSearch_viewer
-  }
-`)
-
 const Scene = styled.section`
   ${mixins.flexColumn};
 
@@ -63,4 +57,30 @@ const BillsButton = styled(Button)`
   margin-bottom: 90px;
 `
 
-export { Home }
+export function HomeRenderer () {
+  const query = graphql`
+    query HomeRendererQuery(
+      $filter: BillsSearchFilter!,
+      $count: Int!,
+      $cursor: String!
+    ) {
+      viewer {
+        ...BillSearch_viewer
+      }
+    }
+  `
+
+  return (
+    <RelayRenderer
+      query={query}
+      root={Home}
+      getVariables={() => ({
+        count: 3,
+        cursor: '',
+        filter: {
+          query: ''
+        }
+      })}
+    />
+  )
+}

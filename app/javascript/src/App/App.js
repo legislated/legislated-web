@@ -3,12 +3,12 @@ import '@/styles/globals'
 import React from 'react'
 import { AppError } from './AppError'
 import { Layout } from './Layout'
-import { Routes } from './Routes'
+import { Router } from '../scenes'
 
 export const App = () => (
   <AppError>
     <Layout>
-      <Routes />
+      <Router />
     </Layout>
   </AppError>
 )

@@ -1,12 +1,13 @@
 // @flow
 import React, { Component } from 'react'
-import { createFragmentContainer, graphql } from 'react-relay'
+import { graphql } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import { Content } from './components'
+import { RelayRenderer } from '@/components'
 import { stylesheet, colors, mixins } from '@/styles'
 import type { Viewer } from '@/types'
 
-let BillScene = class BillScene extends Component {
+let Bill = class Bill extends Component {
   props: {
     viewer: ?Viewer,
   }
@@ -23,13 +24,7 @@ let BillScene = class BillScene extends Component {
   }
 }
 
-BillScene = createFragmentContainer(withRouter(BillScene), graphql`
-  fragment BillScene_viewer on Viewer {
-    bill(id: $id) {
-      ...Content_bill
-    }
-  }
-`)
+Bill = withRouter(Bill)
 
 const rules = stylesheet({
   container: {
@@ -52,4 +47,23 @@ const rules = stylesheet({
   }
 })
 
-export { BillScene }
+export { Bill }
+
+export function BillRenderer () {
+  const query = graphql`
+    query billRouteQuery($id: ID!) {
+      viewer {
+        bill(id: $id) {
+          ...Content_bill
+        }
+      }
+    }
+  `
+
+  return (
+    <RelayRenderer
+      query={query}
+      root={Bill}
+    />
+  )
+}
