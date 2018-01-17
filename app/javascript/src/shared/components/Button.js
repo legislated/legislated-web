@@ -3,13 +3,15 @@ import * as React from 'react'
 import styled, { css, cx } from 'react-emotion'
 import { Link as Link$ } from './Link'
 import type { LinkProps } from './Link'
-import { colors } from '@/styles'
+import { colors, mixins } from '@/styles'
 
 type Props = {
+  isSmall?: boolean,
   isSecondary?: boolean,
 } & LinkProps
 
 export function Button ({
+  isSmall,
   isSecondary,
   className,
   ...linkProps
@@ -17,7 +19,8 @@ export function Button ({
   return (
     <Link
       className={cx(
-        isSecondary && secondary,
+        !!isSmall && small,
+        !!isSecondary && secondary,
         className
       )}
       {...linkProps}
@@ -26,14 +29,24 @@ export function Button ({
 }
 
 const Link = styled(Link$)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${mixins.flexRow};
+  ${mixins.flexCenter};
+  ${mixins.fonts.light};
+
   height: 60px;
   padding: 0 45px;
-  border-radius: 50%;
+  border-radius: 30px;
   color: ${colors.white};
   background-color: ${colors.primary};
+  text-transform: uppercase;
+  text-decoration: none;
+`
+
+const small = css`
+  height: 44px;
+  padding: 13px 25px;
+  border-radius: 22px;
+  font-size: 16px;
 `
 
 const secondary = css`

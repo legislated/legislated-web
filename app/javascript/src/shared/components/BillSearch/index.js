@@ -1,2 +1,2 @@
 // @flow
-export { BillSearch, initialVariables } from './BillSearch'
+export { BillSearch } from './BillSearch'

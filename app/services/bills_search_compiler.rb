@@ -1,8 +1,15 @@
-class BillsSearchService
+class BillsSearchCompiler
+  def self.compile(query: nil, from: nil, to: nil)
+    q = Bill.by_date(start: from, end: to)
+    q = filter(bills_query, query) if query.present?
+    q
+  end
+
   def self.filter(query, search_query)
     search_query = search_query.strip.downcase
+
     if document?(search_query)
-      q = query.includes(:documents).references(:documents)
+      q = query.joins(:documents)
       q.where('documents.number ILIKE :q', q: "%#{search_query}%")
     else
       q = query.by_keyword(search_query)

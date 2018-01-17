@@ -41,6 +41,7 @@ export type Bill = {
   fullTextUrl: string,
   witnessSlipUrl: string,
   witnessSlipResultUrl: string,
+  updatedAt: string,
   hearing: Hearing,
   committee: Committee,
   chamber: Chamber

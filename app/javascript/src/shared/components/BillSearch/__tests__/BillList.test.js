@@ -7,24 +7,12 @@ import { session } from '@/storage'
 
 const { anything } = expect
 
-// mocks
-jest.mock('../BillSearch', () => {
-  const { addDays } = require('date-fns')
-
-  const initialVariables = {
-    count: 999,
-    startDate: new Date(2016, 12, 1),
-    endDate: addDays(new Date(2016, 12, 1), 6)
-  }
-
-  return { initialVariables }
-})
-
 // subject
 let subject
 
 const defaults = {
   animated: true,
+  pageSize: 20,
   viewer: {
     bills: {
       count: 2,
@@ -53,7 +41,7 @@ afterEach(() => {
 describe('#state', () => {
   it('enables animations by default', () => {
     loadSubject()
-    expect(subject).toHaveState('disableAnimations', false)
+    expect(subject).toHaveState('disablesAnimation', false)
   })
 
   it('disables animations on pop', () => {
@@ -61,7 +49,7 @@ describe('#state', () => {
       history: { action: 'POP' }
     })
 
-    expect(subject).toHaveState('disableAnimations', true)
+    expect(subject).toHaveState('disablesAnimation', true)
   })
 })
 
@@ -73,7 +61,7 @@ describe('#componentDidMount', () => {
       disableLifecycleMethods: false
     })
 
-    expect(subject).toHaveState('disableAnimations', false)
+    expect(subject).toHaveState('disablesAnimation', false)
   })
 })
 
@@ -99,13 +87,18 @@ describe('#render', () => {
     loadSubject()
     expect(subject).toMatchSnapshot()
   })
+
+  it('hides the load more button when there is no page size', () => {
+    loadSubject({ pageSize: null })
+    expect(subject).toMatchSnapshot()
+  })
 })
 
 describe('clicking load more', () => {
   it('loads another page', () => {
     loadSubject()
     subject.instance().didClickLoadMore()
-    expect(defaults.relay.loadMore).toHaveBeenCalledWith(999, anything())
+    expect(defaults.relay.loadMore).toHaveBeenCalledWith(20, anything())
   })
 
   it('does nothing if there this is the last page', () => {

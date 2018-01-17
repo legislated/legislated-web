@@ -9,7 +9,4 @@ export { CopyLink } from './CopyLink'
 export { Button } from './Button'
 export { CloseButton } from './CloseButton'
 
-export {
-  BillSearch,
-  initialVariables as billSearchInitialVariables
-} from './BillSearch'
+export { BillSearch } from './BillSearch'

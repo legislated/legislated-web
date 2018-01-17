@@ -5,22 +5,29 @@ import { cx, css } from 'react-emotion'
 import type { Rule } from 'glamor'
 import { colors } from '@/styles'
 
+type Location =
+  string | Object
+
 type Props = {
-  to?: string,
+  to?: Location,
   onClick?: () => void,
   styles?: Rule,
   className?: string,
   children?: React.Node
 }
 
+function isAbsoluteUrl (location: Location) {
+  return typeof location === 'string' && /https?:\/\//.test(location)
+}
+
 export function Link ({
-  to: url,
+  to: location,
   onClick,
   className,
   children,
   ...otherProps
 }: Props) {
-  if (!url && !onClick) {
+  if (!location && !onClick) {
     return null
   }
 
@@ -32,11 +39,11 @@ export function Link ({
   }
 
   // use anchor tags for absolute urls, otherwise use a router link
-  if (!url || /https?:\/\//.test(url)) {
-    return <a {...linkProps} href={url} target='_blank' />
+  if (!location || isAbsoluteUrl(location)) {
+    return <a {...linkProps} href={location} target='_blank' />
   } else {
     // $FlowFixMe: update react-router-dom flow libdefs
-    return <RouterLink {...linkProps} to={url} />
+    return <RouterLink {...linkProps} to={location} />
   }
 }
 

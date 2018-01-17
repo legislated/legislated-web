@@ -16,6 +16,4 @@ const base = merge(environment.toWebpackConfig(), {
   }
 })
 
-console.log(base)
-
 module.exports = base

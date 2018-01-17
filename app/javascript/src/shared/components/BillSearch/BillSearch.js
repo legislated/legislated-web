@@ -3,50 +3,47 @@ import * as React from 'react'
 import { createRefetchContainer, graphql } from 'react-relay'
 import type { RelayRefetchProp } from 'react-relay'
 import styled from 'react-emotion'
-import { addDays, endOfDay, startOfDay } from 'date-fns'
 import { throttle } from 'lodash'
 import { SearchField } from './SearchField'
 import { BillList } from './BillList'
 import { LoadingIndicator } from '../LoadingIndicator'
-import type { Viewer } from '@/types'
+import type { Viewer, SearchParams } from '@/types'
 import { mixins } from '@/styles'
 
 type Props = {
   viewer: ?Viewer,
+  onFilter?: (SearchParams) => void,
+  pageSize?: number,
   relay: RelayRefetchProp
 }
 
 type State = {
   query: string,
-  disableAnimations: boolean
-}
-
-export const initialVariables = {
-  query: '',
-  count: 20,
-  startDate: startOfDay(new Date()),
-  endDate: endOfDay(addDays(new Date(), 6))
+  disablesAnimation: boolean
 }
 
 let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   state = {
-    query: initialVariables.query,
-    disableAnimations: false
+    query: '',
+    disablesAnimation: false
   }
 
   // actions
   filterBillsForQuery = throttle((query: string) => {
-    const { relay } = this.props
+    const { onFilter, relay } = this.props
 
-    this.setState({ disableAnimations: true })
-    relay.refetch({ query }, null, (error: ?Error) => {
+    const filter = { query }
+    onFilter && onFilter(filter)
+
+    this.setState({ disablesAnimation: true })
+    relay.refetch({ filter }, null, (error: ?Error) => {
       if (error) {
         console.error(`error updaing query: ${error.toString()}`)
       }
 
       // completion comes back before render
       global.requestAnimationFrame(() => {
-        this.setState({ disableAnimations: false })
+        this.setState({ disablesAnimation: false })
       })
     })
   }, 300)
@@ -60,10 +57,10 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   // lifecycle
   render () {
     const { viewer } = this.props
-    const { query, disableAnimations } = this.state
+    const { query, disablesAnimation } = this.state
 
     return (
-      <Section>
+      <Search>
         <SearchField
           value={query}
           onChange={this.searchFieldDidChange}
@@ -75,11 +72,11 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
           {viewer && (
             <BillList
               viewer={viewer}
-              animated={!disableAnimations}
+              isAnimated={!disablesAnimation}
             />
           )}
         </Bills>
-      </Section>
+      </Search>
     )
   }
 }
@@ -88,8 +85,9 @@ BillSearch = createRefetchContainer(BillSearch,
   graphql`
     fragment BillSearch_viewer on Viewer {
       bills(
-        first: $count, after: $cursor,
-        query: $query, from: $startDate, to: $endDate
+        filter: $filter,
+        first: $count,
+        after: $cursor
       ) {
         edges { node { id } }
       }
@@ -98,8 +96,9 @@ BillSearch = createRefetchContainer(BillSearch,
   `,
   graphql`
     query BillSearchQuery(
-      $count: Int!, $cursor: String!,
-      $query: String!, $startDate: Time!, $endDate: Time!
+      $filter: BillsSearchFilter!,
+      $count: Int!,
+      $cursor: String!
     ) {
       viewer {
         ...BillSearch_viewer
@@ -108,12 +107,16 @@ BillSearch = createRefetchContainer(BillSearch,
   `
 )
 
-const Section = styled.div`
+const Search = styled.div`
   ${mixins.flexColumn};
 `
 
 const Bills = styled.div`
+  ${mixins.pageWidth};
+
   position: relative;
+  align-self: center;
+  margin-top: 50px;
 `
 
 export { BillSearch }

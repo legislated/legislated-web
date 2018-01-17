@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react'
+import styled, { css } from 'react-emotion'
 import { createFragmentContainer, graphql } from 'react-relay'
-import { css } from 'glamor'
 import { format } from 'date-fns'
 import type { Bill } from '@/types'
 import { Button } from '@/components'
-import { stylesheet, colors, mixins } from '@/styles'
+import { colors, mixins } from '@/styles'
 
 type Props = {
   bill: Bill,
@@ -15,34 +15,21 @@ type Props = {
 let BillCell = function BillCell ({
   bill
 }: Props) {
-  const formattedDate = format(bill.hearing.date, 'DD/MM/YYYY')
-
   return (
-    <div {...css(rules.container)}>
-      <div {...rules.info}>
-        <div {...rules.header}>
-          <div {...rules.document}>
-            <h3>{bill.title}</h3>
-            <span>{bill.documentNumber}</span>
-          </div>
-          <p>{formattedDate}</p>
-        </div>
-        {bill.summary && <p {...rules.summary}>{bill.summary}</p>}
-      </div>
-      <div {...rules.actions}>
-        <Button
-          styles={rules.button}
-          to={bill.witnessSlipUrl}
-          children='Take Action'
-        />
-        <Button
-          styles={rules.button}
-          to={`/bill/${bill.id}`}
-          isSecondary
-          children='More Info'
-        />
-      </div>
-    </div>
+    <Cell>
+      <Subtitle>
+        <Icon src={null} alt='Bill Icon' />
+        <p>{bill.documentNumber} - Updated {format(bill.updatedAt, 'DD/MM/YYYY')}</p>
+      </Subtitle>
+      <h3>{bill.title}</h3>
+      <Status />
+      <p>{bill.summary}</p>
+      <Button
+        isSmall
+        to={`/bill/${bill.id}`}
+        children='More Info'
+      />
+    </Cell>
   )
 }
 
@@ -52,86 +39,50 @@ BillCell = createFragmentContainer(BillCell, graphql`
     documentNumber
     title
     summary
-    witnessSlipUrl
-    detailsUrl
-    fullTextUrl
+    updatedAt
     hearing {
       date
     }
   }
 `)
 
-const rules = stylesheet({
-  container: {
-    ...mixins.shadows.low,
-    ...mixins.borders.low(),
-    display: 'flex',
-    padding: 15,
-    marginBottom: 15,
-    backgroundColor: colors.neutral,
-    '&:last-child': {
-      marginBottom: 0
-    },
-    ...mixins.mobile.glam({
-      flexDirection: 'column'
-    })
-  },
-  info: {
-    ...mixins.borders.low(['right']),
-    flex: 1,
-    paddingRight: 15,
-    ...mixins.mobile.glam({
-      ...mixins.borders.low(['bottom']),
-      paddingRight: 0,
-      paddingBottom: 15,
-      marginBottom: 15,
-      borderRight: 'none'
-    })
-  },
-  header: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  document: {
-    marginBottom: 5,
-    '> *': {
-      display: 'inline-block'
-    },
-    '> h3': {
-      ...mixins.fonts.bold,
-      marginRight: 10
-    }
-  },
-  actions: {
-    display: 'flex',
-    flexDirection: 'column',
-    paddingLeft: 15,
-    ...mixins.mobile.glam({
-      flexDirection: 'row',
-      paddingLeft: 0
-    })
-  },
-  button: {
-    width: 200,
-    marginBottom: 10,
-    ':last-child': {
-      marginBottom: 0
-    },
-    ...mixins.mobile.glam({
-      flex: 1,
-      width: 'auto',
-      marginBottom: 0,
-      marginRight: 10,
-      ':last-child': {
-        marginRight: 0
-      }
-    })
-  },
-  summary: {
-    ...mixins.borders.low(['top']),
-    marginTop: 10,
-    paddingTop: 10
+const spacing = css`
+  margin-bottom: 15px;
+`
+
+const Cell = styled.div`
+  ${mixins.flexColumn};
+
+  align-items: flex-start;
+  max-width: 960px;
+
+  > h3, > p {
+    ${spacing};
   }
-})
+`
+
+const Subtitle = styled.div`
+  ${mixins.flexRow};
+
+  align-items: flex-end;
+  margin-bottom: 12px;
+  color: ${colors.secondary};
+`
+
+const Icon = styled.img`
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  background-color: ${colors.secondary};
+`
+
+const Status = styled.div`
+  ${spacing};
+
+  align-self: stretch;
+  max-width: 830px;
+  height: 13px;
+  background-color: ${colors.gray4};
+`
 
 export { BillCell }

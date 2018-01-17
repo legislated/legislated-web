@@ -59,27 +59,14 @@ module Types
       resolve -> (_obj, _args, _ctx) { Hearing.all }
     end
 
-    BillSearchConnectionType = BillType.define_connection do
-      name 'BillSearchConnection'
-
-      field :count do
-        description 'The total number of bills in the search results'
-        type !types.Int
-        resolve -> (obj, _args, _ctx) { obj.nodes.count }
-      end
-    end
-
-    connection :bills, BillSearchConnectionType do
+    connection :bills, BillsSearchType do
       description 'All bills'
 
-      argument :query, types.String, 'Returns bills whose title or summary match the query'
-      argument :from, DateTimeType, 'Returns bills whose hearing is on or after the date-time'
-      argument :to, DateTimeType, 'Returns bills whose hearings is on or before the date-time'
+      argument :filter, BillsSearchFilterType
 
       resolve -> (_obj, args, _ctx) do
-        bills_query = Bill.by_date(start: args[:from], end: args[:to])
-        bills_query = BillsSearchService.filter(bills_query, args[:query]) if args[:query].present?
-        bills_query
+        args = args.parse_graphql_data
+        BillsSearchCompiler.compile(args[:filter])
       end
     end
 

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 47c7cf4a1827225403d274bf723def0c
+ * @relayHash 6e1e34014c45cca97bc0bdcafcf2ec2c
  */
 
 /* eslint-disable */
@@ -17,11 +17,9 @@ export type BillSearchQueryResponse = {|
 
 /*
 query BillSearchQuery(
+  $filter: BillsSearchFilter!
   $count: Int!
   $cursor: String!
-  $query: String!
-  $startDate: Time!
-  $endDate: Time!
 ) {
   viewer {
     ...BillSearch_viewer
@@ -30,7 +28,7 @@ query BillSearchQuery(
 }
 
 fragment BillSearch_viewer on Viewer {
-  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {
+  bills(filter: $filter, first: $count, after: $cursor) {
     edges {
       node {
         id
@@ -41,7 +39,7 @@ fragment BillSearch_viewer on Viewer {
 }
 
 fragment BillList_viewer on Viewer {
-  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {
+  bills(filter: $filter, first: $count, after: $cursor) {
     count
     pageInfo {
       hasNextPage
@@ -63,9 +61,7 @@ fragment BillCell_bill on Bill {
   documentNumber
   title
   summary
-  witnessSlipUrl
-  detailsUrl
-  fullTextUrl
+  updatedAt
   hearing {
     date
     id
@@ -78,6 +74,12 @@ const batch /*: ConcreteBatch*/ = {
     "argumentDefinitions": [
       {
         "kind": "LocalArgument",
+        "name": "filter",
+        "type": "BillsSearchFilter!",
+        "defaultValue": null
+      },
+      {
+        "kind": "LocalArgument",
         "name": "count",
         "type": "Int!",
         "defaultValue": null
@@ -86,24 +88,6 @@ const batch /*: ConcreteBatch*/ = {
         "kind": "LocalArgument",
         "name": "cursor",
         "type": "String!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "query",
-        "type": "String!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "startDate",
-        "type": "Time!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "endDate",
-        "type": "Time!",
         "defaultValue": null
       }
     ],
@@ -138,6 +122,12 @@ const batch /*: ConcreteBatch*/ = {
     "argumentDefinitions": [
       {
         "kind": "LocalArgument",
+        "name": "filter",
+        "type": "BillsSearchFilter!",
+        "defaultValue": null
+      },
+      {
+        "kind": "LocalArgument",
         "name": "count",
         "type": "Int!",
         "defaultValue": null
@@ -146,24 +136,6 @@ const batch /*: ConcreteBatch*/ = {
         "kind": "LocalArgument",
         "name": "cursor",
         "type": "String!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "query",
-        "type": "String!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "startDate",
-        "type": "Time!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "endDate",
-        "type": "Time!",
         "defaultValue": null
       }
     ],
@@ -191,30 +163,18 @@ const batch /*: ConcreteBatch*/ = {
               },
               {
                 "kind": "Variable",
+                "name": "filter",
+                "variableName": "filter",
+                "type": "BillsSearchFilter"
+              },
+              {
+                "kind": "Variable",
                 "name": "first",
                 "variableName": "count",
                 "type": "Int"
-              },
-              {
-                "kind": "Variable",
-                "name": "from",
-                "variableName": "startDate",
-                "type": "Time"
-              },
-              {
-                "kind": "Variable",
-                "name": "query",
-                "variableName": "query",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "to",
-                "variableName": "endDate",
-                "type": "Time"
               }
             ],
-            "concreteType": "BillSearchConnection",
+            "concreteType": "BillsSearch",
             "name": "bills",
             "plural": false,
             "selections": [
@@ -273,21 +233,7 @@ const batch /*: ConcreteBatch*/ = {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
-                        "name": "witnessSlipUrl",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "detailsUrl",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "fullTextUrl",
+                        "name": "updatedAt",
                         "storageKey": null
                       },
                       {
@@ -375,36 +321,22 @@ const batch /*: ConcreteBatch*/ = {
               },
               {
                 "kind": "Variable",
+                "name": "filter",
+                "variableName": "filter",
+                "type": "BillsSearchFilter"
+              },
+              {
+                "kind": "Variable",
                 "name": "first",
                 "variableName": "count",
                 "type": "Int"
-              },
-              {
-                "kind": "Variable",
-                "name": "from",
-                "variableName": "startDate",
-                "type": "Time"
-              },
-              {
-                "kind": "Variable",
-                "name": "query",
-                "variableName": "query",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "to",
-                "variableName": "endDate",
-                "type": "Time"
               }
             ],
             "handle": "connection",
             "name": "bills",
             "key": "BillList_bills",
             "filters": [
-              "query",
-              "from",
-              "to"
+              "filter"
             ]
           },
           {
@@ -419,7 +351,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query BillSearchQuery(\n  $count: Int!\n  $cursor: String!\n  $query: String!\n  $startDate: Time!\n  $endDate: Time!\n) {\n  viewer {\n    ...BillSearch_viewer\n    id\n  }\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(first: $count, after: $cursor, query: $query, from: $startDate, to: $endDate) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  witnessSlipUrl\n  detailsUrl\n  fullTextUrl\n  hearing {\n    date\n    id\n  }\n}\n"
+  "text": "query BillSearchQuery(\n  $filter: BillsSearchFilter!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillSearch_viewer\n    id\n  }\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  updatedAt\n  hearing {\n    date\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

@@ -1,7 +1,8 @@
 // @flow
 export type {
   StyleProp,
-  Notification
+  Notification,
+  SearchParams
 } from './client'
 
 export type {

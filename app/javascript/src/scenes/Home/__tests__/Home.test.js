@@ -2,7 +2,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { defaultsDeep } from 'lodash'
-import { HomeScene } from '../HomeScene'
+import { Home } from '../Home'
 
 // subject
 let subject
@@ -12,7 +12,7 @@ const defaults = {
 }
 
 function loadSubject (props = {}) {
-  subject = shallow(<HomeScene {...defaultsDeep(props, defaults)} />)
+  subject = shallow(<Home {...defaultsDeep(props, defaults)} />)
 }
 
 // specs
