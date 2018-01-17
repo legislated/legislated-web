@@ -41,13 +41,13 @@ describe('#filterBillsForQuery', () => {
   it('disables animations', () => {
     loadSubject()
     subject.instance().filterBillsForQuery('foo')
-    expect(subject).toHaveState('disableAnimations', true)
+    expect(subject).toHaveState('disablesAnimation', true)
   })
 
   it('reteches the bills', () => {
     loadSubject()
     subject.instance().filterBillsForQuery('foo')
-    expect(defaults.relay.refetch).toHaveBeenCalledWith({ query: 'foo' }, null, anything())
+    expect(defaults.relay.refetch).toHaveBeenCalledWith({ filter: { query: 'foo' } }, null, anything())
   })
 })
 

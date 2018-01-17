@@ -25,7 +25,7 @@ exports[`#render shows the search view 1`] = `
       isLoading={false}
     />
     <BillList
-      animated={true}
+      isAnimated={true}
       viewer="test-viewer"
     />
   </Styled(div)>

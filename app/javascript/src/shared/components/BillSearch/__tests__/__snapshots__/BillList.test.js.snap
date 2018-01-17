@@ -1,50 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#render shows the list 1`] = `
-<div
-  data-css-1szwbq4=""
->
-  <div
-    data-css-t7v3vx=""
-  >
-    <h2>
-      Upcoming Bills
-    </h2>
-    <div>
-      Jan 1st to Jan 7th
-    </div>
-    <div>
-      Found 2 results.
-    </div>
-  </div>
+exports[`#render hides the load more button when there is no page size 1`] = `
+<Styled(div)>
+  <h5>
+    Found 2 results.
+  </h5>
   <TranslateAndFade
-    disable={false}
+    component={[Function]}
+    disable={true}
   >
-    <BillCell
-      bill={
-        Object {
-          "id": 1,
-        }
-      }
+    <div
       key="1"
-    />
-    <BillCell
-      bill={
-        Object {
-          "id": 2,
+    >
+      <BillCell
+        bill={
+          Object {
+            "id": 1,
+          }
         }
-      }
+      />
+    </div>
+    <div
       key="2"
-    />
+    >
+      <BillCell
+        bill={
+          Object {
+            "id": 2,
+          }
+        }
+      />
+    </div>
   </TranslateAndFade>
-  <LoadMoreButton
-    hasMore={true}
+</Styled(div)>
+`;
+
+exports[`#render shows the list 1`] = `
+<Styled(div)>
+  <h5>
+    Found 2 results.
+  </h5>
+  <TranslateAndFade
+    component={[Function]}
+    disable={true}
+  >
+    <div
+      key="1"
+    >
+      <BillCell
+        bill={
+          Object {
+            "id": 1,
+          }
+        }
+      />
+    </div>
+    <div
+      key="2"
+    >
+      <BillCell
+        bill={
+          Object {
+            "id": 2,
+          }
+        }
+      />
+    </div>
+  </TranslateAndFade>
+  <Styled(Button)
+    isSecondary={true}
     onClick={[Function]}
-    styles={
-      Object {
-        "data-css-1n5n5pb": "",
-      }
-    }
-  />
-</div>
+  >
+    Load More
+  </Styled(Button)>
+</Styled(div)>
 `;

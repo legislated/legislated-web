@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the scene 1`] = `
+<Styled(section)>
+  <HomeIntro />
+  <BillSearch
+    onFilter={[Function]}
+    viewer="test-viewer"
+  />
+  <Styled(Button)
+    isSecondary={true}
+    to={
+      Object {
+        "pathname": "/bills",
+        "state": Object {
+          "params": undefined,
+        },
+      }
+    }
+  >
+    View All Bills
+  </Styled(Button)>
+</Styled(section)>
+`;

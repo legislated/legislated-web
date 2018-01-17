@@ -1,112 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render hides the summary when missing 1`] = `
-<div
-  data-css-kc2zyq=""
->
-  <div
-    data-css-154k5mk=""
+<Styled(div)>
+  <Styled(div)>
+    <Styled(img)
+      alt="Bill Icon"
+      src={null}
+    />
+    <p>
+      HB1234
+       - Updated 
+      Invalid Date
+    </p>
+  </Styled(div)>
+  <h3>
+    Foo
+  </h3>
+  <Styled(div) />
+  <p />
+  <Button
+    isSmall={true}
+    to="/bill/1234"
   >
-    <div
-      data-css-1t62idy=""
-    >
-      <div
-        data-css-iajwtw=""
-      >
-        <h3>
-          Foo
-        </h3>
-        <span>
-          HB1234
-        </span>
-      </div>
-      <p>
-        01/01/2010
-      </p>
-    </div>
-  </div>
-  <div
-    data-css-1e193l7=""
-  >
-    <Button
-      styles={
-        Object {
-          "data-css-wkh0gw": "",
-        }
-      }
-      to="http://www.test.com/slip"
-    >
-      Take Action
-    </Button>
-    <Button
-      isSecondary={true}
-      styles={
-        Object {
-          "data-css-wkh0gw": "",
-        }
-      }
-      to="/bill/1234"
-    >
-      More Info
-    </Button>
-  </div>
-</div>
+    More Info
+  </Button>
+</Styled(div)>
 `;
 
 exports[`#render renders properly 1`] = `
-<div
-  data-css-kc2zyq=""
->
-  <div
-    data-css-154k5mk=""
-  >
-    <div
-      data-css-1t62idy=""
-    >
-      <div
-        data-css-iajwtw=""
-      >
-        <h3>
-          Foo
-        </h3>
-        <span>
-          HB1234
-        </span>
-      </div>
-      <p>
-        01/01/2010
-      </p>
-    </div>
-    <p
-      data-css-jpl8hl=""
-    >
-      A bill, fantastic
+<Styled(div)>
+  <Styled(div)>
+    <Styled(img)
+      alt="Bill Icon"
+      src={null}
+    />
+    <p>
+      HB1234
+       - Updated 
+      Invalid Date
     </p>
-  </div>
-  <div
-    data-css-1e193l7=""
+  </Styled(div)>
+  <h3>
+    Foo
+  </h3>
+  <Styled(div) />
+  <p>
+    A bill, fantastic
+  </p>
+  <Button
+    isSmall={true}
+    to="/bill/1234"
   >
-    <Button
-      styles={
-        Object {
-          "data-css-wkh0gw": "",
-        }
-      }
-      to="http://www.test.com/slip"
-    >
-      Take Action
-    </Button>
-    <Button
-      isSecondary={true}
-      styles={
-        Object {
-          "data-css-wkh0gw": "",
-        }
-      }
-      to="/bill/1234"
-    >
-      More Info
-    </Button>
-  </div>
-</div>
+    More Info
+  </Button>
+</Styled(div)>
 `;
