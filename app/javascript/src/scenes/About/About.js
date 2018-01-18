@@ -1,9 +1,9 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import { Link } from '@/components'
 import { stylesheet, colors, mixins } from '@/styles'
 
-export class AboutScene extends Component {
+export class About extends React.Component {
   render () {
     return <div {...rules.container}>
       <div {...rules.content}>

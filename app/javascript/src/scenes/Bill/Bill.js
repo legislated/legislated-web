@@ -51,7 +51,7 @@ export { Bill }
 
 export function BillRenderer () {
   const query = graphql`
-    query billRouteQuery($id: ID!) {
+    query BillQuery($id: ID!) {
       viewer {
         bill(id: $id) {
           ...Content_bill

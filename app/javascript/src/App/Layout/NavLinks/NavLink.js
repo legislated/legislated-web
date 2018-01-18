@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
 import { Link } from '@/components'
 import type { LinkProps } from '@/components'
-import { mixins, colors, values } from '@/styles'
+import { mixins, colors } from '@/styles'
 import { removeRouterProps } from '@/functions'
 
 type Props

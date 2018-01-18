@@ -1,21 +1,19 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import { stylesheet, mixins } from '@/styles'
 
-export class Question extends Component {
-  props: {
-    title: string,
-    children?: any
-  }
+type Props = {
+  title: string,
+  children?: any
+}
 
-  // lifecycle
-  render () {
-    const { title, children } = this.props
-    return <div {...rules.question}>
+export function HelpQuestion ({ title, children }: Props) {
+  return (
+    <div {...rules.question}>
       <h3>{title}</h3>
       {children}
     </div>
-  }
+  )
 }
 
 const rules = stylesheet({

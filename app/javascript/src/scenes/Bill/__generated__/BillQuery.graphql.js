@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 27284dd165647c05dddae5d9daa33eba
+ * @relayHash ef189c2e02ee919eea3c5640685b9d2b
  */
 
 /* eslint-disable */
@@ -9,25 +9,23 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type billRouteQueryResponse = {|
-  +viewer: ?{| |};
+export type BillQueryResponse = {|
+  +viewer: ?{|
+    +bill: ?{| |};
+  |};
 |};
 */
 
 
 /*
-query billRouteQuery(
+query BillQuery(
   $id: ID!
 ) {
   viewer {
-    ...BillScene_viewer
-    id
-  }
-}
-
-fragment BillScene_viewer on Viewer {
-  bill(id: $id) {
-    ...Content_bill
+    bill(id: $id) {
+      ...Content_bill
+      id
+    }
     id
   }
 }
@@ -72,7 +70,7 @@ const batch /*: ConcreteBatch*/ = {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "billRouteQuery",
+    "name": "BillQuery",
     "selections": [
       {
         "kind": "LinkedField",
@@ -83,9 +81,27 @@ const batch /*: ConcreteBatch*/ = {
         "plural": false,
         "selections": [
           {
-            "kind": "FragmentSpread",
-            "name": "BillScene_viewer",
-            "args": null
+            "kind": "LinkedField",
+            "alias": null,
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "id",
+                "variableName": "id",
+                "type": "ID!"
+              }
+            ],
+            "concreteType": "Bill",
+            "name": "bill",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "FragmentSpread",
+                "name": "Content_bill",
+                "args": null
+              }
+            ],
+            "storageKey": null
           }
         ],
         "storageKey": null
@@ -96,7 +112,7 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "billRouteQuery",
+  "name": "BillQuery",
   "query": {
     "argumentDefinitions": [
       {
@@ -107,7 +123,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ],
     "kind": "Root",
-    "name": "billRouteQuery",
+    "name": "BillQuery",
     "operation": "query",
     "selections": [
       {
@@ -286,7 +302,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query billRouteQuery(\n  $id: ID!\n) {\n  viewer {\n    ...BillScene_viewer\n    id\n  }\n}\n\nfragment BillScene_viewer on Viewer {\n  bill(id: $id) {\n    ...Content_bill\n    id\n  }\n}\n\nfragment Content_bill on Bill {\n  documentNumber\n  title\n  summary\n  sponsorName\n  hearing {\n    date\n    id\n  }\n  committee {\n    name\n    id\n  }\n  chamber {\n    name\n    id\n  }\n  ...Actions_bill\n}\n\nfragment Actions_bill on Bill {\n  detailsUrl\n  fullTextUrl\n  witnessSlipUrl\n  witnessSlipResultUrl\n}\n"
+  "text": "query BillQuery(\n  $id: ID!\n) {\n  viewer {\n    bill(id: $id) {\n      ...Content_bill\n      id\n    }\n    id\n  }\n}\n\nfragment Content_bill on Bill {\n  documentNumber\n  title\n  summary\n  sponsorName\n  hearing {\n    date\n    id\n  }\n  committee {\n    name\n    id\n  }\n  chamber {\n    name\n    id\n  }\n  ...Actions_bill\n}\n\nfragment Actions_bill on Bill {\n  detailsUrl\n  fullTextUrl\n  witnessSlipUrl\n  witnessSlipResultUrl\n}\n"
 };
 
 module.exports = batch;

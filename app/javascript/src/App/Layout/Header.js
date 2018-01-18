@@ -6,7 +6,7 @@ import { Logo } from './Logo'
 import { LogoLink } from './LogoLink'
 import { NavLinks } from './NavLinks'
 import { TranslateAndFade } from '@/components'
-import { mixins, colors, values } from '@/styles'
+import { mixins, colors } from '@/styles'
 
 type State = {
   isSticky: boolean

@@ -1,12 +1,12 @@
 // @flow
-import React, { Component } from 'react'
-import { Question } from './components'
+import * as React from 'react'
+import { HelpQuestion as Question } from './HelpQuestion'
 import { Link } from '@/components'
 import { stylesheet, colors, mixins } from '@/styles'
 
-export class FaqScene extends Component {
-  render () {
-    return <div {...rules.container}>
+export function Help () {
+  return (
+    <div {...rules.container}>
       <div {...rules.content}>
         <h1>FAQ</h1>
         <Question title='What is a Witness Slip?'>
@@ -161,7 +161,7 @@ export class FaqScene extends Component {
         </Question>
       </div>
     </div>
-  }
+  )
 }
 
 const rules = stylesheet({

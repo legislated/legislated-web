@@ -2,7 +2,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { NavLink } from './NavLink'
-import { mixins, values } from '@/styles'
+import { mixins } from '@/styles'
 
 type Props = {
   onClick?: Function,
@@ -20,7 +20,7 @@ export function NavLinks ({
   return (
     <Nav className={className}>
       <NavLink {...linkProps} to='/' children='Home' />
-      <NavLink {...linkProps} to='#' children='Bills' />
+      <NavLink {...linkProps} to='/bills' children='Bills' />
       <NavLink {...linkProps} to='/faq' children='FAQ' />
       <NavLink {...linkProps} to='/about' children='About Us' />
     </Nav>

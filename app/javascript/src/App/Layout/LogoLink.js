@@ -1,7 +1,7 @@
 // @flow
 import { Link } from 'react-router-dom'
 import styled from 'react-emotion'
-import { colors, values } from '@/styles'
+import { colors } from '@/styles'
 
 export const LogoLink = styled(Link)`
   display: flex;

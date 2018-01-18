@@ -59,7 +59,7 @@ const BillsButton = styled(Button)`
 
 export function HomeRenderer () {
   const query = graphql`
-    query HomeRendererQuery(
+    query HomeQuery(
       $filter: BillsSearchFilter!,
       $count: Int!,
       $cursor: String!
@@ -72,8 +72,8 @@ export function HomeRenderer () {
 
   return (
     <RelayRenderer
-      query={query}
       root={Home}
+      query={query}
       getVariables={() => ({
         count: 3,
         cursor: '',

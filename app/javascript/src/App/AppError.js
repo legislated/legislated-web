@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import styled from 'react-emotion'
-import { mixins, values } from '@/styles'
+import { mixins } from '@/styles'
 
 type Props = {
   children?: React.Node
