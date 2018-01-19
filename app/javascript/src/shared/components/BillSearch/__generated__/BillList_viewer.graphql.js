@@ -64,9 +64,21 @@ const fragment /*: ConcreteFragment*/ = {
       "args": [
         {
           "kind": "Variable",
+          "name": "after",
+          "variableName": "cursor",
+          "type": "String"
+        },
+        {
+          "kind": "Variable",
           "name": "filter",
           "variableName": "filter",
           "type": "BillsSearchFilter"
+        },
+        {
+          "kind": "Variable",
+          "name": "first",
+          "variableName": "count",
+          "type": "Int"
         }
       ],
       "concreteType": "BillsSearch",

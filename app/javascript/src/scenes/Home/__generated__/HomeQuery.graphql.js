@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 645001bf3e0ccf0069b89b3306071d1c
+ * @relayHash 819d38c775c95d99869fb9836dd7c2f1
  */
 
 /* eslint-disable */
@@ -31,8 +31,14 @@ fragment BillSearch_viewer on Viewer {
   bills(filter: $filter, first: $count, after: $cursor) {
     edges {
       node {
+        __typename
         id
       }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
     }
   }
   ...BillList_viewer
@@ -275,13 +281,6 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               },
               {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "count",
-                "storageKey": null
-              },
-              {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
@@ -293,17 +292,24 @@ const batch /*: ConcreteBatch*/ = {
                     "kind": "ScalarField",
                     "alias": null,
                     "args": null,
-                    "name": "hasNextPage",
+                    "name": "endCursor",
                     "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
                     "args": null,
-                    "name": "endCursor",
+                    "name": "hasNextPage",
                     "storageKey": null
                   }
                 ],
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "count",
                 "storageKey": null
               }
             ],
@@ -334,9 +340,43 @@ const batch /*: ConcreteBatch*/ = {
             ],
             "handle": "connection",
             "name": "bills",
+            "key": "BillSearch_bills",
+            "filters": [
+              "filter",
+              "first",
+              "after"
+            ]
+          },
+          {
+            "kind": "LinkedHandle",
+            "alias": null,
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "after",
+                "variableName": "cursor",
+                "type": "String"
+              },
+              {
+                "kind": "Variable",
+                "name": "filter",
+                "variableName": "filter",
+                "type": "BillsSearchFilter"
+              },
+              {
+                "kind": "Variable",
+                "name": "first",
+                "variableName": "count",
+                "type": "Int"
+              }
+            ],
+            "handle": "connection",
+            "name": "bills",
             "key": "BillList_bills",
             "filters": [
-              "filter"
+              "filter",
+              "first",
+              "after"
             ]
           },
           {
@@ -351,7 +391,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query HomeQuery(\n  $filter: BillsSearchFilter!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillSearch_viewer\n    id\n  }\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  updatedAt\n  hearing {\n    date\n    id\n  }\n}\n"
+  "text": "query HomeQuery(\n  $filter: BillsSearchFilter!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillSearch_viewer\n    id\n  }\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    edges {\n      node {\n        __typename\n        id\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  updatedAt\n  hearing {\n    date\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

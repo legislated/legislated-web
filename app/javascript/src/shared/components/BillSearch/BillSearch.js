@@ -56,8 +56,15 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
 
   // lifecycle
   render () {
-    const { viewer } = this.props
-    const { query, disablesAnimation } = this.state
+    const {
+      viewer,
+      pageSize
+    } = this.props
+
+    const {
+      query,
+      disablesAnimation
+    } = this.state
 
     return (
       <Search>
@@ -72,6 +79,7 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
           {viewer && (
             <BillList
               viewer={viewer}
+              pageSize={pageSize}
               isAnimated={!disablesAnimation}
             />
           )}
@@ -88,8 +96,12 @@ BillSearch = createRefetchContainer(BillSearch,
         filter: $filter,
         first: $count,
         after: $cursor
-      ) {
-        edges { node { id } }
+      ) @connection(key: "BillSearch_bills", filters: ["filter", "first", "after"]) {
+        edges {
+          node {
+            id
+          }
+        }
       }
       ...BillList_viewer
     }
