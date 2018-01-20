@@ -3011,6 +3011,16 @@
                 "ofType": null
               },
               "defaultValue": null
+            },
+            {
+              "name": "key",
+              "description": "Disambiguates queries for cache isolation",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "interfaces": null,
