@@ -67,7 +67,6 @@ let BillList = class BillList extends React.Component<*, Props, State> {
       viewer,
       isAnimated,
       pageSize,
-      // $FlowFixMe: intersection types
       relay
     } = this.props
 
@@ -106,7 +105,7 @@ BillList = withRouter(createPaginationContainer(BillList, graphql`
       filter: $filter,
       first: $count,
       after: $cursor
-    ) @connection(key: "BillList_bills", filters: ["filter", "first", "after"]) {
+    ) @connection(key: "BillList_bills") {
       count
       pageInfo {
         hasNextPage

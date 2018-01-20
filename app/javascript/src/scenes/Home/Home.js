@@ -78,6 +78,7 @@ export function HomeRenderer () {
         count: 3,
         cursor: '',
         filter: {
+          key: 'home',
           query: ''
         }
       })}

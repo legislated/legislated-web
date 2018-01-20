@@ -96,7 +96,7 @@ BillSearch = createRefetchContainer(BillSearch,
         filter: $filter,
         first: $count,
         after: $cursor
-      ) @connection(key: "BillSearch_bills", filters: ["filter", "first", "after"]) {
+      ) @connection(key: "BillSearch_bills") {
         edges {
           node {
             id

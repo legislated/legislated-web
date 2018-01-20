@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8b6d1396648a9cb331ad31abbf668268
+ * @relayHash 3d95704bd92359c1acd6deee6b850860
  */
 
 /* eslint-disable */
@@ -342,9 +342,7 @@ const batch /*: ConcreteBatch*/ = {
             "name": "bills",
             "key": "BillSearch_bills",
             "filters": [
-              "filter",
-              "first",
-              "after"
+              "filter"
             ]
           },
           {
@@ -374,9 +372,7 @@ const batch /*: ConcreteBatch*/ = {
             "name": "bills",
             "key": "BillList_bills",
             "filters": [
-              "filter",
-              "first",
-              "after"
+              "filter"
             ]
           },
           {

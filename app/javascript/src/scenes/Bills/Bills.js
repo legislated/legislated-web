@@ -41,6 +41,7 @@ export function BillsRenderer () {
         count: PAGE_SIZE,
         cursor: '',
         filter: {
+          key: 'bills',
           query: ''
         }
       })}

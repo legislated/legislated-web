@@ -1,5 +1,5 @@
 module BillsSearchCompiler
-  def self.compile(query: nil, from: nil, to: nil)
+  def self.compile(query: nil, from: nil, to: nil, **_)
     q = Bill.by_date(start: from, end: to)
     q = filter(q, query) if query.present?
     q
