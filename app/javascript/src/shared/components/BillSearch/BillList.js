@@ -75,8 +75,6 @@ let BillList = class BillList extends React.Component<*, Props, State> {
       disablesAnimation
     } = this.state
 
-    console.log(`list - render: ${viewer == null ? 0 : viewer.bills.edges.length} bills; pageSize: ${pageSize || 'null'}; more: ${relay.hasMore()}`)
-
     return (
       <Bills>
         <h5>{formatCount(viewer)}</h5>
