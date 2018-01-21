@@ -56,7 +56,7 @@ const Container = styled.div`
   ${mixins.pageMargin};
 
   align-self: center;
-  padding: 90px 0;
+  padding: 70px 0;
 
   > h2 {
     margin-bottom: 25px;
