@@ -32,6 +32,32 @@ export type Hearing = {
   date: string,
 }
 
+export type StepActor
+  = 'LOWER'
+  | 'LOWER_COMMITTEE'
+  | 'UPPER'
+  | 'UPPER_COMMITTEE'
+  | 'GOVERNOR'
+
+export type StepAction
+  = 'INTRODUCED'
+  | 'RESOLVED'
+
+export type StepResolution
+  = 'PASSED'
+  | 'FAILED'
+  | 'SIGNED'
+  | 'VETOED'
+  | 'VETOED_LINE'
+  | 'NONE'
+
+export type Step = {
+  actor: StepActor,
+  action: StepAction,
+  resolution: StepResolution,
+  date: string
+}
+
 export type Bill = {
   id: string,
   documentNumber: string,

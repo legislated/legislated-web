@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a32527c5aa7725ce53489e25e34ab26e
+ * @relayHash 5c51151ec8080e43418068cf671dfab2
  */
 
 /* eslint-disable */
@@ -71,6 +71,17 @@ fragment BillCell_bill on Bill {
   hearing {
     date
     id
+  }
+  ...BillStatus_bill
+}
+
+fragment BillStatus_bill on Bill {
+  id
+  steps {
+    actor
+    action
+    resolution
+    date
   }
 }
 */
@@ -266,6 +277,45 @@ const batch /*: ConcreteBatch*/ = {
                           }
                         ],
                         "storageKey": null
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "args": null,
+                        "concreteType": "Step",
+                        "name": "steps",
+                        "plural": true,
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "args": null,
+                            "name": "actor",
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "args": null,
+                            "name": "action",
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "args": null,
+                            "name": "resolution",
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "args": null,
+                            "name": "date",
+                            "storageKey": null
+                          }
+                        ],
+                        "storageKey": null
                       }
                     ],
                     "storageKey": null
@@ -387,7 +437,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query BillsQuery(\n  $filter: BillsSearchFilter!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillSearch_viewer\n    id\n  }\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    edges {\n      node {\n        __typename\n        id\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  updatedAt\n  hearing {\n    date\n    id\n  }\n}\n"
+  "text": "query BillsQuery(\n  $filter: BillsSearchFilter!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillSearch_viewer\n    id\n  }\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    edges {\n      node {\n        __typename\n        id\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  updatedAt\n  hearing {\n    date\n    id\n  }\n  ...BillStatus_bill\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n    resolution\n    date\n  }\n}\n"
 };
 
 module.exports = batch;

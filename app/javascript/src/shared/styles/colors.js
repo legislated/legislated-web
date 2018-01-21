@@ -6,6 +6,7 @@ export const gray2 = '#5c5c5c'
 export const gray3 = '#979797'
 export const gray4 = '#c9c9c9'
 export const gray5 = '#d1d1d1'
+export const gray6 = '#f0f0f0'
 export const primary = '#ee5d45'
 export const secondary = '#92cbe2'
 
