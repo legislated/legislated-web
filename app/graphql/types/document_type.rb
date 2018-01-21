@@ -2,6 +2,7 @@ module Types
   DocumentType = GraphQL::ObjectType.define do
     name 'Document'
     description "A version of a bill's text"
+
     global_id_field :id
     interfaces [GraphQL::Relay::Node.interface]
 

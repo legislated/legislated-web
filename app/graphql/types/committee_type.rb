@@ -2,6 +2,7 @@ module Types
   CommitteeType = GraphQL::ObjectType.define do
     name 'Committee'
     description 'A legislative committee'
+
     global_id_field :id
     interfaces [GraphQL::Relay::Node.interface]
 
