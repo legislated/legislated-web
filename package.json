@@ -6,7 +6,7 @@
   "license": "GPL-3.0",
   "author": "Ty Cobb",
   "engines": {
-    "node": "8.4.0"
+    "node": ">= 8.0.0"
   },
   "scripts": {
     "start": "run-p dev-server hypernova",
