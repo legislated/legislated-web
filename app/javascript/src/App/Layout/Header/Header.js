@@ -12,7 +12,7 @@ let Header = function Header ({ match, location }: Props) {
   if (location.pathname === '/') {
     return <HeroHeader />
   } else {
-    return <HeaderNavbar isSticky />
+    return <HeaderNavbar isSticky disablesAnimation />
   }
 }
 

@@ -9,17 +9,26 @@ import { mixins, colors } from '@/styles'
 
 type Props = {
   isSticky: boolean,
+  disablesAnimation: boolean,
   navbarRef?: (Object) => void
 }
 
-export function HeaderNavbar ({ isSticky, navbarRef }: Props) {
+export function HeaderNavbar ({
+  isSticky,
+  disablesAnimation,
+  navbarRef
+}: Props) {
   return (
     <Navbar>
       <StickyBar
         ref={navbarRef}
         style={isSticky ? { position: 'fixed', top: '0px' } : {}}
       >
-        <TranslateAndFade component={StickyLogo} direction='down'>
+        <TranslateAndFade
+          component={StickyLogo}
+          disable={disablesAnimation}
+          direction='down'
+        >
           {isSticky && (
             <div>
               <LogoLink to='/'>
