@@ -12,8 +12,9 @@ import { mixins } from '@/styles'
 
 type Props = {
   viewer: ?Viewer,
-  onFilter?: (SearchParams) => void,
   pageSize?: number,
+  params?: SearchParams,
+  onFilter?: (SearchParams) => void,
   relay: RelayRefetchProp
 }
 
@@ -25,7 +26,8 @@ type State = {
 let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   state = {
     query: '',
-    disablesAnimation: false
+    disablesAnimation: false,
+    ...this.props.params
   }
 
   // actions
@@ -56,8 +58,15 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
 
   // lifecycle
   render () {
-    const { viewer } = this.props
-    const { query, disablesAnimation } = this.state
+    const {
+      viewer,
+      pageSize
+    } = this.props
+
+    const {
+      query,
+      disablesAnimation
+    } = this.state
 
     return (
       <Search>
@@ -72,6 +81,7 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
           {viewer && (
             <BillList
               viewer={viewer}
+              pageSize={pageSize}
               isAnimated={!disablesAnimation}
             />
           )}
@@ -88,8 +98,12 @@ BillSearch = createRefetchContainer(BillSearch,
         filter: $filter,
         first: $count,
         after: $cursor
-      ) {
-        edges { node { id } }
+      ) @connection(key: "BillSearch_bills") {
+        edges {
+          node {
+            id
+          }
+        }
       }
       ...BillList_viewer
     }
@@ -116,7 +130,7 @@ const Bills = styled.div`
 
   position: relative;
   align-self: center;
-  margin-top: 50px;
+  margin-top: 40px;
 `
 
 export { BillSearch }

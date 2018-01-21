@@ -1,2 +1,4 @@
 // @flow
-export { Bills } from './Bills'
+export {
+  BillsRenderer as Bills
+} from './Bills'

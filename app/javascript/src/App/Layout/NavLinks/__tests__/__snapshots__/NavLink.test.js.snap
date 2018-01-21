@@ -5,7 +5,7 @@ exports[`#render shows the link as active when the page matches 1`] = `
   aria-current="page"
 >
   <Link
-    className="css-1t0ocqs test-class"
+    className="css-y6678s test-class"
     to="test-url-1"
   />
 </Styled(div)>
@@ -16,7 +16,7 @@ exports[`#render shows the link as inactive 1`] = `
   aria-current={false}
 >
   <Link
-    className="css-1t0ocqs test-class"
+    className="css-y6678s test-class"
     to="test-url-1"
   />
 </Styled(div)>

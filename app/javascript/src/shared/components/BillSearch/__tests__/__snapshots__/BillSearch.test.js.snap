@@ -26,6 +26,26 @@ exports[`#render shows the search view 1`] = `
     />
     <BillList
       isAnimated={true}
+      pageSize="test-size"
+      viewer="test-viewer"
+    />
+  </Styled(div)>
+</Styled(div)>
+`;
+
+exports[`#render shows the search view with default params 1`] = `
+<Styled(div)>
+  <SearchField
+    onChange={[Function]}
+    value="test-query"
+  />
+  <Styled(div)>
+    <LoadingIndicator
+      isLoading={false}
+    />
+    <BillList
+      isAnimated={true}
+      pageSize="test-size"
       viewer="test-viewer"
     />
   </Styled(div)>

@@ -54,7 +54,7 @@ const Container = styled.div`
 const linkClass = css`
   ${css(mixins.fonts.light)};
 
-  font-size: 24px;
+  font-size: 20px;
   text-transform: uppercase;
   text-decoration: none;
   color: ${colors.black};

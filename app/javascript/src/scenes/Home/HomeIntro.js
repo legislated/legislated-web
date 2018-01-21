@@ -59,16 +59,16 @@ const Container = styled.div`
   padding: 90px 0;
 
   > h2 {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
   }
 
   > h4 + h4 {
-    margin-top: 20px;
+    margin-top: 15px;
   }
 `
 
 const CloseButton = styled(CloseButton$)`
   position: absolute;
-  top: 40px;
-  right: 40px;
+  top: 30px;
+  right: 30px;
 `

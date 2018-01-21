@@ -20,7 +20,7 @@ export function NavLinks ({
   return (
     <Nav className={className}>
       <NavLink {...linkProps} to='/' children='Home' />
-      <NavLink {...linkProps} to='#' children='Bills' />
+      <NavLink {...linkProps} to='/bills' children='Bills' />
       <NavLink {...linkProps} to='/faq' children='FAQ' />
       <NavLink {...linkProps} to='/about' children='About Us' />
     </Nav>
@@ -31,7 +31,7 @@ const Nav = styled.nav`
   display: flex;
 
   > * + * {
-    margin-left: 30px;
+    margin-left: 25px;
   }
 
   ${mixins.mobile`

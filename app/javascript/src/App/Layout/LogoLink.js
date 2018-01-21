@@ -14,6 +14,6 @@ export const LogoLink = styled(Link)`
   }
 
   > img {
-    margin-right: 20px;
+    margin-right: 15px;
   }
 `

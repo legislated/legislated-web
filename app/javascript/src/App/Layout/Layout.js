@@ -14,6 +14,7 @@ type Props = {
 } & ContextRouter
 
 let Layout = class Layout extends React.Component<*, Props, *> {
+  // actions
   clearVisitedIntro () {
     // mark the intro as cleared if we've seen it and left the search scene
     const { location } = this.props
@@ -60,7 +61,7 @@ const Content = styled.div`
   ${mixins.mobile`
     margin-top: ${MOBILE_HEADER_HEIGHT}px;
     padding: 15px;
-    padding-bottom: 30px;
+    padding-bottom: 25px;
   `}
 `
 

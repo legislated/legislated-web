@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the bill search with the correct params 1`] = `
+<BillSearch
+  pageSize={20}
+  params="test-params"
+  viewer="test-viewer"
+/>
+`;
+
+exports[`#render shows the home scene 1`] = `
+<BillSearch
+  pageSize={20}
+  params={null}
+  viewer="test-viewer"
+/>
+`;

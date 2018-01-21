@@ -8,7 +8,6 @@ import styled from 'react-emotion'
 import { BillCell } from './BillCell'
 import { TranslateAndFade, Button } from '@/components'
 import { session } from '@/storage'
-import { withLoadMoreArgs } from '@/relay'
 import { colors, mixins } from '@/styles'
 import type { Viewer } from '@/types'
 
@@ -64,8 +63,16 @@ let BillList = class BillList extends React.Component<*, Props, State> {
   }
 
   render () {
-    const { viewer, isAnimated, pageSize, relay } = this.props
-    const { disablesAnimation } = this.state
+    const {
+      viewer,
+      isAnimated,
+      pageSize,
+      relay
+    } = this.props
+
+    const {
+      disablesAnimation
+    } = this.state
 
     return (
       <Bills>
@@ -92,47 +99,48 @@ let BillList = class BillList extends React.Component<*, Props, State> {
   }
 }
 
-BillList = createPaginationContainer(withRouter(BillList),
-  graphql`
-    fragment BillList_viewer on Viewer {
-      bills(
-        filter: $filter,
-        first: $count,
-        after: $cursor
-      ) @connection(key: "BillList_bills") {
-        count
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-        edges {
-          node {
-            id
-            ...BillCell_bill
-          }
+BillList = withRouter(createPaginationContainer(BillList, graphql`
+  fragment BillList_viewer on Viewer {
+    bills(
+      filter: $filter,
+      first: $count,
+      after: $cursor
+    ) @connection(key: "BillList_bills") {
+      count
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      edges {
+        node {
+          id
+          ...BillCell_bill
         }
       }
     }
-  `,
-  withLoadMoreArgs({
-    getConnectionFromProps (props) {
-      return props.viewer && props.viewer.bills
-    },
-    query: graphql`
-      query BillListQuery(
-        $filter: BillsSearchFilter!,
-        $count: Int!,
-        $cursor: String!
-      ) {
-        viewer {
-          ...BillList_viewer
-        }
+  }
+`, {
+  direction: 'forward',
+  getConnectionFromProps ({ viewer }) {
+    return viewer && viewer.bills
+  },
+  getVariables (props, { count, cursor }, previous) {
+    return { ...previous, count, cursor }
+  },
+  query: graphql`
+    query BillListQuery(
+      $filter: BillsSearchFilter!,
+      $count: Int!,
+      $cursor: String!
+    ) {
+      viewer {
+        ...BillList_viewer
       }
-    `
-  })
-)
+    }
+  `
+}))
 
-const spacing = 50
+const spacing = 40
 
 const Bills = styled.div`
   ${mixins.flexColumn};
@@ -152,7 +160,7 @@ const List = styled.div`
 
 const ActionButton = styled(Button)`
   align-self: center;
-  margin-bottom: 90px;
+  margin-bottom: 70px;
 `
 
 export { BillList }

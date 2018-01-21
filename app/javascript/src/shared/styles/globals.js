@@ -53,7 +53,7 @@ injectGlobal`
 injectGlobal`
   body {
     ${fonts.regular};
-    font-size: 18px;
+    font-size: 16px;
     background-color: ${white};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -61,55 +61,35 @@ injectGlobal`
 
   h1 {
     ${fonts.regularSlab};
-    font-size: 64px;
-
-    @media (max-width: 700px) {
-      font-size: 24px;
-    }
+    font-size: 54px;
   }
 
   h2 {
     ${fonts.regularSlab};
-    font-size: 48px;
-
-    @media (max-width: 700px) {
-      font-size: 20px;
-    }
+    font-size: 40px;
   }
 
   h3 {
     ${fonts.regularSlab};
-    font-size: 32px;
-
-    @media (max-width: 700px) {
-      font-size: 18px;
-    }
+    font-size: 26px;
   }
 
   h4 {
     ${fonts.regular};
-    font-size: 30px;
+    font-size: 24px;
   }
 
   h5 {
     ${fonts.regular};
-    font-size: 24px;
+    font-size: 20px;
   }
 
   h6 {
     ${fonts.bold};
-    font-size: 18px;
+    font-size: 16px;
   }
 
   a, button {
     cursor: pointer;
-  }
-
-  ol {
-    -webkit-padding-start: 30px;
-
-    @media (max-width: 700px) {
-      -webkit-padding-start: 15px;
-    }
   }
 `

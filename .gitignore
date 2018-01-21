@@ -9,6 +9,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/spec/failures
 
 # webpacker
 /public/assets

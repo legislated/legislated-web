@@ -6,5 +6,6 @@ module Types
     input_field :query, types.String, 'Filters bills whose title or summary match the query'
     input_field :from, DateTimeType, 'Filters bills whose hearing is on or after the date-time'
     input_field :to, DateTimeType, 'Filters bills whose hearings is on or before the date-time'
+    input_field :key, types.String, 'Disambiguates queries for cache isolation'
   end
 end

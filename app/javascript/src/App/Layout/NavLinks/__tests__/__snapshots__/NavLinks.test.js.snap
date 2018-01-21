@@ -12,7 +12,7 @@ exports[`#render shows the nav links 1`] = `
   </NavLink>
   <NavLink
     onClick={[Function]}
-    to="#"
+    to="/bills"
   >
     Bills
   </NavLink>

@@ -1,22 +1,40 @@
 // @flow
 import * as React from 'react'
-import { createFragmentContainer, graphql } from 'react-relay'
+import { graphql } from 'react-relay'
+import { withRouter } from 'react-router-dom'
+import type { ContextRouter } from 'react-router-dom'
 import styled from 'react-emotion'
 import { HomeIntro } from './HomeIntro'
-import { BillSearch, Button } from '@/components'
+import { RelayRenderer, BillSearch, Button } from '@/components'
 import type { Viewer, SearchParams } from '@/types'
 import { mixins } from '@/styles'
 
-type Props = {
-  viewer: ?Viewer
+const DEFAULT_PARAMS = {
+  query: ''
 }
 
+type Props = {
+  viewer: ?Viewer
+} & ContextRouter
+
 let Home = class Home extends React.Component<*, Props, *> {
-  params: SearchParams
+  params: SearchParams = DEFAULT_PARAMS
 
   // events
-  didChangeParams = (params) => {
+  didChangeParams = (params: SearchParams) => {
     this.params = params
+  }
+
+  didClickViewAll = () => {
+    // it would be better to pass params / refresh the view
+    // by updating the search query in the url
+    const { history } = this.props
+    history.push({
+      pathname: '/bills',
+      state: {
+        params: this.params
+      }
+    })
   }
 
   // lifecycle
@@ -31,12 +49,7 @@ let Home = class Home extends React.Component<*, Props, *> {
           onFilter={this.didChangeParams}
         />
         <BillsButton
-          to={{
-            pathname: '/bills',
-            state: {
-              params: this.params
-            }
-          }}
+          onClick={this.didClickViewAll}
           isSecondary
           children='View All Bills'
         />
@@ -44,12 +57,6 @@ let Home = class Home extends React.Component<*, Props, *> {
     )
   }
 }
-
-Home = createFragmentContainer(Home, graphql`
-  fragment HomeScene_viewer on Viewer {
-    ...BillSearch_viewer
-  }
-`)
 
 const Scene = styled.section`
   ${mixins.flexColumn};
@@ -60,7 +67,38 @@ const Scene = styled.section`
 
 const BillsButton = styled(Button)`
   align-self: center;
-  margin-bottom: 90px;
+  margin-bottom: 70px;
 `
 
+Home = withRouter(Home)
+
 export { Home }
+
+export function HomeRenderer () {
+  const query = graphql`
+    query HomeQuery(
+      $filter: BillsSearchFilter!,
+      $count: Int!,
+      $cursor: String!
+    ) {
+      viewer {
+        ...BillSearch_viewer
+      }
+    }
+  `
+
+  return (
+    <RelayRenderer
+      root={Home}
+      query={query}
+      getVariables={() => ({
+        count: 3,
+        cursor: '',
+        filter: {
+          key: 'home',
+          ...DEFAULT_PARAMS
+        }
+      })}
+    />
+  )
+}

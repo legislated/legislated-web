@@ -39,34 +39,33 @@ const fragment /*: ConcreteFragment*/ = {
     }
   ],
   "kind": "Fragment",
-  "metadata": null,
+  "metadata": {
+    "connection": [
+      {
+        "count": "count",
+        "cursor": "cursor",
+        "direction": "forward",
+        "path": [
+          "bills"
+        ]
+      }
+    ]
+  },
   "name": "BillSearch_viewer",
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": null,
+      "alias": "bills",
       "args": [
-        {
-          "kind": "Variable",
-          "name": "after",
-          "variableName": "cursor",
-          "type": "String"
-        },
         {
           "kind": "Variable",
           "name": "filter",
           "variableName": "filter",
           "type": "BillsSearchFilter"
-        },
-        {
-          "kind": "Variable",
-          "name": "first",
-          "variableName": "count",
-          "type": "Int"
         }
       ],
       "concreteType": "BillsSearch",
-      "name": "bills",
+      "name": "__BillSearch_bills_connection",
       "plural": false,
       "selections": [
         {
@@ -91,8 +90,47 @@ const fragment /*: ConcreteFragment*/ = {
                   "args": null,
                   "name": "id",
                   "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "args": null,
+                  "name": "__typename",
+                  "storageKey": null
                 }
               ],
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "cursor",
+              "storageKey": null
+            }
+          ],
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "args": null,
+          "concreteType": "PageInfo",
+          "name": "pageInfo",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "endCursor",
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "hasNextPage",
               "storageKey": null
             }
           ],

@@ -1,24 +1,24 @@
-class BillsSearchCompiler
-  def self.compile(query: nil, from: nil, to: nil)
-    q = Bill.by_date(start: from, end: to)
-    q = filter(bills_query, query) if query.present?
-    q
+module BillsSearchCompiler
+  def self.compile(query: nil, from: nil, to: nil, **_)
+    result = Bill.by_date(start: from, end: to)
+    result = filter(result, query) if query.present?
+    result
   end
 
-  def self.filter(query, search_query)
-    search_query = search_query.strip.downcase
+  def self.filter(bills, query)
+    query = query.strip.downcase
 
-    if document?(search_query)
-      q = query.joins(:documents)
-      q.where('documents.number ILIKE :q', q: "%#{search_query}%")
+    if filter_by_document?(query)
+      result = bills.joins(:documents)
+      result.where('documents.number ILIKE :q', q: "%#{query}%")
     else
-      q = query.by_keyword(search_query)
-      q = query.by_fuzzy_title(search_query) if q.empty?
-      q
+      result = bills.by_keyword(query)
+      result = bills.by_fuzzy_title(query) if result.empty?
+      result
     end
   end
 
-  def self.document?(search_query)
+  def self.filter_by_document?(search_query)
     search_query.match(/^([hs](b|j?r)|eo|jsr|am)/).present?
   end
 end

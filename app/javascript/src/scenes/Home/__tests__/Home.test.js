@@ -8,7 +8,10 @@ import { Home } from '../Home'
 let subject
 
 const defaults = {
-  viewer: 'test-viewer'
+  viewer: 'test-viewer',
+  history: {
+    push: jest.fn()
+  }
 }
 
 function loadSubject (props = {}) {
@@ -21,8 +24,24 @@ afterEach(() => {
 })
 
 describe('#render', () => {
-  it('shows the scene', () => {
+  it('shows the home scene', () => {
     loadSubject()
     expect(subject).toMatchSnapshot()
+  })
+})
+
+describe('clicking view all', () => {
+  it('shows the bills page with the current query', () => {
+    loadSubject()
+    const instance = subject.instance()
+
+    const params = { test: 'params' }
+    instance.didChangeParams(params)
+    instance.didClickViewAll()
+
+    expect(defaults.history.push).toHaveBeenCalledWith({
+      pathname: '/bills',
+      state: { params }
+    })
   })
 })

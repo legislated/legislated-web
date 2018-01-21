@@ -16,32 +16,10 @@ describe Types::ViewerType, graphql: :type do
   end
 
   describe '#bills' do
-    let!(:date) { Time.current }
-    let!(:bill1) { create(:bill, hearing: create(:hearing, :with_any_committee, date: date - 1.day)) }
-    let!(:bill3) { create(:bill, hearing: create(:hearing, :with_any_committee, date: date + 1.day)) }
-    let!(:bill2) { create(:bill, hearing: create(:hearing, :with_any_committee, date: date)) }
-
-    before do
-      allow(BillsSearchService).to receive(:filter) { |q| q }
-    end
-
-    it 'sorts bills by date' do
-      expect(resolve_field(:bills, args: {})).to eq([bill1, bill2, bill3])
-    end
-
-    it 'does not filter bills by query' do
-      resolve_field(:bills, args: { query: '' })
-      expect(BillsSearchService).to_not have_received(:filter)
-    end
-
-    it 'only returns bills in the date range when passed' do
-      result = resolve_field(:bills, args: { from: date, to: date })
-      expect(result).to eq([bill2])
-    end
-
-    it 'only returns bills that match the search query when passed' do
-      resolve_field(:bills, args: { query: 'foo' })
-      expect(BillsSearchService).to have_received(:filter).with(anything, 'foo')
+    it 'compiles the query' do
+      filter = { test: 'filter' }
+      expect(BillsSearchCompiler).to receive(:compile).with(**filter)
+      resolve_field(:bills, args: { filter: filter })
     end
   end
 end
