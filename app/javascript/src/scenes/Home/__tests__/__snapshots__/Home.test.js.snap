@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#render shows the scene 1`] = `
+exports[`#render shows the home scene 1`] = `
 <Styled(section)>
   <HomeIntro />
   <BillSearch
@@ -9,14 +9,7 @@ exports[`#render shows the scene 1`] = `
   />
   <Styled(Button)
     isSecondary={true}
-    to={
-      Object {
-        "pathname": "/bills",
-        "state": Object {
-          "params": undefined,
-        },
-      }
-    }
+    onClick={[Function]}
   >
     View All Bills
   </Styled(Button)>

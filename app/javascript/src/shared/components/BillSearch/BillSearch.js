@@ -12,8 +12,9 @@ import { mixins } from '@/styles'
 
 type Props = {
   viewer: ?Viewer,
-  onFilter?: (SearchParams) => void,
   pageSize?: number,
+  params?: SearchParams,
+  onFilter?: (SearchParams) => void,
   relay: RelayRefetchProp
 }
 
@@ -25,7 +26,8 @@ type State = {
 let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   state = {
     query: '',
-    disablesAnimation: false
+    disablesAnimation: false,
+    ...this.props.params
   }
 
   // actions

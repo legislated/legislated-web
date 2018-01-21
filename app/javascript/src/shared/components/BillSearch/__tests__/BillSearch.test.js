@@ -11,6 +11,8 @@ let subject
 
 const defaults = {
   viewer: 'test-viewer',
+  pageSize: 'test-size',
+  onFilter: jest.fn(),
   relay: {
     refetch: jest.fn()
   }
@@ -31,8 +33,21 @@ describe('#render', () => {
     expect(subject).toMatchSnapshot()
   })
 
+  it('shows the search view with default params', () => {
+    loadSubject({
+      params: {
+        query: 'test-query'
+      }
+    })
+
+    expect(subject).toMatchSnapshot()
+  })
+
   it('shows the loading indicator when loading', () => {
-    loadSubject({ viewer: null })
+    loadSubject({
+      viewer: null
+    })
+
     expect(subject).toMatchSnapshot()
   })
 })
@@ -48,6 +63,12 @@ describe('#filterBillsForQuery', () => {
     loadSubject()
     subject.instance().filterBillsForQuery('foo')
     expect(defaults.relay.refetch).toHaveBeenCalledWith({ filter: { query: 'foo' } }, null, anything())
+  })
+
+  it('notifies the handler', () => {
+    loadSubject()
+    subject.instance().filterBillsForQuery('foo')
+    expect(defaults.onFilter).toHaveBeenCalledWith({ query: 'foo' })
   })
 })
 
