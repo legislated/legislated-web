@@ -1,4 +1,4 @@
-describe StepsParser do
+describe BillsStepParser do
   subject { described_class.new }
 
   describe '#parse' do

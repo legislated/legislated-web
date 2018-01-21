@@ -1,4 +1,4 @@
-class StepsParser
+class BillsStepParser
   def parse(actions)
     # prepare and expand actions based so that each has a single type
     actions = actions
