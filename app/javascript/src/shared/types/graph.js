@@ -67,10 +67,11 @@ export type Bill = {
   fullTextUrl: string,
   witnessSlipUrl: string,
   witnessSlipResultUrl: string,
-  updatedAt: string,
+  steps: Array<Step>,
   hearing: Hearing,
   committee: Committee,
-  chamber: Chamber
+  chamber: Chamber,
+  updatedAt: string
 }
 
 export type Viewer = {

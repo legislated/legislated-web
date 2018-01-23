@@ -83,8 +83,7 @@ class BillsStepParser
   # mappings
   def find_mapping(action_type, mappings)
     mappings
-      .find { |_, action_types| action_types.include?(action_type) }
-      .try(:first)
+      .find { |_, action_types| action_types.include?(action_type) }&.first
   end
 
   STEP_RESOLUTIONS = {
