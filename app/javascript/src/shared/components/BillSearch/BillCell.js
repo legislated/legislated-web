@@ -22,10 +22,7 @@ let BillCell = function BillCell ({
 }: Props) {
   return (
     <Cell>
-      <Subtitle>
-        <Icon src={null} alt='Bill Icon' />
-        <p>{formatSubtitle(bill)}</p>
-      </Subtitle>
+      <Subtitle>{formatSubtitle(bill)}</Subtitle>
       <h3>{bill.title}</h3>
       <BillStatus bill={bill} />
       <p>{bill.summary}</p>
@@ -59,10 +56,7 @@ const Cell = styled.div`
   }
 `
 
-const Subtitle = styled.div`
-  ${mixins.flexRow};
-
-  align-items: flex-end;
+const Subtitle = styled.p`
   margin-bottom: 12px;
   color: ${colors.secondary};
 `

@@ -7,6 +7,10 @@ export type {
 
 export type {
   Viewer,
+  StepActor,
+  StepAction,
+  StepResolution,
+  Step,
   Bill,
   Hearing,
   Committee,
