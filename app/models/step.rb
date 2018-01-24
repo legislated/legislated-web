@@ -1,6 +1,7 @@
 module Step
   module Actors
-    extend Enumeration
+    include Enumeration
+
     values %w[
       lower
       lower:committee
@@ -11,7 +12,8 @@ module Step
   end
 
   module Actions
-    extend Enumeration
+    include Enumeration
+
     values %w[
       introduced
       resolved
@@ -19,7 +21,8 @@ module Step
   end
 
   module Resolutions
-    extend Enumeration
+    include Enumeration
+
     values %w[
       passed
       failed
@@ -28,5 +31,9 @@ module Step
       vetoed:line
       none
     ]
+
+    def self.resolved
+      @resolved ||= all - [NONE]
+    end
   end
 end

@@ -23,5 +23,23 @@ FactoryBot.define do
     trait :with_steps do
       steps { attributes_for_list(:step, 1) }
     end
+
+    trait :with_step_sequence do
+      actors = [
+        Step::Actors::LOWER,
+        Step::Actors::UPPER
+      ]
+
+      steps do
+        sequence = actors.sample(1 + rand(2))
+        sequence << Step::Actors::GOVERNOR if sequence.count == 2 && rand(2).zero?
+
+        sequence.each_with_object([]) do |actor, memo|
+          memo << attributes_for(:step, :introduced, actor: actor)
+          break(memo) if rand(2).zero?
+          memo << attributes_for(:step, :resolved, actor: actor)
+        end
+      end
+    end
   end
 end
