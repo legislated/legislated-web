@@ -48,11 +48,13 @@ let Home = class Home extends React.Component<*, Props, *> {
           viewer={viewer}
           onFilter={this.didChangeParams}
         />
-        <BillsButton
-          onClick={this.didClickViewAll}
-          isSecondary
-          children='View All Bills'
-        />
+        {viewer && (
+          <BillsButton
+            onClick={this.didClickViewAll}
+            isSecondary
+            children='View All Bills'
+          />
+        )}
       </Scene>
     )
   }
