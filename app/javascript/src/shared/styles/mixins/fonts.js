@@ -2,7 +2,7 @@
 import { css } from 'react-emotion'
 
 const sans = 'Roboto, sans-serif'
-const slab = 'Zilla Slab, serif'
+const slab = 'Zilla Slab, ZillaSlab, serif'
 
 export const light = css`
   font-family: ${sans};
