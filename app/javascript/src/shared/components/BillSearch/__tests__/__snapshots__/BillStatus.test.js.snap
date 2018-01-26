@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render removes obsolete steps 1`] = `
+<Styled(div)>
+  <Styled(div)
+    isActive={true}
+  />
+  <React.Fragment
+    key="test-id-status-segment-0"
+  >
+    <Styled(span)
+      isActive={true}
+    >
+      House
+    </Styled(span)>
+  </React.Fragment>
+  <React.Fragment
+    key="test-id-status-segment-1"
+  >
+    <Styled(div)
+      isActive={false}
+    />
+  </React.Fragment>
+  <React.Fragment
+    key="test-id-status-segment-2"
+  >
+    <Styled(span)
+      isActive={false}
+    >
+      Senate
+    </Styled(span)>
+  </React.Fragment>
+  <React.Fragment
+    key="test-id-status-segment-3"
+  >
+    <Styled(div)
+      isActive={false}
+    />
+  </React.Fragment>
+  <React.Fragment
+    key="test-id-status-segment-4"
+  >
+    <Styled(span)
+      isActive={false}
+    >
+      Governor
+    </Styled(span)>
+  </React.Fragment>
+  <React.Fragment
+    key="test-id-status-segment-5"
+  >
+    <Styled(div)
+      isActive={false}
+    />
+  </React.Fragment>
+</Styled(div)>
+`;
+
+exports[`#render shows the status 1`] = `
+<Styled(div)>
+  <Styled(div)
+    isActive={true}
+  />
+  <React.Fragment
+    key="test-id-status-segment-0"
+  >
+    <Styled(span)
+      isActive={true}
+    >
+      House
+    </Styled(span)>
+  </React.Fragment>
+  <React.Fragment
+    key="test-id-status-segment-1"
+  >
+    <Styled(span)
+      isActive={true}
+    >
+      Senate
+    </Styled(span)>
+  </React.Fragment>
+  <React.Fragment
+    key="test-id-status-segment-2"
+  >
+    <Styled(span)
+      isActive={false}
+    >
+      Senate
+    </Styled(span)>
+  </React.Fragment>
+  <React.Fragment
+    key="test-id-status-segment-3"
+  >
+    <Styled(div)
+      isActive={false}
+    />
+  </React.Fragment>
+  <React.Fragment
+    key="test-id-status-segment-4"
+  >
+    <Styled(span)
+      isActive={false}
+    >
+      Governor
+    </Styled(span)>
+  </React.Fragment>
+  <React.Fragment
+    key="test-id-status-segment-5"
+  >
+    <Styled(div)
+      isActive={false}
+    />
+  </React.Fragment>
+</Styled(div)>
+`;

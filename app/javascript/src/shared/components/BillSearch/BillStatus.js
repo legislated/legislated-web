@@ -33,6 +33,10 @@ function hasPrimaryActor ({ actor }: Step) {
   }
 }
 
+function getLeadActor (steps: Step[]): ?StepActor {
+  return steps.length > 0 ? steps[0].actor : null
+}
+
 function isOrderedByActor (prev: Step, next: Step) {
   return prev.actor !== next.actor && prev.actor !== 'GOVERNOR'
 }
@@ -53,13 +57,17 @@ function chunkByActor (steps: Step[]): Step[][] {
 }
 
 function findLastSequence (steps: Step[]) {
-  const actors = {}
+  const lead = getLeadActor(steps)
+  if (lead == null) {
+    return []
+  }
 
+  const actors = {}
   return chunkByActor(steps).reduceRight((sequence, chunk) => {
     const next = sequence[0]
     const prev = chunk[0]
 
-    if (next == null || (!actors[prev.actor] && isOrderedByActor(prev, next))) {
+    if (next == null || (!actors[lead] && !actors[prev.actor] && isOrderedByActor(prev, next))) {
       actors[prev.actor] = true
       return [...chunk, ...sequence]
     }
@@ -109,7 +117,7 @@ function stubSegment (lead: StepActor, index: number) {
 }
 
 function segmentsFromSteps (steps: Step[]): Segment[] {
-  const lead = steps.length > 0 ? steps[0].actor : 'LOWER'
+  const lead = getLeadActor(steps) || 'LOWER'
 
   return range(0, SEGMENTS_LENGTH).map((i) => {
     const step = steps[i]
