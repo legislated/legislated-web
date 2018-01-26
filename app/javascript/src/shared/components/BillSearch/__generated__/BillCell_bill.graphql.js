@@ -79,6 +79,11 @@ const fragment /*: ConcreteFragment*/ = {
         }
       ],
       "storageKey": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "BillStatus_bill",
+      "args": null
     }
   ],
   "type": "Bill"

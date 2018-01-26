@@ -2,6 +2,7 @@ module Types
   HearingType = GraphQL::ObjectType.define do
     name 'Hearing'
     description 'A committee hearing'
+
     global_id_field :id
     interfaces [GraphQL::Relay::Node.interface]
 

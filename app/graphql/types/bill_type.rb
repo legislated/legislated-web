@@ -2,6 +2,7 @@ module Types
   BillType = GraphQL::ObjectType.define do
     name 'Bill'
     description 'A bill'
+
     global_id_field :id
     interfaces [GraphQL::Relay::Node.interface]
 

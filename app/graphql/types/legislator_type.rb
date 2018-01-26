@@ -2,6 +2,7 @@ module Types
   LegislatorType = GraphQL::ObjectType.define do
     name 'Legislator'
     description 'A legislator'
+
     global_id_field :id
     interfaces [GraphQL::Relay::Node.interface]
 

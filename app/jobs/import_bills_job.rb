@@ -5,10 +5,10 @@ class ImportBillsJob
     attr_accessor :bill, :documents
   end
 
-  def initialize(redis = Redis.new, open_states_service = OpenStatesService.new, steps_parser = StepsParser.new)
+  def initialize(redis = Redis.new, open_states_service = OpenStatesService.new, step_parser = BillsStepParser.new)
     @redis = redis
     @open_states_service = open_states_service
-    @steps_parser = steps_parser
+    @step_parser = step_parser
   end
 
   def perform
@@ -69,7 +69,7 @@ class ImportBillsJob
       external_id: params['LegId'],
       os_id: data['id'],
       actions: data['actions'],
-      steps: @steps_parser.parse(data['actions']),
+      steps: @step_parser.parse(data['actions']),
       title: data['title'],
       session_number: data['session'].gsub(/[a-z]+/, '')
     }

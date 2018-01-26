@@ -1,8 +1,9 @@
 // @flow
 import * as React from 'react'
-import styled, { css } from 'react-emotion'
+import styled from 'react-emotion'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { format } from 'date-fns'
+import { BillStatus } from './BillStatus'
 import type { Bill } from '@/types'
 import { Button } from '@/components'
 import { colors, mixins } from '@/styles'
@@ -12,23 +13,20 @@ type Props = {
   className?: string
 }
 
+function formatSubtitle ({ documentNumber, updatedAt }: Bill) {
+  return `${documentNumber} - Updated ${format(updatedAt, 'DD/MM/YYYY')}`
+}
+
 let BillCell = function BillCell ({
   bill
 }: Props) {
   return (
     <Cell>
-      <Subtitle>
-        <Icon src={null} alt='Bill Icon' />
-        <p>{bill.documentNumber} - Updated {format(bill.updatedAt, 'DD/MM/YYYY')}</p>
-      </Subtitle>
+      <Subtitle>{formatSubtitle(bill)}</Subtitle>
       <h3>{bill.title}</h3>
-      <Status />
+      <BillStatus bill={bill} />
       <p>{bill.summary}</p>
-      <Button
-        isSmall
-        to={`/bill/${bill.id}`}
-        children='More Info'
-      />
+      <Button to={`/bill/${bill.id}`} isSmall children='More Info' />
     </Cell>
   )
 }
@@ -43,12 +41,9 @@ BillCell = createFragmentContainer(BillCell, graphql`
     hearing {
       date
     }
+    ...BillStatus_bill
   }
 `)
-
-const spacing = css`
-  margin-bottom: 15px;
-`
 
 const Cell = styled.div`
   ${mixins.flexColumn};
@@ -57,32 +52,13 @@ const Cell = styled.div`
   max-width: 960px;
 
   > h3, > p {
-    ${spacing};
+    margin-bottom: 15px;
   }
 `
 
-const Subtitle = styled.div`
-  ${mixins.flexRow};
-
-  align-items: flex-end;
+const Subtitle = styled.p`
   margin-bottom: 12px;
   color: ${colors.secondary};
-`
-
-const Icon = styled.img`
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-  background-color: ${colors.secondary};
-`
-
-const Status = styled.div`
-  ${spacing};
-
-  align-self: stretch;
-  max-width: 830px;
-  height: 13px;
-  background-color: ${colors.gray4};
 `
 
 export { BillCell }
