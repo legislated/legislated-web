@@ -16,7 +16,7 @@ branches:
     - master
     - production
 install:
-  - bundle
+  - bundle --deployment
   - nvm install 8
   - node -v
   - npm i -g yarn
