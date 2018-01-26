@@ -5,54 +5,36 @@ exports[`#render removes obsolete steps 1`] = `
   <Styled(div)
     isActive={true}
   />
-  <React.Fragment
+  <Styled(span)
+    isActive={true}
     key="test-id-status-segment-0"
   >
-    <Styled(span)
-      isActive={true}
-    >
-      House
-    </Styled(span)>
-  </React.Fragment>
-  <React.Fragment
+    House
+  </Styled(span)>
+  <Styled(div)
+    isActive={false}
     key="test-id-status-segment-1"
-  >
-    <Styled(div)
-      isActive={false}
-    />
-  </React.Fragment>
-  <React.Fragment
+  />
+  <Styled(span)
+    isActive={false}
     key="test-id-status-segment-2"
   >
-    <Styled(span)
-      isActive={false}
-    >
-      Senate
-    </Styled(span)>
-  </React.Fragment>
-  <React.Fragment
+    Senate
+  </Styled(span)>
+  <Styled(div)
+    isActive={false}
     key="test-id-status-segment-3"
-  >
-    <Styled(div)
-      isActive={false}
-    />
-  </React.Fragment>
-  <React.Fragment
+  />
+  <Styled(span)
+    isActive={false}
     key="test-id-status-segment-4"
   >
-    <Styled(span)
-      isActive={false}
-    >
-      Governor
-    </Styled(span)>
-  </React.Fragment>
-  <React.Fragment
+    Governor
+  </Styled(span)>
+  <Styled(div)
+    isActive={false}
     key="test-id-status-segment-5"
-  >
-    <Styled(div)
-      isActive={false}
-    />
-  </React.Fragment>
+  />
 </Styled(div)>
 `;
 
@@ -61,55 +43,35 @@ exports[`#render shows the status 1`] = `
   <Styled(div)
     isActive={true}
   />
-  <React.Fragment
+  <Styled(span)
+    isActive={true}
     key="test-id-status-segment-0"
   >
-    <Styled(span)
-      isActive={true}
-    >
-      House
-    </Styled(span)>
-  </React.Fragment>
-  <React.Fragment
+    House
+  </Styled(span)>
+  <Styled(div)
+    isActive={true}
     key="test-id-status-segment-1"
-  >
-    <Styled(span)
-      isActive={true}
-    >
-      Senate
-    </Styled(span)>
-  </React.Fragment>
-  <React.Fragment
+  />
+  <Styled(span)
+    isActive={true}
     key="test-id-status-segment-2"
   >
-    <Styled(span)
-      isActive={false}
-    >
-      Senate
-    </Styled(span)>
-  </React.Fragment>
-  <React.Fragment
+    Senate
+  </Styled(span)>
+  <Styled(div)
+    isActive={false}
     key="test-id-status-segment-3"
-  >
-    <Styled(div)
-      isActive={false}
-    />
-  </React.Fragment>
-  <React.Fragment
+  />
+  <Styled(span)
+    isActive={false}
     key="test-id-status-segment-4"
   >
-    <Styled(span)
-      isActive={false}
-    >
-      Governor
-    </Styled(span)>
-  </React.Fragment>
-  <React.Fragment
+    Governor
+  </Styled(span)>
+  <Styled(div)
+    isActive={false}
     key="test-id-status-segment-5"
-  >
-    <Styled(div)
-      isActive={false}
-    />
-  </React.Fragment>
+  />
 </Styled(div)>
 `;

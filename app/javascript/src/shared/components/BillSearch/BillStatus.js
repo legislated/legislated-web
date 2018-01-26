@@ -44,11 +44,13 @@ function isOrderedByActor (prev: Step, next: Step) {
 function chunkByActor (steps: Step[]): Step[][] {
   return steps.reduce((chunks, step) => {
     const chunk = last(chunks)
-    const other = chunk && chunk[0]
+    const other = chunk && last(chunk)
 
     if (other == null || step.actor !== other.actor) {
       chunks.push([step])
-    } else {
+    } else if (step.action !== other.action) {
+      // we need to ignore duplicate actions for now, but this should
+      // probably be done on the backend
       chunk.push(step)
     }
 
@@ -133,16 +135,18 @@ function segmentsFromBill ({ steps }: Bill) {
   return segmentsFromSteps(findLastSequence(steps.filter(hasPrimaryActor)))
 }
 
+function getKey ({ id }: Bill, index: number) {
+  return `${id}-status-segment-${index}`
+}
+
 let BillStatus = function BillStatus ({ bill }: Props) {
   return (
     <Status>
       <Line isActive />
-      {segmentsFromBill(bill).map(({ name, isLine, ...props }, index) => (
-        <React.Fragment key={`${bill.id}-status-segment-${index}`}>
-          {isLine
-            ? <Line {...props} />
-            : <Name {...props}>{name}</Name>}
-        </React.Fragment>
+      {segmentsFromBill(bill).map(({ name, isLine, ...props }, i) => (
+        isLine
+          ? <Line key={getKey(bill, i)} {...props} />
+          : <Name key={getKey(bill, i)} {...props}>{name}</Name>
       ))}
     </Status>
   )
@@ -212,8 +216,6 @@ BillStatus = createFragmentContainer(BillStatus, graphql`
     steps {
       actor
       action
-      resolution
-      date
     }
   }
 `)

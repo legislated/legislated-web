@@ -2,21 +2,28 @@
 
 exports[`#render hides the summary when missing 1`] = `
 <Styled(div)>
-  <Styled(div)>
-    <Styled(img)
-      alt="Bill Icon"
-      src={null}
-    />
-    <p>
-      HB1234
-       - Updated 
-      Invalid Date
-    </p>
-  </Styled(div)>
+  <Styled(p)>
+    HB1234 - Updated Invalid Date
+  </Styled(p)>
   <h3>
     Foo
   </h3>
-  <Styled(div) />
+  <BillStatus
+    bill={
+      Object {
+        "detailsUrl": "http://www.test.com/details",
+        "documentNumber": "HB1234",
+        "fullTextUrl": "http://www.test.com/text",
+        "hearing": Object {
+          "date": "2010-01-01T00:00:00-06:00",
+        },
+        "id": "1234",
+        "summary": "",
+        "title": "Foo",
+        "witnessSlipUrl": "http://www.test.com/slip",
+      }
+    }
+  />
   <p />
   <Button
     isSmall={true}
@@ -29,21 +36,28 @@ exports[`#render hides the summary when missing 1`] = `
 
 exports[`#render renders properly 1`] = `
 <Styled(div)>
-  <Styled(div)>
-    <Styled(img)
-      alt="Bill Icon"
-      src={null}
-    />
-    <p>
-      HB1234
-       - Updated 
-      Invalid Date
-    </p>
-  </Styled(div)>
+  <Styled(p)>
+    HB1234 - Updated Invalid Date
+  </Styled(p)>
   <h3>
     Foo
   </h3>
-  <Styled(div) />
+  <BillStatus
+    bill={
+      Object {
+        "detailsUrl": "http://www.test.com/details",
+        "documentNumber": "HB1234",
+        "fullTextUrl": "http://www.test.com/text",
+        "hearing": Object {
+          "date": "2010-01-01T00:00:00-06:00",
+        },
+        "id": "1234",
+        "summary": "A bill, fantastic",
+        "title": "Foo",
+        "witnessSlipUrl": "http://www.test.com/slip",
+      }
+    }
+  />
   <p>
     A bill, fantastic
   </p>

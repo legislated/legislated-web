@@ -14,6 +14,8 @@ const defaults = {
       { actor: 'LOWER', action: 'INTRODUCED' },
       { actor: 'LOWER_COMMITTEE', action: 'INTRODUCED' },
       { actor: 'LOWER_COMMITTEE', action: 'RESOLVED' },
+      { actor: 'LOWER', action: 'RESOLVED' },
+      { actor: 'LOWER', action: 'RESOLVED' },
       { actor: 'UPPER', action: 'INTRODUCED' },
       { actor: 'UPPER_COMMITTEE', action: 'INTRODUCED' }
     ]

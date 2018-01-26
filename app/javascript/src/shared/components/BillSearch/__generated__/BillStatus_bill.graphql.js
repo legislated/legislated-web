@@ -13,8 +13,6 @@ export type BillStatus_bill = {|
   +steps: $ReadOnlyArray<?{|
     +actor: "LOWER" | "LOWER_COMMITTEE" | "UPPER" | "UPPER_COMMITTEE" | "GOVERNOR";
     +action: "INTRODUCED" | "RESOLVED";
-    +resolution: "PASSED" | "FAILED" | "SIGNED" | "VETOED" | "VETOED_LINE" | "NONE";
-    +date: any;
   |}>;
 |};
 */
@@ -53,20 +51,6 @@ const fragment /*: ConcreteFragment*/ = {
           "alias": null,
           "args": null,
           "name": "action",
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "resolution",
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "date",
           "storageKey": null
         }
       ],
