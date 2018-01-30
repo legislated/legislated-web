@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
 import styled from 'react-emotion'
 import { HomeIntro } from './HomeIntro'
+import { HomeFooter } from './HomeFooter'
 import { RelayRenderer, BillSearch, Button } from '@/components'
 import type { Viewer, SearchParams } from '@/types'
 import { mixins } from '@/styles'
@@ -55,6 +56,7 @@ let Home = class Home extends React.Component<*, Props, *> {
             children='View All Bills'
           />
         )}
+        <HomeFooter />
       </Scene>
     )
   }

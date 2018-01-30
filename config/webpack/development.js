@@ -1,11 +1,11 @@
 const path = require('path')
 const merge = require('webpack-merge')
 const RelayCompilerPlugin = require('@dhau/relay-compiler-webpack-plugin')
-const { server, client: baseClient } = require('./universal')
+const { server, client: $client } = require('./universal')
 const constants = require('./constants')
 
 // create a client config to render all non-ssr bundles
-const client = merge(baseClient, {
+const client = merge($client, {
   devtool: 'sourcemap',
   devServer: {
     inline: true
