@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react'
+// $FlowFixMe: upgrade flow && flow-typed defs
 import { createPortal } from 'react-dom'
 import { config } from '@/config'
 
