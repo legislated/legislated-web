@@ -4,6 +4,7 @@ export { RelayRenderer } from './RelayRenderer'
 export { TranslateAndFade } from './TranslateAndFade'
 export { NotificationView } from './NotificationView'
 
+export { Footer } from './Footer'
 export { Link } from './Link'
 export type { LinkProps } from './Link'
 export { CopyLink } from './CopyLink'

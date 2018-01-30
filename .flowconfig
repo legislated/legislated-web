@@ -20,6 +20,7 @@ suppress_type=$FlowFixMe
 suppress_type=$FixMe
 
 ; mappers
+module.name_mapper='^&\/\(.*\)$' -> '<PROJECT_ROOT>/app/javascript/assets/\1'
 module.name_mapper='^@\/\(.*\)$' -> '<PROJECT_ROOT>/app/javascript/src/shared/\1'
 
 ; optional features

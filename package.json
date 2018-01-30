@@ -111,6 +111,7 @@
     ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/app/javascript/src/shared/$1",
+      "^&/(.*)$": "<rootDir>/app/javascript/assets/$1",
       "^mocks/(.*)$": "<rootDir>/app/javascript/test/mocks/$1",
       ".*\\.(svg|png)$": "<rootDir>/app/javascript/test/stubs/image.js",
       ".*\\.(woff|woff2)$": "<rootDir>/app/javascript/test/stubs/fonts.js"

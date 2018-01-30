@@ -46,4 +46,4 @@ export function loadConfig () {
   }
 }
 
-export default loadConfig()
+export const config = loadConfig()

@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react'
-import { logo } from '../../../images'
+import { logo } from '&/images'
 
 type Props = {
   width: number,
@@ -12,7 +12,7 @@ export function Logo (props: Props) {
   return (
     <img
       src={logo}
-      alt='Quill and Paper'
+      alt='Quill and Paper Logo'
       style={{ width: props.width, height: props.height }}
       {...props}
     />

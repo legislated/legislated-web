@@ -13,5 +13,6 @@ exports[`#render shows the home scene 1`] = `
   >
     View All Bills
   </Styled(Button)>
+  <HomeFooter />
 </Styled(section)>
 `;

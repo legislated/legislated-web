@@ -1,6 +1,6 @@
 // @flow
 import { injectGlobal } from 'react-emotion'
-import * as fonts from '../../../fonts'
+import * as fonts from '&/fonts'
 
 function fontFace (family: string, variant: string, weight: number) {
   const fontFamily = family.replace(/\s/g, '')

@@ -18,5 +18,6 @@
 </head>
 <body>
   <%= render_react_component('client', location: request.fullpath) %>
+  <footer id='footer-root'></footer>
   <%= javascript_pack_tag('client') %>
 </body>
