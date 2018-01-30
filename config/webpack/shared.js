@@ -11,7 +11,8 @@ environment.plugins.delete('Manifest')
 const base = merge(environment.toWebpackConfig(), {
   resolve: {
     alias: {
-      '@': resolve(constants.client, './src/shared')
+      '@': resolve(constants.client, './src/shared'),
+      '&': resolve(constants.client, './assets')
     }
   }
 })
