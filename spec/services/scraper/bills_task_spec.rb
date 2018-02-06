@@ -2,7 +2,7 @@ describe Scraper::BillsTask do
   subject { described_class.new }
 
   describe '#scrape_paged_bills' do
-    let(:hearing) { build(:hearing, :with_any_committee) }
+    let(:hearing) { build(:hearing) }
     let(:page) { double('page') }
 
     def mock_dom

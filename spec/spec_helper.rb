@@ -1,8 +1,5 @@
 require 'pry'
 
-# require all support files
-Dir['spec/helpers/*'].each { |file| require file.gsub('spec/', '') }
-
 # rspec
 RSpec.configure do |config|
   config.example_status_persistence_file_path = 'spec/failures'

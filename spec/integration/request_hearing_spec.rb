@@ -1,6 +1,6 @@
-describe 'requesting hearings', graphql: :request do
+describe 'requesting hearings', :graph_request do
   it 'fetches a single hearing' do
-    hearing = create(:hearing, :with_any_committee)
+    hearing = create(:hearing)
 
     fields = %w[
       id

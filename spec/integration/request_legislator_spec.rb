@@ -1,4 +1,4 @@
-describe 'requesting legislators', graphql: :request do
+describe 'requesting legislators', :graph_request do
   it 'fetches a single legislator' do
     legislator = create(:legislator)
 

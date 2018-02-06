@@ -1,4 +1,4 @@
-describe Mutations::UpdateBill, graphql: :type do
+describe Mutations::UpdateBill, :graph_type do
   subject { described_class }
 
   describe 'when not signed-in as an admin' do
@@ -17,11 +17,16 @@ describe Mutations::UpdateBill, graphql: :type do
     end
 
     it 'updates the bill' do
-      bill = create(:bill, :with_any_hearing)
+      bill = create(:bill)
 
       mutate({
-        args: { id: bill.id, humanSummary: 'Fleece sweaters for all.' },
-        ctx: { is_admin: true }
+        args: {
+          id: bill.id,
+          humanSummary: 'Fleece sweaters for all.'
+        },
+        ctx: {
+          is_admin: true
+        }
       })
 
       bill.reload

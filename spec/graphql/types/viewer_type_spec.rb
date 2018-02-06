@@ -1,4 +1,4 @@
-describe Types::ViewerType, graphql: :type do
+describe Types::ViewerType, :graph_type do
   subject { described_class }
 
   let(:model) { Viewer.instance }

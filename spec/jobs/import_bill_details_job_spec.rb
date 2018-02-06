@@ -4,7 +4,7 @@ describe ImportBillDetailsJob do
   let(:mock_scraper) { double('Scraper') }
 
   describe '#perform' do
-    let(:bill) { create(:bill, :with_any_hearing) }
+    let(:bill) { create(:bill) }
     let(:expected_summary) { Faker::Company.bs }
     let(:scraper_response) { { summary: expected_summary } }
 

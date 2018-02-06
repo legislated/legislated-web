@@ -1,6 +1,6 @@
-describe 'requesting committees', graphql: :request do
+describe 'requesting committees', :graph_request do
   it 'fetches a single committee' do
-    committee = create(:committee, :with_any_chamber)
+    committee = create(:committee)
 
     fields = %w[
       id

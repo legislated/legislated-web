@@ -6,10 +6,10 @@ describe ImportHearingsJob do
   describe '#perform' do
     let(:chamber) { Chamber.first }
 
-    let(:hearing) { create(:hearing, :with_any_committee) }
+    let(:hearing) { create(:hearing) }
     let(:hearing_attrs) { attributes_for(:hearing, external_id: hearing.external_id) }
 
-    let(:committee) { create(:committee, :with_any_chamber) }
+    let(:committee) { create(:committee) }
     let(:committee_attrs) { attributes_for(:committee, external_id: committee.external_id) }
 
     let(:scraper_response) {

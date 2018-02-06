@@ -1,4 +1,4 @@
-describe Types::DocumentType, graphql: :type do
+describe Types::DocumentType, :graph_type do
   subject { described_class }
 
   let(:model) { build(:document, :with_bill) }

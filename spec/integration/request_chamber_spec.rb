@@ -1,4 +1,4 @@
-describe 'requesting chambers', graphql: :request do
+describe 'requesting chambers', :graph_request do
   it 'fetches a single chamber' do
     chamber = create(:chamber)
 

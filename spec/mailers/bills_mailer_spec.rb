@@ -46,9 +46,9 @@ describe BillsMailer, type: :mailer do
     end
 
     context 'serializes a csv that' do
-      let!(:bill1) { create(:bill, hearing: create(:hearing, :with_any_committee, date: start_date - 1.day)) }
-      let!(:bill3) { create(:bill, hearing: create(:hearing, :with_any_committee, date: start_date + 1.day)) }
-      let!(:bill2) { create(:bill, hearing: create(:hearing, :with_any_committee, date: start_date)) }
+      let!(:bill1) { create(:bill, hearing: create(:hearing, date: start_date - 1.day)) }
+      let!(:bill3) { create(:bill, hearing: create(:hearing, date: start_date + 1.day)) }
+      let!(:bill2) { create(:bill, hearing: create(:hearing, date: start_date)) }
 
       it 'contains bills from the most recent week' do
         subject.weekly_export_email(service).deliver_now

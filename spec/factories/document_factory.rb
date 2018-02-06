@@ -7,12 +7,8 @@ FactoryBot.define do
     slip_results_url { Faker::Internet.url }
     is_amendment { false }
 
-    trait :with_any_bill do
-      bill { Bill.first }
-    end
-
     trait :with_bill do
-      bill
+      bill { build(:bill) }
     end
   end
 end

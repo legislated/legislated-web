@@ -5,14 +5,7 @@ FactoryBot.define do
     location { Faker::Address.street_address }
     date { Faker::Time.between(Time.zone.today, 1.month.from_now) }
     is_cancelled false
-
-    trait :with_any_committee do
-      committee { Committee.first }
-    end
-
-    trait :with_committee do
-      committee
-    end
+    association :committee, strategy: :build
 
     trait :this_week do
       date { Faker::Time.between(Time.zone.today, 1.week.from_now) }
