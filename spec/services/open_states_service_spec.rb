@@ -79,4 +79,47 @@ describe OpenStatesService do
       expect(fetch_bills).to eq(%i[a b])
     end
   end
+
+  describe '#fetch committees' do
+    def fetch_committees(params ={})
+      subject.fetch_committees(params).to a
+    end
+
+    before do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with('OPEN_STATES_KEY').and_return(api_key)
+      allow(klass).to receive(:get)
+    end
+
+    it 'requests the correct endpoint' do
+      fetch_committees
+      expect(klass).to have_received(:get).with('/committees', any_args)
+    end
+
+    it 'requests the correct headers' do
+      fetch_committees
+      expect(klass).to have_received(:get).with(anything, hash_including({
+        headers: {
+          'X-API-KEY': api_key
+        }
+      }))
+    end
+
+    it 'requests committees by state' do
+      fetch_committees
+      expect(klass).to have_received(:get).with(anything, hash_including({
+        query: {
+          state: 'il',
+          search_window: 'session'
+        }
+      }))
+    end
+
+    it 'applies additional query parameters' do
+      fetch_committees(extra: 'parameter')
+      expect(klass).to have_received(:get).with(anything, hash_including({
+        query: hash_including(extra: 'parameter')
+      }))
+    end
+  end
 end
