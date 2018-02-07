@@ -29,8 +29,8 @@ const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [
     {
       "kind": "RootArgument",
-      "name": "filter",
-      "type": "BillsSearchFilter"
+      "name": "params",
+      "type": "BillsSearchParams"
     },
     {
       "kind": "RootArgument",
@@ -64,9 +64,9 @@ const fragment /*: ConcreteFragment*/ = {
       "args": [
         {
           "kind": "Variable",
-          "name": "filter",
-          "variableName": "filter",
-          "type": "BillsSearchFilter"
+          "name": "params",
+          "variableName": "params",
+          "type": "BillsSearchParams"
         }
       ],
       "concreteType": "BillsSearch",

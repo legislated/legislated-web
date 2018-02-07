@@ -34,7 +34,7 @@ export { Bills }
 export function BillsRenderer () {
   const query = graphql`
     query BillsQuery(
-      $filter: BillsSearchFilter!,
+      $params: BillsSearchParams!,
       $count: Int!,
       $cursor: String!
     ) {
@@ -52,7 +52,7 @@ export function BillsRenderer () {
       getVariables={(props) => ({
         count: PAGE_SIZE,
         cursor: '',
-        filter: {
+        params: {
           key: 'bills',
           query: '',
           ...paramsFromRoute(props)

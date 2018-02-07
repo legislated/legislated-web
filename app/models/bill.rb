@@ -20,7 +20,7 @@ class Bill < ApplicationRecord
     }
   }
 
-  scope :by_date, (-> (range = {}) do
+  scope :by_hearing_date, (-> (range = {}) do
     q = includes(:hearing).references(:hearings)
     q = q.order('hearings.date ASC')
     q = q.where('hearings.date >= ?', range[:start]) if range[:start].present?

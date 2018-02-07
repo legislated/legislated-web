@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 9cd1ab853982df58afa0d1466d7d7839
+ * @relayHash 889e972c126ed4c4cf894531c943f705
  */
 
 /* eslint-disable */
@@ -17,7 +17,7 @@ export type BillListQueryResponse = {|
 
 /*
 query BillListQuery(
-  $filter: BillsSearchFilter!
+  $params: BillsSearchParams!
   $count: Int!
   $cursor: String!
 ) {
@@ -28,7 +28,7 @@ query BillListQuery(
 }
 
 fragment BillList_viewer on Viewer {
-  bills(filter: $filter, first: $count, after: $cursor) {
+  bills(params: $params, first: $count, after: $cursor) {
     count
     pageInfo {
       hasNextPage
@@ -72,8 +72,8 @@ const batch /*: ConcreteBatch*/ = {
     "argumentDefinitions": [
       {
         "kind": "LocalArgument",
-        "name": "filter",
-        "type": "BillsSearchFilter!",
+        "name": "params",
+        "type": "BillsSearchParams!",
         "defaultValue": null
       },
       {
@@ -120,8 +120,8 @@ const batch /*: ConcreteBatch*/ = {
     "argumentDefinitions": [
       {
         "kind": "LocalArgument",
-        "name": "filter",
-        "type": "BillsSearchFilter!",
+        "name": "params",
+        "type": "BillsSearchParams!",
         "defaultValue": null
       },
       {
@@ -161,15 +161,15 @@ const batch /*: ConcreteBatch*/ = {
               },
               {
                 "kind": "Variable",
-                "name": "filter",
-                "variableName": "filter",
-                "type": "BillsSearchFilter"
-              },
-              {
-                "kind": "Variable",
                 "name": "first",
                 "variableName": "count",
                 "type": "Int"
+              },
+              {
+                "kind": "Variable",
+                "name": "params",
+                "variableName": "params",
+                "type": "BillsSearchParams"
               }
             ],
             "concreteType": "BillsSearch",
@@ -344,22 +344,22 @@ const batch /*: ConcreteBatch*/ = {
               },
               {
                 "kind": "Variable",
-                "name": "filter",
-                "variableName": "filter",
-                "type": "BillsSearchFilter"
-              },
-              {
-                "kind": "Variable",
                 "name": "first",
                 "variableName": "count",
                 "type": "Int"
+              },
+              {
+                "kind": "Variable",
+                "name": "params",
+                "variableName": "params",
+                "type": "BillsSearchParams"
               }
             ],
             "handle": "connection",
             "name": "bills",
             "key": "BillList_bills",
             "filters": [
-              "filter"
+              "params"
             ]
           },
           {
@@ -374,7 +374,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query BillListQuery(\n  $filter: BillsSearchFilter!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillList_viewer\n    id\n  }\n}\n\nfragment BillList_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  updatedAt\n  hearing {\n    date\n    id\n  }\n  ...BillStatus_bill\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n"
+  "text": "query BillListQuery(\n  $params: BillsSearchParams!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillList_viewer\n    id\n  }\n}\n\nfragment BillList_viewer on Viewer {\n  bills(params: $params, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  updatedAt\n  hearing {\n    date\n    id\n  }\n  ...BillStatus_bill\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n"
 };
 
 module.exports = batch;

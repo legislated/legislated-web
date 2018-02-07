@@ -47,12 +47,12 @@ let Home = class Home extends React.Component<*, Props, *> {
         <HomeIntro />
         <BillSearch
           viewer={viewer}
-          onFilter={this.didChangeParams}
+          onChange={this.didChangeParams}
         />
         {viewer && (
           <BillsButton
-            onClick={this.didClickViewAll}
             isSecondary
+            onClick={this.didClickViewAll}
             children='View All Bills'
           />
         )}
@@ -81,7 +81,7 @@ export { Home }
 export function HomeRenderer () {
   const query = graphql`
     query HomeQuery(
-      $filter: BillsSearchFilter!,
+      $params: BillsSearchParams!,
       $count: Int!,
       $cursor: String!
     ) {
@@ -98,7 +98,7 @@ export function HomeRenderer () {
       getVariables={() => ({
         count: 3,
         cursor: '',
-        filter: {
+        params: {
           key: 'home',
           ...DEFAULT_PARAMS
         }

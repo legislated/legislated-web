@@ -74,6 +74,17 @@ export type Bill = {
   updatedAt: string
 }
 
+export type SearchParamsSubset
+  = 'SLIPS'
+  | 'LOWER'
+  | 'UPPER'
+  | 'GOVERNOR'
+
+export type SearchParams = {
+  query?: string,
+  subset?: SearchParamsSubset
+}
+
 export type Viewer = {
   isAdmin: boolean,
   bill: Bill,

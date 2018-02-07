@@ -5,40 +5,44 @@ import type { RelayRefetchProp } from 'react-relay'
 import styled from 'react-emotion'
 import { throttle } from 'lodash'
 import { SearchField } from './SearchField'
+import { SearchFilters } from './SearchFilters'
 import { BillList } from './BillList'
 import { LoadingIndicator } from '../LoadingIndicator'
-import type { Viewer, SearchParams } from '@/types'
 import { mixins } from '@/styles'
+import type { Viewer, SearchParams } from '@/types'
 
 type Props = {
   viewer: ?Viewer,
   pageSize?: number,
   params?: SearchParams,
-  onFilter?: (SearchParams) => void,
+  onChange?: (SearchParams) => void,
   relay: RelayRefetchProp
 }
 
 type State = {
-  query: string,
+  params: SearchParams,
   disablesAnimation: boolean
 }
 
 let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   state = {
-    query: '',
-    disablesAnimation: false,
-    ...this.props.params
+    params: {
+      query: '',
+      actors: null,
+      ...this.props.params
+    },
+    disablesAnimation: false
   }
 
   // actions
-  filterBillsForQuery = throttle((query: string) => {
-    const { onFilter, relay } = this.props
+  filterBills = throttle(() => {
+    const { params } = this.state
+    const { onChange, relay } = this.props
 
-    const filter = { query }
-    onFilter && onFilter(filter)
+    onChange && onChange(params)
 
     this.setState({ disablesAnimation: true })
-    relay.refetch({ filter }, null, (error: ?Error) => {
+    relay.refetch({ params }, null, (error: ?Error) => {
       if (error) {
         console.error(`error updaing query: ${error.toString()}`)
       }
@@ -51,41 +55,47 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   }, 300)
 
   // events
-  searchFieldDidChange = (query: string) => {
-    this.setState({ query })
-    this.filterBillsForQuery(query)
+  didChangeParams = (params) => {
+    this.setState({ params })
+    this.filterBills()
   }
 
   // lifecycle
   render () {
     const {
       viewer,
-      pageSize
+      pageSize,
     } = this.props
 
     const {
-      query,
+      params,
       disablesAnimation
     } = this.state
 
     return (
       <Search>
         <SearchField
-          value={query}
-          onChange={this.searchFieldDidChange}
+          params={params}
+          onChange={this.didChangeParams}
         />
-        <Bills>
-          <LoadingIndicator
-            isLoading={!viewer}
+        <Body>
+          <SearchFilters
+            params={params}
+            onChange={this.didChangeParams}
           />
-          {viewer && (
-            <BillList
-              viewer={viewer}
-              pageSize={pageSize}
-              isAnimated={!disablesAnimation}
+          <Bills>
+            <LoadingIndicator
+              isLoading={!viewer}
             />
-          )}
-        </Bills>
+            {viewer && (
+              <BillList
+                viewer={viewer}
+                pageSize={pageSize}
+                isAnimated={!disablesAnimation}
+              />
+            )}
+          </Bills>
+        </Body>
       </Search>
     )
   }
@@ -95,7 +105,7 @@ BillSearch = createRefetchContainer(BillSearch,
   graphql`
     fragment BillSearch_viewer on Viewer {
       bills(
-        filter: $filter,
+        params: $params,
         first: $count,
         after: $cursor
       ) @connection(key: "BillSearch_bills") {
@@ -110,7 +120,7 @@ BillSearch = createRefetchContainer(BillSearch,
   `,
   graphql`
     query BillSearchQuery(
-      $filter: BillsSearchFilter!,
+      $params: BillsSearchParams!,
       $count: Int!,
       $cursor: String!
     ) {
@@ -125,11 +135,13 @@ const Search = styled.div`
   ${mixins.flexColumn};
 `
 
-const Bills = styled.div`
+const Body = styled.div`
   ${mixins.pageWidth};
-
-  position: relative;
   align-self: center;
+`
+
+const Bills = styled.div`
+  position: relative;
   margin-top: 40px;
 `
 
