@@ -28,15 +28,13 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   state = {
     params: {
       query: '',
-      actors: null,
-      ...this.props.params
+      ...(this.props.params || {})
     },
     disablesAnimation: false
   }
 
   // actions
-  filterBills = throttle(() => {
-    const { params } = this.state
+  filterBills = throttle((params: SearchParams) => {
     const { onChange, relay } = this.props
 
     onChange && onChange(params)
@@ -57,7 +55,7 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   // events
   didChangeParams = (params) => {
     this.setState({ params })
-    this.filterBills()
+    this.filterBills(params)
   }
 
   // lifecycle

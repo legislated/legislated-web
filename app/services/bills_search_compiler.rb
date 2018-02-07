@@ -1,17 +1,25 @@
 module BillsSearchCompiler
   def self.compile(query: nil, subset: nil, **_)
     q = Bill.all
-    q = filter_by_actor(q, actor) if subset.present?
+    q = filter_by_subset(q, subset) if subset.present?
     q = filter_by_query(q, query) if query.present?
     q
   end
 
   def self.filter_by_subset(bills, subset)
     if subset == :slips
-      bills.by_hearing_date(start: Time.current, end: 1.week.from_now)
+      filter_by_slips(bills)
     else
-      bills.with_actor(actors_from_subset(subset))
+      filter_by_actor(bills, subset)
     end
+  end
+
+  def self.filter_by_slips(bills)
+    bills.by_hearing_date(start: Time.current, end: 1.week.from_now)
+  end
+
+  def self.filter_by_actor(bills, subset)
+    bills.with_actor(actors_from_subset(subset))
   end
 
   def self.filter_by_query(bills, query)

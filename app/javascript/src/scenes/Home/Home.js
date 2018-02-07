@@ -11,7 +11,7 @@ import type { Viewer, SearchParams } from '@/types'
 import { mixins } from '@/styles'
 
 const DEFAULT_PARAMS = {
-  query: ''
+  query: '',
 }
 
 type Props = {

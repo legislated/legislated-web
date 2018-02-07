@@ -34,7 +34,7 @@ class Bill < ApplicationRecord
   end)
 
   scope :with_actor, (-> (actor) do
-    where("steps->-1->>'actor' = ?", actor)
+    where("steps->-1->>'actor' = any(array[?])", [*actor])
   end)
 
   # accessors
