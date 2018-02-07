@@ -12,9 +12,8 @@ FactoryBot.define do
       hearing_date nil
     end
 
-    association :hearing do
-      binding.pry
-      build(:hearing, date: hearing_date) if hearing_date.present?
+    hearing do
+      hearing_date.nil? ? build(:hearing) : build(:hearing, date: hearing_date)
     end
 
     trait :with_associations do

@@ -35,9 +35,7 @@ describe 'requesting bills', :graph_request do
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
-
-    data = body.dig(:data, :viewer, :bill)
-    expect(data).to be_present
+    expect(body.dig(:data, :viewer, :bill)).to be_present
   end
 
   it 'fetches multiple bills' do

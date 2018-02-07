@@ -2984,7 +2984,7 @@
           "inputFields": [
             {
               "name": "query",
-              "description": "Filters bills whose title or summary match the query",
+              "description": "Filters to bills whose title or summary match the query",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -2993,8 +2993,22 @@
               "defaultValue": null
             },
             {
+              "name": "actors",
+              "description": "Filters to bills whose most recent step matches any of the actors",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "StepActor",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
               "name": "from",
-              "description": "Filters bills whose hearing is on or after the date-time",
+              "description": "Filters to bills whose hearing is on or after the date-time",
               "type": {
                 "kind": "SCALAR",
                 "name": "Time",
@@ -3004,7 +3018,7 @@
             },
             {
               "name": "to",
-              "description": "Filters bills whose hearings is on or before the date-time",
+              "description": "Filters to bills whose hearings is on or before the date-time",
               "type": {
                 "kind": "SCALAR",
                 "name": "Time",
