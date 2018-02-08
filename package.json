@@ -28,7 +28,8 @@
     "flow:restart": "flow stop && flow",
     "relay": "relay-compiler --src ./app/javascript/src --schema schema.json",
     "relay:watch": "yarn relay --watch",
-    "validate": "yarn lint && yarn flow && yarn test"
+    "check": "yarn lint && yarn flow && yarn test",
+    "check:quiet": "yarn lint && yarn flow --quiet && yarn test"
   },
   "dependencies": {
     "@rails/webpacker": "^3.2.1",
