@@ -24,9 +24,9 @@ const SUBSET_ENTRIES = [{
   value: 'GOVERNOR'
 }]
 
-export class SearchFilters extends React.Component<*, Props, *> {
+export class SearchFilters extends React.Component<Props> {
   // events
-  didChangeFilter = ({ target }: SyntheticInputEvent) => {
+  didChangeFilter = ({ target }: SyntheticInputEvent<*>) => {
     const { params, onChange } = this.props
 
     onChange({

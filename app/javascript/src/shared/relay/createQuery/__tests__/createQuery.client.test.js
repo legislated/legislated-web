@@ -1,13 +1,11 @@
 /* eslint-env jest */
 import { QueryResponseCache } from 'relay-runtime'
 import { createQuery } from '../createQuery.client'
-import { getCacheResolver } from '../cacheResolvers'
 
 const { anything, objectContaining } = expect
 
 // mocks
 jest.mock('relay-runtime')
-jest.mock('../cacheResolvers')
 jest.mock('@/config', () => ({
   config: {
     graphUrl: 'http://test.com/graphql'
@@ -78,18 +76,6 @@ describe('on a cache miss', () => {
       await execute(operation, variables)
       expect(cache.set).toHaveBeenCalledWith(operation.name, variables, { data })
     })
-
-    it('caches the result using the resolver if available', async () => {
-      const setCachedResponse = jest.fn()
-      getCacheResolver.mockReturnValueOnce({
-        setCachedResponse,
-        getCachedResponse: () => null
-      })
-
-      await execute(operation, variables)
-      expect(cache.set).not.toHaveBeenCalled()
-      expect(setCachedResponse).toHaveBeenCalledWith(operation, variables, { data }, cache)
-    })
   })
 })
 
@@ -100,17 +86,6 @@ describe('on a cache hit', () => {
 
     const result = await execute()
     expect(global.fetch).not.toHaveBeenCalled()
-    expect(result).toEqual(payload)
-  })
-
-  it('returns the cache resolver data if available', async () => {
-    const payload = { data: 'bar' }
-    getCacheResolver.mockReturnValueOnce({
-      getCachedResponse: () => payload
-    })
-
-    const result = await execute()
-    expect(cache.get).not.toHaveBeenCalled()
     expect(result).toEqual(payload)
   })
 })

@@ -14,7 +14,7 @@ type State = {
   isOpen: boolean
 }
 
-export class MobileHeader extends React.Component<*, State, *> {
+export class MobileHeader extends React.Component<{}, State> {
   state = {
     isOpen: false
   }

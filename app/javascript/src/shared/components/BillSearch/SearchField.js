@@ -14,13 +14,13 @@ type State = {
   isFocused: boolean
 }
 
-export class SearchField extends React.Component<*, Props, State> {
+export class SearchField extends React.Component<Props, State> {
   state = {
     isFocused: false
   }
 
   // events
-  didChangeQuery = ({ target }: SyntheticInputEvent) => {
+  didChangeQuery = ({ target }: SyntheticInputEvent<*>) => {
     const { params, onChange } = this.props
 
     onChange({

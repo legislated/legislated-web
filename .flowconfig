@@ -1,10 +1,5 @@
 [ignore]
-.*/dist
-.*/node_modules/graphql/.*
-.*/node_modules/jest-enzyme/.*
-.*/node_modules/enzyme-matchers/.*
-.*/node_modules/babel-plugin-emotion/.*
-.*/node_modules/@dhau/relay-compiler-webpack-plugin/.*
+.*/node_modules/sync-request/.*
 
 [include]
 ./app/javascript
@@ -25,4 +20,3 @@ module.name_mapper='^@\/\(.*\)$' -> '<PROJECT_ROOT>/app/javascript/src/shared/\1
 
 ; optional features
 esproposal.decorators=ignore
-unsafe.enable_getters_and_setters=true

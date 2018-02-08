@@ -1,7 +1,6 @@
 // @flow
 import { QueryResponseCache } from 'relay-runtime'
 import type { QueryResult, QueryPayload, FetchFunction } from 'relay-runtime'
-import { getCacheResolver } from './cacheResolvers'
 import { config } from '@/config'
 
 // helpers
@@ -36,24 +35,16 @@ export function createQuery (extraHeaders: Object): FetchFunction {
     return operation.name
   }
 
-  function getCachedPayload (operation, variables, resolver) {
-    if (resolver) {
-      return resolver.getCachedResponse(operation, variables, cache)
-    } else {
-      return cache.get(getQueryId(operation), variables)
-    }
+  function getCachedPayload (operation, variables) {
+    return cache.get(getQueryId(operation), variables)
   }
 
-  function setCachedPayload (payload, operation, variables, resolver) {
-    if (resolver) {
-      resolver.setCachedResponse(operation, variables, payload, cache)
-    } else {
-      cache.set(getQueryId(operation), variables, payload)
-    }
+  function setCachedPayload (payload, operation, variables) {
+    cache.set(getQueryId(operation), variables, payload)
   }
 
   // async portion of query
-  async function remoteQuery (operation, variables, resolver) {
+  async function remoteQuery (operation, variables) {
     // fetch data from network
     const response = await global.fetch(config.graphUrl, {
       method: 'POST',
@@ -69,7 +60,7 @@ export function createQuery (extraHeaders: Object): FetchFunction {
     // cache response payload if success
     const payload = asPayload(result)
     if (payload) {
-      setCachedPayload(payload, operation, variables, resolver)
+      setCachedPayload(payload, operation, variables)
     }
 
     return result
@@ -82,16 +73,13 @@ export function createQuery (extraHeaders: Object): FetchFunction {
       return asResult(payload)
     }
 
-    // check for an applicable cache resolver
-    const resolver = getCacheResolver(operation, variables)
-
     // resolve synchronously with the cached payload if available
-    payload = getCachedPayload(operation, variables, resolver)
+    payload = getCachedPayload(operation, variables)
     if (payload != null) {
       return asResult(payload)
     }
 
     // fetch the remote payload on a miss
-    return remoteQuery(operation, variables, resolver)
+    return remoteQuery(operation, variables)
   }
 }

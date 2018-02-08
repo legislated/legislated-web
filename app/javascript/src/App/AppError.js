@@ -11,7 +11,7 @@ type State = {
   error: ?Error
 }
 
-export class AppError extends React.Component<*, Props, State> {
+export class AppError extends React.Component<Props, State> {
   state = {
     error: null
   }

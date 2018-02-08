@@ -10,7 +10,7 @@ type State = {
   isSticky: boolean
 }
 
-export class HeroHeader extends React.Component<*, *, State> {
+export class HeroHeader extends React.Component<{}, State> {
   state = {
     isSticky: false
   }

@@ -3,9 +3,9 @@ import * as React from 'react'
 import { Link } from '@/components'
 import { stylesheet, colors, mixins } from '@/styles'
 
-export class About extends React.Component {
-  render () {
-    return <div {...rules.container}>
+export function About () {
+  return (
+    <div {...rules.container}>
       <div {...rules.content}>
         <h1>About Us</h1>
         <p>
@@ -36,7 +36,7 @@ export class About extends React.Component {
         </p>
       </div>
     </div>
-  }
+  )
 }
 
 const rules = stylesheet({

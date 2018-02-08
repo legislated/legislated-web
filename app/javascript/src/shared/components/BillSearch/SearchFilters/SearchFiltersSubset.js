@@ -12,7 +12,7 @@ type SubsetEntry = {
 type Props = {
   entry: SubsetEntry,
   value: ?SearchParamsSubset,
-  onChange: (event: SyntheticInputEvent) => void
+  onChange: (event: SyntheticInputEvent<*>) => void
 }
 
 export function SearchFiltersSubset ({

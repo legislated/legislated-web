@@ -13,7 +13,7 @@ type State = {
   isAccepted: boolean
 }
 
-export class HomeIntro extends React.Component<*, Props, State> {
+export class HomeIntro extends React.Component<Props, State> {
   state = {
     isAccepted: !!local.get('intro-cleared')
   }

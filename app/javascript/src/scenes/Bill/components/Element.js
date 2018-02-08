@@ -1,18 +1,16 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 
-export class Element extends Component {
-  props: {
-    label: string,
-    children?: any
-  }
+type Props = {
+  label: string,
+  children?: React.Node
+}
 
-  render () {
-    const { label, children } = this.props
-
-    return <div>
+export function Element ({ label, children }: Props) {
+  return (
+    <div>
       <h3>{label}</h3>
       <p>{children}</p>
     </div>
-  }
+  )
 }

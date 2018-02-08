@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
@@ -11,20 +11,17 @@ import { now } from '@/functions'
 import { stylesheet, colors, mixins } from '@/styles'
 import type { Bill } from '@/types'
 
-let Content = class Content extends Component {
-  props: {
-    bill: Bill
-  } & ContextRouter
+type Props = {
+  bill: Bill
+} & ContextRouter
 
-  // lifecycle
-  render () {
-    const { bill, location } = this.props
+let Content = function Content ({ bill, location }: Props) {
+  const date = parse(bill.hearing.date)
+  const hoursLeft = differenceInHours(date, now())
+  const formattedDate = format(date, 'M/D/YY h:mm A')
 
-    const date = parse(bill.hearing.date)
-    const hoursLeft = differenceInHours(date, now())
-    const formattedDate = format(date, 'M/D/YY h:mm A')
-
-    return <div>
+  return (
+    <div>
       <div {...rules.header}>
         <section>
           <h1>{bill.title}</h1>
@@ -50,7 +47,7 @@ let Content = class Content extends Component {
       </div>
       <Actions bill={bill} />
     </div>
-  }
+  )
 }
 
 Content = createFragmentContainer(withRouter(Content), graphql`
