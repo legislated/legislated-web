@@ -3,7 +3,7 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import { SearchFiltersSubset } from './SearchFiltersSubset'
 import { mixins, colors } from '@/styles'
-import type { SearchParams, SearchParamsSubset } from '@/types'
+import type { SearchParams } from '@/types'
 
 type Props = {
   params: SearchParams,
@@ -15,7 +15,7 @@ const SUBSET_ENTRIES = [{
   value: 'SLIPS'
 }, {
   label: 'house',
-  value: 'LOWER',
+  value: 'LOWER'
 }, {
   label: 'senate',
   value: 'UPPER'

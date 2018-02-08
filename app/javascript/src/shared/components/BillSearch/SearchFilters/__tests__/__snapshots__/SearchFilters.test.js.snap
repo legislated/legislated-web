@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the search filters 1`] = `
+<Styled(div)>
+  <Styled(div)>
+    <SearchFiltersSubset
+      entry={
+        Object {
+          "label": "slips",
+          "value": "SLIPS",
+        }
+      }
+      key="filters-subset-0"
+      onChange={[Function]}
+      value="test-subset"
+    />
+    <SearchFiltersSubset
+      entry={
+        Object {
+          "label": "house",
+          "value": "LOWER",
+        }
+      }
+      key="filters-subset-1"
+      onChange={[Function]}
+      value="test-subset"
+    />
+    <SearchFiltersSubset
+      entry={
+        Object {
+          "label": "senate",
+          "value": "UPPER",
+        }
+      }
+      key="filters-subset-2"
+      onChange={[Function]}
+      value="test-subset"
+    />
+    <SearchFiltersSubset
+      entry={
+        Object {
+          "label": "governor",
+          "value": "GOVERNOR",
+        }
+      }
+      key="filters-subset-3"
+      onChange={[Function]}
+      value="test-subset"
+    />
+  </Styled(div)>
+</Styled(div)>
+`;

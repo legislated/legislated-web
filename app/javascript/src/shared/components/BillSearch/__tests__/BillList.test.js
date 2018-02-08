@@ -11,12 +11,15 @@ const { anything } = expect
 let subject
 
 const defaults = {
-  animated: true,
   pageSize: 20,
+  animated: true,
   viewer: {
     bills: {
       count: 2,
-      edges: [{ node: { id: 1 } }, { node: { id: 2 } }]
+      edges: [
+        { node: { id: 1 } },
+        { node: { id: 2 } }
+      ]
     }
   },
   history: {

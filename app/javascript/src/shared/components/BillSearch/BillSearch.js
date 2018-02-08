@@ -37,15 +37,17 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   filterBills = throttle((params: SearchParams) => {
     const { onChange, relay } = this.props
 
+    // callback the change handler
     onChange && onChange(params)
 
+    // fetch the bills with updated params
     this.setState({ disablesAnimation: true })
     relay.refetch({ params }, null, (error: ?Error) => {
       if (error) {
         console.error(`error updaing query: ${error.toString()}`)
       }
 
-      // completion comes back before render
+      // HACK: completion comes back before render
       global.requestAnimationFrame(() => {
         this.setState({ disablesAnimation: false })
       })
@@ -62,7 +64,7 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
   render () {
     const {
       viewer,
-      pageSize,
+      pageSize
     } = this.props
 
     const {

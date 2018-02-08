@@ -4,7 +4,7 @@ exports[`#render shows the home scene 1`] = `
 <Styled(section)>
   <HomeIntro />
   <BillSearch
-    onFilter={[Function]}
+    onChange={[Function]}
     viewer="test-viewer"
   />
   <Styled(Button)

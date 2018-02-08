@@ -8,7 +8,10 @@ import { SearchField } from '../SearchField'
 let subject
 
 const defaults = {
-  value: 'test-value',
+  params: {
+    query: 'test-query',
+    other: 'test-other'
+  },
   onChange: jest.fn()
 }
 
@@ -29,17 +32,26 @@ describe('#render', () => {
 })
 
 describe('entering a value', () => {
+  const event = {
+    target: {
+      value: 'foo'
+    }
+  }
+
   it('notifies its parent', () => {
     loadSubject()
-    subject.instance().inputDidChange({ target: { value: 'foo' } })
-    expect(defaults.onChange).toHaveBeenCalledWith('foo')
+    subject.instance().didChangeQuery(event)
+    expect(defaults.onChange).toHaveBeenCalledWith({
+      ...defaults.params,
+      query: 'foo'
+    })
   })
 })
 
 describe('focusing the input', () => {
   it('focuses the component', () => {
     loadSubject()
-    subject.instance().inputDidChangeFocus(true)()
+    subject.instance().didChangeFocus(true)()
     expect(subject).toHaveState('isFocused', true)
   })
 })

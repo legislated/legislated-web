@@ -8,18 +8,10 @@ module BillsSearchCompiler
 
   def self.filter_by_subset(bills, subset)
     if subset == :slips
-      filter_by_slips(bills)
+      bills.by_hearing_date(start: Time.current, end: 1.week.from_now)
     else
-      filter_by_actor(bills, subset)
+      bills.with_actor(actors_from_subset(subset))
     end
-  end
-
-  def self.filter_by_slips(bills)
-    bills.by_hearing_date(start: Time.current, end: 1.week.from_now)
-  end
-
-  def self.filter_by_actor(bills, subset)
-    bills.with_actor(actors_from_subset(subset))
   end
 
   def self.filter_by_query(bills, query)

@@ -8,7 +8,7 @@ import { currentEnvironment, cacheResolvers } from '@/relay'
 import type { RelayCacheResovler } from '@/types'
 
 type Props = {
-  root: Class<React$Component<*, *, *>>,
+  root: Class<React.Component<*, *, *>>,
   query: GraphQL,
   getVariables?: (ContextRouter) => Object,
   cacheResolver?: RelayCacheResovler
