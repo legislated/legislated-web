@@ -10,6 +10,13 @@ type State = {
   isSticky: boolean
 }
 
+function getTopOffset (ref) {
+  const node = findDomNode(ref)
+  const parent = node && node.parentElement
+  const offset = parent != null ? parent.getBoundingClientRect().top : 0
+  return offset
+}
+
 export class HeroHeader extends React.Component<{}, State> {
   state = {
     isSticky: false
@@ -25,12 +32,9 @@ export class HeroHeader extends React.Component<{}, State> {
   }
 
   invalidateIsSticky = (navbar: ?Object) => {
-    this.setState(() => {
-      const node = findDomNode(navbar)
-      const parent = node && node.parentElement
-      const isSticky = parent && parent.getBoundingClientRect().top < 0
-      return { isSticky }
-    })
+    this.setState(() => ({
+      isSticky: getTopOffset(navbar) < 0
+    }))
   }
 
   // events

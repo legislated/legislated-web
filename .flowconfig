@@ -1,5 +1,4 @@
 [ignore]
-.*/node_modules/sync-request/.*
 
 [include]
 ./app/javascript

@@ -20,7 +20,7 @@ let Bills = function Bills ({ viewer, ...props }: Props) {
   return (
     <BillSearch
       viewer={viewer}
-      /* $FlowFixMe: intersection & rest types */
+      /* $FlowFixMe: intersection types & rest parameter */
       params={paramsFromRoute(props)}
       pageSize={PAGE_SIZE}
     />
@@ -46,7 +46,6 @@ export function BillsRenderer () {
 
   return (
     <RelayRenderer
-      // $FlowFixMe: make root accept class / function components after upgrading flow
       root={Bills}
       query={query}
       getVariables={(props) => ({
