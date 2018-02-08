@@ -5,6 +5,12 @@ exports[`#render shows the home scene 1`] = `
   <HomeIntro />
   <BillSearch
     onChange={[Function]}
+    params={
+      Object {
+        "query": "",
+        "subset": "SLIPS",
+      }
+    }
     viewer="test-viewer"
   />
   <Styled(Button)

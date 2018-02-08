@@ -10,8 +10,9 @@ import { RelayRenderer, BillSearch, Button } from '@/components'
 import type { Viewer, SearchParams } from '@/types'
 import { mixins } from '@/styles'
 
-const DEFAULT_PARAMS = {
-  query: ''
+const DEFAULT_PARAMS: SearchParams = {
+  query: '',
+  subset: 'SLIPS'
 }
 
 type Props = {
@@ -19,7 +20,7 @@ type Props = {
 } & ContextRouter
 
 let Home = class Home extends React.Component<*, Props, *> {
-  params: SearchParams = DEFAULT_PARAMS
+  params = DEFAULT_PARAMS
 
   // events
   didChangeParams = (params: SearchParams) => {
@@ -47,6 +48,7 @@ let Home = class Home extends React.Component<*, Props, *> {
         <HomeIntro />
         <BillSearch
           viewer={viewer}
+          params={DEFAULT_PARAMS}
           onChange={this.didChangeParams}
         />
         {viewer && (
