@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import { graphql } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import { Content } from './components'
@@ -7,21 +7,18 @@ import { RelayRenderer } from '@/components'
 import { stylesheet, colors, mixins } from '@/styles'
 import type { Viewer } from '@/types'
 
-let Bill = class Bill extends Component {
-  props: {
-    viewer: ?Viewer,
-  }
+type Props = {
+  viewer: ?Viewer
+}
 
-  // lifecycle
-  render () {
-    const { viewer } = this.props
-
-    return <div {...rules.container}>
+let Bill = function Bill ({ viewer }: Props) {
+  return (
+    <div {...rules.container}>
       <div {...rules.content}>
         {viewer ? <Content bill={viewer.bill} /> : <div>Loading...</div>}
       </div>
     </div>
-  }
+  )
 }
 
 Bill = withRouter(Bill)

@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import { createPaginationContainer, graphql } from 'react-relay'
-import type { RelayPaginationProp } from 'react-relay'
+import type { RelayPaginationProps } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
 import styled from 'react-emotion'
@@ -14,9 +14,8 @@ import type { Viewer } from '@/types'
 type Props = {
   viewer: Viewer,
   isAnimated: boolean,
-  pageSize?: number,
-  relay: RelayPaginationProp
-} & ContextRouter
+  pageSize?: number
+} & ContextRouter & RelayPaginationProps
 
 type State = {
   disablesAnimation: boolean
@@ -26,7 +25,7 @@ function formatCount ({ bills }: Viewer) {
   return `Found ${bills.count} result${bills.count === 1 ? '' : 's'}.`
 }
 
-let BillList = class BillList extends React.Component<*, Props, State> {
+let BillList = class BillList extends React.Component<Props, State> {
   state = {
     disablesAnimation: this.isFromPop
   }

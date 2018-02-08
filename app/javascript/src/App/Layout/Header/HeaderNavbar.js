@@ -10,7 +10,7 @@ import { mixins, colors } from '@/styles'
 type Props = {
   isSticky: boolean,
   disablesAnimation?: boolean,
-  navbarRef?: (Object) => void
+  navbarRef?: (*) => void
 }
 
 export function HeaderNavbar ({

@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import { createRefetchContainer, graphql } from 'react-relay'
-import type { RelayRefetchProp } from 'react-relay'
+import type { RelayRefetchProps } from 'react-relay'
 import styled from 'react-emotion'
 import { throttle } from 'lodash'
 import { SearchField } from './SearchField'
@@ -16,15 +16,14 @@ type Props = {
   pageSize?: number,
   params?: SearchParams,
   onChange?: (SearchParams) => void,
-  relay: RelayRefetchProp
-}
+} & RelayRefetchProps
 
 type State = {
   params: SearchParams,
   disablesAnimation: boolean
 }
 
-let BillSearch = class BillSearch extends React.Component<*, Props, State> {
+let BillSearch = class BillSearch extends React.Component<Props, State> {
   state = {
     params: {
       query: '',
@@ -42,6 +41,8 @@ let BillSearch = class BillSearch extends React.Component<*, Props, State> {
 
     // fetch the bills with updated params
     this.setState({ disablesAnimation: true })
+
+    // $FlowFixMe: variables failiing to match object
     relay.refetch({ params }, null, (error: ?Error) => {
       if (error) {
         console.error(`error updaing query: ${error.toString()}`)

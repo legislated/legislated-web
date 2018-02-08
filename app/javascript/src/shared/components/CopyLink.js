@@ -1,15 +1,15 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import Clipboard from 'react-copy-to-clipboard'
 import { Link } from './Link'
 import { events } from '@/events'
 import { stylesheet } from '@/styles'
 
-export class CopyLink extends Component {
-  props: {
-    value: string
-  }
+type Props = {
+  value: string
+}
 
+export class CopyLink extends React.Component<Props> {
   // events
   didCopyValue = (text: string) => {
     events.emit(events.showNotification, {

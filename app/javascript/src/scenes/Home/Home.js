@@ -19,7 +19,7 @@ type Props = {
   viewer: ?Viewer
 } & ContextRouter
 
-let Home = class Home extends React.Component<*, Props, *> {
+let Home = class Home extends React.Component<Props> {
   params = DEFAULT_PARAMS
 
   // events

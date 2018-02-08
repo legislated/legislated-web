@@ -1,20 +1,17 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { Button } from '@/components'
 import { stylesheet, mixins } from '@/styles'
 import type { Bill } from '@/types'
 
-let Actions = class Actions extends Component {
-  props: {
-    bill: Bill
-  }
+type Props = {
+  bill: Bill
+}
 
-  // lifecycle
-  render () {
-    const { bill } = this.props
-
-    return <div {...rules.actions}>
+let Actions = function Actions ({ bill }: Props) {
+  return (
+    <div {...rules.actions}>
       <div>
         <Button
           styles={rules.button}
@@ -43,7 +40,7 @@ let Actions = class Actions extends Component {
         />
       </div>
     </div>
-  }
+  )
 }
 
 Actions = createFragmentContainer(Actions, graphql`

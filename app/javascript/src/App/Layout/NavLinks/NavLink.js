@@ -12,7 +12,12 @@ type Props
   = LinkProps
   & ContextRouter
 
-let NavLink = function NavLink ({ to: url, className, location, ...otherProps }: Props) {
+let NavLink = function NavLink ({
+  to: url,
+  className,
+  location,
+  ...otherProps
+}: Props) {
   return (
     <Container
       aria-current={location.pathname === url ? 'page' : false}

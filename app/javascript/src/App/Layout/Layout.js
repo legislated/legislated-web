@@ -13,7 +13,7 @@ type Props = {
   children?: any
 } & ContextRouter
 
-let Layout = class Layout extends React.Component<*, Props, *> {
+let Layout = class Layout extends React.Component<Props> {
   // actions
   clearVisitedIntro () {
     // mark the intro as cleared if we've seen it and left the search scene

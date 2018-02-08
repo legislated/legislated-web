@@ -5,7 +5,7 @@ exports[`#render shows the subset filter 1`] = `
   <input
     checked={true}
     name="subset"
-    onChange={[Function]}
+    onChange={[MockFunction]}
     type="checkbox"
     value="test-value"
   />

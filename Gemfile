@@ -8,7 +8,7 @@ gem 'pg'
 gem 'pg_search'
 gem 'puma', '~> 3.0'
 gem 'rack-cors'
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.2.0.rc1'
 gem 'redis'
 gem 'sidekiq'
 

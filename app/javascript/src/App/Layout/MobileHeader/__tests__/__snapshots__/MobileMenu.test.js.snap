@@ -2,11 +2,11 @@
 
 exports[`#render shows the mobile menu 1`] = `
 <Styled(div)
-  onClick={[Function]}
+  onClick={[MockFunction]}
 >
   <Styled(div) />
   <Styled(NavLinks)
-    onClick={[Function]}
+    onClick={[MockFunction]}
   />
 </Styled(div)>
 `;

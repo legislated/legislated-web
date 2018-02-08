@@ -1,16 +1,14 @@
 // @flow
 import * as React from 'react'
 import type { ContextRouter } from 'react-router-dom'
-import type { GraphQL } from 'react-relay'
-import type { RelayCacheResovler } from './relay'
+import type { GraphQLTaggedNode } from 'react-relay'
 
 export type RouteConfig = {
-  component: Class<React.Component<*, *, *>>
+  component: React.ComponentType<*>
 }
 
 export type RelayRouteConfig = {
-  query: GraphQL,
+  query: GraphQLTaggedNode,
   render: ?Object => ?React.Element<*>,
-  getInitialVariables?: (ContextRouter) => Object,
-  cacheResolver?: RelayCacheResovler
+  getInitialVariables?: (ContextRouter) => Object
 }

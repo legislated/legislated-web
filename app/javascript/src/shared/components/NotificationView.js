@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import { css } from 'glamor'
 import { events } from '@/events'
 import { sleep } from '@/functions'
@@ -8,8 +8,13 @@ import { stylesheet, colors, mixins } from '@/styles'
 
 const animationDuration = 300
 
-export class NotificationView extends Component {
-  state: { isHidden: boolean, notification: ?Notification } = {
+type State = {
+  isHidden: boolean,
+  notification: ?Notification
+}
+
+export class NotificationView extends React.Component<{}, State> {
+  state = {
     isHidden: true,
     notification: null
   }

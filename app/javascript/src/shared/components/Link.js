@@ -42,7 +42,6 @@ export function Link ({
   if (!location || isAbsoluteUrl(location)) {
     return <a {...linkProps} href={location} target='_blank' />
   } else {
-    // $FlowFixMe: update react-router-dom flow libdefs
     return <RouterLink {...linkProps} to={location} />
   }
 }
