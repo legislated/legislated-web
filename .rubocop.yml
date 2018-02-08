@@ -6,6 +6,7 @@ AllCops:
     - Guardfile
     - config.ru
   Exclude:
+    - bin/**/*
     - tmp/**/*
     - db/**/*
     - vendor/**/*
@@ -215,6 +216,9 @@ Layout/IndentHash:
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
+
+Layout/EmptyLinesAroundArguments:
+  Enabled: false
 
 Layout/FirstParameterIndentation:
   Enabled: false
