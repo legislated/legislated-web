@@ -1,4 +1,4 @@
-describe Types::CommitteeType, graphql: :type do
+describe Types::CommitteeType, :graph_type do
   subject { described_class }
 
   let(:model) { build(:committee) }

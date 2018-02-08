@@ -4,12 +4,26 @@ exports[`#render shows the loading indicator when loading 1`] = `
 <Styled(div)>
   <SearchField
     onChange={[Function]}
-    value=""
+    params={
+      Object {
+        "query": "",
+      }
+    }
   />
   <Styled(div)>
-    <LoadingIndicator
-      isLoading={true}
+    <SearchFilters
+      onChange={[Function]}
+      params={
+        Object {
+          "query": "",
+        }
+      }
     />
+    <Styled(div)>
+      <LoadingIndicator
+        isLoading={true}
+      />
+    </Styled(div)>
   </Styled(div)>
 </Styled(div)>
 `;
@@ -18,17 +32,31 @@ exports[`#render shows the search view 1`] = `
 <Styled(div)>
   <SearchField
     onChange={[Function]}
-    value=""
+    params={
+      Object {
+        "query": "",
+      }
+    }
   />
   <Styled(div)>
-    <LoadingIndicator
-      isLoading={false}
+    <SearchFilters
+      onChange={[Function]}
+      params={
+        Object {
+          "query": "",
+        }
+      }
     />
-    <BillList
-      isAnimated={true}
-      pageSize="test-size"
-      viewer="test-viewer"
-    />
+    <Styled(div)>
+      <LoadingIndicator
+        isLoading={false}
+      />
+      <BillList
+        isAnimated={true}
+        pageSize="test-size"
+        viewer="test-viewer"
+      />
+    </Styled(div)>
   </Styled(div)>
 </Styled(div)>
 `;
@@ -37,17 +65,31 @@ exports[`#render shows the search view with default params 1`] = `
 <Styled(div)>
   <SearchField
     onChange={[Function]}
-    value="test-query"
+    params={
+      Object {
+        "query": "test-query",
+      }
+    }
   />
   <Styled(div)>
-    <LoadingIndicator
-      isLoading={false}
+    <SearchFilters
+      onChange={[Function]}
+      params={
+        Object {
+          "query": "test-query",
+        }
+      }
     />
-    <BillList
-      isAnimated={true}
-      pageSize="test-size"
-      viewer="test-viewer"
-    />
+    <Styled(div)>
+      <LoadingIndicator
+        isLoading={false}
+      />
+      <BillList
+        isAnimated={true}
+        pageSize="test-size"
+        viewer="test-viewer"
+      />
+    </Styled(div)>
   </Styled(div)>
 </Styled(div)>
 `;

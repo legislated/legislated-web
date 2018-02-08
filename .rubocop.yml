@@ -204,6 +204,9 @@ Style/BracesAroundHashParameters:
 Style/TrailingUnderscoreVariable:
   Enabled: false
 
+Naming/AccessorMethodName:
+  Enabled: false
+
 Layout/SpaceInLambdaLiteral:
   EnforcedStyle: require_space
 

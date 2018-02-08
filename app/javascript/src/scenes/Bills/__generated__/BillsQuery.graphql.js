@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a62d7498581c578a34da644578420027
+ * @relayHash b7414248f796bddd8575c970a6a302d5
  */
 
 /* eslint-disable */
@@ -17,7 +17,7 @@ export type BillsQueryResponse = {|
 
 /*
 query BillsQuery(
-  $filter: BillsSearchFilter!
+  $params: BillsSearchParams!
   $count: Int!
   $cursor: String!
 ) {
@@ -28,7 +28,7 @@ query BillsQuery(
 }
 
 fragment BillSearch_viewer on Viewer {
-  bills(filter: $filter, first: $count, after: $cursor) {
+  bills(params: $params, first: $count, after: $cursor) {
     edges {
       node {
         __typename
@@ -45,7 +45,7 @@ fragment BillSearch_viewer on Viewer {
 }
 
 fragment BillList_viewer on Viewer {
-  bills(filter: $filter, first: $count, after: $cursor) {
+  bills(params: $params, first: $count, after: $cursor) {
     count
     pageInfo {
       hasNextPage
@@ -89,8 +89,8 @@ const batch /*: ConcreteBatch*/ = {
     "argumentDefinitions": [
       {
         "kind": "LocalArgument",
-        "name": "filter",
-        "type": "BillsSearchFilter!",
+        "name": "params",
+        "type": "BillsSearchParams!",
         "defaultValue": null
       },
       {
@@ -137,8 +137,8 @@ const batch /*: ConcreteBatch*/ = {
     "argumentDefinitions": [
       {
         "kind": "LocalArgument",
-        "name": "filter",
-        "type": "BillsSearchFilter!",
+        "name": "params",
+        "type": "BillsSearchParams!",
         "defaultValue": null
       },
       {
@@ -178,15 +178,15 @@ const batch /*: ConcreteBatch*/ = {
               },
               {
                 "kind": "Variable",
-                "name": "filter",
-                "variableName": "filter",
-                "type": "BillsSearchFilter"
-              },
-              {
-                "kind": "Variable",
                 "name": "first",
                 "variableName": "count",
                 "type": "Int"
+              },
+              {
+                "kind": "Variable",
+                "name": "params",
+                "variableName": "params",
+                "type": "BillsSearchParams"
               }
             ],
             "concreteType": "BillsSearch",
@@ -361,22 +361,22 @@ const batch /*: ConcreteBatch*/ = {
               },
               {
                 "kind": "Variable",
-                "name": "filter",
-                "variableName": "filter",
-                "type": "BillsSearchFilter"
-              },
-              {
-                "kind": "Variable",
                 "name": "first",
                 "variableName": "count",
                 "type": "Int"
+              },
+              {
+                "kind": "Variable",
+                "name": "params",
+                "variableName": "params",
+                "type": "BillsSearchParams"
               }
             ],
             "handle": "connection",
             "name": "bills",
             "key": "BillSearch_bills",
             "filters": [
-              "filter"
+              "params"
             ]
           },
           {
@@ -391,22 +391,22 @@ const batch /*: ConcreteBatch*/ = {
               },
               {
                 "kind": "Variable",
-                "name": "filter",
-                "variableName": "filter",
-                "type": "BillsSearchFilter"
-              },
-              {
-                "kind": "Variable",
                 "name": "first",
                 "variableName": "count",
                 "type": "Int"
+              },
+              {
+                "kind": "Variable",
+                "name": "params",
+                "variableName": "params",
+                "type": "BillsSearchParams"
               }
             ],
             "handle": "connection",
             "name": "bills",
             "key": "BillList_bills",
             "filters": [
-              "filter"
+              "params"
             ]
           },
           {
@@ -421,7 +421,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query BillsQuery(\n  $filter: BillsSearchFilter!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillSearch_viewer\n    id\n  }\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    edges {\n      node {\n        __typename\n        id\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(filter: $filter, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  updatedAt\n  hearing {\n    date\n    id\n  }\n  ...BillStatus_bill\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n"
+  "text": "query BillsQuery(\n  $params: BillsSearchParams!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillSearch_viewer\n    id\n  }\n}\n\nfragment BillSearch_viewer on Viewer {\n  bills(params: $params, first: $count, after: $cursor) {\n    edges {\n      node {\n        __typename\n        id\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  ...BillList_viewer\n}\n\nfragment BillList_viewer on Viewer {\n  bills(params: $params, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  documentNumber\n  title\n  summary\n  updatedAt\n  hearing {\n    date\n    id\n  }\n  ...BillStatus_bill\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n"
 };
 
 module.exports = batch;

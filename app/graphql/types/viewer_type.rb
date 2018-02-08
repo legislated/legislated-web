@@ -62,11 +62,11 @@ module Types
     connection :bills, BillsSearchType do
       description 'All bills'
 
-      argument :filter, BillsSearchFilterType
+      argument :params, BillsSearchParamsType
 
       resolve -> (_obj, args, _ctx) do
         args = args.parse_graphql_data
-        BillsSearchCompiler.compile(args[:filter] || {})
+        BillsSearchCompiler.compile(args[:params] || {})
       end
     end
 

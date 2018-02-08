@@ -1,7 +1,7 @@
-describe Types::BillType, graphql: :type do
+describe Types::BillType, :graph_type do
   subject { described_class }
 
-  let(:model) { build(:bill, :with_any_hearing, :with_documents) }
+  let(:model) { build(:bill, :with_documents) }
   let(:hearing) { model.hearing }
   let(:document) { model.documents.first }
 

@@ -4,7 +4,7 @@ describe ImportHearingBillsJob do
   let(:mock_scraper) { double('Scraper') }
 
   describe '#perform' do
-    let(:hearing) { Hearing.first }
+    let(:hearing) { create(:hearing) }
 
     def mock_response(response = [])
       allow(mock_scraper).to receive(:run).and_return(response)

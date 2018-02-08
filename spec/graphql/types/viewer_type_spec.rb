@@ -1,4 +1,4 @@
-describe Types::ViewerType, graphql: :type do
+describe Types::ViewerType, :graph_type do
   subject { described_class }
 
   let(:model) { Viewer.instance }
@@ -17,9 +17,9 @@ describe Types::ViewerType, graphql: :type do
 
   describe '#bills' do
     it 'compiles the query' do
-      filter = { test: 'filter' }
-      expect(BillsSearchCompiler).to receive(:compile).with(**filter)
-      resolve_field(:bills, args: { filter: filter })
+      params = { test: 'params' }
+      expect(BillsSearchCompiler).to receive(:compile).with(**params)
+      resolve_field(:bills, args: { params: params })
     end
   end
 end

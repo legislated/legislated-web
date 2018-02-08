@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the subset filter 1`] = `
+<Styled(label)>
+  <input
+    checked={true}
+    name="subset"
+    onChange={[Function]}
+    type="checkbox"
+    value="test-value"
+  />
+  <span>
+    test-label
+  </span>
+</Styled(label)>
+`;

@@ -13,7 +13,7 @@ exports[`#render shows the search field 1`] = `
         onFocus={[Function]}
         placeholder="health care, HB2364"
         type="text"
-        value="test-value"
+        value="test-query"
       />
       <Styled(Link)
         onClick={[Function]}

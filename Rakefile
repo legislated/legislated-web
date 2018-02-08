@@ -10,5 +10,5 @@ if Rails.env.development? || Rails.env.test?
   RuboCop::RakeTask.new
 
   # set the default task
-  task(:default).clear.enhance(%w[graphql:schema rubocop spec client:validate])
+  task(:default).clear.enhance(%w[graphql:schema api:validate client:validate])
 end

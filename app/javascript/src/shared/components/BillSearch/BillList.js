@@ -102,7 +102,7 @@ let BillList = class BillList extends React.Component<*, Props, State> {
 BillList = withRouter(createPaginationContainer(BillList, graphql`
   fragment BillList_viewer on Viewer {
     bills(
-      filter: $filter,
+      params: $params,
       first: $count,
       after: $cursor
     ) @connection(key: "BillList_bills") {
@@ -129,7 +129,7 @@ BillList = withRouter(createPaginationContainer(BillList, graphql`
   },
   query: graphql`
     query BillListQuery(
-      $filter: BillsSearchFilter!,
+      $params: BillsSearchParams!,
       $count: Int!,
       $cursor: String!
     ) {

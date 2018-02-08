@@ -813,11 +813,11 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "filter",
+                  "name": "params",
                   "description": null,
                   "type": {
                     "kind": "INPUT_OBJECT",
-                    "name": "BillsSearchFilter",
+                    "name": "BillsSearchParams",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -2978,40 +2978,10 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "BillsSearchFilter",
+          "name": "BillsSearchParams",
           "description": "Filtering options for the bill search",
           "fields": null,
           "inputFields": [
-            {
-              "name": "query",
-              "description": "Filters bills whose title or summary match the query",
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "from",
-              "description": "Filters bills whose hearing is on or after the date-time",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Time",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "to",
-              "description": "Filters bills whose hearings is on or before the date-time",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Time",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
             {
               "name": "key",
               "description": "Disambiguates queries for cache isolation",
@@ -3021,10 +2991,65 @@
                 "ofType": null
               },
               "defaultValue": null
+            },
+            {
+              "name": "query",
+              "description": "Filters to bills whose title or summary match the query",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "subset",
+              "description": null,
+              "type": {
+                "kind": "ENUM",
+                "name": "BillsSearchParamsSubset",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "interfaces": null,
           "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "BillsSearchParamsSubset",
+          "description": "Filters to bills matching a pre-defined subset",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "SLIPS",
+              "description": "Bills with upcoming witness slips",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "LOWER",
+              "description": "Bills in the house",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "UPPER",
+              "description": "Bills in the senate",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "GOVERNOR",
+              "description": "Bills on the governor's desk",
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
           "possibleTypes": null
         },
         {

@@ -1,4 +1,4 @@
-describe GraphSchema, graphql: :type do
+describe GraphSchema, :graph_type do
   subject { described_class }
 
   shared_examples 'a relay node provider' do |graph_type|
@@ -26,14 +26,14 @@ describe GraphSchema, graphql: :type do
   end
 
   it_behaves_like 'a relay node provider', Types::CommitteeType do
-    let(:model) { create(:committee, :with_any_chamber) }
+    let(:model) { create(:committee) }
   end
 
   it_behaves_like 'a relay node provider', Types::HearingType do
-    let(:model) { create(:hearing, :with_any_committee) }
+    let(:model) { create(:hearing) }
   end
 
   it_behaves_like 'a relay node provider', Types::BillType do
-    let(:model) { create(:bill, :with_any_hearing) }
+    let(:model) { create(:bill) }
   end
 end

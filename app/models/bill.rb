@@ -6,25 +6,35 @@ class Bill < ApplicationRecord
   belongs_to :hearing, optional: true
 
   # scopes
-  pg_search_scope :by_keyword, {
+  pg_search_scope :with_keyword, {
     against: %i[title summary],
     using: {
       tsearch: { prefix: true }
     }
   }
 
-  pg_search_scope :by_fuzzy_title, {
+  pg_search_scope :with_fuzzy_title, {
     against: :title,
     using: {
       trigram: { threshold: 0.1 }
     }
   }
 
-  scope :by_date, (-> (range = {}) do
-    query = includes(:hearing).references(:hearings).order('hearings.date ASC')
-    query = query.where('hearings.date >= ?', range[:start]) if range[:start]
-    query = query.where('hearings.date <= ?', range[:end]) if range[:end]
-    query
+  scope :by_hearing_date, (-> (range = {}) do
+    q = includes(:hearing).references(:hearings)
+    q = q.order('hearings.date ASC')
+    q = q.where('hearings.date >= ?', range[:start]) if range[:start].present?
+    q = q.where('hearings.date <= ?', range[:end]) if range[:end].present?
+    q
+  end)
+
+  scope :with_number, (-> (number) do
+    q = includes(:documents).references(:documents)
+    q.where('documents.number ILIKE ?', "%#{number}%")
+  end)
+
+  scope :with_actor, (-> (actor) do
+    where("steps->-1->>'actor' = any(array[?])", [*actor])
   end)
 
   # accessors

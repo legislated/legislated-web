@@ -8,12 +8,17 @@ FactoryBot.define do
     sponsor_name { Faker::Name.name }
     details_url { Faker::Internet.url }
 
-    trait :with_hearing do
-      hearing
+    transient do
+      hearing_date nil
     end
 
-    trait :with_any_hearing do
-      hearing { Hearing.first }
+    hearing do
+      hearing_date.nil? ? build(:hearing) : build(:hearing, date: hearing_date)
+    end
+
+    trait :with_associations do
+      with_documents
+      with_steps
     end
 
     trait :with_documents do

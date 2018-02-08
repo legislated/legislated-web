@@ -1,8 +1,8 @@
 // @flow
 import './fontFaces'
 import { injectGlobal } from 'react-emotion'
-import { fonts } from './mixins'
 import { white } from './colors'
+import { fonts, fontSizes } from './mixins'
 
 // extra resets
 injectGlobal`
@@ -23,6 +23,7 @@ injectGlobal`
   }
 
   button, input {
+    margin: 0;
     padding: 0;
     border: none;
     background: none;
@@ -53,7 +54,8 @@ injectGlobal`
 injectGlobal`
   body {
     ${fonts.regular};
-    font-size: 16px;
+    ${fontSizes.body};
+
     background-color: ${white};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -61,32 +63,32 @@ injectGlobal`
 
   h1 {
     ${fonts.regularSlab};
-    font-size: 54px;
+    ${fontSizes.h1};
   }
 
   h2 {
     ${fonts.regularSlab};
-    font-size: 40px;
+    ${fontSizes.h2};
   }
 
   h3 {
     ${fonts.regularSlab};
-    font-size: 26px;
+    ${fontSizes.h3};
   }
 
   h4 {
     ${fonts.regular};
-    font-size: 24px;
+    ${fontSizes.h4};
   }
 
   h5 {
     ${fonts.regular};
-    font-size: 20px;
+    ${fontSizes.h5};
   }
 
   h6 {
     ${fonts.bold};
-    font-size: 16px;
+    ${fontSizes.h6};
   }
 
   a, button {

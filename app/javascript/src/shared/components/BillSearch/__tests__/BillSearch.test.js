@@ -6,13 +6,18 @@ import { BillSearch } from '../BillSearch'
 
 const { anything } = expect
 
+// mocks
+jest.mock('lodash', () => ({
+  throttle: (fn) => fn
+}))
+
 // subject
 let subject
 
 const defaults = {
   viewer: 'test-viewer',
   pageSize: 'test-size',
-  onFilter: jest.fn(),
+  onChange: jest.fn(),
   relay: {
     refetch: jest.fn()
   }
@@ -52,34 +57,36 @@ describe('#render', () => {
   })
 })
 
-describe('#filterBillsForQuery', () => {
-  it('disables animations', () => {
+describe('changing the params', () => {
+  const params = { test: 'query' }
+
+  it('stores the params', () => {
     loadSubject()
-    subject.instance().filterBillsForQuery('foo')
-    expect(subject).toHaveState('disablesAnimation', true)
+    subject.instance().didChangeParams(params)
+    expect(subject).toHaveState('params', params)
   })
 
-  it('reteches the bills', () => {
+  it('starts the re-fetch', () => {
     loadSubject()
-    subject.instance().filterBillsForQuery('foo')
-    expect(defaults.relay.refetch).toHaveBeenCalledWith({ filter: { query: 'foo' } }, null, anything())
+    subject.instance().didChangeParams(params)
+    expect(subject).toHaveState('disablesAnimation', true)
+    expect(defaults.relay.refetch).toHaveBeenCalledWith({ params }, null, anything())
+  })
+
+  it('re-enables animations on completion', () => {
+    jest.useFakeTimers()
+    defaults.relay.refetch.mockImplementationOnce((_, _p, completion) => completion())
+
+    loadSubject()
+    subject.instance().didChangeParams(params)
+    jest.runAllTimers()
+
+    expect(subject).toHaveState('disablesAnimation', false)
   })
 
   it('notifies the handler', () => {
     loadSubject()
-    subject.instance().filterBillsForQuery('foo')
-    expect(defaults.onFilter).toHaveBeenCalledWith({ query: 'foo' })
-  })
-})
-
-describe('entering a query', () => {
-  it('filters bills by the query', () => {
-    loadSubject()
-    const instance = subject.instance()
-    instance.filterBillsForQuery = jest.fn()
-
-    instance.searchFieldDidChange('foo')
-    expect(subject).toHaveState('query', 'foo')
-    expect(instance.filterBillsForQuery).toHaveBeenCalled()
+    subject.instance().didChangeParams(params)
+    expect(defaults.onChange).toHaveBeenCalledWith(params)
   })
 })

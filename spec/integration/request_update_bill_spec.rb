@@ -1,6 +1,6 @@
-describe 'requesting a bill update', graphql: :request do
+describe 'requesting a bill update', :graph_request do
   it 'updates the bill' do
-    bill = create(:bill, :with_any_hearing)
+    bill = create(:bill)
 
     query = <<-QUERY
       mutation($input: UpdateBillInput!) {

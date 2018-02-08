@@ -1,4 +1,4 @@
-describe Types::DateTimeType, graphql: :type do
+describe Types::DateTimeType, :graph_type do
   subject { described_class }
 
   let(:date) { Time.zone.now.round }

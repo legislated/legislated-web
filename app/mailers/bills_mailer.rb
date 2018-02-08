@@ -31,7 +31,7 @@ class BillsMailer < ApplicationMailer
     query = Bill
       .includes(:documents)
       .includes(hearing: :committee)
-      .by_date(date_range)
+      .by_hearing_date(date_range)
 
     csv_service.serialize(query)
   end

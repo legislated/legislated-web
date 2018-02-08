@@ -3,10 +3,11 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import { Link } from '../Link'
 import { colors, mixins } from '@/styles'
+import type { SearchParams } from '@/types'
 
 type Props = {
-  value: string,
-  onChange: (string) => void
+  params: SearchParams,
+  onChange: (SearchParams) => void
 }
 
 type State = {
@@ -19,18 +20,22 @@ export class SearchField extends React.Component<*, Props, State> {
   }
 
   // events
-  inputDidChange = (event: { target: { value: string } }) => {
-    const { onChange } = this.props
-    onChange(event.target.value)
+  didChangeQuery = ({ target }: SyntheticInputEvent) => {
+    const { params, onChange } = this.props
+
+    onChange({
+      ...params,
+      query: target.value
+    })
   }
 
-  inputDidChangeFocus = (isFocused: boolean) => () => {
+  didChangeFocus = (isFocused: boolean) => () => {
     this.setState({ isFocused })
   }
 
   // lifecycle
   render () {
-    const { value } = this.props
+    const { params } = this.props
     const { isFocused } = this.state
 
     return (
@@ -40,11 +45,11 @@ export class SearchField extends React.Component<*, Props, State> {
             <Input
               type='text'
               name='search-field'
-              value={value}
+              value={params.query}
               placeholder={`health care, HB2364`}
-              onChange={this.inputDidChange}
-              onFocus={this.inputDidChangeFocus(true)}
-              onBlur={this.inputDidChangeFocus(false)}
+              onChange={this.didChangeQuery}
+              onFocus={this.didChangeFocus(true)}
+              onBlur={this.didChangeFocus(false)}
             />
             <Button
               onClick={() => {}}

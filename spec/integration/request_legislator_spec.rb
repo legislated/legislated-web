@@ -1,4 +1,4 @@
-describe 'requesting legislators', graphql: :request do
+describe 'requesting legislators', :graph_request do
   it 'fetches a single legislator' do
     legislator = create(:legislator)
 
@@ -23,14 +23,10 @@ describe 'requesting legislators', graphql: :request do
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
-
-    data = body.dig(:data, :viewer, :legislator)
-    expect(data).to be_present
+    expect(body.dig(:data, :viewer, :legislator)).to be_present
   end
 
   it 'fetches multiple legislators' do
-    create_list(:legislator, 2)
-
     query = <<-QUERY
       query {
         viewer {
@@ -45,10 +41,9 @@ describe 'requesting legislators', graphql: :request do
       }
     QUERY
 
+    create_list(:legislator, 2)
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
-
-    connection = body.dig(:data, :viewer, :legislators)
-    expect(connection[:edges].length).to eq(2)
+    expect(body.dig(:data, :viewer, :legislators, :edges).length).to eq(2)
   end
 end

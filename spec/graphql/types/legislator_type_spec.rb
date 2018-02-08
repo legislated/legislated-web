@@ -1,4 +1,4 @@
-describe Types::LegislatorType, graphql: :type do
+describe Types::LegislatorType, :graph_type do
   subject { described_class }
 
   let(:model) { build(:legislator) }

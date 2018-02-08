@@ -1,8 +1,7 @@
 // @flow
 export type {
   StyleProp,
-  Notification,
-  SearchParams
+  Notification
 } from './client'
 
 export type {
@@ -17,6 +16,8 @@ export type {
   Chamber,
   Connection,
   SearchConnection,
+  SearchParams,
+  SearchParamsSubset,
   Edge,
   PageInfo
 } from './graph'

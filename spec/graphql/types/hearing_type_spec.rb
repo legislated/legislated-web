@@ -1,7 +1,7 @@
-describe Types::HearingType, graphql: :type do
+describe Types::HearingType, :graph_type do
   subject { described_class }
 
-  let(:model) { build(:hearing, :with_any_committee) }
+  let(:model) { build(:hearing) }
 
   it_maps_fields({
     external_id: 'externalId'

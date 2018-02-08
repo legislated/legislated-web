@@ -10,8 +10,9 @@ import { RelayRenderer, BillSearch, Button } from '@/components'
 import type { Viewer, SearchParams } from '@/types'
 import { mixins } from '@/styles'
 
-const DEFAULT_PARAMS = {
-  query: ''
+const DEFAULT_PARAMS: SearchParams = {
+  query: '',
+  subset: 'SLIPS'
 }
 
 type Props = {
@@ -19,7 +20,7 @@ type Props = {
 } & ContextRouter
 
 let Home = class Home extends React.Component<*, Props, *> {
-  params: SearchParams = DEFAULT_PARAMS
+  params = DEFAULT_PARAMS
 
   // events
   didChangeParams = (params: SearchParams) => {
@@ -47,12 +48,13 @@ let Home = class Home extends React.Component<*, Props, *> {
         <HomeIntro />
         <BillSearch
           viewer={viewer}
-          onFilter={this.didChangeParams}
+          params={DEFAULT_PARAMS}
+          onChange={this.didChangeParams}
         />
         {viewer && (
           <BillsButton
-            onClick={this.didClickViewAll}
             isSecondary
+            onClick={this.didClickViewAll}
             children='View All Bills'
           />
         )}
@@ -81,7 +83,7 @@ export { Home }
 export function HomeRenderer () {
   const query = graphql`
     query HomeQuery(
-      $filter: BillsSearchFilter!,
+      $params: BillsSearchParams!,
       $count: Int!,
       $cursor: String!
     ) {
@@ -98,7 +100,7 @@ export function HomeRenderer () {
       getVariables={() => ({
         count: 3,
         cursor: '',
-        filter: {
+        params: {
           key: 'home',
           ...DEFAULT_PARAMS
         }
