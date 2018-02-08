@@ -5,25 +5,25 @@ exports[`#render shows the nav links 1`] = `
   className="test-class"
 >
   <NavLink
-    onClick={[Function]}
+    onClick={[MockFunction]}
     to="/"
   >
     Home
   </NavLink>
   <NavLink
-    onClick={[Function]}
+    onClick={[MockFunction]}
     to="/bills"
   >
     Bills
   </NavLink>
   <NavLink
-    onClick={[Function]}
+    onClick={[MockFunction]}
     to="/faq"
   >
     FAQ
   </NavLink>
   <NavLink
-    onClick={[Function]}
+    onClick={[MockFunction]}
     to="/about"
   >
     About Us
