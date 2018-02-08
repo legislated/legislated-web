@@ -42,7 +42,7 @@ let BillSearch = class BillSearch extends React.Component<Props, State> {
     // fetch the bills with updated params
     this.setState({ disablesAnimation: true })
 
-    // $FlowFixMe: Variables type not working properly
+    // $FlowFixMe: variables failiing to match object
     relay.refetch({ params }, null, (error: ?Error) => {
       if (error) {
         console.error(`error updaing query: ${error.toString()}`)

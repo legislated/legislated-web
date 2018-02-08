@@ -20,6 +20,7 @@ let RelayRenderer = function RelayRenderer ({
 }: Props) {
   // merge config variables and route variables
   const initialVariables =
+    // $FlowFixMe: intersection & rest/spread
     getVariables && getVariables(props)
 
   const variables = {

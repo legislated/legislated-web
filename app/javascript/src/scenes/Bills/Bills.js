@@ -20,7 +20,7 @@ let Bills = function Bills ({ viewer, ...props }: Props) {
   return (
     <BillSearch
       viewer={viewer}
-      /* $FlowFixMe: intersection types & rest parameter */
+      /* $FlowFixMe: intersection & rest/spread */
       params={paramsFromRoute(props)}
       pageSize={PAGE_SIZE}
     />
