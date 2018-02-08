@@ -1,5 +1,4 @@
 // @flow
-import color from 'color'
 import { omit } from 'lodash'
 
 export function now () {
@@ -11,7 +10,11 @@ export function sleep (duration: number): Promise<void> {
 }
 
 export function alpha (hex: string, value: number): string {
-  return color(hex).alpha(value).string()
+  const rgb = parseInt(hex.slice(1), 16)
+  const r = (rgb >> 16) & 0xFF
+  const g = (rgb >> 8) & 0xFF
+  const b = (rgb >> 0) & 0xFF
+  return `rgba(${r}, ${g}, ${b}, ${value})`
 }
 
 export function removeRouterProps (props: Object) {
