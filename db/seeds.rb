@@ -15,7 +15,7 @@ end
 puts '- creating hearings'
 hearings = committees.flat_map do |committee|
   %i[this_week after_this_week].map do |trait|
-    create(:heaing, trait, committee: committee)
+    create(:hearing, trait, committee: committee)
   end
 end
 

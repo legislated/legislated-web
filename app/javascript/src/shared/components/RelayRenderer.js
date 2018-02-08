@@ -16,15 +16,15 @@ let RelayRenderer = function RelayRenderer ({
   root: Root,
   query,
   getVariables,
-  match
+  ...props
 }: Props) {
   // merge config variables and route variables
   const initialVariables =
-    getVariables && getVariables(this.props)
+    getVariables && getVariables(props)
 
   const variables = {
     ...initialVariables,
-    ...match.params
+    ...props.match.params
   }
 
   return (
