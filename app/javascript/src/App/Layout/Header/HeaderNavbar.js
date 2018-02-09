@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react'
-import styled from 'react-emotion'
+import styled, { css } from 'react-emotion'
 import { Logo } from '../Logo'
 import { LogoLink } from '../LogoLink'
 import { NavLinks as NavLinks$ } from '../NavLinks'
@@ -22,7 +22,7 @@ export function HeaderNavbar ({
     <Navbar>
       <StickyBar
         ref={navbarRef}
-        style={isSticky ? { position: 'fixed', top: '0px' } : {}}
+        isSticky={isSticky}
       >
         <TranslateAndFade
           component={StickyLogo}
@@ -55,6 +55,12 @@ const Navbar = styled.div`
   `}
 `
 
+const sticky = css`
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid ${colors.gray4};
+`
+
 const StickyBar = styled.div`
   ${mixins.flexRow};
 
@@ -65,13 +71,15 @@ const StickyBar = styled.div`
   height: ${height}px;
   padding: 0 25px;
   z-index: 1;
+  box-sizing: content-box;
   background-color: ${colors.white};
-  border-bottom: 1px solid ${colors.gray4};
 
   &:after {
     content: '';
     flex: 1;
   }
+
+  ${({ isSticky }) => isSticky && sticky}
 `
 
 const StickyLogo = styled.div`

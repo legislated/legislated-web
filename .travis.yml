@@ -23,8 +23,6 @@ install:
   - yarn
 before_script:
   - psql -c 'create database legislated_test;' -U postgres
-  - chmod +x ./scripts/ci-watchman.sh
-  - "./scripts/ci-watchman.sh"
 deploy:
   provider: heroku
   run: rake db:migrate
