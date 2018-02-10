@@ -66,9 +66,7 @@ let Home = class Home extends React.Component<Props> {
 
 const Scene = styled.section`
   ${mixins.flexColumn};
-
   position: relative;
-  align-self: center;
 `
 
 const BillsButton = styled(Button)`

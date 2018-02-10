@@ -101,6 +101,10 @@ const Input = styled.input`
   background-color: transparent;
   font-size: inherit;
 
+  &:focus {
+    cursor: text;
+  }
+
   ::placeholder {
     color: ${colors.white};
     opacity: 0.5;

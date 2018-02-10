@@ -36,28 +36,20 @@ let Layout = class Layout extends React.Component<Props> {
     const { children } = this.props
 
     return (
-      <Container>
+      <React.Fragment>
         <Header />
         <MobileHeader />
         <Content>
           {children}
           <NotificationView />
         </Content>
-      </Container>
+      </React.Fragment>
     )
   }
 }
 
-const Container = styled.div`
-  ${mixins.flexColumn};
-
-  position: relative;
-  min-height: 100vh;
-`
-
 const Content = styled.div`
-  flex: 1;
-
+  ${mixins.flexColumn};
   ${mixins.mobile`
     margin-top: ${MOBILE_HEADER_HEIGHT}px;
     padding: 15px;

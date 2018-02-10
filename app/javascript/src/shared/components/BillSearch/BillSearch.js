@@ -142,6 +142,8 @@ const Body = styled.div`
 `
 
 const Bills = styled.div`
+  ${mixins.pageMargin};
+
   position: relative;
   margin-top: 40px;
 `

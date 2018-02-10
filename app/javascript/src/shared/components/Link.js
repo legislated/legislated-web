@@ -40,9 +40,21 @@ export function Link ({
 
   // use anchor tags for absolute urls, otherwise use a router link
   if (!location || isAbsoluteUrl(location)) {
-    return <a {...linkProps} href={location} target='_blank' />
+    return (
+      <a
+        {...linkProps}
+        href={location}
+        target='_blank'
+        rel='noopener noreferrer'
+      />
+    )
   } else {
-    return <RouterLink {...linkProps} to={location} />
+    return (
+      <RouterLink
+        {...linkProps}
+        to={location}
+      />
+    )
   }
 }
 
