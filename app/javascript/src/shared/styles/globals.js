@@ -1,16 +1,18 @@
 // @flow
 import './resets'
-import './fontFaces'
+import './fonts'
 import { injectGlobal } from 'react-emotion'
-import { white } from './colors'
-import { fonts, fontSizes, flexColumn } from './mixins'
+import { black, white } from './colors'
+import { font, flexColumn } from './mixins'
 
 injectGlobal`
   body {
     ${flexColumn};
-    ${fonts.regular};
-    ${fontSizes.body};
+    ${font.regular};
+    ${font.sizes.body};
 
+    line-height: 1.2;
+    color: ${black};
     background-color: ${white};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -21,33 +23,33 @@ injectGlobal`
   }
 
   h1 {
-    ${fonts.regularSlab};
-    ${fontSizes.h1};
+    ${font.regularSlab};
+    ${font.sizes.h1};
   }
 
   h2 {
-    ${fonts.regularSlab};
-    ${fontSizes.h2};
+    ${font.regularSlab};
+    ${font.sizes.h2};
   }
 
   h3 {
-    ${fonts.regularSlab};
-    ${fontSizes.h3};
+    ${font.regularSlab};
+    ${font.sizes.h3};
   }
 
   h4 {
-    ${fonts.regular};
-    ${fontSizes.h4};
+    ${font.regular};
+    ${font.sizes.h4};
   }
 
   h5 {
-    ${fonts.regular};
-    ${fontSizes.h5};
+    ${font.regular};
+    ${font.sizes.h5};
   }
 
   h6 {
-    ${fonts.bold};
-    ${fontSizes.h6};
+    ${font.bold};
+    ${font.sizes.h6};
   }
 
   a, button, input {

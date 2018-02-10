@@ -38,8 +38,8 @@ export function SearchFiltersSubset ({
 
 const Option = styled.label`
   ${mixins.flexRow};
-  ${mixins.fonts.regularSlab};
-  ${mixins.fontSizes.h5};
+  ${mixins.font.sizes.h5};
+  ${mixins.font.regularSlab};
 
   align-items: center;
   color: ${colors.gray2};

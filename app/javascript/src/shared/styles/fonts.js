@@ -7,7 +7,7 @@ function fontFace (family: string, variant: string, weight: number) {
   const fontName = `${fontFamily}$${variant}`
 
   return `
-    @font-face {
+    @font.faces {
       font-family: '${fontFamily}';
       font-style: normal;
       font-weight: ${weight};

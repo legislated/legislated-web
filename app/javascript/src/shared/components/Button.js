@@ -31,7 +31,7 @@ export function Button ({
 const Link = styled(Link$)`
   ${mixins.flexRow};
   ${mixins.flexCenter};
-  ${mixins.fonts.light};
+  ${mixins.font.light};
 
   height: 48px;
   padding: 15px 30px;

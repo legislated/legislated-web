@@ -2,7 +2,6 @@
 import * as React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import { cx, css } from 'react-emotion'
-import type { Rule } from 'glamor'
 import { colors } from '@/styles'
 
 type Location =
@@ -11,7 +10,6 @@ type Location =
 type Props = {
   to?: Location,
   onClick?: () => void,
-  styles?: Rule,
   className?: string,
   children?: React.Node
 }

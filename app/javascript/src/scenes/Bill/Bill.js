@@ -4,7 +4,6 @@ import { graphql } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import { Content } from './components'
 import { RelayRenderer } from '@/components'
-import { stylesheet, colors, mixins } from '@/styles'
 import type { Viewer } from '@/types'
 
 type Props = {
@@ -13,8 +12,8 @@ type Props = {
 
 let Bill = function Bill ({ viewer }: Props) {
   return (
-    <div {...rules.container}>
-      <div {...rules.content}>
+    <div>
+      <div>
         {viewer ? <Content bill={viewer.bill} /> : <div>Loading...</div>}
       </div>
     </div>
@@ -22,27 +21,6 @@ let Bill = function Bill ({ viewer }: Props) {
 }
 
 Bill = withRouter(Bill)
-
-const rules = stylesheet({
-  container: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  content: {
-    ...mixins.shadows.low,
-    ...mixins.borders.low(),
-    padding: 15,
-    backgroundColor: colors.neutral
-  },
-  backLink: {
-    display: 'flex',
-    alignItems: 'center',
-    '> .fa': {
-      marginRight: 5,
-      fontSize: 13
-    }
-  }
-})
 
 export { Bill }
 

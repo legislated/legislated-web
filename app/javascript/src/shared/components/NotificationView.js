@@ -1,12 +1,11 @@
 // @flow
 import * as React from 'react'
-import { css } from 'glamor'
-import { events } from '@/events'
+import styled from 'react-emotion'
 import { sleep } from '@/functions'
 import type { Notification } from '@/types'
-import { stylesheet, colors, mixins } from '@/styles'
+import { colors } from '@/styles'
 
-const animationDuration = 300
+const duration = 300
 
 type State = {
   isHidden: boolean,
@@ -29,7 +28,7 @@ export class NotificationView extends React.Component<{}, State> {
     this.setState({ notification, isHidden: false })
     await sleep(2000)
     this.setState({ isHidden: true })
-    await sleep(animationDuration)
+    await sleep(duration)
     this.setState({ notification: null })
   }
 
@@ -38,37 +37,29 @@ export class NotificationView extends React.Component<{}, State> {
   }
 
   // lifecycle
-  componentDidMount () {
-    events.on(events.showNotification, this.didReceiveNotification)
-  }
-
-  componentWillUnmount () {
-    events.off(events.showNotification, this.didReceiveNotification)
-  }
-
   render () {
-    const { notification, isHidden } = this.state
-    return <div {...css(rules.notification, !isHidden && rules.visible)}>
-      {notification && notification.message}
-    </div>
+    const {
+      notification,
+      isHidden
+    } = this.state
+
+    return (
+      <Note
+        isVisible={!isHidden}
+        children={notification && notification.message}
+      />
+    )
   }
 }
 
-const rules = stylesheet({
-  notification: {
-    ...mixins.shadows.low,
-    ...mixins.borders.low(),
-    position: 'fixed',
-    bottom: 30,
-    right: -245,
-    width: 200,
-    padding: 15,
-    borderRadius: 3,
-    color: colors.black,
-    backgroundColor: colors.backgroundAccent,
-    transition: `right ${animationDuration}ms cubic-bezier(0.645, 0.045, 0.355, 1)`
-  },
-  visible: {
-    right: 30
-  }
-})
+const Note = styled.div`
+  position: 'fixed'
+  bottom: 30px
+  right: ${({ isVisible }) => isVisible ? 30 : -245}px;
+  width: 200px;
+  padding: 15px;
+  border: 1px solid ${colors.black};
+  border-radius: 3px;
+  background-color: ${colors.backgroundAccent},
+  transition: right ${duration}ms cubic-bezier(0.645, 0.045, 0.355, 1)
+`

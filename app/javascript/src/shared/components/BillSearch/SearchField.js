@@ -114,7 +114,7 @@ const Input = styled.input`
 const Button = styled(Link)`
   ${mixins.flexRow};
   ${mixins.flexCenter};
-  ${mixins.fonts.bold};
+  ${mixins.font.bold};
 
   width: 215px;
   color: ${colors.primary};

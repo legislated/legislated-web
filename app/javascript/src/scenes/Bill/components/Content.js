@@ -8,7 +8,7 @@ import { Actions } from './Actions'
 import { Element } from './Element'
 import { CopyLink } from '@/components'
 import { now } from '@/functions'
-import { stylesheet, colors, mixins } from '@/styles'
+import { colors, mixins } from '@/styles'
 import type { Bill } from '@/types'
 
 type Props = {
@@ -22,7 +22,7 @@ let Content = function Content ({ bill, location }: Props) {
 
   return (
     <div>
-      <div {...rules.header}>
+      <div>
         <section>
           <h1>{bill.title}</h1>
           <h4>{bill.documentNumber}</h4>
@@ -31,14 +31,14 @@ let Content = function Content ({ bill, location }: Props) {
           <CopyLink value={location.pathname} />
         </section>
       </div>
-      <div {...rules.body}>
-        <div {...rules.column}>
+      <div>
+        <div>
           <Element label='State Synopsis'>{bill.summary}</Element>
         </div>
-        <div {...rules.column}>
+        <div>
           <Element label='Hearing Date'>
             <span>{formattedDate}</span>
-            {hoursLeft < 24 && hoursLeft > 0 && <span {...rules.hoursLeft}>
+            {hoursLeft < 24 && hoursLeft > 0 && <span>
               {`(${hoursLeft} hours left)`}
             </span>}
           </Element>
@@ -68,55 +68,5 @@ Content = createFragmentContainer(withRouter(Content), graphql`
     ...Actions_bill
   }
 `)
-
-const rules = stylesheet({
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    marginBottom: 15,
-    '> section': {
-      display: 'flex',
-      flexDirection: 'column'
-    },
-    ...mixins.mobile.glam({
-      flexDirection: 'column',
-      '> section:first-child': {
-        marginBottom: 10
-      },
-      '> h1': {
-        marginBottom: 5
-      }
-    })
-  },
-  body: {
-    ...mixins.borders.low(['bottom']),
-    display: 'flex',
-    flexBasis: 0,
-    paddingBottom: 15,
-    marginBottom: 15,
-    ...mixins.mobile.glam({
-      flexDirection: 'column'
-    })
-  },
-  column: {
-    flex: 1,
-    ':not(:last-of-type)': {
-      marginRight: 15
-    },
-    '> *:not(:last-child)': {
-      marginBottom: 10
-    },
-    ...mixins.mobile.glam({
-      marginBottom: 15,
-      ':last-child': {
-        marginBottom: 0
-      }
-    })
-  },
-  hoursLeft: {
-    marginLeft: 5,
-    color: colors.secondary
-  }
-})
 
 export { Content }

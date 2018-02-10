@@ -1,12 +1,11 @@
 // @flow
 import * as React from 'react'
 import { Link } from '@/components'
-import { stylesheet, colors, mixins } from '@/styles'
 
 export function About () {
   return (
-    <div {...rules.container}>
-      <div {...rules.content}>
+    <div>
+      <div>
         <h1>About Us</h1>
         <p>
           Legislated has been developed by a
@@ -38,24 +37,3 @@ export function About () {
     </div>
   )
 }
-
-const rules = stylesheet({
-  container: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  content: {
-    ...mixins.shadows.low,
-    ...mixins.borders.low(),
-    padding: 15,
-    backgroundColor: colors.neutral,
-    '> h1': {
-      ...mixins.borders.low(['bottom']),
-      marginBottom: 15,
-      paddingBottom: 15
-    },
-    '> p:not(:last-child)': {
-      marginBottom: 10
-    }
-  }
-})
