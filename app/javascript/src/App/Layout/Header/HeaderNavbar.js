@@ -58,7 +58,6 @@ const Navbar = styled.div`
 const sticky = css`
   position: fixed;
   top: 0;
-  border-bottom: 1px solid ${colors.gray4};
 `
 
 const StickyBar = styled.div`
@@ -71,8 +70,8 @@ const StickyBar = styled.div`
   height: ${height}px;
   padding: 0 25px;
   z-index: 1;
-  box-sizing: content-box;
   background-color: ${colors.white};
+  border-bottom: 1px solid ${colors.gray4};
 
   &:after {
     content: '';
