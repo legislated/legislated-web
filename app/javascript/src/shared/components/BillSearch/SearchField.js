@@ -77,7 +77,8 @@ const FieldContainer = styled.div`
 
   flex: 1;
   height: 56px;
-  padding: 0 70px;
+  padding-left: 70px;
+  padding-right: 70px;
 `
 
 const Field = styled.div`

@@ -43,23 +43,18 @@ export class NotificationView extends React.Component<{}, State> {
       isHidden
     } = this.state
 
-    return (
-      <Note
-        isVisible={!isHidden}
-        children={notification && notification.message}
-      />
-    )
+    return null
   }
 }
 
 const Note = styled.div`
-  position: 'fixed'
-  bottom: 30px
+  position: 'fixed';
+  bottom: 30px;
   right: ${({ isVisible }) => isVisible ? 30 : -245}px;
   width: 200px;
   padding: 15px;
   border: 1px solid ${colors.black};
   border-radius: 3px;
-  background-color: ${colors.backgroundAccent},
-  transition: right ${duration}ms cubic-bezier(0.645, 0.045, 0.355, 1)
+  background-color: ${colors.backgroundAccent};
+  transition: right ${duration}ms cubic-bezier(0.645, 0.045, 0.355, 1);
 `

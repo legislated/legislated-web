@@ -137,13 +137,11 @@ const Search = styled.div`
 `
 
 const Body = styled.div`
-  ${mixins.pageWidth};
+  ${mixins.pageContent};
   align-self: center;
 `
 
 const Bills = styled.div`
-  ${mixins.pageMargin};
-
   position: relative;
   margin-top: 40px;
 `

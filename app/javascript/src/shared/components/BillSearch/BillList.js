@@ -81,9 +81,7 @@ let BillList = class BillList extends React.Component<Props, State> {
           disable={!isAnimated || disablesAnimation}
         >
           {viewer.bills.edges.map(({ node }) => (
-            <div key={node.id}>
-              <BillCell bill={node} />
-            </div>
+            <BillCell key={node.id} bill={node} />
           ))}
         </TranslateAndFade>
         {pageSize && relay.hasMore() && (

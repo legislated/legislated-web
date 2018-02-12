@@ -15,7 +15,7 @@ export {
 
 export {
   pageWidth,
-  pageMargin,
+  pageContent,
   flexRow,
   flexColumn,
   flexCenter,

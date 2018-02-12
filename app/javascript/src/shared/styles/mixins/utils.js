@@ -3,12 +3,13 @@ import { css } from 'react-emotion'
 
 export const pageWidth = css`
   width: 100%;
-  max-width: 1140px;
+  max-width: 1200px;
 `
 
-export const pageMargin = css`
-  margin-left: 30px;
-  margin-right: 30px;
+export const pageContent = css`
+  ${pageWidth};
+  padding-left: 30px;
+  padding-right: 30px;
 `
 
 export const flexRow = css`

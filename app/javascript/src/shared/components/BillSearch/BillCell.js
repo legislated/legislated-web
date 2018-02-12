@@ -21,13 +21,15 @@ let BillCell = function BillCell ({
   bill
 }: Props) {
   return (
-    <Cell>
-      <Subtitle>{formatSubtitle(bill)}</Subtitle>
-      <h3>{bill.title}</h3>
-      <BillStatus bill={bill} />
-      <p>{bill.summary}</p>
-      <Button to={`/bill/${bill.id}`} isSmall children='More Info' />
-    </Cell>
+    <div>
+      <Cell>
+        <Subtitle>{formatSubtitle(bill)}</Subtitle>
+        <h3>{bill.title}</h3>
+        <BillStatus bill={bill} />
+        <p>{bill.summary}</p>
+        <Button to={`/bill/${bill.id}`} isSmall children='More Info' />
+      </Cell>
+    </div>
   )
 }
 

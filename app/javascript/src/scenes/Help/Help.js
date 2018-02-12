@@ -132,8 +132,6 @@ export function Help () {
 
 const Scene = styled.section`
   ${mixins.flexColumn};
-  ${mixins.pageWidth};
-  ${mixins.pageMargin};
 
   align-self: center;
   margin-top: 30px;
