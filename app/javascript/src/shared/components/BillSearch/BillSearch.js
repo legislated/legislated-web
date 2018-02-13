@@ -7,6 +7,7 @@ import { throttle } from 'lodash'
 import { SearchField } from './SearchField'
 import { SearchFilters } from './SearchFilters'
 import { BillList } from './BillList'
+import { BILL_SPACING, BILL_SPACING_MOBILE } from './constants'
 import { LoadingIndicator } from '../LoadingIndicator'
 import { mixins } from '@/styles'
 import type { Viewer, SearchParams } from '@/types'
@@ -143,7 +144,11 @@ const Body = styled.div`
 
 const Bills = styled.div`
   position: relative;
-  margin-top: 40px;
+  padding-top: ${BILL_SPACING}px;
+
+  ${mixins.mobile`
+    padding-top: ${BILL_SPACING_MOBILE}px;
+  `}
 `
 
 export { BillSearch }

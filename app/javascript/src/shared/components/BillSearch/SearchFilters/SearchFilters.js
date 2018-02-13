@@ -62,13 +62,17 @@ const Filters = styled.div`
 
   height: 120px;
   border-bottom: 1px solid ${colors.gray5};
+
+  ${mixins.mobile`
+    height: 80px;
+  `}
 `
 
 const Subsets = styled.div`
   ${mixins.flexRow};
-  align-items: center;
 
-  > * + * {
-    margin-left: 40px;
-  }
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 500px;
 `

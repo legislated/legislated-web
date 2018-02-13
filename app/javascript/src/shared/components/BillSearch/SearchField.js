@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react'
-import styled from 'react-emotion'
+import styled, { css } from 'react-emotion'
 import { Link } from '../Link'
 import { colors, mixins } from '@/styles'
 import type { SearchParams } from '@/types'
@@ -69,6 +69,10 @@ const Search = styled.div`
   align-items: center;
   height: 150px;
   background-color: ${colors.primary};
+
+  ${mixins.mobile`
+    height: 120px;
+  `}
 `
 
 const FieldContainer = styled.div`
@@ -77,30 +81,37 @@ const FieldContainer = styled.div`
 
   flex: 1;
   height: 56px;
-  padding-left: 70px;
-  padding-right: 70px;
+  padding: 0 70px;
+
+  ${mixins.mobile`
+    padding: 0 30px;
+  `}
+`
+
+const focused = css`
+  border-width: 2px;
+  transform: perspective(200px) translateZ(1px);
 `
 
 const Field = styled.div`
   ${mixins.flexRow};
+  ${mixins.font.sizes.h5};
 
   flex: 1;
   border: solid ${colors.white};
-  border-width: ${({ isFocused }: State) => isFocused ? 2 : 1}px;
+  border-width: 1px;
   border-radius: 10px;
   overflow: hidden;
-  transform: perspective(200px) translateZ(${({ isFocused }: State) => isFocused ? 1 : 0}px);
-  font-size: 20px;
+  transform: perspective(200px) translateZ(0px);
   color: ${colors.white};
   transition: border-width 0.15s, transform 0.15s;
+
+  ${({ isFocused }) => isFocused && focused}
 `
 
 const Input = styled.input`
   flex: 1;
   padding: 0 25px;
-  color: inherit;
-  background-color: transparent;
-  font-size: inherit;
 
   &:focus {
     cursor: text;
@@ -110,6 +121,10 @@ const Input = styled.input`
     color: ${colors.white};
     opacity: 0.5;
   }
+
+  ${mixins.mobile`
+    padding: 0 15px;
+  `}
 `
 
 const Button = styled(Link)`
@@ -121,4 +136,8 @@ const Button = styled(Link)`
   color: ${colors.primary};
   background-color: ${colors.white};
   text-transform: uppercase;
+
+  ${mixins.mobile`
+    width: 90px;
+  `}
 `

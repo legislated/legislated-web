@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
 import styled from 'react-emotion'
 import { BillCell } from './BillCell'
+import { BILL_SPACING, BILL_SPACING_MOBILE } from './constants'
 import { TranslateAndFade, Button } from '@/components'
 import { session } from '@/storage'
 import { colors, mixins } from '@/styles'
@@ -137,27 +138,38 @@ BillList = withRouter(createPaginationContainer(BillList, graphql`
   `
 }))
 
-const spacing = 40
-
 const Bills = styled.div`
   ${mixins.flexColumn};
 
   > h5 {
-    margin-bottom: ${spacing}px;
+    margin-bottom: ${BILL_SPACING}px;
+
+    ${mixins.mobile`
+      margin-bottom: ${BILL_SPACING_MOBILE}px;
+    `}
   }
 `
 
 const List = styled.div`
   > * {
-    margin-bottom: ${spacing}px;
-    padding-bottom: ${spacing}px;
     border-bottom: 1px solid ${colors.gray4};
+    margin-bottom: ${BILL_SPACING}px;
+    padding-bottom: ${BILL_SPACING}px;
+
+    ${mixins.mobile`
+      margin-bottom: ${BILL_SPACING_MOBILE}px;
+      padding-bottom: ${BILL_SPACING_MOBILE}px;
+    `}
   }
 `
 
 const ActionButton = styled(Button)`
   align-self: center;
   margin-bottom: 70px;
+
+  ${mixins.mobile`
+    margin-bottom: 50px;
+  `}
 `
 
 export { BillList }

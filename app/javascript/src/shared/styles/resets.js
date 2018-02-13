@@ -13,12 +13,13 @@ injectGlobal`
   center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,
   tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,
   figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section,
-  summary, time, mark, audio, video, button {
+  summary, time, mark, audio, video, button, input {
     margin: 0;
     padding: 0;
     border: 0;
     font: inherit;
     font-size: 100%;
+    color: inherit;
     vertical-align: baseline;
   }
 
@@ -48,6 +49,10 @@ injectGlobal`
 
   button {
     text-transform: none;
+  }
+
+  button, input {
+    background: none;
   }
 
   input {
