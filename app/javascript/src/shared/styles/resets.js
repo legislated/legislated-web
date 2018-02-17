@@ -29,8 +29,12 @@ injectGlobal`
     display: block;
   }
 
-  ol, ul {
+  ul {
     list-style: none;
+  }
+
+  ol, ul {
+    list-style-position: inside;
   }
 
   blockquote, q {

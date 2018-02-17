@@ -3,7 +3,7 @@ import './resets'
 import './fonts'
 import { injectGlobal } from 'react-emotion'
 import { black, white } from './colors'
-import { mobile, font, flexColumn } from './mixins'
+import { font, flexColumn } from './mixins'
 
 injectGlobal`
   body {
@@ -11,15 +11,11 @@ injectGlobal`
     ${font.regular};
     ${font.sizes.body};
 
-    line-height: 1.2;
+    line-height: 1.25;
     color: ${black};
     background-color: ${white};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    ${mobile`
-      line-height: 1.3;
-    `}
   }
 
   div[data-hypernova-key='client'] {
