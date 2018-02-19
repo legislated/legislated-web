@@ -2,7 +2,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { Link } from '@/components'
-import { mixins, colors } from '@/styles'
+import { mixins } from '@/styles'
 
 export function About () {
   return (

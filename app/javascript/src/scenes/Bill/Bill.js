@@ -3,7 +3,7 @@ import * as React from 'react'
 import { graphql } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import { Content } from './components'
-import { RelayRenderer } from '@/components'
+import { createRenderer } from '@/functions'
 import type { Viewer } from '@/types'
 
 type Props = {
@@ -20,25 +20,14 @@ let Bill = function Bill ({ viewer }: Props) {
   )
 }
 
-Bill = withRouter(Bill)
-
-export { Bill }
-
-export function BillRenderer () {
-  const query = graphql`
-    query BillQuery($id: ID!) {
-      viewer {
-        bill(id: $id) {
-          ...Content_bill
-        }
+Bill = createRenderer(withRouter(Bill), graphql`
+  query BillQuery($id: ID!) {
+    viewer {
+      bill(id: $id) {
+        ...Content_bill
       }
     }
-  `
+  }
+`)
 
-  return (
-    <RelayRenderer
-      query={query}
-      root={Bill}
-    />
-  )
-}
+export { Bill }

@@ -5,7 +5,6 @@ import styled from 'react-emotion'
 import type { ContextRouter } from 'react-router-dom'
 import { Header } from './Header'
 import { MobileHeader, MOBILE_HEADER_HEIGHT } from './MobileHeader'
-import { NotificationView } from '@/components'
 import { mixins } from '@/styles'
 import { local } from '@/storage'
 
@@ -41,7 +40,6 @@ let Layout = class Layout extends React.Component<Props> {
         <MobileHeader />
         <Content>
           {children}
-          <NotificationView />
         </Content>
       </React.Fragment>
     )

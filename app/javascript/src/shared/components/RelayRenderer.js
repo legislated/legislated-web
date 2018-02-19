@@ -4,7 +4,7 @@ import { QueryRenderer } from 'react-relay'
 import type { GraphQLTaggedNode } from 'react-relay'
 import { withRouter } from 'react-router-dom'
 import type { ContextRouter } from 'react-router-dom'
-import { currentEnvironment } from '@/relay'
+import { currentEnvironment } from '@/functions'
 
 type Props = {
   root: React.ComponentType<*>,

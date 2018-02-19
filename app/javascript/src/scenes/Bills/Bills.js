@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react'
-import { withRouter } from 'react-router-dom'
-import type { ContextRouter } from 'react-router-dom'
 import { graphql } from 'react-relay'
-import { RelayRenderer, BillSearch } from '@/components'
+import { withRouter, type ContextRouter } from 'react-router-dom'
+import { BillSearch } from '@/components'
+import { createRendererWithConfig } from '@/functions'
 import type { Viewer } from '@/types'
 
 const PAGE_SIZE = 20
@@ -27,12 +27,8 @@ let Bills = function Bills ({ viewer, ...props }: Props) {
   )
 }
 
-Bills = withRouter(Bills)
-
-export { Bills }
-
-export function BillsRenderer () {
-  const query = graphql`
+Bills = createRendererWithConfig(withRouter(Bills), {
+  query: graphql`
     query BillsQuery(
       $params: BillsSearchParams!,
       $count: Int!,
@@ -42,21 +38,16 @@ export function BillsRenderer () {
         ...BillSearch_viewer
       }
     }
-  `
+  `,
+  getVariables: (props) => ({
+    count: PAGE_SIZE,
+    cursor: '',
+    params: {
+      key: 'bills',
+      query: '',
+      ...paramsFromRoute(props)
+    }
+  })
+})
 
-  return (
-    <RelayRenderer
-      root={Bills}
-      query={query}
-      getVariables={(props) => ({
-        count: PAGE_SIZE,
-        cursor: '',
-        params: {
-          key: 'bills',
-          query: '',
-          ...paramsFromRoute(props)
-        }
-      })}
-    />
-  )
-}
+export { Bills }

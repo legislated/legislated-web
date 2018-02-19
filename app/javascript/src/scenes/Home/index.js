@@ -1,4 +1,2 @@
 // @flow
-export {
-  HomeRenderer as Home
-} from './Home'
+export { Home } from './Home'

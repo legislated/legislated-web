@@ -2,7 +2,6 @@
 export { Defer } from './Defer'
 export { RelayRenderer } from './RelayRenderer'
 export { TranslateAndFade } from './TranslateAndFade'
-export { NotificationView } from './NotificationView'
 
 export { Footer } from './Footer'
 export { Link } from './Link'

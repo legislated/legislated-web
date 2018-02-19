@@ -1,14 +1,14 @@
 // @flow
 import * as React from 'react'
 import { graphql } from 'react-relay'
-import { withRouter } from 'react-router-dom'
-import type { ContextRouter } from 'react-router-dom'
 import styled from 'react-emotion'
+import { withRouter, type ContextRouter } from 'react-router-dom'
 import { HomeIntro } from './HomeIntro'
 import { HomeFooter } from './HomeFooter'
-import { RelayRenderer, BillSearch, Button } from '@/components'
-import type { Viewer, SearchParams } from '@/types'
+import { BillSearch, Button } from '@/components'
+import { createRendererWithConfig } from '@/functions'
 import { mixins } from '@/styles'
+import type { Viewer, SearchParams } from '@/types'
 
 const DEFAULT_PARAMS: SearchParams = {
   query: '',
@@ -74,12 +74,8 @@ const BillsButton = styled(Button)`
   margin-bottom: 70px;
 `
 
-Home = withRouter(Home)
-
-export { Home }
-
-export function HomeRenderer () {
-  const query = graphql`
+Home = createRendererWithConfig(withRouter(Home), {
+  query: graphql`
     query HomeQuery(
       $params: BillsSearchParams!,
       $count: Int!,
@@ -89,20 +85,15 @@ export function HomeRenderer () {
         ...BillSearch_viewer
       }
     }
-  `
+  `,
+  getVariables: () => ({
+    count: 3,
+    cursor: '',
+    params: {
+      key: 'home',
+      ...DEFAULT_PARAMS
+    }
+  })
+})
 
-  return (
-    <RelayRenderer
-      root={Home}
-      query={query}
-      getVariables={() => ({
-        count: 3,
-        cursor: '',
-        params: {
-          key: 'home',
-          ...DEFAULT_PARAMS
-        }
-      })}
-    />
-  )
-}
+export { Home }

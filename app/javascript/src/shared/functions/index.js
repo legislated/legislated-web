@@ -11,3 +11,9 @@ export {
   alpha,
   removeRouterProps
 } from './utils'
+
+export {
+  currentEnvironment,
+  createRenderer,
+  createRendererWithConfig
+} from './relay'
