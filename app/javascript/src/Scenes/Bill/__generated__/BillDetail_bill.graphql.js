@@ -10,7 +10,7 @@
 import type {ConcreteFragment} from 'relay-runtime';
 export type BillDetail_bill = {|
   +summary: ?string;
-  +sponsorName: string;
+  +sponsorName: ?string;
   +detailsUrl: ?string;
   +fullTextUrl: ?string;
   +witnessSlipUrl: ?string;

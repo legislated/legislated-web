@@ -2,8 +2,8 @@
 
 exports[`#render shows the home footer 1`] = `
 <Footer>
-  <Styled(div)>
-    <Styled(div)>
+  <Background>
+    <Content>
       <img
         alt="Quill Logo"
         height={25}
@@ -22,7 +22,7 @@ exports[`#render shows the home footer 1`] = `
       <p>
         Legislated is a non-profit organization started at Chi Hack Night by a dedicated group of volunteers.
       </p>
-    </Styled(div)>
-  </Styled(div)>
+    </Content>
+  </Background>
 </Footer>
 `;

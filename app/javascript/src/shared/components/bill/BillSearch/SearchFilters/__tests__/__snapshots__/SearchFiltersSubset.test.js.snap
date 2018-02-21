@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render shows the subset filter 1`] = `
-<Styled(label)>
+<Option>
   <input
     checked={true}
     name="subset"
@@ -12,5 +12,5 @@ exports[`#render shows the subset filter 1`] = `
   <span>
     test-label
   </span>
-</Styled(label)>
+</Option>
 `;

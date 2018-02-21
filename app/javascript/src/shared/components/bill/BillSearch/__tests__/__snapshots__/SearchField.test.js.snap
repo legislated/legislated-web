@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render shows the search field 1`] = `
-<Styled(div)>
-  <Styled(div)>
-    <Styled(div)
+<Search>
+  <FieldContainer>
+    <Field
       isFocused={false}
     >
-      <Styled(input)
+      <Input
         name="search-field"
         onBlur={[Function]}
         onChange={[Function]}
@@ -15,12 +15,12 @@ exports[`#render shows the search field 1`] = `
         type="text"
         value="test-query"
       />
-      <Styled(Link)
+      <Button
         onClick={[Function]}
       >
         Search
-      </Styled(Link)>
-    </Styled(div)>
-  </Styled(div)>
-</Styled(div)>
+      </Button>
+    </Field>
+  </FieldContainer>
+</Search>
 `;

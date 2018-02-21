@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render shows the loading indicator when loading 1`] = `
-<Styled(div)>
+<Search>
   <SearchField
     onChange={[Function]}
     params={
@@ -10,7 +10,7 @@ exports[`#render shows the loading indicator when loading 1`] = `
       }
     }
   />
-  <Styled(div)>
+  <Body>
     <SearchFilters
       onChange={[Function]}
       params={
@@ -19,17 +19,17 @@ exports[`#render shows the loading indicator when loading 1`] = `
         }
       }
     />
-    <Styled(div)>
+    <Bills>
       <Loading
         isLoading={true}
       />
-    </Styled(div)>
-  </Styled(div)>
-</Styled(div)>
+    </Bills>
+  </Body>
+</Search>
 `;
 
 exports[`#render shows the search view 1`] = `
-<Styled(div)>
+<Search>
   <SearchField
     onChange={[Function]}
     params={
@@ -38,7 +38,7 @@ exports[`#render shows the search view 1`] = `
       }
     }
   />
-  <Styled(div)>
+  <Body>
     <SearchFilters
       onChange={[Function]}
       params={
@@ -47,7 +47,7 @@ exports[`#render shows the search view 1`] = `
         }
       }
     />
-    <Styled(div)>
+    <Bills>
       <Loading
         isLoading={false}
       />
@@ -56,13 +56,13 @@ exports[`#render shows the search view 1`] = `
         pageSize="test-size"
         viewer="test-viewer"
       />
-    </Styled(div)>
-  </Styled(div)>
-</Styled(div)>
+    </Bills>
+  </Body>
+</Search>
 `;
 
 exports[`#render shows the search view with default params 1`] = `
-<Styled(div)>
+<Search>
   <SearchField
     onChange={[Function]}
     params={
@@ -71,7 +71,7 @@ exports[`#render shows the search view with default params 1`] = `
       }
     }
   />
-  <Styled(div)>
+  <Body>
     <SearchFilters
       onChange={[Function]}
       params={
@@ -80,7 +80,7 @@ exports[`#render shows the search view with default params 1`] = `
         }
       }
     />
-    <Styled(div)>
+    <Bills>
       <Loading
         isLoading={false}
       />
@@ -89,7 +89,7 @@ exports[`#render shows the search view with default params 1`] = `
         pageSize="test-size"
         viewer="test-viewer"
       />
-    </Styled(div)>
-  </Styled(div)>
-</Styled(div)>
+    </Bills>
+  </Body>
+</Search>
 `;

@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render shows the search filters 1`] = `
-<Styled(div)>
-  <Styled(div)>
+<Filters>
+  <Subsets>
     <SearchFiltersSubset
       entry={
         Object {
@@ -47,6 +47,6 @@ exports[`#render shows the search filters 1`] = `
       onChange={[Function]}
       value="test-subset"
     />
-  </Styled(div)>
-</Styled(div)>
+  </Subsets>
+</Filters>
 `;

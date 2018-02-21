@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render shows the home scene 1`] = `
-<Styled(section)>
+<Scene>
   <HomeIntro />
   <BillSearch
     onChange={[Function]}
@@ -13,12 +13,12 @@ exports[`#render shows the home scene 1`] = `
     }
     viewer="test-viewer"
   />
-  <Styled(Button)
+  <BillsButton
     isSecondary={true}
     onClick={[Function]}
   >
     View All Bills
-  </Styled(Button)>
+  </BillsButton>
   <HomeFooter />
-</Styled(section)>
+</Scene>
 `;

@@ -2,7 +2,7 @@
 
 exports[`#render shows a route link with a relative url 1`] = `
 <Link
-  className="css-1pr9zjd test-class"
+  className="css-o62wdr-link test-class"
   replace={false}
   to="/bills"
 >
@@ -12,8 +12,9 @@ exports[`#render shows a route link with a relative url 1`] = `
 
 exports[`#render shows an anchor with an absolute url 1`] = `
 <a
-  className="css-1pr9zjd test-class"
+  className="css-o62wdr-link test-class"
   href="http://www.test.com"
+  rel="noopener noreferrer"
   target="_blank"
 >
   test-children

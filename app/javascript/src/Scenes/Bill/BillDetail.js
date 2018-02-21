@@ -2,7 +2,6 @@
 import * as React from 'react'
 import styled, { css } from 'react-emotion'
 import { createFragmentContainer, graphql } from 'react-relay'
-import { withRouter, type ContextRouter } from 'react-router-dom'
 import { BillTitle, BillStatus, Button, Link, CopyLink } from '@/components'
 import { href } from '@/functions'
 import { mixins } from '@/styles'

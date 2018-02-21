@@ -4,6 +4,9 @@ import { shallow } from 'enzyme'
 import { defaultsDeep } from 'lodash'
 import { Bills } from '../Bills'
 
+// mocks
+jest.mock('@/functions/relay/createRenderer')
+
 // subject
 let subject
 

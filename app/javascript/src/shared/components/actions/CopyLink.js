@@ -2,7 +2,6 @@
 import * as React from 'react'
 import Clipboard from 'react-copy-to-clipboard'
 import { Link } from './Link'
-import { events } from '@/events'
 
 type Props = {
   value: string,
