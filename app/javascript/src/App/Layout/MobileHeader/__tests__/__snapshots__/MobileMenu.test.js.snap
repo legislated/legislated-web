@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render shows the mobile menu 1`] = `
-<Styled(div)
+<Menu
   onClick={[MockFunction]}
 >
-  <Styled(div) />
-  <Styled(NavLinks)
+  <Background />
+  <Links
     onClick={[MockFunction]}
   />
-</Styled(div)>
+</Menu>
 `;

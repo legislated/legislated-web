@@ -63,6 +63,7 @@ export type Bill = {
   documentNumber: string,
   title: string,
   summary: string,
+  sponsorName: string,
   detailsUrl: string,
   fullTextUrl: string,
   witnessSlipUrl: string,

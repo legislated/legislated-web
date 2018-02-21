@@ -45,7 +45,7 @@ export function HeaderNavbar ({
 }
 
 const height = 70
-const Navbar = styled.div`
+const Navbar = styled.header`
   position: relative;
   height: ${height}px;
   width: 100%;

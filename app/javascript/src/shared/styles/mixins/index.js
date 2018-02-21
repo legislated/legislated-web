@@ -1,12 +1,10 @@
 // @flow
-import * as fonts from './fonts'
-import * as fontSizes from './fontSizes'
+import * as font from './font'
 import * as shadows from './shadows'
 import * as borders from './borders'
 
 export {
-  fonts,
-  fontSizes,
+  font,
   shadows,
   borders
 }
@@ -17,7 +15,7 @@ export {
 
 export {
   pageWidth,
-  pageMargin,
+  pageContent,
   flexRow,
   flexColumn,
   flexCenter,

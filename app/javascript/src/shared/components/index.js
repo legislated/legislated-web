@@ -1,14 +1,31 @@
 // @flow
-export { Defer } from './Defer'
-export { RelayRenderer } from './RelayRenderer'
-export { TranslateAndFade } from './TranslateAndFade'
-export { NotificationView } from './NotificationView'
+export {
+  Link,
+  CopyLink,
+  Button,
+  CloseButton
+} from './actions'
 
-export { Footer } from './Footer'
-export { Link } from './Link'
-export type { LinkProps } from './Link'
-export { CopyLink } from './CopyLink'
-export { Button } from './Button'
-export { CloseButton } from './CloseButton'
+export {
+  TranslateAndFade
+} from './animations'
 
-export { BillSearch } from './BillSearch'
+export type {
+  LinkProps
+} from './actions/Link'
+
+export {
+  BillSearch,
+  BillTitle,
+  BillStatus
+} from './bill'
+
+export {
+  RelayRenderer
+} from './relay'
+
+export {
+  Defer,
+  Footer,
+  Loading
+} from './utils'

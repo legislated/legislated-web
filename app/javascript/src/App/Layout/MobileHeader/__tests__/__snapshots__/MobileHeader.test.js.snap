@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render shows the closed menu 1`] = `
-<Styled(header)>
-  <Styled(Link)
+<Header>
+  <LogoLink
     to="/"
   >
     <Logo
@@ -10,19 +10,19 @@ exports[`#render shows the closed menu 1`] = `
       width={40}
     />
     <h1>
-      LEGISLATED
+      Legislated
     </h1>
-  </Styled(Link)>
+  </LogoLink>
   <MobileMenuButton
     onClick={[Function]}
   />
   <MobileMenuTransition />
-</Styled(header)>
+</Header>
 `;
 
 exports[`#render shows the open menu 1`] = `
-<Styled(header)>
-  <Styled(Link)
+<Header>
+  <LogoLink
     to="/"
   >
     <Logo
@@ -30,9 +30,9 @@ exports[`#render shows the open menu 1`] = `
       width={40}
     />
     <h1>
-      LEGISLATED
+      Legislated
     </h1>
-  </Styled(Link)>
+  </LogoLink>
   <MobileMenuButton
     onClick={[Function]}
   />
@@ -41,5 +41,5 @@ exports[`#render shows the open menu 1`] = `
       onClose={[Function]}
     />
   </MobileMenuTransition>
-</Styled(header)>
+</Header>
 `;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the home scene 1`] = `
+<Scene>
+  <HomeIntro />
+  <BillSearch
+    onChange={[Function]}
+    params={
+      Object {
+        "query": "",
+        "subset": "SLIPS",
+      }
+    }
+    viewer="test-viewer"
+  />
+  <BillsButton
+    isSecondary={true}
+    onClick={[Function]}
+  >
+    View All Bills
+  </BillsButton>
+  <HomeFooter />
+</Scene>
+`;
