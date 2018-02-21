@@ -12,7 +12,7 @@ export {
 
 export type {
   LinkProps
-} from './actions/link'
+} from './actions/Link'
 
 export {
   BillSearch,
