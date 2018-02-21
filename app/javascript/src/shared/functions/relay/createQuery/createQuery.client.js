@@ -1,6 +1,7 @@
 // @flow
 import { QueryResponseCache } from 'relay-runtime'
 import type { QueryResult, QueryPayload, FetchFunction } from 'relay-runtime'
+import { fromScript } from 'hypernova'
 import { config } from '@/config'
 
 // helpers
@@ -23,8 +24,8 @@ export function createQuery (extraHeaders: Object): FetchFunction {
   }
 
   // ssr request replay
-  const serverPayloads: QueryPayload[] = global._payloads || []
-  global._payloads = null
+  const serverPayloads: QueryPayload[] =
+    fromScript({ key: 'relay-payloads' }) || []
 
   function getServerPayload () {
     return serverPayloads.shift()
