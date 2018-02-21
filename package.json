@@ -28,8 +28,8 @@
     "flow:restart": "flow stop && flow",
     "relay": "relay-compiler --src ./app/javascript/src --schema schema.json",
     "relay:watch": "yarn relay --watch",
-    "check": "yarn lint && yarn flow && yarn test",
-    "check:quiet": "yarn lint && yarn flow --quiet && yarn test"
+    "verify": "yarn lint && yarn flow && yarn test",
+    "verify:quiet": "yarn lint && yarn relay && yarn flow --quiet && yarn test"
   },
   "dependencies": {
     "@rails/webpacker": "^3.2.2",
@@ -53,7 +53,6 @@
     "sync-request": "^5.0.0"
   },
   "devDependencies": {
-    "@dhau/relay-compiler-webpack-plugin": "^0.5.5",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "8.2.1",

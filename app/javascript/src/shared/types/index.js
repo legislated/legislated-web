@@ -1,10 +1,5 @@
 // @flow
 export type {
-  StyleProp,
-  Notification
-} from './client'
-
-export type {
   Viewer,
   StepActor,
   StepAction,

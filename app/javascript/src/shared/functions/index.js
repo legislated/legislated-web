@@ -6,14 +6,19 @@ export {
 } from './auth'
 
 export {
-  now,
-  sleep,
-  alpha,
-  removeRouterProps
-} from './utils'
-
-export {
   currentEnvironment,
   createRenderer,
   createRendererWithConfig
 } from './relay'
+
+export {
+  segmentsFromBill
+} from './bill'
+
+export {
+  now,
+  sleep,
+  alpha,
+  href,
+  removeRouterProps
+} from './utils'

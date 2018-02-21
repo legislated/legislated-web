@@ -11,7 +11,6 @@ injectGlobal`
     ${font.regular};
     ${font.sizes.body};
 
-    line-height: 1.25;
     color: ${black};
     background-color: ${white};
     -webkit-font-smoothing: antialiased;
@@ -50,6 +49,10 @@ injectGlobal`
   h6 {
     ${font.bold};
     ${font.sizes.h6};
+  }
+
+  p, dd {
+    line-height: 1.25;
   }
 
   a, button, input {

@@ -77,10 +77,6 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@dhau/relay-compiler-webpack-plugin@^0.5.5":
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/@dhau/relay-compiler-webpack-plugin/-/relay-compiler-webpack-plugin-0.5.5.tgz#52bda52b29837a4fbe74f20b4fd8c3b3aebc37fe"
-
 "@rails/webpacker@^3.2.2":
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-3.2.2.tgz#6d60e1cf729dc2ccc52053c9b6b8d30c9a48a297"
