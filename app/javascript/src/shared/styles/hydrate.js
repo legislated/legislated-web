@@ -5,5 +5,5 @@ import { config } from '@/config'
 
 if (config.env !== 'server') {
   const ids = fromScript({ key: 'emotion-ids' })
-  hydrate(ids)
+  ids && hydrate(ids)
 }
