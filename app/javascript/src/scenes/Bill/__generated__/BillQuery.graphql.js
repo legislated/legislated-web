@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash ef189c2e02ee919eea3c5640685b9d2b
+ * @relayHash a3e43a2357c8af3819e1b46d79b8ab49
  */
 
 /* eslint-disable */
@@ -23,11 +23,18 @@ query BillQuery(
 ) {
   viewer {
     bill(id: $id) {
+      ...BillHead_bill
       ...Content_bill
       id
     }
     id
   }
+}
+
+fragment BillHead_bill on Bill {
+  documentNumber
+  title
+  summary
 }
 
 fragment Content_bill on Bill {
@@ -95,6 +102,11 @@ const batch /*: ConcreteBatch*/ = {
             "name": "bill",
             "plural": false,
             "selections": [
+              {
+                "kind": "FragmentSpread",
+                "name": "BillHead_bill",
+                "args": null
+              },
               {
                 "kind": "FragmentSpread",
                 "name": "Content_bill",
@@ -302,7 +314,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query BillQuery(\n  $id: ID!\n) {\n  viewer {\n    bill(id: $id) {\n      ...Content_bill\n      id\n    }\n    id\n  }\n}\n\nfragment Content_bill on Bill {\n  documentNumber\n  title\n  summary\n  sponsorName\n  hearing {\n    date\n    id\n  }\n  committee {\n    name\n    id\n  }\n  chamber {\n    name\n    id\n  }\n  ...Actions_bill\n}\n\nfragment Actions_bill on Bill {\n  detailsUrl\n  fullTextUrl\n  witnessSlipUrl\n  witnessSlipResultUrl\n}\n"
+  "text": "query BillQuery(\n  $id: ID!\n) {\n  viewer {\n    bill(id: $id) {\n      ...BillHead_bill\n      ...Content_bill\n      id\n    }\n    id\n  }\n}\n\nfragment BillHead_bill on Bill {\n  documentNumber\n  title\n  summary\n}\n\nfragment Content_bill on Bill {\n  documentNumber\n  title\n  summary\n  sponsorName\n  hearing {\n    date\n    id\n  }\n  committee {\n    name\n    id\n  }\n  chamber {\n    name\n    id\n  }\n  ...Actions_bill\n}\n\nfragment Actions_bill on Bill {\n  detailsUrl\n  fullTextUrl\n  witnessSlipUrl\n  witnessSlipResultUrl\n}\n"
 };
 
 module.exports = batch;

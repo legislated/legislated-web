@@ -46,6 +46,7 @@
     "react-copy-to-clipboard": "^5.0.0",
     "react-dom": "^16.1.1",
     "react-emotion": "^9.0.0",
+    "react-helmet": "^5.2.0",
     "react-relay": "^1.4.1",
     "react-router-dom": "^4.1.2",
     "react-router-scroll-4": "^1.0.0-beta.1",
@@ -90,12 +91,26 @@
   },
   "babel": {
     "presets": [
-      [ "env", { "targets": { "browsers": [ "last 2 versions" ] } } ],
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 versions"
+            ]
+          }
+        }
+      ],
       "react",
       "stage-2"
     ],
     "plugins": [
-      [ "relay", { "schema": "schema.json" } ],
+      [
+        "relay",
+        {
+          "schema": "schema.json"
+        }
+      ],
       "transform-runtime",
       "emotion",
       "lodash"

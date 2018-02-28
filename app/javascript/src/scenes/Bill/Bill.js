@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { graphql } from 'react-relay'
 import { withRouter } from 'react-router-dom'
-import { Content } from './components'
+import { BillHead, Content } from './components'
 import { RelayRenderer } from '@/components'
 import { stylesheet, colors, mixins } from '@/styles'
 import type { Viewer } from '@/types'
@@ -15,6 +15,7 @@ let Bill = function Bill ({ viewer }: Props) {
   return (
     <div {...rules.container}>
       <div {...rules.content}>
+        {viewer && <BillHead bill={viewer.bill} />}
         {viewer ? <Content bill={viewer.bill} /> : <div>Loading...</div>}
       </div>
     </div>
@@ -51,6 +52,7 @@ export function BillRenderer () {
     query BillQuery($id: ID!) {
       viewer {
         bill(id: $id) {
+          ...BillHead_bill
           ...Content_bill
         }
       }
