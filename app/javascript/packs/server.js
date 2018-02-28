@@ -2,7 +2,7 @@
 import '../server-polyfills'
 import React from 'react'
 import { renderReact } from 'hypernova-react'
-import {Helmet} from "react-helmet";
+import {Helmet} from 'react-helmet'
 import { StaticRouter } from 'react-router-dom'
 import { renderStatic } from 'glamor/server'
 import { App } from '../src/App'
@@ -22,7 +22,7 @@ export default renderReact('client', ({ location }: Props) => (
 ), {
   serialize (markup, serializeRoot) {
     const { html, css, ids } = renderStatic(() => markup)
-    const helmet = Helmet.renderStatic();
+    const helmet = Helmet.renderStatic()
 
     return `
     <html ${helmet.htmlAttributes.toString()}>
