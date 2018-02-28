@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render renders properly 1`] = `
+<HelmetWrapper
+  defer={true}
+  encodeSpecialCharacters={true}
+>
+  <meta
+    content="https://legislated.org/"
+    property="og:url"
+  />
+  <meta
+    content="Legislated"
+    property="og:site_name"
+  />
+  <meta
+    content="HB1234: Foo"
+    property="og:title"
+  />
+  <meta
+    content="A bill, fantastic"
+    property="og:description"
+  />
+  <meta
+    content="HB1234: Foo"
+    name="twitter:title"
+  />
+  <meta
+    content="A bill, fantastic"
+    name="twitter:description"
+  />
+</HelmetWrapper>
+`;
