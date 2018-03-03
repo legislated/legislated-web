@@ -1,4 +1,4 @@
-RSpec::Matchers.define :map_fields do |field_map|
+RSpec::Matchers.define(:map_fields) do |field_map|
   match do |actual|
     field_map.all? do |key, graph_key|
       field = actual.fields[graph_key]

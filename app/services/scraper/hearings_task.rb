@@ -34,7 +34,7 @@ module Scraper
       # short-circuit when there are no rows
       return [] if page.has_css?('.t-no-data')
 
-      # build committee / hearing attribuets, winding together scraped and request data
+      # build committee / hearing attributes, winding together scraped and request data
       committee_hearings_response = HearingsRequest.fetch(chamber, page_number)
       committee_hearing_rows = page.find_all('#CommitteeHearingTabstrip tbody tr')
       committee_hearing_attrs = committee_hearing_rows

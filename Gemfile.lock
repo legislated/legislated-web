@@ -1,3 +1,17 @@
+GIT
+  remote: https://github.com/wzrad/puffing-billy.git
+  revision: 216d30b6aec068040894b0fdb2bd808130417f66
+  branch: develop
+  specs:
+    puffing-billy (0.12.0)
+      addressable (~> 2.4, >= 2.4.0)
+      em-http-request (~> 1.1, >= 1.1.0)
+      em-synchrony
+      eventmachine (= 1.2.0.1)
+      eventmachine_httpserver
+      http_parser.rb (~> 0.6.0)
+      multi_json
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -195,14 +209,6 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.1)
-    puffing-billy (0.12.0)
-      addressable (~> 2.4, >= 2.4.0)
-      em-http-request (~> 1.1, >= 1.1.0)
-      em-synchrony
-      eventmachine (= 1.2.0.1)
-      eventmachine_httpserver
-      http_parser.rb (~> 0.6.0)
-      multi_json
     puma (3.11.2)
     rack (2.0.4)
     rack-cors (1.0.2)
@@ -342,7 +348,7 @@ DEPENDENCIES
   pry
   pry-byebug
   pry-rails
-  puffing-billy
+  puffing-billy!
   puma (~> 3.0)
   rack-cors
   rails (~> 5.2.0.rc1)

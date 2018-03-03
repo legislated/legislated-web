@@ -1,4 +1,4 @@
-describe 'importing bills', :json_snapshot do
+describe 'importing bills' do
   subject { ImportBillsJob.new(mock_redis) }
 
   let(:mock_redis) { double('Redis') }
@@ -10,11 +10,10 @@ describe 'importing bills', :json_snapshot do
   end
 
   it 'imports bills from openstates' do
-    snapshot = load_snapshot('import_bills.json')
-
     VCR.use_cassette('import_bills') do
       subject.perform
-      expect(to_json_snapshot(Bill.all)).to eq(snapshot)
+      actual = Bill.all.to_json
+      expect(actual).to match_json_snapshot('import_bills')
     end
   end
 end

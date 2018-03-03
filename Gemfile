@@ -43,11 +43,11 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'puffing-billy', git: 'https://github.com/wzrad/puffing-billy.git', branch: 'develop'
   gem 'rb-readline'
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'timecop'
-  gem 'puffing-billy'
   gem 'vcr'
   gem 'webmock'
 end

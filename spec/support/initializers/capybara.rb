@@ -5,8 +5,7 @@ Capybara.register_driver(:poltergeist_billy) do |app|
     phantomjs_options: [
       '--ignore-ssl-errors=yes',
       "--proxy=#{Billy.proxy.host}:#{Billy.proxy.port}"
-    ],
-    timeout: 1000
+    ]
   )
 end
 

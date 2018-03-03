@@ -1,12 +1,11 @@
-describe 'importing legislators', :json_snapshot do
+describe 'importing legislators' do
   subject { ImportLegislatorsJob.new }
 
   it 'imports legislators from openstates' do
-    snapshot = load_snapshot('import_legislators.json')
-
     VCR.use_cassette('import_legislators') do
       subject.perform
-      expect(to_json_snapshot(Legislator.all)).to eq(snapshot)
+      actual = Legislator.all.to_json
+      expect(actual).to match_json_snapshot('import_legislators')
     end
   end
 end
