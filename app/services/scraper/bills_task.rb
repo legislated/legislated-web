@@ -11,7 +11,7 @@ module Scraper
 
     def scrape_paged_bills(hearing, url, page_number = 0)
       info("\n> #{task_name}: visit paged bills")
-      info("  - name: #{hearing.committee.name}")
+      info("  - name: #{hearing.id}")
       info("  - page: #{page_number}")
 
       page.visit(url)

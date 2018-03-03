@@ -47,6 +47,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'timecop'
+  gem 'puffing-billy'
   gem 'vcr'
   gem 'webmock'
 end
