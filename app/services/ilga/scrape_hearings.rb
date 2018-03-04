@@ -1,6 +1,6 @@
 module Ilga
   class ScrapeHearings < Scraper
-    def run(chamber)
+    def call(chamber)
       info("> #{task_name}: start")
       info("  - chamber: #{chamber.name}")
       result = scrape_committee_hearings(chamber)

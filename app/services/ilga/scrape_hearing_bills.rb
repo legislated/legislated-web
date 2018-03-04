@@ -1,6 +1,6 @@
 module Ilga
   class ScrapeHearingBills < Scraper
-    def run(hearing)
+    def call(hearing)
       info("> #{task_name}: start")
       info("  - hearing: #{hearing.id}")
       result = scrape_paged_bills(hearing, hearing.url)

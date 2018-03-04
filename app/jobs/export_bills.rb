@@ -1,11 +1,11 @@
 class ExportBills
   include Worker
 
-  def self.scheduled?
-    Time.current.saturday?
-  end
-
   def perform
     BillsMailer.weekly_export_email.deliver_later
+  end
+
+  def self.scheduled?
+    Time.current.saturday?
   end
 end

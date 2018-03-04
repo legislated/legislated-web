@@ -5,7 +5,7 @@ module Ilga
     include HTTParty
     base_uri 'http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange'
 
-    def fetch(chamber, page_number)
+    def call(chamber, page_number)
       midnight = Time.current.midnight
 
       self.class.get('/Hearing/_GetPostedHearingsByDateRange', options.deep_merge({

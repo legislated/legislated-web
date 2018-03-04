@@ -1,6 +1,6 @@
 module Ilga
   class ScrapeBill < Scraper
-    def run(bill)
+    def call(bill)
       info("> #{task_name}: start")
       info("  - bill: #{bill.id}")
       result = scrape_bill_details(bill)
