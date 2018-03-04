@@ -5,7 +5,7 @@ describe Ilga::ScrapeHearings do
     it "scrapes the hearing links" do
       result = subject.call(Chamber.house.first)
       actual = result.to_json
-      expect(actual).to match_json_snapshot('scrape_hearings')
+      expect(actual).to match_json_snapshot('ilga_scrape_hearings')
     end
   end
 end

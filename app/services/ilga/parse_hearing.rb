@@ -1,25 +1,27 @@
 module Ilga
   class ParseHearing
-    Records = Struct.new(
-      :hearing,
-      :committee
-    )
-
     Hearing = Struct.new(
       :external_id,
       :date,
       :location,
-      :is_cancelled
+      :is_cancelled,
+      :committee
     )
 
     Committee = Struct.new(
       :external_id,
-      :name
+      :name,
+      :hearing
     )
 
     def call(data)
-      Records.new(
-        build_hearing(data),
+      hearing_data = data['CommitteeHearing']
+
+      Hearing.new(
+        hearing_data['HearingId'],
+        parse_date(hearing_data['ScheduledDateTime']),
+        data['Location'],
+        hearing_data['IsCancelled'],
         build_committee(data)
       )
     end
@@ -30,17 +32,6 @@ module Ilga
       Committee.new(
         data['CommitteeId'],
         data['CommitteeDescription']
-      )
-    end
-
-    def build_hearing(data)
-      hearing_data = data['CommitteeHearing']
-
-      Hearing.new(
-        hearing_data['HearingId'],
-        parse_date(hearing_data['ScheduledDateTime']),
-        data['Location'],
-        hearing_data['IsCancelled']
       )
     end
 

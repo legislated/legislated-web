@@ -11,9 +11,9 @@
   Server: Microsoft-IIS/8.5
   X-AspNet-Version: 4.0.30319
   X-AspNetMvc-Version: '5.2'
-  Set-Cookie: ASP.NET_SessionId=peagck2ulwyt0dflhgo5wvx2; path=/; HttpOnly
+  Set-Cookie: ASP.NET_SessionId=misatudj1ldc3s0ucgpigfix; path=/; HttpOnly
   X-Powered-By: ASP.NET
-  Date: Sun, 04 Mar 2018 06:13:51 GMT
+  Date: Sun, 04 Mar 2018 15:52:55 GMT
   Connection: close
 :content: "<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=\"utf-8\" content=\"\"/>\r\n
   \   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\" />\r\n    <meta name=\"classification\"
@@ -123,7 +123,7 @@
   class=\"t-item t-state-default t-state-active\"><a class=\"t-link\" href=\"/Hearing/_PostedHearings?committeeid=0&amp;chamber=H&amp;nodays=1\">Today</a></li><li
   class=\"t-item t-state-default\"><a class=\"t-link\" href=\"/Hearing/_PostedHearings?committeeid=0&amp;chamber=H&amp;nodays=7\">Week</a></li><li
   class=\"t-item t-state-default\"><a class=\"t-link\" href=\"/Hearing/_PostedHearings?committeeid=0&amp;chamber=H&amp;nodays=30\">Month</a></li><li
-  class=\"t-item t-state-default\"><a class=\"t-link\" href=\"/Hearing/_PreviousHearings?committeeid=0&amp;chamber=H\">Previous</a></li></ul><div
+  class=\"t-item t-state-default\"><a class=\"t-link\" href=\"/Hearing/_PreviousHearings?committeeId=0&amp;chamber=H\">Previous</a></li></ul><div
   class=\"t-content t-state-active\" id=\"CommitteeHearingTabstrip-1\" style=\"display:block\"></div><div
   class=\"t-content\" id=\"CommitteeHearingTabstrip-2\"></div><div class=\"t-content\"
   id=\"CommitteeHearingTabstrip-3\"></div><div class=\"t-content\" id=\"CommitteeHearingTabstrip-4\"></div></div></div></div></div>\r\n</div>\r\n\r\n\r\n
@@ -142,7 +142,7 @@
   \                   </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n
   \   </div>\r\n    <div id=\"footer-background\">\r\n    </div>\r\n    <script type=\"text/javascript\"
   src=\"/Scripts/2012.1.214/telerik.common.min.js\"></script>\r\n<script type=\"text/javascript\"
-  src=\"/Scripts/2012.1.214/telerik.tabstrip.min.js\"></script>\r\n<script type=\"text/javascript\">\r\n//<![CDATA[\r\njQuery(document).ready(function(){\r\njQuery('#CommitteeHearingTabstrip').tTabStrip({contentUrls:[\"/Hearing/_PostedHearings?committeeid=0\\u0026chamber=H\\u0026nodays=1\",\"/Hearing/_PostedHearings?committeeid=0\\u0026chamber=H\\u0026nodays=7\",\"/Hearing/_PostedHearings?committeeid=0\\u0026chamber=H\\u0026nodays=30\",\"/Hearing/_PreviousHearings?committeeid=0\\u0026chamber=H\"]});});\r\n//]]>\r\n</script>\r\n
+  src=\"/Scripts/2012.1.214/telerik.tabstrip.min.js\"></script>\r\n<script type=\"text/javascript\">\r\n//<![CDATA[\r\njQuery(document).ready(function(){\r\njQuery('#CommitteeHearingTabstrip').tTabStrip({contentUrls:[\"/Hearing/_PostedHearings?committeeid=0\\u0026chamber=H\\u0026nodays=1\",\"/Hearing/_PostedHearings?committeeid=0\\u0026chamber=H\\u0026nodays=7\",\"/Hearing/_PostedHearings?committeeid=0\\u0026chamber=H\\u0026nodays=30\",\"/Hearing/_PreviousHearings?committeeId=0\\u0026chamber=H\"]});});\r\n//]]>\r\n</script>\r\n
   \   \r\n</body>\r\n<script type=\"text/javascript\">\r\n    $('.hide').bind('click',
   function () {\r\n        hideElement($(this).closest('.alert'));\r\n    });\r\n\r\n
   \   $('.collapsible').bind('click', function () {\r\n        collapseBlock($(this));\r\n

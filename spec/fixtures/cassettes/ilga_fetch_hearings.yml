@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange?begindate=03/03/18%2000:00:00&chamber=H&committeeid=0&enddate=04/02/18%2000:00:00
+    uri: http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange?begindate=03/04/18%2000:00:00&chamber=H&committeeid=0&enddate=04/03/18%2000:00:00
     body:
       encoding: UTF-8
       string: size=50&page=1
@@ -29,7 +29,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Sun, 04 Mar 2018 05:18:43 GMT
+      - Sun, 04 Mar 2018 15:53:54 GMT
     body:
       encoding: UTF-8
       string: '{"data":[{"CommitteeDescription":"Veterans\u0027 Affairs Committee","CommitteeHearing":{"HearingId":15612,"CommitteeId":1913,"HearingLocationId":141,"ScheduledDateTime":"\/Date(1520262000000)\/","PostingDateTime":"\/Date(1519770060000)\/","PrintDateTime":"\/Date(1522185660000)\/","SubjectMatter":"SUBJECT
@@ -247,7 +247,7 @@ http_interactions:
   recorded_at: Sat, 03 Mar 2018 06:00:00 GMT
 - request:
     method: post
-    uri: http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange?begindate=03/03/18%2000:00:00&chamber=H&committeeid=0&enddate=04/02/18%2000:00:00
+    uri: http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange?begindate=03/04/18%2000:00:00&chamber=H&committeeid=0&enddate=04/03/18%2000:00:00
     body:
       encoding: UTF-8
       string: size=50&page=2
@@ -274,7 +274,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Sun, 04 Mar 2018 05:18:43 GMT
+      - Sun, 04 Mar 2018 15:53:54 GMT
     body:
       encoding: UTF-8
       string: '{"data":[{"CommitteeDescription":"Aging Committee","CommitteeHearing":{"HearingId":15630,"CommitteeId":2169,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520528400000)\/","PostingDateTime":"\/Date(1520007180000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Aging
@@ -297,7 +297,7 @@ http_interactions:
   recorded_at: Sat, 03 Mar 2018 06:00:00 GMT
 - request:
     method: post
-    uri: http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange?begindate=03/03/18%2000:00:00&chamber=H&committeeid=0&enddate=04/02/18%2000:00:00
+    uri: http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange?begindate=03/04/18%2000:00:00&chamber=H&committeeid=0&enddate=04/03/18%2000:00:00
     body:
       encoding: UTF-8
       string: size=50&page=3
@@ -324,7 +324,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Sun, 04 Mar 2018 05:18:46 GMT
+      - Sun, 04 Mar 2018 15:53:54 GMT
     body:
       encoding: UTF-8
       string: '{"data":[],"total":54}'

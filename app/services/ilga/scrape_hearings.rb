@@ -1,8 +1,8 @@
 module Ilga
   class ScrapeHearings < Scraper
     Hearing = Struct.new(
-      :url,
-      :external_id
+      :external_id,
+      :url
     )
 
     def call(chamber)
@@ -43,9 +43,8 @@ module Ilga
       # get attrs from each row
       attrs = page
         .find_all('#CommitteeHearingTabstrip tbody tr')
-        .map { |row| build_attrs(row) }
+        .map { |row| build_hearing(row) }
         .compact
-
 
       # aggregate the next page's results if it's available
       next_url = find_next_page_url
@@ -53,14 +52,14 @@ module Ilga
       attrs + scrape_paged_hearings(chamber, next_url, page_number + 1)
     end
 
-    def build_attrs(row)
+    def build_hearing(row)
       url = row.first('td.t-last a')&.[](:href)
       return nil if url.nil?
 
       uri = clean_uri(url)
       Hearing.new(
-        uri.to_s,
-        uri.path.split('/').last # external_id
+        uri.path.split('/').last, # external_id
+        uri.to_s
       )
     end
 

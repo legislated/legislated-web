@@ -14,7 +14,10 @@ Billy.configure do |c|
 
   c.cache_path = 'spec/fixtures/billy/'
   c.certs_path = 'spec/fixtures/billy/certs/'
+  c.cache_simulates_network_delays = true # race conditions in ilga code
+  c.cache_simulates_network_delay_time = 0.005 # 0.005 is minimum to pass
   c.cache_request_body_methods = %w[post patch put]
+
   c.cache_url_transforms << ->(url) do
     uri = URI.parse(url)
 
