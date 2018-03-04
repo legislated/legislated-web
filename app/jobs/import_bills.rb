@@ -30,7 +30,7 @@ class ImportBills
       end
 
       # enqueue the details job for each bill
-      ImportBillDetails.perform_async(bill.id)
+      ImportIlgaBill.perform_async(bill.id)
     end
 
     @redis.set(:import_bills_job_date, Time.zone.now)

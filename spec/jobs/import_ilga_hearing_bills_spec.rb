@@ -1,4 +1,4 @@
-describe ImportHearingBills do
+describe ImportIlgaHearingBills do
   subject { described_class.new(mock_scraper) }
 
   let(:mock_scraper) { double('Scraper') }

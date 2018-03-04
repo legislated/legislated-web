@@ -6,7 +6,7 @@ describe 'importing bills' do
   before do
     allow(mock_redis).to receive(:get).and_return(nil)
     allow(mock_redis).to receive(:set)
-    allow(ImportBillDetails).to receive(:perform_async)
+    allow(ImportIlgaBill).to receive(:perform_async)
   end
 
   it 'imports bills from openstates' do

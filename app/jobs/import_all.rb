@@ -2,10 +2,10 @@ class ImportAll
   include Worker
 
   def perform
-    ImportBillsJob.schedule
+    ImportBills.schedule
     ImportLegislators.schedule
 
     chambers = Chamber.all
-    chambers.each { |c| ImportHearings.schedule(c.id) }
+    chambers.each { |c| ImportIlgaHearings.schedule(c.id) }
   end
 end

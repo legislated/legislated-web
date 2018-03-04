@@ -4,7 +4,7 @@ describe ImportAll do
   describe '#perform' do
     before do
       allow(ImportBillsJob).to receive(:perform_async)
-      allow(ImportHearings).to receive(:perform_async)
+      allow(ImportIlgaHearings).to receive(:perform_async)
     end
 
     it 'enqueues the bills import' do
@@ -15,8 +15,8 @@ describe ImportAll do
     it 'enqueues a hearings import for each chamber' do
       chamber_ids = Chamber.all.map(&:id)
       subject.perform
-      expect(ImportHearings).to have_received(:perform_async).with(chamber_ids[0])
-      expect(ImportHearings).to have_received(:perform_async).with(chamber_ids[1])
+      expect(ImportIlgaHearings).to have_received(:perform_async).with(chamber_ids[0])
+      expect(ImportIlgaHearings).to have_received(:perform_async).with(chamber_ids[1])
     end
   end
 end

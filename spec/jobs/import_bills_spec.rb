@@ -1,4 +1,4 @@
-describe ImportBillsJob do
+describe ImportBills do
   subject { described_class.new(mock_redis, mock_open_states_service, mock_step_parser) }
 
   let(:mock_redis) { double('Redis') }
@@ -16,7 +16,7 @@ describe ImportBillsJob do
       allow(mock_open_states_service).to receive(:fetch_bills).and_return([].lazy)
       allow(mock_step_parser).to receive(:parse).and_return([])
 
-      allow(ImportBillDetails).to receive(:perform_async)
+      allow(ImportIlgaBill).to receive(:perform_async)
     end
 
     after do
@@ -151,7 +151,7 @@ describe ImportBillsJob do
         it 'imports details for the bill' do
           allow(mock_open_states_service).to receive(:fetch_bills).and_return(response)
           subject.perform
-          expect(ImportBillDetails).to have_received(:perform_async).exactly(1).times
+          expect(ImportIlgaBill).to have_received(:perform_async).exactly(1).times
         end
       end
 

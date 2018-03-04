@@ -1,4 +1,4 @@
-class ImportHearingBills
+class ImportIlgaHearingBills
   include Worker
 
   def initialize(scraper = Ilga::ScrapeHearingBills.new)
