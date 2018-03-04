@@ -1,0 +1,60 @@
+---
+:scope: 
+:url: http://my.ilga.gov/Hearing/_PostedHearings?committeeid=0&chamber=H&nodays=30&_=1520134752049
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Cache-Control: private
+  Content-Length: '6257'
+  Content-Type: text/html; charset=utf-8
+  Server: Microsoft-IIS/8.5
+  X-AspNet-Version: 4.0.30319
+  X-AspNetMvc-Version: '5.2'
+  X-Powered-By: ASP.NET
+  Date: Sun, 04 Mar 2018 03:39:10 GMT
+  Connection: close
+:content: "    \r\n<div class=\"t-widget t-grid\" id=\"HCommittees4/2/2018\"><table
+  cellspacing=\"0\"><colgroup><col style=\"width:150px\" /><col /><col style=\"width:50px\"
+  /></colgroup><thead class=\"t-grid-header\"><tr><th class=\"t-header\" scope=\"col\"
+  style=\"display:none\"><a class=\"t-link\" href=\"/Hearing/_PostedHearings?committeeid=0&amp;chamber=H&amp;nodays=30&amp;_=1520134752049&amp;HCommittees4%2F2%2F2018-orderBy=CommitteeHearing.CommitteeId-asc\">Committee
+  Id</a><div class=\"t-grid-filter t-state-default\"><span class=\"t-icon t-filter\">Filter</span></div></th><th
+  class=\"t-header\" scope=\"col\"><a class=\"t-link\" href=\"/Hearing/_PostedHearings?committeeid=0&amp;chamber=H&amp;nodays=30&amp;_=1520134752049&amp;HCommittees4%2F2%2F2018-orderBy=CommitteeHearing.ScheduledDateTime-asc\">Date
+  / Time</a><div class=\"t-grid-filter t-state-default\"><span class=\"t-icon t-filter\">Filter</span></div></th><th
+  class=\"t-header\" scope=\"col\"><a class=\"t-link\" href=\"/Hearing/_PostedHearings?committeeid=0&amp;chamber=H&amp;nodays=30&amp;_=1520134752049&amp;HCommittees4%2F2%2F2018-orderBy=CommitteeDescription-asc\">Committee</a><div
+  class=\"t-grid-filter t-state-default\"><span class=\"t-icon t-filter\">Filter</span></div></th><th
+  class=\"t-header\" scope=\"col\"><span class=\"t-link\">&nbsp;</span></th></tr></thead><tbody><tr
+  class=\"t-no-data\"><td colspan=\"3\">No records to display.</td></tr></tbody></table><div
+  class=\"t-grid-pager t-grid-bottom\"><div class=\"t-status\"><a class=\"t-icon t-refresh\"
+  href=\"/Hearing/_PostedHearings?committeeid=0&amp;chamber=H&amp;nodays=30&amp;_=1520134752049\">Refresh</a></div><div
+  class=\"t-pager t-reset\"><a class=\"t-link t-state-disabled\" href=\"#\"><span
+  class=\"t-icon t-arrow-first\">first</span></a><a class=\"t-link t-state-disabled\"
+  href=\"#\"><span class=\"t-icon t-arrow-prev\">prev</span></a><div class=\"t-numeric\"><span
+  class=\"t-state-active\">1</span></div><a class=\"t-link t-state-disabled\" href=\"#\"><span
+  class=\"t-icon t-arrow-next\">next</span></a><a class=\"t-link t-state-disabled\"
+  href=\"#\"><span class=\"t-icon t-arrow-last\">last</span></a></div><div class=\"t-status-text\">Displaying
+  items 0 - 0 of 0</div></div></div><script type=\"text/javascript\">\r\n\tif(!jQuery.telerik){\r\n\tjQuery.ajax({\r\n\turl:\"/Scripts/2012.1.214/telerik.common.min.js\",\r\n\tdataType:\"script\",\r\n\tcache:false,\r\n\tsuccess:function(){\r\n\tjQuery.telerik.load([\"/Scripts/2012.1.214/jquery-1.7.1.min.js\",\"/Scripts/2012.1.214/telerik.common.min.js\",\"/Scripts/2012.1.214/telerik.textbox.min.js\",\"/Scripts/2012.1.214/telerik.calendar.min.js\",\"/Scripts/2012.1.214/telerik.datepicker.min.js\",\"/Scripts/2012.1.214/telerik.grid.min.js\",\"/Scripts/2012.1.214/telerik.grid.filtering.min.js\"],function(){
+  jQuery('#HCommittees4\\\\/2\\\\/2018').tGrid({columns:[{\"attr\":\" style=\\\"display:none;\\\"\",\"title\":\"Committee
+  Id\",\"hidden\":true,\"member\":\"CommitteeHearing.CommitteeId\",\"type\":\"Number\"},{\"title\":\"Date
+  / Time\",\"member\":\"CommitteeHearing.ScheduledDateTime\",\"type\":\"Date\",\"format\":\"{0:M/dd/yyyy
+  - h:mm tt}\"},{\"title\":\"Committee\",\"template\":\"%3cstrong%3e %3c#= CommitteeDescription
+  #%3e %3c# if (CommitteeHearing.IsChanged == true) {#%3e%3cspan style=\\u0027color:red\\u0027%3e
+  * Changed * %3c/span%3e %3c# } #%3e%3c# if (CommitteeHearing.IsCancelled == -1)
+  {#%3e%3cspan style=\\u0027color:red\\u0027%3e * Cancelled * %3c/span%3e %3c# } #%3e%3c/strong%3e%3cbr/%3e%3c#=
+  Location #%3e\",\"member\":\"CommitteeDescription\",\"type\":\"String\"},{\"title\":null,\"commands\":[{\"name\":\"viewlegislation\\u003c#=Id#\\u003e\",\"attr\":\"
+  class=\\\"legislationiconbutton\\\" title=\\\"View Hearing Details\\\"\",\"buttonType\":\"Image\",\"url\":\"/Hearing/HearingDetail/%3C%23%3dCommitteeHearing.HearingId%23%3E?HCommittees4%2F2%2F2018-page=%3C%23%3D__page%23%3E\\u0026HCommittees4%2F2%2F2018-orderBy=%3C%23%3D__orderBy%23%3E\\u0026HCommittees4%2F2%2F2018-filter=%3C%23%3D__filter%23%3E\\u0026committeeid=0\\u0026chamber=H\\u0026nodays=30\\u0026_=1520134752049\"}]}],
+  plugins:[\"filtering\"], pageSize:50, total:0, currentPage:1, pageSizesInDropDown:[\"5\",\"10\",\"20\",\"50\"],
+  pageOnScroll:false, sortMode:'single', ajax:{\"selectUrl\":\"/Hearing/_GetPostedHearingsByDateRange?chamber=H\\u0026committeeid=0\\u0026begindate=03%2F03%2F2018%2000%3A00%3A00\\u0026enddate=04%2F02%2F2018%2000%3A00%3A00\\u0026nodays=30\\u0026_=1520134752049\"},
+  noRecordsTemplate:'No records to display.'}); });\r\n\t}});}else{\r\n\tjQuery.telerik.load([\"/Scripts/2012.1.214/jquery-1.7.1.min.js\",\"/Scripts/2012.1.214/telerik.common.min.js\",\"/Scripts/2012.1.214/telerik.textbox.min.js\",\"/Scripts/2012.1.214/telerik.calendar.min.js\",\"/Scripts/2012.1.214/telerik.datepicker.min.js\",\"/Scripts/2012.1.214/telerik.grid.min.js\",\"/Scripts/2012.1.214/telerik.grid.filtering.min.js\"],function(){
+  jQuery('#HCommittees4\\\\/2\\\\/2018').tGrid({columns:[{\"attr\":\" style=\\\"display:none;\\\"\",\"title\":\"Committee
+  Id\",\"hidden\":true,\"member\":\"CommitteeHearing.CommitteeId\",\"type\":\"Number\"},{\"title\":\"Date
+  / Time\",\"member\":\"CommitteeHearing.ScheduledDateTime\",\"type\":\"Date\",\"format\":\"{0:M/dd/yyyy
+  - h:mm tt}\"},{\"title\":\"Committee\",\"template\":\"%3cstrong%3e %3c#= CommitteeDescription
+  #%3e %3c# if (CommitteeHearing.IsChanged == true) {#%3e%3cspan style=\\u0027color:red\\u0027%3e
+  * Changed * %3c/span%3e %3c# } #%3e%3c# if (CommitteeHearing.IsCancelled == -1)
+  {#%3e%3cspan style=\\u0027color:red\\u0027%3e * Cancelled * %3c/span%3e %3c# } #%3e%3c/strong%3e%3cbr/%3e%3c#=
+  Location #%3e\",\"member\":\"CommitteeDescription\",\"type\":\"String\"},{\"title\":null,\"commands\":[{\"name\":\"viewlegislation\\u003c#=Id#\\u003e\",\"attr\":\"
+  class=\\\"legislationiconbutton\\\" title=\\\"View Hearing Details\\\"\",\"buttonType\":\"Image\",\"url\":\"/Hearing/HearingDetail/%3C%23%3dCommitteeHearing.HearingId%23%3E?HCommittees4%2F2%2F2018-page=%3C%23%3D__page%23%3E\\u0026HCommittees4%2F2%2F2018-orderBy=%3C%23%3D__orderBy%23%3E\\u0026HCommittees4%2F2%2F2018-filter=%3C%23%3D__filter%23%3E\\u0026committeeid=0\\u0026chamber=H\\u0026nodays=30\\u0026_=1520134752049\"}]}],
+  plugins:[\"filtering\"], pageSize:50, total:0, currentPage:1, pageSizesInDropDown:[\"5\",\"10\",\"20\",\"50\"],
+  pageOnScroll:false, sortMode:'single', ajax:{\"selectUrl\":\"/Hearing/_GetPostedHearingsByDateRange?chamber=H\\u0026committeeid=0\\u0026begindate=03%2F03%2F2018%2000%3A00%3A00\\u0026enddate=04%2F02%2F2018%2000%3A00%3A00\\u0026nodays=30\\u0026_=1520134752049\"},
+  noRecordsTemplate:'No records to display.'}); });\r\n\t}\r\n\r\n</script>   "

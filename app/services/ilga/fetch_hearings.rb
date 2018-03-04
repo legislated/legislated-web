@@ -3,50 +3,70 @@ require 'httparty'
 module Ilga
   class FetchHearings
     include HTTParty
-    base_uri 'http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange'
 
-    def call(chamber, page_number)
-      midnight = Time.current.midnight
+    PAGE_SIZE = 50
 
-      self.class.get('/Hearing/_GetPostedHearingsByDateRange', options.deep_merge({
-        query: {
-          chamber: chamber_key(chamber),
-          committeeid: 0,
-          begindate: format_datetime(midnight),
-          enddate: format_datetime(midnight + 30.days)
-        },
-        body: {
-          size: 50,
-          page: page_number + 1
-        }
-      }))
+    def self.date_option(delta: 0.days)
+      date = Time.current.midnight + delta
+      date.strftime('%D %T')
+    end
 
-      # transform response to map committee id
-      response_data = response['data']
-      response_data.reduce({}) do |memo, data|
-        entry = ActiveSupport::HashWithIndifferentAccess.new(data)
-        memo[entry[:CommitteeId]] = entry
-        memo
+    base_uri(
+      'http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange'
+    )
+
+    headers({
+      'X-Requested-With': 'XMLHttpRequest'
+    })
+
+    default_params({
+      committeeid: 0,
+      begindate: date_option,
+      enddate: date_option(delta: 30.days)
+    })
+
+    def initialize(parse = ParseHearing.new)
+      @parse = parse
+    end
+
+    def call(chamber)
+      enumerator = Enumerator.new do |handler|
+        page_number = 1
+
+        loop do
+          page = fetch_page(chamber, page_number)
+          data = page['data']
+          break if data.blank?
+
+          page_number += 1
+          data.each do |item|
+            handler.yield(@parse.call(item))
+          end
+        end
       end
+
+      enumerator.lazy
     end
 
     private
 
-    def options
-      @options ||= {
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest'
+    def fetch_page(chamber, page = 1)
+      response = self.class.post('', {
+        body: {
+          size: PAGE_SIZE,
+          page: page
+        },
+        query: {
+          chamber: chamber_key(chamber)
         }
-      }
+      })
+
+      JSON.parse(response.body)
     end
 
-    def self.chamber_key(chamber)
+    def chamber_key(chamber)
       keys = { house: 'H', senate: 'S' }
       keys[chamber.kind.to_sym]
-    end
-
-    def self.format_datetime(datetime)
-      datetime.strftime('%D %T')
     end
   end
 end

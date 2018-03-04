@@ -1,4 +1,4 @@
-describe Scraper::BillsTask do
+describe Ilga::ScrapeHearingBills do
   subject { described_class.new }
 
   describe '#scrape_paged_bills' do

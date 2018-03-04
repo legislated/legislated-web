@@ -1,7 +1,11 @@
 class ImportHearings
   include Worker
 
-  def initialize(scraper = Ilga::ScrapeHearings.new)
+  def initialize(
+    request = Ilga::FetchHearings.new,
+    scraper = Ilga::ScrapeHearings.new
+  )
+    @request = request
     @scraper = scraper
   end
 

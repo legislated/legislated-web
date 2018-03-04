@@ -1,0 +1,42 @@
+---
+:scope: 
+:url: http://my.ilga.gov/Scripts/lis/common/lis.telerik.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: application/javascript
+  Last-Modified: Wed, 20 Jun 2012 20:59:28 GMT
+  Accept-Ranges: bytes
+  ETag: '"078a894274fcd1:0"'
+  Server: Microsoft-IIS/8.5
+  X-Powered-By: ASP.NET
+  Date: Sun, 04 Mar 2018 03:01:58 GMT
+  Connection: close
+  Content-Length: '2116'
+:content: "// Telerik Popup Window Customization //\r\nfunction ChangePopUp(e, title)
+  {\r\n    var popup = $(\"#\" + e.currentTarget.id + \"PopUp\");\r\n    var popupDataWin
+  = popup.data(\"tWindow\");\r\n\r\n    //Center the popup window.\r\n    popupDataWin.center();\r\n\r\n
+  \   //Set the title of the popup window.\r\n    popupDataWin.title(title);\r\n}\r\n\r\n\r\n//Telerik
+  Grid Initialization\r\n//Customize Delete Message and Add New Button Message\r\nfunction
+  initializeGrid(item, itemType) {\r\n\r\n    var grid = $(item).data('tGrid');\r\n\r\n
+  \   //Set the add text on the Add New button.\r\n    $(item).find('.t-grid-add').first().text(\"Add
+  New \" + itemType).prepend(\"<span class='t-icon t-add'>\");\r\n\r\n    //Set the
+  delete text on the delete confirmation popup.\r\n    $(item).find('.t-grid-delete').click(function
+  (e) {\r\n        grid.localization.deleteConfirmation =\r\n                \"Are
+  you sure you want to delete this \" +\r\n                itemType + \"?\";\r\n    });\r\n}\r\n\r\n//Function
+  used to display errors that were added to the model state server side, these errors
+  are not part of the\r\n//form that the Telerik Grid is validating.  e.g. SqlServer
+  errors.\r\nfunction GridOnError(e) {\r\n\r\n    //Check to see if there are any
+  errors in the ModelState.\r\n    if (e.textStatus == \"modelstateerror\" && e.modelState)
+  {\r\n\r\n        //Get the error messages into a variable.\r\n        var message
+  = \"Errors:\\n\"; \r\n\r\n        //Iterate over each key value pair and add them
+  to the message variable.\r\n        $.each(e.modelState, function (key, value) {\r\n
+  \           if ('errors' in value) {\r\n                $.each(value.errors, function
+  () {\r\n                    message += this + \"\\n\";\r\n                });\r\n
+  \           }\r\n        });\r\n\r\n        //Cancel current the event.\r\n        e.preventDefault();\r\n\r\n
+  \       var divs = document.getElementById('main-content').getElementsByTagName('div');\r\n\r\n
+  \       for (var i = 0; i < divs.length; i++) {\r\n            if (divs[i].className.match(new
+  RegExp('(\\\\s|^)' + 'alert error' + '(\\\\s|$)'))) {\r\n                divs[i].innerHTML
+  = message;\r\n                showElement(divs[i]);\r\n            }\r\n        }
+  \      \r\n    }\r\n}\r\n\r\n\r\n\r\n"

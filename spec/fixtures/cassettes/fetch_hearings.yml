@@ -1,0 +1,333 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange?begindate=03/03/18%2000:00:00&chamber=H&committeeid=0&enddate=04/02/18%2000:00:00
+    body:
+      encoding: UTF-8
+      string: size=50&page=1
+    headers:
+      X-Requested-With:
+      - XMLHttpRequest
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Length:
+      - '37988'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Aspnetmvc-Version:
+      - '5.2'
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sun, 04 Mar 2018 05:18:43 GMT
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"CommitteeDescription":"Veterans\u0027 Affairs Committee","CommitteeHearing":{"HearingId":15612,"CommitteeId":1913,"HearingLocationId":141,"ScheduledDateTime":"\/Date(1520262000000)\/","PostingDateTime":"\/Date(1519770060000)\/","PrintDateTime":"\/Date(1522185660000)\/","SubjectMatter":"SUBJECT
+        MATTER:  Quincy Veterans Home Legionella Outbreak and Response.","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Veterans\u0027
+        Affairs Committee","Address":"","City":"Chicago, IL","Building":"Michael A.
+        Bilandic Building","Room":"C-600, 6th Floor"},"CommitteeId":1913,"CommitteeHearingId":15612,"HearingTime":"3/05/2018
+        - 9:00 AM","Location":"Michael A. Bilandic Building - C-600, 6th Floor - Chicago,
+        IL","IsInCurrentWeek":false},{"CommitteeDescription":"Mental Health Committee","CommitteeHearing":{"HearingId":15585,"CommitteeId":2170,"HearingLocationId":6,"ScheduledDateTime":"\/Date(1520355600000)\/","PostingDateTime":"\/Date(1519844460000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"SUBJECT
+        MATTER:  School based health center.","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Mental
+        Health Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room C-1"},"CommitteeId":2170,"CommitteeHearingId":15585,"HearingTime":"3/06/2018
+        - 11:00 AM","Location":"Stratton Building - Room C-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Appropriations-Elementary
+        \u0026 Secondary Education Committee","CommitteeHearing":{"HearingId":15586,"CommitteeId":1891,"HearingLocationId":7,"ScheduledDateTime":"\/Date(1520364600000)\/","PostingDateTime":"\/Date(1519844640000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"SUBJECT
+        MATTER:  Early Childhood Advocates, IPA, Latino Policy Forum.","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Appropriations-Elementary
+        \u0026 Secondary Education Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room D-1"},"CommitteeId":1891,"CommitteeHearingId":15586,"HearingTime":"3/06/2018
+        - 1:30 PM","Location":"Stratton Building - Room D-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Agriculture
+        \u0026 Conservation Committee","CommitteeHearing":{"HearingId":15587,"CommitteeId":1929,"HearingLocationId":6,"ScheduledDateTime":"\/Date(1520364600000)\/","PostingDateTime":"\/Date(1519844820000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Agriculture
+        \u0026 Conservation Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room C-1"},"CommitteeId":1929,"CommitteeHearingId":15587,"HearingTime":"3/06/2018
+        - 1:30 PM","Location":"Stratton Building - Room C-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Insurance:
+        Health \u0026 Life Committee","CommitteeHearing":{"HearingId":15588,"CommitteeId":1905,"HearingLocationId":4,"ScheduledDateTime":"\/Date(1520364600000)\/","PostingDateTime":"\/Date(1519844880000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Insurance:
+        Health \u0026 Life Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 118"},"CommitteeId":1905,"CommitteeHearingId":15588,"HearingTime":"3/06/2018
+        - 1:30 PM","Location":"Capitol Building - Room 118 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Public
+        Utilities Committee","CommitteeHearing":{"HearingId":15589,"CommitteeId":1909,"HearingLocationId":2,"ScheduledDateTime":"\/Date(1520364600000)\/","PostingDateTime":"\/Date(1519844880000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Public
+        Utilities Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 114"},"CommitteeId":1909,"CommitteeHearingId":15589,"HearingTime":"3/06/2018
+        - 1:30 PM","Location":"Capitol Building - Room 114 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Transportation:
+        Regulation, Roads \u0026 Bridges Committee","CommitteeHearing":{"HearingId":15590,"CommitteeId":1949,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520364600000)\/","PostingDateTime":"\/Date(1519844940000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Transportation:
+        Regulation, Roads \u0026 Bridges Committee","Address":"","City":"Springfield,
+        IL","Building":"Capitol Building","Room":"Room 115"},"CommitteeId":1949,"CommitteeHearingId":15590,"HearingTime":"3/06/2018
+        - 1:30 PM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Tourism,
+        Hospitality \u0026 Craft Industries Committee","CommitteeHearing":{"HearingId":15591,"CommitteeId":2168,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520364600000)\/","PostingDateTime":"\/Date(1519844940000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Tourism,
+        Hospitality \u0026 Craft Industries Committee","Address":"","City":"Springfield,
+        IL","Building":"Capitol Building","Room":"Room 122B"},"CommitteeId":2168,"CommitteeHearingId":15591,"HearingTime":"3/06/2018
+        - 1:30 PM","Location":"Capitol Building - Room 122B - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Consumer
+        Protection Committee","CommitteeHearing":{"HearingId":15592,"CommitteeId":1896,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520371800000)\/","PostingDateTime":"\/Date(1519845000000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Consumer
+        Protection Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 115"},"CommitteeId":1896,"CommitteeHearingId":15592,"HearingTime":"3/06/2018
+        - 3:30 PM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Environment","CommitteeHearing":{"HearingId":15593,"CommitteeId":1899,"HearingLocationId":6,"ScheduledDateTime":"\/Date(1520371800000)\/","PostingDateTime":"\/Date(1519845060000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Environment","Address":"","City":"Springfield,
+        IL","Building":"Stratton Building","Room":"Room C-1"},"CommitteeId":1899,"CommitteeHearingId":15593,"HearingTime":"3/06/2018
+        - 3:30 PM","Location":"Stratton Building - Room C-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Financial
+        Institutions Committee","CommitteeHearing":{"HearingId":15594,"CommitteeId":1901,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520371800000)\/","PostingDateTime":"\/Date(1519845060000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Financial
+        Institutions Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 122B"},"CommitteeId":1901,"CommitteeHearingId":15594,"HearingTime":"3/06/2018
+        - 3:30 PM","Location":"Capitol Building - Room 122B - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Cities
+        \u0026 Villages Committee","CommitteeHearing":{"HearingId":15595,"CommitteeId":1946,"HearingLocationId":4,"ScheduledDateTime":"\/Date(1520371800000)\/","PostingDateTime":"\/Date(1519845120000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Cities
+        \u0026 Villages Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 118"},"CommitteeId":1946,"CommitteeHearingId":15595,"HearingTime":"3/06/2018
+        - 3:30 PM","Location":"Capitol Building - Room 118 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Judiciary
+        - Criminal Committee","CommitteeHearing":{"HearingId":15596,"CommitteeId":1974,"HearingLocationId":2,"ScheduledDateTime":"\/Date(1520371800000)\/","PostingDateTime":"\/Date(1519845120000)\/","PrintDateTime":"\/Date(1519845348000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Judiciary
+        - Criminal Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 114"},"CommitteeId":1974,"CommitteeHearingId":15596,"HearingTime":"3/06/2018
+        - 3:30 PM","Location":"Capitol Building - Room 114 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Elementary
+        \u0026 Secondary Education: Licensing, Administration \u0026 Oversight","CommitteeHearing":{"HearingId":15597,"CommitteeId":1973,"HearingLocationId":2,"ScheduledDateTime":"\/Date(1520431200000)\/","PostingDateTime":"\/Date(1519929000000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"SUBJECT
+        MATTER:  Illinois\u0027 Teacher Shortage.","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Elementary
+        \u0026 Secondary Education: Licensing, Administration \u0026 Oversight","Address":"","City":"Springfield,
+        IL","Building":"Capitol Building","Room":"Room 114"},"CommitteeId":1973,"CommitteeHearingId":15597,"HearingTime":"3/07/2018
+        - 8:00 AM","Location":"Capitol Building - Room 114 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Human
+        Services Committee","CommitteeHearing":{"HearingId":15598,"CommitteeId":1904,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520431200000)\/","PostingDateTime":"\/Date(1519929240000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Human
+        Services Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 122B"},"CommitteeId":1904,"CommitteeHearingId":15598,"HearingTime":"3/07/2018
+        - 8:00 AM","Location":"Capitol Building - Room 122B - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Judiciary
+        - Civil Committee","CommitteeHearing":{"HearingId":15599,"CommitteeId":1906,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520431200000)\/","PostingDateTime":"\/Date(1519929300000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Judiciary
+        - Civil Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 115"},"CommitteeId":1906,"CommitteeHearingId":15599,"HearingTime":"3/07/2018
+        - 8:00 AM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Elementary
+        \u0026 Secondary Education: School Curriculum \u0026 Policies  Committee","CommitteeHearing":{"HearingId":15600,"CommitteeId":1898,"HearingLocationId":7,"ScheduledDateTime":"\/Date(1520431200000)\/","PostingDateTime":"\/Date(1519929360000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"SUBJECT
+        MATTER:  School Safety \u0026 Mental Health.","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Elementary
+        \u0026 Secondary Education: School Curriculum \u0026 Policies  Committee","Address":"","City":"Springfield,
+        IL","Building":"Stratton Building","Room":"Room D-1"},"CommitteeId":1898,"CommitteeHearingId":15600,"HearingTime":"3/07/2018
+        - 8:00 AM","Location":"Stratton Building - Room D-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Commercial
+        Law Subcommittee","CommitteeHearing":{"HearingId":15615,"CommitteeId":2226,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520431260000)\/","PostingDateTime":"\/Date(1519943580000)\/","PrintDateTime":"\/Date(1519944064000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Commercial
+        Law Subcommittee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 115"},"CommitteeId":2226,"CommitteeHearingId":15615,"HearingTime":"3/07/2018
+        - 8:01 AM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Trusts
+        \u0026 Estates Law Subcommittee","CommitteeHearing":{"HearingId":15616,"CommitteeId":2228,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520431320000)\/","PostingDateTime":"\/Date(1519943640000)\/","PrintDateTime":"\/Date(1519944064000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Trusts
+        \u0026 Estates Law Subcommittee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 115"},"CommitteeId":2228,"CommitteeHearingId":15616,"HearingTime":"3/07/2018
+        - 8:02 AM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Domestic
+        Relations Law Subcommittee","CommitteeHearing":{"HearingId":15617,"CommitteeId":2224,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520431380000)\/","PostingDateTime":"\/Date(1519943640000)\/","PrintDateTime":"\/Date(1519944064000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Domestic
+        Relations Law Subcommittee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 115"},"CommitteeId":2224,"CommitteeHearingId":15617,"HearingTime":"3/07/2018
+        - 8:03 AM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Civil
+        Procedure Subcommittee","CommitteeHearing":{"HearingId":15618,"CommitteeId":2229,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520431440000)\/","PostingDateTime":"\/Date(1519943700000)\/","PrintDateTime":"\/Date(1519944064000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Civil
+        Procedure Subcommittee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 115"},"CommitteeId":2229,"CommitteeHearingId":15618,"HearingTime":"3/07/2018
+        - 8:04 AM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Real
+        \u0026 Personal Property Law Subcommittee","CommitteeHearing":{"HearingId":15619,"CommitteeId":2227,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520431500000)\/","PostingDateTime":"\/Date(1519943820000)\/","PrintDateTime":"\/Date(1519944064000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Real
+        \u0026 Personal Property Law Subcommittee","Address":"","City":"Springfield,
+        IL","Building":"Capitol Building","Room":"Room 115"},"CommitteeId":2227,"CommitteeHearingId":15619,"HearingTime":"3/07/2018
+        - 8:05 AM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Tort
+        Liability Law Subcommittee","CommitteeHearing":{"HearingId":15620,"CommitteeId":2225,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520431560000)\/","PostingDateTime":"\/Date(1519943880000)\/","PrintDateTime":"\/Date(1519944064000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Tort
+        Liability Law Subcommittee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 115"},"CommitteeId":2225,"CommitteeHearingId":15620,"HearingTime":"3/07/2018
+        - 8:06 AM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Executive
+        Committee","CommitteeHearing":{"HearingId":15601,"CommitteeId":1900,"HearingLocationId":4,"ScheduledDateTime":"\/Date(1520438400000)\/","PostingDateTime":"\/Date(1519942020000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Executive
+        Committee","Address":"","City":"Springfield, IL","Building":"Capitol Building","Room":"Room
+        118"},"CommitteeId":1900,"CommitteeHearingId":15601,"HearingTime":"3/07/2018
+        - 10:00 AM","Location":"Capitol Building - Room 118 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Transportation:
+        Vehicles \u0026 Safety Committee","CommitteeHearing":{"HearingId":15602,"CommitteeId":1950,"HearingLocationId":6,"ScheduledDateTime":"\/Date(1520438400000)\/","PostingDateTime":"\/Date(1519942260000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Transportation:
+        Vehicles \u0026 Safety Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room C-1"},"CommitteeId":1950,"CommitteeHearingId":15602,"HearingTime":"3/07/2018
+        - 10:00 AM","Location":"Stratton Building - Room C-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Health
+        Care Licenses Committee","CommitteeHearing":{"HearingId":15603,"CommitteeId":1948,"HearingLocationId":137,"ScheduledDateTime":"\/Date(1520438400000)\/","PostingDateTime":"\/Date(1519942320000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Health
+        Care Licenses Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room 413"},"CommitteeId":1948,"CommitteeHearingId":15603,"HearingTime":"3/07/2018
+        - 10:00 AM","Location":"Stratton Building - Room 413 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Labor
+        \u0026 Commerce Committee","CommitteeHearing":{"HearingId":15604,"CommitteeId":1907,"HearingLocationId":2,"ScheduledDateTime":"\/Date(1520454600000)\/","PostingDateTime":"\/Date(1519942320000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Labor
+        \u0026 Commerce Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 114"},"CommitteeId":1907,"CommitteeHearingId":15604,"HearingTime":"3/07/2018
+        - 2:30 PM","Location":"Capitol Building - Room 114 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"State
+        Government Administration Committee","CommitteeHearing":{"HearingId":15605,"CommitteeId":1911,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520454600000)\/","PostingDateTime":"\/Date(1519942380000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"State
+        Government Administration Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 122B"},"CommitteeId":1911,"CommitteeHearingId":15605,"HearingTime":"3/07/2018
+        - 2:30 PM","Location":"Capitol Building - Room 122B - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Insurance:
+        Property \u0026 Casualty Committee","CommitteeHearing":{"HearingId":15606,"CommitteeId":2166,"HearingLocationId":7,"ScheduledDateTime":"\/Date(1520454600000)\/","PostingDateTime":"\/Date(1519942380000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Insurance:
+        Property \u0026 Casualty Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room D-1"},"CommitteeId":2166,"CommitteeHearingId":15606,"HearingTime":"3/07/2018
+        - 2:30 PM","Location":"Stratton Building - Room D-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Economic
+        Justice \u0026 Equity Committee","CommitteeHearing":{"HearingId":15607,"CommitteeId":2161,"HearingLocationId":6,"ScheduledDateTime":"\/Date(1520454600000)\/","PostingDateTime":"\/Date(1519942440000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Economic
+        Justice \u0026 Equity Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room C-1"},"CommitteeId":2161,"CommitteeHearingId":15607,"HearingTime":"3/07/2018
+        - 2:30 PM","Location":"Stratton Building - Room C-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Appropriations-General
+        Services Committee","CommitteeHearing":{"HearingId":15608,"CommitteeId":1892,"HearingLocationId":2,"ScheduledDateTime":"\/Date(1520460000000)\/","PostingDateTime":"\/Date(1519942440000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"SUBJECT
+        MATTER:  Executive Inspector General, Executive Ethics Commission, State Board
+        of Elections, GOMB, Revenue, Lottery, Illinois Commerce Commission.","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Appropriations-General
+        Services Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 114"},"CommitteeId":1892,"CommitteeHearingId":15608,"HearingTime":"3/07/2018
+        - 4:00 PM","Location":"Capitol Building - Room 114 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Appropriations-Public
+        Safety Committee","CommitteeHearing":{"HearingId":15609,"CommitteeId":1895,"HearingLocationId":4,"ScheduledDateTime":"\/Date(1520460000000)\/","PostingDateTime":"\/Date(1519942680000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"SUBJECT
+        MATTER:  JIB, Appellate Defender, Appellate Prosecutor, PRB, State Police,
+        ISP Merit Board, SWIDA.","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Appropriations-Public
+        Safety Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 118"},"CommitteeId":1895,"CommitteeHearingId":15609,"HearingTime":"3/07/2018
+        - 4:00 PM","Location":"Capitol Building - Room 118 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Energy
+        Committee","CommitteeHearing":{"HearingId":15610,"CommitteeId":1955,"HearingLocationId":6,"ScheduledDateTime":"\/Date(1520460000000)\/","PostingDateTime":"\/Date(1519942740000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"SUBJECT
+        MATTER:  German Energy Policy.","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Energy
+        Committee","Address":"","City":"Springfield, IL","Building":"Stratton Building","Room":"Room
+        C-1"},"CommitteeId":1955,"CommitteeHearingId":15610,"HearingTime":"3/07/2018
+        - 4:00 PM","Location":"Stratton Building - Room C-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Higher
+        Education Committee","CommitteeHearing":{"HearingId":15611,"CommitteeId":1903,"HearingLocationId":7,"ScheduledDateTime":"\/Date(1520460000000)\/","PostingDateTime":"\/Date(1519942800000)\/","PrintDateTime":"\/Date(1519943366000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Higher
+        Education Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room D-1"},"CommitteeId":1903,"CommitteeHearingId":15611,"HearingTime":"3/07/2018
+        - 4:00 PM","Location":"Stratton Building - Room D-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Appropriations-Human
+        Services Committee","CommitteeHearing":{"HearingId":15613,"CommitteeId":1893,"HearingLocationId":4,"ScheduledDateTime":"\/Date(1520519400000)\/","PostingDateTime":"\/Date(1519942980000)\/","PrintDateTime":"\/Date(1520019364000)\/","SubjectMatter":"SUBJECT
+        MATTER: Aging, DCFS.","TextLine":"UPDATED","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Appropriations-Human
+        Services Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 118"},"CommitteeId":1893,"CommitteeHearingId":15613,"HearingTime":"3/08/2018
+        - 8:30 AM","Location":"Capitol Building - Room 118 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Appropriations-Higher
+        Education Committee","CommitteeHearing":{"HearingId":15614,"CommitteeId":1894,"HearingLocationId":2,"ScheduledDateTime":"\/Date(1520519400000)\/","PostingDateTime":"\/Date(1519943100000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"SUBJECT
+        MATTER:  SUBJECT MATTER:  SIU, EIU.","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Appropriations-Higher
+        Education Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 114"},"CommitteeId":1894,"CommitteeHearingId":15614,"HearingTime":"3/08/2018
+        - 8:30 AM","Location":"Capitol Building - Room 114 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Counties
+        \u0026 Townships Committee","CommitteeHearing":{"HearingId":15622,"CommitteeId":1947,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520521200000)\/","PostingDateTime":"\/Date(1520006220000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Counties
+        \u0026 Townships Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 115"},"CommitteeId":1947,"CommitteeHearingId":15622,"HearingTime":"3/08/2018
+        - 9:00 AM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Cybersecurity,
+        Data Analytics, \u0026 IT Committee","CommitteeHearing":{"HearingId":15623,"CommitteeId":2160,"HearingLocationId":7,"ScheduledDateTime":"\/Date(1520521200000)\/","PostingDateTime":"\/Date(1520006280000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Cybersecurity,
+        Data Analytics, \u0026 IT Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room D-1"},"CommitteeId":2160,"CommitteeHearingId":15623,"HearingTime":"3/08/2018
+        - 9:00 AM","Location":"Stratton Building - Room D-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Veterans\u0027
+        Affairs Committee","CommitteeHearing":{"HearingId":15624,"CommitteeId":1913,"HearingLocationId":6,"ScheduledDateTime":"\/Date(1520521200000)\/","PostingDateTime":"\/Date(1520006280000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Veterans\u0027
+        Affairs Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room C-1"},"CommitteeId":1913,"CommitteeHearingId":15624,"HearingTime":"3/08/2018
+        - 9:00 AM","Location":"Stratton Building - Room C-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Revenue
+        \u0026 Finance Committee","CommitteeHearing":{"HearingId":15621,"CommitteeId":1951,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520524800000)\/","PostingDateTime":"\/Date(1520006100000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"SUBJECT
+        MATTER:  Property Tax Assessment Practices.","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Revenue
+        \u0026 Finance Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 122B"},"CommitteeId":1951,"CommitteeHearingId":15621,"HearingTime":"3/08/2018
+        - 10:00 AM","Location":"Capitol Building - Room 122B - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Personnel
+        \u0026 Pensions Committee","CommitteeHearing":{"HearingId":15625,"CommitteeId":1908,"HearingLocationId":6,"ScheduledDateTime":"\/Date(1520524800000)\/","PostingDateTime":"\/Date(1520006700000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Personnel
+        \u0026 Pensions Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room C-1"},"CommitteeId":1908,"CommitteeHearingId":15625,"HearingTime":"3/08/2018
+        - 10:00 AM","Location":"Stratton Building - Room C-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Fire
+        \u0026 Emergency Services Committee","CommitteeHearing":{"HearingId":15626,"CommitteeId":2163,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520524800000)\/","PostingDateTime":"\/Date(1520006700000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Fire
+        \u0026 Emergency Services Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 115"},"CommitteeId":2163,"CommitteeHearingId":15626,"HearingTime":"3/08/2018
+        - 10:00 AM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Mental
+        Health Committee","CommitteeHearing":{"HearingId":15627,"CommitteeId":2170,"HearingLocationId":7,"ScheduledDateTime":"\/Date(1520524800000)\/","PostingDateTime":"\/Date(1520007000000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Mental
+        Health Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room D-1"},"CommitteeId":2170,"CommitteeHearingId":15627,"HearingTime":"3/08/2018
+        - 10:00 AM","Location":"Stratton Building - Room D-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Health
+        \u0026 Healthcare Disparities Committee","CommitteeHearing":{"HearingId":15628,"CommitteeId":1937,"HearingLocationId":137,"ScheduledDateTime":"\/Date(1520524800000)\/","PostingDateTime":"\/Date(1520007120000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Health
+        \u0026 Healthcare Disparities Committee","Address":"","City":"Springfield,
+        IL","Building":"Stratton Building","Room":"Room 413"},"CommitteeId":1937,"CommitteeHearingId":15628,"HearingTime":"3/08/2018
+        - 10:00 AM","Location":"Stratton Building - Room 413 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Income
+        Tax Subcommittee","CommitteeHearing":{"HearingId":15635,"CommitteeId":2201,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520524860000)\/","PostingDateTime":"\/Date(1520013300000)\/","PrintDateTime":"\/Date(1520013655000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Income
+        Tax Subcommittee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 122B"},"CommitteeId":2201,"CommitteeHearingId":15635,"HearingTime":"3/08/2018
+        - 10:01 AM","Location":"Capitol Building - Room 122B - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Property
+        Tax Subcommittee","CommitteeHearing":{"HearingId":15636,"CommitteeId":2202,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520524920000)\/","PostingDateTime":"\/Date(1520013420000)\/","PrintDateTime":"\/Date(1520013655000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Property
+        Tax Subcommittee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 122B"},"CommitteeId":2202,"CommitteeHearingId":15636,"HearingTime":"3/08/2018
+        - 10:02 AM","Location":"Capitol Building - Room 122B - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Sales
+        and Other Taxes Subcommittee","CommitteeHearing":{"HearingId":15637,"CommitteeId":2203,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520524980000)\/","PostingDateTime":"\/Date(1520013480000)\/","PrintDateTime":"\/Date(1520013655000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Sales
+        and Other Taxes Subcommittee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 122B"},"CommitteeId":2203,"CommitteeHearingId":15637,"HearingTime":"3/08/2018
+        - 10:03 AM","Location":"Capitol Building - Room 122B - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Growth,
+        Reform \u0026 Fairness Subcommittee","CommitteeHearing":{"HearingId":15638,"CommitteeId":2210,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520525040000)\/","PostingDateTime":"\/Date(1520013480000)\/","PrintDateTime":"\/Date(1520013655000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Growth,
+        Reform \u0026 Fairness Subcommittee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 122B"},"CommitteeId":2210,"CommitteeHearingId":15638,"HearingTime":"3/08/2018
+        - 10:04 AM","Location":"Capitol Building - Room 122B - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Scholarship
+        Tax Credit Oversight Subcommittee","CommitteeHearing":{"HearingId":15639,"CommitteeId":2279,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520525100000)\/","PostingDateTime":"\/Date(1520013540000)\/","PrintDateTime":"\/Date(1520013655000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Scholarship
+        Tax Credit Oversight Subcommittee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 122B"},"CommitteeId":2279,"CommitteeHearingId":15639,"HearingTime":"3/08/2018
+        - 10:05 AM","Location":"Capitol Building - Room 122B - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Business
+        Growth \u0026 Incentives Committee","CommitteeHearing":{"HearingId":15629,"CommitteeId":1985,"HearingLocationId":8,"ScheduledDateTime":"\/Date(1520528400000)\/","PostingDateTime":"\/Date(1520007180000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Business
+        Growth \u0026 Incentives Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 115"},"CommitteeId":1985,"CommitteeHearingId":15629,"HearingTime":"3/08/2018
+        - 11:00 AM","Location":"Capitol Building - Room 115 - Springfield, IL","IsInCurrentWeek":false}],"total":54}'
+    http_version: 
+  recorded_at: Sat, 03 Mar 2018 06:00:00 GMT
+- request:
+    method: post
+    uri: http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange?begindate=03/03/18%2000:00:00&chamber=H&committeeid=0&enddate=04/02/18%2000:00:00
+    body:
+      encoding: UTF-8
+      string: size=50&page=2
+    headers:
+      X-Requested-With:
+      - XMLHttpRequest
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Length:
+      - '2891'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Aspnetmvc-Version:
+      - '5.2'
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sun, 04 Mar 2018 05:18:43 GMT
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"CommitteeDescription":"Aging Committee","CommitteeHearing":{"HearingId":15630,"CommitteeId":2169,"HearingLocationId":5,"ScheduledDateTime":"\/Date(1520528400000)\/","PostingDateTime":"\/Date(1520007180000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Aging
+        Committee","Address":"","City":"Springfield, IL","Building":"Capitol Building","Room":"Room
+        122B"},"CommitteeId":2169,"CommitteeHearingId":15630,"HearingTime":"3/08/2018
+        - 11:00 AM","Location":"Capitol Building - Room 122B - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Restorative
+        Justice Committee","CommitteeHearing":{"HearingId":15631,"CommitteeId":1960,"HearingLocationId":7,"ScheduledDateTime":"\/Date(1520528400000)\/","PostingDateTime":"\/Date(1520007240000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Restorative
+        Justice Committee","Address":"","City":"Springfield, IL","Building":"Stratton
+        Building","Room":"Room D-1"},"CommitteeId":1960,"CommitteeHearingId":15631,"HearingTime":"3/08/2018
+        - 11:00 AM","Location":"Stratton Building - Room D-1 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Special
+        Needs Services","CommitteeHearing":{"HearingId":15632,"CommitteeId":1977,"HearingLocationId":2,"ScheduledDateTime":"\/Date(1520528400000)\/","PostingDateTime":"\/Date(1520007840000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Special
+        Needs Services","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 114"},"CommitteeId":1977,"CommitteeHearingId":15632,"HearingTime":"3/08/2018
+        - 11:00 AM","Location":"Capitol Building - Room 114 - Springfield, IL","IsInCurrentWeek":false},{"CommitteeDescription":"Tollway
+        Oversight Committee","CommitteeHearing":{"HearingId":15633,"CommitteeId":1938,"HearingLocationId":4,"ScheduledDateTime":"\/Date(1520528400000)\/","PostingDateTime":"\/Date(1520007900000)\/","PrintDateTime":"\/Date(1520008517000)\/","SubjectMatter":"","TextLine":"","IsBold":0,"IsPublic":-1,"IsPublicToCalendar":-1,"IsCancelled":0,"IsChanged":false,"vchrLastUpdtBy":null,"AllowSlips":false,"LongDescription":"Tollway
+        Oversight Committee","Address":"","City":"Springfield, IL","Building":"Capitol
+        Building","Room":"Room 118"},"CommitteeId":1938,"CommitteeHearingId":15633,"HearingTime":"3/08/2018
+        - 11:00 AM","Location":"Capitol Building - Room 118 - Springfield, IL","IsInCurrentWeek":false}],"total":54}'
+    http_version: 
+  recorded_at: Sat, 03 Mar 2018 06:00:00 GMT
+- request:
+    method: post
+    uri: http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange?begindate=03/03/18%2000:00:00&chamber=H&committeeid=0&enddate=04/02/18%2000:00:00
+    body:
+      encoding: UTF-8
+      string: size=50&page=3
+    headers:
+      X-Requested-With:
+      - XMLHttpRequest
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Length:
+      - '22'
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Aspnetmvc-Version:
+      - '5.2'
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sun, 04 Mar 2018 05:18:46 GMT
+    body:
+      encoding: UTF-8
+      string: '{"data":[],"total":54}'
+    http_version: 
+  recorded_at: Sat, 03 Mar 2018 06:00:00 GMT
+recorded_with: VCR 4.0.0

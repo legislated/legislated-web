@@ -17,7 +17,6 @@ Billy.configure do |c|
     uri.to_s
   end
 
-  c.cache = false
   c.persist_cache = true
   c.cache_whitelist = true
   c.cache_path = 'spec/fixtures/billy/'

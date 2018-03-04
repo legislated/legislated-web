@@ -1,0 +1,36 @@
+---
+:scope: 
+:url: http://my.ilga.gov/Content/themes/Lis/Lis.Profile.css
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/css
+  Last-Modified: Wed, 29 Aug 2012 17:07:19 GMT
+  Accept-Ranges: bytes
+  ETag: '"803d3ebf886cd1:0"'
+  Server: Microsoft-IIS/8.5
+  X-Powered-By: ASP.NET
+  Date: Sun, 04 Mar 2018 03:01:59 GMT
+  Connection: close
+  Content-Length: '813'
+:content: !binary |-
+  77u/I2Jsb2NrLXByb2ZpbGUNCnsNCiAgICBjb2xvcjogI0VCRUJFQjsNCn0N
+  Cg0KLmJsb2NrLXByb2ZpbGUtYnV0dG9ucw0Kew0KICAgIHBhZGRpbmctdG9w
+  OjVweDsNCiAgICBwYWRkaW5nLWJvdHRvbTo1cHg7DQogICAgcGFkZGluZy1s
+  ZWZ0OjI1cHg7DQp9DQoNCi5ibG9jay1wcm9maWxlLWJ1dHRvbnMgYnV0dG9u
+  DQp7DQogICAgd2lkdGg6MTAwcHg7DQp9DQoNCi5wcm9maWxlLXdlbGNvbWUN
+  CnsNCiAgICBwYWRkaW5nLWxlZnQ6MjVweDsNCiAgICBmb250LXNpemU6MTZw
+  eDsNCn0NCg0KLnByb2ZpbGUtaWNvbg0Kew0KICAgIHBhZGRpbmctdG9wOjEw
+  cHg7DQogICAgcGFkZGluZy1sZWZ0OjY1cHg7DQp9DQoNCiNwcm9maWxlLXRh
+  YmxlIA0Kew0KICAgIG1hcmdpbi10b3A6MTBweDsNCn0NCg0KI3Byb2ZpbGUt
+  dGFibGUgdHINCnsNCiAgICBiYWNrZ3JvdW5kLWNvbG9yOnRyYW5zcGFyZW50
+  Ow0KfQ0KDQojcHJvZmlsZS10YWJsZSB0Ym9keSB0ciB0aA0Kew0KICAgIGZv
+  bnQtc2l6ZToxNHB4Ow0KICAgIHRleHQtYWxpZ246cmlnaHQ7DQogICAgd2lk
+  dGg6MTYwcHg7DQogICAgcGFkZGluZy1yaWdodDo1cHg7DQp9DQoNCiNwcm9m
+  aWxlLXRhYmxlIHRib2R5IHRyIHRoDQp7DQogICAgZm9udC1zaXplOjE0cHg7
+  DQogICAgdGV4dC1hbGlnbjpyaWdodDsNCiAgICB3aWR0aDoxNjBweDsNCiAg
+  ICBwYWRkaW5nLXJpZ2h0OjVweDsNCn0NCg0KI3Byb2ZpbGUtdGFibGUgdGJv
+  ZHkgdHIgdGg6YWZ0ZXINCnsNCiAgIGNvbnRlbnQ6IjoiOw0KfQ0KDQojcHJv
+  ZmlsZS10YWJsZSB0Ym9keSB0ciB0ZA0Kew0KICAgZm9udC1zaXplOjE0cHg7
+  DQp9

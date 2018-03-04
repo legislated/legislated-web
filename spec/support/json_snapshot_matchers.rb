@@ -6,17 +6,15 @@ RSpec::Matchers.define(:match_json_snapshot) do |name|
   end
 
   # helpers
-  JSON_NOISE_PATTERN = /,?"(([^"]+_)?id|created_at|updated_at)":"[^"]+",?/
+  JSON_NOISE_PATTERN = /,?"(([^e][^"]+_)?id|created_at|updated_at)":"[^"]+",?/
 
   def load_snapshot(name, json)
     path = snapshot_path(name)
 
     if File.exist?(path)
       File.read(path)
-    elsif !json.nil?
-      File.open(path, 'w') do |file|
-        file.write(json)
-      end
+    elsif json.present?
+      File.open(path, 'w') { |file| file.write(json) }
       puts "- snapshot #{name}: created"
     else
       puts "✘ snapshot #{name}: missing and actual was nil"

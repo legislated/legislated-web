@@ -1,0 +1,17 @@
+---
+:scope: 
+:url: http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange?chamber=H&committeeid=0&begindate=03%2F03%2F2018+00%3A00%3A00&enddate=03%2F04%2F2018+00%3A00%3A00&nodays=1
+:body: page=1&size=50
+:status: 200
+:method: post
+:headers:
+  Cache-Control: private
+  Content-Length: '21'
+  Content-Type: application/json; charset=utf-8
+  Server: Microsoft-IIS/8.5
+  X-AspNet-Version: 4.0.30319
+  X-AspNetMvc-Version: '5.2'
+  X-Powered-By: ASP.NET
+  Date: Sun, 04 Mar 2018 03:02:00 GMT
+  Connection: close
+:content: '{"data":[],"total":0}'

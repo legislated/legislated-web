@@ -1,0 +1,155 @@
+---
+:scope: 
+:url: http://my.ilga.gov/Hearing/AllHearings?chamber=H
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Cache-Control: private
+  Content-Length: '12661'
+  Content-Type: text/html; charset=utf-8
+  Server: Microsoft-IIS/8.5
+  X-AspNet-Version: 4.0.30319
+  X-AspNetMvc-Version: '5.2'
+  Set-Cookie: ASP.NET_SessionId=e5ftkpwfm5c0ldpfjg0ehovp; path=/; HttpOnly
+  X-Powered-By: ASP.NET
+  Date: Sun, 04 Mar 2018 03:01:57 GMT
+  Connection: close
+:content: "<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=\"utf-8\" content=\"\"/>\r\n
+  \   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\" />\r\n    <meta name=\"classification\"
+  content=\"Government\"/>\r\n    <meta name=\"distribution\" content=\"Global\"/>\r\n
+  \   <meta name=\"rating\" content=\"General\"/>\r\n    <meta name=\"contactState\"
+  content=\"IL\"/>\r\n    <meta name=\"siteTitle\" content=\"Illinois General Assembly\"/>\r\n
+  \   <meta name=\"keywords\" content=\"Illinois General Assembly, legislation, public
+  acts, Springfield, Illinois state government\"/>\r\n    <meta name=\"description\"
+  content=\"Dashboard for the Illinois General Assembly\"/>\r\n    <meta name=\"createDate\"
+  content=\"11/27/2012\"/>\r\n    <meta name=\"dateofLastModification\" content=\"2/20/2013\"/>\r\n
+  \   <meta name=\"timePeriodTextual\" content=\"2012-2013\"/>\r\n    <meta name=\"medium\"
+  content=\"Web Site\"/>\r\n    <meta name=\"PermanentPublicAccess\" content=\"yes\"/>\r\n
+  \   <meta name=\"agencyProgram\" content=\"Illinois General Assembly\"/>\r\n    <meta
+  name=\"linkage\" content=\"\"/>\r\n    <meta name=\"language\" content=\"EN\"/>\r\n
+  \   <meta name=\"govType\" content=\"State\"/>\r\n    <meta name=\"contactName\"
+  content=\"Legislative Information System\"/>\r\n    <meta name=\"contactOrganization\"
+  content=\"LIS Staff Services\"/>\r\n    <meta name=\"contactStreetAddress1\" content=\"705
+  Stratton Office Building\"/>\r\n    <meta name=\"contactStreetAddress2\" content=\"\"/>\r\n
+  \   <meta name=\"contactCity\" content=\"Springfield\"/>\r\n    <meta name=\"contactZipcode\"
+  content=\"62706\"/>\r\n    <meta name=\"contactNetworkAddress\" content=\"webmaster@ilga.gov\"/>\r\n
+  \   <meta name=\"contactPhoneNumber\" content=\"217-782-3944\"/>\r\n    <meta name=\"contactFaxNumber\"
+  content=\"217-524-6059\"/>\r\n    <meta name=\"originatorJurisdiction\" content=\"State
+  Of Illinois\"/>\r\n    <meta name=\"originatorOffice\" content=\"Illinois General
+  Assembly\"/>\r\n    <meta name=\"originatorDepartment\" content=\"Legislative Information
+  System\"/>\r\n    <meta name=\"originatorDivision\" content=\"Web Staff\"/>\r\n
+  \   <meta name=\"originatorSection\" content=\"\"/>\r\n    <meta name=\"Classification\"
+  content=\"Government--State Government--Illinois General Assembly\"/>\r\n    <title>Scheduled
+  House Committee Hearings</title>\r\n    <link href=\"/Content/Site.css\" rel=\"stylesheet\"
+  type=\"text/css\" />\r\n    <script src=\"/Scripts/jquery-1.7.1.min.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/modernizr-1.7.min.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/jquery-ui-1.8.11.min.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/jquery.unobtrusive-ajax.min.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/lis/common/lis.common.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/lis/common/lis.telerik.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/lis/common/content.blocks.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/MyILGA.js\" type=\"text/javascript\"></script>\r\n    <script
+  src=\"/Scripts/requiredif-validation.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/lis/common/lis.ui.NavigationList.js\" type=\"text/javascript\"></script>\r\n
+  \   \r\n    <link type=\"text/css\" href=\"/Content/2012.1.214/telerik.common.min.css\"
+  rel=\"stylesheet\"/>\r\n<link type=\"text/css\" href=\"/Content/2012.1.214/telerik.windows7.min.css\"
+  rel=\"stylesheet\"/>\r\n\r\n    \r\n</head>\r\n<body>\r\n    <div id=\"header-background\">\r\n
+  \   </div>\r\n    <div class=\"clear\">\r\n    </div>\r\n    <div class=\"page\">\r\n
+  \       <div id=\"header-surround\">\r\n            <div id=\"header\">\r\n                <img
+  class=\"logo\" alt=\"LIS\" src=\"/Content/themes/lis/images/stateseal.png\"/>\r\n
+  \               <div id=\"user-info\">\r\n                         <img src=\"/Content/themes/Lis/icons/lock.png\"/>\r\n
+  \   [ <a href=\"/Account/LogOn\">Log On</a> ]\r\n\r\n                </div>\r\n
+  \               <div class=\"header-title\">\r\n                    Illinois 100th
+  General Assembly</div>\r\n                <div class=\"header-title\">Scheduled
+  House Committee Hearings</div>\r\n                <div class=\"clear\">\r\n                    <br
+  />\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div
+  id=\"sidebar\">\r\n            \r\n            <div>\r\n                <form action=\"/Home/AjaxSetSelectedGeneralAssembly\"
+  data-ajax=\"true\" data-ajax-method=\"POST\" id=\"form0\" method=\"post\">    <div>\r\n
+  \       <div style=\"color: #FFFFFF; line-height: 24px; border-bottom: 1px solid
+  #54758C;\">\r\n            <div class=\"_100\" style=\"text-align: center; font-size:
+  16px; color: #FFFFFF;\">\r\n                General Assembly:\r\n            </div>\r\n
+  \           <div class=\"_100\" style=\"text-align: right;\">\r\n                <select
+  id=\"GANumber\" name=\"GANumber\" style=\"font-size:12px; padding-left:30px;\"><option
+  selected=\"selected\" value=\"100\">100th G.A. (2017-2019)</option>\r\n<option value=\"99\">99th
+  G.A. (2015-2017)</option>\r\n<option value=\"98\">98th G.A. (2013-2015)</option>\r\n<option
+  value=\"97\">97th G.A. (2011-2013)</option>\r\n<option value=\"96\">96th G.A. (2009-2011)</option>\r\n<option
+  value=\"95\">95th G.A. (2007-2009)</option>\r\n<option value=\"94\">94th G.A. (2005-2007)</option>\r\n<option
+  value=\"93\">93rd G.A. (2003-2005)</option>\r\n</select>\r\n            </div>\r\n
+  \           <div class=\"_100\" style=\"text-align: right; margin: 5px 0px 5px 0px;\">\r\n
+  \               <button type=\"submit\" class=\"t-button t-button-icon\" style=\"width:
+  60px;\">\r\n                    <span class=\"t-icon t-refresh\"></span>Go\r\n                </button>\r\n
+  \           </div>\r\n            <div class=\"clear\">\r\n            </div>\r\n
+  \       </div>\r\n    </div>\r\n</form>\r\n                <nav id=\"nav\"><ul class=\"menu
+  shadow-bottom\" id=\"side-nav\"><li><a href=\"/\"><img src=\"/Content/themes/Lis/icons/home.png\"
+  />Home</a></li><li><a class=\"header\" href=\"javascript:void(0);\"><img src=\"/Content/themes/Lis/icons/statehouse-24.png\"
+  />House<span class=\"arrow\" /></a><ul class=\"submenu\"><li><a href=\"/Chamber/AllMembers?chamber=H\"><img
+  src=\"/Content/themes/Lis/icons/member-24.png\" />Members</a></li><li><a href=\"/Committee/CurrentCommitteeListing?chamber=H\"><img
+  src=\"/Content/themes/Lis/icons/Committee-24.png\" />Committees</a></li><li><a href=\"/Hearing/AllHearings?chamber=H\"><img
+  src=\"/Content/themes/Lis/icons/hearing-24.png\" />Committee Hearings</a></li></ul></li><li><a
+  class=\"header\" href=\"javascript:void(0);\"><img src=\"/Content/themes/Lis/icons/statehouse-24.png\"
+  />Senate<span class=\"arrow\" /></a><ul class=\"submenu\"><li><a href=\"/Chamber/AllMembers?chamber=S\"><img
+  src=\"/Content/themes/Lis/icons/member-24.png\" />Members</a></li><li><a href=\"/Committee/CurrentCommitteeListing?chamber=S\"><img
+  src=\"/Content/themes/Lis/icons/Committee-24.png\" />Committees</a></li><li><a href=\"/Hearing/AllHearings?chamber=S\"><img
+  src=\"/Content/themes/Lis/icons/hearing-24.png\" />Committee Hearings</a></li></ul></li><li><a
+  href=\"http://www.ilga.gov/default.asp\"><img src=\"/favicon.ico\" />ILGA.GOV</a></li><li><a
+  class=\"header\" href=\"javascript:void(0);\"><img src=\"/Content/themes/Lis/icons/Help-24.png\"
+  />Help<span class=\"arrow\" /></a><ul class=\"submenu\"><li><a href=\"/Documents/ILGA
+  Dashboard User Guide.pdf\"><img src=\"/Content/themes/Lis/icons/notebook.png\" />User
+  Manual</a></li><li><a href=\"/Home/FAQ\"><img src=\"/Content/themes/Lis/icons/FAQ-24.png\"
+  />FAQ</a></li><li><a href=\"/Home/About\"><img src=\"/Content/themes/Lis/icons/About-24.png\"
+  />About</a></li></ul></li><li><a href=\"/Account/Register\"><img src=\"/Content/themes/Lis/icons/register-24.png\"
+  />Register</a></li></ul></nav>    <div class=\"clear\"></div>\r\n\r\n\r\n\r\n\r\n\r\n<script
+  type=\"text/javascript\">\r\n    $(document).ready(function () {\r\n        $(\"#nav\").navigation();\r\n
+  \   });\r\n</script>\r\n\r\n\r\n\r\n\r\n\r\n            </div>\r\n            <div
+  id=\"sidebar-imagelinks\">\r\n                <a href=\"http://www.amberillinois.com/\">\r\n
+  \                   <img src=\"/Content/images/TargetAMBERalert.gif\" alt=\"amberillinois.com\"
+  /></a>\r\n                <a href=\"http://www.missingkids.com\">\r\n                    <img
+  src=\"/Content/images/missingexploited.jpg\" alt=\"missingexploited.com\" /></a>\r\n
+  \           </div>\r\n        </div>\r\n        <div id=\"main\">\r\n            <div
+  id=\"main-content\">\r\n                <div class=\"_100\">\r\n                    <noscript>\r\n<div
+  class=\"alert error\" name=\"Alert1\" />                            <strong>JavaScript
+  must be enabled in order for MyILGA to function correctly. However,\r\n                                it
+  seems JavaScript is disabled by your browser. To use MyILGA, enable JavaScript\r\n
+  \                               by modifying your browser options, then try again.
+  </strong>     \r\n</div>\r\n                    </noscript>\r\n                </div>\r\n
+  \               \r\n                \r\n<div class=\"_100\">\r\n<div class=\"content-width\"
+  name=\"ContentBlock1\"><div class=\"block-border\"><div class=\"block-header\"><img
+  alt=\"/Content/themes/lis/icons/hearing.png\" class=\"block-icon\" src=\"/Content/themes/lis/icons/hearing.png\"></img><div
+  class=\"block-icon-title\"><h1>Scheduled House Committee Hearings</h1></div><div
+  class=\"block-legend\">        <span>View Hearing Details<img src=\"/Content/themes/lis/icons/legislation-icon.png\"
+  alt=\"icon\" /></span>\r\n</div></div><div class=\"block-content\"><div class=\"t-widget
+  t-tabstrip t-header\" id=\"CommitteeHearingTabstrip\"><ul class=\"t-reset t-tabstrip-items\"><li
+  class=\"t-item t-state-default t-state-active\"><a class=\"t-link\" href=\"/Hearing/_PostedHearings?committeeid=0&amp;chamber=H&amp;nodays=1\">Today</a></li><li
+  class=\"t-item t-state-default\"><a class=\"t-link\" href=\"/Hearing/_PostedHearings?committeeid=0&amp;chamber=H&amp;nodays=7\">Week</a></li><li
+  class=\"t-item t-state-default\"><a class=\"t-link\" href=\"/Hearing/_PostedHearings?committeeid=0&amp;chamber=H&amp;nodays=30\">Month</a></li><li
+  class=\"t-item t-state-default\"><a class=\"t-link\" href=\"/Hearing/_PreviousHearings?committeeid=0&amp;chamber=H\">Previous</a></li></ul><div
+  class=\"t-content t-state-active\" id=\"CommitteeHearingTabstrip-1\" style=\"display:block\"></div><div
+  class=\"t-content\" id=\"CommitteeHearingTabstrip-2\"></div><div class=\"t-content\"
+  id=\"CommitteeHearingTabstrip-3\"></div><div class=\"t-content\" id=\"CommitteeHearingTabstrip-4\"></div></div></div></div></div>\r\n</div>\r\n\r\n\r\n
+  \               <div class=\"clear\">\r\n                </div>\r\n            </div>\r\n
+  \       </div>\r\n        <div id=\"footer-surround\">\r\n            <div id=\"footer\">\r\n
+  \               <div id=\"footer-social\">\r\n                     \r\n                    <div
+  id=\"footer-icons\">\r\n                         \r\n                    </div>\r\n
+  \               </div>\r\n                \r\n                <div id=\"footer-maintain\">\r\n
+  \                   <div>\r\n                        <h4>\r\n                            This
+  site is maintained for the Illinois General Assembly by the Legislative Information\r\n
+  \                           System, 705 Stratton Building, Springfield, Illinois
+  62706.</h4>\r\n                    </div>\r\n                    <div class=\"contactinfo\">\r\n
+  \                       <h4>\r\n                            Office: (217) 782-3944</h4>\r\n
+  \                       <h4>\r\n                            TTY: (217) 782-2050</h4>\r\n
+  \                       <h4>\r\n                            Email: webmaster@ilga.gov</h4>\r\n
+  \                   </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n
+  \   </div>\r\n    <div id=\"footer-background\">\r\n    </div>\r\n    <script type=\"text/javascript\"
+  src=\"/Scripts/2012.1.214/telerik.common.min.js\"></script>\r\n<script type=\"text/javascript\"
+  src=\"/Scripts/2012.1.214/telerik.tabstrip.min.js\"></script>\r\n<script type=\"text/javascript\">\r\n//<![CDATA[\r\njQuery(document).ready(function(){\r\njQuery('#CommitteeHearingTabstrip').tTabStrip({contentUrls:[\"/Hearing/_PostedHearings?committeeid=0\\u0026chamber=H\\u0026nodays=1\",\"/Hearing/_PostedHearings?committeeid=0\\u0026chamber=H\\u0026nodays=7\",\"/Hearing/_PostedHearings?committeeid=0\\u0026chamber=H\\u0026nodays=30\",\"/Hearing/_PreviousHearings?committeeid=0\\u0026chamber=H\"]});});\r\n//]]>\r\n</script>\r\n
+  \   \r\n</body>\r\n<script type=\"text/javascript\">\r\n    $('.hide').bind('click',
+  function () {\r\n        hideElement($(this).closest('.alert'));\r\n    });\r\n\r\n
+  \   $('.collapsible').bind('click', function () {\r\n        collapseBlock($(this));\r\n
+  \   });\r\n</script>\r\n\r\n\r\n<script type=\"text/javascript\">\r\n\r\n    var
+  _gaq = _gaq || [];\r\n    _gaq.push(['_setAccount', 'UA-36515274-1']);\r\n    _gaq.push(['_trackPageview']);\r\n\r\n
+  \   (function () {\r\n        var ga = document.createElement('script'); ga.type
+  = 'text/javascript'; ga.async = true;\r\n        ga.src = ('https:' == document.location.protocol
+  ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\r\n        var
+  s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);\r\n
+  \   })();\r\n\r\n</script>\r\n\r\n\r\n</html>\r\n"

@@ -1,0 +1,38 @@
+---
+:scope: 
+:url: http://my.ilga.gov/Scripts/lis/common/content.blocks.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: application/javascript
+  Last-Modified: Wed, 16 May 2012 19:18:18 GMT
+  Accept-Ranges: bytes
+  ETag: '"0b932a69833cd1:0"'
+  Server: Microsoft-IIS/8.5
+  X-Powered-By: ASP.NET
+  Date: Sun, 04 Mar 2018 03:01:58 GMT
+  Connection: close
+  Content-Length: '906'
+:content: !binary |-
+  77u/Ly8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
+  KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiovLw0KLy8gIENvbW1v
+  biBmdW5jdGlvbiB0byBjb2xsYXBzZSB0aGUgZGl2IGNvbnRhaW5lZCBpbiB0
+  aGUgY29sbGFwc2libGUgYmxvY2svLw0KLy8gIEF1dGhvcjogSi4gTW9udGdv
+  bWVyeSAvIEouIFNhbXBzb24gICAgICAgICAgICAgICAgICAgICAgICAgICAg
+  ICAgICAgICAvLw0KLy8gICAgRGF0ZTogMDQvMTIvMjAxMiAgICAgICAgICAg
+  ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAvLw0K
+  Ly8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
+  KioqKioqKioqKioqKioqKioqKioqKioqKioqKiovLw0KZnVuY3Rpb24gY29s
+  bGFwc2VCbG9jayhlKSB7DQogICAgdmFyIGUxID0gJChlKS5jaGlsZHJlbign
+  ZGl2JylbMF07DQoNCiAgICAkKGUpLm5leHQoJy5ibG9jay1jb250ZW50Jyku
+  c2xpZGVUb2dnbGUoImZhc3QiLCBmdW5jdGlvbiAoKSB7DQogICAgICAgIGlm
+  ICgkKGUpLm5leHQoJy5ibG9jay1jb250ZW50JykuY3NzKCJkaXNwbGF5Iikg
+  PT0gIm5vbmUiKSB7DQogICAgICAgICAgICAkKGUpLmNoaWxkcmVuKCcuaGVh
+  ZGVyLWljb24nKS5yZW1vdmVDbGFzcygnZXhwYW5kZWQnKTsNCiAgICAgICAg
+  ICAgICQoZSkuY2hpbGRyZW4oJy5oZWFkZXItaWNvbicpLmFkZENsYXNzKCdj
+  b2xsYXBzZWQnKTsNCiAgICAgICAgfSBlbHNlIHsNCiAgICAgICAgICAgICQo
+  ZSkuY2hpbGRyZW4oJy5oZWFkZXItaWNvbicpLnJlbW92ZUNsYXNzKCdjb2xs
+  YXBzZWQnKTsNCiAgICAgICAgICAgICQoZSkuY2hpbGRyZW4oJy5oZWFkZXIt
+  aWNvbicpLmFkZENsYXNzKCdleHBhbmRlZCcpOw0KICAgICAgICB9DQogICAg
+  fSk7DQp9

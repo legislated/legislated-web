@@ -1,0 +1,49 @@
+---
+:scope: 
+:url: http://my.ilga.gov/Content/themes/Lis/Lis.Alert.css
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/css
+  Last-Modified: Wed, 16 May 2012 17:49:15 GMT
+  Accept-Ranges: bytes
+  ETag: '"809f85358c33cd1:0"'
+  Server: Microsoft-IIS/8.5
+  X-Powered-By: ASP.NET
+  Date: Sun, 04 Mar 2018 03:01:58 GMT
+  Connection: close
+  Content-Length: '1439'
+:content: !binary |-
+  77u/LmFsZXJ0IHsNCiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiAxMHB4IDEw
+  cHg7DQogICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDsNCiAgICBi
+  b3JkZXI6IDFweCBzb2xpZDsNCiAgICBib3JkZXItcmFkaXVzOiA1cHggNXB4
+  IDVweCA1cHg7DQogICAgY2xlYXI6IGJvdGg7DQogICAgbWFyZ2luLWJvdHRv
+  bTogOXB4Ow0KICAgIG1hcmdpbi10b3A6IDEwcHg7DQogICAgcGFkZGluZzog
+  MTBweCAxMHB4IDEwcHggMzVweDsNCn0NCi5hbGVydC5uby1tYXJnaW4gew0K
+  ICAgIGJvcmRlci1yYWRpdXM6IDAgMCAwIDA7DQogICAgYm9yZGVyLXdpZHRo
+  OiAxcHggMDsNCiAgICBtYXJnaW4tbGVmdDogLTEwcHg7DQogICAgbWFyZ2lu
+  LXJpZ2h0OiAtMTBweDsNCn0NCi5hbGVydC5uby1tYXJnaW4udG9wIHsNCiAg
+  ICBib3JkZXItd2lkdGg6IDAgMCAxcHg7DQogICAgbWFyZ2luLXRvcDogMDsN
+  Cn0NCi5hbGVydC5uby1tYXJnaW4uYm90dG9tIHsNCiAgICBib3JkZXItd2lk
+  dGg6IDFweCAwIDA7DQogICAgbWFyZ2luLWJvdHRvbTogMDsNCn0NCi5hbGVy
+  dCBzcGFuLmhpZGUgew0KICAgIGN1cnNvcjogcG9pbnRlcjsNCiAgICBmbG9h
+  dDogcmlnaHQ7DQogICAgZm9udC13ZWlnaHQ6IGJvbGQ7DQogICAgbWFyZ2lu
+  OiAwOw0KICAgIHRleHQtc2hhZG93OiAxcHggMXB4IDAgI0ZGRkZGRjsNCn0N
+  Ci5hbGVydC5zdWNjZXNzIHsNCiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjRDFF
+  OEQyOw0KICAgIGJhY2tncm91bmQtaW1hZ2U6IHVybCgiaWNvbnMvdGljay1j
+  aXJjbGUucG5nIik7DQogICAgYm9yZGVyLWNvbG9yOiAjMzM5OTMzOw0KICAg
+  IGNvbG9yOiAjMDA2MzJFOw0KfQ0KLmFsZXJ0LmVycm9yIHsNCiAgICBiYWNr
+  Z3JvdW5kLWNvbG9yOiAjRkFDRkNGOw0KICAgIGJhY2tncm91bmQtaW1hZ2U6
+  IHVybCgiaWNvbnMvY3Jvc3MtY2lyY2xlLnBuZyIpOw0KICAgIGJvcmRlci1j
+  b2xvcjogI0RDMUMxQzsNCiAgICBjb2xvcjogIzgyMDEwMTsNCn0NCi5hbGVy
+  dC53YXJuaW5nIHsNCiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjRkRFRkJEOw0K
+  ICAgIGJhY2tncm91bmQtaW1hZ2U6IHVybCgiaWNvbnMvZXhjbGFtYXRpb24u
+  cG5nIik7DQogICAgYm9yZGVyLWNvbG9yOiAjRDRCNjRCOw0KICAgIGNvbG9y
+  OiAjNjc1MTAwOw0KfQ0KLmFsZXJ0LmluZm8gew0KICAgIGJhY2tncm91bmQt
+  Y29sb3I6ICNEOEU3RkE7DQogICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKCJp
+  Y29ucy9pbmZvcm1hdGlvbi5wbmciKTsNCiAgICBib3JkZXItY29sb3I6ICM5
+  REJGRUE7DQogICAgY29sb3I6ICMwMDM1N0I7DQp9DQouYWxlcnQubm90ZSB7
+  DQogICAgYmFja2dyb3VuZC1jb2xvcjogI0Y0RjRGNDsNCiAgICBiYWNrZ3Jv
+  dW5kLWltYWdlOiB1cmwoImljb25zL25vdGVib29rLnBuZyIpOw0KICAgIGJv
+  cmRlci1jb2xvcjogI0JEQkRCRDsNCiAgICBjb2xvcjogIzRENEQ0RDsNCn0=

@@ -4,14 +4,6 @@ class OpenStatesService
   include HTTParty
   base_uri 'https://openstates.org/api/v1'
 
-  def initialize
-    @options = {
-      headers: {
-        'X-API-KEY': ENV['OPEN_STATES_KEY']
-      }
-    }
-  end
-
   def fetch_bills(query = {})
     updated_since = query[:updated_since]
     if updated_since
@@ -63,5 +55,13 @@ class OpenStatesService
     self.class.get('/bills', @options.deep_merge({
       query: base_query.merge(query)
     }))
+  end
+
+  def options
+    @options ||= {
+      headers: {
+        'X-API-KEY': ENV['OPEN_STATES_KEY']
+      }
+    }
   end
 end
