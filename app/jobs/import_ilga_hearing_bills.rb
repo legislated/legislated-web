@@ -1,7 +1,7 @@
-class ImportHearingBillsJob
+class ImportHearingBills
   include Worker
 
-  def initialize(scraper = Scraper::BillsTask.new)
+  def initialize(scraper = Ilga::ScrapeHearingBills.new)
     @scraper = scraper
   end
 

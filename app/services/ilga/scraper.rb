@@ -1,7 +1,7 @@
 require 'capybara'
 
-module Scraper
-  class Task
+module Ilga
+  class Scraper
     def initialize
       # fake user agent to avoid getting redirected to error pages
       # find alternatives here: https://techblog.willshouse.com/2012/01/03/most-common-user-agents/

@@ -1,4 +1,4 @@
-describe ExportBillsJob do
+describe ExportBills do
   describe '.schedule' do
     subject { described_class }
 

@@ -31,7 +31,7 @@ You can also start any of them manually in the Rails console like so:
 $ rails console
 ...
 > chamber = Chamber.find_by(kind: :house)
-> ImportHearingsJob.perform_async(chamber.id)
+> ImportHearings.perform_async(chamber.id)
 ```
 
 You can monitor the progress of Sidekiq jobs running locally using its web portal by opening a browser to the url http://localhost:5000/sidekiq.

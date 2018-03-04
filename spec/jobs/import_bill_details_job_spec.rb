@@ -1,4 +1,4 @@
-describe ImportBillDetailsJob do
+describe ImportBillDetails do
   subject { described_class.new(mock_scraper) }
 
   let(:mock_scraper) { double('Scraper') }

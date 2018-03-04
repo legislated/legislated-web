@@ -1,4 +1,4 @@
-class ImportBillsJob
+class ImportBills
   include Worker
 
   class Attributes
@@ -30,7 +30,7 @@ class ImportBillsJob
       end
 
       # enqueue the details job for each bill
-      ImportBillDetailsJob.perform_async(bill.id)
+      ImportBillDetails.perform_async(bill.id)
     end
 
     @redis.set(:import_bills_job_date, Time.zone.now)

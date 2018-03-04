@@ -1,4 +1,4 @@
-describe ImportHearingsJob do
+describe ImportHearings do
   subject { described_class.new(mock_scraper) }
 
   let(:mock_scraper) { double('Scraper') }
@@ -25,7 +25,7 @@ describe ImportHearingsJob do
 
     before do
       allow(mock_scraper).to receive(:run).and_return(scraper_response)
-      allow(ImportHearingBillsJob).to receive(:perform_async)
+      allow(ImportHearingBills).to receive(:perform_async)
     end
 
     it "scrapes the chamber's hearings" do
@@ -53,7 +53,7 @@ describe ImportHearingsJob do
 
     it 'import bills for each hearing' do
       subject.perform(chamber.id)
-      expect(ImportHearingBillsJob).to have_received(:perform_async).exactly(3).times
+      expect(ImportHearingBills).to have_received(:perform_async).exactly(3).times
     end
 
     context "when the chamber doesn't exist" do
@@ -68,7 +68,7 @@ describe ImportHearingsJob do
       end
 
       it 'does not import bills' do
-        expect(ImportHearingBillsJob).to_not have_received(:perform_async)
+        expect(ImportHearingBills).to_not have_received(:perform_async)
       end
     end
   end

@@ -1,5 +1,5 @@
 describe 'importing legislators' do
-  subject { ImportLegislatorsJob.new }
+  subject { ImportLegislators.new }
 
   it 'imports legislators from openstates' do
     VCR.use_cassette('import_legislators') do

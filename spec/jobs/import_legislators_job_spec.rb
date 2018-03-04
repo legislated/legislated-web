@@ -1,4 +1,4 @@
-describe ImportLegislatorsJob do
+describe ImportLegislators do
   subject { described_class.new(mock_service) }
 
   let(:mock_service) { double('OpenStatesService') }

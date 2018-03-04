@@ -1,5 +1,5 @@
-module Scraper
-  class HearingsTask < Task
+module Ilga
+  class ScrapeHearings < Scraper
     def run(chamber)
       info("> #{task_name}: start")
       info("  - chamber: #{chamber.name}")

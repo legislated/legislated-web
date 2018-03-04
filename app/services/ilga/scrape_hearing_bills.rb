@@ -1,5 +1,5 @@
-module Scraper
-  class BillsTask < Task
+module Ilga
+  class ScrapeHearingBills < Scraper
     def run(hearing)
       info("> #{task_name}: start")
       info("  - hearing: #{hearing.id}")

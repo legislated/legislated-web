@@ -1,4 +1,4 @@
-class ImportLegislatorsJob
+class ImportLegislators
   include Worker
 
   def self.scheduled?

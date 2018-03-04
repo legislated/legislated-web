@@ -1,4 +1,4 @@
-class ImportBillDetailsJob
+class ImportBillDetails
   include Worker
 
   def initialize(scraper = Scraper::BillDetailsTask.new)

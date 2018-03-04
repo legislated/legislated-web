@@ -1,4 +1,4 @@
-class ExportBillsJob
+class ExportBills
   include Worker
 
   def self.scheduled?

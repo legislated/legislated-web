@@ -1,7 +1,7 @@
-class ImportHearingsJob
+class ImportHearings
   include Worker
 
-  def initialize(scraper = Scraper::HearingsTask.new)
+  def initialize(scraper = Ilga::ScrapeHearings.new)
     @scraper = scraper
   end
 
@@ -24,7 +24,7 @@ class ImportHearingsJob
       ))
 
       # enqueue the bills import
-      ImportHearingBillsJob.perform_async(hearing.id)
+      ImportHearingBills.perform_async(hearing.id)
     end
   end
 end

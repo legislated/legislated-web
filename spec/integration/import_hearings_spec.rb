@@ -1,5 +1,5 @@
 describe 'importing hearings' do
-  subject { ImportHearingsJob.new }
+  subject { ImportHearings.new }
 
   it 'imports committees and hearings from ilga' do
     subject.perform(Chamber.house.first.id)

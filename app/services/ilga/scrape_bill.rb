@@ -1,5 +1,5 @@
-module Scraper
-  class BillDetailsTask < Task
+module Ilga
+  class ScrapeBill < Scraper
     def run(bill)
       info("> #{task_name}: start")
       info("  - bill: #{bill.id}")

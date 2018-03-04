@@ -16,7 +16,7 @@ describe ImportBillsJob do
       allow(mock_open_states_service).to receive(:fetch_bills).and_return([].lazy)
       allow(mock_step_parser).to receive(:parse).and_return([])
 
-      allow(ImportBillDetailsJob).to receive(:perform_async)
+      allow(ImportBillDetails).to receive(:perform_async)
     end
 
     after do
@@ -151,7 +151,7 @@ describe ImportBillsJob do
         it 'imports details for the bill' do
           allow(mock_open_states_service).to receive(:fetch_bills).and_return(response)
           subject.perform
-          expect(ImportBillDetailsJob).to have_received(:perform_async).exactly(1).times
+          expect(ImportBillDetails).to have_received(:perform_async).exactly(1).times
         end
       end
 
