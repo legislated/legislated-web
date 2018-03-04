@@ -3,13 +3,13 @@ describe ImportAll do
 
   describe '#perform' do
     before do
-      allow(ImportBillsJob).to receive(:perform_async)
+      allow(ImportBills).to receive(:perform_async)
       allow(ImportIlgaHearings).to receive(:perform_async)
     end
 
     it 'enqueues the bills import' do
       subject.perform
-      expect(ImportBillsJob).to have_received(:perform_async)
+      expect(ImportBills).to have_received(:perform_async)
     end
 
     it 'enqueues a hearings import for each chamber' do

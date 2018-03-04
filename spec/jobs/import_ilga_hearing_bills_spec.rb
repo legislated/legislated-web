@@ -7,7 +7,7 @@ describe ImportIlgaHearingBills do
     let(:hearing) { create(:hearing) }
 
     def mock_response(response = [])
-      allow(mock_scraper).to receive(:run).and_return(response)
+      allow(mock_scraper).to receive(:call).and_return(response)
     end
 
     it "raises a not found error when the hearing doesn't exist" do
@@ -17,7 +17,7 @@ describe ImportIlgaHearingBills do
     it "scrapes the hearing's bills" do
       mock_response
       subject.perform(hearing.id)
-      expect(mock_scraper).to have_received(:run).with(hearing)
+      expect(mock_scraper).to have_received(:call).with(hearing)
     end
 
     it 'updates bills that already exist' do

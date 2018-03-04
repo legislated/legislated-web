@@ -5,9 +5,6 @@ RSpec::Matchers.define(:match_json_snapshot) do |name|
     expect(json).to eq(snapshot)
   end
 
-  # helpers
-  JSON_NOISE_PATTERN = /,?"(([^e][^"]+_)?id|created_at|updated_at)":"[^"]+",?/
-
   def load_snapshot(name, json)
     path = snapshot_path(name)
 
@@ -22,7 +19,7 @@ RSpec::Matchers.define(:match_json_snapshot) do |name|
   end
 
   def clean_json(json)
-    json.gsub(JSON_NOISE_PATTERN, '')
+    json.gsub(/,?"(([^e][^"]+_)?id|created_at|updated_at)":"[^"]+",?/, '')
   end
 
   def snapshot_path(name)

@@ -9,12 +9,12 @@ describe ImportIlgaBill do
     let(:scraper_response) { { summary: expected_summary } }
 
     before do
-      allow(mock_scraper).to receive(:run).and_return(scraper_response)
+      allow(mock_scraper).to receive(:call).and_return(scraper_response)
     end
 
     it 'scrapes the bill details' do
       subject.perform(bill.id)
-      expect(mock_scraper).to have_received(:run).with(bill)
+      expect(mock_scraper).to have_received(:call).with(bill)
     end
 
     it 'updates the bill with new details' do
@@ -25,7 +25,7 @@ describe ImportIlgaBill do
 
     context 'after catching a scraping error' do
       before do
-        allow(mock_scraper).to receive(:run).and_raise(Scraper::Task::Error)
+        allow(mock_scraper).to receive(:call).and_raise(Ilga::Scraper::Error)
       end
     end
 

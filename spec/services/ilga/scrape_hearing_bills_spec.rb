@@ -111,7 +111,7 @@ describe Ilga::ScrapeHearingBills do
     it 'raises an error when the document number is missing' do
       attrs[:number] = nil
       mock_dom
-      expect { subject.build_bill_attrs(row) }.to raise_error Scraper::Task::Error
+      expect { subject.build_bill_attrs(row) }.to raise_error(Ilga::Scraper::Error)
     end
 
     it 'does not raise as error when optional attributes are mising' do

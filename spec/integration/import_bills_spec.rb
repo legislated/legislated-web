@@ -1,5 +1,5 @@
 describe 'importing bills' do
-  subject { ImportBillsJob.new(mock_redis) }
+  subject { ImportBills.new(mock_redis) }
 
   let(:mock_redis) { double('Redis') }
 

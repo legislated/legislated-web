@@ -23,11 +23,13 @@ class ImportIlgaHearings
     )
 
     attrs_list.each do |attrs|
-      committee = Committee.upsert_by!(:external_id,
+      committee = Committee.upsert_by!(
+        :external_id,
         attrs.committee.merge(chamber: chamber)
       )
 
-      hearing = Hearing.upsert_by!(:external_id,
+      hearing = Hearing.upsert_by!(
+        :external_id,
         attrs.hearing.merge(committee: committee)
       )
 
