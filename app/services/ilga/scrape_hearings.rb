@@ -46,7 +46,6 @@ module Ilga
         .map { |row| build_attrs(row) }
         .compact
 
-
       # aggregate the next page's results if it's available
       next_url = find_next_page_url
       info("  - next?: #{next_url.present?}")
@@ -59,8 +58,8 @@ module Ilga
 
       uri = clean_uri(url)
       Hearing.new(
-        uri.path.split('/').last # external_id
-        uri.to_s,
+        uri.path.split('/').last, # external_id
+        uri.to_s
       )
     end
 

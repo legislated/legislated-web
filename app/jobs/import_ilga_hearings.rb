@@ -1,6 +1,11 @@
 class ImportIlgaHearings
   include Worker
 
+  Attrs = Struct.new(
+    :hearing,
+    :committee
+  )
+
   def initialize(
     request = Ilga::FetchHearings.new,
     scraper = Ilga::ScrapeHearings.new
@@ -12,34 +17,44 @@ class ImportIlgaHearings
   def perform(chamber_id)
     chamber = Chamber.find(chamber_id)
 
-    hearings_attrs = merge_sources(
-      @scraper.call(chamber),
-      @request.call(chamber)
+    attrs_list = merge_sources(
+      @request.call(chamber),
+      @scraper.call(chamber)
     )
 
-    hearings_attrs.each do |attrs|
-      # upsert committee
-      committee = Committee.upsert_by!(:external_id, hearing_attrs['committee'].merge({
-        chamber: chamber
-      })
+    attrs_list.each do |attrs|
+      committee = Committee.upsert_by!(:external_id,
+        attrs.committee.merge(chamber: chamber)
+      )
 
-      # upsert hearing
-      hearing = Hearing.upsert_by!(:external_id, hearing_attrs.merge(
-        committee: committee
-      ))
+      hearing = Hearing.upsert_by!(:external_id,
+        attrs.hearing.merge(committee: committee)
+      )
 
-      # enqueue the bills import
       ImportIlgaHearingBills.perform_async(hearing.id)
     end
+  end
 
-    def merge_sources(fetched_hearings, scraped_hearings)
-      scraped_hearings = scraped_hearings
-        .index_by(&:external_id)
+  private
 
-      fetched_hearings.map do |hearing|
-        scraped_hearing = scraped_hearings[hearing.external_id]
-        binding.pry
-      end
+  def merge_sources(fetched_hearings, scraped_hearings)
+    scraped_hearings = scraped_hearings
+      .index_by(&:external_id)
+
+    fetched_hearings.map do |hearing|
+      scraped_hearing = scraped_hearings[hearing.external_id]
+
+      Attrs.new(
+        hearing_attrs(hearing, scraped_hearing),
+        hearing.committee.to_h
+      )
     end
+  end
+
+  def hearing_attrs(hearing, scraped_hearing)
+    hearing
+      .to_h
+      .without(:committee)
+      .merge(scraped_hearing&.to_h || {})
   end
 end

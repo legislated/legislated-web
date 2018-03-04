@@ -1,75 +1,49 @@
 describe ImportIlgaHearings do
-  subject { described_class.new(mock_scraper) }
-
-  let(:mock_scraper) { double('Scraper') }
-
   describe '#perform' do
-    let(:chamber) { Chamber.first }
+    it 'upserts hearings and committes' do
+      external_id = 10
+      subject = described_class.new(
+        -> (_) { [fetched_hearing(external_id)] },
+        -> (_) { [scraped_hearing(external_id)] }
+      )
 
-    let(:hearing) { create(:hearing) }
-    let(:hearing_attrs) { attributes_for(:hearing, external_id: hearing.external_id) }
-
-    let(:committee) { create(:committee) }
-    let(:committee_attrs) { attributes_for(:committee, external_id: committee.external_id) }
-
-    let(:scraper_response) {
-      hearings_attrs = [hearing_attrs] + attributes_for_list(:hearing, 2)
-      committees_attrs = [committee_attrs] + attributes_for_list(:committee, 2)
-      committees_attrs
-        .zip(hearings_attrs)
-        .map { |committee, hearing|
-          committee[:hearing] = hearing
-          committee
-        }
-    }
-
-    before do
-      allow(mock_scraper).to receive(:run).and_return(scraper_response)
-      allow(ImportIlgaHearingBills).to receive(:perform_async)
+      expect do
+        subject.perform(Chamber.first.id)
+      end.to pass_all(
+        change(Hearing, :count).by(1),
+        change(Committee, :count).by(1)
+      )
     end
 
-    it "scrapes the chamber's hearings" do
-      subject.perform(chamber.id)
-      expect(mock_scraper).to have_received(:run).with(chamber)
-    end
+    it 'ignores missing scraped hearings' do
+      external_id = 10
+      subject = described_class.new(
+        -> (_) { [fetched_hearing(external_id)] },
+        -> (_) { [] }
+      )
 
-    it 'updates committees that already exist' do
-      subject.perform(chamber.id)
-      expect(committee.reload).to have_attributes(committee_attrs)
+      subject.perform(Chamber.first.id)
+      actual = Hearing.find_by(external_id: external_id)
+      expect(actual).to have_attributes(url: nil)
     end
+  end
 
-    it 'updates hearings that already exist' do
-      subject.perform(chamber.id)
-      expect(hearing.reload).to have_attributes(hearing_attrs)
-    end
+  # helpers
+  P = Ilga::ParseHearing
+  S = Ilga::ScrapeHearings
 
-    it "creates committees that don't exist" do
-      expect { subject.perform(chamber.id) }.to change(Committee, :count).by(2)
-    end
+  def fetched_hearing(external_id)
+    P::Hearing.new(
+      external_id, Time.current, 'location', 0,
+      P::Committee.new(
+        100, 'committee_name'
+      )
+    )
+  end
 
-    it "creates hearings that don't exist" do
-      expect { subject.perform(chamber.id) }.to change(Hearing, :count).by(2)
-    end
-
-    it 'import bills for each hearing' do
-      subject.perform(chamber.id)
-      expect(ImportIlgaHearingBills).to have_received(:perform_async).exactly(3).times
-    end
-
-    context "when the chamber doesn't exist" do
-      it 'raises a not found error' do
-        expect { subject.perform(SecureRandom.uuid) }.to raise_error(ActiveRecord::RecordNotFound)
-      end
-    end
-
-    context 'after catching an active record error' do
-      before do
-        allow_any_instance_of(Hearing).to receive(:save!).and_raise(ActiveRecord::ActiveRecordError)
-      end
-
-      it 'does not import bills' do
-        expect(ImportIlgaHearingBills).to_not have_received(:perform_async)
-      end
-    end
+  def scraped_hearing(external_id)
+    S::Hearing.new(
+      external_id, 'http://www.hearing-url.com'
+    )
   end
 end

@@ -10,8 +10,7 @@ module Ilga
 
     Committee = Struct.new(
       :external_id,
-      :name,
-      :hearing
+      :name
     )
 
     def call(data)
