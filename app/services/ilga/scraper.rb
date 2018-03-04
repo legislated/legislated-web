@@ -37,7 +37,9 @@ module Ilga
     def wait_for_ajax
       Timeout.timeout(Capybara.default_max_wait_time) do
         active = page.evaluate_script('jQuery.active')
+        puts "active: #{active}"
         active = page.evaluate_script('jQuery.active') until active.zero?
+        puts "active: #{active}"
       end
     rescue StandardError
       raise Error, "#{task_name}: timed-out waiting ajax to finish"
