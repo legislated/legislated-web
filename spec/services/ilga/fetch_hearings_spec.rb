@@ -2,7 +2,7 @@ describe Ilga::FetchHearings do
   subject { described_class.new }
 
   describe '#call' do
-    let(:date) { Time.zone.local(2018, 3, 3) }
+    let(:date) { Time.zone.local(2018, 3, 4) }
 
     before do
       Timecop.freeze(date)

@@ -6,11 +6,6 @@ module Ilga
 
     PAGE_SIZE = 50
 
-    def self.date_option(delta: 0.days)
-      date = Time.current.midnight + delta
-      date.strftime('%D %T')
-    end
-
     base_uri(
       'http://my.ilga.gov/Hearing/_GetPostedHearingsByDateRange'
     )
@@ -20,9 +15,7 @@ module Ilga
     })
 
     default_params({
-      committeeid: 0,
-      begindate: date_option,
-      enddate: date_option(delta: 30.days)
+      committeeid: 0
     })
 
     def initialize(parse = ParseHearing.new)
@@ -57,16 +50,27 @@ module Ilga
           page: page
         },
         query: {
-          chamber: chamber_key(chamber)
+          chamber: chamber_param(chamber),
+          begindate: date_param,
+          enddate: date_param(delta: 30.days)
         }
       })
 
       JSON.parse(response.body)
     end
 
-    def chamber_key(chamber)
-      keys = { house: 'H', senate: 'S' }
-      keys[chamber.kind.to_sym]
+    def chamber_param(chamber)
+      case chamber.kind.to_sym
+      when :house
+        'H'
+      when :sentate
+        'S'
+      end
+    end
+
+    def date_param(delta: 0.days)
+      date = Time.current.midnight + delta
+      date.strftime('%D %T')
     end
   end
 end
