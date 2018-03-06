@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2018_03_04_185432) do
   create_table "hearings", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer "external_id", null: false
     t.string "url"
-    t.string "location"
+    t.string "location", null: false
     t.datetime "date", null: false
     t.boolean "is_cancelled", default: false
     t.uuid "committee_id", null: false

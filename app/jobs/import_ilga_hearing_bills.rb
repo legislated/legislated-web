@@ -8,8 +8,8 @@ class ImportIlgaHearingBills
   def perform(hearing_id)
     hearing = Hearing.find(hearing_id)
 
-    scraped_attrs = @scraper.call(hearing)
-    scraped_attrs.each do |attrs|
+    attrs_list = @scraper.call(hearing)
+    attrs_list.each do |attrs|
       bill_attrs = attrs.extract!(:external_id)
       bill = Bill.upsert_by!(:external_id, bill_attrs.merge(
         hearing: hearing

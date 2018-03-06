@@ -1,10 +1,11 @@
 describe ImportIlgaHearings do
+  let(:id) { 10 }
+
   describe '#perform' do
     it 'upserts hearings and committes' do
-      external_id = 10
       subject = described_class.new(
-        -> (_) { [fetched_hearing(external_id)] },
-        -> (_) { [scraped_hearing(external_id)] }
+        -> (_) { [fetched_hearing(id)] },
+        -> (_) { [scraped_hearing(id)] }
       )
 
       expect do
@@ -16,14 +17,13 @@ describe ImportIlgaHearings do
     end
 
     it 'ignores missing scraped hearings' do
-      external_id = 10
       subject = described_class.new(
-        -> (_) { [fetched_hearing(external_id)] },
+        -> (_) { [fetched_hearing(id)] },
         -> (_) { [] }
       )
 
       subject.perform(Chamber.first.id)
-      actual = Hearing.find_by(external_id: external_id)
+      actual = Hearing.find_by(external_id: id)
       expect(actual).to have_attributes(url: nil)
     end
   end

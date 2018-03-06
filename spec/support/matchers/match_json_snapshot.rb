@@ -54,7 +54,7 @@ module Matchers
 
     def clean_json(json)
       data = parse_json(json)
-      deep_reject!(data, /^id|[^eo][^"]+_id|created_at|updated_at/)
+      deep_reject!(data, /^(id|[^eo][^"]+_id|created_at|updated_at)$/)
       data
     end
 

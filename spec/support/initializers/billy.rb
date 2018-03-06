@@ -4,7 +4,7 @@ Billy.configure do |c|
   ]
 
   c.path_blacklist = [
-    /\.(ico|png|gif)/
+    /\.(ico|png|jpg|gif)/
   ]
 
   c.persist_cache = true
