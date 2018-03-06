@@ -29,7 +29,7 @@ module Ilga
     end
 
     def scrape_paged_hearings(chamber, url, page_number = 0)
-      return [] if url.blank?
+      return [] if url.nil?
 
       info("\n> #{task_name}: visit paged committee hearings")
       info("  - name: #{chamber.name}")
@@ -40,19 +40,21 @@ module Ilga
       wait_for_ajax
       return [] if page.has_css?('.t-no-data')
 
-      # get attrs from each row
-      attrs = page
+      # get hearings from each row
+      hearings = page
         .find_all('#CommitteeHearingTabstrip tbody tr')
-        .map { |row| build_attrs(row) }
+        .map { |row| build_hearing(row) }
         .compact
+
+      info("  - hearings: #{hearings.count}")
 
       # aggregate the next page's results if it's available
       next_url = find_next_page_url
-      info("  - next?: #{next_url.present?}")
-      attrs + scrape_paged_hearings(chamber, next_url, page_number + 1)
+      info("  - next?: #{!next_url.nil?}")
+      hearings + scrape_paged_hearings(chamber, next_url, page_number + 1)
     end
 
-    def build_attrs(row)
+    def build_hearing(row)
       url = row.first('td.t-last a')&.[](:href)
       return nil if url.nil?
 
@@ -66,7 +68,7 @@ module Ilga
     # find the next page link by searching for its icon
     def find_next_page_url
       link = page.first(:xpath, "//*[@class='t-arrow-next']/..")
-      return nil if link.blank? || link[:class].include?('t-state-disabled')
+      return nil if link.nil? || link[:class].include?('t-state-disabled')
       link[:href]
     end
 

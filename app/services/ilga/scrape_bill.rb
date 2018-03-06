@@ -1,5 +1,9 @@
 module Ilga
   class ScrapeBill < Scraper
+    Bill = Struct.new(
+      :summary
+    )
+
     def call(bill)
       info("> #{task_name}: start")
       info("  - bill: #{bill.id}")
@@ -16,12 +20,14 @@ module Ilga
       page.visit(bill.details_url)
 
       # matching based on header text is only way to grab element right now
-      summary = page.first(:xpath, "//span[contains(text(),'Synopsis')]/following-sibling::span")
-      attrs = {
-        summary: summary&.text
-      }
+      summary = page.first(
+        :xpath,
+        "//span[contains(text(),'Synopsis')]/following-sibling::span"
+      )
 
-      attrs
+      Bill.new(
+        summary&.text
+      )
     end
   end
 end

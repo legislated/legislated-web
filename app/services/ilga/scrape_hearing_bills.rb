@@ -1,5 +1,13 @@
 module Ilga
   class ScrapeHearingBills < Scraper
+    Bill = Struct.new(
+      :external_id,
+      :number,
+      :slip_url,
+      :slip_results_url,
+      :is_amendment
+    )
+
     def call(hearing)
       info("> #{task_name}: start")
       info("  - hearing: #{hearing.id}")
@@ -10,6 +18,8 @@ module Ilga
     end
 
     def scrape_paged_bills(hearing, url, page_number = 0)
+      return [] if url.nil?
+
       info("\n> #{task_name}: visit paged bills")
       info("  - name: #{hearing.id}")
       info("  - page: #{page_number}")
@@ -20,56 +30,55 @@ module Ilga
       return [] if page.has_css?('.t-no-data')
 
       # build bills from each row on this page
-      bill_rows = page.find_all('#GridCurrentCommittees tbody tr')
-      bills = bill_rows
-        .map { |row| build_bill_attrs(row) }
-        .compact
+      bills = page
+        .find_all('#GridCurrentCommittees tbody tr')
+        .map { |row| build_bill(row) }
 
       info("  - bills: #{bills.count}")
 
-      # find the next page link by ripping into its icon
-      next_page_link = page.first(:xpath, "//*[@class='t-arrow-next']/..")
-
       # aggregate the next page's results if it's available
-      has_next_page = next_page_link.present? && !next_page_link[:class].include?('t-state-disabled')
-      info("  - next?: #{has_next_page}")
-
-      if has_next_page
-        bills +
-          scrape_paged_bills(hearing, next_page_link['href'], page_number + 1)
-      else
-        bills
-      end
+      next_url = find_next_page_url
+      info("  - next?: #{!next_url.nil?}")
+      bills + scrape_paged_bills(hearing, next_url, page_number + 1)
     end
 
-    def build_bill_attrs(row)
-      # there are ids in hidden columns
+    def build_bill(row)
       columns = row.find_all('td', visible: false)
 
       # scrape required data
-      external_id = columns[0]&.text(:all)
-      document_number = columns[2]&.text
+      external_id = check!(
+        columns[0]&.text(:all),
+        'bill(?) is missing external id'
+      )
 
-      assert_exists!(external_id, 'external_id', row)
-      assert_exists!(document_number, 'document_number', row)
+      document_number = check!(
+        columns[2]&.text,
+        "bill(#{external_id}) is missing document number"
+      )
 
       # scrape links
-      slip_link = row.first('.slipiconbutton')
-      slip_results_link = row.first('.viewiconbutton')
+      slip_link = row.first('.slipiconbutton')&.[](:href)
+      slip_results_link = row.first('.viewiconbutton')&.[](:href)
 
       if slip_link.blank?
-        debug("  - bill missing slip link: #{external_id} - #{document_number}")
+        debug("  - bill w/o slip link: #{external_id} - #{document_number}")
       end
 
-      attrs = {
-        external_id: external_id,
-        number: document_number,
-        slip_url: slip_link&.[]('href'),
-        slip_results_url: slip_results_link&.[]('href'),
-        is_amendment: document_number.include?(' - ')
-      }
+      # build bill
+      Bill.new(
+        external_id,
+        document_number,
+        slip_link,
+        slip_results_link,
+        document_number.include?(' - ')
+      )
+    end
 
-      attrs
+    # find the next page link by searching for its icon
+    def find_next_page_url
+      link = page.first(:xpath, "//*[@class='t-arrow-next']/..")
+      return nil if link.nil? || link[:class].include?('t-state-disabled')
+      link[:href]
     end
   end
 end

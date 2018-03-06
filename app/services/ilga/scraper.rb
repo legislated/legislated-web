@@ -25,8 +25,9 @@ module Ilga
       Rails.logger.debug(message)
     end
 
-    def assert_exists!(value, name, data)
-      raise Error, "#{task_name}: failed to find #{name} for data: #{data}" if value.blank?
+    def check!(value, message)
+      raise Error, "#{task_name}: #{message}" if value.blank?
+      value
     end
 
     # capybara
