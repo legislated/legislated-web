@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_04_185432) do
+ActiveRecord::Schema.define(version: 2018_03_07_054116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -37,20 +37,12 @@ ActiveRecord::Schema.define(version: 2018_03_04_185432) do
     t.index ["os_id"], name: "index_bills_on_os_id", unique: true
   end
 
-  create_table "chambers", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "kind", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "committees", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer "external_id", null: false
     t.string "name", null: false
-    t.uuid "chamber_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["chamber_id"], name: "index_committees_on_chamber_id"
+    t.integer "chamber", null: false
     t.index ["external_id"], name: "index_committees_on_external_id", unique: true
   end
 
