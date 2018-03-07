@@ -1,0 +1,45 @@
+---
+:scope: 
+:url: http://my.ilga.gov/Scripts/MyILGA.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: application/javascript
+  Last-Modified: Wed, 19 Sep 2012 15:54:37 GMT
+  Accept-Ranges: bytes
+  ETag: '"809cf6117f96cd1:0"'
+  Server: Microsoft-IIS/8.5
+  X-Powered-By: ASP.NET
+  Date: Sun, 04 Mar 2018 15:52:56 GMT
+  Connection: close
+  Content-Length: '2429'
+:content: "//Jake Sampson 08/29/2012 function created to enable/disable input elements
+  on a form and toggle\r\n//the display property of the save and edit button groups.\r\n\r\nfunction
+  toggleInputs(disable) {\r\n    var inputs = $(':input'); //Retrieve all inputs on
+  the form.\r\n\r\n    //Page is loading or Update button was clicked.\r\n    if (disable)
+  {\r\n        $('#savebuttongroup').children().addClass('hidden'); //Hide the Save
+  and Cancel buttons.\r\n        $('#editbuttongroup').children().removeClass('hidden');
+  //Show the Update and Back buttons.\r\n\r\n        //Loop on all of the inputs.\r\n
+  \       inputs.each(function () {\r\n            var input = $(this);\r\n            //If
+  disable is true then we want to disable all of the inputs other than the buttons
+  on the screen.\r\n            if (input.attr('type') != 'button' && input.attr('type')
+  != 'submit') {\r\n                input.attr('disabled', true);\r\n            }\r\n
+  \       });\r\n    }\r\n    else {\r\n        $('#editbuttongroup').children().addClass('hidden');
+  //Hide the Update and Back buttons.\r\n        $('#savebuttongroup').children().removeClass('hidden');
+  //Show the Save and Cancel buttons.\r\n\r\n        //Loop on all of the inputs.\r\n
+  \       inputs.each(function () {\r\n            var input = $(this);\r\n            //If
+  disable is false then enable all of the inputs that were previously disabled.\r\n
+  \           if (input.attr('type') != 'button' && input.attr('type') != 'submit')
+  {\r\n                input.removeAttr('disabled');\r\n            }\r\n        });\r\n
+  \   }\r\n}\r\n\r\n//Jake Sampson 09/19/2012 function to hide an html element.\r\nfunction
+  hideElement(e) {\r\n    e.addClass('hidden');\r\n}\r\n\r\n//Jake Sampson 09/19/2012
+  function to display an html element.\r\nfunction displayElement(e) {\r\n    e.removeClass('hidden');\r\n}\r\n\r\n//Jake
+  Sampson 09/10/12 function to set the text of an input element.\r\nfunction setInputText(e,
+  text) {\r\n    e.text(text);\r\n   //e.attr('value', text);\r\n}\r\n\r\n//Jake Sampson
+  09/10/12 function to disable an element.\r\nfunction enableElement(e) {\r\n    e.removeAttr('disabled');\r\n}\r\n\r\n//Jake
+  Sampson 09/10/12 function to enable an element.\r\nfunction disableElement(e) {
+  \r\n    e.attr('disabled', true);\r\n}\r\n\r\n//Jake Sampson 09/10/2012 function
+  to open the popup window passed in.\r\nfunction showPopup(window) {    \r\n    window.center().open();\r\n}\r\n\r\n//Jake
+  Sampson 09/10/2012 function to close the popu window passed in.\r\nfunction closePopup(window)
+  {\r\n    window.close();\r\n}"

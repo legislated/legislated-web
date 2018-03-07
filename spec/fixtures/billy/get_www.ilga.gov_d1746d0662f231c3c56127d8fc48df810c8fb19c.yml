@@ -1,0 +1,58 @@
+---
+:scope: 
+:url: http://www.ilga.gov/include/script/HM_Loader.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: application/javascript
+  Last-Modified: Mon, 21 Oct 2002 14:14:35 GMT
+  Accept-Ranges: bytes
+  ETag: '"a68b4b2fc79c21:0"'
+  Server: Microsoft-IIS/8.5
+  X-Powered-By: ASP.NET
+  Date: Tue, 06 Mar 2018 05:00:13 GMT
+  Connection: close
+  Content-Length: '3578'
+:content: "/*HM_Loader.js\r\n* by Peter Belesis. v4.3 020610\r\n* Copyright (c) 2002
+  Peter Belesis. All Rights Reserved.\r\n*/\r\n\r\n   HM_DOM = (document.getElementById)
+  ? true : false;\r\n   HM_NS4 = (document.layers) ? true : false;\r\n    HM_IE =
+  (document.all) ? true : false;\r\n   HM_IE4 = HM_IE && !HM_DOM;\r\n   HM_Mac = (navigator.appVersion.indexOf(\"Mac\")
+  != -1);\r\n  HM_IE4M = HM_IE4 && HM_Mac;\r\n HM_Opera = (navigator.userAgent.indexOf(\"Opera\")!=-1);\r\n
+  HM_Konqueror = (navigator.userAgent.indexOf(\"Konqueror\")!=-1);\r\n\r\nHM_IsMenu
+  = !HM_Opera && !HM_IE4M && (HM_DOM || HM_NS4 || HM_IE4 || HM_Konqueror);\r\n\r\nHM_BrowserString
+  = HM_NS4 ? \"NS4\" : HM_DOM ? \"DOM\" : \"IE4\";\r\n\r\nif(window.event + \"\" ==
+  \"undefined\") event = null;\r\nfunction HM_f_PopUp(){return false};\r\nfunction
+  HM_f_PopDown(){return false};\r\npopUp = HM_f_PopUp;\r\npopDown = HM_f_PopDown;\r\n\r\n\r\nHM_GL_MenuWidth
+  \         = 120;\r\nHM_GL_FontFamily         = \"Arial,sans-serif\";\r\nHM_GL_FontSize
+  \          = 10;\r\nHM_GL_FontBold           = false;\r\nHM_GL_FontItalic         =
+  false;\r\nHM_GL_FontColor          = \"white\";\r\nHM_GL_FontColorOver      = \"navy\";\r\nHM_GL_BGColor
+  \           = \"navy\";\r\nHM_GL_BGColorOver        = \"white\";\r\nHM_GL_ItemPadding
+  \       = 3;\r\n\r\nHM_GL_BorderWidth        = 2;\r\nHM_GL_BorderColor        =
+  \"navy\";\r\nHM_GL_BorderStyle        = \"solid\";\r\nHM_GL_SeparatorSize      =
+  1;\r\nHM_GL_SeparatorColor     = \"navy\";\r\n\r\nHM_GL_ImageSrc = \"HM_More_black_right.gif\";\r\nHM_GL_ImageSrcLeft
+  = \"HM_More_black_left.gif\";\r\n\r\nHM_GL_ImageSrcOver = \"HM_More_white_right.gif\";\r\nHM_GL_ImageSrcLeftOver
+  = \"HM_More_white_left.gif\";\r\n\r\nHM_GL_ImageSize          = 5;\r\nHM_GL_ImageHorizSpace
+  \   = 5;\r\nHM_GL_ImageVertSpace     = 5;\r\n\r\nHM_GL_KeepHilite         = true;\r\nHM_GL_ClickStart
+  \        = false;\r\nHM_GL_ClickKill          = 0;\r\nHM_GL_ChildOverlap       =
+  50;\r\nHM_GL_ChildOffset        = 5;\r\nHM_GL_ChildPerCentOver   = null;\r\nHM_GL_TopSecondsVisible
+  \ = .1;\r\nHM_GL_ChildSecondsVisible = .1;\r\nHM_GL_StatusDisplayBuild = 0;\r\nHM_GL_StatusDisplayLink
+  \ = 1;\r\nHM_GL_UponDisplay        = null;\r\nHM_GL_UponHide           = null;\r\n\r\nHM_GL_RightToLeft
+  \     = false;\r\nHM_GL_CreateTopOnly      = HM_NS4 ? true : false;\r\nHM_GL_ShowLinkCursor
+  \    = true;\r\n\r\nHM_GL_ScrollEnabled = false;\r\nHM_GL_ScrollBarHeight = 14;\r\nHM_GL_ScrollBarColor
+  = \"lightgrey\";\r\nHM_GL_ScrollImgSrcTop = \"HM_More_black_top.gif\";\r\nHM_GL_ScrollImgSrcBot
+  = \"HM_More_black_bot.gif\";\r\nHM_GL_ScrollImgWidth = 9;\r\nHM_GL_ScrollImgHeight
+  = 5;\r\nHM_GL_ScrollBothBars = false;\r\n\r\nHM_GL_HoverTimeTop  = 500;\r\nHM_GL_HoverTimeTree
+  = 500;\r\n\r\n// the following function is included to illustrate the improved JS
+  expression handling of\r\n// the left_position and top_position parameters introduced
+  in 4.0.9\r\n// and modified in 4.1.3 to account for IE6 standards-compliance mode\r\n//
+  you may delete if you have no use for it\r\n\r\nfunction HM_f_CenterMenu(topmenuid)
+  {\r\n\tvar MinimumPixelLeft = 0;\r\n\tvar TheMenu = HM_DOM ? document.getElementById(topmenuid)
+  : window[topmenuid];\r\n\tvar TheMenuWidth = HM_DOM ? parseInt(TheMenu.style.width)
+  : HM_IE4 ? TheMenu.style.pixelWidth : TheMenu.clip.width;\r\n\tvar TheWindowWidth
+  = HM_IE ? (HM_DOM ? HM_Canvas.clientWidth : document.body.clientWidth) : window.innerWidth;\r\n\treturn
+  Math.max(parseInt((TheWindowWidth-TheMenuWidth) / 2),MinimumPixelLeft);\r\n}\r\n\r\nif(HM_IsMenu)
+  {\r\n\tdocument.write(\"<SCR\" + \"IPT LANGUAGE='JavaScript1.2' SRC='/include/script/HM_Arrays.js'
+  TYPE='text/javascript'><\\/SCR\" + \"IPT>\");\r\n\tdocument.write(\"<SCR\" + \"IPT
+  LANGUAGE='JavaScript1.2' SRC='/include/script/HM_Script\"+ HM_BrowserString +\".js'
+  TYPE='text/javascript'><\\/SCR\" + \"IPT>\");\r\n}\r\n\r\n\r\n//end"

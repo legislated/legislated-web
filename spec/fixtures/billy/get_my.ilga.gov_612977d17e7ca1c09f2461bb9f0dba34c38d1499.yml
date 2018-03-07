@@ -1,0 +1,259 @@
+---
+:scope: 
+:url: http://my.ilga.gov/Hearing/HearingDetail/15597
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Cache-Control: private
+  Content-Length: '22902'
+  Content-Type: text/html; charset=utf-8
+  Server: Microsoft-IIS/8.5
+  X-AspNet-Version: 4.0.30319
+  X-AspNetMvc-Version: '5.2'
+  Set-Cookie: ASP.NET_SessionId=yni42ic2ehoj1rkksd3egdo0; path=/; HttpOnly
+  X-Powered-By: ASP.NET
+  Date: Tue, 06 Mar 2018 05:00:14 GMT
+  Connection: close
+:content: "<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta charset=\"utf-8\" content=\"\"/>\r\n
+  \   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\" />\r\n    <meta name=\"classification\"
+  content=\"Government\"/>\r\n    <meta name=\"distribution\" content=\"Global\"/>\r\n
+  \   <meta name=\"rating\" content=\"General\"/>\r\n    <meta name=\"contactState\"
+  content=\"IL\"/>\r\n    <meta name=\"siteTitle\" content=\"Illinois General Assembly\"/>\r\n
+  \   <meta name=\"keywords\" content=\"Illinois General Assembly, legislation, public
+  acts, Springfield, Illinois state government\"/>\r\n    <meta name=\"description\"
+  content=\"Dashboard for the Illinois General Assembly\"/>\r\n    <meta name=\"createDate\"
+  content=\"11/27/2012\"/>\r\n    <meta name=\"dateofLastModification\" content=\"2/20/2013\"/>\r\n
+  \   <meta name=\"timePeriodTextual\" content=\"2012-2013\"/>\r\n    <meta name=\"medium\"
+  content=\"Web Site\"/>\r\n    <meta name=\"PermanentPublicAccess\" content=\"yes\"/>\r\n
+  \   <meta name=\"agencyProgram\" content=\"Illinois General Assembly\"/>\r\n    <meta
+  name=\"linkage\" content=\"\"/>\r\n    <meta name=\"language\" content=\"EN\"/>\r\n
+  \   <meta name=\"govType\" content=\"State\"/>\r\n    <meta name=\"contactName\"
+  content=\"Legislative Information System\"/>\r\n    <meta name=\"contactOrganization\"
+  content=\"LIS Staff Services\"/>\r\n    <meta name=\"contactStreetAddress1\" content=\"705
+  Stratton Office Building\"/>\r\n    <meta name=\"contactStreetAddress2\" content=\"\"/>\r\n
+  \   <meta name=\"contactCity\" content=\"Springfield\"/>\r\n    <meta name=\"contactZipcode\"
+  content=\"62706\"/>\r\n    <meta name=\"contactNetworkAddress\" content=\"webmaster@ilga.gov\"/>\r\n
+  \   <meta name=\"contactPhoneNumber\" content=\"217-782-3944\"/>\r\n    <meta name=\"contactFaxNumber\"
+  content=\"217-524-6059\"/>\r\n    <meta name=\"originatorJurisdiction\" content=\"State
+  Of Illinois\"/>\r\n    <meta name=\"originatorOffice\" content=\"Illinois General
+  Assembly\"/>\r\n    <meta name=\"originatorDepartment\" content=\"Legislative Information
+  System\"/>\r\n    <meta name=\"originatorDivision\" content=\"Web Staff\"/>\r\n
+  \   <meta name=\"originatorSection\" content=\"\"/>\r\n    <meta name=\"Classification\"
+  content=\"Government--State Government--Illinois General Assembly\"/>\r\n    <title>House
+  Hearing Details</title>\r\n    <link href=\"/Content/Site.css\" rel=\"stylesheet\"
+  type=\"text/css\" />\r\n    <script src=\"/Scripts/jquery-1.7.1.min.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/modernizr-1.7.min.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/jquery-ui-1.8.11.min.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/jquery.unobtrusive-ajax.min.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/lis/common/lis.common.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/lis/common/lis.telerik.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/lis/common/content.blocks.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/MyILGA.js\" type=\"text/javascript\"></script>\r\n    <script
+  src=\"/Scripts/requiredif-validation.js\" type=\"text/javascript\"></script>\r\n
+  \   <script src=\"/Scripts/lis/common/lis.ui.NavigationList.js\" type=\"text/javascript\"></script>\r\n
+  \   \r\n    <link type=\"text/css\" href=\"/Content/2012.1.214/telerik.common.min.css\"
+  rel=\"stylesheet\"/>\r\n<link type=\"text/css\" href=\"/Content/2012.1.214/telerik.windows7.min.css\"
+  rel=\"stylesheet\"/>\r\n\r\n    \r\n</head>\r\n<body>\r\n    <div id=\"header-background\">\r\n
+  \   </div>\r\n    <div class=\"clear\">\r\n    </div>\r\n    <div class=\"page\">\r\n
+  \       <div id=\"header-surround\">\r\n            <div id=\"header\">\r\n                <img
+  class=\"logo\" alt=\"LIS\" src=\"/Content/themes/lis/images/stateseal.png\"/>\r\n
+  \               <div id=\"user-info\">\r\n                         <img src=\"/Content/themes/Lis/icons/lock.png\"/>\r\n
+  \   [ <a href=\"/Account/LogOn\">Log On</a> ]\r\n\r\n                </div>\r\n
+  \               <div class=\"header-title\">\r\n                    Illinois 100th
+  General Assembly</div>\r\n                <div class=\"header-title\">House Hearing
+  Details</div>\r\n                <div class=\"clear\">\r\n                    <br
+  />\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div
+  id=\"sidebar\">\r\n            \r\n            <div>\r\n                <form action=\"/Home/AjaxSetSelectedGeneralAssembly\"
+  data-ajax=\"true\" data-ajax-method=\"POST\" id=\"form0\" method=\"post\">    <div>\r\n
+  \       <div style=\"color: #FFFFFF; line-height: 24px; border-bottom: 1px solid
+  #54758C;\">\r\n            <div class=\"_100\" style=\"text-align: center; font-size:
+  16px; color: #FFFFFF;\">\r\n                General Assembly:\r\n            </div>\r\n
+  \           <div class=\"_100\" style=\"text-align: right;\">\r\n                <select
+  id=\"GANumber\" name=\"GANumber\" style=\"font-size:12px; padding-left:30px;\"><option
+  selected=\"selected\" value=\"100\">100th G.A. (2017-2019)</option>\r\n<option value=\"99\">99th
+  G.A. (2015-2017)</option>\r\n<option value=\"98\">98th G.A. (2013-2015)</option>\r\n<option
+  value=\"97\">97th G.A. (2011-2013)</option>\r\n<option value=\"96\">96th G.A. (2009-2011)</option>\r\n<option
+  value=\"95\">95th G.A. (2007-2009)</option>\r\n<option value=\"94\">94th G.A. (2005-2007)</option>\r\n<option
+  value=\"93\">93rd G.A. (2003-2005)</option>\r\n</select>\r\n            </div>\r\n
+  \           <div class=\"_100\" style=\"text-align: right; margin: 5px 0px 5px 0px;\">\r\n
+  \               <button type=\"submit\" class=\"t-button t-button-icon\" style=\"width:
+  60px;\">\r\n                    <span class=\"t-icon t-refresh\"></span>Go\r\n                </button>\r\n
+  \           </div>\r\n            <div class=\"clear\">\r\n            </div>\r\n
+  \       </div>\r\n    </div>\r\n</form>\r\n                <nav id=\"nav\"><ul class=\"menu
+  shadow-bottom\" id=\"side-nav\"><li><a href=\"/\"><img src=\"/Content/themes/Lis/icons/home.png\"
+  />Home</a></li><li><a class=\"header\" href=\"javascript:void(0);\"><img src=\"/Content/themes/Lis/icons/statehouse-24.png\"
+  />House<span class=\"arrow\" /></a><ul class=\"submenu\"><li><a href=\"/Chamber/AllMembers?chamber=H\"><img
+  src=\"/Content/themes/Lis/icons/member-24.png\" />Members</a></li><li><a href=\"/Committee/CurrentCommitteeListing?chamber=H\"><img
+  src=\"/Content/themes/Lis/icons/Committee-24.png\" />Committees</a></li><li><a href=\"/Hearing/AllHearings?chamber=H\"><img
+  src=\"/Content/themes/Lis/icons/hearing-24.png\" />Committee Hearings</a></li></ul></li><li><a
+  class=\"header\" href=\"javascript:void(0);\"><img src=\"/Content/themes/Lis/icons/statehouse-24.png\"
+  />Senate<span class=\"arrow\" /></a><ul class=\"submenu\"><li><a href=\"/Chamber/AllMembers?chamber=S\"><img
+  src=\"/Content/themes/Lis/icons/member-24.png\" />Members</a></li><li><a href=\"/Committee/CurrentCommitteeListing?chamber=S\"><img
+  src=\"/Content/themes/Lis/icons/Committee-24.png\" />Committees</a></li><li><a href=\"/Hearing/AllHearings?chamber=S\"><img
+  src=\"/Content/themes/Lis/icons/hearing-24.png\" />Committee Hearings</a></li></ul></li><li><a
+  href=\"http://www.ilga.gov/default.asp\"><img src=\"/favicon.ico\" />ILGA.GOV</a></li><li><a
+  class=\"header\" href=\"javascript:void(0);\"><img src=\"/Content/themes/Lis/icons/Help-24.png\"
+  />Help<span class=\"arrow\" /></a><ul class=\"submenu\"><li><a href=\"/Documents/ILGA
+  Dashboard User Guide.pdf\"><img src=\"/Content/themes/Lis/icons/notebook.png\" />User
+  Manual</a></li><li><a href=\"/Home/FAQ\"><img src=\"/Content/themes/Lis/icons/FAQ-24.png\"
+  />FAQ</a></li><li><a href=\"/Home/About\"><img src=\"/Content/themes/Lis/icons/About-24.png\"
+  />About</a></li></ul></li><li><a href=\"/Account/Register\"><img src=\"/Content/themes/Lis/icons/register-24.png\"
+  />Register</a></li></ul></nav>    <div class=\"clear\"></div>\r\n\r\n\r\n\r\n\r\n\r\n<script
+  type=\"text/javascript\">\r\n    $(document).ready(function () {\r\n        $(\"#nav\").navigation();\r\n
+  \   });\r\n</script>\r\n\r\n\r\n\r\n\r\n\r\n            </div>\r\n            <div
+  id=\"sidebar-imagelinks\">\r\n                <a href=\"http://www.amberillinois.com/\">\r\n
+  \                   <img src=\"/Content/images/TargetAMBERalert.gif\" alt=\"amberillinois.com\"
+  /></a>\r\n                <a href=\"http://www.missingkids.com\">\r\n                    <img
+  src=\"/Content/images/missingexploited.jpg\" alt=\"missingexploited.com\" /></a>\r\n
+  \           </div>\r\n        </div>\r\n        <div id=\"main\">\r\n            <div
+  id=\"main-content\">\r\n                <div class=\"_100\">\r\n                    <noscript>\r\n<div
+  class=\"alert error\" name=\"Alert2\" />                            <strong>JavaScript
+  must be enabled in order for MyILGA to function correctly. However,\r\n                                it
+  seems JavaScript is disabled by your browser. To use MyILGA, enable JavaScript\r\n
+  \                               by modifying your browser options, then try again.
+  </strong>     \r\n</div>\r\n                    </noscript>\r\n                </div>\r\n
+  \               \r\n                \r\n\r\n\r\n<div class=\"_100\">\r\n        <div
+  style=\"width:98%\">\r\n<div class=\"alert note\" name=\"Alert1\" />                                                                      <strong>Electronic
+  witness slips can be submitted up to the conclusion of the committee hearing.</strong>\r\n</div>
+  \       </div>\r\n<div class=\"content-width\" name=\"hearingdetails\"><div class=\"block-border\"><div
+  class=\"block-header\"><img alt=\"/Content/themes/lis/icons/hearing.png\" class=\"block-icon\"
+  src=\"/Content/themes/lis/icons/hearing.png\"></img><div class=\"block-icon-title\"><h1>House
+  Elementary & Secondary Education: Licensing, Administration & Oversight Hearing
+  Details</h1></div></div><div class=\"block-content\">        <table id=\"profile-table\">\r\n
+  \                       <tr>\r\n                <th>\r\n                    Scheduled
+  Date\r\n                </th>\r\n                <td>\r\n                    3/07/2018
+  - 8:00 AM\r\n                </td>\r\n            </tr>\r\n            <tr>\r\n
+  \               <th>\r\n                    Location\r\n                </th>\r\n
+  \               <td>\r\n                    Room 114 - Capitol Building -  - Springfield,
+  IL\r\n                </td>\r\n            </tr>\r\n            <tr>\r\n                <th>\r\n
+  \                   Posting Date\r\n                </th>\r\n                <td>\r\n
+  \                   3/01/2018 - 12:30 PM\r\n                </td>\r\n            </tr>\r\n
+  \               <tr>\r\n                    <th style = \" vertical-align:top;\">\r\n
+  \                       Subject Matter\r\n                    </th>\r\n                    <td>\r\n
+  \                       <strong>  Illinois&#39; Teacher Shortage.</strong>\r\n                    </td>\r\n
+  \               </tr>\r\n        </table>\r\n        <div style = \"text-align:center;
+  margin:15px;\">\r\n                    <a class=\"viewiconbutton t-button t-button-icontext\"
+  style=\"font-size:12px\" href='/Hearing/WitnessSlipInfo?HearingId=15597&amp;legislationdocumentid=0&amp;billtext=Subject%20Matter
+  '>\r\n                     <span class=\"t-icon\"></span>View Witness Slips</a>\r\n
+  \                   <a class=\"slipiconbutton t-button t-button-icontext\" style=\"font-size:12px\"
+  href='/WitnessSlip/Create?committeeHearingId=15597&amp;legislationId=0&amp;legislationdocumentid=0
+  '>\r\n                    <span class=\"t-icon\"></span>Create Witness Slip </a>\r\n\r\n
+  \       </div>\r\n</div></div></div>\r\n<div class=\"content-width\" name=\"ContentBlock2\"><div
+  class=\"block-border\"><div class=\"block-header\"><img alt=\"/Content/themes/lis/icons/legislation-32.png\"
+  class=\"block-icon\" src=\"/Content/themes/lis/icons/legislation-32.png\"></img><div
+  class=\"block-icon-title\"><h1>Items Posted To Hearing</h1></div><div class=\"block-legend\">
+  \                                       <span><img src=\"/Content/themes/lis/icons/slip-icon.png\"
+  alt=\"icon\" />Create Witness Slip</span>\r\n                                        <span><img
+  src=\"/Content/themes/lis/icons/view-16.png\" alt=\"icon\" />View Witness Slips</span>
+  \                                       \r\n</div></div><div class=\"block-content\"><div
+  class=\"t-widget t-grid\" id=\"GridCurrentCommittees\"><table cellspacing=\"0\"><colgroup><col
+  style=\"width:180px\" /><col style=\"width:200px\" /><col style=\"width:375px\"
+  /><col style=\"width:100px\" /></colgroup><thead class=\"t-grid-header\"><tr><th
+  class=\"t-header\" scope=\"col\" style=\"display:none\"><span class=\"t-link\">Legislation
+  Id</span></th><th class=\"t-header\" scope=\"col\" style=\"display:none\"><span
+  class=\"t-link\">Legislation Document Id</span></th><th class=\"t-header\" scope=\"col\"><span
+  class=\"t-link\">Bill #</span></th><th class=\"t-header\" scope=\"col\"><span class=\"t-link\">Sponsor
+  Name</span></th><th class=\"t-header\" scope=\"col\"><span class=\"t-link\">ABR
+  - Short Description</span></th><th class=\"t-header\" scope=\"col\"><span class=\"t-link\">Witness
+  Slips</span></th></tr></thead><tbody><tr><td style=\"display:none;\">108345</td><td
+  style=\"display:none;\">137669</td><td>HB4167</td><td>Lindsay Parkhurst</td><td>SCH
+  CD-SUBSTITUTE TEACHER LIC</td><td><a class=\"viewiconbutton t-button t-button-icon
+  t-grid-viewSlips&lt;#=Id#>\" href=\"/Hearing/WitnessSlipInfo/108345?hearingid=15597&amp;LegislationDocumentId=137669\"
+  title=\"View Witness Slips\"><span class=\"t-icon \"></span></a><a class=\"slipiconbutton
+  t-button t-button-icon t-grid-createslip&lt;#=Id#>\" href=\"/WitnessSlip/Create/108345?committeeHearingId=15597&amp;LegislationId=108345&amp;LegislationDocumentId=137669\"
+  title=\"Create Witness Slip\"><span class=\"t-icon \"></span></a></td></tr><tr class=\"t-alt\"><td
+  style=\"display:none;\">108767</td><td style=\"display:none;\">138091</td><td>HB4280</td><td>Robert
+  W. Pritchard</td><td>SCH CD-GROWING FUTURE EDUCATOR</td><td><a class=\"viewiconbutton
+  t-button t-button-icon t-grid-viewSlips&lt;#=Id#>\" href=\"/Hearing/WitnessSlipInfo/108767?hearingid=15597&amp;LegislationDocumentId=138091\"
+  title=\"View Witness Slips\"><span class=\"t-icon \"></span></a><a class=\"slipiconbutton
+  t-button t-button-icon t-grid-createslip&lt;#=Id#>\" href=\"/WitnessSlip/Create/108767?committeeHearingId=15597&amp;LegislationId=108767&amp;LegislationDocumentId=138091\"
+  title=\"Create Witness Slip\"><span class=\"t-icon \"></span></a></td></tr><tr><td
+  style=\"display:none;\">108768</td><td style=\"display:none;\">138092</td><td>HB4281</td><td>Robyn
+  Gabel</td><td>SCH CD-TRANING-HOMELESSNESS</td><td><a class=\"viewiconbutton t-button
+  t-button-icon t-grid-viewSlips&lt;#=Id#>\" href=\"/Hearing/WitnessSlipInfo/108768?hearingid=15597&amp;LegislationDocumentId=138092\"
+  title=\"View Witness Slips\"><span class=\"t-icon \"></span></a><a class=\"slipiconbutton
+  t-button t-button-icon t-grid-createslip&lt;#=Id#>\" href=\"/WitnessSlip/Create/108768?committeeHearingId=15597&amp;LegislationId=108768&amp;LegislationDocumentId=138092\"
+  title=\"Create Witness Slip\"><span class=\"t-icon \"></span></a></td></tr><tr class=\"t-alt\"><td
+  style=\"display:none;\">109935</td><td style=\"display:none;\">139285</td><td>HB4706</td><td>Sue
+  Scherer</td><td>SCH CD-SUB TEACHER FITNESS</td><td><a class=\"viewiconbutton t-button
+  t-button-icon t-grid-viewSlips&lt;#=Id#>\" href=\"/Hearing/WitnessSlipInfo/109935?hearingid=15597&amp;LegislationDocumentId=139285\"
+  title=\"View Witness Slips\"><span class=\"t-icon \"></span></a><a class=\"slipiconbutton
+  t-button t-button-icon t-grid-createslip&lt;#=Id#>\" href=\"/WitnessSlip/Create/109935?committeeHearingId=15597&amp;LegislationId=109935&amp;LegislationDocumentId=139285\"
+  title=\"Create Witness Slip\"><span class=\"t-icon \"></span></a></td></tr><tr><td
+  style=\"display:none;\">110237</td><td style=\"display:none;\">139597</td><td>HB4870</td><td>Lou
+  Lang</td><td>SCH CD-MEDICAL CANNABIS</td><td><a class=\"viewiconbutton t-button
+  t-button-icon t-grid-viewSlips&lt;#=Id#>\" href=\"/Hearing/WitnessSlipInfo/110237?hearingid=15597&amp;LegislationDocumentId=139597\"
+  title=\"View Witness Slips\"><span class=\"t-icon \"></span></a><a class=\"slipiconbutton
+  t-button t-button-icon t-grid-createslip&lt;#=Id#>\" href=\"/WitnessSlip/Create/110237?committeeHearingId=15597&amp;LegislationId=110237&amp;LegislationDocumentId=139597\"
+  title=\"Create Witness Slip\"><span class=\"t-icon \"></span></a></td></tr><tr class=\"t-alt\"><td
+  style=\"display:none;\">110958</td><td style=\"display:none;\">140319</td><td>HB5249</td><td>Dan
+  Brady</td><td>SCH CD-SPECIAL ED-ENROLLMENT</td><td><a class=\"viewiconbutton t-button
+  t-button-icon t-grid-viewSlips&lt;#=Id#>\" href=\"/Hearing/WitnessSlipInfo/110958?hearingid=15597&amp;LegislationDocumentId=140319\"
+  title=\"View Witness Slips\"><span class=\"t-icon \"></span></a><a class=\"slipiconbutton
+  t-button t-button-icon t-grid-createslip&lt;#=Id#>\" href=\"/WitnessSlip/Create/110958?committeeHearingId=15597&amp;LegislationId=110958&amp;LegislationDocumentId=140319\"
+  title=\"Create Witness Slip\"><span class=\"t-icon \"></span></a></td></tr><tr><td
+  style=\"display:none;\">111661</td><td style=\"display:none;\">141022</td><td>HB5627</td><td>Thomas
+  M. Bennett</td><td>SCH CD-EDUCATOR LICENSURE</td><td><a class=\"viewiconbutton t-button
+  t-button-icon t-grid-viewSlips&lt;#=Id#>\" href=\"/Hearing/WitnessSlipInfo/111661?hearingid=15597&amp;LegislationDocumentId=141022\"
+  title=\"View Witness Slips\"><span class=\"t-icon \"></span></a><a class=\"slipiconbutton
+  t-button t-button-icon t-grid-createslip&lt;#=Id#>\" href=\"/WitnessSlip/Create/111661?committeeHearingId=15597&amp;LegislationId=111661&amp;LegislationDocumentId=141022\"
+  title=\"Create Witness Slip\"><span class=\"t-icon \"></span></a></td></tr><tr class=\"t-alt\"><td
+  style=\"display:none;\">111887</td><td style=\"display:none;\">141249</td><td>HB5796</td><td>Linda
+  Chapa LaVia</td><td>SCH CD-SCH DIST REPORT CARD</td><td><a class=\"viewiconbutton
+  t-button t-button-icon t-grid-viewSlips&lt;#=Id#>\" href=\"/Hearing/WitnessSlipInfo/111887?hearingid=15597&amp;LegislationDocumentId=141249\"
+  title=\"View Witness Slips\"><span class=\"t-icon \"></span></a><a class=\"slipiconbutton
+  t-button t-button-icon t-grid-createslip&lt;#=Id#>\" href=\"/WitnessSlip/Create/111887?committeeHearingId=15597&amp;LegislationId=111887&amp;LegislationDocumentId=141249\"
+  title=\"Create Witness Slip\"><span class=\"t-icon \"></span></a></td></tr><tr><td
+  style=\"display:none;\">108249</td><td style=\"display:none;\">137542</td><td>HR683</td><td>David
+  S. Olsen</td><td>NATL SCHOOL COUNSELING WEEK</td><td><a class=\"viewiconbutton t-button
+  t-button-icon t-grid-viewSlips&lt;#=Id#>\" href=\"/Hearing/WitnessSlipInfo/108249?hearingid=15597&amp;LegislationDocumentId=137542\"
+  title=\"View Witness Slips\"><span class=\"t-icon \"></span></a><a class=\"slipiconbutton
+  t-button t-button-icon t-grid-createslip&lt;#=Id#>\" href=\"/WitnessSlip/Create/108249?committeeHearingId=15597&amp;LegislationId=108249&amp;LegislationDocumentId=137542\"
+  title=\"Create Witness Slip\"><span class=\"t-icon \"></span></a></td></tr></tbody></table><div
+  class=\"t-grid-pager t-grid-bottom\"><div class=\"t-status\"><a class=\"t-icon t-refresh\"
+  href=\"/Hearing/HearingDetail/15597\">Refresh</a></div><div class=\"t-pager t-reset\"><a
+  class=\"t-link t-state-disabled\" href=\"#\"><span class=\"t-icon t-arrow-first\">first</span></a><a
+  class=\"t-link t-state-disabled\" href=\"#\"><span class=\"t-icon t-arrow-prev\">prev</span></a><div
+  class=\"t-numeric\"><span class=\"t-state-active\">1</span></div><a class=\"t-link
+  t-state-disabled\" href=\"#\"><span class=\"t-icon t-arrow-next\">next</span></a><a
+  class=\"t-link t-state-disabled\" href=\"#\"><span class=\"t-icon t-arrow-last\">last</span></a></div><div
+  class=\"t-status-text\">Displaying items 1 - 9 of 9</div></div></div></div></div></div>\r\n</div>\r\n\r\n\r\n<script
+  type=\"text/javascript\">\r\n    $(document).ready(function () {\r\n        $(\"#nav\").navigation('SetMenuItem',
+  '/Hearing/AllHearings?chamber=H');\r\n    });\r\n</script>\r\n                <div
+  class=\"clear\">\r\n                </div>\r\n            </div>\r\n        </div>\r\n
+  \       <div id=\"footer-surround\">\r\n            <div id=\"footer\">\r\n                <div
+  id=\"footer-social\">\r\n                     \r\n                    <div id=\"footer-icons\">\r\n
+  \                        \r\n                    </div>\r\n                </div>\r\n
+  \               \r\n                <div id=\"footer-maintain\">\r\n                    <div>\r\n
+  \                       <h4>\r\n                            This site is maintained
+  for the Illinois General Assembly by the Legislative Information\r\n                            System,
+  705 Stratton Building, Springfield, Illinois 62706.</h4>\r\n                    </div>\r\n
+  \                   <div class=\"contactinfo\">\r\n                        <h4>\r\n
+  \                           Office: (217) 782-3944</h4>\r\n                        <h4>\r\n
+  \                           TTY: (217) 782-2050</h4>\r\n                        <h4>\r\n
+  \                           Email: webmaster@ilga.gov</h4>\r\n                    </div>\r\n
+  \               </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n
+  \   <div id=\"footer-background\">\r\n    </div>\r\n    <script type=\"text/javascript\"
+  src=\"/Scripts/2012.1.214/telerik.common.min.js\"></script>\r\n<script type=\"text/javascript\"
+  src=\"/Scripts/2012.1.214/telerik.textbox.min.js\"></script>\r\n<script type=\"text/javascript\"
+  src=\"/Scripts/2012.1.214/telerik.grid.min.js\"></script>\r\n<script type=\"text/javascript\">\r\n//<![CDATA[\r\njQuery(document).ready(function(){\r\njQuery('#GridCurrentCommittees').tGrid({columns:[{\"attr\":\"
+  style=\\\"display:none;\\\"\",\"title\":\"Legislation Id\",\"hidden\":true,\"member\":\"LegislationId\",\"type\":\"Number\"},{\"attr\":\"
+  style=\\\"display:none;\\\"\",\"title\":\"Legislation Document Id\",\"hidden\":true,\"member\":\"LegislationDocumentId\",\"type\":\"Number\"},{\"title\":\"Bill
+  #\",\"member\":\"BillText\",\"type\":\"String\"},{\"title\":\"Sponsor Name\",\"member\":\"SponsorName\",\"type\":\"String\"},{\"title\":\"ABR
+  - Short Description\",\"member\":\"DocumentAbr\",\"type\":\"String\"},{\"title\":\"Witness
+  Slips\",\"commands\":[{\"name\":\"viewSlips\\u003c#=Id#\\u003e\",\"attr\":\" class=\\\"viewiconbutton\\\"
+  title=\\\"View Witness Slips\\\"\",\"buttonType\":\"Image\",\"url\":\"/Hearing/WitnessSlipInfo/%3C%23%3dLegislationId%23%3E?hearingid=15597\\u0026GridCurrentCommittees-page=%3C%23%3D__page%23%3E\\u0026LegislationDocumentId=%3C%23%3DLegislationDocumentId%23%3E\"},{\"name\":\"createslip\\u003c#=Id#\\u003e\",\"attr\":\"
+  class=\\\"slipiconbutton\\\" title=\\\"Create Witness Slip\\\"\",\"buttonType\":\"Image\",\"url\":\"/WitnessSlip/Create/%3C%23%3dLegislationId%23%3E?committeeHearingId=15597\\u0026GridCurrentCommittees-page=%3C%23%3D__page%23%3E\\u0026LegislationId=%3C%23%3DLegislationId%23%3E\\u0026LegislationDocumentId=%3C%23%3DLegislationDocumentId%23%3E\"}]}],
+  urlFormat:'/Hearing/HearingDetail/15597?GridCurrentCommittees-page=%7B0%7D', pageSize:25,
+  total:9, currentPage:1, pageSizesInDropDown:[\"5\",\"10\",\"20\",\"50\"], pageOnScroll:false,
+  noRecordsTemplate:'No records to display.'});});\r\n//]]>\r\n</script>\r\n    \r\n</body>\r\n<script
+  type=\"text/javascript\">\r\n    $('.hide').bind('click', function () {\r\n        hideElement($(this).closest('.alert'));\r\n
+  \   });\r\n\r\n    $('.collapsible').bind('click', function () {\r\n        collapseBlock($(this));\r\n
+  \   });\r\n</script>\r\n\r\n\r\n<script type=\"text/javascript\">\r\n\r\n    var
+  _gaq = _gaq || [];\r\n    _gaq.push(['_setAccount', 'UA-36515274-1']);\r\n    _gaq.push(['_trackPageview']);\r\n\r\n
+  \   (function () {\r\n        var ga = document.createElement('script'); ga.type
+  = 'text/javascript'; ga.async = true;\r\n        ga.src = ('https:' == document.location.protocol
+  ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\r\n        var
+  s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);\r\n
+  \   })();\r\n\r\n</script>\r\n\r\n\r\n</html>\r\n"

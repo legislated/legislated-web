@@ -1,8 +1,11 @@
 GraphSchema = GraphQL::Schema.define do
+  use GraphQL::Batch
+  enable_preloading
+
   query ::Types::QueryType
   mutation ::Mutations::MutationType
 
-  # relay node interface lookup
+  # relay node interface
   GraphQL::Schema::UniqueWithinType.default_id_separator = '|'
 
   id_from_object -> (obj, type_def, _ctx) {

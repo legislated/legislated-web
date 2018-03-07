@@ -3,7 +3,9 @@ ruby '2.3.0'
 
 # api
 gem 'graphql'
+gem 'graphql-preload'
 gem 'honeybadger'
+gem 'lograge'
 gem 'pg'
 gem 'pg_search'
 gem 'puma', '~> 3.0'
@@ -12,7 +14,7 @@ gem 'rails', '~> 5.2.0.rc1'
 gem 'redis'
 gem 'sidekiq'
 
-# import
+# scraping / imports
 gem 'capybara'
 gem 'httparty'
 gem 'poltergeist'
@@ -41,6 +43,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'puffing-billy', git: 'https://github.com/wzrad/puffing-billy.git', branch: 'develop'
   gem 'rb-readline'
   gem 'rspec-rails'
   gem 'rubocop'
