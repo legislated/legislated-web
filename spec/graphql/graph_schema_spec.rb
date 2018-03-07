@@ -36,4 +36,8 @@ describe GraphSchema, :graph_type do
   it_behaves_like 'a relay node provider', Types::BillType do
     let(:model) { create(:bill) }
   end
+
+  it_behaves_like 'a relay node provider', Types::LegislatorType do
+    let(:model) { create(:legislator) }
+  end
 end

@@ -72,7 +72,7 @@ module Types
 
     connection :legislators, LegislatorType.connection_type do
       description 'All legislators'
-      resolve -> (_obj, _args, _ctx) { Chamber.all }
+      resolve -> (_obj, _args, _ctx) { Legislator.all }
     end
   end
 end
