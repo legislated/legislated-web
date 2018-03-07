@@ -4,7 +4,7 @@ describe 'importing legislators' do
   it 'imports legislators from openstates' do
     VCR.use_cassette('import_legislators') do
       subject.perform
-      actual = Legislator.order(:email).to_json
+      actual = Legislator.order(:os_id).to_json
       expect(actual).to match_json_snapshot('import_legislators')
     end
   end
