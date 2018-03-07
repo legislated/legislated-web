@@ -1,6 +1,10 @@
 describe ImportIlgaHearings do
   let(:id) { 10 }
 
+  before do
+    allow(ImportIlgaHearingBills).to receive(:schedule)
+  end
+
   describe '#perform' do
     it 'upserts hearings and committes' do
       subject = described_class.new(

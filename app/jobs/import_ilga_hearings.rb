@@ -33,7 +33,7 @@ class ImportIlgaHearings
         attrs.hearing.merge(committee: committee)
       )
 
-      ImportIlgaHearingBills.perform_async(hearing.id)
+      ImportIlgaHearingBills.schedule(hearing.id)
     end
   end
 
