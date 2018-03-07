@@ -13,12 +13,6 @@ module Types
     end
 
     # entities
-    field :chamber do
-      type ChamberType
-      argument :id, !types.ID, 'The graph id of the chamber'
-      resolve -> (_obj, args, _ctx) { Chamber.find(args['id']) }
-    end
-
     field :committee do
       type CommitteeType
       argument :id, !types.ID, 'The graph id of the committee'
@@ -44,11 +38,6 @@ module Types
     end
 
     # connections
-    connection :chambers, ChamberType.connection_type do
-      description 'All chambers'
-      resolve -> (_obj, _args, _ctx) { Chamber.all }
-    end
-
     connection :committees, CommitteeType.connection_type do
       description 'All committees'
       resolve -> (_obj, _args, _ctx) { Committee.all }

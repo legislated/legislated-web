@@ -14,9 +14,7 @@ class ImportIlgaHearings
     @scraper = scraper
   end
 
-  def perform(chamber_id)
-    chamber = Chamber.find(chamber_id)
-
+  def perform(chamber)
     attrs_list = merge_sources(
       @request.call(chamber),
       @scraper.call(chamber)

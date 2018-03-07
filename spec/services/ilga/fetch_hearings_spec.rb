@@ -13,10 +13,8 @@ describe Ilga::FetchHearings do
     end
 
     it 'fetches hearings from ilga' do
-      chamber = Chamber.house.first
-
       VCR.use_cassette('ilga_fetch_hearings') do
-        result = subject.call(chamber)
+        result = subject.call(Chamber::LOWER)
         actual = result.to_json
         expect(actual).to match_json_snapshot('ilga_fetch_hearings')
       end

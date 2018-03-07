@@ -60,10 +60,10 @@ module Ilga
     end
 
     def chamber_param(chamber)
-      case chamber.kind.to_sym
-      when :house
+      case chamber.to_sym
+      when :lower
         'H'
-      when :sentate
+      when :upper
         'S'
       end
     end
