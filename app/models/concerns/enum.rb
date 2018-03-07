@@ -1,5 +1,9 @@
-module Enumeration
+module Enum
   extend ActiveSupport::Concern
+
+  included do
+    extend Enumerable
+  end
 
   class_methods do
     def values(keys)
@@ -10,12 +14,17 @@ module Enumeration
       end
     end
 
+    def coerce!(value)
+      all.find { |entry| entry == value } || (raise ValueNotFoundError value)
+    end
+
+    # collection
     def all
       @all ||= @values&.map { |name| const_get(name) }
     end
 
-    def coerce!(value)
-      all.find { |entry| entry == value } || (raise ValueNotFoundError value)
+    def each(&block)
+      all.each(&block)
     end
   end
 
