@@ -7,7 +7,7 @@ module Ilga
 
     def call(chamber)
       info("> #{task_name}: start")
-      info("  - chamber: #{chamber.name}")
+      info("  - chamber: #{chamber}")
       result = scrape_hearings(chamber)
 
       info("\n> #{task_name}: finished")
@@ -18,21 +18,22 @@ module Ilga
 
     def scrape_hearings(chamber)
       info("\n> #{task_name}: visit chamber root")
-      page.visit(chamber.url)
+      url = chamber_url(chamber)
+      page.visit(url)
 
       # click the month tab to view all the upcoming hearings
       month_tab = page.first('#CommitteeHearingTabstrip li a', text: 'Month')
       raise Error, "#{task_name}: couldn't find month 'tab'" if month_tab.blank?
       month_tab.click
 
-      scrape_paged_hearings(chamber, chamber.url)
+      scrape_paged_hearings(chamber, url)
     end
 
     def scrape_paged_hearings(chamber, url, page_number = 0)
       return [] if url.nil?
 
       info("\n> #{task_name}: visit paged committee hearings")
-      info("  - name: #{chamber.name}")
+      info("  - name: #{chamber}")
       info("  - page: #{page_number}")
 
       # visit page if necessary and wait for it to load
@@ -76,6 +77,17 @@ module Ilga
       uri = URI.parse(url)
       uri.query = URI.encode_www_form(CGI.parse(uri.query).without('_'))
       uri
+    end
+
+    def chamber_url(chamber)
+      case chamber
+      when Chamber::LOWER
+        'http://my.ilga.gov/Hearing/AllHearings?chamber=H'
+      when Chamber::UPPER
+        'http://my.ilga.gov/Hearing/AllHearings?chamber=S'
+      else
+        raise "Unknown chamber kind: #{kind}"
+      end
     end
   end
 end

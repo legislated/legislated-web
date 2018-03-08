@@ -1,6 +1,6 @@
 module Step
   module Actors
-    include Enumeration
+    include Enum
 
     values %w[
       lower
@@ -12,7 +12,7 @@ module Step
   end
 
   module Actions
-    include Enumeration
+    include Enum
 
     values %w[
       introduced
@@ -21,7 +21,7 @@ module Step
   end
 
   module Resolutions
-    include Enumeration
+    include Enum
 
     values %w[
       passed

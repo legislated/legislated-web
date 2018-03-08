@@ -10,13 +10,17 @@
 import type {ConcreteFragment} from 'relay-runtime';
 export type BillDetail_bill = {|
   +summary: ?string;
-  +sponsorName: ?string;
   +detailsUrl: ?string;
-  +fullTextUrl: ?string;
-  +witnessSlipUrl: ?string;
-  +witnessSlipResultUrl: ?string;
-  +committee: {|
-    +name: string;
+  +sponsorName: ?string;
+  +document: ?{|
+    +fullTextUrl: ?string;
+    +slipUrl: ?string;
+    +slipResultsUrl: ?string;
+  |};
+  +hearing: ?{|
+    +committee: {|
+      +name: string;
+    |};
   |};
 |};
 */
@@ -39,13 +43,6 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "sponsorName",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
       "name": "detailsUrl",
       "storageKey": null
     },
@@ -53,36 +50,65 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "fullTextUrl",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "witnessSlipUrl",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "witnessSlipResultUrl",
+      "name": "sponsorName",
       "storageKey": null
     },
     {
       "kind": "LinkedField",
       "alias": null,
       "args": null,
-      "concreteType": "Committee",
-      "name": "committee",
+      "concreteType": "Document",
+      "name": "document",
       "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
           "args": null,
-          "name": "name",
+          "name": "fullTextUrl",
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "slipUrl",
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "slipResultsUrl",
+          "storageKey": null
+        }
+      ],
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "args": null,
+      "concreteType": "Hearing",
+      "name": "hearing",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "args": null,
+          "concreteType": "Committee",
+          "name": "committee",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "name",
+              "storageKey": null
+            }
+          ],
           "storageKey": null
         }
       ],

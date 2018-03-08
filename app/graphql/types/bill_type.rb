@@ -18,37 +18,8 @@ module Types
     field :updatedAt, !DateTimeType, 'The updated date', property: :updated_at
 
     # relationships
-    field :hearing, !HearingType, 'The parent hearing'
-
+    field :hearing, HearingType, 'The parent hearing'
+    field :document, DocumentType, 'The most recent version of the bill'
     field :documents, !DocumentType.to_list_type, "The versions of the bill's document"
-
-    field :committee, !CommitteeType, 'The parent committee' do
-      resolve -> (bill, _args, _ctx) { bill.hearing.committee }
-    end
-
-    field :chamber, !ChamberType, 'The parent chamber' do
-      resolve -> (bill, _args, _ctx) { bill.hearing.committee.chamber }
-    end
-
-    # deprecated
-    field :documentNumber, !types.String, 'The number of the document, e.g. HB 1234' do
-      deprecation_reason 'moved to DocumentType'
-      resolve -> (bill, _args, _ctx) { bill.document&.number }
-    end
-
-    field :fullTextUrl, types.String, 'The URL of the full text page' do
-      deprecation_reason 'moved to DocumentType'
-      resolve -> (bill, _args, _ctx) { bill.document&.full_text_url }
-    end
-
-    field :witnessSlipUrl, types.String, 'The URL of the witness slip form' do
-      deprecation_reason 'moved to DocumentType'
-      resolve -> (bill, _args, _ctx) { bill.document&.slip_url }
-    end
-
-    field :witnessSlipResultUrl, types.String, 'The URL of the witness slip result' do
-      deprecation_reason 'moved to DocumentType'
-      resolve -> (bill, _args, _ctx) { bill.document&.slip_results_url }
-    end
   end
 end

@@ -5,13 +5,15 @@ import { createFragmentContainer, graphql } from 'react-relay'
 import { BillTitle, BillStatus, Button, Link, CopyLink } from '@/components'
 import { href } from '@/functions'
 import { mixins } from '@/styles'
-import type { Bill } from '@/types'
+import { type BillDetail_bill as Bill } from './__generated__/BillDetail_bill.graphql.js'
 
 type Props = {
   bill: Bill
 }
 
 let BillDetail = function BillDetail ({ bill }: Props) {
+  const { hearing, document } = bill
+
   return (
     <Detail>
       <BillTitle bill={bill} />
@@ -21,13 +23,19 @@ let BillDetail = function BillDetail ({ bill }: Props) {
           <h6>Synopsis</h6>
           <p>{bill.summary}</p>
           <Links>
-            <Link to={bill.fullTextUrl}>View Full Text</Link>
-            <Link to={bill.detailsUrl}>View Details</Link>
+            <Link
+              to={document && document.fullTextUrl}
+              children='View Full Text'
+            />
+            <Link
+              to={bill.detailsUrl}
+              chilren='View Details'
+            />
           </Links>
         </Element>
         <Element>
           <h6>Committee</h6>
-          <p>{bill.committee.name}</p>
+          <p>{hearing && hearing.committee.name}</p>
         </Element>
         <Element>
           <h6>Primary Sponsor</h6>
@@ -36,11 +44,11 @@ let BillDetail = function BillDetail ({ bill }: Props) {
       </Elements>
       <Actions>
         <Button
-          to={bill.witnessSlipUrl}
+          to={document && document.slipUrl}
           children='Take Action'
         />
         <Link
-          to={bill.witnessSlipResultUrl}
+          to={document && document.slipResultsUrl}
           children='View Results'
         />
       </Actions>
@@ -52,13 +60,17 @@ let BillDetail = function BillDetail ({ bill }: Props) {
 BillDetail = createFragmentContainer(BillDetail, graphql`
   fragment BillDetail_bill on Bill {
     summary
-    sponsorName
     detailsUrl
-    fullTextUrl
-    witnessSlipUrl
-    witnessSlipResultUrl
-    committee {
-      name
+    sponsorName
+    document {
+      fullTextUrl
+      slipUrl
+      slipResultsUrl
+    }
+    hearing {
+      committee {
+        name
+      }
     }
     ...BillTitle_bill
     ...BillStatus_bill

@@ -5,7 +5,8 @@ class ImportAll
     ImportBills.schedule
     ImportLegislators.schedule
 
-    chambers = Chamber.all
-    chambers.each { |c| ImportIlgaHearings.schedule(c.id) }
+    Chamber.each do |chamber|
+      ImportIlgaHearings.schedule(chamber)
+    end
   end
 end

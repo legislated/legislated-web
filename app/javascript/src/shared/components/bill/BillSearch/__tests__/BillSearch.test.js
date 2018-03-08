@@ -79,7 +79,7 @@ describe('changing the params', () => {
 
     loadSubject()
     subject.instance().didChangeParams(params)
-    jest.runAllTimers()
+    jest.runOnlyPendingTimers()
 
     expect(subject).toHaveState('disablesAnimation', false)
   })

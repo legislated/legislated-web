@@ -1,4 +1,5 @@
 class Committee < ApplicationRecord
-  belongs_to :chamber
+  include WithChamber
+
   has_many :hearings, dependent: :destroy
 end

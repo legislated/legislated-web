@@ -13,7 +13,7 @@ describe ImportIlgaHearings do
       )
 
       expect do
-        subject.perform(Chamber.first.id)
+        subject.perform(Chamber::LOWER)
       end.to pass_all(
         change(Hearing, :count).by(1),
         change(Committee, :count).by(1)
@@ -26,7 +26,7 @@ describe ImportIlgaHearings do
         -> (_) { [] }
       )
 
-      subject.perform(Chamber.first.id)
+      subject.perform(Chamber::LOWER)
       actual = Hearing.find_by(external_id: id)
       expect(actual).to have_attributes(url: nil)
     end

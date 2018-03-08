@@ -11,7 +11,7 @@ import type {ConcreteFragment} from 'relay-runtime';
 export type BillCell_bill = {|
   +id: string;
   +summary: ?string;
-  +hearing: {|
+  +hearing: ?{|
     +date: any;
   |};
 |};

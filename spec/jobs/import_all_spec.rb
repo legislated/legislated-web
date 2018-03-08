@@ -13,10 +13,9 @@ describe ImportAll do
     end
 
     it 'enqueues a hearings import for each chamber' do
-      chamber_ids = Chamber.all.map(&:id)
       subject.perform
-      expect(ImportIlgaHearings).to have_received(:perform_async).with(chamber_ids[0])
-      expect(ImportIlgaHearings).to have_received(:perform_async).with(chamber_ids[1])
+      expect(ImportIlgaHearings).to have_received(:perform_async).with(Chamber::LOWER)
+      expect(ImportIlgaHearings).to have_received(:perform_async).with(Chamber::UPPER)
     end
   end
 end

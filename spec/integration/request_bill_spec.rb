@@ -8,7 +8,6 @@ describe 'requesting bills', :graph_request do
           bill(id: "#{bill.id}") {
             id
             externalId
-            documentNumber
             title
             summary
             humanSummary

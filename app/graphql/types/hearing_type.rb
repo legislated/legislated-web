@@ -12,12 +12,8 @@ module Types
     field :location, !types.String, 'The location'
     field :date, !DateTimeType, 'The date and time'
 
-    # relationships
+    # assosciations
     field :committee, !CommitteeType, 'The parent committee'
-
-    connection :bills, BillType.connection_type do
-      description "All of the hearing's bills"
-      resolve -> (hearing, _args, _ctx) { hearing.bills }
-    end
+    connection :bills, BillType.connection_type, "All of the hearing's bills"
   end
 end
