@@ -8,7 +8,7 @@ type Location =
   string | Object
 
 type Props = {
-  to?: Location,
+  to?: Location | null,
   onClick?: () => void,
   className?: string,
   children?: React.Node

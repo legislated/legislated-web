@@ -28,8 +28,10 @@ let BillTitle = function BillTitle ({ bill }: Props) {
 BillTitle = createFragmentContainer(BillTitle, graphql`
   fragment BillTitle_bill on Bill {
     title
-    documentNumber
     updatedAt
+    document {
+      number
+    }
   }
 `)
 
