@@ -16,9 +16,9 @@ describe Types::ViewerType, :graph_type do
   end
 
   describe '#bills' do
-    it 'compiles the query' do
+    it 'searchs with the query' do
       params = { test: 'params' }
-      expect(BillsSearchCompiler).to receive(:compile).with(**params)
+      expect_any_instance_of(Bills::Search).to receive(:call).with(**params)
       resolve_field(:bills, args: { params: params })
     end
   end

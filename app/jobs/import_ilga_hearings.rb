@@ -16,8 +16,8 @@ class ImportIlgaHearings
 
   def perform(chamber)
     attrs_list = merge_sources(
-      @request.call(chamber),
-      @scraper.call(chamber)
+      request.call(chamber),
+      scraper.call(chamber)
     )
 
     attrs_list.each do |attrs|
@@ -36,6 +36,11 @@ class ImportIlgaHearings
   end
 
   private
+
+  attr_reader(
+    :request,
+    :scraper
+  )
 
   def merge_sources(fetched_hearings, scraped_hearings)
     scraped_hearings = scraped_hearings

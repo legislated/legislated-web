@@ -1,17 +1,25 @@
-describe BillsCsvService do
+describe Bills::SerializeCsv do
   subject { described_class.new }
 
   def csv_row(string)
     string.strip.gsub(/,$\s+/, ',')
   end
 
-  describe '#serialize' do
+  describe '#call' do
     let(:committee) { build(:committee, name: 'no-comma') }
-    let(:bills) { build_list(:bill, 2, :with_documents, hearing: build(:hearing, committee: committee)) }
-    let(:rows) { subject.serialize(bills).split("\n") }
+
+    let(:bills) do
+      build_list(:bill, 2, :with_documents, {
+        hearing: build(:hearing, {
+          committee: committee
+        })
+      })
+    end
 
     it 'has a header' do
-      expect(rows[0]).to eq(csv_row("
+      actual = subject.call(bills).split("\n")
+
+      expect(actual[0]).to eq(csv_row("
         document_number,
         title,
         summary,
@@ -27,7 +35,7 @@ describe BillsCsvService do
     end
 
     it 'has a row for each bill' do
-      bill_rows = bills.map do |bill|
+      expected = bills.map do |bill|
         csv_row("
           #{bill.document&.number},
           #{bill.title},
@@ -42,7 +50,8 @@ describe BillsCsvService do
         ")
       end
 
-      expect(rows.drop(1)).to eq(bill_rows)
+      actual = subject.call(bills).split("\n")
+      expect(actual.drop(1)).to eq(expected)
     end
   end
 end

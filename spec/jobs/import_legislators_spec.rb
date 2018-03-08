@@ -1,16 +1,16 @@
 describe ImportLegislators do
   subject { described_class.new(mock_service) }
 
-  let(:mock_service) { double('OpenStatesService') }
+  let(:mock_service) { object_double(OpenStates::FetchLegislators.new) }
 
   describe '#perform' do
     before do
-      allow(mock_service).to receive(:fetch_legislators).and_return([])
+      allow(mock_service).to receive(:call).and_return([])
     end
 
     it 'fetches legislators with the correct fields' do
       subject.perform
-      expect(mock_service).to have_received(:fetch_legislators) do |args|
+      expect(mock_service).to have_received(:call) do |args|
         fields = 'id,leg_id,active,first_name,middle_name,last_name,suffixes,party,chamber,district,url,email'
         expect(args[:fields]).to eq fields
       end
@@ -35,7 +35,7 @@ describe ImportLegislators do
       end
 
       it "sets the legislator's core attributes" do
-        allow(mock_service).to receive(:fetch_legislators).and_return(response(
+        allow(mock_service).to receive(:call).and_return(response(
           'leg_id' => attrs[:os_id],
           'active' => attrs[:active],
           'first_name' => attrs[:first_name],
@@ -68,7 +68,7 @@ describe ImportLegislators do
       it 'creates the legislator if it does not exist' do
         attrs = attributes_for(:legislator)
 
-        allow(mock_service).to receive(:fetch_legislators).and_return(response(
+        allow(mock_service).to receive(:call).and_return(response(
           'leg_id' => attrs[:os_id]
         ))
 

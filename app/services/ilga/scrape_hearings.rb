@@ -1,5 +1,7 @@
 module Ilga
-  class ScrapeHearings < Scraper
+  class ScrapeHearings
+    include Scraper
+
     Hearing = Struct.new(
       :ilga_id,
       :url

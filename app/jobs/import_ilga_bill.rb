@@ -10,4 +10,8 @@ class ImportIlgaBill
     bill_attrs = @scraper.call(bill)
     bill.update!(bill_attrs)
   end
+
+  private
+
+  attr_reader :scraper
 end

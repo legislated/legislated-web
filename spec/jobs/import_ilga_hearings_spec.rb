@@ -6,7 +6,7 @@ describe ImportIlgaHearings do
   end
 
   describe '#perform' do
-    it 'upserts hearings and committes' do
+    it 'imports hearings and committes' do
       subject = described_class.new(
         -> (_) { [fetched_hearing(id)] },
         -> (_) { [scraped_hearing(id)] }

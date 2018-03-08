@@ -1,0 +1,766 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://openstates.org/api/v1/bills?fields=id,bill_id,session,title,chamber,actions,versions,sources,sponsors,type,subjects&page=1&per_page=50&q=pe&search_window=session&state=il&updated_since=2018-03-07
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<OPENSTATES_API_KEY>"
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 08 Mar 2018 05:53:34 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Location:
+      - "/api/v1/bills/?state=il&search_window=session&per_page=50&fields=id%2Cbill_id%2Csession%2Ctitle%2Cchamber%2Cactions%2Cversions%2Csources%2Csponsors%2Ctype%2Csubjects&q=pe&updated_since=2018-03-07&page=1"
+      Expires:
+      - Thu, 08 Mar 2018 07:53:34 GMT
+      Cache-Control:
+      - max-age=7200
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Cache-Status:
+      - MISS
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 08 Mar 2018 05:53:34 GMT
+- request:
+    method: get
+    uri: https://openstates.org/api/v1/bills/?fields=id,bill_id,session,title,chamber,actions,versions,sources,sponsors,type,subjects&page=1&per_page=50&q=pe&search_window=session&state=il&updated_since=2018-03-07
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<OPENSTATES_API_KEY>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 08 Mar 2018 05:53:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Authorization
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Thu, 08 Mar 2018 07:53:35 GMT
+      Cache-Control:
+      - max-age=7200
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Cache-Status:
+      - MISS
+    body:
+      encoding: UTF-8
+      string: '[{"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000SB3255&GA=100&SessionId=91&DocTypeId=SB&LegID=111043&DocNum=3255&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00181554", "name": "Introduced"}], "title": "EMS
+        PERSONNEL-PHYSICIAN ASSIST", "sponsors": [{"leg_id": "ILL000154", "type":
+        "primary", "name": "Chapin Rose"}], "actions": [{"date": "2018-02-16 00:00:00",
+        "action": "Filed with Secretary by Sen. Chapin Rose", "type": ["bill:filed"],
+        "related_entities": [], "actor": "upper"}, {"date": "2018-02-16 00:00:00",
+        "action": "First Reading", "type": ["bill:reading:1"], "related_entities":
+        [], "actor": "upper"}, {"date": "2018-02-16 00:00:00", "action": "Referred
+        to Assignments", "type": ["committee:referred"], "related_entities": [], "actor":
+        "upper"}, {"date": "2018-02-27 00:00:00", "action": "Assigned to Licensed
+        Activities and Pensions", "type": ["committee:referred"], "related_entities":
+        [], "actor": "upper"}, {"date": "2018-03-07 00:00:00", "action": "Senate Committee
+        Amendment No. 1 Filed with Secretary by Sen. Chapin Rose", "type": ["amendment:introduced"],
+        "related_entities": [], "actor": "upper"}, {"date": "2018-03-07 00:00:00",
+        "action": "Senate Committee Amendment No. 1 Referred to Assignments", "type":
+        ["committee:referred"], "related_entities": [], "actor": "upper"}], "id":
+        "ILB00105038", "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=3255&GAID=14&DocTypeID=SB&LegId=111043&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "upper", "type": ["bill"], "subjects": [],
+        "bill_id": "SB 3255"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HR0027&GA=100&SessionId=91&DocTypeId=HR&LegID=99552&DocNum=27&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00165650", "name": "Introduced"}], "title": "EDUCATION
+        PENSION COST SHIFT", "sponsors": [{"leg_id": "ILL000881", "type": "primary",
+        "name": "David McSweeney"}, {"leg_id": "ILL000904", "type": "cosponsor", "name":
+        "Sam Yingling"}, {"leg_id": null, "type": "cosponsor", "name": "Jerry Costello,
+        II", "committee_id": null}, {"leg_id": null, "type": "cosponsor", "name":
+        "Jay Hoffman", "committee_id": null}, {"leg_id": "ILL000099", "type": "cosponsor",
+        "name": "Mary E. Flowers"}, {"leg_id": "ILL000107", "type": "cosponsor", "name":
+        "Norine K. Hammond"}, {"leg_id": "ILL001057", "type": "cosponsor", "name":
+        "Allen Skillicorn"}, {"leg_id": "ILL000135", "type": "cosponsor", "name":
+        "Bill Mitchell"}, {"leg_id": "ILL000077", "type": "cosponsor", "name": "Linda
+        Chapa LaVia"}, {"leg_id": "ILL000165", "type": "cosponsor", "name": "Cynthia
+        Soto"}, {"leg_id": "ILL000877", "type": "cosponsor", "name": "Stephanie A.
+        Kifowit"}, {"leg_id": "ILL001010", "type": "cosponsor", "name": "Sara Wojcicki
+        Jimenez"}, {"leg_id": "ILL001051", "type": "cosponsor", "name": "Katie Stuart"},
+        {"leg_id": "ILL000991", "type": "cosponsor", "name": "Terri Bryant"}, {"leg_id":
+        "ILL001056", "type": "cosponsor", "name": "LaToya Greenwood"}, {"leg_id":
+        "ILL000891", "type": "cosponsor", "name": "Sue Scherer"}, {"leg_id": null,
+        "type": "cosponsor", "name": "Deb Conroy", "committee_id": null}, {"leg_id":
+        "ILL000151", "type": "cosponsor", "name": "David B. Reis"}, {"leg_id": "ILL000879",
+        "type": "cosponsor", "name": "Natalie A. Manley"}, {"leg_id": "ILL000076",
+        "type": "cosponsor", "name": "John Cavaletto"}, {"leg_id": "ILL000865", "type":
+        "cosponsor", "name": "C.D. Davidsmeyer"}, {"leg_id": null, "type": "cosponsor",
+        "name": "Charles Meier", "committee_id": null}, {"leg_id": "ILL000994", "type":
+        "cosponsor", "name": "Randy E. Frese"}, {"leg_id": "ILL001062", "type": "cosponsor",
+        "name": "Michael Halpin"}, {"leg_id": "ILL001083", "type": "cosponsor", "name":
+        "John Connor"}, {"leg_id": "ILL000901", "type": "cosponsor", "name": "Emanuel
+        Chris Welch"}, {"leg_id": "ILL000981", "type": "cosponsor", "name": "Anna
+        Moeller"}, {"leg_id": "ILL001044", "type": "cosponsor", "name": "Tony McCombie"},
+        {"leg_id": "ILL000995", "type": "cosponsor", "name": "Will Guzzardi"}, {"leg_id":
+        "ILL000983", "type": "cosponsor", "name": "Litesa E. Wallace"}, {"leg_id":
+        "ILL000987", "type": "cosponsor", "name": "Peter Breen"}, {"leg_id": "ILL000985",
+        "type": "cosponsor", "name": "Carol Ammons"}, {"leg_id": "ILL001088", "type":
+        "cosponsor", "name": "Monica Bristow"}, {"leg_id": "ILL001085", "type": "cosponsor",
+        "name": "Natalie Phelps Finnie"}, {"leg_id": "ILL000073", "type": "cosponsor",
+        "name": "Kelly M. Burke"}, {"leg_id": "ILL000543", "type": "cosponsor", "name":
+        "John M. Cabello"}, {"leg_id": "ILL001055", "type": "cosponsor", "name": "Daniel
+        Swanson"}, {"leg_id": "ILL000996", "type": "cosponsor", "name": "Christine
+        Winger"}, {"leg_id": "ILL000061", "type": "cosponsor", "name": "Luis Arroyo"},
+        {"leg_id": "ILL000123", "type": "cosponsor", "name": "Camille Y. Lilly"},
+        {"leg_id": "ILL001000", "type": "cosponsor", "name": "Mark Batinick"}, {"leg_id":
+        "ILL000106", "type": "cosponsor", "name": "Jehan Gordon-Booth"}, {"leg_id":
+        null, "type": "cosponsor", "name": "Nick Sauer", "committee_id": null}, {"leg_id":
+        "ILL000111", "type": "cosponsor", "name": "Chad Hays"}, {"leg_id": null, "type":
+        "cosponsor", "name": "Lawrence Walsh, Jr.", "committee_id": null}, {"leg_id":
+        "ILL000997", "type": "cosponsor", "name": "Steven A. Andersson"}, {"leg_id":
+        "ILL000118", "type": "cosponsor", "name": "Thaddeus Jones"}, {"leg_id": "ILL000902",
+        "type": "cosponsor", "name": "Barbara Wheeler"}, {"leg_id": "ILL001087", "type":
+        "cosponsor", "name": "Jonathan Carroll"}, {"leg_id": "ILL001052", "type":
+        "cosponsor", "name": "Steven Reick"}, {"leg_id": "ILL001037", "type": "cosponsor",
+        "name": "David A. Welter"}, {"leg_id": "ILL000164", "type": "cosponsor", "name":
+        "Joe Sosnowski"}, {"leg_id": "ILL001042", "type": "cosponsor", "name": "Dave
+        Severin"}, {"leg_id": "ILL000989", "type": "cosponsor", "name": "Keith R.
+        Wheeler"}, {"leg_id": "ILL001048", "type": "cosponsor", "name": "Lindsay Parkhurst"},
+        {"leg_id": null, "type": "cosponsor", "name": "Brad Halbrook", "committee_id":
+        null}, {"leg_id": "ILL000129", "type": "cosponsor", "name": "Rita Mayfield"},
+        {"leg_id": "ILL000170", "type": "cosponsor", "name": "Arthur Turner"}, {"leg_id":
+        "ILL000535", "type": "cosponsor", "name": "Marcus C. Evans, Jr."}, {"leg_id":
+        "ILL001091", "type": "cosponsor", "name": "Nicholas K Smith"}, {"leg_id":
+        "ILL001038", "type": "cosponsor", "name": "David S. Olsen"}, {"leg_id": "ILL000885",
+        "type": "cosponsor", "name": "Martin J. Moylan"}, {"leg_id": "ILL000163",
+        "type": "cosponsor", "name": "Keith P. Sommer"}, {"leg_id": "ILL001043", "type":
+        "cosponsor", "name": "Juliana Stratton"}, {"leg_id": "ILL000089", "type":
+        "cosponsor", "name": "William Davis"}, {"leg_id": "ILL000903", "type": "cosponsor",
+        "name": "Kathleen Willis"}, {"leg_id": "ILL001053", "type": "cosponsor", "name":
+        "Jerry Lee Long"}, {"leg_id": "ILL000069", "type": "cosponsor", "name": "Dan
+        Brady"}], "actions": [{"date": "2017-01-11 00:00:00", "action": "Filed with
+        the Clerk by Rep. David McSweeney", "type": ["bill:filed"], "related_entities":
+        [], "actor": "lower"}, {"date": "2017-01-23 00:00:00", "action": "Added Chief
+        Co-Sponsor Rep. Jerry Costello, II", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2017-01-24 00:00:00", "action": "Referred
+        to Rules Committee", "type": ["committee:referred"], "related_entities": [],
+        "actor": "lower"}, {"date": "2017-02-02 00:00:00", "action": "Assigned to
+        Personnel & Pensions Committee", "type": ["committee:referred"], "related_entities":
+        [], "actor": "lower"}, {"date": "2017-02-08 00:00:00", "action": "Added Chief
+        Co-Sponsor Rep. Jay Hoffman", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2017-02-08 00:00:00", "action": "Added Co-Sponsor Rep.
+        Norine K. Hammond", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2017-02-10 00:00:00", "action": "Added Co-Sponsor Rep. Daniel V.
+        Beiser", "type": ["other"], "related_entities": [], "actor": "lower"}, {"date":
+        "2017-02-10 00:00:00", "action": "Removed Co-Sponsor Rep. Daniel V. Beiser",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2017-02-15
+        00:00:00", "action": "Added Co-Sponsor Rep. Allen Skillicorn", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2017-02-16 00:00:00",
+        "action": "Added Co-Sponsor Rep. Bill Mitchell", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2017-02-16 00:00:00", "action": "Added Co-Sponsor
+        Rep. Linda Chapa LaVia", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2017-02-16 00:00:00", "action": "Added Co-Sponsor Rep.
+        Brandon W. Phelps", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2017-02-16 00:00:00", "action": "Added Co-Sponsor Rep. Stephanie
+        A. Kifowit", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2017-02-16 00:00:00", "action": "Added Co-Sponsor Rep. Sara Wojcicki
+        Jimenez", "type": ["other"], "related_entities": [], "actor": "lower"}, {"date":
+        "2017-02-17 00:00:00", "action": "Added Co-Sponsor Rep. Katie Stuart", "type":
+        ["other"], "related_entities": [], "actor": "lower"}, {"date": "2017-02-17
+        00:00:00", "action": "Added Co-Sponsor Rep. Terri Bryant", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2017-02-17 00:00:00",
+        "action": "Added Co-Sponsor Rep. LaToya Greenwood", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2017-02-23 00:00:00", "action": "Added Co-Sponsor
+        Rep. Sue Scherer", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2017-02-24 00:00:00", "action": "Added Co-Sponsor Rep. Deb Conroy",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2017-02-24
+        00:00:00", "action": "Added Co-Sponsor Rep. David B. Reis", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2017-02-24 00:00:00",
+        "action": "Added Co-Sponsor Rep. Natalie A. Manley", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2017-03-07 00:00:00", "action": "Added Co-Sponsor
+        Rep. John Cavaletto", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2017-03-07 00:00:00", "action": "Added Co-Sponsor Rep.
+        C.D. Davidsmeyer", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2017-03-09 00:00:00", "action": "Added Co-Sponsor Rep. Charles Meier",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2017-03-09
+        00:00:00", "action": "Added Co-Sponsor Rep. Randy E. Frese", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2017-03-14 00:00:00",
+        "action": "Added Co-Sponsor Rep. Sam Yingling", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2017-03-14 00:00:00", "action": "Removed
+        Co-Sponsor Rep. Sam Yingling", "type": ["other"], "related_entities": [],
+        "actor": "lower"}, {"date": "2017-03-23 00:00:00", "action": "Added Co-Sponsor
+        Rep. Michael Halpin", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2017-06-29 00:00:00", "action": "Added Co-Sponsor Rep.
+        John Connor", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2017-09-28 00:00:00", "action": "Rule 19(b) / Re-referred to Rules
+        Committee", "type": ["committee:referred"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-02-14 00:00:00", "action": "Added Co-Sponsor Rep.
+        Emanuel Chris Welch", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-02-14 00:00:00", "action": "Added Co-Sponsor Rep.
+        Anna Moeller", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-02-14 00:00:00", "action": "Added Co-Sponsor Rep. Tony McCombie",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-02-14
+        00:00:00", "action": "Added Co-Sponsor Rep. Will Guzzardi", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-14 00:00:00",
+        "action": "Added Co-Sponsor Rep. Litesa E. Wallace", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-14 00:00:00", "action": "Added Co-Sponsor
+        Rep. Peter Breen", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-02-14 00:00:00", "action": "Added Co-Sponsor Rep. Carol Ammons",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-02-14
+        00:00:00", "action": "Added Co-Sponsor Rep. Monica Bristow", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-14 00:00:00",
+        "action": "Added Co-Sponsor Rep. Natalie Phelps Finnie", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-14 00:00:00",
+        "action": "Added Chief Co-Sponsor Rep. Sam Yingling", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-14 00:00:00", "action": "Chief Co-Sponsor
+        Changed to Rep. Sam Yingling", "type": ["other"], "related_entities": [],
+        "actor": "lower"}, {"date": "2018-02-14 00:00:00", "action": "Added Co-Sponsor
+        Rep. Kelly M. Burke", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-02-15 00:00:00", "action": "Added Co-Sponsor Rep.
+        John M. Cabello", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-02-15 00:00:00", "action": "Added Co-Sponsor Rep. Daniel Swanson",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-02-15
+        00:00:00", "action": "Added Co-Sponsor Rep. Christine Winger", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-15 00:00:00",
+        "action": "Added Co-Sponsor Rep. Luis Arroyo", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-15 00:00:00", "action": "Added Co-Sponsor
+        Rep. Camille Y. Lilly", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-02-15 00:00:00", "action": "Added Co-Sponsor Rep.
+        Mark Batinick", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-02-15 00:00:00", "action": "Added Co-Sponsor Rep. Jehan Gordon-Booth",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-02-15
+        00:00:00", "action": "Added Co-Sponsor Rep. Nick Sauer", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-15 00:00:00",
+        "action": "Added Co-Sponsor Rep. Chad Hays", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-16 00:00:00", "action": "Added Co-Sponsor
+        Rep. Lawrence Walsh, Jr.", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-02-20 00:00:00", "action": "Added Chief Co-Sponsor
+        Rep. Mary E. Flowers", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-02-20 00:00:00", "action": "Added Co-Sponsor Rep.
+        Steven A. Andersson", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-02-20 00:00:00", "action": "Added Co-Sponsor Rep.
+        Thaddeus Jones", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-02-20 00:00:00", "action": "Added Co-Sponsor Rep. Barbara Wheeler",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-02-20
+        00:00:00", "action": "Added Co-Sponsor Rep. Jonathan Carroll", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-20 00:00:00",
+        "action": "Added Co-Sponsor Rep. Steven Reick", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-20 00:00:00", "action": "Added Co-Sponsor
+        Rep. David A. Welter", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-02-20 00:00:00", "action": "Added Co-Sponsor Rep.
+        Joe Sosnowski", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-02-22 00:00:00", "action": "Added Co-Sponsor Rep. Dave Severin",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-02-27
+        00:00:00", "action": "Added Co-Sponsor Rep. Keith R. Wheeler", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-27 00:00:00",
+        "action": "Added Co-Sponsor Rep. Lindsay Parkhurst", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-27 00:00:00", "action": "Added Co-Sponsor
+        Rep. Brad Halbrook", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-02-27 00:00:00", "action": "Added Co-Sponsor Rep. Rita Mayfield",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-02-28
+        00:00:00", "action": "Added Co-Sponsor Rep. Arthur Turner", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-28 00:00:00",
+        "action": "Added Co-Sponsor Rep. Marcus C. Evans, Jr.", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-28 00:00:00",
+        "action": "Added Co-Sponsor Rep. Nicholas K Smith", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-28 00:00:00", "action": "Added Co-Sponsor
+        Rep. David S. Olsen", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-02-28 00:00:00", "action": "Added Co-Sponsor Rep.
+        Martin J. Moylan", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-03-01 00:00:00", "action": "Added Co-Sponsor Rep. Keith P.
+        Sommer", "type": ["other"], "related_entities": [], "actor": "lower"}, {"date":
+        "2018-03-01 00:00:00", "action": "Added Co-Sponsor Rep. Juliana Stratton",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-03-01
+        00:00:00", "action": "Added Co-Sponsor Rep. William Davis", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-01 00:00:00",
+        "action": "Added Co-Sponsor Rep. Kathleen Willis", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor
+        Rep. Jerry Lee Long", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor Rep.
+        Dan Brady", "type": ["other"], "related_entities": [], "actor": "lower"}],
+        "id": "ILB00093614", "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=27&GAID=14&DocTypeID=HR&LegId=99552&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "lower", "type": ["resolution"], "subjects":
+        [], "bill_id": "HR 27"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000SB1613&GA=100&SessionId=91&DocTypeId=SB&LegID=104322&DocNum=1613&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00170650", "name": "Introduced"}], "title": "FIREARM
+        SALE-WAITING PERIOD", "sponsors": [{"leg_id": "ILL000947", "type": "primary",
+        "name": "Julie A. Morrison"}, {"leg_id": "ILL000007", "type": "cosponsor",
+        "name": "Jacqueline Y. Collins"}], "actions": [{"date": "2017-02-09 00:00:00",
+        "action": "Filed with Secretary by Sen. Julie A. Morrison", "type": ["bill:filed"],
+        "related_entities": [], "actor": "upper"}, {"date": "2017-02-09 00:00:00",
+        "action": "First Reading", "type": ["bill:reading:1"], "related_entities":
+        [], "actor": "upper"}, {"date": "2017-02-09 00:00:00", "action": "Referred
+        to Assignments", "type": ["committee:referred"], "related_entities": [], "actor":
+        "upper"}, {"date": "2017-02-28 00:00:00", "action": "Assigned to Judiciary",
+        "type": ["committee:referred"], "related_entities": [], "actor": "upper"},
+        {"date": "2017-03-01 00:00:00", "action": "To Subcommittee on Firearms", "type":
+        ["other"], "related_entities": [], "actor": "upper"}, {"date": "2017-03-17
+        00:00:00", "action": "Rule 2-10 Committee Deadline Established As April 7,
+        2017", "type": ["other"], "related_entities": [], "actor": "upper"}, {"date":
+        "2017-04-07 00:00:00", "action": "Rule 2-10 Committee Deadline Established
+        As May 5, 2017", "type": ["other"], "related_entities": [], "actor": "upper"},
+        {"date": "2017-05-05 00:00:00", "action": "Rule 3-9(a) / Re-referred to Assignments",
+        "type": ["committee:referred"], "related_entities": [], "actor": "upper"},
+        {"date": "2018-01-30 00:00:00", "action": "Re-assigned to Judiciary", "type":
+        ["committee:referred"], "related_entities": [], "actor": "upper"}, {"date":
+        "2018-03-06 00:00:00", "action": "Added as Chief Co-Sponsor Sen. Jacqueline
+        Y. Collins", "type": ["other"], "related_entities": [], "actor": "upper"}],
+        "id": "ILB00098568", "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=1613&GAID=14&DocTypeID=SB&LegId=104322&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "upper", "type": ["bill"], "subjects": [],
+        "bill_id": "SB 1613"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HB4212&GA=100&SessionId=91&DocTypeId=HB&LegID=108564&DocNum=4212&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00177324", "name": "Introduced"}, {"mimetype":
+        "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HB4212eng&GA=100&SessionId=91&DocTypeId=HB&LegID=108564&DocNum=4212&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00182028", "name": "Engrossed"}], "title": "MISSING
+        PERSONS-VETERANS", "sponsors": [{"leg_id": "ILL001055", "type": "primary",
+        "name": "Daniel Swanson"}, {"leg_id": "ILL000151", "type": "cosponsor", "name":
+        "David B. Reis"}, {"leg_id": null, "type": "cosponsor", "name": "Jerry Costello,
+        II", "committee_id": null}, {"leg_id": "ILL001044", "type": "cosponsor", "name":
+        "Tony McCombie"}, {"leg_id": "ILL001062", "type": "cosponsor", "name": "Michael
+        Halpin"}, {"leg_id": "ILL000077", "type": "cosponsor", "name": "Linda Chapa
+        LaVia"}, {"leg_id": "ILL000148", "type": "cosponsor", "name": "Robert W. Pritchard"},
+        {"leg_id": "ILL000986", "type": "cosponsor", "name": "Grant Wehrli"}, {"leg_id":
+        null, "type": "cosponsor", "name": "Charles Meier", "committee_id": null},
+        {"leg_id": "ILL000107", "type": "cosponsor", "name": "Norine K. Hammond"},
+        {"leg_id": "ILL000131", "type": "cosponsor", "name": "Michael P. McAuliffe"},
+        {"leg_id": "ILL001085", "type": "cosponsor", "name": "Natalie Phelps Finnie"},
+        {"leg_id": "ILL000994", "type": "cosponsor", "name": "Randy E. Frese"}, {"leg_id":
+        "ILL000980", "type": "cosponsor", "name": "Brian W. Stewart"}, {"leg_id":
+        "ILL000171", "type": "cosponsor", "name": "Michael D. Unes"}, {"leg_id": "ILL001003",
+        "type": "cosponsor", "name": "Avery Bourne"}], "actions": [{"date": "2018-01-03
+        00:00:00", "action": "Filed with the Clerk by Rep. Daniel Swanson", "type":
+        ["bill:filed"], "related_entities": [], "actor": "lower"}, {"date": "2018-01-16
+        00:00:00", "action": "Added Chief Co-Sponsor Rep. David B. Reis", "type":
+        ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-01-16
+        00:00:00", "action": "First Reading", "type": ["bill:reading:1"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-01-16 00:00:00", "action": "Referred
+        to Rules Committee", "type": ["committee:referred"], "related_entities": [],
+        "actor": "lower"}, {"date": "2018-01-17 00:00:00", "action": "Added Co-Sponsor
+        Rep. Michael Halpin", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-01-17 00:00:00", "action": "Added Co-Sponsor Rep.
+        Tony McCombie", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-01-17 00:00:00", "action": "Removed Co-Sponsor Rep. Tony McCombie",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-01-30
+        00:00:00", "action": "Added Co-Sponsor Rep. Linda Chapa LaVia", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-08 00:00:00",
+        "action": "Added Chief Co-Sponsor Rep. Jerry Costello, II", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-12 00:00:00",
+        "action": "Assigned to Veterans'' Affairs Committee", "type": ["committee:referred"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-14 00:00:00",
+        "action": "Added Co-Sponsor Rep. Robert W. Pritchard", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-28 00:00:00",
+        "action": "Added Chief Co-Sponsor Rep. Tony McCombie", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-01 00:00:00",
+        "action": "Added Co-Sponsor Rep. Grant Wehrli", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-03-01 00:00:00", "action": "Added Co-Sponsor
+        Rep. Charles Meier", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"related_entities": [], "actor": "committee", "date": "2018-03-01 00:00:00",
+        "action": "Do Pass / Short Debate Veterans'' Affairs Committee; 011-000-000",
+        "type": ["committee:passed"], "related_votes": ["ILV00047648"]}, {"date":
+        "2018-03-01 00:00:00", "action": "Placed on Calendar 2nd Reading - Short Debate",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-03-01
+        00:00:00", "action": "Added Co-Sponsor Rep. Norine K. Hammond", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-01 00:00:00",
+        "action": "Added Co-Sponsor Rep. Michael P. McAuliffe", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-01 00:00:00",
+        "action": "Added Co-Sponsor Rep. Natalie Phelps Finnie", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-01 00:00:00",
+        "action": "Added Co-Sponsor Rep. Randy E. Frese", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-03-01 00:00:00", "action": "Added Co-Sponsor
+        Rep. Brian W. Stewart", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-03-01 00:00:00", "action": "Added Co-Sponsor Rep.
+        Michael D. Unes", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-03-01 00:00:00", "action": "Added Co-Sponsor Rep. Avery Bourne",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-03-06
+        00:00:00", "action": "Second Reading - Short Debate", "type": ["bill:reading:2"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-06 00:00:00",
+        "action": "Placed on Calendar Order of 3rd Reading - Short Debate", "type":
+        ["other"], "related_entities": [], "actor": "lower"}], "id": "ILB00101383",
+        "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=4212&GAID=14&DocTypeID=HB&LegId=108564&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "lower", "type": ["bill"], "subjects": [],
+        "bill_id": "HB 4212"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HB4413&GA=100&SessionId=91&DocTypeId=HB&LegID=109186&DocNum=4413&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00178876", "name": "Introduced"}], "title": "PEN
+        CD-BROADCAST MEETINGS", "sponsors": [{"leg_id": "ILL000985", "type": "primary",
+        "name": "Carol Ammons"}, {"leg_id": "ILL000881", "type": "cosponsor", "name":
+        "David McSweeney"}, {"leg_id": "ILL000121", "type": "cosponsor", "name": "Lou
+        Lang"}, {"leg_id": "ILL000077", "type": "cosponsor", "name": "Linda Chapa
+        LaVia"}, {"leg_id": "ILL000123", "type": "cosponsor", "name": "Camille Y.
+        Lilly"}, {"leg_id": "ILL000983", "type": "cosponsor", "name": "Litesa E. Wallace"},
+        {"leg_id": "ILL000061", "type": "cosponsor", "name": "Luis Arroyo"}], "actions":
+        [{"date": "2018-01-30 00:00:00", "action": "Filed with the Clerk by Rep. Carol
+        Ammons", "type": ["bill:filed"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-01-31 00:00:00", "action": "First Reading", "type": ["bill:reading:1"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-01-31 00:00:00",
+        "action": "Referred to Rules Committee", "type": ["committee:referred"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-26 00:00:00", "action": "Assigned
+        to Personnel & Pensions Committee", "type": ["committee:referred"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-03-06 00:00:00", "action": "Added Chief
+        Co-Sponsor Rep. David McSweeney", "type": ["other"], "related_entities": [],
+        "actor": "lower"}, {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor
+        Rep. Lou Lang", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor Rep. Linda Chapa
+        LaVia", "type": ["other"], "related_entities": [], "actor": "lower"}, {"date":
+        "2018-03-06 00:00:00", "action": "Added Co-Sponsor Rep. Camille Y. Lilly",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-03-06
+        00:00:00", "action": "Added Co-Sponsor Rep. Litesa E. Wallace", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-06 00:00:00",
+        "action": "Added Co-Sponsor Rep. Luis Arroyo", "type": ["other"], "related_entities":
+        [], "actor": "lower"}], "id": "ILB00102403", "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=4413&GAID=14&DocTypeID=HB&LegId=109186&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "lower", "type": ["bill"], "subjects": [],
+        "bill_id": "HB 4413"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HB4414&GA=100&SessionId=91&DocTypeId=HB&LegID=109187&DocNum=4414&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00178897", "name": "Introduced"}], "title": "PEN
+        CD-EXEC DIR & CIO-APPTMNT", "sponsors": [{"leg_id": "ILL000985", "type": "primary",
+        "name": "Carol Ammons"}, {"leg_id": "ILL000121", "type": "cosponsor", "name":
+        "Lou Lang"}, {"leg_id": "ILL000123", "type": "cosponsor", "name": "Camille
+        Y. Lilly"}, {"leg_id": "ILL000061", "type": "cosponsor", "name": "Luis Arroyo"},
+        {"leg_id": "ILL000077", "type": "cosponsor", "name": "Linda Chapa LaVia"}],
+        "actions": [{"date": "2018-01-30 00:00:00", "action": "Filed with the Clerk
+        by Rep. Carol Ammons", "type": ["bill:filed"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-01-31 00:00:00", "action": "First Reading", "type":
+        ["bill:reading:1"], "related_entities": [], "actor": "lower"}, {"date": "2018-01-31
+        00:00:00", "action": "Referred to Rules Committee", "type": ["committee:referred"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-06 00:00:00",
+        "action": "Added Co-Sponsor Rep. Lou Lang", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor
+        Rep. Camille Y. Lilly", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor Rep.
+        Luis Arroyo", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor Rep. Linda Chapa
+        LaVia", "type": ["other"], "related_entities": [], "actor": "lower"}], "id":
+        "ILB00102424", "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=4414&GAID=14&DocTypeID=HB&LegId=109187&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "lower", "type": ["bill"], "subjects": [],
+        "bill_id": "HB 4414"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HB4412&GA=100&SessionId=91&DocTypeId=HB&LegID=109185&DocNum=4412&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00178911", "name": "Introduced"}], "title": "PEN
+        CD-SURS-SENIOR ADMIN STAFF", "sponsors": [{"leg_id": "ILL000985", "type":
+        "primary", "name": "Carol Ammons"}, {"leg_id": "ILL000061", "type": "cosponsor",
+        "name": "Luis Arroyo"}, {"leg_id": "ILL000121", "type": "cosponsor", "name":
+        "Lou Lang"}, {"leg_id": "ILL000077", "type": "cosponsor", "name": "Linda Chapa
+        LaVia"}, {"leg_id": "ILL000123", "type": "cosponsor", "name": "Camille Y.
+        Lilly"}, {"leg_id": "ILL000881", "type": "cosponsor", "name": "David McSweeney"}],
+        "actions": [{"date": "2018-01-30 00:00:00", "action": "Filed with the Clerk
+        by Rep. Carol Ammons", "type": ["bill:filed"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-01-31 00:00:00", "action": "First Reading", "type":
+        ["bill:reading:1"], "related_entities": [], "actor": "lower"}, {"date": "2018-01-31
+        00:00:00", "action": "Referred to Rules Committee", "type": ["committee:referred"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-26 00:00:00",
+        "action": "Assigned to Personnel & Pensions Committee", "type": ["committee:referred"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-06 00:00:00",
+        "action": "Added Chief Co-Sponsor Rep. Luis Arroyo", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor
+        Rep. Lou Lang", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor Rep. Linda Chapa
+        LaVia", "type": ["other"], "related_entities": [], "actor": "lower"}, {"date":
+        "2018-03-06 00:00:00", "action": "Added Co-Sponsor Rep. Camille Y. Lilly",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-03-06
+        00:00:00", "action": "Added Co-Sponsor Rep. David McSweeney", "type": ["other"],
+        "related_entities": [], "actor": "lower"}], "id": "ILB00102438", "sources":
+        [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=4412&GAID=14&DocTypeID=HB&LegId=109185&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "lower", "type": ["bill"], "subjects": [],
+        "bill_id": "HB 4412"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HB4411&GA=100&SessionId=91&DocTypeId=HB&LegID=109184&DocNum=4411&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00178958", "name": "Introduced"}], "title": "PEN
+        CD-LOBBYING CONTRACTS", "sponsors": [{"leg_id": "ILL000985", "type": "primary",
+        "name": "Carol Ammons"}, {"leg_id": "ILL000121", "type": "cosponsor", "name":
+        "Lou Lang"}, {"leg_id": "ILL000077", "type": "cosponsor", "name": "Linda Chapa
+        LaVia"}, {"leg_id": "ILL000123", "type": "cosponsor", "name": "Camille Y.
+        Lilly"}, {"leg_id": "ILL000881", "type": "cosponsor", "name": "David McSweeney"}],
+        "actions": [{"date": "2018-01-30 00:00:00", "action": "Filed with the Clerk
+        by Rep. Carol Ammons", "type": ["bill:filed"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-01-31 00:00:00", "action": "First Reading", "type":
+        ["bill:reading:1"], "related_entities": [], "actor": "lower"}, {"date": "2018-01-31
+        00:00:00", "action": "Referred to Rules Committee", "type": ["committee:referred"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-26 00:00:00",
+        "action": "Assigned to Personnel & Pensions Committee", "type": ["committee:referred"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-06 00:00:00",
+        "action": "Added Co-Sponsor Rep. Lou Lang", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor
+        Rep. Linda Chapa LaVia", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor Rep.
+        Camille Y. Lilly", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor Rep. David McSweeney",
+        "type": ["other"], "related_entities": [], "actor": "lower"}], "id": "ILB00102483",
+        "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=4411&GAID=14&DocTypeID=HB&LegId=109184&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "lower", "type": ["bill"], "subjects": [],
+        "bill_id": "HB 4411"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HB4684&GA=100&SessionId=91&DocTypeId=HB&LegID=109709&DocNum=4684&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00179574", "name": "Introduced"}, {"mimetype":
+        "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HB4684eng&GA=100&SessionId=91&DocTypeId=HB&LegID=109709&DocNum=4684&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00182057", "name": "Engrossed"}], "title": "PEN
+        CD-SURS-EMPLOYER CONTRIB", "sponsors": [{"leg_id": null, "type": "primary",
+        "name": "Robert Martwick", "committee_id": null}], "actions": [{"date": "2018-02-07
+        00:00:00", "action": "Filed with the Clerk by Rep. Robert Martwick", "type":
+        ["bill:filed"], "related_entities": [], "actor": "lower"}, {"date": "2018-02-07
+        00:00:00", "action": "First Reading", "type": ["bill:reading:1"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-07 00:00:00", "action": "Referred
+        to Rules Committee", "type": ["committee:referred"], "related_entities": [],
+        "actor": "lower"}, {"date": "2018-02-14 00:00:00", "action": "Assigned to
+        Personnel & Pensions Committee", "type": ["committee:referred"], "related_entities":
+        [], "actor": "lower"}, {"related_entities": [], "actor": "committee", "date":
+        "2018-03-01 00:00:00", "action": "Do Pass / Short Debate Personnel & Pensions
+        Committee; 011-000-000", "type": ["committee:passed"], "related_votes": ["ILV00047876"]},
+        {"date": "2018-03-01 00:00:00", "action": "Placed on Calendar 2nd Reading
+        - Short Debate", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-03-06 00:00:00", "action": "Second Reading - Short Debate",
+        "type": ["bill:reading:2"], "related_entities": [], "actor": "lower"}, {"date":
+        "2018-03-06 00:00:00", "action": "Placed on Calendar Order of 3rd Reading
+        - Short Debate", "type": ["other"], "related_entities": [], "actor": "lower"}],
+        "id": "ILB00103076", "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=4684&GAID=14&DocTypeID=HB&LegId=109709&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "lower", "type": ["bill"], "subjects": [],
+        "bill_id": "HB 4684"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HB5057&GA=100&SessionId=91&DocTypeId=HB&LegID=110548&DocNum=5057&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00180140", "name": "Introduced"}], "title": "STATE
+        POLICE-TRUCK INSPECTION", "sponsors": [{"leg_id": "ILL000535", "type": "primary",
+        "name": "Marcus C. Evans, Jr."}, {"leg_id": null, "type": "cosponsor", "name":
+        "Robert Martwick", "committee_id": null}, {"leg_id": "ILL001048", "type":
+        "cosponsor", "name": "Lindsay Parkhurst"}], "actions": [{"date": "2018-02-14
+        00:00:00", "action": "Filed with the Clerk by Rep. Marcus C. Evans, Jr.",
+        "type": ["bill:filed"], "related_entities": [], "actor": "lower"}, {"date":
+        "2018-02-14 00:00:00", "action": "First Reading", "type": ["bill:reading:1"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-14 00:00:00",
+        "action": "Referred to Rules Committee", "type": ["committee:referred"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-26 00:00:00", "action": "Assigned
+        to Transportation: Regulation, Roads & Bridges Committee", "type": ["committee:referred"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-28 00:00:00",
+        "action": "House Committee Amendment No. 1 Filed with Clerk by Rep. Marcus
+        C. Evans, Jr.", "type": ["amendment:introduced"], "related_entities": [],
+        "actor": "lower"}, {"date": "2018-02-28 00:00:00", "action": "House Committee
+        Amendment No. 1 Referred to Rules Committee", "type": ["committee:referred"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-02 00:00:00",
+        "action": "Added Co-Sponsor Rep. Robert Martwick", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-03-02 00:00:00", "action": "Removed
+        Co-Sponsor Rep. Robert Martwick", "type": ["other"], "related_entities": [],
+        "actor": "lower"}, {"date": "2018-03-05 00:00:00", "action": "House Committee
+        Amendment No. 1 Rules Refers to Transportation: Regulation, Roads & Bridges
+        Committee", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-03-06 00:00:00", "action": "Added Chief Co-Sponsor Rep. Robert
+        Martwick", "type": ["other"], "related_entities": [], "actor": "lower"}, {"date":
+        "2018-03-06 00:00:00", "action": "Added Chief Co-Sponsor Rep. Lindsay Parkhurst",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-03-06
+        00:00:00", "action": "House Committee Amendment No. 1 Adopted in Transportation:
+        Regulation, Roads & Bridges Committee; by Voice Vote", "type": ["amendment:passed"],
+        "related_entities": [], "actor": "lower"}, {"related_entities": [], "actor":
+        "committee", "date": "2018-03-06 00:00:00", "action": "Do Pass as Amended
+        / Short Debate Transportation: Regulation, Roads & Bridges Committee; 010-000-000",
+        "type": ["committee:passed"], "related_votes": ["ILV00047936"]}], "id": "ILB00103631",
+        "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=5057&GAID=14&DocTypeID=HB&LegId=110548&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "lower", "type": ["bill"], "subjects": [],
+        "bill_id": "HB 5057"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HB5340&GA=100&SessionId=91&DocTypeId=HB&LegID=111126&DocNum=5340&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00180511", "name": "Introduced"}], "title": "VEH
+        CD-LICENSE-SUSPENSION", "sponsors": [{"leg_id": "ILL000985", "type": "primary",
+        "name": "Carol Ammons"}, {"leg_id": "ILL000103", "type": "cosponsor", "name":
+        "Robyn Gabel"}, {"leg_id": "ILL001091", "type": "cosponsor", "name": "Nicholas
+        K Smith"}, {"leg_id": "ILL001009", "type": "cosponsor", "name": "Sonya M.
+        Harper"}, {"leg_id": "ILL001058", "type": "cosponsor", "name": "Theresa Mah"},
+        {"leg_id": "ILL001056", "type": "cosponsor", "name": "LaToya Greenwood"},
+        {"leg_id": "ILL000075", "type": "cosponsor", "name": "Kelly M. Cassidy"},
+        {"leg_id": "ILL000995", "type": "cosponsor", "name": "Will Guzzardi"}, {"leg_id":
+        "ILL000165", "type": "cosponsor", "name": "Cynthia Soto"}, {"leg_id": "ILL000901",
+        "type": "cosponsor", "name": "Emanuel Chris Welch"}, {"leg_id": "ILL000174",
+        "type": "cosponsor", "name": "Ann M. Williams"}, {"leg_id": "ILL000983", "type":
+        "cosponsor", "name": "Litesa E. Wallace"}, {"leg_id": "ILL000099", "type":
+        "cosponsor", "name": "Mary E. Flowers"}], "actions": [{"date": "2018-02-15
+        00:00:00", "action": "Filed with the Clerk by Rep. Carol Ammons", "type":
+        ["bill:filed"], "related_entities": [], "actor": "lower"}, {"date": "2018-02-16
+        00:00:00", "action": "First Reading", "type": ["bill:reading:1"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-16 00:00:00", "action": "Referred
+        to Rules Committee", "type": ["committee:referred"], "related_entities": [],
+        "actor": "lower"}, {"date": "2018-02-28 00:00:00", "action": "Added Chief
+        Co-Sponsor Rep. Robyn Gabel", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-02-28 00:00:00", "action": "Added Chief Co-Sponsor
+        Rep. Nicholas K Smith", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-03-01 00:00:00", "action": "Added Co-Sponsor Rep.
+        Theresa Mah", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-03-01 00:00:00", "action": "Added Co-Sponsor Rep. LaToya Greenwood",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-03-01
+        00:00:00", "action": "Added Chief Co-Sponsor Rep. Sonya M. Harper", "type":
+        ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-03-01
+        00:00:00", "action": "Chief Co-Sponsor Changed to Rep. Sonya M. Harper", "type":
+        ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-03-05
+        00:00:00", "action": "Added Co-Sponsor Rep. Kelly M. Cassidy", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-05 00:00:00",
+        "action": "Added Co-Sponsor Rep. Will Guzzardi", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-03-05 00:00:00", "action": "Added Co-Sponsor
+        Rep. Cynthia Soto", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-03-05 00:00:00", "action": "Added Co-Sponsor Rep. Emanuel Chris
+        Welch", "type": ["other"], "related_entities": [], "actor": "lower"}, {"date":
+        "2018-03-05 00:00:00", "action": "Added Co-Sponsor Rep. Ann M. Williams",
+        "type": ["other"], "related_entities": [], "actor": "lower"}, {"date": "2018-03-06
+        00:00:00", "action": "Added Co-Sponsor Rep. Litesa E. Wallace", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-03-06 00:00:00",
+        "action": "Added Co-Sponsor Rep. Mary E. Flowers", "type": ["other"], "related_entities":
+        [], "actor": "lower"}], "id": "ILB00103998", "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=5340&GAID=14&DocTypeID=HB&LegId=111126&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "lower", "type": ["bill"], "subjects": [],
+        "bill_id": "HB 5340"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000SB3415&GA=100&SessionId=91&DocTypeId=SB&LegID=111373&DocNum=3415&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00180888", "name": "Introduced"}], "title": "TRAFFIC/PEDESTRIAN
+        STOP STUDY", "sponsors": [{"leg_id": "ILL000047", "type": "primary", "name":
+        "Kwame Raoul"}, {"leg_id": "ILL001059", "type": "cosponsor", "name": "Cristina
+        Castro"}, {"leg_id": "ILL000965", "type": "cosponsor", "name": "Patricia Van
+        Pelt"}, {"leg_id": "ILL000066", "type": "cosponsor", "name": "Daniel Biss"},
+        {"leg_id": "ILL000020", "type": "cosponsor", "name": "Mattie Hunter"}, {"leg_id":
+        "ILL000541", "type": "cosponsor", "name": "Elgie R. Sims, Jr."}, {"leg_id":
+        "ILL000018", "type": "cosponsor", "name": "Don Harmon"}, {"leg_id": "ILL000021",
+        "type": "cosponsor", "name": "Toi W. Hutchinson"}], "actions": [{"date": "2018-02-16
+        00:00:00", "action": "Filed with Secretary by Sen. Kwame Raoul", "type": ["bill:filed"],
+        "related_entities": [], "actor": "upper"}, {"date": "2018-02-16 00:00:00",
+        "action": "First Reading", "type": ["bill:reading:1"], "related_entities":
+        [], "actor": "upper"}, {"date": "2018-02-16 00:00:00", "action": "Referred
+        to Assignments", "type": ["committee:referred"], "related_entities": [], "actor":
+        "upper"}, {"date": "2018-02-20 00:00:00", "action": "Added as Chief Co-Sponsor
+        Sen. Cristina Castro", "type": ["other"], "related_entities": [], "actor":
+        "upper"}, {"date": "2018-02-22 00:00:00", "action": "Added as Co-Sponsor Sen.
+        Daniel Biss", "type": ["other"], "related_entities": [], "actor": "upper"},
+        {"date": "2018-02-27 00:00:00", "action": "Assigned to Criminal Law", "type":
+        ["committee:referred"], "related_entities": [], "actor": "upper"}, {"date":
+        "2018-02-28 00:00:00", "action": "Added as Chief Co-Sponsor Sen. Patricia
+        Van Pelt", "type": ["other"], "related_entities": [], "actor": "upper"}, {"date":
+        "2018-03-01 00:00:00", "action": "Added as Co-Sponsor Sen. Mattie Hunter",
+        "type": ["other"], "related_entities": [], "actor": "upper"}, {"date": "2018-03-01
+        00:00:00", "action": "Added as Co-Sponsor Sen. Elgie R. Sims, Jr.", "type":
+        ["other"], "related_entities": [], "actor": "upper"}, {"date": "2018-03-01
+        00:00:00", "action": "Added as Co-Sponsor Sen. Don Harmon", "type": ["other"],
+        "related_entities": [], "actor": "upper"}, {"date": "2018-03-06 00:00:00",
+        "action": "Added as Co-Sponsor Sen. Toi W. Hutchinson", "type": ["other"],
+        "related_entities": [], "actor": "upper"}], "id": "ILB00104375", "sources":
+        [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=3415&GAID=14&DocTypeID=SB&LegId=111373&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "upper", "type": ["bill"], "subjects": [],
+        "bill_id": "SB 3415"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HB5475&GA=100&SessionId=91&DocTypeId=HB&LegID=111386&DocNum=5475&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00181245", "name": "Introduced"}], "title": "MACHINE
+        GUN-PENALTIES", "sponsors": [{"leg_id": "ILL000902", "type": "primary", "name":
+        "Barbara Wheeler"}, {"leg_id": "ILL001038", "type": "cosponsor", "name": "David
+        S. Olsen"}, {"leg_id": "ILL000986", "type": "cosponsor", "name": "Grant Wehrli"},
+        {"leg_id": "ILL000993", "type": "cosponsor", "name": "Margo McDermed"}, {"leg_id":
+        null, "type": "cosponsor", "name": "Sheri Jesiel", "committee_id": null},
+        {"leg_id": "ILL000064", "type": "cosponsor", "name": "Patricia R. Bellock"}],
+        "actions": [{"date": "2018-02-16 00:00:00", "action": "Filed with the Clerk
+        by Rep. Barbara Wheeler", "type": ["bill:filed"], "related_entities": [],
+        "actor": "lower"}, {"date": "2018-02-16 00:00:00", "action": "First Reading",
+        "type": ["bill:reading:1"], "related_entities": [], "actor": "lower"}, {"date":
+        "2018-02-16 00:00:00", "action": "Referred to Rules Committee", "type": ["committee:referred"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-20 00:00:00",
+        "action": "Added Chief Co-Sponsor Rep. David S. Olsen", "type": ["other"],
+        "related_entities": [], "actor": "lower"}, {"date": "2018-02-22 00:00:00",
+        "action": "Added Co-Sponsor Rep. Margo McDermed", "type": ["other"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-02-27 00:00:00", "action": "Added Chief
+        Co-Sponsor Rep. Grant Wehrli", "type": ["other"], "related_entities": [],
+        "actor": "lower"}, {"date": "2018-02-27 00:00:00", "action": "Chief Co-Sponsor
+        Changed to Rep. Grant Wehrli", "type": ["other"], "related_entities": [],
+        "actor": "lower"}, {"date": "2018-02-28 00:00:00", "action": "Added Co-Sponsor
+        Rep. Sheri Jesiel", "type": ["other"], "related_entities": [], "actor": "lower"},
+        {"date": "2018-03-06 00:00:00", "action": "Added Co-Sponsor Rep. Patricia
+        R. Bellock", "type": ["other"], "related_entities": [], "actor": "lower"}],
+        "id": "ILB00104730", "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=5475&GAID=14&DocTypeID=HB&LegId=111386&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "lower", "type": ["bill"], "subjects": [],
+        "bill_id": "HB 5475"}, {"versions": [{"mimetype": "text/html", "url": "http://ilga.gov/legislation/fulltext.asp?DocName=10000HR0890&GA=100&SessionId=91&DocTypeId=HR&LegID=112074&DocNum=890&GAID=14&Session=&print=true",
+        "+date": null, "doc_id": "ILD00182023", "name": "Introduced"}], "title": "INDEPENDENT
+        SPECIAL COUNSEL", "sponsors": [{"leg_id": "ILL000867", "type": "primary",
+        "name": "Scott Drury"}, {"leg_id": "ILL000993", "type": "cosponsor", "name":
+        "Margo McDermed"}], "actions": [{"date": "2018-03-02 00:00:00", "action":
+        "Filed with the Clerk by Rep. Scott Drury", "type": ["bill:filed"], "related_entities":
+        [], "actor": "lower"}, {"date": "2018-03-05 00:00:00", "action": "Added Co-Sponsor
+        Rep. Margo McDermed", "type": ["other"], "related_entities": [], "actor":
+        "lower"}, {"date": "2018-03-06 00:00:00", "action": "Referred to Rules Committee",
+        "type": ["committee:referred"], "related_entities": [], "actor": "lower"}],
+        "id": "ILB00105312", "sources": [{"url": "http://ilga.gov/legislation/BillStatus.asp?DocNum=890&GAID=14&DocTypeID=HR&LegId=112074&SessionID=91&GA=100"}],
+        "session": "100th", "chamber": "lower", "type": ["resolution"], "subjects":
+        [], "bill_id": "HR 890"}]'
+    http_version: 
+  recorded_at: Thu, 08 Mar 2018 05:53:35 GMT
+- request:
+    method: get
+    uri: https://openstates.org/api/v1/bills?fields=id,bill_id,session,title,chamber,actions,versions,sources,sponsors,type,subjects&page=2&per_page=50&q=pe&search_window=session&state=il&updated_since=2018-03-07
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<OPENSTATES_API_KEY>"
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 08 Mar 2018 05:54:33 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Location:
+      - "/api/v1/bills/?state=il&search_window=session&per_page=50&fields=id%2Cbill_id%2Csession%2Ctitle%2Cchamber%2Cactions%2Cversions%2Csources%2Csponsors%2Ctype%2Csubjects&q=pe&updated_since=2018-03-07&page=2"
+      Expires:
+      - Thu, 08 Mar 2018 07:54:33 GMT
+      Cache-Control:
+      - max-age=7200
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Cache-Status:
+      - MISS
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 08 Mar 2018 05:54:33 GMT
+- request:
+    method: get
+    uri: https://openstates.org/api/v1/bills/?fields=id,bill_id,session,title,chamber,actions,versions,sources,sponsors,type,subjects&page=2&per_page=50&q=pe&search_window=session&state=il&updated_since=2018-03-07
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<OPENSTATES_API_KEY>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Thu, 08 Mar 2018 05:54:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Authorization
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Thu, 08 Mar 2018 07:54:34 GMT
+      Cache-Control:
+      - max-age=7200
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Cache-Status:
+      - MISS
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Thu, 08 Mar 2018 05:54:34 GMT
+recorded_with: VCR 4.0.0
