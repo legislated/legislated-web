@@ -3,7 +3,7 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { format } from 'date-fns'
-import type { Bill } from '@/types'
+import type { BillTitle_bill as Bill } from './__generated__/BillTitle_bill.graphql'
 
 // @flow
 import { colors, mixins } from '@/styles'
@@ -12,8 +12,8 @@ type Props = {
   bill: Bill
 }
 
-function formatSubtitle ({ documentNumber, updatedAt }: Bill) {
-  return `${documentNumber} - Updated ${format(updatedAt, 'DD/MM/YYYY')}`
+function formatSubtitle ({ document, updatedAt }: Bill) {
+  return `${document ? document.number : ''} - Updated ${format(updatedAt, 'DD/MM/YYYY')}`
 }
 
 let BillTitle = function BillTitle ({ bill }: Props) {
