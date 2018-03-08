@@ -7,7 +7,6 @@ describe 'requesting committees', :graph_request do
         viewer {
           committee(id: "#{committee.id}") {
             id
-            ilgaId
             name
           }
         }

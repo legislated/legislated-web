@@ -7,7 +7,6 @@ describe 'requesting hearings', :graph_request do
         viewer {
           hearing(id: "#{hearing.id}") {
             id
-            ilgaId
             location
             date
           }

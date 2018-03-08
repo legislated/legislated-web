@@ -8,7 +8,6 @@ module Types
 
     # fields
     field :id, !types.ID, 'The graph id'
-    field :ilgaId, !types.Int, 'The ILGA id', property: :ilga_id
     field :name, !types.String, 'The display name'
     field :chamber, !ChamberType, 'The associated chamber'
 

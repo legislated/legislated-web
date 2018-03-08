@@ -3,11 +3,7 @@ describe Types::CommitteeType, :graph_type do
 
   let(:model) { build(:committee) }
 
-  it_maps_fields({
-    ilga_id: 'ilgaId'
-  })
-
-  it 'exposes the hearings' do
+  it 'exposes its hearings' do
     result = resolve_field(:hearings, obj: model)
     expect(result).to eq(model.hearings)
   end
