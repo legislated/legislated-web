@@ -8,7 +8,7 @@ module Types
 
     # fields
     field :id, !types.ID, 'The graph id'
-    field :externalId, !types.Int, 'The external id', property: :external_id
+    field :ilgaId, !types.Int, 'The ILGA id', property: :ilga_id
     field :title, types.String, 'The title'
     field :summary, types.String, 'The official synopsis'
     field :humanSummary, types.String, 'The human-readable summary', property: :human_summary

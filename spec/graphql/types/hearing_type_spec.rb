@@ -4,7 +4,7 @@ describe Types::HearingType, :graph_type do
   let(:model) { build(:hearing) }
 
   it_maps_fields({
-    external_id: 'externalId'
+    ilga_id: 'ilgaId'
   })
 
   it 'exposes the bills' do

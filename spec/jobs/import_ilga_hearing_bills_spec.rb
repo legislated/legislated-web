@@ -22,7 +22,7 @@ describe ImportIlgaHearingBills do
 
     it 'updates bills that already exist' do
       bill = create(:bill, hearing: Hearing.second)
-      bill_attrs = build(:scraped_bill, external_id: bill.external_id)
+      bill_attrs = build(:scraped_bill, ilga_id: bill.ilga_id)
       mock_response([bill_attrs])
 
       subject.perform(hearing.id)
@@ -38,10 +38,10 @@ describe ImportIlgaHearingBills do
     it 'updates documents that already exist' do
       document = create(:document, :with_bill)
       bill = create(:bill, hearing: hearing)
-      bill_attrs = build(:scraped_bill, external_id: bill.external_id, number: document.number)
+      bill_attrs = build(:scraped_bill, ilga_id: bill.ilga_id, number: document.number)
       mock_response([bill_attrs])
 
-      expected_attrs = bill_attrs.except(:external_id).merge(bill: bill)
+      expected_attrs = bill_attrs.except(:ilga_id).merge(bill: bill)
       subject.perform(hearing.id)
       expect(document.reload).to have_attributes(expected_attrs)
     end

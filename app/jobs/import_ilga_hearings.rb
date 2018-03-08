@@ -22,12 +22,12 @@ class ImportIlgaHearings
 
     attrs_list.each do |attrs|
       committee = Committee.upsert_by!(
-        :external_id,
+        :ilga_id,
         attrs.committee.merge(chamber: chamber)
       )
 
       hearing = Hearing.upsert_by!(
-        :external_id,
+        :ilga_id,
         attrs.hearing.merge(committee: committee)
       )
 
@@ -39,10 +39,10 @@ class ImportIlgaHearings
 
   def merge_sources(fetched_hearings, scraped_hearings)
     scraped_hearings = scraped_hearings
-      .index_by(&:external_id)
+      .index_by(&:ilga_id)
 
     fetched_hearings.map do |hearing|
-      scraped_hearing = scraped_hearings[hearing.external_id]
+      scraped_hearing = scraped_hearings[hearing.ilga_id]
 
       Attrs.new(
         hearing_attrs(hearing, scraped_hearing),

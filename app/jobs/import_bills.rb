@@ -22,7 +22,7 @@ class ImportBills
 
     # upsert the records
     parsed_attributes.each do |attributes|
-      bill = Bill.upsert_by!(:external_id, attributes.bill)
+      bill = Bill.upsert_by!(:ilga_id, attributes.bill)
 
       attributes.documents.each do |attrs|
         doc_attrs = attrs.merge(bill: bill)
@@ -66,7 +66,7 @@ class ImportBills
       .transform_values(&:first)
 
     bill_attrs = {
-      external_id: params['LegId'],
+      ilga_id: params['LegId'],
       os_id: data['id'],
       actions: data['actions'],
       steps: @step_parser.parse(data['actions']),

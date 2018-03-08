@@ -1,7 +1,7 @@
 module Ilga
   class ScrapeHearings < Scraper
     Hearing = Struct.new(
-      :external_id,
+      :ilga_id,
       :url
     )
 
@@ -61,7 +61,7 @@ module Ilga
 
       uri = clean_uri(url)
       Hearing.new(
-        uri.path.split('/').last, # external_id
+        uri.path.split('/').last, # ilga_id
         uri.to_s
       )
     end

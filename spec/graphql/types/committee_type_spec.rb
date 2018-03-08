@@ -4,7 +4,7 @@ describe Types::CommitteeType, :graph_type do
   let(:model) { build(:committee) }
 
   it_maps_fields({
-    external_id: 'externalId'
+    ilga_id: 'ilgaId'
   })
 
   it 'exposes the hearings' do

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :bill do
-    external_id { Faker::Number.unique.number(5) }
+    ilga_id { Faker::Number.unique.number(5) }
     os_id { "ILB0000#{Faker::Number.unique.number(6)}" }
     title { Faker::Company.catch_phrase }
     summary { Faker::Lorem.paragraph(6) }

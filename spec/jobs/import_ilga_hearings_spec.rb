@@ -27,7 +27,7 @@ describe ImportIlgaHearings do
       )
 
       subject.perform(Chamber::LOWER)
-      actual = Hearing.find_by(external_id: id)
+      actual = Hearing.find_by(ilga_id: id)
       expect(actual).to have_attributes(url: nil)
     end
   end
@@ -36,18 +36,18 @@ describe ImportIlgaHearings do
   P = Ilga::ParseHearing
   S = Ilga::ScrapeHearings
 
-  def fetched_hearing(external_id)
+  def fetched_hearing(ilga_id)
     P::Hearing.new(
-      external_id, Time.current, 'location', 0,
+      ilga_id, Time.current, 'location', 0,
       P::Committee.new(
         100, 'committee_name'
       )
     )
   end
 
-  def scraped_hearing(external_id)
+  def scraped_hearing(ilga_id)
     S::Hearing.new(
-      external_id, 'http://www.hearing-url.com'
+      ilga_id, 'http://www.hearing-url.com'
     )
   end
 end

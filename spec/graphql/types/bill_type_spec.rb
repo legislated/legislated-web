@@ -4,7 +4,7 @@ describe Types::BillType, :graph_type do
   let(:model) { build(:bill, :with_documents) }
 
   it_maps_fields({
-    external_id: 'externalId',
+    ilga_id: 'ilgaId',
     human_summary: 'humanSummary',
     sponsor_name: 'sponsorName',
     details_url: 'detailsUrl'

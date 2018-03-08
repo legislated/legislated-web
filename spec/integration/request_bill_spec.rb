@@ -7,7 +7,7 @@ describe 'requesting bills', :graph_request do
         viewer {
           bill(id: "#{bill.id}") {
             id
-            externalId
+            ilgaId
             title
             summary
             humanSummary
