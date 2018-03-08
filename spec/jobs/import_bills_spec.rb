@@ -46,7 +46,7 @@ describe ImportBills do
 
     context 'when upserting' do
       let(:bill) { create(:bill) }
-      let(:bill_attrs) { attributes_for(:bill, external_id: bill.external_id) }
+      let(:bill_attrs) { attributes_for(:bill, ilga_id: bill.ilga_id) }
       let(:document) { create(:document, bill: bill) }
       let(:document_attrs) { attributes_for(:document, number: document.number) }
 
@@ -57,7 +57,7 @@ describe ImportBills do
           'bill_id' => '',
           'session' => '',
           'sources' => [{
-            'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{bill.external_id}"
+            'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{bill.ilga_id}"
           }],
           'actions' => [],
           'sponsors' => [],
@@ -73,7 +73,7 @@ describe ImportBills do
 
           allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
             'sources' => [{
-              'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{attrs[:external_id]}"
+              'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{attrs[:ilga_id]}"
             }]
           ))
 
@@ -102,13 +102,13 @@ describe ImportBills do
 
           allow(mock_open_states_service).to receive(:fetch_bills).and_return(response(
             'sources' => [{
-              'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{bill_attrs[:external_id]}&#{query}"
+              'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{bill_attrs[:ilga_id]}&#{query}"
             }]
           ))
 
           subject.perform
           expect(bill.reload).to have_attributes(
-            external_id: bill_attrs[:external_id],
+            ilga_id: bill_attrs[:ilga_id],
             details_url: "http://www.ilga.gov/legislation/billstatus.asp?#{query}"
           )
         end
@@ -164,7 +164,7 @@ describe ImportBills do
             'bill_id' => doc_attrs[:number],
             'versions' => [{}],
             'sources' => [{
-              'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{attrs[:external_id]}"
+              'url' => "http://ilga.gov/legislation/BillStatus.asp?LegId=#{attrs[:ilga_id]}"
             }]
           ))
 

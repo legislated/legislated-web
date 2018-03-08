@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_07_054116) do
+ActiveRecord::Schema.define(version: 2018_03_08_005925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_03_07_054116) do
   enable_extension "uuid-ossp"
 
   create_table "bills", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer "external_id", null: false
+    t.integer "ilga_id", null: false
     t.string "title"
     t.string "summary"
     t.string "sponsor_name"
@@ -32,18 +32,18 @@ ActiveRecord::Schema.define(version: 2018_03_07_054116) do
     t.jsonb "actions", default: []
     t.jsonb "steps", default: []
     t.index "(((steps -> '-1'::integer) ->> 'actor'::text))", name: "index_bills_on_last_actor"
-    t.index ["external_id"], name: "index_bills_on_external_id", unique: true
     t.index ["hearing_id"], name: "index_bills_on_hearing_id"
+    t.index ["ilga_id"], name: "index_bills_on_ilga_id", unique: true
     t.index ["os_id"], name: "index_bills_on_os_id", unique: true
   end
 
   create_table "committees", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer "external_id", null: false
+    t.integer "ilga_id", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "chamber", null: false
-    t.index ["external_id"], name: "index_committees_on_external_id", unique: true
+    t.index ["ilga_id"], name: "index_committees_on_ilga_id", unique: true
   end
 
   create_table "documents", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_03_07_054116) do
   end
 
   create_table "hearings", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer "external_id", null: false
+    t.integer "ilga_id", null: false
     t.string "url"
     t.string "location", null: false
     t.datetime "date", null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2018_03_07_054116) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["committee_id"], name: "index_hearings_on_committee_id"
-    t.index ["external_id"], name: "index_hearings_on_external_id", unique: true
+    t.index ["ilga_id"], name: "index_hearings_on_ilga_id", unique: true
   end
 
   create_table "legislators", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

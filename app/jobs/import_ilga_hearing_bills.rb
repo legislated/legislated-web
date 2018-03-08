@@ -13,8 +13,8 @@ class ImportIlgaHearingBills
     attrs_list.each do |attrs|
       attrs = attrs.to_h
 
-      bill_attrs = attrs.extract!(:external_id)
-      bill = Bill.upsert_by!(:external_id, bill_attrs.merge(
+      bill_attrs = attrs.extract!(:ilga_id)
+      bill = Bill.upsert_by!(:ilga_id, bill_attrs.merge(
         hearing: hearing
       ))
 

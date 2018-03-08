@@ -8,7 +8,6 @@ module Types
 
     # fields
     field :id, !types.ID, 'The graph id'
-    field :externalId, !types.Int, 'The external id', property: :external_id
     field :name, !types.String, 'The display name'
     field :chamber, !ChamberType, 'The associated chamber'
 

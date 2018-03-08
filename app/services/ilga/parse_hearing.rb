@@ -1,7 +1,7 @@
 module Ilga
   class ParseHearing
     Hearing = Struct.new(
-      :external_id,
+      :ilga_id,
       :date,
       :location,
       :is_cancelled,
@@ -9,7 +9,7 @@ module Ilga
     )
 
     Committee = Struct.new(
-      :external_id,
+      :ilga_id,
       :name
     )
 

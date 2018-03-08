@@ -8,7 +8,6 @@ module Types
 
     # fields
     field :id, !types.ID, 'The graph id'
-    field :externalId, !types.Int, 'The external id', property: :external_id
     field :location, !types.String, 'The location'
     field :date, !DateTimeType, 'The date and time'
 

@@ -1,7 +1,7 @@
 module Ilga
   class ScrapeHearingBills < Scraper
     Bill = Struct.new(
-      :external_id,
+      :ilga_id,
       :number,
       :slip_url,
       :slip_results_url,
@@ -46,14 +46,14 @@ module Ilga
       columns = row.find_all('td', visible: false)
 
       # scrape required data
-      external_id = check!(
+      ilga_id = check!(
         columns[0]&.text(:all),
-        'bill(?) is missing external id'
+        'bill(?) is missing ilga id'
       )
 
       document_number = check!(
         columns[2]&.text,
-        "bill(#{external_id}) is missing document number"
+        "bill(#{ilga_id}) is missing document number"
       )
 
       # scrape links
@@ -61,12 +61,12 @@ module Ilga
       slip_results_link = row.first('.viewiconbutton')&.[](:href)
 
       if slip_link.blank?
-        debug("  - bill w/o slip link: #{external_id} - #{document_number}")
+        debug("  - bill w/o slip link: #{ilga_id} - #{document_number}")
       end
 
       # build bill
       Bill.new(
-        external_id,
+        ilga_id,
         document_number,
         slip_link,
         slip_results_link,
