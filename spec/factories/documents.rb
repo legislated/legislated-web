@@ -10,5 +10,16 @@ FactoryBot.define do
     trait :with_bill do
       bill { build(:bill) }
     end
+
+    factory :open_states_document do
+      initialize_with do
+        OpenStates::ParseBill::Bill.new(
+          os_id,
+          number,
+          full_text_url,
+          is_amendment
+        )
+      end
+    end
   end
 end

@@ -26,6 +26,7 @@ FactoryBot.define do
     end
 
     trait :with_steps do
+      actions { "" }
       steps { attributes_for_list(:step, 1) }
     end
 
@@ -44,6 +45,21 @@ FactoryBot.define do
           break(memo) if rand(2).zero?
           memo << attributes_for(:step, :resolved, actor: actor)
         end
+      end
+    end
+
+    factory :open_states_bill do
+      initialize_with do
+        OpenStates::ParseBill::Bill.new(
+          ilga_id,
+          os_id,
+          actions,
+          steps,
+          title,
+          session_number,
+          details_url,
+          sponsor_name
+        )
       end
     end
   end

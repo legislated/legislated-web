@@ -14,5 +14,26 @@ FactoryBot.define do
     trait :after_this_week do
       date { Faker::Time.between(1.week.from_now, 1.month.from_now) }
     end
+
+    factory :fetched_ilga_hearing do
+      initialize_with do
+        Ilga::ParseHearing::Hearing.new(
+          ilga_id,
+          date,
+          location,
+          is_cancelled,
+          build(:fetched_ilga_committee)
+        )
+      end
+    end
+
+    factory :scraped_ilga_hearing do
+      initialize_with do
+        Ilga::ScrapeHearing::Hearing.new(
+          ilga_id,
+          url
+        )
+      end
+    end
   end
 end
