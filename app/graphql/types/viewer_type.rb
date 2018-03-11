@@ -55,7 +55,7 @@ module Types
 
       resolve -> (_obj, args, _ctx) do
         args = args.parse_graphql_data
-        BillsSearchCompiler.compile(args[:params] || {})
+        Bills::Search.new.call(args[:params] || {})
       end
     end
 

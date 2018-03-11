@@ -1,5 +1,7 @@
 module Ilga
-  class ScrapeBill < Scraper
+  class ScrapeBill
+    include Scraper
+
     Bill = Struct.new(
       :summary
     )

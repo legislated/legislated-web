@@ -5,13 +5,13 @@ class ImportLegislators
     Time.current.day == 1
   end
 
-  def initialize(open_states_service = OpenStatesService.new)
+  def initialize(open_states_service = OpenStates::FetchLegislators.new)
     @open_states_service = open_states_service
   end
 
   def perform
     legislator_attrs = @open_states_service
-      .fetch_legislators(fields: fields)
+      .call(fields: fields)
       .map { |data| parse_attributes(data) }
       .reject(&:nil?)
 

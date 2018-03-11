@@ -1,7 +1,7 @@
-describe BillsStepParser do
+describe OpenStates::ParseBillSteps do
   subject { described_class.new }
 
-  describe '#parse' do
+  describe '#call' do
     it 'parses action attributes into steps' do
       actions = [{
         'date' => '2017-02-10 00:00:00',
@@ -45,7 +45,7 @@ describe BillsStepParser do
         "actor": 'lower'
       }]
 
-      expect(subject.parse(actions)).to eq([{
+      expect(subject.call(actions)).to eq([{
         actor: 'upper',
         action: 'introduced',
         resolution: 'none',

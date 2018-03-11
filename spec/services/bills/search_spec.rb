@@ -1,24 +1,24 @@
-describe BillsSearchCompiler do
-  subject { described_class }
+describe Bills::Search do
+  subject { described_class.new }
 
-  describe '.compile' do
+  describe '#call' do
     context 'with a search query' do
       it 'finds bills where the title prefix matches' do
         bill = create(:bill, title: 'MoTor AwAY')
         create(:bill, title: 'I am a ScIEntiSt')
-        expect(subject.compile(query: 'MOTO')).to eq([bill])
+        expect(subject.call(query: 'MOTO')).to eq([bill])
       end
 
       it 'finds bills where the title fuzzy matches' do
         bill = create(:bill, title: 'MoTor AwAY')
         create(:bill, title: 'I am a ScIEntiSt')
-        expect(subject.compile(query: 'OTOR')).to eq([bill])
+        expect(subject.call(query: 'OTOR')).to eq([bill])
       end
 
       it 'finds bills where the summary prefix matches' do
         bill = create(:bill, summary: '...dOwn the ICy stREets.')
         create(:bill, summary: '...I seEK to uNDeRstand me')
-        expect(subject.compile(query: 'STREE')).to eq([bill])
+        expect(subject.call(query: 'STREE')).to eq([bill])
       end
     end
 
@@ -46,7 +46,7 @@ describe BillsSearchCompiler do
       prefix_map.each do |name, prefix|
         it "finds #{name} by doucment number" do
           bill = create_bill("#{prefix}1234")
-          expect(subject.compile(query: prefix)).to eq([bill])
+          expect(subject.call(query: prefix)).to eq([bill])
         end
       end
     end

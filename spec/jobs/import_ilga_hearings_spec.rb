@@ -6,10 +6,10 @@ describe ImportIlgaHearings do
   end
 
   describe '#perform' do
-    it 'upserts hearings and committes' do
+    it 'imports hearings and committes' do
       subject = described_class.new(
-        -> (_) { [fetched_hearing(id)] },
-        -> (_) { [scraped_hearing(id)] }
+        -> (_) { build_list(:fetched_ilga_hearing, 1, ilga_id: id) },
+        -> (_) { build_list(:scraped_ilga_hearing, 1, ilga_id: id) },
       )
 
       expect do
@@ -22,7 +22,7 @@ describe ImportIlgaHearings do
 
     it 'ignores missing scraped hearings' do
       subject = described_class.new(
-        -> (_) { [fetched_hearing(id)] },
+        -> (_) { build_list(:fetched_ilga_hearing, 1, ilga_id: id) },
         -> (_) { [] }
       )
 
@@ -30,24 +30,5 @@ describe ImportIlgaHearings do
       actual = Hearing.find_by(ilga_id: id)
       expect(actual).to have_attributes(url: nil)
     end
-  end
-
-  # helpers
-  P = Ilga::ParseHearing
-  S = Ilga::ScrapeHearings
-
-  def fetched_hearing(ilga_id)
-    P::Hearing.new(
-      ilga_id, Time.current, 'location', 0,
-      P::Committee.new(
-        100, 'committee_name'
-      )
-    )
-  end
-
-  def scraped_hearing(ilga_id)
-    S::Hearing.new(
-      ilga_id, 'http://www.hearing-url.com'
-    )
   end
 end

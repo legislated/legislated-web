@@ -1,7 +1,9 @@
 class ImportIlgaHearingBills
   include Worker
 
-  def initialize(scraper = Ilga::ScrapeHearingBills.new)
+  def initialize(
+    scraper = Ilga::ScrapeHearingBills.new
+  )
     @scraper = scraper
   end
 
@@ -9,7 +11,7 @@ class ImportIlgaHearingBills
     hearing = Hearing.find(hearing_id)
     return if hearing.url.nil?
 
-    attrs_list = @scraper.call(hearing)
+    attrs_list = scraper.call(hearing)
     attrs_list.each do |attrs|
       attrs = attrs.to_h
 
@@ -23,4 +25,8 @@ class ImportIlgaHearingBills
       ))
     end
   end
+
+  private
+
+  attr_reader :scraper
 end

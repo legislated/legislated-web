@@ -2,7 +2,7 @@ require 'httparty'
 
 module Ilga
   class FetchHearings
-    include HTTParty
+    include Request
 
     PAGE_SIZE = 50
 
@@ -23,31 +23,23 @@ module Ilga
     end
 
     def call(chamber)
-      enumerator = Enumerator.new do |handler|
-        page_number = 1
-
-        loop do
-          page = fetch_page(chamber, page_number)
-          data = page['data']
-          break if data.blank?
-
-          page_number += 1
-          data.each do |item|
-            handler.yield(@parse.call(item))
-          end
-        end
+      hearings = fetch_pages do |page_number|
+        page = fetch_page(chamber, page_number)
+        page['data']
       end
 
-      enumerator.lazy
+      hearings.map { |hearing| parse.call(hearing) }
     end
 
     private
 
-    def fetch_page(chamber, page = 1)
+    attr_reader :parse
+
+    def fetch_page(chamber, page_number = 1)
       response = self.class.post('', {
         body: {
           size: PAGE_SIZE,
-          page: page
+          page: page_number
         },
         query: {
           chamber: chamber_param(chamber),

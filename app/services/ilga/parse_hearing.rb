@@ -21,13 +21,13 @@ module Ilga
         parse_date(hearing_data['ScheduledDateTime']),
         data['Location'],
         hearing_data['IsCancelled'],
-        build_committee(data)
+        parse_committee(data)
       )
     end
 
     private
 
-    def build_committee(data)
+    def parse_committee(data)
       Committee.new(
         data['CommitteeId'],
         data['CommitteeDescription']
