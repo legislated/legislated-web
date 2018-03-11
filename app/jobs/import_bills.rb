@@ -27,7 +27,7 @@ class ImportBills
   attr_reader :redis, :fetch_bills
 
   def upsert_bill!(data)
-    bill = Bill.upsert_by!(:ilga_id, data.bill)
+    bill = Bill.upsert_by!(:ilga_id, data.bill.to_h)
 
     data.documents.each do |doc_data|
       Document.upsert_by!(:number, doc_data.to_h.merge({

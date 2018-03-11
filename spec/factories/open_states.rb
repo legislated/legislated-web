@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :open_states_bill_data do
+  factory :open_states_bill_data, class: Hash do
     initialize_with do
       OpenStates::ParseBill::Data.new(
         build(:open_states_bill),

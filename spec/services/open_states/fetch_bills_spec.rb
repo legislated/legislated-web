@@ -6,7 +6,7 @@ describe OpenStates::FetchBills do
       VCR.use_cassette('open_states_fetch_bills') do
         result = subject.call(
           q: 'pe',
-          updated_since: Date.new(2018, 3, 7)
+          updated_since: Date.new(2018, 3, 10)
         )
 
         actual = result.to_json

@@ -12,8 +12,13 @@ FactoryBot.define do
     end
 
     factory :open_states_document do
+      transient do
+        slip_url nil
+        slip_results_url nil
+      end
+
       initialize_with do
-        OpenStates::ParseBill::Bill.new(
+        OpenStates::ParseBill::Document.new(
           os_id,
           number,
           full_text_url,

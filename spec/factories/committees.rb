@@ -5,6 +5,10 @@ FactoryBot.define do
     chamber { Chamber.all.sample }
 
     factory :fetched_ilga_committee do
+      transient do
+        chamber nil
+      end
+
       initialize_with do
         Ilga::ParseHearing::Committee.new(
           ilga_id,

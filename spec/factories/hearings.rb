@@ -16,6 +16,11 @@ FactoryBot.define do
     end
 
     factory :fetched_ilga_hearing do
+      transient do
+        url nil
+        committee nil
+      end
+
       initialize_with do
         Ilga::ParseHearing::Hearing.new(
           ilga_id,
@@ -28,8 +33,15 @@ FactoryBot.define do
     end
 
     factory :scraped_ilga_hearing do
+      transient do
+        location nil
+        date nil
+        is_cancelled nil
+        committee nil
+      end
+
       initialize_with do
-        Ilga::ScrapeHearing::Hearing.new(
+        Ilga::ScrapeHearings::Hearing.new(
           ilga_id,
           url
         )

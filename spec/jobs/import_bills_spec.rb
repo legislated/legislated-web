@@ -22,8 +22,8 @@ describe ImportBills do
     end
 
     it 'imports bills and documents' do
-      bills = build_list(:open_states_bill, 1)
-      expect(mock_fetch_bills).to receive(:call).and_return(bills)
+      data = build_list(:open_states_bill_data, 1)
+      expect(mock_fetch_bills).to receive(:call).and_return(data)
 
       expect do
         subject.perform

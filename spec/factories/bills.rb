@@ -49,6 +49,13 @@ FactoryBot.define do
     end
 
     factory :open_states_bill do
+      with_steps
+
+      transient do
+        hearing nil
+        summary nil
+      end
+
       initialize_with do
         OpenStates::ParseBill::Bill.new(
           ilga_id,
