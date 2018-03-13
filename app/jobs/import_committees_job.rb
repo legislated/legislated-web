@@ -20,9 +20,10 @@ class ImportCommitteesJob
     end
   end
 
-  def merge(id)
-    # update committee table with data from scraped committee websites
-
+  def merge(data, os_id)
+    # merge committee table data with data from scraped committee websites
+    # update a committee based on the os_id of that committe
+    
   end
 
   private
@@ -33,10 +34,10 @@ class ImportCommitteesJob
 
   def parse_attributes(data)
     attrs = {
-      id: data['id'],
+      od_id: data['id'],
       name: data['committee'],
       chamber: data['chamber'],
-      sub: data['subcommittee']
+      subcommittee: data['subcommittee']
     }
 
     attrs
@@ -45,12 +46,17 @@ class ImportCommitteesJob
   def fields
     @fields ||= begin
       fields = %i [
-        stuff
+        id
+        chamber
+        committee
+        sources
+        members
       ]
 
       fields.join(',')
     end
   end
+end
 
 
  

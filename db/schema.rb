@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017225846) do
+ActiveRecord::Schema.define(version: 20171205210000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,11 +44,14 @@ ActiveRecord::Schema.define(version: 20171017225846) do
   end
 
   create_table "committees", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "external_id", null: false
-    t.string   "name",        null: false
-    t.uuid     "chamber_id",  null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "external_id",  null: false
+    t.string   "name",         null: false
+    t.uuid     "chamber_id",   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "os_id"
+    t.string   "subcommittee"
+    t.string   "sources"
     t.index ["chamber_id"], name: "index_committees_on_chamber_id", using: :btree
     t.index ["external_id"], name: "index_committees_on_external_id", unique: true, using: :btree
   end
@@ -95,6 +98,15 @@ ActiveRecord::Schema.define(version: 20171017225846) do
     t.string   "party",                       null: false
     t.string   "website_url"
     t.index ["os_id"], name: "index_legislators_on_os_id", unique: true, using: :btree
+  end
+
+  create_table "members", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "os_leg_id"
+    t.string   "os_committee_id"
+    t.string   "role"
+    t.string   "session_number"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
