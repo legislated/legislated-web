@@ -11,9 +11,7 @@ import type {ConcreteFragment} from 'relay-runtime';
 export type BillTitle_bill = {|
   +title: ?string;
   +updatedAt: any;
-  +document: ?{|
-    +number: string;
-  |};
+  +number: string;
 |};
 */
 
@@ -39,21 +37,10 @@ const fragment /*: ConcreteFragment*/ = {
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "concreteType": "Document",
-      "name": "document",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "number",
-          "storageKey": null
-        }
-      ],
+      "name": "number",
       "storageKey": null
     }
   ],

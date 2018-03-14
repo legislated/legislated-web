@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d91f1a340bbe13add05c4e6beb234440
+ * @relayHash 547222274e4e16bedec6cf2261f0cf74
  */
 
 /* eslint-disable */
@@ -59,10 +59,7 @@ fragment BillCell_bill on Bill {
 fragment BillTitle_bill on Bill {
   title
   updatedAt
-  document {
-    number
-    id
-  }
+  number
 }
 
 fragment BillStatus_bill on Bill {
@@ -292,28 +289,10 @@ const batch /*: ConcreteBatch*/ = {
                         "storageKey": null
                       },
                       {
-                        "kind": "LinkedField",
+                        "kind": "ScalarField",
                         "alias": null,
                         "args": null,
-                        "concreteType": "Document",
-                        "name": "document",
-                        "plural": false,
-                        "selections": [
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "args": null,
-                            "name": "number",
-                            "storageKey": null
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "args": null,
-                            "name": "id",
-                            "storageKey": null
-                          }
-                        ],
+                        "name": "number",
                         "storageKey": null
                       },
                       {
@@ -399,7 +378,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query BillListQuery(\n  $params: BillsSearchParams!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillList_viewer\n    id\n  }\n}\n\nfragment BillList_viewer on Viewer {\n  bills(params: $params, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  summary\n  hearing {\n    date\n    id\n  }\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  document {\n    number\n    id\n  }\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n"
+  "text": "query BillListQuery(\n  $params: BillsSearchParams!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillList_viewer\n    id\n  }\n}\n\nfragment BillList_viewer on Viewer {\n  bills(params: $params, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  summary\n  hearing {\n    date\n    id\n  }\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  number\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n"
 };
 
 module.exports = batch;

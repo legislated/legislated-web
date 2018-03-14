@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 113a456cce2fc330bfec5eabf54fa807
+ * @relayHash 21c9e0e29f1278bbe67aed4cf86bc537
  */
 
 /* eslint-disable */
@@ -34,10 +34,10 @@ fragment BillDetail_bill on Bill {
   summary
   detailsUrl
   sponsorName
+  slipUrl
+  slipResultsUrl
   document {
     fullTextUrl
-    slipUrl
-    slipResultsUrl
     id
   }
   hearing {
@@ -54,10 +54,7 @@ fragment BillDetail_bill on Bill {
 fragment BillTitle_bill on Bill {
   title
   updatedAt
-  document {
-    number
-    id
-  }
+  number
 }
 
 fragment BillStatus_bill on Bill {
@@ -182,6 +179,20 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               },
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "slipUrl",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "slipResultsUrl",
+                "storageKey": null
+              },
+              {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
@@ -200,28 +211,7 @@ const batch /*: ConcreteBatch*/ = {
                     "kind": "ScalarField",
                     "alias": null,
                     "args": null,
-                    "name": "slipUrl",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "slipResultsUrl",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
                     "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "number",
                     "storageKey": null
                   }
                 ],
@@ -288,6 +278,13 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
+                "name": "number",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
                 "name": "id",
                 "storageKey": null
               },
@@ -331,7 +328,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query BillQuery(\n  $id: ID!\n) {\n  viewer {\n    bill(id: $id) {\n      ...BillDetail_bill\n      id\n    }\n    id\n  }\n}\n\nfragment BillDetail_bill on Bill {\n  summary\n  detailsUrl\n  sponsorName\n  document {\n    fullTextUrl\n    slipUrl\n    slipResultsUrl\n    id\n  }\n  hearing {\n    committee {\n      name\n      id\n    }\n    id\n  }\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  document {\n    number\n    id\n  }\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n"
+  "text": "query BillQuery(\n  $id: ID!\n) {\n  viewer {\n    bill(id: $id) {\n      ...BillDetail_bill\n      id\n    }\n    id\n  }\n}\n\nfragment BillDetail_bill on Bill {\n  summary\n  detailsUrl\n  sponsorName\n  slipUrl\n  slipResultsUrl\n  document {\n    fullTextUrl\n    id\n  }\n  hearing {\n    committee {\n      name\n      id\n    }\n    id\n  }\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  number\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n"
 };
 
 module.exports = batch;

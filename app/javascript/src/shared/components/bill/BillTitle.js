@@ -12,8 +12,8 @@ type Props = {
   bill: Bill
 }
 
-function formatSubtitle ({ document, updatedAt }: Bill) {
-  return `${document ? document.number : ''} - Updated ${format(updatedAt, 'DD/MM/YYYY')}`
+function formatSubtitle ({ number, updatedAt }: Bill) {
+  return `${number} - Updated ${format(updatedAt, 'DD/MM/YYYY')}`
 }
 
 let BillTitle = function BillTitle ({ bill }: Props) {
@@ -29,9 +29,7 @@ BillTitle = createFragmentContainer(BillTitle, graphql`
   fragment BillTitle_bill on Bill {
     title
     updatedAt
-    document {
-      number
-    }
+    number
   }
 `)
 

@@ -12,10 +12,10 @@ export type BillDetail_bill = {|
   +summary: ?string;
   +detailsUrl: ?string;
   +sponsorName: ?string;
+  +slipUrl: ?string;
+  +slipResultsUrl: ?string;
   +document: ?{|
     +fullTextUrl: ?string;
-    +slipUrl: ?string;
-    +slipResultsUrl: ?string;
   |};
   +hearing: ?{|
     +committee: {|
@@ -54,6 +54,20 @@ const fragment /*: ConcreteFragment*/ = {
       "storageKey": null
     },
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "slipUrl",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "slipResultsUrl",
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
       "args": null,
@@ -66,20 +80,6 @@ const fragment /*: ConcreteFragment*/ = {
           "alias": null,
           "args": null,
           "name": "fullTextUrl",
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "slipUrl",
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "slipResultsUrl",
           "storageKey": null
         }
       ],
