@@ -9,6 +9,15 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+*.log
+
+# webpacker
+/public/assets
+/public/packs
+/public/packs-test
+/node_modules
 
 # Ignore Byebug command history file.
 .byebug_history
+
+.vscode

@@ -1,19 +1,9 @@
 module Types
-  ChamberType = GraphQL::ObjectType.define do
+  ChamberType = GraphQL::EnumType.define do
     name 'Chamber'
     description 'A legislative chamber'
-    global_id_field :id
-    interfaces [GraphQL::Relay::Node.interface]
 
-    # fields
-    field :id, !types.ID, 'The graph id'
-    field :name, !types.String, 'The display name'
-    field :type, !types.String, 'The chamber type', property: :kind
-
-    # relationships
-    connection :committees, CommitteeType.connection_type do
-      description "All of the chamber's committees"
-      resolve -> (chamber, _args, _ctx) { chamber.committees }
-    end
+    value :LOWER, 'The lower (house) chamber', value: 0
+    value :UPPER, 'The upper (senate) chamber', value: 1
   end
 end

@@ -2,6 +2,7 @@ module Types
   LegislatorType = GraphQL::ObjectType.define do
     name 'Legislator'
     description 'A legislator'
+
     global_id_field :id
     interfaces [GraphQL::Relay::Node.interface]
 
@@ -10,9 +11,8 @@ module Types
     field :osId, !types.String, 'The OpenStates id', property: :os_id
     field :active, !types.Boolean, 'Whether or not the legislator is in office'
     field :name, !types.String, 'The full display name' do
-      resolve -> (legislator, _args, _ctx) {
-        keys = %i[first_name middle_name last_name suffixes]
-        keys.map { |key| legislator[key] }.join(' ')
+      resolve -> (leg, _args, _ctx) {
+        "#{leg.first_name} #{leg.middle_name} #{leg.last_name} #{leg.suffixes}"
       }
     end
 

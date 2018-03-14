@@ -1,0 +1,40 @@
+---
+:scope: 
+:url: http://my.ilga.gov/Content/themes/Lis/Lis.Button.css
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/css
+  Last-Modified: Wed, 16 May 2012 17:49:15 GMT
+  Accept-Ranges: bytes
+  ETag: '"809f85358c33cd1:0"'
+  Server: Microsoft-IIS/8.5
+  X-Powered-By: ASP.NET
+  Date: Sun, 04 Mar 2018 15:52:56 GMT
+  Connection: close
+  Content-Length: '1002'
+:content: !binary |-
+  77u/LmJ1dHRvbiB7DQogICAgYmFja2dyb3VuZDogdXJsKCJidXR0b25zL2J1
+  dHRvbi1ibHVlLnBuZyIpIHJlcGVhdC14IHNjcm9sbCAwIDAgIzJENTY3MjsN
+  CiAgICBib3JkZXItY29sb3I6ICMxMTExMTE7DQogICAgYm9yZGVyLXJhZGl1
+  czogMjBweCAyMHB4IDIwcHggMjBweDsNCiAgICBib3JkZXItc3R5bGU6IHNv
+  bGlkOw0KICAgIGJvcmRlci13aWR0aDogMXB4Ow0KICAgIGJveC1zaGFkb3c6
+  IDAgMXB4IDRweCByZ2JhKDAsIDAsIDAsIDAuNCk7DQogICAgY29sb3I6ICNG
+  RkZGRkYgIWltcG9ydGFudDsNCiAgICBjdXJzb3I6IHBvaW50ZXI7DQogICAg
+  ZGlzcGxheTogaW5saW5lLWJsb2NrOw0KICAgIGhlaWdodDogMTRweDsNCiAg
+  ICBwYWRkaW5nOiA1cHggMTBweDsNCn0NCmlucHV0LmJ1dHRvblt0eXBlPSJz
+  dWJtaXQiXSB7DQogICAgaGVpZ2h0OiAyNnB4Ow0KfQ0KLmJ1dHRvbjpob3Zl
+  ciB7DQogICAgYmFja2dyb3VuZDogdXJsKCJidXR0b25zL2J1dHRvbi1ibHVl
+  LnBuZyIpIHJlcGVhdC14IHNjcm9sbCAwIC0yNHB4ICM0RDc2OTA7DQogICAg
+  Y29sb3I6ICNGRkZGRkYgIWltcG9ydGFudDsNCiAgICB0ZXh0LWRlY29yYXRp
+  b246IG5vbmU7DQp9DQouYnV0dG9uOmFjdGl2ZSB7DQogICAgYmFja2dyb3Vu
+  ZDogdXJsKCJidXR0b25zL2J1dHRvbi1ibHVlLnBuZyIpIHJlcGVhdC14IHNj
+  cm9sbCAwIC00OHB4ICM2MjkwQjI7DQp9DQouYnV0dG9uLnJlZCB7DQogICAg
+  YmFja2dyb3VuZDogdXJsKCJidXR0b25zL2J1dHRvbi1yZWQucG5nIikgcmVw
+  ZWF0LXggc2Nyb2xsIDAgMCAjNkIzNTJCOw0KfQ0KLmJ1dHRvbi5yZWQ6aG92
+  ZXIgew0KICAgIGJhY2tncm91bmQ6IHVybCgiYnV0dG9ucy9idXR0b24tcmVk
+  LnBuZyIpIHJlcGVhdC14IHNjcm9sbCAwIC0yNHB4ICM4MzRBM0Y7DQp9DQou
+  YnV0dG9uLnJlZDphY3RpdmUgew0KICAgIGJhY2tncm91bmQ6IHVybCgiYnV0
+  dG9ucy9idXR0b24tcmVkLnBuZyIpIHJlcGVhdC14IHNjcm9sbCAwIC00OHB4
+  ICNBODVGNTE7DQp9

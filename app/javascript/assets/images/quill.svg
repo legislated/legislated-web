@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="79px" height="27px" viewBox="0 0 79 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>quill</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="home-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-689.000000, -2831.000000)" stroke-linecap="round" stroke-linejoin="round">
+        <g id="footer" transform="translate(328.000000, 2832.000000)" stroke="#FFFFFF" stroke-width="1.57599998">
+            <g id="quill" transform="translate(362.000000, 0.000000)">
+                <path d="M64.2690823,9.68843372 L56.2579581,3.98303393 C56.2579581,3.98303393 50.7269309,6.08139274 47.5700506,5.55847193 L47.8619539,10.4160725 L44.0974823,5.93452988 C44.0974823,5.93452988 11.7913534,-1.93820977 6.48303758,0.451649578 C1.17472178,2.84150893 -0.950766792,2.82815776 0.391988448,6.76230239 C1.73258144,10.6942218 4.00942728,25.5985774 42.3763339,24.5171327 L48.6533362,20.2781364 L45.9656635,25 L52.0675239,22.6946981 L56.2903918,18.9140919 L55.6806382,22.3698196 L61.7565516,20.1090216 L67,11.1815395 L64.2690823,9.68843372 Z" id="Stroke-1"></path>
+                <path d="M77,6 C76.5204628,6.32549726 52.8059528,23.2225694 14,12.3660179" id="Stroke-3"></path>
+            </g>
+        </g>
+    </g>
+</svg>

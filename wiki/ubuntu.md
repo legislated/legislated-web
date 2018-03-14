@@ -2,6 +2,7 @@
 
 ## Dependencies
 - libpq-dev
+- libreadline-dev
 
 ## Ruby
 
@@ -36,7 +37,26 @@ $ rbenv install 2.3.0
 
 Install `postgresql`:
 
+Ubuntu 17.04:
+
 ```sh
+$ sudo apt-get install postgresql-9.6
+```
+
+Ubuntu 16.10:
+
+```sh
+$ sudo add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main"
+$ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+$ sudo apt-get update
+$ sudo apt-get install postgresql-9.6
+```
+
+Ubuntu 16.04 LTS:
+```sh
+$ sudo add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main"
+$ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+$ sudo apt-get update
 $ sudo apt-get install postgresql-9.6
 ```
 

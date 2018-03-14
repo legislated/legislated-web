@@ -1,0 +1,39 @@
+# note: you must restart bin/webpack-dev-server for changes to take effect
+default: &default
+  source_path: app/javascript
+  source_entry_path: packs
+  public_output_path: packs
+  cache_path: tmp/cache/webpacker
+  resolved_paths: []
+  cache_manifest: false
+  extensions:
+    - .js
+    - .jsx
+    - .svg
+    - .png
+    - .woff
+    - .woff2
+
+development:
+  <<: *default
+  compile: true
+  dev_server:
+    https: false
+    host: localhost
+    port: 3035
+    public: localhost:3035
+    hmr: false
+    inline: false
+    overlay: true
+    disable_host_check: true
+    use_local_ip: false
+
+test:
+  <<: *default
+  compile: true
+  public_output_path: packs-test
+
+production:
+  <<: *default
+  compile: false
+  cache_manifest: true

@@ -1,0 +1,133 @@
+{
+  "name": "legislated",
+  "description": "Understand the illinois legislature",
+  "version": "0.2.0",
+  "main": "dist/bundle.js",
+  "license": "GPL-3.0",
+  "author": "legislated",
+  "engines": {
+    "node": "8.x"
+  },
+  "scripts": {
+    "start": "run-p dev-server hypernova",
+    "start:debug": "DEBUG=true yarn start",
+    "start:prod": "NODE_ENV=production yarn hypernova",
+    "dev-server": "./bin/webpack-dev-server",
+    "hypernova": "node hypernova",
+    "hypernova:debug": "node inspect hypernova",
+    "build:staging": "RAILS_ENV=staging rails assets:precompile",
+    "build:prod": "RAILS_ENV=production rails assets:precompile",
+    "test": "TZ=America/Chicago jest",
+    "test:watch": "yarn test --watch",
+    "test:snapshot": "yarn test -u",
+    "test:debug": "node --inspect --debug-brk ./node_modules/.bin/jest --runInBand",
+    "lint": "yarn lint:bare | snazzy",
+    "lint:fix": "yarn lint:bare --fix | snazzy",
+    "lint:bare": "standard './app/javascript/**/*.js'",
+    "flow": "flow",
+    "flow:restart": "flow stop && flow",
+    "relay": "relay-compiler --src ./app/javascript/src --schema schema.json",
+    "relay:watch": "yarn relay --watch",
+    "verify": "yarn lint && yarn flow && yarn test",
+    "verify:quiet": "yarn lint && yarn relay && yarn flow --quiet && yarn test"
+  },
+  "dependencies": {
+    "@rails/webpacker": "^3.2.2",
+    "babel-runtime": "^6.26.0",
+    "date-fns": "^1.29.0",
+    "emotion": "^9.0.1",
+    "emotion-server": "^9.0.1",
+    "eventemitter3": "^3.0.1",
+    "glamor": "2.20.40",
+    "hypernova-react": "https://github.com/legislated/hypernova-react.git",
+    "isomorphic-fetch": "^2.2.1",
+    "js-base64": "^2.4.3",
+    "lodash": "^4.17.5",
+    "react": "^16.1.1",
+    "react-copy-to-clipboard": "^5.0.0",
+    "react-dom": "^16.1.1",
+    "react-emotion": "^9.0.1",
+    "react-relay": "^1.4.1",
+    "react-router-dom": "^4.1.2",
+    "react-router-scroll-4": "^1.0.0-beta.1",
+    "react-transition-group": "1.x",
+    "sync-request": "^5.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "8.2.1",
+    "babel-jest": "^22.2.2",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-emotion": "^9.0.1",
+    "babel-plugin-lodash": "^3.2.11",
+    "babel-plugin-relay": "^1.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "concat-stream": "^1.6.0",
+    "enzyme": "^3.1.1",
+    "enzyme-adapter-react-16": "^1.0.4",
+    "eslint": "4.18.0",
+    "file-loader": "^1.1.6",
+    "flow-bin": "^0.66.0",
+    "graphql": "^0.13.1",
+    "hypernova": "^2.1.3",
+    "jest": "^22.3.0",
+    "jest-enzyme": "^4.2.0",
+    "npm-run-all": "^4.1.2",
+    "react-test-renderer": "^16.1.1",
+    "relay-compiler": "^1.1.0",
+    "snazzy": "^7.0.0",
+    "standard": "^11.0.0",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1",
+    "webpack-manifest-plugin": "^1.3.2",
+    "webpack-merge": "^4.1.0",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "graphql": {
+    "file": "./schema.json"
+  },
+  "babel": {
+    "presets": [
+      [ "env", { "targets": { "browsers": [ "last 2 versions" ] } } ],
+      "react",
+      "stage-2"
+    ],
+    "plugins": [
+      [ "relay", { "schema": "schema.json" } ],
+      "transform-runtime",
+      [ "emotion", { "autoLabel": true } ],
+      "lodash"
+    ]
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./app/javascript/test/setupFramework.js",
+    "setupFiles": [
+      "./app/javascript/test/setup.js"
+    ],
+    "roots": [
+      "./app/javascript"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/app/javascript/src/shared/$1",
+      "^&/(.*)$": "<rootDir>/app/javascript/assets/$1",
+      "^mocks/(.*)$": "<rootDir>/app/javascript/test/mocks/$1",
+      ".*\\.(svg|png)$": "<rootDir>/app/javascript/test/stubs/image.js",
+      ".*\\.(woff|woff2)$": "<rootDir>/app/javascript/test/stubs/fonts.js"
+    },
+    "clearMocks": true
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "flow-typed/"
+    ],
+    "globals": [
+      "SyntheticEvent",
+      "SyntheticInputEvent"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the search field 1`] = `
+<Search>
+  <FieldContainer>
+    <Field
+      isFocused={false}
+    >
+      <Input
+        name="search-field"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="health care, HB2364"
+        type="text"
+        value="test-query"
+      />
+      <Button
+        onClick={[Function]}
+      >
+        Search
+      </Button>
+    </Field>
+  </FieldContainer>
+</Search>
+`;

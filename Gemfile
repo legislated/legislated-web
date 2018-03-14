@@ -1,23 +1,31 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-# core
+# api
 gem 'graphql'
+gem 'graphql-preload'
 gem 'honeybadger'
+gem 'lograge'
 gem 'pg'
 gem 'pg_search'
 gem 'puma', '~> 3.0'
 gem 'rack-cors'
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.2.0.rc1'
 gem 'redis'
 gem 'sidekiq'
 
-# import
+# scraping / imports
 gem 'capybara'
 gem 'httparty'
 gem 'poltergeist'
 
+# client
+gem 'hypernova'
+gem 'webpacker'
+
+# development
 group :development do
+  gem 'bullet'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -27,7 +35,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'database_cleaner'
   gem 'dotenv-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'graphiql-rails'
   gem 'guard-rspec'
@@ -35,6 +43,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'puffing-billy', git: 'https://github.com/wzrad/puffing-billy.git', branch: 'develop'
   gem 'rb-readline'
   gem 'rspec-rails'
   gem 'rubocop'
