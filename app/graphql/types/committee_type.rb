@@ -12,6 +12,6 @@ module Types
     field :chamber, !ChamberType, 'The associated chamber'
 
     # assosciations
-    connection :hearings, HearingType.connection_type, "All of the committee's hearings"
+    connection :hearings, HearingType.connection_type, "All of the committee's hearings", preload: :hearings
   end
 end

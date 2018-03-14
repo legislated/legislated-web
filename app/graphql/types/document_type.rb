@@ -13,6 +13,6 @@ module Types
     field :isAmendment, !types.Boolean, 'Whether or not the document is an amendment', property: :is_amendment
 
     # relationships
-    field :bill, !BillType, 'The parent bill'
+    field :bill, !BillType, 'The parent bill', preload: :bill
   end
 end

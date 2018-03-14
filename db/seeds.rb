@@ -1,5 +1,7 @@
 include FactoryBot::Syntax::Methods
 
+ActiveRecord::Base.logger.level = 1
+
 puts '• seeding...'
 
 puts '- creating committees'
@@ -22,3 +24,5 @@ hearings.flat_map do |hearing|
 end
 
 puts '∆ finished seeding'
+
+ActiveRecord::Base.logger.level = 0

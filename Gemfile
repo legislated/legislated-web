@@ -3,6 +3,7 @@ ruby '2.3.0'
 
 # api
 gem 'graphql'
+gem 'graphql-batch'
 gem 'graphql-preload'
 gem 'honeybadger'
 gem 'lograge'

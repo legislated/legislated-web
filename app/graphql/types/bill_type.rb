@@ -20,8 +20,8 @@ module Types
     field :updatedAt, !DateTimeType, 'The updated date', property: :updated_at
 
     # relationships
-    field :hearing, HearingType, 'The parent hearing'
-    field :document, DocumentType, 'The most recent version of the bill'
-    field :documents, !DocumentType.to_list_type, "The versions of the bill's document"
+    field :hearing, HearingType, 'The parent hearing', preload: :hearing
+    field :document, DocumentType, 'The most recent version of the bill', preload: :documents
+    field :documents, !DocumentType.to_list_type, "The versions of the bill's document", preload: :documents
   end
 end
