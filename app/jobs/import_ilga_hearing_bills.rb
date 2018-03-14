@@ -1,32 +1,21 @@
 class ImportIlgaHearingBills
   include Worker
 
-  def initialize(
-    scraper = Ilga::ScrapeHearingBills.new
-  )
-    @scraper = scraper
+  def initialize(scrape_bills = Ilga::ScrapeHearingBills.new)
+    @scrape_bills = scrape_bills
   end
 
   def perform(hearing_id)
     hearing = Hearing.find(hearing_id)
-    return if hearing.url.nil?
 
-    attrs_list = scraper.call(hearing)
-    attrs_list.each do |attrs|
-      attrs = attrs.to_h
-
-      bill_attrs = attrs.extract!(:ilga_id)
-      bill = Bill.upsert_by!(:ilga_id, bill_attrs.merge(
-        hearing: hearing
-      ))
-
-      Document.upsert_by!(:number, attrs.merge(
-        bill: bill
-      ))
+    scraped_bills = scrape_bills.call(hearing)
+    scraped_bills.each do |scraped_bill|
+      bill = Bill.find_by(ilga_id: scraped_bill.ilga_id)
+      bill&.update(scraped_bill.to_h)
     end
   end
 
   private
 
-  attr_reader :scraper
+  attr_reader :scrape_bills
 end
