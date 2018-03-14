@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react'
+import { Helmet } from 'react-helmet'
 import { HelpQuestion as Question } from './HelpQuestion'
 import { Link } from '@/components'
 import { stylesheet, colors, mixins } from '@/styles'
@@ -8,6 +9,12 @@ export function Help () {
   return (
     <div {...rules.container}>
       <div {...rules.content}>
+        <Helmet>
+          <meta property='og:title' content='Legislated FAQ' />
+          <meta property='og:description' content='Questions and answers to help explain the Illinois witness slip process.' />
+          <meta property='twitter:title' content='Legislated FAQ' />
+          <meta property='twitter:description' content='Questions and answers to help explain the Illinois witness slip process.' />
+        </Helmet>
         <h1>FAQ</h1>
         <Question title='What is a Witness Slip?'>
           <h5>What it is</h5>
