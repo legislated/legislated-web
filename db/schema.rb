@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205210000) do
+ActiveRecord::Schema.define(version: 2018_03_08_005925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -38,16 +38,15 @@ ActiveRecord::Schema.define(version: 20171205210000) do
   end
 
   create_table "committees", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "external_id",  null: false
-    t.string   "name",         null: false
-    t.uuid     "chamber_id",   null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "os_id"
-    t.string   "subcommittee"
-    t.string   "sources"
-    t.index ["chamber_id"], name: "index_committees_on_chamber_id", using: :btree
-    t.index ["external_id"], name: "index_committees_on_external_id", unique: true, using: :btree
+    t.integer "ilga_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "os_id"
+    t.string "subcommittee"
+    t.string "sources"
+    t.integer "chamber", null: false
+    t.index ["ilga_id"], name: "index_committees_on_ilga_id", unique: true
   end
 
   create_table "documents", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
@@ -95,12 +94,12 @@ ActiveRecord::Schema.define(version: 20171205210000) do
   end
 
   create_table "members", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string   "os_leg_id"
-    t.string   "os_committee_id"
-    t.string   "role"
-    t.string   "session_number"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string "os_leg_id"
+    t.string "os_committee_id"
+    t.string "role"
+    t.string "session_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
