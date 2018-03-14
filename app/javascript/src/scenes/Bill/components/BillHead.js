@@ -15,8 +15,6 @@ function formatTitle (bill:Bill) {
 let BillHead = function BillHead ({ bill }: Props) {
   return (
     <Helmet>
-      <meta property='og:url' content='https://legislated.org/' />
-      <meta property='og:site_name' content='Legislated' />
       <meta property='og:title' content={formatTitle(bill)} />
       <meta property='og:description' content={bill.summary} />
       <meta name='twitter:title' content={formatTitle(bill)} />

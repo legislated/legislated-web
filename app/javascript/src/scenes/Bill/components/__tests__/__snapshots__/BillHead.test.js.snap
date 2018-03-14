@@ -6,14 +6,6 @@ exports[`#render renders properly 1`] = `
   encodeSpecialCharacters={true}
 >
   <meta
-    content="https://legislated.org/"
-    property="og:url"
-  />
-  <meta
-    content="Legislated"
-    property="og:site_name"
-  />
-  <meta
     content="HB1234: Foo"
     property="og:title"
   />

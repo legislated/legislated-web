@@ -10,7 +10,6 @@ export function AppHead () {
       <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com/' />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <meta name='description' content='Your seat in state government' />
-      <meta property='og:url' content='https://legislated.org/' />
       <meta property='og:type' content='website' />
       <meta property='og:site_name' content='Legislated' />
       <meta property='og:title' content='Legislated' />
