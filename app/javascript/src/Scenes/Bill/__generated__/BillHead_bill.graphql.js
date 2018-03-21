@@ -9,19 +9,19 @@
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
 import type { FragmentReference } from 'relay-runtime';
-declare export opaque type BillTitle_bill$ref: FragmentReference;
-export type BillTitle_bill = {|
+declare export opaque type BillHead_bill$ref: FragmentReference;
+export type BillHead_bill = {|
   +title: ?string,
-  +updatedAt: any,
+  +summary: ?string,
   +number: string,
-  +$refType: BillTitle_bill$ref,
+  +$refType: BillHead_bill$ref,
 |};
 */
 
 
 const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "name": "BillTitle_bill",
+  "name": "BillHead_bill",
   "type": "Bill",
   "metadata": null,
   "argumentDefinitions": [],
@@ -36,7 +36,7 @@ const node/*: ConcreteFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "updatedAt",
+      "name": "summary",
       "args": null,
       "storageKey": null
     },
@@ -49,5 +49,5 @@ const node/*: ConcreteFragment*/ = {
     }
   ]
 };
-(node/*: any*/).hash = '101586a0cb3a5a0fe4efa81bd621dd7c';
+(node/*: any*/).hash = '54456ea36266ade31622478fffa9f534';
 module.exports = node;

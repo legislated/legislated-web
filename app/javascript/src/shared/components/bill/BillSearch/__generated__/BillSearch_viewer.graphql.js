@@ -7,20 +7,40 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+type BillList_viewer$ref = any;
+import type { FragmentReference } from 'relay-runtime';
+declare export opaque type BillSearch_viewer$ref: FragmentReference;
 export type BillSearch_viewer = {|
   +bills: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
-        +id: string;
-      |};
-    |}>;
-  |};
+        +id: string,
+      |},
+    |}>,
+  |},
+  +$fragmentRefs: BillList_viewer$ref,
+  +$refType: BillSearch_viewer$ref,
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
+const node/*: ConcreteFragment*/ = {
+  "kind": "Fragment",
+  "name": "BillSearch_viewer",
+  "type": "Viewer",
+  "metadata": {
+    "connection": [
+      {
+        "count": "count",
+        "cursor": "cursor",
+        "direction": "forward",
+        "path": [
+          "bills"
+        ]
+      }
+    ]
+  },
   "argumentDefinitions": [
     {
       "kind": "RootArgument",
@@ -38,24 +58,12 @@ const fragment /*: ConcreteFragment*/ = {
       "type": "String"
     }
   ],
-  "kind": "Fragment",
-  "metadata": {
-    "connection": [
-      {
-        "count": "count",
-        "cursor": "cursor",
-        "direction": "forward",
-        "path": [
-          "bills"
-        ]
-      }
-    ]
-  },
-  "name": "BillSearch_viewer",
   "selections": [
     {
       "kind": "LinkedField",
       "alias": "bills",
+      "name": "__BillSearch_bills_connection",
+      "storageKey": null,
       "args": [
         {
           "kind": "Variable",
@@ -65,87 +73,84 @@ const fragment /*: ConcreteFragment*/ = {
         }
       ],
       "concreteType": "BillsSearch",
-      "name": "__BillSearch_bills_connection",
       "plural": false,
       "selections": [
         {
           "kind": "LinkedField",
           "alias": null,
+          "name": "edges",
+          "storageKey": null,
           "args": null,
           "concreteType": "BillEdge",
-          "name": "edges",
           "plural": true,
           "selections": [
             {
               "kind": "LinkedField",
               "alias": null,
+              "name": "node",
+              "storageKey": null,
               "args": null,
               "concreteType": "Bill",
-              "name": "node",
               "plural": false,
               "selections": [
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "args": null,
                   "name": "id",
+                  "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "args": null,
                   "name": "__typename",
+                  "args": null,
                   "storageKey": null
                 }
-              ],
-              "storageKey": null
+              ]
             },
             {
               "kind": "ScalarField",
               "alias": null,
-              "args": null,
               "name": "cursor",
+              "args": null,
               "storageKey": null
             }
-          ],
-          "storageKey": null
+          ]
         },
         {
           "kind": "LinkedField",
           "alias": null,
+          "name": "pageInfo",
+          "storageKey": null,
           "args": null,
           "concreteType": "PageInfo",
-          "name": "pageInfo",
           "plural": false,
           "selections": [
             {
               "kind": "ScalarField",
               "alias": null,
-              "args": null,
               "name": "endCursor",
+              "args": null,
               "storageKey": null
             },
             {
               "kind": "ScalarField",
               "alias": null,
-              "args": null,
               "name": "hasNextPage",
+              "args": null,
               "storageKey": null
             }
-          ],
-          "storageKey": null
+          ]
         }
-      ],
-      "storageKey": null
+      ]
     },
     {
       "kind": "FragmentSpread",
       "name": "BillList_viewer",
       "args": null
     }
-  ],
-  "type": "Viewer"
+  ]
 };
-
-module.exports = fragment;
+(node/*: any*/).hash = '68d4dfe147531dfd0a08f5ac7265712d';
+module.exports = node;
