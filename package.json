@@ -29,7 +29,7 @@
     "relay": "relay-compiler --src ./app/javascript/src --schema schema.json",
     "relay:watch": "yarn relay --watch",
     "verify": "yarn lint && yarn flow && yarn test",
-    "verify:quiet": "yarn lint && yarn relay && yarn flow --quiet && yarn test"
+    "verify:quiet": "yarn lint && yarn flow --quiet && yarn test"
   },
   "dependencies": {
     "@rails/webpacker": "^3.2.2",
@@ -93,33 +93,14 @@
   },
   "babel": {
     "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "browsers": [
-              "last 2 versions"
-            ]
-          }
-        }
-      ],
+      [ "env", { "targets": { "browsers": [ "last 2 versions" ] } } ],
       "react",
       "stage-2"
     ],
     "plugins": [
-      [
-        "relay",
-        {
-          "schema": "schema.json"
-        }
-      ],
+      [ "relay", { "schema": "schema.json" } ],
       "transform-runtime",
-      [
-        "emotion",
-        {
-          "autoLabel": true
-        }
-      ],
+      [ "emotion", { "autoLabel": true } ],
       "lodash"
     ]
   },
