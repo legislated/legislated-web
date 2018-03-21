@@ -2,6 +2,7 @@
 import * as React from 'react'
 import styled, { css } from 'react-emotion'
 import { createFragmentContainer, graphql } from 'react-relay'
+import { BillHead } from './BillHead'
 import { BillTitle, BillStatus, Button, Link, CopyLink } from '@/components'
 import { href } from '@/functions'
 import { mixins } from '@/styles'
@@ -16,6 +17,7 @@ let BillDetail = function BillDetail ({ bill }: Props) {
 
   return (
     <Detail>
+      <BillHead bill={bill} />
       <BillTitle bill={bill} />
       <BillStatus bill={bill} />
       <Elements>

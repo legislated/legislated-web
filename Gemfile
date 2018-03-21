@@ -23,6 +23,9 @@ gem 'poltergeist'
 gem 'hypernova'
 gem 'webpacker'
 
+# pinned versions
+# gem 'ffi', '1.9.18'
+
 # development
 group :development do
   gem 'bullet'
