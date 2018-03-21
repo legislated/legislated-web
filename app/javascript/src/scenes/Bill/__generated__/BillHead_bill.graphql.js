@@ -7,57 +7,60 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+import type { FragmentReference } from 'relay-runtime';
+declare export opaque type BillHead_bill$ref: FragmentReference;
 export type BillHead_bill = {|
-  +title: ?string;
-  +summary: ?string;
+  +title: ?string,
+  +summary: ?string,
   +document: ?{|
-    +number: string;
-  |};
+    +number: string,
+  |},
+  +$refType: BillHead_bill$ref,
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
-  "argumentDefinitions": [],
+const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "metadata": null,
   "name": "BillHead_bill",
+  "type": "Bill",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "title",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "summary",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "document",
+      "storageKey": null,
       "args": null,
       "concreteType": "Document",
-      "name": "document",
       "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
-          "args": null,
           "name": "number",
+          "args": null,
           "storageKey": null
         }
-      ],
-      "storageKey": null
+      ]
     }
-  ],
-  "type": "Bill"
+  ]
 };
-
-module.exports = fragment;
+(node/*: any*/).hash = 'b96f9aa4b3078731a3f62855b51b9e2a';
+module.exports = node;
