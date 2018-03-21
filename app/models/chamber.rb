@@ -1,18 +1,8 @@
-class Chamber < ApplicationRecord
-  enum kind: %i[house senate]
+module Chamber
+  include Enum
 
-  # relationships
-  has_many :committees, dependent: :destroy
-
-  # accessors
-  def url
-    case kind.to_sym
-    when :senate
-      'http://my.ilga.gov/Hearing/AllHearings?chamber=S'
-    when :house
-      'http://my.ilga.gov/Hearing/AllHearings?chamber=H'
-    else
-      raise "Unknown chamber kind: #{kind}"
-    end
-  end
+  values %w[
+    lower
+    upper
+  ]
 end

@@ -36,7 +36,7 @@ export class MobileHeader extends React.Component<{}, State> {
       <Header>
         <LogoLink to='/'>
           <Logo height={40} width={40} />
-          <h1>LEGISLATED</h1>
+          <h1>Legislated</h1>
         </LogoLink>
         <MobileMenuButton
           onClick={this.didClickButton}
@@ -63,6 +63,7 @@ const Header = styled.header`
     height: ${MOBILE_HEADER_HEIGHT}px;
     padding: 0 15px;
     background-color: ${colors.white};
+    border-bottom: 1px solid ${colors.gray4};
     z-index: 1;
   `}
 `

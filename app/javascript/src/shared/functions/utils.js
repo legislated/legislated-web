@@ -1,5 +1,6 @@
 // @flow
 import { omit } from 'lodash'
+import { config } from '@/config'
 
 export function now () {
   return new Date()
@@ -24,4 +25,8 @@ export function removeRouterProps (props: Object) {
     'match',
     'staticContext'
   ])
+}
+
+export function href () {
+  return config.env !== 'server' ? window.location.href : null
 }

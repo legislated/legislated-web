@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render shows the sticky navbar after scrolling 1`] = `
-<Styled(header)>
-  <Styled(div)>
+<Container>
+  <Hero>
     <Logo
       height={49}
       width={58}
@@ -10,10 +10,10 @@ exports[`#render shows the sticky navbar after scrolling 1`] = `
     <h1>
       Legislated
     </h1>
-  </Styled(div)>
+  </Hero>
   <HeaderNavbar
     isSticky={true}
     navbarRef={[Function]}
   />
-</Styled(header)>
+</Container>
 `;

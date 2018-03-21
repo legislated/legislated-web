@@ -9,7 +9,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-/spec/spec.history
+*.log
 
 # webpacker
 /public/assets

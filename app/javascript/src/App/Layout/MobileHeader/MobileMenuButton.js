@@ -33,12 +33,12 @@ const Button = styled.button`
   }
 
   > * + * {
-    margin-top: 5px;
+    margin-top: 8px;
   }
 `
 
 const Bar = styled.span`
-  height: 4px;
-  border-radius: 2px;
+  height: 2px;
+  border-radius: 1px;
   background-color: ${colors.black};
 `

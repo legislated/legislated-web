@@ -21,10 +21,6 @@ describe GraphSchema, :graph_type do
     let(:model) { Viewer.instance }
   end
 
-  it_behaves_like 'a relay node provider', Types::ChamberType do
-    let(:model) { create(:chamber) }
-  end
-
   it_behaves_like 'a relay node provider', Types::CommitteeType do
     let(:model) { create(:committee) }
   end
@@ -35,5 +31,9 @@ describe GraphSchema, :graph_type do
 
   it_behaves_like 'a relay node provider', Types::BillType do
     let(:model) { create(:bill) }
+  end
+
+  it_behaves_like 'a relay node provider', Types::LegislatorType do
+    let(:model) { create(:legislator) }
   end
 end

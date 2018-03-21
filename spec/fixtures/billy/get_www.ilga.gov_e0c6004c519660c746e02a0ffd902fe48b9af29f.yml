@@ -1,0 +1,26 @@
+---
+:scope: 
+:url: http://www.ilga.gov/include/script/HM_Arrays.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: application/javascript
+  Last-Modified: Fri, 28 Oct 2016 16:08:31 GMT
+  Accept-Ranges: bytes
+  ETag: '"a61d48873531d21:0"'
+  Server: Microsoft-IIS/8.5
+  X-Powered-By: ASP.NET
+  Date: Tue, 06 Mar 2018 05:00:13 GMT
+  Connection: close
+  Content-Length: '1877'
+:content: "\r\nHM_Array1 = [\r\n[140,\"53\",\"76\",\r\n,\"#000080\",\"#000080\",\"white\",\"#000080\",\"#000080\",,,,,,,,,,,\r\n1,true],\r\n[\"Bills
+  & Resolutions\",\"/legislation/default.asp\",1,0,1],\r\n[\"Compiled Statutes\",\"/legislation/ilcs/ilcs.asp\",1,0,0],\r\n[\"Public
+  Acts\",\"/legislation/publicacts/default.asp\",1,0,1],\r\n[\"Legislative Reports\",\"/reports/default.asp\",1,0,0],\r\n[\"Legislative
+  Guide\",\"/legislation/guide.asp\",1,0,1],\r\n[\"Legislative Glossary\",\"/legislation/glossary.asp\",1,0,1],\r\n[\"IL
+  Constitution\",\"/commission/lrb/conmain.htm\",1,0,1]\r\n]\r\n\r\nHM_Array2 = [\r\n[140,\"224\",\"76\",\r\n,\"#000080\",\"#000080\",\"white\",\"#000080\",\"#000080\",,,,,,,,,,,\r\n1,true],\r\n[\"Members\",\"/house/default.asp\",1,0,1],\r\n[\"Committees\",\"/house/committees/default.asp\",1,0,0],\r\n[\"Schedules\",\"/house/schedules/default.asp\",1,0,1],\r\n[\"Journals\",\"/house/journals/default.asp\",1,0,0],\r\n[\"Transcripts\",\"/house/transcripts/default.asp\",1,0,1],\r\n[\"Rules\",\"/house/rules.asp\",1,0,1],\r\n[\"Audio/Video\",\"/houseaudvid.asp\",1,0,1]\r\n]\r\n\r\nHM_Array3
+  = [\r\n[140,\"173\",\"76\",\r\n,\"#000080\",\"#000080\",\"white\",\"#000080\",\"#000080\",,,,,,,,,,,\r\n1,true],\r\n[\"Members\",\"/senate/default.asp\",1,0,1],\r\n[\"Committees\",\"/senate/committees/default.asp\",1,0,0],\r\n[\"Schedules\",\"/senate/schedules/default.asp\",1,0,1],\r\n[\"Journals\",\"/senate/journals/default.asp\",1,0,0],\r\n[\"Transcripts\",\"/senate/transcripts/default.asp\",1,0,1],\r\n[\"Rules\",\"/senate/rules.asp\",1,0,1],\r\n[\"Audio/Video\",\"/senateaudvid.asp\",1,0,1]\r\n]\r\n\r\nHM_Array4
+  = [\r\n[140,\"278\",\"76\",\r\n,\"#000080\",\"#000080\",\"white\",\"#000080\",\"#000080\",,,,,,,,,,,\r\n1,true],\r\n[\"Build
+  Query\",\"/mylegislation/query.asp\",1,0,1],\r\n[\"ILCS Query\",\"/mylegislation/queryILCS.asp\",1,0,1],\r\n[\"Add
+  Bills\",\"/mylegislation/addbills.asp\",1,0,1],\r\n[\"Edit Bills\",\"/mylegislation/editbills.asp\",1,0,0],\r\n[\"View
+  Bills\",\"/mylegislation/view.asp\",1,0,1],\r\n[\"Reports\",\"/mylegislation/reports.asp\",1,0,1],\r\n[\"Help\",\"/mylegislation/getstarted.asp\",1,0,1]\r\n]"

@@ -2,13 +2,8 @@ include FactoryBot::Syntax::Methods
 
 puts '• seeding...'
 
-puts '- creating chambers'
-chambers = %w[House Senate].map do |name|
-  create(:chamber, name: name)
-end
-
 puts '- creating committees'
-committees = chambers.flat_map do |chamber|
+committees = Chamber.flat_map do |chamber|
   create_list(:committee, 2, chamber: chamber)
 end
 

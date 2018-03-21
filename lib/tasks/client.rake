@@ -1,5 +1,5 @@
 namespace :client do
-  task :check do
-    sh "yarn check:quiet"
+  task :verify do
+    sh "yarn verify:quiet"
   end
 end

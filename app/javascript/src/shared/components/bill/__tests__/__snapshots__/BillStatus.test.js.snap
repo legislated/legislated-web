@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render removes obsolete steps 1`] = `
+<Status>
+  <Line
+    isActive={true}
+  />
+  <Name
+    isActive={true}
+    key="test-id-status-segment-0"
+  >
+    House
+  </Name>
+  <Line
+    isActive={false}
+    key="test-id-status-segment-1"
+  />
+  <Name
+    isActive={false}
+    key="test-id-status-segment-2"
+  >
+    Senate
+  </Name>
+  <Line
+    isActive={false}
+    key="test-id-status-segment-3"
+  />
+  <Name
+    isActive={false}
+    key="test-id-status-segment-4"
+  >
+    Governor
+  </Name>
+  <Line
+    isActive={false}
+    key="test-id-status-segment-5"
+  />
+</Status>
+`;
+
+exports[`#render shows the status 1`] = `
+<Status>
+  <Line
+    isActive={true}
+  />
+  <Name
+    isActive={true}
+    key="test-id-status-segment-0"
+  >
+    House
+  </Name>
+  <Line
+    isActive={true}
+    key="test-id-status-segment-1"
+  />
+  <Name
+    isActive={true}
+    key="test-id-status-segment-2"
+  >
+    Senate
+  </Name>
+  <Line
+    isActive={false}
+    key="test-id-status-segment-3"
+  />
+  <Name
+    isActive={false}
+    key="test-id-status-segment-4"
+  >
+    Governor
+  </Name>
+  <Line
+    isActive={false}
+    key="test-id-status-segment-5"
+  />
+</Status>
+`;

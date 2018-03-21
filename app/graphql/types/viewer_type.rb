@@ -13,12 +13,6 @@ module Types
     end
 
     # entities
-    field :chamber do
-      type ChamberType
-      argument :id, !types.ID, 'The graph id of the chamber'
-      resolve -> (_obj, args, _ctx) { Chamber.find(args['id']) }
-    end
-
     field :committee do
       type CommitteeType
       argument :id, !types.ID, 'The graph id of the committee'
@@ -44,11 +38,6 @@ module Types
     end
 
     # connections
-    connection :chambers, ChamberType.connection_type do
-      description 'All chambers'
-      resolve -> (_obj, _args, _ctx) { Chamber.all }
-    end
-
     connection :committees, CommitteeType.connection_type do
       description 'All committees'
       resolve -> (_obj, _args, _ctx) { Committee.all }
@@ -66,13 +55,13 @@ module Types
 
       resolve -> (_obj, args, _ctx) do
         args = args.parse_graphql_data
-        BillsSearchCompiler.compile(args[:params] || {})
+        Bills::Search.new.call(args[:params] || {})
       end
     end
 
     connection :legislators, LegislatorType.connection_type do
       description 'All legislators'
-      resolve -> (_obj, _args, _ctx) { Chamber.all }
+      resolve -> (_obj, _args, _ctx) { Legislator.all }
     end
   end
 end

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`#render shows the nav links 1`] = `
-<Styled(nav)
+<Nav
   className="test-class"
 >
   <NavLink
@@ -28,5 +28,5 @@ exports[`#render shows the nav links 1`] = `
   >
     About Us
   </NavLink>
-</Styled(nav)>
+</Nav>
 `;

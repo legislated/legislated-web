@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the loading indicator when loading 1`] = `
+<Search>
+  <SearchField
+    onChange={[Function]}
+    params={
+      Object {
+        "query": "",
+      }
+    }
+  />
+  <Body>
+    <SearchFilters
+      onChange={[Function]}
+      params={
+        Object {
+          "query": "",
+        }
+      }
+    />
+    <Bills>
+      <Loading
+        isLoading={true}
+      />
+    </Bills>
+  </Body>
+</Search>
+`;
+
+exports[`#render shows the search view 1`] = `
+<Search>
+  <SearchField
+    onChange={[Function]}
+    params={
+      Object {
+        "query": "",
+      }
+    }
+  />
+  <Body>
+    <SearchFilters
+      onChange={[Function]}
+      params={
+        Object {
+          "query": "",
+        }
+      }
+    />
+    <Bills>
+      <Loading
+        isLoading={false}
+      />
+      <BillList
+        isAnimated={true}
+        pageSize="test-size"
+        viewer="test-viewer"
+      />
+    </Bills>
+  </Body>
+</Search>
+`;
+
+exports[`#render shows the search view with default params 1`] = `
+<Search>
+  <SearchField
+    onChange={[Function]}
+    params={
+      Object {
+        "query": "test-query",
+      }
+    }
+  />
+  <Body>
+    <SearchFilters
+      onChange={[Function]}
+      params={
+        Object {
+          "query": "test-query",
+        }
+      }
+    />
+    <Bills>
+      <Loading
+        isLoading={false}
+      />
+      <BillList
+        isAnimated={true}
+        pageSize="test-size"
+        viewer="test-viewer"
+      />
+    </Bills>
+  </Body>
+</Search>
+`;

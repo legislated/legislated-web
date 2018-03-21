@@ -23,6 +23,10 @@ Rails/Output:
 Rails/Delegate:
   Enabled: false
 
+# targets non-AR subclasses in the models folder
+Rails/FindEach:
+  Enabled: false
+
 # relaxed ruby style
 Style/Alias:
   Enabled: false

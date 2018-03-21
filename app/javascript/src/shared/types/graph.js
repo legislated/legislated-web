@@ -19,17 +19,19 @@ export type SearchConnection<T> = {
 } & Connection<T>
 
 // data types
-export type Chamber = {
-  name: string,
-}
+export type Chamber
+  = 'LOWER'
+  | 'UPPER'
 
 export type Committee = {
   name: string,
+  chamber: Chamber
 }
 
 export type Hearing = {
   id: string,
   date: string,
+  committee: Committee
 }
 
 export type StepActor
@@ -58,19 +60,26 @@ export type Step = {
   date: string
 }
 
+export type Document = {
+  id: string,
+  number: string,
+  fullTextUrl: string,
+  slipUrl: string,
+  slipResultsUrl: string
+}
+
 export type Bill = {
   id: string,
   documentNumber: string,
   title: string,
   summary: string,
+  sponsorName: string,
   detailsUrl: string,
-  fullTextUrl: string,
   witnessSlipUrl: string,
   witnessSlipResultUrl: string,
   steps: Array<Step>,
-  hearing: Hearing,
-  committee: Committee,
-  chamber: Chamber,
+  hearing: ?Hearing,
+  document: Document,
   updatedAt: string
 }
 

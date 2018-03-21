@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module Legislated
   class Application < Rails::Application
     config.time_zone = 'Central Time (US & Canada)'
-    config.autoload_paths << Rails.root.join('app', 'services', 'scraper')
+    config.autoload_paths << Rails.root.join('app', '**', 'concerns')
 
     if ENV['ADMIN_CREDENTIALS'].blank?
       raise 'ADMIN_CREDENTIALS environment variable required to run the server. Maybe you forgot to copy the .env.sample to .env?'

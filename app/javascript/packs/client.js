@@ -1,5 +1,5 @@
 // @flow
-import '@/styles/rehydrate'
+import '@/styles/hydrate'
 import React from 'react'
 import { renderReact } from 'hypernova-react'
 import { BrowserRouter } from 'react-router-dom'
