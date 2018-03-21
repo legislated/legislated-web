@@ -9,7 +9,7 @@ type Props = {
 }
 
 function formatTitle (bill: Bill) {
-  return `${bill.document ? bill.document.number : ''}: ${bill.title || ''}`
+  return `${bill.number}: ${bill.title || ''}`
 }
 
 let BillHead = function BillHead ({ bill }: Props) {
@@ -27,9 +27,7 @@ BillHead = createFragmentContainer(BillHead, graphql`
   fragment BillHead_bill on Bill {
     title
     summary
-    document {
-      number
-    }
+    number
   }
 `)
 

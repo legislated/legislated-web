@@ -46,11 +46,11 @@ let BillDetail = function BillDetail ({ bill }: Props) {
       </Elements>
       <Actions>
         <Button
-          to={document && document.slipUrl}
+          to={bill.slipUrl}
           children='Take Action'
         />
         <Link
-          to={document && document.slipResultsUrl}
+          to={bill.slipResultsUrl}
           children='View Results'
         />
       </Actions>
@@ -64,10 +64,10 @@ BillDetail = createFragmentContainer(BillDetail, graphql`
     summary
     detailsUrl
     sponsorName
+    slipUrl
+    slipResultsUrl
     document {
       fullTextUrl
-      slipUrl
-      slipResultsUrl
     }
     hearing {
       committee {

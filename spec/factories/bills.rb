@@ -2,11 +2,14 @@ FactoryBot.define do
   factory :bill do
     ilga_id { Faker::Number.unique.number(5) }
     os_id { "ILB0000#{Faker::Number.unique.number(6)}" }
+    number { "#{%w[H S].sample}B#{Faker::Number.number(4)}" }
     title { Faker::Company.catch_phrase }
     summary { Faker::Lorem.paragraph(6) }
     session_number { 99 }
     sponsor_name { Faker::Name.name }
     details_url { Faker::Internet.url }
+    slip_url { Faker::Internet.url }
+    slip_results_url { Faker::Internet.url }
 
     transient do
       hearing_date nil
@@ -22,7 +25,7 @@ FactoryBot.define do
     end
 
     trait :with_documents do
-      documents { build_list(:document, 1) }
+      documents { build_list(:document, 1, number: number) }
     end
 
     trait :with_steps do
@@ -54,6 +57,8 @@ FactoryBot.define do
       transient do
         hearing nil
         summary nil
+        slip_url nil
+        slip_results_url nil
       end
 
       initialize_with do
@@ -66,6 +71,29 @@ FactoryBot.define do
           session_number,
           details_url,
           sponsor_name
+        )
+      end
+    end
+
+    factory :ilga_hearing_bill do
+      transient do
+        os_id nil
+        number nil
+        title nil
+        summary nil
+        session_number nil
+        sponsor_name nil
+        details_url nil
+        slip_url nil
+        slip_results_url nil
+        hearing nil
+      end
+
+      initialize_with do
+        Ilga::ScrapeHearingBills::Bill.new(
+          ilga_id,
+          slip_url,
+          slip_results_url
         )
       end
     end

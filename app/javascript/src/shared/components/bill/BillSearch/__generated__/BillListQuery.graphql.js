@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 364952b1a14a2a3a77e9c46804d38a22
+ * @relayHash 66b3cf289853ecfdeb78f455e34f06f6
  */
 
 /* eslint-disable */
@@ -72,10 +72,7 @@ fragment BillCell_bill on Bill {
 fragment BillTitle_bill on Bill {
   title
   updatedAt
-  document {
-    number
-    id
-  }
+  number
 }
 
 fragment BillStatus_bill on Bill {
@@ -120,7 +117,7 @@ return {
   "operationKind": "query",
   "name": "BillListQuery",
   "id": null,
-  "text": "query BillListQuery(\n  $params: BillsSearchParams!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillList_viewer\n    id\n  }\n}\n\nfragment BillList_viewer on Viewer {\n  bills(params: $params, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        ...BillCell_bill\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  summary\n  hearing {\n    date\n    id\n  }\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  document {\n    number\n    id\n  }\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n",
+  "text": "query BillListQuery(\n  $params: BillsSearchParams!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillList_viewer\n    id\n  }\n}\n\nfragment BillList_viewer on Viewer {\n  bills(params: $params, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        ...BillCell_bill\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  summary\n  hearing {\n    date\n    id\n  }\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  number\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -281,23 +278,11 @@ return {
                         "storageKey": null
                       },
                       {
-                        "kind": "LinkedField",
+                        "kind": "ScalarField",
                         "alias": null,
-                        "name": "document",
-                        "storageKey": null,
+                        "name": "number",
                         "args": null,
-                        "concreteType": "Document",
-                        "plural": false,
-                        "selections": [
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "number",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          v1
-                        ]
+                        "storageKey": null
                       },
                       {
                         "kind": "LinkedField",

@@ -11,9 +11,7 @@ const defaults = {
   bill: {
     title: 'Foo',
     summary: 'A bill, fantastic',
-    document: {
-      number: 'HB1234'
-    }
+    number: 'HB1234'
   }
 }
 

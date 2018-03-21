@@ -16,10 +16,10 @@ export type BillDetail_bill = {|
   +summary: ?string,
   +detailsUrl: ?string,
   +sponsorName: ?string,
+  +slipUrl: ?string,
+  +slipResultsUrl: ?string,
   +document: ?{|
     +fullTextUrl: ?string,
-    +slipUrl: ?string,
-    +slipResultsUrl: ?string,
   |},
   +hearing: ?{|
     +committee: {|
@@ -61,6 +61,20 @@ const node/*: ConcreteFragment*/ = {
       "storageKey": null
     },
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slipUrl",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slipResultsUrl",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
       "name": "document",
@@ -73,20 +87,6 @@ const node/*: ConcreteFragment*/ = {
           "kind": "ScalarField",
           "alias": null,
           "name": "fullTextUrl",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "slipUrl",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "slipResultsUrl",
           "args": null,
           "storageKey": null
         }
@@ -133,5 +133,5 @@ const node/*: ConcreteFragment*/ = {
     }
   ]
 };
-(node/*: any*/).hash = 'c034163f829aff935a0f11ff096ba24a';
+(node/*: any*/).hash = '1a836a519e792e8d8d5620dd7249bb6b';
 module.exports = node;

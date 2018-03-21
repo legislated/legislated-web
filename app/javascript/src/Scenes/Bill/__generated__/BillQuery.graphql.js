@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash ef8f940b53ce46302da8e96776296eb4
+ * @relayHash 3933561f1c813734be419a5d741ff514
  */
 
 /* eslint-disable */
@@ -40,10 +40,10 @@ fragment BillDetail_bill on Bill {
   summary
   detailsUrl
   sponsorName
+  slipUrl
+  slipResultsUrl
   document {
     fullTextUrl
-    slipUrl
-    slipResultsUrl
     id
   }
   hearing {
@@ -60,10 +60,7 @@ fragment BillDetail_bill on Bill {
 fragment BillTitle_bill on Bill {
   title
   updatedAt
-  document {
-    number
-    id
-  }
+  number
 }
 
 fragment BillStatus_bill on Bill {
@@ -104,7 +101,7 @@ return {
   "operationKind": "query",
   "name": "BillQuery",
   "id": null,
-  "text": "query BillQuery(\n  $id: ID!\n) {\n  viewer {\n    bill(id: $id) {\n      ...BillDetail_bill\n      id\n    }\n    id\n  }\n}\n\nfragment BillDetail_bill on Bill {\n  summary\n  detailsUrl\n  sponsorName\n  document {\n    fullTextUrl\n    slipUrl\n    slipResultsUrl\n    id\n  }\n  hearing {\n    committee {\n      name\n      id\n    }\n    id\n  }\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  document {\n    number\n    id\n  }\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n",
+  "text": "query BillQuery(\n  $id: ID!\n) {\n  viewer {\n    bill(id: $id) {\n      ...BillDetail_bill\n      id\n    }\n    id\n  }\n}\n\nfragment BillDetail_bill on Bill {\n  summary\n  detailsUrl\n  sponsorName\n  slipUrl\n  slipResultsUrl\n  document {\n    fullTextUrl\n    id\n  }\n  hearing {\n    committee {\n      name\n      id\n    }\n    id\n  }\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  number\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -166,67 +163,6 @@ return {
             "plural": false,
             "selections": [
               {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "summary",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "detailsUrl",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "sponsorName",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "document",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "Document",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "fullTextUrl",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "slipUrl",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "slipResultsUrl",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  v2,
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "number",
-                    "args": null,
-                    "storageKey": null
-                  }
-                ]
-              },
-              {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "hearing",
@@ -260,6 +196,60 @@ return {
               {
                 "kind": "ScalarField",
                 "alias": null,
+                "name": "summary",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "sponsorName",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "slipUrl",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "slipResultsUrl",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "document",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Document",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "fullTextUrl",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  v2
+                ]
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "detailsUrl",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
                 "name": "title",
                 "args": null,
                 "storageKey": null
@@ -268,6 +258,13 @@ return {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "updatedAt",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "number",
                 "args": null,
                 "storageKey": null
               },

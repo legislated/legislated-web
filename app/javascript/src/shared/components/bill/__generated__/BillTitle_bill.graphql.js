@@ -13,9 +13,7 @@ declare export opaque type BillTitle_bill$ref: FragmentReference;
 export type BillTitle_bill = {|
   +title: ?string,
   +updatedAt: any,
-  +document: ?{|
-    +number: string,
-  |},
+  +number: string,
   +$refType: BillTitle_bill$ref,
 |};
 */
@@ -43,24 +41,13 @@ const node/*: ConcreteFragment*/ = {
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "document",
-      "storageKey": null,
+      "name": "number",
       "args": null,
-      "concreteType": "Document",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "number",
-          "args": null,
-          "storageKey": null
-        }
-      ]
+      "storageKey": null
     }
   ]
 };
-(node/*: any*/).hash = '8fa1ad1145ac6f83dbc6db31b82270a1';
+(node/*: any*/).hash = '101586a0cb3a5a0fe4efa81bd621dd7c';
 module.exports = node;

@@ -4,10 +4,8 @@ module Ilga
 
     Bill = Struct.new(
       :ilga_id,
-      :number,
       :slip_url,
       :slip_results_url,
-      :is_amendment
     )
 
     def call(hearing)
@@ -53,11 +51,6 @@ module Ilga
         'bill(?) is missing ilga id'
       )
 
-      document_number = check!(
-        columns[2]&.text,
-        "bill(#{ilga_id}) is missing document number"
-      )
-
       # scrape links
       slip_link = row.first('.slipiconbutton')&.[](:href)
       slip_results_link = row.first('.viewiconbutton')&.[](:href)
@@ -69,10 +62,8 @@ module Ilga
       # build bill
       Bill.new(
         ilga_id,
-        document_number,
         slip_link,
-        slip_results_link,
-        document_number.include?(' - ')
+        slip_results_link
       )
     end
 

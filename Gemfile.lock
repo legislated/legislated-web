@@ -334,6 +334,7 @@ DEPENDENCIES
   faker
   graphiql-rails
   graphql
+  graphql-batch
   graphql-preload
   guard-rspec
   honeybadger
