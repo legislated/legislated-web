@@ -22,10 +22,9 @@ describe ImportCommittees do
 
       def response(attrs = {})
         base_response = {
-          'first_name' => '',
-          'last_name' => '',
+          'committee' => '',
+          'subcommittee' => '',
           'middle_name' => '',
-          'suffixes' => '',
           'party' => '',
           'chamber' => '',
           'district' => '',
@@ -36,32 +35,21 @@ describe ImportCommittees do
 
       it "sets the committee's core attributes" do
         allow(mock_service).to receive(:call).and_return(response(
-          'leg_id' => attrs[:os_id],
-          'active' => attrs[:active],
-          'first_name' => attrs[:first_name],
-          'last_name' => attrs[:last_name],
-          'middle_name' => attrs[:middle_name],
-          'suffixes' => attrs[:suffixes],
-          'party' => attrs[:party],
+          'id' => attrs[:os_id],
+          'committee' => attrs[:name],
           'chamber' => attrs[:chamber],
-          'district' => attrs[:district],
-          'url' => attrs[:website_url],
-          'email' => attrs[:email]
+          'subcommittee' => attrs[:subcommittee],
+          'url' => attrs[:sources]
         ))
 
         subject.perform
         expect(committee.reload).to have_attributes(attrs.slice(
           :os_id,
-          :active,
-          :first_name,
-          :last_name,
-          :middle_name,
-          :suffixes,
-          :party,
+          :name,
+          :subcommittee,
+          :parent_id,
           :chamber,
-          :district,
-          :website_url,
-          :email
+          :sources
         ))
       end
 
@@ -79,7 +67,7 @@ describe ImportCommittees do
         attrs = attributes_for(:committee)
 
         allow(mock_service).to receive(:fetch_committees).and_return(response(
-          'role.committee_id' =>
+          'role.committee_id' => attrs[:]
         ))
 
         expect { subject.perform }.to change(Committee, :count).by(1)
