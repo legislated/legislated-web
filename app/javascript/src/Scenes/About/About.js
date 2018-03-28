@@ -1,12 +1,19 @@
 // @flow
 import * as React from 'react'
 import styled from 'react-emotion'
+import { Helmet } from 'react-helmet'
 import { Link } from '@/components'
 import { mixins } from '@/styles'
 
 export function About () {
   return (
     <Scene>
+      <Helmet>
+        <meta property='og:title' content='About Us' />
+        <meta property='og:description' content='Legislated.org has been developed by a Chi Hack Night breakout group to make it easier for Illinois residents to take advantage of the Witness Slip functionality provided by the State of Illinois.' />
+        <meta property='twitter:title' content='About Us' />
+        <meta property='twitter:description' content='Legislated.org has been developed by a Chi Hack Night breakout group to make it easier for Illinois residents to take advantage of the Witness Slip functionality provided by the State of Illinois.' />
+      </Helmet>
       <h3>About Us</h3>
       <p>
         Legislated has been developed by a

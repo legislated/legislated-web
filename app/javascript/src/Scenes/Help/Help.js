@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react'
 import styled from 'react-emotion'
+import { Helmet } from 'react-helmet'
 import { Link } from '@/components'
 import { colors, mixins } from '@/styles'
 import { media } from '&/images'
@@ -8,6 +9,12 @@ import { media } from '&/images'
 export function Help () {
   return (
     <Scene>
+      <Helmet>
+        <meta property='og:title' content='Legislated FAQ' />
+        <meta property='og:description' content='Questions and answers to help explain the Illinois witness slip process.' />
+        <meta property='twitter:title' content='Legislated FAQ' />
+        <meta property='twitter:description' content='Questions and answers to help explain the Illinois witness slip process.' />
+      </Helmet>
       <h3>Frequently Asked Questions</h3>
       <dl>
         <dt>What is a witness slip?</dt>
