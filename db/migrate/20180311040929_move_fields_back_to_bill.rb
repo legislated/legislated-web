@@ -3,7 +3,7 @@ class MoveFieldsBackToBill < ActiveRecord::Migration[5.2]
     UPDATE bills as b
     SET number = d.number, slip_url = d.slip_url, slip_results_url = d.slip_results_url
     FROM documents as d
-    WHERE d.bill_id = b.id, d.is_amendment = false
+    WHERE d.bill_id = b.id AND d.is_amendment = false
   ]
 
   def change
