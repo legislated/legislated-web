@@ -7,7 +7,7 @@ const runPack = createRunPacks({
 
 // start hypernova server
 hypernova({
-  devMode: true,
+  devMode: process.env.DEBUG === 'true',
   port: 3030,
   getComponent: runPack
 })

@@ -1,4 +1,4 @@
-if Rails.env.development?
+unless Rails.env.production?
   require 'hypernova/plugins/development_mode_plugin'
   Hypernova.add_plugin!(DevelopmentModePlugin.new)
 end
