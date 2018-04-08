@@ -9,12 +9,12 @@
     "node": "8.x"
   },
   "scripts": {
-    "start": "run-p dev-server hypernova",
+    "start": "run-p wds hypernova",
     "start:debug": "DEBUG=true yarn start",
     "start:prod": "NODE_ENV=production yarn hypernova",
-    "dev-server": "./bin/webpack-dev-server",
-    "hypernova": "node hypernova",
-    "hypernova:debug": "DEBUG=true node hypernova",
+    "wds": "./bin/webpack-dev-server",
+    "hypernova": "DEBUG=true node hypernova",
+    "hypernova:prod": "NODE_ENV=production node hypernova",
     "hypernova:inspect": "DEBUG=true node inspect hypernova",
     "build:staging": "RAILS_ENV=staging rails assets:precompile",
     "build:prod": "RAILS_ENV=production rails assets:precompile",

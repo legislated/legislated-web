@@ -18,7 +18,7 @@ function createPackUtils (nameMap) {
   function run (name, pack) {
     log.debug(name, `START - produce module from pack: ${pack != null ? pack.length : -1} chars`)
     const module = runPack(name, pack).default
-    log.debug(name, `FINISH - produced module: ${module != null ? 'some' : 'none'}`)
+    log.debug(name, `FINISH -  produced module: ${module != null ? 'some' : 'none'}`)
 
     return module
   }

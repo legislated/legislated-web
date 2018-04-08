@@ -1,7 +1,7 @@
 function parseArgs (args) {
   const name = args[0]
   const rest = Array.prototype.slice.call(args, 1)
-  rest[0] = `hypernova[pack: ${name}] ${rest[0]}`
+  rest[0] = `[hypernova${name != null ? ` pack=${name}` : ''}] ${rest[0]}`
   return rest
 }
 
