@@ -9,5 +9,8 @@ const runPack = createRunPacks({
 hypernova({
   devMode: process.env.DEBUG === 'true',
   port: 3030,
-  getComponent: runPack
+  getComponent: runPack,
+  getCpus (cpus) {
+    return Math.max(4, cpus)
+  }
 })
