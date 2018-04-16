@@ -22,12 +22,12 @@ describe ImportCommittees do
 
       def response(attrs = {})
         base_response = {
+          'id' => '',
+          'parent_id' => '',
           'committee' => '',
           'subcommittee' => '',
-          'middle_name' => '',
-          'party' => '',
           'chamber' => '',
-          'district' => '',
+          'sources' => '',
         }
 
         Array.wrap(base_response.merge(attrs))
@@ -39,16 +39,17 @@ describe ImportCommittees do
           'committee' => attrs[:name],
           'chamber' => attrs[:chamber],
           'subcommittee' => attrs[:subcommittee],
-          'url' => attrs[:sources]
+          'parent_id' => attrs[:subcommittee],
+          'sources' => attrs[:sources]
         ))
 
         subject.perform
         expect(committee.reload).to have_attributes(attrs.slice(
           :os_id,
           :name,
+          :chamber,
           :subcommittee,
           :parent_id,
-          :chamber,
           :sources
         ))
       end
@@ -67,7 +68,7 @@ describe ImportCommittees do
         attrs = attributes_for(:committee)
 
         allow(mock_service).to receive(:fetch_committees).and_return(response(
-          'role.committee_id' => attrs[:]
+          'role.committee_id' => attrs[:os_id]
         ))
 
         expect { subject.perform }.to change(Committee, :count).by(1)
