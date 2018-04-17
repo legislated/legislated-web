@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d91f1a340bbe13add05c4e6beb234440
+ * @relayHash 66b3cf289853ecfdeb78f455e34f06f6
  */
 
 /* eslint-disable */
@@ -8,9 +8,22 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteRequest } from 'relay-runtime';
+type BillList_viewer$ref = any;
+export type BillsSearchParamsSubset = ('GOVERNOR' | 'LOWER' | 'SLIPS' | 'UPPER' | '%future added value');
+export type BillListQueryVariables = {|
+  params: {
+    key?: ?string,
+    query?: ?string,
+    subset?: ?BillsSearchParamsSubset,
+  },
+  count: number,
+  cursor: string,
+|};
 export type BillListQueryResponse = {|
-  +viewer: ?{| |};
+  +viewer: ?{|
+    +$fragmentRefs: BillList_viewer$ref,
+  |},
 |};
 */
 
@@ -36,9 +49,9 @@ fragment BillList_viewer on Viewer {
     }
     edges {
       node {
-        __typename
         id
         ...BillCell_bill
+        __typename
       }
       cursor
     }
@@ -59,10 +72,7 @@ fragment BillCell_bill on Bill {
 fragment BillTitle_bill on Bill {
   title
   updatedAt
-  document {
-    number
-    id
-  }
+  number
 }
 
 fragment BillStatus_bill on Bill {
@@ -74,38 +84,55 @@ fragment BillStatus_bill on Bill {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "params",
+    "type": "BillsSearchParams!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "count",
+    "type": "Int!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "cursor",
+    "type": "String!",
+    "defaultValue": null
+  }
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
+return {
+  "kind": "Request",
+  "operationKind": "query",
+  "name": "BillListQuery",
+  "id": null,
+  "text": "query BillListQuery(\n  $params: BillsSearchParams!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillList_viewer\n    id\n  }\n}\n\nfragment BillList_viewer on Viewer {\n  bills(params: $params, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        ...BillCell_bill\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  summary\n  hearing {\n    date\n    id\n  }\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  number\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n",
+  "metadata": {},
   "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "params",
-        "type": "BillsSearchParams!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "count",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "cursor",
-        "type": "String!",
-        "defaultValue": null
-      }
-    ],
     "kind": "Fragment",
-    "metadata": null,
     "name": "BillListQuery",
+    "type": "Query",
+    "metadata": null,
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
+        "name": "viewer",
+        "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
-        "name": "viewer",
         "plural": false,
         "selections": [
           {
@@ -113,52 +140,29 @@ const batch /*: ConcreteBatch*/ = {
             "name": "BillList_viewer",
             "args": null
           }
-        ],
-        "storageKey": null
+        ]
       }
-    ],
-    "type": "Query"
+    ]
   },
-  "id": null,
-  "kind": "Batch",
-  "metadata": {},
-  "name": "BillListQuery",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "params",
-        "type": "BillsSearchParams!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "count",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "cursor",
-        "type": "String!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
+  "operation": {
+    "kind": "Operation",
     "name": "BillListQuery",
-    "operation": "query",
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
+        "name": "viewer",
+        "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
-        "name": "viewer",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
+            "name": "bills",
+            "storageKey": null,
             "args": [
               {
                 "kind": "Variable",
@@ -180,186 +184,155 @@ const batch /*: ConcreteBatch*/ = {
               }
             ],
             "concreteType": "BillsSearch",
-            "name": "bills",
             "plural": false,
             "selections": [
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "args": null,
                 "name": "count",
+                "args": null,
                 "storageKey": null
               },
               {
                 "kind": "LinkedField",
                 "alias": null,
+                "name": "pageInfo",
+                "storageKey": null,
                 "args": null,
                 "concreteType": "PageInfo",
-                "name": "pageInfo",
                 "plural": false,
                 "selections": [
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "hasNextPage",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "endCursor",
+                    "args": null,
                     "storageKey": null
                   }
-                ],
-                "storageKey": null
+                ]
               },
               {
                 "kind": "LinkedField",
                 "alias": null,
+                "name": "edges",
+                "storageKey": null,
                 "args": null,
                 "concreteType": "BillEdge",
-                "name": "edges",
                 "plural": true,
                 "selections": [
                   {
                     "kind": "LinkedField",
                     "alias": null,
+                    "name": "node",
+                    "storageKey": null,
                     "args": null,
                     "concreteType": "Bill",
-                    "name": "node",
                     "plural": false,
                     "selections": [
+                      v1,
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "args": null,
-                        "name": "__typename",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "id",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
                         "name": "summary",
+                        "args": null,
                         "storageKey": null
                       },
                       {
                         "kind": "LinkedField",
                         "alias": null,
+                        "name": "hearing",
+                        "storageKey": null,
                         "args": null,
                         "concreteType": "Hearing",
-                        "name": "hearing",
                         "plural": false,
                         "selections": [
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "args": null,
                             "name": "date",
+                            "args": null,
                             "storageKey": null
                           },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "args": null,
-                            "name": "id",
-                            "storageKey": null
-                          }
-                        ],
-                        "storageKey": null
+                          v1
+                        ]
                       },
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "args": null,
                         "name": "title",
+                        "args": null,
                         "storageKey": null
                       },
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "args": null,
                         "name": "updatedAt",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
                         "args": null,
-                        "concreteType": "Document",
-                        "name": "document",
-                        "plural": false,
-                        "selections": [
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "args": null,
-                            "name": "number",
-                            "storageKey": null
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "args": null,
-                            "name": "id",
-                            "storageKey": null
-                          }
-                        ],
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "number",
+                        "args": null,
                         "storageKey": null
                       },
                       {
                         "kind": "LinkedField",
                         "alias": null,
+                        "name": "steps",
+                        "storageKey": null,
                         "args": null,
                         "concreteType": "Step",
-                        "name": "steps",
                         "plural": true,
                         "selections": [
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "args": null,
                             "name": "actor",
+                            "args": null,
                             "storageKey": null
                           },
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "args": null,
                             "name": "action",
+                            "args": null,
                             "storageKey": null
                           }
-                        ],
+                        ]
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "__typename",
+                        "args": null,
                         "storageKey": null
                       }
-                    ],
-                    "storageKey": null
+                    ]
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "cursor",
+                    "args": null,
                     "storageKey": null
                   }
-                ],
-                "storageKey": null
+                ]
               }
-            ],
-            "storageKey": null
+            ]
           },
           {
             "kind": "LinkedHandle",
             "alias": null,
+            "name": "bills",
             "args": [
               {
                 "kind": "Variable",
@@ -381,25 +354,17 @@ const batch /*: ConcreteBatch*/ = {
               }
             ],
             "handle": "connection",
-            "name": "bills",
             "key": "BillList_bills",
             "filters": [
               "params"
             ]
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
+          v1
+        ]
       }
     ]
-  },
-  "text": "query BillListQuery(\n  $params: BillsSearchParams!\n  $count: Int!\n  $cursor: String!\n) {\n  viewer {\n    ...BillList_viewer\n    id\n  }\n}\n\nfragment BillList_viewer on Viewer {\n  bills(params: $params, first: $count, after: $cursor) {\n    count\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __typename\n        id\n        ...BillCell_bill\n      }\n      cursor\n    }\n  }\n}\n\nfragment BillCell_bill on Bill {\n  id\n  summary\n  hearing {\n    date\n    id\n  }\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  document {\n    number\n    id\n  }\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n"
+  }
 };
-
-module.exports = batch;
+})();
+(node/*: any*/).hash = '47d77582993361f726b72b3c6a7cdb4e';
+module.exports = node;

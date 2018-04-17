@@ -29,8 +29,7 @@ class Bill < ApplicationRecord
   end)
 
   scope :with_number, (-> (number) do
-    q = includes(:documents).references(:documents)
-    q.where('documents.number ILIKE ?', "%#{number}%")
+    where('number ILIKE ?', "%#{number}%")
   end)
 
   scope :with_actor, (-> (actor) do

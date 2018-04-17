@@ -12,7 +12,7 @@ module Types
     field :date, !DateTimeType, 'The date and time'
 
     # assosciations
-    field :committee, !CommitteeType, 'The parent committee'
-    connection :bills, BillType.connection_type, "All of the hearing's bills"
+    field :committee, !CommitteeType, 'The parent committee', preload: :committee
+    connection :bills, BillType.connection_type, "All of the hearing's bills", preload: :bills
   end
 end

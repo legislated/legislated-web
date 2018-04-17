@@ -37,11 +37,11 @@ describe Bills::SerializeCsv do
     it 'has a row for each bill' do
       expected = bills.map do |bill|
         csv_row("
-          #{bill.document&.number},
+          #{bill.number},
           #{bill.title},
           #{bill.summary},
           #{bill.details_url},
-          #{bill.document&.slip_url},
+          #{bill.slip_url},
           #{bill.hearing.date},
           #{bill.hearing.committee.name},
           1,

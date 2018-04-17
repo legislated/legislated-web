@@ -7,112 +7,119 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+type BillStatus_bill$ref = any;
+type BillTitle_bill$ref = any;
+import type { FragmentReference } from 'relay-runtime';
+declare export opaque type BillDetail_bill$ref: FragmentReference;
 export type BillDetail_bill = {|
-  +summary: ?string;
-  +detailsUrl: ?string;
-  +sponsorName: ?string;
+  +summary: ?string,
+  +detailsUrl: ?string,
+  +sponsorName: ?string,
+  +slipUrl: ?string,
+  +slipResultsUrl: ?string,
   +document: ?{|
-    +fullTextUrl: ?string;
-    +slipUrl: ?string;
-    +slipResultsUrl: ?string;
-  |};
+    +fullTextUrl: ?string,
+  |},
   +hearing: ?{|
     +committee: {|
-      +name: string;
-    |};
-  |};
+      +name: string,
+    |},
+  |},
+  +$fragmentRefs: (BillTitle_bill$ref & BillStatus_bill$ref),
+  +$refType: BillDetail_bill$ref,
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
-  "argumentDefinitions": [],
+const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "metadata": null,
   "name": "BillDetail_bill",
+  "type": "Bill",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "summary",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "detailsUrl",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "sponsorName",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slipUrl",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slipResultsUrl",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "document",
+      "storageKey": null,
       "args": null,
       "concreteType": "Document",
-      "name": "document",
       "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
-          "args": null,
           "name": "fullTextUrl",
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
           "args": null,
-          "name": "slipUrl",
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "slipResultsUrl",
           "storageKey": null
         }
-      ],
-      "storageKey": null
+      ]
     },
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "hearing",
+      "storageKey": null,
       "args": null,
       "concreteType": "Hearing",
-      "name": "hearing",
       "plural": false,
       "selections": [
         {
           "kind": "LinkedField",
           "alias": null,
+          "name": "committee",
+          "storageKey": null,
           "args": null,
           "concreteType": "Committee",
-          "name": "committee",
           "plural": false,
           "selections": [
             {
               "kind": "ScalarField",
               "alias": null,
-              "args": null,
               "name": "name",
+              "args": null,
               "storageKey": null
             }
-          ],
-          "storageKey": null
+          ]
         }
-      ],
-      "storageKey": null
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -124,8 +131,7 @@ const fragment /*: ConcreteFragment*/ = {
       "name": "BillStatus_bill",
       "args": null
     }
-  ],
-  "type": "Bill"
+  ]
 };
-
-module.exports = fragment;
+(node/*: any*/).hash = '1a836a519e792e8d8d5620dd7249bb6b';
+module.exports = node;

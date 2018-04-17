@@ -8,12 +8,13 @@ module OpenStates
     Bill = Struct.new(
       :ilga_id,
       :os_id,
-      :actions,
-      :steps,
       :title,
+      :number,
       :session_number,
       :details_url,
-      :sponsor_name
+      :sponsor_name,
+      :actions,
+      :steps
     )
 
     Document = Struct.new(
@@ -66,12 +67,13 @@ module OpenStates
       Bill.new(
         params['LegId'], # ilga_id
         data['id'], # os_id
-        data['actions'], # actions
-        parse_steps.call(data['actions']), # steps
         data['title'], # title
+        parse_number(data['bill_id']), # number
         data['session'].gsub(/[a-z]+/, ''), # session_number
         details_url,
-        primary_sponsor&.[]('name') # sponsor_name
+        primary_sponsor&.[]('name'), # sponsor_name
+        data['actions'], # actions
+        parse_steps.call(data['actions']) # steps
       )
     end
 
@@ -79,7 +81,7 @@ module OpenStates
       data['versions'].map do |version_data|
         Document.new(
           version_data['doc_id'], # os_id
-          data['bill_id'].gsub(/\s+/, ''), # number
+          parse_number(data['bill_id']), # number
           version_data['url'], # full_text_url
           false # is_amendment
         )
@@ -88,6 +90,10 @@ module OpenStates
 
     def parse_query(url)
       CGI.parse(URI.parse(url).query).transform_values(&:first)
+    end
+
+    def parse_number(number)
+      number.gsub(/\s+/, '')
     end
 
     def ilga_url(page, query)

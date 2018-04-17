@@ -29,11 +29,11 @@ module Bills
 
     def row_from_bill(bill)
       [
-        bill.document&.number,
+        bill.number,
         bill.title,
         bill.summary,
         bill.details_url,
-        bill.document&.slip_url,
+        bill.slip_url,
         bill.hearing.date,
         bill.hearing.committee.name,
         1,

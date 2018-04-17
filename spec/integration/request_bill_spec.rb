@@ -7,17 +7,18 @@ describe 'requesting bills', :graph_request do
         viewer {
           bill(id: "#{bill.id}") {
             id
+            number
             title
             summary
             humanSummary
             sponsorName
             detailsUrl
+            slipUrl
+            slipResultsUrl
             documents {
               id
               number
               fullTextUrl
-              slipUrl
-              slipResultsUrl
               isAmendment
             }
             steps {

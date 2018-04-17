@@ -23,11 +23,7 @@ describe Bills::Search do
     end
 
     context 'with a document number' do
-      let!(:unmatched_bill) { create_bill('fake') }
-
-      def create_bill(number)
-        create(:bill, documents: build_list(:document, 1, number: number))
-      end
+      let!(:unmatched_bill) { create(:bill, number: 'fake') }
 
       prefix_map = {
         'house bills': 'HB',
@@ -45,7 +41,7 @@ describe Bills::Search do
 
       prefix_map.each do |name, prefix|
         it "finds #{name} by doucment number" do
-          bill = create_bill("#{prefix}1234")
+          bill = create(:bill, number: "#{prefix}1234")
           expect(subject.call(query: prefix)).to eq([bill])
         end
       end
