@@ -1,16 +1,17 @@
 describe ImportCommittees do
   subject { described_class.new(mock_service) }
 
-  let(:mock_service) { object_double(OpenStates::FetchCommittees.new) }
+  let(:mock_redis) { double('Redis') }
+  let(:mock_fetch_committees) { object_double(OpenStates::FetchCommittees.new) }
 
   describe '#perform' do
     before do
-      allow(mock_service).to receive(:call).and_return([])
+      allow(mock_fetch_committees).to receive(:call).and_return([])
     end
 
     it 'fetches committees with the correct fields' do
       subject.perform
-      expect(mock_service).to have_received(:call) do |args|
+      expect(mock_fetch_committees).to have_received(:call) do |args|
         fields = 'id,committee,subcommittee,sources'
         expect(args[:fields]).to eq fields
       end
@@ -73,6 +74,7 @@ describe ImportCommittees do
 
         expect { subject.perform }.to change(Committee, :count).by(1)
       end
+
 
 
     end
