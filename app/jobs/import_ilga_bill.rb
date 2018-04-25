@@ -8,7 +8,7 @@ class ImportIlgaBill
   def perform(bill_id)
     bill = Bill.find(bill_id)
     bill_attrs = @scraper.call(bill)
-    bill.update!(bill_attrs)
+    bill.update!(bill_attrs.to_h)
   end
 
   private
