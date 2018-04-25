@@ -13,7 +13,7 @@ type Props = {
 }
 
 function formatSubtitle ({ number, updatedAt }: Bill) {
-  return `${number} - Updated ${format(updatedAt, 'DD/MM/YYYY')}`
+  return `${number} - Updated ${format(updatedAt, 'MM/DD/YYYY')}`
 }
 
 let BillTitle = function BillTitle ({ bill }: Props) {
