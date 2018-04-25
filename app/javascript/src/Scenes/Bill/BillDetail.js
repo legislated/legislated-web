@@ -31,7 +31,7 @@ let BillDetail = function BillDetail ({ bill }: Props) {
             />
             <Link
               to={bill.detailsUrl}
-              chilren='View Details'
+              children='View Details'
             />
           </Links>
         </Element>
@@ -74,6 +74,7 @@ BillDetail = createFragmentContainer(BillDetail, graphql`
         name
       }
     }
+    ...BillHead_bill
     ...BillTitle_bill
     ...BillStatus_bill
   }
