@@ -1,5 +1,5 @@
 describe ImportCommittees do
-  subject { described_class.new(mock_service) }
+  subject { described_class.new(mock_redis, mock_fetch_committees) }
 
   let(:mock_redis) { double('Redis') }
   let(:mock_fetch_committees) { object_double(OpenStates::FetchCommittees.new) }
@@ -7,14 +7,6 @@ describe ImportCommittees do
   describe '#perform' do
     before do
       allow(mock_fetch_committees).to receive(:call).and_return([])
-    end
-
-    it 'fetches committees with the correct fields' do
-      subject.perform
-      expect(mock_fetch_committees).to have_received(:call) do |args|
-        fields = 'id,committee,subcommittee,sources'
-        expect(args[:fields]).to eq fields
-      end
     end
 
     context 'when upserting a committee' do
@@ -35,7 +27,7 @@ describe ImportCommittees do
       end
 
       it "sets the committee's core attributes" do
-        allow(mock_service).to receive(:call).and_return(response(
+        allow(mock_fetch_committees).to receive(:call).and_return(response(
           'id' => attrs[:os_id],
           'committee' => attrs[:name],
           'chamber' => attrs[:chamber],
@@ -58,8 +50,8 @@ describe ImportCommittees do
       it 'creates the committee if it does not exist' do
         attrs = attributes_for(:committee)
 
-        allow(mock_service).to receive(:call).and_return(response(
-          'leg_id' => attrs[:os_id]
+        allow(mock_fetch_committees).to receive(:call).and_return(response(
+          'id' => attrs[:os_id]
         ))
 
         expect { subject.perform }.to change(Committee, :count).by(1)
@@ -68,14 +60,14 @@ describe ImportCommittees do
       it 'creates committee based on committee role if it does not exist' do
         attrs = attributes_for(:committee)
 
-        allow(mock_service).to receive(:fetch_committees).and_return(response(
+        allow(mock_fetch_committees).to receive(:fetch_committees).and_return(response(
           'role.committee_id' => attrs[:os_id]
         ))
 
         expect { subject.perform }.to change(Committee, :count).by(1)
       end
 
-
+      it ''
 
     end
   end
