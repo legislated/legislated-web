@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react'
 import styled, { css } from 'react-emotion'
+import { isAfter } from 'date-fns'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { BillHead } from './BillHead'
 import { BillTitle, BillStatus, Button, Link, CopyLink } from '@/components'
-import { href } from '@/functions'
+import { now, href } from '@/functions'
 import { mixins } from '@/styles'
 import { type BillDetail_bill as Bill } from './__generated__/BillDetail_bill.graphql.js'
 
@@ -45,10 +46,12 @@ let BillDetail = function BillDetail ({ bill }: Props) {
         </Element>
       </Elements>
       <Actions>
-        <Button
-          to={bill.slipUrl}
-          children='Take Action'
-        />
+        {hearing && isAfter(hearing.date, now()) && (
+          <Button
+            to={bill.slipUrl}
+            children='Take Action'
+          />
+        )}
         <Link
           to={bill.slipResultsUrl}
           children='View Results'
@@ -70,6 +73,7 @@ BillDetail = createFragmentContainer(BillDetail, graphql`
       fullTextUrl
     }
     hearing {
+      date
       committee {
         name
       }

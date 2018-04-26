@@ -23,6 +23,7 @@ export type BillDetail_bill = {|
     +fullTextUrl: ?string,
   |},
   +hearing: ?{|
+    +date: any,
     +committee: {|
       +name: string,
     |},
@@ -103,6 +104,13 @@ const node/*: ConcreteFragment*/ = {
       "plural": false,
       "selections": [
         {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "date",
+          "args": null,
+          "storageKey": null
+        },
+        {
           "kind": "LinkedField",
           "alias": null,
           "name": "committee",
@@ -139,5 +147,5 @@ const node/*: ConcreteFragment*/ = {
     }
   ]
 };
-(node/*: any*/).hash = 'dc2a9a8e2d4b0aac11f28691ac20243b';
+(node/*: any*/).hash = '2da95104f3a882818e970bdb00f967bf';
 module.exports = node;
