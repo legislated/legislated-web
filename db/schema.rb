@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_11_040929) do
+ActiveRecord::Schema.define(version: 2018_04_26_003320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_03_11_040929) do
     t.string "number", null: false
     t.string "slip_url"
     t.string "slip_results_url"
+    t.index "(((actions -> '-1'::integer) ->> 'date'::text)) DESC", name: "index_bills_on_last_action_date"
     t.index "(((steps -> '-1'::integer) ->> 'actor'::text))", name: "index_bills_on_last_actor"
     t.index ["hearing_id"], name: "index_bills_on_hearing_id"
     t.index ["ilga_id"], name: "index_bills_on_ilga_id", unique: true

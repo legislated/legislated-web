@@ -2,23 +2,37 @@ describe Bills::Search do
   subject { described_class.new }
 
   describe '#call' do
+    it 'filters bills by witness slips' do
+      bill1 = create(:bill, hearing_date: 2.days.from_now)
+      bill2 = create(:bill, hearing_date: 1.days.from_now)
+      create(:bill, hearing_date: 2.days.ago)
+      expect(subject.call(subset: :slips)).to eq([bill2, bill1])
+    end
+
+    it 'filters bills by actor' do
+      bill1 = create(:bill, last_actor: Step::Actors::LOWER, last_action_date: 3.days.ago)
+      bill2 = create(:bill, last_actor: Step::Actors::LOWER_COMMITTEE, last_action_date: 2.days.ago)
+      create(:bill, last_actor: Step::Actors::UPPER)
+      expect(subject.call(subset: :lower)).to eq([bill2, bill1])
+    end
+
     context 'with a search query' do
       it 'finds bills where the title prefix matches' do
-        bill = create(:bill, title: 'MoTor AwAY')
-        create(:bill, title: 'I am a ScIEntiSt')
-        expect(subject.call(query: 'MOTO')).to eq([bill])
+        bill = create(:bill, title: 'GrEaT BiLl')
+        create(:bill, title: 'ZzZZz sO BAd')
+        expect(subject.call(query: 'GREA')).to eq([bill])
       end
 
       it 'finds bills where the title fuzzy matches' do
-        bill = create(:bill, title: 'MoTor AwAY')
-        create(:bill, title: 'I am a ScIEntiSt')
-        expect(subject.call(query: 'OTOR')).to eq([bill])
+        bill = create(:bill, title: 'GrEaT BilL')
+        create(:bill, title: 'ZzZZz sO BAd')
+        expect(subject.call(query: 'REAT')).to eq([bill])
       end
 
       it 'finds bills where the summary prefix matches' do
-        bill = create(:bill, summary: '...dOwn the ICy stREets.')
-        create(:bill, summary: '...I seEK to uNDeRstand me')
-        expect(subject.call(query: 'STREE')).to eq([bill])
+        bill = create(:bill, summary: '...GrEaT BiLl')
+        create(:bill, summary: '...ZzZZz sO BAd')
+        expect(subject.call(query: 'BILL')).to eq([bill])
       end
     end
 

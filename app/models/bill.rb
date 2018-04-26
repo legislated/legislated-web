@@ -28,6 +28,10 @@ class Bill < ApplicationRecord
     q
   end)
 
+  scope :by_last_action_date, (-> do
+    order(Arel.sql("actions->-1->>'date' DESC"))
+  end)
+
   scope :with_number, (-> (number) do
     where('number ILIKE ?', "%#{number}%")
   end)

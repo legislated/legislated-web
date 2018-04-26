@@ -11,7 +11,7 @@ module Bills
       if subset == :slips
         bills.by_hearing_date(start: Time.current, end: 1.week.from_now)
       else
-        bills.with_actor(actors_from_subset(subset))
+        bills.with_actor(actors_from_subset(subset)).by_last_action_date
       end
     end
 

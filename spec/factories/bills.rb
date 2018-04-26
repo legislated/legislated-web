@@ -12,11 +12,21 @@ FactoryBot.define do
     slip_results_url { Faker::Internet.url }
 
     transient do
+      last_actor nil
+      last_action_date nil
       hearing_date nil
     end
 
     hearing do
       hearing_date.nil? ? build(:hearing) : build(:hearing, date: hearing_date)
+    end
+
+    actions do
+      last_action_date.nil? ? [] : attributes_for_list(:action, 1, date: last_action_date)
+    end
+
+    steps do
+      last_actor.nil? ? [] : attributes_for_list(:step, 1, actor: last_actor)
     end
 
     trait :with_associations do
@@ -29,7 +39,7 @@ FactoryBot.define do
     end
 
     trait :with_steps do
-      actions { "" }
+      actions { attributes_for_list(:action, 1) }
       steps { attributes_for_list(:step, 1) }
     end
 
@@ -87,6 +97,8 @@ FactoryBot.define do
         slip_url nil
         slip_results_url nil
         hearing nil
+        actions nil
+        steps nil
       end
 
       initialize_with do
