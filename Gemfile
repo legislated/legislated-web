@@ -14,6 +14,7 @@ gem 'rack-cors'
 gem 'rails', '~> 5.2.0.rc1'
 gem 'redis'
 gem 'sidekiq'
+gem 'skylight'
 
 # scraping / imports
 gem 'capybara'
