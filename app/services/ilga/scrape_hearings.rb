@@ -44,8 +44,12 @@ module Ilga
       return [] if page.has_css?('.t-no-data')
 
       # get hearings from each row
-      hearings = page
+      rows = page
         .find_all('#CommitteeHearingTabstrip tbody tr')
+
+      debug("  - hearing rows: #{rows.count}")
+
+      hearings = rows
         .map { |row| build_hearing(row) }
         .compact
 
