@@ -73,7 +73,7 @@ module Ilga
       end
 
       Hearing.new(
-        uri.path.split('/').last, # ilga_id
+        uri.path.split('/').last.to_i, # ilga_id
         uri.to_s
       )
     end
