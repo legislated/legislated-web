@@ -64,6 +64,8 @@ FactoryBot.define do
     factory :open_states_bill do
       with_steps
 
+      # TODO: add `only <keys>` and `skip <keys>` helpers to factory bot that
+      # makes all other attributes transient
       transient do
         hearing nil
         summary nil
@@ -106,6 +108,29 @@ FactoryBot.define do
           ilga_id,
           slip_url,
           slip_results_url
+        )
+      end
+    end
+
+    factory :ilga_details_bill do
+      transient do
+        ilga_id nil
+        os_id nil
+        number nil
+        title nil
+        session_number nil
+        sponsor_name nil
+        details_url nil
+        slip_url nil
+        slip_results_url nil
+        hearing nil
+        actions nil
+        steps nil
+      end
+
+      initialize_with do
+        Ilga::ScrapeBill::Bill.new(
+          summary
         )
       end
     end
