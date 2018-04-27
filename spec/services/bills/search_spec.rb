@@ -2,6 +2,12 @@ describe Bills::Search do
   subject { described_class.new }
 
   describe '#call' do
+    it 'sorts unfiltered bills' do
+      bill1 = create(:bill, last_action_date: 3.days.ago)
+      bill2 = create(:bill, last_action_date: 2.days.ago)
+      expect(subject.call).to eq([bill2, bill1])
+    end
+
     it 'filters bills by witness slips' do
       bill1 = create(:bill, hearing_date: 2.days.from_now)
       bill2 = create(:bill, hearing_date: 1.days.from_now)
