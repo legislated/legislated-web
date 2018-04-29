@@ -29,7 +29,7 @@ class Bill < ApplicationRecord
   end)
 
   scope :by_last_action_date, (-> do
-    order(Arel.sql("actions->-1->>'date' DESC"))
+    order(Arel.sql("actions->-1->>'date' DESC NULLS LAST"))
   end)
 
   scope :with_number, (-> (number) do

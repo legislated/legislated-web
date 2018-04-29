@@ -20,6 +20,15 @@ describe Bill do
     end
   end
 
+  describe '.by_last_action_date' do
+    it 'sorts bills by descending last action date' do
+      bill1 = create(:bill, actions: [{ date: 3.days.ago }])
+      bill2 = create(:bill, actions: [])
+      bill3 = create(:bill, actions: [{ date: 1.days.ago }])
+      expect(Bill.by_last_action_date).to eq([bill3, bill1, bill2])
+    end
+  end
+
   describe '.with_actor' do
     it 'finds bills whose last step matches any of the actors' do
       actors = [
