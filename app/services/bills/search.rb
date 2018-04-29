@@ -23,9 +23,7 @@ module Bills
       if bill_number?(query)
         bills.with_number(query)
       else
-        q = bills.with_keyword(query)
-        q = bills.with_fuzzy_title(query) if q.empty?
-        q
+        bills.with_keyword(query)
       end
     end
 

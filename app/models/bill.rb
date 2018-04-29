@@ -7,16 +7,18 @@ class Bill < ApplicationRecord
 
   # scopes
   pg_search_scope :with_keyword, {
-    against: %i[title summary],
+    against: %i[
+      title
+    ],
     using: {
-      tsearch: { prefix: true }
-    }
-  }
-
-  pg_search_scope :with_fuzzy_title, {
-    against: :title,
-    using: {
-      trigram: { threshold: 0.1 }
+      tsearch: {
+        prefix: true,
+        dictionary: 'english',
+        tsvector_column: 'search_vector'
+      },
+      trigram: {
+        threshold: 0.1
+      }
     }
   }
 
