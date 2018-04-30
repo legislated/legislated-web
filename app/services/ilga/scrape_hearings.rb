@@ -44,8 +44,12 @@ module Ilga
       return [] if page.has_css?('.t-no-data')
 
       # get hearings from each row
-      hearings = page
+      rows = page
         .find_all('#CommitteeHearingTabstrip tbody tr')
+
+      debug("  - hearing rows: #{rows.count}")
+
+      hearings = rows
         .map { |row| build_hearing(row) }
         .compact
 
@@ -58,12 +62,18 @@ module Ilga
     end
 
     def build_hearing(row)
-      url = row.first('td.t-last a')&.[](:href)
-      return nil if url.nil?
+      link = row.first('td.t-last a')
 
-      uri = clean_uri(url)
+      url = link&.[](:href)
+      uri = clean_url(url)
+
+      if uri.nil?
+        debug("  - hearing w/o url, link: #{link}")
+        return nil
+      end
+
       Hearing.new(
-        uri.path.split('/').last, # ilga_id
+        uri.path.split('/').last.to_i, # ilga_id
         uri.to_s
       )
     end
@@ -75,7 +85,9 @@ module Ilga
       link[:href]
     end
 
-    def clean_uri(url)
+    def clean_url(url)
+      return nil if url.nil?
+
       uri = URI.parse(url)
       uri.query = URI.encode_www_form(CGI.parse(uri.query).without('_'))
       uri

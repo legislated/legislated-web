@@ -1,5 +1,5 @@
 <head>
-  <%= favicon_link_tag %>
+  <%= favicon_link_tag('icon.png', type: 'image/png') %>
 </head>
 <body>
   <%= render_react_component('client', location: request.fullpath) %>

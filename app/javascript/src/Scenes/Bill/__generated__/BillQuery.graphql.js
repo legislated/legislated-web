@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 3933561f1c813734be419a5d741ff514
+ * @relayHash ca92cca78aaece4bc4792ae65bd06f92
  */
 
 /* eslint-disable */
@@ -47,14 +47,22 @@ fragment BillDetail_bill on Bill {
     id
   }
   hearing {
+    date
     committee {
       name
       id
     }
     id
   }
+  ...BillHead_bill
   ...BillTitle_bill
   ...BillStatus_bill
+}
+
+fragment BillHead_bill on Bill {
+  title
+  summary
+  number
 }
 
 fragment BillTitle_bill on Bill {
@@ -101,7 +109,7 @@ return {
   "operationKind": "query",
   "name": "BillQuery",
   "id": null,
-  "text": "query BillQuery(\n  $id: ID!\n) {\n  viewer {\n    bill(id: $id) {\n      ...BillDetail_bill\n      id\n    }\n    id\n  }\n}\n\nfragment BillDetail_bill on Bill {\n  summary\n  detailsUrl\n  sponsorName\n  slipUrl\n  slipResultsUrl\n  document {\n    fullTextUrl\n    id\n  }\n  hearing {\n    committee {\n      name\n      id\n    }\n    id\n  }\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  number\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n",
+  "text": "query BillQuery(\n  $id: ID!\n) {\n  viewer {\n    bill(id: $id) {\n      ...BillDetail_bill\n      id\n    }\n    id\n  }\n}\n\nfragment BillDetail_bill on Bill {\n  summary\n  detailsUrl\n  sponsorName\n  slipUrl\n  slipResultsUrl\n  document {\n    fullTextUrl\n    id\n  }\n  hearing {\n    date\n    committee {\n      name\n      id\n    }\n    id\n  }\n  ...BillHead_bill\n  ...BillTitle_bill\n  ...BillStatus_bill\n}\n\nfragment BillHead_bill on Bill {\n  title\n  summary\n  number\n}\n\nfragment BillTitle_bill on Bill {\n  title\n  updatedAt\n  number\n}\n\nfragment BillStatus_bill on Bill {\n  id\n  steps {\n    actor\n    action\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -171,6 +179,13 @@ return {
                 "concreteType": "Hearing",
                 "plural": false,
                 "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "date",
+                    "args": null,
+                    "storageKey": null
+                  },
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -257,14 +272,14 @@ return {
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "updatedAt",
+                "name": "number",
                 "args": null,
                 "storageKey": null
               },
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "number",
+                "name": "updatedAt",
                 "args": null,
                 "storageKey": null
               },

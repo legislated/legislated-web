@@ -2,12 +2,16 @@
 import { injectGlobal } from 'react-emotion'
 import * as fonts from '&/fonts'
 
-function fontFace (family: string, variant: string, weight: number) {
+function fontFace (
+  family: string,
+  variant: string,
+  weight: number
+) {
   const fontFamily = family.replace(/\s/g, '')
   const fontName = `${fontFamily}$${variant}`
 
   return `
-    @font.faces {
+    @font-face {
       font-family: '${fontFamily}';
       font-style: normal;
       font-weight: ${weight};

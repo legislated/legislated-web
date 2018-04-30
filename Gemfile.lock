@@ -288,6 +288,10 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
+    skylight (2.0.0)
+      skylight-core (= 2.0.0)
+    skylight-core (2.0.0)
+      activesupport (>= 4.2.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -359,6 +363,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   sidekiq
+  skylight
   spring
   spring-watcher-listen (~> 2.0.0)
   timecop

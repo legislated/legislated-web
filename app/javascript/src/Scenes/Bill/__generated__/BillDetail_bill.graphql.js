@@ -8,6 +8,7 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
+type BillHead_bill$ref = any;
 type BillStatus_bill$ref = any;
 type BillTitle_bill$ref = any;
 import type { FragmentReference } from 'relay-runtime';
@@ -22,11 +23,12 @@ export type BillDetail_bill = {|
     +fullTextUrl: ?string,
   |},
   +hearing: ?{|
+    +date: any,
     +committee: {|
       +name: string,
     |},
   |},
-  +$fragmentRefs: (BillTitle_bill$ref & BillStatus_bill$ref),
+  +$fragmentRefs: (BillHead_bill$ref & BillTitle_bill$ref & BillStatus_bill$ref),
   +$refType: BillDetail_bill$ref,
 |};
 */
@@ -102,6 +104,13 @@ const node/*: ConcreteFragment*/ = {
       "plural": false,
       "selections": [
         {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "date",
+          "args": null,
+          "storageKey": null
+        },
+        {
           "kind": "LinkedField",
           "alias": null,
           "name": "committee",
@@ -123,6 +132,11 @@ const node/*: ConcreteFragment*/ = {
     },
     {
       "kind": "FragmentSpread",
+      "name": "BillHead_bill",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
       "name": "BillTitle_bill",
       "args": null
     },
@@ -133,5 +147,5 @@ const node/*: ConcreteFragment*/ = {
     }
   ]
 };
-(node/*: any*/).hash = '1a836a519e792e8d8d5620dd7249bb6b';
+(node/*: any*/).hash = '2da95104f3a882818e970bdb00f967bf';
 module.exports = node;

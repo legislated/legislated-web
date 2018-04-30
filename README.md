@@ -1,4 +1,4 @@
-# Legislated [![Build Status](https://travis-ci.org/legislated/legislated-web.svg?branch=master)](https://travis-ci.org/legislated/legislated-web)
+# Legislated [![Build Status](https://travis-ci.org/legislated/legislated-web.svg?branch=master)](https://travis-ci.org/legislated/legislated-web) [![View performance data on Skylight](https://badges.skylight.io/status/5g0QJ1oHle4a.svg?token=Nw3mnp0f5ljWrmLOwlT-9v9m46sK85g8c0DHfHzhG1s)](https://www.skylight.io/app/applications/5g0QJ1oHle4a)
 
 ## About
 

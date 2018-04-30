@@ -7,16 +7,18 @@ class Bill < ApplicationRecord
 
   # scopes
   pg_search_scope :with_keyword, {
-    against: %i[title summary],
+    against: %i[
+      title
+    ],
     using: {
-      tsearch: { prefix: true }
-    }
-  }
-
-  pg_search_scope :with_fuzzy_title, {
-    against: :title,
-    using: {
-      trigram: { threshold: 0.1 }
+      tsearch: {
+        prefix: true,
+        dictionary: 'english',
+        tsvector_column: 'search_vector'
+      },
+      trigram: {
+        threshold: 0.1
+      }
     }
   }
 
@@ -26,6 +28,10 @@ class Bill < ApplicationRecord
     q = q.where('hearings.date >= ?', range[:start]) if range[:start].present?
     q = q.where('hearings.date <= ?', range[:end]) if range[:end].present?
     q
+  end)
+
+  scope :by_last_action_date, (-> do
+    order(Arel.sql("actions->-1->>'date' DESC NULLS LAST"))
   end)
 
   scope :with_number, (-> (number) do

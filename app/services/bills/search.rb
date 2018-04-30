@@ -2,16 +2,18 @@ module Bills
   class Search
     def call(query: nil, subset: nil, **_)
       q = Bill.all
-      q = filter_by_subset(q, subset) if subset.present?
+      q = filter_by_subset(q, subset)
       q = filter_by_query(q, query) if query.present?
       q
     end
 
     def filter_by_subset(bills, subset)
-      if subset == :slips
+      if subset.nil?
+        bills.by_last_action_date
+      elsif subset == :slips
         bills.by_hearing_date(start: Time.current, end: 1.week.from_now)
-      else
-        bills.with_actor(actors_from_subset(subset))
+      else # subset == <some_actor>
+        bills.with_actor(actors_from_subset(subset)).by_last_action_date
       end
     end
 
@@ -21,9 +23,7 @@ module Bills
       if bill_number?(query)
         bills.with_number(query)
       else
-        q = bills.with_keyword(query)
-        q = bills.with_fuzzy_title(query) if q.empty?
-        q
+        bills.with_keyword(query)
       end
     end
 

@@ -18,7 +18,8 @@ describe ImportIlgaHearingBills do
 
       subject.perform(hearing.id)
 
-      expect(bill.reload).to have_attributes(scraped_bill.to_h)
+      expected = scraped_bill.to_h.merge(hearing: hearing)
+      expect(bill.reload).to have_attributes(expected)
     end
   end
 end

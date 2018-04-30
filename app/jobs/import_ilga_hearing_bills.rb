@@ -11,7 +11,7 @@ class ImportIlgaHearingBills
     scraped_bills = scrape_bills.call(hearing)
     scraped_bills.each do |scraped_bill|
       bill = Bill.find_by(ilga_id: scraped_bill.ilga_id)
-      bill&.update(scraped_bill.to_h)
+      bill&.update(scraped_bill.to_h.merge(hearing: hearing))
     end
   end
 

@@ -1,38 +1,19 @@
 describe ImportIlgaBill do
   subject { described_class.new(mock_scraper) }
 
-  let(:mock_scraper) { double('Scraper') }
-
   describe '#perform' do
-    let(:bill) { create(:bill) }
-    let(:expected_summary) { Faker::Company.bs }
-    let(:scraper_response) { { summary: expected_summary } }
+    let(:bill) { create(:bill, summary: nil) }
 
-    before do
-      allow(mock_scraper).to receive(:call).and_return(scraper_response)
-    end
+    it 'update the bill with a summary' do
+      scraped_bill = build(:ilga_details_bill)
 
-    it 'scrapes the bill details' do
+      subject = described_class.new(
+        -> (_) { scraped_bill }
+      )
+
       subject.perform(bill.id)
-      expect(mock_scraper).to have_received(:call).with(bill)
-    end
 
-    it 'updates the bill with new details' do
-      subject.perform(bill.id)
-      bill.reload
-      expect(bill.summary).to eq(expected_summary)
-    end
-
-    context 'after catching a scraping error' do
-      before do
-        allow(mock_scraper).to receive(:call).and_raise(Ilga::Scraper::Error)
-      end
-    end
-
-    context 'after catching an active record error' do
-      before do
-        allow_any_instance_of(Hearing).to receive(:save!).and_raise(ActiveRecord::ActiveRecordError)
-      end
+      expect(bill.reload).to have_attributes(scraped_bill.to_h)
     end
   end
 end
