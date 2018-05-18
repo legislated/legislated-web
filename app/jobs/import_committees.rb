@@ -6,7 +6,7 @@ class ImportCommittees
     fetch_committees = OpenStates::FetchCommittees.new
   )
     @redis = redis
-    @fetch_bills = fetch_committees
+    @fetch_committees = fetch_committees
   end
 
   def self.scheduled?
@@ -14,24 +14,21 @@ class ImportCommittees
   end
 
   def perform
-    committee_attrs = fetch_committees(fields: fields)
-      .map { |data| parse_attributes(data) }
-      .reject(&:nil?)
+    committees = fetch_committees.call
 
-    committee_attrs.each do |attrs|
-      Committee.upsert_by!(:os_id, attrs)
+    committees.each do |data|
+      Committee.upsert_by!(:os_id, data.to_h)
     end
   end
 
   def merge(data, os_id)
     # merge committee table data with data from scraped committee websites
     # update a committee based on the os_id of that committe
-    
   end
 
   private
 
-  attr_reader :redis, :fetch_bills
+  attr_reader :redis, :fetch_committees
 
   def update_membership
     # update the member relation between committee and legislator

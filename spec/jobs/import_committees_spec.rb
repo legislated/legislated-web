@@ -5,6 +5,7 @@ describe ImportCommittees do
   let(:mock_fetch_committees) { object_double(OpenStates::FetchCommittees.new) }
 
   describe '#perform' do
+    
     before do
       allow(mock_fetch_committees).to receive(:call).and_return([])
     end
@@ -19,7 +20,6 @@ describe ImportCommittees do
           'parent_id' => '',
           'committee' => '',
           'subcommittee' => '',
-          'chamber' => '',
           'sources' => '',
         }
 
@@ -30,9 +30,8 @@ describe ImportCommittees do
         allow(mock_fetch_committees).to receive(:call).and_return(response(
           'id' => attrs[:os_id],
           'committee' => attrs[:name],
-          'chamber' => attrs[:chamber],
           'subcommittee' => attrs[:subcommittee],
-          'parent_id' => attrs[:subcommittee],
+          'parent_id' => attrs[:parent_id],
           'sources' => attrs[:sources]
         ))
 
@@ -40,7 +39,6 @@ describe ImportCommittees do
         expect(committee.reload).to have_attributes(attrs.slice(
           :os_id,
           :name,
-          :chamber,
           :subcommittee,
           :parent_id,
           :sources

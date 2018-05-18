@@ -20,9 +20,15 @@ module OpenStates
     end
 
     def call(query = {})
-      self.class.get('/committees', {
+      committees = self.class.get('/committees', {
         query: query
       })
+
+      committees.map { |committee| parse.call(committee) }.reject(&:nil?)
     end
+
+    private
+
+    attr_reader :parse
   end
 end
