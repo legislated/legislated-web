@@ -18,7 +18,7 @@ module OpenStates
 
     # preparation
     def nonessential_action?(action)
-      action[:action].match(/.* Amendment .*|(Assignments|Rules)( Committee)?$)$/)
+      action[:action].match(/.* Amendment .*|(Assignments|Rules)( Committee)?$/)
     end
 
     def expand_action(action)

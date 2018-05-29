@@ -94,12 +94,12 @@ describe OpenStates::ParseBillSteps do
         actor: 'lower',
         action: 'introduced',
         resolution: 'none',
-        date: '2017-04-28T00:00:00-05:00'
+        date: '2017-04-15T00:00:00-05:00'
       }, {
         actor: 'lower',
         action: 'resolved',
         resolution: 'passed',
-        date: '2017-04-28T00:00:00-05:00'
+        date: '2017-06-01T00:00:00-05:00'
       }, {
         actor: 'governor',
         action: 'introduced',
