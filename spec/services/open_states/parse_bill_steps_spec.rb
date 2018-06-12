@@ -30,9 +30,39 @@ describe OpenStates::ParseBillSteps do
         'actor' => 'committee'
       }, {
         'actor' => 'lower',
+        'action' => 'Arrived in House',
+        'date' => '2017-04-15 00:00:00',
+        'type' => ['bill:introduced']
+      }, {
+        'actor' => 'lower',
+        'action' => 'Referred to Rules Committee',
+        'date' => '2017-04-20 00:00:00',
+        'type' => ['committee:referred']
+      }, {
+        'actor' => 'lower',
+        'action' => 'House Floor Amendment No. 1',
+        'date' => '2017-05-29 00:00:00',
+        'type' => ['amendment:introduced']
+      }, {
+        'actor' => 'lower',
+        'action' => 'House Floor Amendment No. 1',
+        'date' => '2017-05-29 00:00:00',
+        'type' => ['committee:referred']
+      }, {
+        'actor' => 'lower',
+        'action' => 'House Floor Amendment No. 1',
+        'date' => '2017-05-30 00:00:00',
+        'type' => ['committee:passed:favorable']
+      }, {
+        'actor' => 'lower',
+        'action' => 'House Floor Amendment No. 1',
+        'date' => '2017-05-30 00:00:00',
+        'type' => ['amendment:passed']
+      }, {
+        'actor' => 'lower',
         'action' => 'Assigned to Criminal Law',
-        'date' => '2017-04-28 00:00:00',
-        'type' => ['bill:reading:3', 'bill:introduced', 'bill:passed']
+        'date' => '2017-06-01 00:00:00',
+        'type' => ['bill:reading:3', 'bill:passed']
       }, {
         "date": '2017-06-05 00:00:00',
         "action": 'Sent to the Governor',
@@ -64,12 +94,12 @@ describe OpenStates::ParseBillSteps do
         actor: 'lower',
         action: 'introduced',
         resolution: 'none',
-        date: '2017-04-28T00:00:00-05:00'
+        date: '2017-04-15T00:00:00-05:00'
       }, {
         actor: 'lower',
         action: 'resolved',
         resolution: 'passed',
-        date: '2017-04-28T00:00:00-05:00'
+        date: '2017-06-01T00:00:00-05:00'
       }, {
         actor: 'governor',
         action: 'introduced',
