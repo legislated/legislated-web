@@ -14,5 +14,16 @@ FactoryBot.define do
       action { Step::Actions::RESOLVED }
       resolution { Step::Resolutions.resolved.sample }
     end
+
+    factory :open_states_step do
+      initialize_with do
+        OpenStates::ParseSteps::Step.new(
+          actor,
+          action,
+          resolution,
+          date
+        )
+      end
+    end
   end
 end

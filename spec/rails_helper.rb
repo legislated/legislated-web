@@ -18,7 +18,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 end
 
-# run support files
-Dir['spec/support/**/*.rb'].each do |file|
+# load support files
+Dir.glob("spec/support/**/*.rb") do |file|
   require file.gsub('spec/', '')
 end

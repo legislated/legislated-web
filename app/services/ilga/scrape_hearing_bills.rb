@@ -52,18 +52,18 @@ module Ilga
       )
 
       # scrape links
-      slip_link = row.first('.slipiconbutton')&.[](:href)
-      slip_results_link = row.first('.viewiconbutton')&.[](:href)
+      slip_url = row.first('.slipiconbutton')&.[](:href)
+      slip_results_url = row.first('.viewiconbutton')&.[](:href)
 
-      if slip_link.blank?
-        debug("  - bill w/o slip link: #{ilga_id} - #{document_number}")
+      if slip_url.blank?
+        debug("  - bill w/o slip link <row ilga_id: #{ilga_id}>")
       end
 
       # build bill
       Bill.new(
         ilga_id,
-        slip_link,
-        slip_results_link
+        slip_url,
+        slip_results_url
       )
     end
 

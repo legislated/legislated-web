@@ -64,8 +64,8 @@ FactoryBot.define do
     factory :open_states_bill do
       with_steps
 
-      # TODO: add `only <keys>` and `skip <keys>` helpers to factory bot that
-      # makes all other attributes transient
+      steps { attributes_for_list(:open_states_step, 1) }
+
       transient do
         hearing nil
         summary nil

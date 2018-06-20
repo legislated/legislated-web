@@ -1,5 +1,12 @@
 module OpenStates
-  class ParseBillSteps
+  class ParseSteps
+    Step = Struct.new(
+      :actor,
+      :action,
+      :resolution,
+      :date
+    )
+
     def call(actions)
       # prepare and expand actions based so that each has a single type
       actions = actions
@@ -16,39 +23,42 @@ module OpenStates
 
     private
 
-    # preparation
+    # action expansion
     def nonessential_action?(action)
       action[:action].match(/.* Amendment .*|(Assignments|Rules)( Committee)?$/)
     end
 
     def expand_action(action)
-      attrs = action.slice(:actor, :date)
+      attrs = action.slice(
+        :actor,
+        :date
+      )
+
       action[:type].map do |type|
         attrs.merge(type: type)
       end
     end
 
-    # step
+    # step parsing
     def parse_step(action, actor)
-      action_name = parse_action(action[:type])
-      return nil if action_name.nil?
-
-      step = {
-        actor: actor,
-        action: action_name,
-        resolution: parse_resolution(action[:type]),
-        date: parse_date(action[:date])
-      }
-
-      step
+      action_name = parse_action_name(action[:type])
+      action_name.nil? ? nil : Step.new(
+        actor,
+        action_name,
+        parse_resolution(action[:type]),
+        parse_date(action[:date])
+      )
     end
 
-    # fields
+    # step field parsing
     def parse_actors(actions)
-      actions.reduce([]) do |actors, action|
-        actor = parse_actor(action, actors)
-        actors + [Step::Actors.coerce!(actor)]
+      actions.each_with_object([]) do |action, actors|
+        actors << parse_actor!(action, actors)
       end
+    end
+
+    def parse_actor!(action, actors)
+      ::Step::Actors.coerce!(parse_actor(action, actors))
     end
 
     def parse_actor(action, actors)
@@ -69,56 +79,61 @@ module OpenStates
       end
     end
 
-    def parse_action(action_type)
-      find_mapping(action_type, STEP_ACTIONS)
+    def parse_action_name(action_type)
+      ACTION_TYPE_TO_NAME[action_type]
     end
 
     def parse_resolution(action_type)
-      find_mapping(action_type, STEP_RESOLUTIONS) || Step::Resolutions::NONE
+      ACTION_TYPE_TO_RESOLUTION[action_type] || ::Step::Resolutions::NONE
     end
 
     def parse_date(date)
       date.to_time.iso8601
     end
 
-    # mappings
-    def find_mapping(action_type, mappings)
-      mappings
-        .find { |_, action_types| action_types.include?(action_type) }&.first
+    # constants
+    def self.create_action_type_map(reversed_map)
+      result = reversed_map.each_with_object({}) do |(value, keys), map|
+        keys.each do |key|
+          map[key] = value
+        end
+      end
+
+      result.freeze
     end
 
-    STEP_RESOLUTIONS = {
-      Step::Resolutions::PASSED => [
+    ACTION_TYPE_TO_RESOLUTION = create_action_type_map({
+      ::Step::Resolutions::PASSED => [
         'committee:passed',
         'committee:passed:favorable',
         'committee:passed:unfavorable',
         'bill:passed',
         'bill:veto_override:passed'
       ],
-      Step::Resolutions::FAILED => [
+      ::Step::Resolutions::FAILED => [
         'committee:failed',
         'bill:failed',
         'bill:veto_override:failed'
       ],
-      Step::Resolutions::SIGNED => [
+      ::Step::Resolutions::SIGNED => [
         'governor:signed'
       ],
-      Step::Resolutions::VETOED => [
+      ::Step::Resolutions::VETOED => [
         'governor:vetoed'
       ],
-      Step::Resolutions::VETOED_LINE => [
+      ::Step::Resolutions::VETOED_LINE => [
         'governor:vetoed:line-item'
       ]
-    }.freeze
+    })
 
-    STEP_ACTIONS = {
-      Step::Actions::INTRODUCED => [
+    ACTION_TYPE_TO_NAME = create_action_type_map({
+      ::Step::Actions::INTRODUCED => [
         'bill:filed',
         'bill:introduced',
         'committee:referred',
         'governor:received'
       ],
-      Step::Actions::RESOLVED => [
+      ::Step::Actions::RESOLVED => [
         'committee:failed',
         'committee:passed',
         'committee:passed:favorable',
@@ -131,6 +146,6 @@ module OpenStates
         'governor:vetoed:line-item',
         'governor:signed'
       ]
-    }.freeze
+    })
   end
 end

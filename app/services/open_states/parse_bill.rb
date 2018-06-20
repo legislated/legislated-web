@@ -5,7 +5,7 @@ module OpenStates
       :documents
     )
 
-    Bill = Struct.new(
+    Bill = Struct.new_with_options(
       :ilga_id,
       :os_id,
       :title,
@@ -14,7 +14,8 @@ module OpenStates
       :details_url,
       :sponsor_name,
       :actions,
-      :steps
+      :steps,
+      serializes: [:steps]
     )
 
     Document = Struct.new(
@@ -24,7 +25,7 @@ module OpenStates
       :is_amendment
     )
 
-    def initialize(parse_steps = ParseBillSteps.new)
+    def initialize(parse_steps = ParseSteps.new)
       @parse_steps = parse_steps
     end
 

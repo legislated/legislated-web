@@ -213,6 +213,9 @@ Style/BracesAroundHashParameters:
 Style/TrailingUnderscoreVariable:
   Enabled: false
 
+Style/MultilineTernaryOperator:
+  Enabled: false
+
 Naming/AccessorMethodName:
   Enabled: false
 
@@ -232,4 +235,7 @@ Layout/EmptyLinesAroundArguments:
   Enabled: false
 
 Layout/FirstParameterIndentation:
+  Enabled: false
+
+Lint/IneffectiveAccessModifier:
   Enabled: false

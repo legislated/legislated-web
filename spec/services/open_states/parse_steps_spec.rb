@@ -1,4 +1,4 @@
-describe OpenStates::ParseBillSteps do
+describe OpenStates::ParseSteps do
   subject { described_class.new }
 
   describe '#call' do
@@ -75,7 +75,8 @@ describe OpenStates::ParseBillSteps do
         "actor": 'lower'
       }]
 
-      expect(subject.call(actions)).to eq([{
+      actual = subject.call(actions)
+      expect(actual.map(&:to_h)).to eq([{
         actor: 'upper',
         action: 'introduced',
         resolution: 'none',
