@@ -15,7 +15,7 @@ module OpenStates
       :sponsor_name,
       :actions,
       :steps,
-      serializes: [:steps]
+      serializes_related: [:steps]
     )
 
     Document = Struct.new(
@@ -25,8 +25,12 @@ module OpenStates
       :is_amendment
     )
 
-    def initialize(parse_steps = ParseSteps.new)
+    def initialize(
+      parse_steps = ParseSteps.new,
+      parse_step_sequence = ParseStepSequence.new
+    )
       @parse_steps = parse_steps
+      @parse_step_sequence = parse_step_sequence
     end
 
     def call(data)

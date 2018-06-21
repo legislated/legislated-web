@@ -1,10 +1,13 @@
 module OpenStates
   class ParseSteps
-    Step = Struct.new(
+    Step = Struct.new_with_options(
       :actor,
       :action,
       :resolution,
-      :date
+      :date,
+      serializes: {
+        date: -> (date) { date.iso8601 }
+      }
     )
 
     def call(actions)
@@ -88,7 +91,7 @@ module OpenStates
     end
 
     def parse_date(date)
-      date.to_time.iso8601
+      date.to_time
     end
 
     # constants

@@ -5,10 +5,18 @@ module Extensions
         new(*args) do
           # store the options
           class << self
-            attr_accessor :serialized_keys
+            attr_accessor :serializers
           end
 
-          self.serialized_keys = kwargs[:serializes]
+          # store serializers
+          self.serializers = kwargs[:serializes] || {}
+
+          # add serializers for relations
+          kwargs[:serializes_related]&.each do |key|
+            self.serializers[key] = -> (child) {
+              child.is_a?(Array) ? child.map(&:to_h) : child.to_h
+            }
+          end
 
           # run the existing block, if it defines to_h then /shrug
           instance_eval(&block) if block.present?
@@ -17,9 +25,8 @@ module Extensions
           def to_h
             result = super
 
-            self.class.serialized_keys.each do |key|
-              child = self[key]
-              child.is_a?(Array) ? child.map(&:to_h) : child.to_h
+            self.class.serializers.each do |key, serializer|
+              result[key] = serializer.call(self[key])
             end
 
             result
