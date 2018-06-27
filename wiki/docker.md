@@ -1,3 +1,5 @@
+http://blog.scoutapp.com/articles/2018/01/02/dockerizing-a-rails-app
+
 # install docker & friends
 `brew update`
 `brew install docker docker-compose docker-machine`
