@@ -4,26 +4,29 @@ FROM ruby:2.3.0
 # set environment variables
 ENV APP_HOME /legislated
 
-# install dependencies
-# - build-essential: build tools for gems with native extensions
-# - libpq-dev:       postgres c interfaces
-# - nodejs:          ...node
 RUN \
+  # add apt repo for alternate postgres versions
+  echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" \
+    >> /etc/apt/sources.list && \
+  curl https://www.postgresql.org/media/keys/ACCC4CF8.asc \
+    | apt-key add - && \
+  # install packages
+  # - build-essential: build tools for gems with native extensions
+  # - libpq-dev:       postgres c interfaces
+  # - nodejs:          for asset compilation
   apt-get update -qq && \
   apt-get install -y \
     build-essential \
-    libpq-dev postgresql-client-common \
+    libpq-dev postgresql-client-9.6 \
     nodejs
-
-# trim image size
-RUN \
-  apt-get clean autoclean && \
-  apt-get autoremove -y && \
-  rm -rf \
-    /var/lib/apt \
-    /var/lib/dpkg \
-    /var/lib/cache \
-    /var/lib/log
+  # # trim image size, remove package dbs, logs, etc
+  # apt-get clean autoclean && \
+  # apt-get autoremove -y && \
+  # rm -rf \
+  #   /var/lib/apt \
+  #   /var/lib/dpkg \
+  #   /var/lib/cache \
+  #   /var/lib/log
 
 # setup app's working directory
 RUN mkdir $APP_HOME

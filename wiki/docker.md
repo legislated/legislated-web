@@ -14,4 +14,10 @@ http://blog.scoutapp.com/articles/2018/01/02/dockerizing-a-rails-app
 
 # set up the app database
 `docker-compose run web rails db:create`
-`docker-compose run web rails db:migrate` # failing, missing pg_dump
+`docker-compose run web rails db:migrate`
+`docker-compose run web rails db:seed`
+
+# run the app
+`docker-compose up`
+
+*should* be able to hit the app in from the browser at this point
