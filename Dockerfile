@@ -40,4 +40,4 @@ RUN bundle install
 ADD . $APP_HOME
 
 # run the rails app
-CMD ./bin/rails s -p ${PORT} -b '0.0.0.0'
+CMD ./bin/puma -C config/puma.rb

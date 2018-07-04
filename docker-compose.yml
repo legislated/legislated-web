@@ -12,6 +12,6 @@ services:
       PORT: '3000'
       PGHOST: 'db'
       PGUSER: 'postgres'
-      PGDBNAME: 'legislated'
+      PGDBNAME: 'legislated-development'
     depends_on:
       - db
