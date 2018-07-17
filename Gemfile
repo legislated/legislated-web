@@ -40,7 +40,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'graphiql-rails'
-  gem 'guard-rspec'
   gem 'letter_opener_web'
   gem 'pry'
   gem 'pry-byebug'

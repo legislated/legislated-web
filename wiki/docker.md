@@ -20,4 +20,8 @@ http://blog.scoutapp.com/articles/2018/01/02/dockerizing-a-rails-app
 # run the app
 `docker-compose up`
 
+# later, if running a docker-compose command gives you an error about not being
+# able to connect to docker-machine
+`eval "$(docker-machine env default)"`
+
 *should* be able to hit the app in from the browser at this point
