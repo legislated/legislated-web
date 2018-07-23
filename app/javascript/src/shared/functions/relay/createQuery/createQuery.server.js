@@ -21,7 +21,7 @@ export function createQuery (extraHeaders: Object): FetchFunction {
 
   return function query (operation, variables) {
     // make request
-    const response = request('POST', config.graphUrl, {
+    const response = request('POST', config.graphEndpoint, {
       headers,
       json: {
         query: operation.text,

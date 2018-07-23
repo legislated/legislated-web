@@ -1,17 +1,23 @@
 const webpack = require('webpack')
-const merge = require('webpack-merge')
+const $merge = require('webpack-merge')
 const nodeExternals = require('webpack-node-externals')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const { pick, omit } = require('lodash')
 const base = require('./shared')
+const { assign } = Object
+const { stringify } = JSON
 
-// shared plugins
-const environmentPlugin = (value) => new webpack.DefinePlugin({
-  'process.env': {
-    'ENVIRONMENT': JSON.stringify(value)
-  }
+// env plugin
+const env = {
+  IS_SERVER: null,
+  GRAPH_URL: stringify('http://localhost:3000')
+}
+
+const envPlugin = (extras) => new webpack.DefinePlugin({
+  'process.env': assign({}, env, extras)
 })
 
+// manifest plugin
 const seed = {}
 const manifestPlugin = () => new ManifestPlugin({
   seed,
@@ -20,12 +26,12 @@ const manifestPlugin = () => new ManifestPlugin({
 })
 
 // builds a config that replaces entries / plugins properly
-const merge2 = merge.strategy({
+const merge = $merge.strategy({
   entry: 'replace'
 })
 
 // create a server config to only render the ssr bundle
-const server = merge2(base, {
+const server = merge(base, {
   target: 'node',
   devtool: false,
   entry: pick(base.entry, [
@@ -39,18 +45,20 @@ const server = merge2(base, {
     libraryTarget: 'commonjs2'
   },
   plugins: [
-    environmentPlugin('server'),
+    envPlugin({
+      IS_SERVER: 'true'
+    }),
     manifestPlugin()
   ]
 })
 
 // create a client config to render all non-ssr bundles
-const client = merge2(base, {
+const client = merge(base, {
   entry: omit(base.entry, [
     'server'
   ]),
   plugins: [
-    environmentPlugin(process.env.RAILS_ENV),
+    envPlugin(),
     manifestPlugin()
   ]
 })

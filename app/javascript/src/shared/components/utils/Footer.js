@@ -7,7 +7,7 @@ type Props = {
   children?: React.Node
 }
 
-const root = config.env !== 'server'
+const root = config.isClient
   ? document.getElementById('footer-root')
   : null
 

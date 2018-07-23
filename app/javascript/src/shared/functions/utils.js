@@ -28,5 +28,5 @@ export function removeRouterProps (props: Object) {
 }
 
 export function href () {
-  return config.env !== 'server' ? window.location.href : null
+  return config.isClient ? window.location.href : null
 }
