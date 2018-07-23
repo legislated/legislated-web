@@ -1,31 +1,35 @@
-version: '3'
+version: '3.4'
+x-app: &app
+  build: .
+  volumes:
+    - .:/legislated
 services:
   db:
     image: postgres:9.6
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
   rds:
     image: redis:4.0.10
   wpk:
-    build: .
-    command: './bin/webpack-dev-server'
-    volumes:
-      - .:/legislated
-    ports:
-      - '3035:3035'
+    <<: *app
+    command: ./bin/webpack-dev-server
     environment:
-      NODE_ENV: 'development'
-      RAILS_ENV: 'development'
-      WEBPACKER_DEV_SERVER_HOST: '0.0.0.0'
+      NODE_ENV: development
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
   web:
-    build: .
-    volumes:
-      - .:/legislated
+    <<: *app
+    command: './bin/puma -C config/puma.rb'
     ports:
       - '3000:3000'
+    tty: true
+    stdin_open: true
     environment:
-      PORT: '3000'
-      PGHOST: 'db'
-      PGUSER: 'postgres'
-      PGDBNAME: 'legislated-development'
+      PORT: 3000
+      PGHOST: db
+      PGUSER: postgres
+      PRY_RESCUE_RAILS: 1
+      WEBPACKER_DEV_SERVER_HOST: wpk
     depends_on:
       - db
       - rds

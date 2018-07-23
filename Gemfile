@@ -42,6 +42,8 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
   gem 'puffing-billy', git: 'https://github.com/wzrad/puffing-billy.git', branch: 'develop'
   gem 'rb-readline'
   gem 'rspec-rails'

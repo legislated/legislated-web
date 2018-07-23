@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'client#index'
   post '/api/graphql', to: 'api#execute'
 
   if Rails.env.development?
@@ -9,6 +8,6 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 
-  # All other html requests should go to the js app
+  # any html requests should render the client
   get '/(*any)', to: 'client#index', constraints: { format: 'html' }
 end

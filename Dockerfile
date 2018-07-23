@@ -10,7 +10,8 @@ ENV APP_HOME /legislated
 RUN \
   apt-get update -qq && \
   apt-get install -y \
-    build-essential libpq-dev
+    build-essential \
+    libpq-dev
 
 # install postgres (add repo)
 # - postgresql-client-9.6: provides pgdump
@@ -41,6 +42,11 @@ RUN \
   apt-get install -y \
     nodejs yarn
 
+# install nano for developement
+RUN \
+  apt-get install -y \
+    nano
+
 # trim image size, remove package dbs, logs, etc
 RUN \
   apt-get clean autoclean && \
@@ -61,6 +67,3 @@ RUN bundle install
 
 # add the app to the image
 ADD . $APP_HOME
-
-# run the rails app
-CMD ./bin/puma -C config/puma.rb

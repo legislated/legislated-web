@@ -61,6 +61,8 @@ GEM
     arel (9.0.0)
     ast (2.4.0)
     awesome_print (1.8.0)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
     builder (3.2.3)
     bullet (5.7.5)
       activesupport (>= 3.0.0)
@@ -82,6 +84,7 @@ GEM
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
     database_cleaner (1.7.0)
+    debug_inspector (0.0.3)
     diff-lcs (1.3)
     dotenv (2.4.0)
     dotenv-rails (2.4.0)
@@ -133,6 +136,7 @@ GEM
       faraday (~> 0.8)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    interception (0.5)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.6.0)
@@ -189,6 +193,12 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
+    pry-rescue (1.4.5)
+      interception (>= 0.5)
+      pry
+    pry-stack_explorer (0.4.9.2)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
@@ -323,6 +333,8 @@ DEPENDENCIES
   pry
   pry-byebug
   pry-rails
+  pry-rescue
+  pry-stack_explorer
   puffing-billy!
   puma (~> 3.0)
   rack-cors

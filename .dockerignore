@@ -2,3 +2,6 @@
 .git
 logs/
 tmp/
+wiki/
+*.md
+Dockerfile
