@@ -99,11 +99,11 @@ CREATE TABLE bills (
 
 CREATE TABLE committees (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
-    ilga_id integer NOT NULL,
+    ilga_id integer,
     name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    chamber integer NOT NULL,
+    chamber integer,
     os_id character varying,
     parent_id character varying,
     subcommittee character varying,
@@ -363,6 +363,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180308005925'),
 ('20180311040929'),
 ('20180426003320'),
-('20180429152115');
+('20180429152115'),
+('20180626205700'),
+('20180626210000');
 
 
