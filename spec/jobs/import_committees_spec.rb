@@ -12,15 +12,13 @@ describe ImportCommittees do
 
     context 'when upserting a committee' do
       let(:committee) { create(:committee) }
-      let(:attrs) { attributes_for(:committee, os_id: committee.os_id) }
 
       it "sets the committee's core attributes" do
-        committee_data = build(:open_states_committee)
+        committee_data = build(:open_states_committee, os_id: committee.os_id)
         allow(mock_fetch_committees).to receive(:call).and_return([committee_data])
 
         subject.perform
-        binding.pry
-        expect(committee).to have_attributes(:os_id => committee_data.os_id, 
+        expect(committee.reload).to have_attributes(:os_id => committee_data.os_id, 
           :name => committee_data.name)
       end
 
@@ -31,20 +29,6 @@ describe ImportCommittees do
 
         expect { subject.perform }.to change(Committee, :count).by(1)
       end
-
-      it 'creates committee based on committee role if it does not exist' do
-        attrs = attributes_for(:committee)
-
-        allow(mock_fetch_committees).to receive(:fetch_committees).and_return(response(
-          'role.committee_id' => attrs[:os_id]
-        ))
-
-        expect { subject.perform }.to change(Committee, :count).by(1)
-      end
-
-      it '' do
-      end
-
     end
   end
 end
