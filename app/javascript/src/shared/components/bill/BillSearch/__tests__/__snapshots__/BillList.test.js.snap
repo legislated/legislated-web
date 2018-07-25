@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render hides the load more button when there is no page size 1`] = `
+<Bills>
+  <h5>
+    Found 2 results.
+  </h5>
+  <TranslateAndFade
+    component={[Function]}
+    disable={true}
+  >
+    <BillCell
+      bill={
+        Object {
+          "id": 1,
+        }
+      }
+      key="1"
+    />
+    <BillCell
+      bill={
+        Object {
+          "id": 2,
+        }
+      }
+      key="2"
+    />
+  </TranslateAndFade>
+</Bills>
+`;
+
+exports[`#render shows the list 1`] = `
+<Bills>
+  <h5>
+    Found 2 results.
+  </h5>
+  <TranslateAndFade
+    component={[Function]}
+    disable={true}
+  >
+    <BillCell
+      bill={
+        Object {
+          "id": 1,
+        }
+      }
+      key="1"
+    />
+    <BillCell
+      bill={
+        Object {
+          "id": 2,
+        }
+      }
+      key="2"
+    />
+  </TranslateAndFade>
+  <ActionButton
+    isSecondary={true}
+    onClick={[Function]}
+  >
+    Load More
+  </ActionButton>
+</Bills>
+`;

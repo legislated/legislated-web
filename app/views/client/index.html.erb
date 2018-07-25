@@ -1,0 +1,8 @@
+<head>
+  <%= favicon_link_tag('icon.png', type: 'image/png') %>
+</head>
+<body>
+  <%= render_react_component('client', location: request.fullpath) %>
+  <footer id='footer-root'></footer>
+  <%= javascript_pack_tag('client') %>
+</body>

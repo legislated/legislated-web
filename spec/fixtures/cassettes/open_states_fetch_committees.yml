@@ -1,0 +1,995 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://openstates.org/api/v1/committees?state=il
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<OPENSTATES_API_KEY>"
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Wed, 14 Mar 2018 00:25:37 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Location:
+      - "/api/v1/committees/?state=il"
+      Expires:
+      - Wed, 14 Mar 2018 02:25:37 GMT
+      Cache-Control:
+      - max-age=7200
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Cache-Status:
+      - HIT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 14 Mar 2018 00:25:37 GMT
+- request:
+    method: get
+    uri: https://openstates.org/api/v1/committees/?state=il
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<OPENSTATES_API_KEY>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Wed, 14 Mar 2018 00:25:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Authorization
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Wed, 14 Mar 2018 02:25:37 GMT
+      Cache-Control:
+      - max-age=7200
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Cache-Status:
+      - HIT
+    body:
+      encoding: UTF-8
+      string: '[{"country": "us", "created_at": "2011-08-23 15:08:41", "level": "state",
+        "all_ids": ["ILC000066"], "updated_at": "2017-12-27 06:10:43", "id": "ILC000066",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Rules",
+        "chamber": "lower", "+code": "HRUL"}, {"created_at": "2013-01-31 01:37:19",
+        "all_ids": ["ILC000121"], "updated_at": "2016-09-24 08:11:04", "id": "ILC000121",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Adoption
+        Reform", "chamber": "lower", "+code": "ADPT"}, {"created_at": "2013-01-31
+        01:37:19", "all_ids": ["ILC000122"], "updated_at": "2017-12-27 06:10:43",
+        "id": "ILC000122", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Agriculture & Conservation", "chamber": "lower", "+code": "HAGC"},
+        {"created_at": "2013-01-31 01:37:19", "all_ids": ["ILC000123"], "updated_at":
+        "2017-12-27 06:10:44", "id": "ILC000123", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Approp-Elementary & Secondary Educ", "chamber":
+        "lower", "+code": "HAPE"}, {"created_at": "2013-01-31 01:37:19", "all_ids":
+        ["ILC000124"], "updated_at": "2017-12-27 06:10:45", "id": "ILC000124", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Appropriations-General
+        Service", "chamber": "lower", "+code": "HAPG"}, {"created_at": "2013-01-31
+        01:37:19", "all_ids": ["ILC000125"], "updated_at": "2017-12-27 06:10:44",
+        "id": "ILC000125", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Appropriations-Higher Education", "chamber": "lower", "+code":
+        "HAPI"}, {"created_at": "2013-01-31 01:37:19", "all_ids": ["ILC000126"], "updated_at":
+        "2017-12-27 06:10:44", "id": "ILC000126", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Appropriations-Human Services", "chamber":
+        "lower", "+code": "HAPH"}, {"created_at": "2013-01-31 01:37:19", "all_ids":
+        ["ILC000127"], "updated_at": "2017-12-27 06:10:44", "id": "ILC000127", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Appropriations-Public
+        Safety", "chamber": "lower", "+code": "HAPP"}, {"created_at": "2013-01-31
+        01:37:19", "all_ids": ["ILC000128"], "updated_at": "2017-12-27 06:10:43",
+        "id": "ILC000128", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Business Growth & Incentives", "chamber": "lower", "+code":
+        "HSBG"}, {"created_at": "2013-01-31 01:37:19", "all_ids": ["ILC000129"], "updated_at":
+        "2016-09-24 08:11:05", "id": "ILC000129", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Business Occupational Licenses", "chamber":
+        "lower", "+code": "HBOL"}, {"created_at": "2013-01-31 01:37:19", "all_ids":
+        ["ILC000130"], "updated_at": "2017-12-27 06:10:43", "id": "ILC000130", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Cities & Villages",
+        "chamber": "lower", "+code": "HCIV"}, {"created_at": "2013-01-31 01:37:19",
+        "all_ids": ["ILC000131"], "updated_at": "2017-12-27 06:10:43", "id": "ILC000131",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Consumer
+        Protection", "chamber": "lower", "+code": "HCON"}, {"created_at": "2013-01-31
+        01:37:19", "all_ids": ["ILC000132"], "updated_at": "2017-12-27 06:10:44",
+        "id": "ILC000132", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Counties & Townships", "chamber": "lower", "+code": "HCOT"},
+        {"created_at": "2013-01-31 01:37:20", "all_ids": ["ILC000135"], "updated_at":
+        "2017-12-27 06:10:43", "id": "ILC000135", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Energy", "chamber": "lower", "+code":
+        "HENG"}, {"created_at": "2013-01-31 01:37:20", "all_ids": ["ILC000136"], "updated_at":
+        "2017-12-27 06:10:44", "id": "ILC000136", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Environment", "chamber": "lower", "+code":
+        "HENE"}, {"created_at": "2013-01-31 01:37:20", "all_ids": ["ILC000137"], "updated_at":
+        "2017-12-27 06:10:43", "id": "ILC000137", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Executive", "chamber": "lower", "+code":
+        "HEXC"}, {"created_at": "2013-01-31 01:37:20", "all_ids": ["ILC000138"], "updated_at":
+        "2017-12-27 06:10:45", "id": "ILC000138", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Financial Institutions", "chamber": "lower",
+        "+code": "HFIN"}, {"created_at": "2013-01-31 01:37:20", "all_ids": ["ILC000139"],
+        "updated_at": "2017-12-27 06:10:45", "id": "ILC000139", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Health & Healthcare Disparities",
+        "chamber": "lower", "+code": "HHCD"}, {"created_at": "2013-01-31 01:37:20",
+        "all_ids": ["ILC000140"], "updated_at": "2016-09-24 08:11:04", "id": "ILC000140",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Health
+        Care Availability  Access", "chamber": "lower", "+code": "HHCA"}, {"created_at":
+        "2013-01-31 01:37:20", "all_ids": ["ILC000141"], "updated_at": "2017-12-27
+        06:10:43", "id": "ILC000141", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Health Care Licenses", "chamber": "lower", "+code": "HHCL"},
+        {"created_at": "2013-01-31 01:37:20", "all_ids": ["ILC000142"], "updated_at":
+        "2017-12-27 06:10:43", "id": "ILC000142", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Higher Education", "chamber": "lower",
+        "+code": "HHED"}, {"created_at": "2013-01-31 01:37:20", "all_ids": ["ILC000144"],
+        "updated_at": "2017-12-27 06:10:45", "id": "ILC000144", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Human Services", "chamber":
+        "lower", "+code": "HHSV"}, {"created_at": "2013-01-31 01:37:20", "all_ids":
+        ["ILC000145"], "updated_at": "2016-09-24 08:11:03", "id": "ILC000145", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Insurance", "chamber":
+        "lower", "+code": "HINS"}, {"created_at": "2013-01-31 01:37:20", "all_ids":
+        ["ILC000146"], "updated_at": "2017-12-27 06:10:45", "id": "ILC000146", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "International Trade
+        & Commerce", "chamber": "lower", "+code": "HITC"}, {"created_at": "2013-01-31
+        01:37:20", "all_ids": ["ILC000148"], "updated_at": "2017-12-27 06:10:43",
+        "id": "ILC000148", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Labor & Commerce Committee", "chamber": "lower", "+code": "HLBR"},
+        {"created_at": "2013-01-31 01:37:20", "all_ids": ["ILC000150"], "updated_at":
+        "2017-12-27 06:10:45", "id": "ILC000150", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Museums, Arts, & Cultural Enhanceme",
+        "chamber": "lower", "+code": "HMAC"}, {"created_at": "2013-01-31 01:37:20",
+        "all_ids": ["ILC000151"], "updated_at": "2017-12-27 06:10:45", "id": "ILC000151",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Personnel
+        & Pensions", "chamber": "lower", "+code": "HPPN"}, {"created_at": "2013-01-31
+        01:37:20", "all_ids": ["ILC000153"], "updated_at": "2017-12-27 06:10:46",
+        "id": "ILC000153", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Public Utilities", "chamber": "lower", "+code": "HPUB"}, {"created_at":
+        "2013-01-31 01:37:20", "all_ids": ["ILC000154"], "updated_at": "2017-12-27
+        06:10:43", "id": "ILC000154", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Restorative Justice", "chamber": "lower", "+code": "HREJ"},
+        {"created_at": "2013-01-31 01:37:20", "all_ids": ["ILC000155"], "updated_at":
+        "2017-12-27 06:10:43", "id": "ILC000155", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Revenue & Finance", "chamber": "lower",
+        "+code": "HREF"}, {"created_at": "2013-01-31 01:37:20", "all_ids": ["ILC000157"],
+        "updated_at": "2017-12-27 06:10:45", "id": "ILC000157", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "State Government Administration",
+        "chamber": "lower", "+code": "HSGA"}, {"created_at": "2013-01-31 01:37:20",
+        "all_ids": ["ILC000158"], "updated_at": "2017-12-27 06:10:44", "id": "ILC000158",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Tollway
+        Oversight", "chamber": "lower", "+code": "HTOL"}, {"created_at": "2013-01-31
+        01:37:20", "all_ids": ["ILC000159"], "updated_at": "2016-09-24 08:11:05",
+        "id": "ILC000159", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Tourism & Conventions", "chamber": "lower", "+code": "HTOR"},
+        {"created_at": "2013-01-31 01:37:20", "all_ids": ["ILC000160"], "updated_at":
+        "2016-09-24 08:11:04", "id": "ILC000160", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Transportation, Regulation, Roads", "chamber":
+        "lower", "+code": "HTRR"}, {"created_at": "2013-01-31 01:37:20", "all_ids":
+        ["ILC000161"], "updated_at": "2017-12-27 06:10:45", "id": "ILC000161", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Transportation: Vehicles
+        & Safety", "chamber": "lower", "+code": "HVES"}, {"created_at": "2013-02-08
+        02:05:57", "all_ids": ["ILC000162"], "updated_at": "2017-06-02 11:46:54",
+        "id": "ILC000162", "parent_id": "ILC000144", "state": "il", "subcommittee":
+        "Facilities Subcommittee", "committee": "Human Services", "chamber": "lower",
+        "+code": "HHSV-FACI"}, {"created_at": "2013-02-08 02:05:57", "all_ids": ["ILC000163"],
+        "updated_at": "2017-06-02 11:46:54", "id": "ILC000163", "parent_id": "ILC000144",
+        "state": "il", "subcommittee": "Public Benefits Subcommittee", "committee":
+        "Human Services", "chamber": "lower", "+code": "HHSV-PUBL"}, {"created_at":
+        "2013-02-21 03:18:02", "all_ids": ["ILC000174"], "updated_at": "2017-06-02
+        11:46:54", "id": "ILC000174", "parent_id": "ILC000148", "state": "il", "subcommittee":
+        "Unemployment Insurance Subcommittee", "committee": "Labor & Commerce Committee",
+        "chamber": "lower", "+code": "HLBR-UNEM"}, {"created_at": "2013-02-21 03:18:02",
+        "all_ids": ["ILC000176"], "updated_at": "2017-06-02 11:46:54", "id": "ILC000176",
+        "parent_id": "ILC000155", "state": "il", "subcommittee": "Finance Subcommittee",
+        "committee": "Revenue & Finance", "chamber": "lower", "+code": "HREF-FINA"},
+        {"created_at": "2013-02-21 03:18:03", "all_ids": ["ILC000177"], "updated_at":
+        "2017-06-02 11:46:54", "id": "ILC000177", "parent_id": "ILC000155", "state":
+        "il", "subcommittee": "Income Tax Subcommittee", "committee": "Revenue & Finance",
+        "chamber": "lower", "+code": "HREF-ITAX"}, {"created_at": "2013-02-21 03:18:03",
+        "all_ids": ["ILC000178"], "updated_at": "2017-06-02 11:46:54", "id": "ILC000178",
+        "parent_id": "ILC000155", "state": "il", "subcommittee": "Property Tax Subcommittee",
+        "committee": "Revenue & Finance", "chamber": "lower", "+code": "HREF-PTAX"},
+        {"created_at": "2013-02-21 03:18:03", "all_ids": ["ILC000179"], "updated_at":
+        "2017-06-02 11:46:54", "id": "ILC000179", "parent_id": "ILC000155", "state":
+        "il", "subcommittee": "Sales and Other Taxes Subcommittee", "committee": "Revenue
+        & Finance", "chamber": "lower", "+code": "HREF-STAX"}, {"created_at": "2013-02-22
+        03:27:32", "all_ids": ["ILC000181"], "updated_at": "2017-12-27 06:10:44",
+        "id": "ILC000181", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Veterans'' Affairs", "chamber": "lower", "+code": "HVET"}, {"created_at":
+        "2013-03-14 04:21:17", "all_ids": ["ILC000201"], "updated_at": "2016-09-24
+        08:11:02", "id": "ILC000201", "parent_id": "ILC000129", "state": "il", "subcommittee":
+        "Business Licenses Subcommittee", "committee": "Business Occupational Licenses",
+        "chamber": "lower", "+code": "HBOL-BOBL"}, {"created_at": "2013-03-14 04:21:17",
+        "all_ids": ["ILC000202"], "updated_at": "2017-06-02 11:46:54", "id": "ILC000202",
+        "parent_id": "ILC000130", "state": "il", "subcommittee": "Local Government
+        Subcommittee", "committee": "Cities & Villages", "chamber": "lower", "+code":
+        "HCIV-LOGV"}, {"created_at": "2013-03-16 04:21:25", "all_ids": ["ILC000207"],
+        "updated_at": "2017-06-02 11:46:54", "id": "ILC000207", "parent_id": "ILC000148",
+        "state": "il", "subcommittee": "Workforce Reconciliation Subcommitt", "committee":
+        "Labor & Commerce Committee", "chamber": "lower", "+code": "HLBR-WORK"}, {"created_at":
+        "2014-02-25 08:21:20", "all_ids": ["ILC000224"], "updated_at": "2016-09-24
+        08:11:04", "id": "ILC000224", "parent_id": "ILC000144", "state": "il", "subcommittee":
+        "Informed Consent Subcommittee", "committee": "Human Services", "chamber":
+        "lower", "+code": "HHSV-HICO"}, {"created_at": "2014-02-28 08:20:04", "all_ids":
+        ["ILC000228"], "updated_at": "2016-09-24 08:11:02", "id": "ILC000228", "parent_id":
+        "ILC000155", "state": "il", "subcommittee": "Towing Oversight Subcommittee",
+        "committee": "Revenue & Finance", "chamber": "lower", "+code": "HREF-HTOW"},
+        {"created_at": "2015-01-29 01:05:06", "all_ids": ["ILC000247"], "updated_at":
+        "2016-09-24 08:11:05", "id": "ILC000247", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Renewable Energy & Sustainability", "chamber":
+        "lower", "+code": "HRES"}, {"created_at": "2015-01-29 01:05:06", "all_ids":
+        ["ILC000248"], "updated_at": "2017-12-27 06:10:44", "id": "ILC000248", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Special Needs Services",
+        "chamber": "lower", "+code": "HSNS"}, {"created_at": "2015-01-29 01:05:06",
+        "all_ids": ["ILC000249"], "updated_at": "2016-09-24 08:11:02", "id": "ILC000249",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Juvenile
+        Justice & System-Involved", "chamber": "lower", "+code": "HJJS"}, {"created_at":
+        "2015-01-29 01:05:06", "all_ids": ["ILC000250"], "updated_at": "2016-09-24
+        08:11:03", "id": "ILC000250", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Youth & Young Adults", "chamber": "lower", "+code": "HYYA"},
+        {"created_at": "2015-01-29 01:05:06", "all_ids": ["ILC000252"], "updated_at":
+        "2016-09-24 08:11:04", "id": "ILC000252", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Intermodal Infrastructure", "chamber":
+        "lower", "+code": "HINI"}, {"created_at": "2015-01-29 01:05:06", "all_ids":
+        ["ILC000253"], "updated_at": "2017-12-27 06:10:44", "id": "ILC000253", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Community College
+        Access & Afford.", "chamber": "lower", "+code": "HCCA"}, {"created_at": "2015-01-29
+        01:05:06", "all_ids": ["ILC000254"], "updated_at": "2016-09-24 08:11:03",
+        "id": "ILC000254", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Economic Development & Housing", "chamber": "lower", "+code":
+        "HECD"}, {"created_at": "2015-01-29 01:05:07", "all_ids": ["ILC000256"], "updated_at":
+        "2017-12-27 06:10:42", "id": "ILC000256", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Judiciary - Criminal", "chamber": "lower",
+        "+code": "HJUC"}, {"created_at": "2015-01-29 01:05:07", "all_ids": ["ILC000257"],
+        "updated_at": "2017-12-27 06:10:44", "id": "ILC000257", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Judiciary - Civil", "chamber":
+        "lower", "+code": "HJUA"}, {"created_at": "2015-02-19 02:47:52", "all_ids":
+        ["ILC000264"], "updated_at": "2017-06-02 11:46:56", "id": "ILC000264", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Sex Offenses and
+        Sex Offender Regis", "chamber": "lower", "+code": "HJUC-SOSO"}, {"created_at":
+        "2015-02-19 02:47:53", "all_ids": ["ILC000265"], "updated_at": "2016-09-24
+        08:11:03", "id": "ILC000265", "parent_id": "ILC000256", "state": "il", "subcommittee":
+        "Firearms and Firearm Safety Subcomm", "committee": "Judiciary - Criminal",
+        "chamber": "lower", "+code": "HJUC-JCFF"}, {"created_at": "2015-02-19 02:47:54",
+        "all_ids": ["ILC000268"], "updated_at": "2016-09-24 08:11:03", "id": "ILC000268",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Sentencing,
+        Penalties, and Criminal", "chamber": "lower", "+code": "HJUC-CPCP"}, {"created_at":
+        "2015-02-22 03:27:00", "all_ids": ["ILC000269"], "updated_at": "2016-09-24
+        08:11:04", "id": "ILC000269", "parent_id": "ILC000161", "state": "il", "subcommittee":
+        "Transportation: License Plates Subc", "committee": "Transportation: Vehicles
+        & Safety", "chamber": "lower", "+code": "HVES-HLPS"}, {"created_at": "2015-02-22
+        03:27:00", "all_ids": ["ILC000270"], "updated_at": "2016-09-24 08:11:02",
+        "id": "ILC000270", "parent_id": "ILC000161", "state": "il", "subcommittee":
+        "Transportation: Signs & Signals Sub", "committee": "Transportation: Vehicles
+        & Safety", "chamber": "lower", "+code": "HVES-HSSS"}, {"created_at": "2015-02-22
+        03:27:01", "all_ids": ["ILC000272"], "updated_at": "2016-09-24 08:11:03",
+        "id": "ILC000272", "parent_id": "ILC000160", "state": "il", "subcommittee":
+        "Transportation: Reg. & Reg. Sub.", "committee": "Transportation, Regulation,
+        Roads", "chamber": "lower", "+code": "HTRR-HRRS"}, {"created_at": "2015-02-22
+        03:27:02", "all_ids": ["ILC000273"], "updated_at": "2016-09-24 08:11:05",
+        "id": "ILC000273", "parent_id": "ILC000160", "state": "il", "subcommittee":
+        "Transportation: Railroad & Air Subc", "committee": "Transportation, Regulation,
+        Roads", "chamber": "lower", "+code": "HTRR-HRRA"}, {"created_at": "2015-02-24
+        03:25:36", "all_ids": ["ILC000274"], "updated_at": "2017-06-02 11:46:55",
+        "id": "ILC000274", "parent_id": "ILC000148", "state": "il", "subcommittee":
+        "Workers Compensation Subcommittee", "committee": "Labor & Commerce Committee",
+        "chamber": "lower", "+code": "HLBR-WKCO"}, {"created_at": "2015-02-28 01:52:07",
+        "all_ids": ["ILC000276"], "updated_at": "2016-09-24 08:11:03", "id": "ILC000276",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Single
+        Family Homeownership Stabili", "chamber": "lower", "+code": "HECD-SFHS"},
+        {"created_at": "2015-02-28 01:52:07", "updated_at": "2016-09-24 08:11:02",
+        "all_ids": ["ILC000277"], "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Violence Prevention Task Force", "chamber": "lower", "id":
+        "ILC000277"}, {"created_at": "2015-02-28 01:52:09", "all_ids": ["ILC000278"],
+        "updated_at": "2016-09-24 08:11:05", "id": "ILC000278", "parent_id": "ILC000254",
+        "state": "il", "subcommittee": "Economic Growth and Mod. Sub.", "committee":
+        "Economic Development & Housing", "chamber": "lower", "+code": "HECD-HEGM"},
+        {"created_at": "2015-02-28 01:52:09", "all_ids": ["ILC000279"], "updated_at":
+        "2016-09-24 08:11:04", "id": "ILC000279", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Senior and Veterans Housing Sustain",
+        "chamber": "lower", "+code": "HECD-SVHS"}, {"created_at": "2015-03-03 04:05:20",
+        "all_ids": ["ILC000280"], "updated_at": "2016-09-24 08:11:04", "id": "ILC000280",
+        "parent_id": "ILC000141", "state": "il", "subcommittee": "Practice Acts Subcommittee",
+        "committee": "Health Care Licenses", "chamber": "lower", "+code": "HHCL-HPAC"},
+        {"created_at": "2015-03-06 04:16:57", "all_ids": ["ILC000281"], "updated_at":
+        "2016-09-24 08:11:02", "id": "ILC000281", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Sm Bus Empowerment Wkforce Develop", "chamber":
+        "lower", "+code": "HSBE"}, {"created_at": "2015-03-06 04:16:57", "all_ids":
+        ["ILC000282"], "updated_at": "2016-09-24 08:11:03", "id": "ILC000282", "parent_id":
+        "ILC000132", "state": "il", "subcommittee": "Local Government Efficiency Subcomm",
+        "committee": "Counties & Townships", "chamber": "lower", "+code": "HCOT-HLGE"},
+        {"created_at": "2015-03-06 04:16:59", "all_ids": ["ILC000283"], "updated_at":
+        "2016-09-24 08:11:02", "id": "ILC000283", "parent_id": "ILC000284", "state":
+        "il", "subcommittee": "Special Issues Subcommittee", "committee": "Elem Sec
+        Ed School Curricu Policies", "chamber": "lower", "+code": "HELM-HSPI"}, {"created_at":
+        "2015-03-06 04:16:59", "all_ids": ["ILC000284"], "updated_at": "2016-09-24
+        08:11:03", "id": "ILC000284", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Elem Sec Ed School Curricu Policies", "chamber": "lower",
+        "+code": "HELM"}, {"created_at": "2015-03-06 04:16:59", "all_ids": ["ILC000285"],
+        "updated_at": "2016-09-24 08:11:02", "id": "ILC000285", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Elem Sec Ed: Licensing
+        Oversight", "chamber": "lower", "+code": "HELO"}, {"created_at": "2015-03-06
+        04:17:01", "all_ids": ["ILC000289"], "updated_at": "2016-09-24 08:11:03",
+        "id": "ILC000289", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Elem Sec Ed  Charter School Policy", "chamber": "lower", "+code":
+        "HELC"}, {"created_at": "2015-03-07 04:16:16", "all_ids": ["ILC000290"], "updated_at":
+        "2017-12-27 06:10:45", "id": "ILC000290", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "House Education Task Force", "chamber":
+        "lower", "+code": "Not Scheduled"}, {"created_at": "2015-03-11 03:21:35",
+        "all_ids": ["ILC000291"], "updated_at": "2016-09-24 08:11:02", "id": "ILC000291",
+        "parent_id": "ILC000154", "state": "il", "subcommittee": "Criminal Justice
+        Reform Subcommitte", "committee": "Restorative Justice", "chamber": "lower",
+        "+code": "HREJ-HCJR"}, {"created_at": "2015-03-11 03:21:37", "all_ids": ["ILC000293"],
+        "updated_at": "2016-09-24 08:11:04", "id": "ILC000293", "parent_id": "ILC000257",
+        "state": "il", "subcommittee": "Civil Process Subcommittee", "committee":
+        "Judiciary - Civil", "chamber": "lower", "+code": "HJUA-HCIV"}, {"created_at":
+        "2015-03-11 03:21:40", "all_ids": ["ILC000294"], "updated_at": "2016-09-24
+        08:11:03", "id": "ILC000294", "parent_id": "ILC000257", "state": "il", "subcommittee":
+        "General Law Subcommittee", "committee": "Judiciary - Civil", "chamber": "lower",
+        "+code": "HJUA-HLAW"}, {"created_at": "2015-03-28 03:44:21", "all_ids": ["ILC000297"],
+        "updated_at": "2016-09-24 08:11:05", "id": "ILC000297", "parent_id": "ILC000157",
+        "state": "il", "subcommittee": "Agency Operations Subcommittee", "committee":
+        "State Government Administration", "chamber": "lower", "+code": "HSGA-HAGO"},
+        {"created_at": "2015-03-28 03:44:21", "all_ids": ["ILC000298"], "updated_at":
+        "2016-09-24 08:11:05", "id": "ILC000298", "parent_id": "ILC000157", "state":
+        "il", "subcommittee": "Special Bills Subcommittee", "committee": "State Government
+        Administration", "chamber": "lower", "+code": "HSGA-HSPB"}, {"created_at":
+        "2015-03-28 03:44:28", "all_ids": ["ILC000302"], "updated_at": "2016-09-24
+        08:11:04", "id": "ILC000302", "parent_id": "ILC000157", "state": "il", "subcommittee":
+        "Government Process Subcommittee", "committee": "State Government Administration",
+        "chamber": "lower", "+code": "HSGA-HGPR"}, {"created_at": "2015-04-18 03:57:29",
+        "all_ids": ["ILC000303"], "updated_at": "2016-09-24 08:11:05", "id": "ILC000303",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "House
+        Budget Oversight Panel", "chamber": "lower", "+code": "HBOP"}, {"created_at":
+        "2015-05-31 05:47:35", "all_ids": ["ILC000307"], "updated_at": "2016-09-24
+        08:11:04", "id": "ILC000307", "parent_id": "ILC000155", "state": "il", "subcommittee":
+        "Coal Finance Subcommittee", "committee": "Revenue & Finance", "chamber":
+        "lower", "+code": "HREF-HCOA"}, {"created_at": "2015-08-26 11:25:20", "all_ids":
+        ["ILC000308"], "updated_at": "2016-09-24 08:11:02", "id": "ILC000308", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Real Estate, Prop.
+        Probate & Trust", "chamber": "lower", "+code": "HJUA-HRPP"}, {"created_at":
+        "2016-02-24 14:54:57", "all_ids": ["ILC000312"], "updated_at": "2016-09-24
+        08:11:03", "id": "ILC000312", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Public Private Partnerships", "chamber": "lower", "+code":
+        "HPPP"}, {"created_at": "2016-04-05 14:05:53", "all_ids": ["ILC000315"], "updated_at":
+        "2016-09-24 08:11:03", "id": "ILC000315", "parent_id": "ILC000142", "state":
+        "il", "subcommittee": "Higher Education Issues Subcommitte", "committee":
+        "Higher Education", "chamber": "lower", "+code": "HHED-HEDI"}, {"created_at":
+        "2016-04-05 14:05:57", "all_ids": ["ILC000316"], "updated_at": "2016-09-24
+        08:11:05", "id": "ILC000316", "parent_id": "ILC000151", "state": "il", "subcommittee":
+        "End of Career Compensation Sub", "committee": "Personnel & Pensions", "chamber":
+        "lower", "+code": "HPPN-ENCC"}, {"created_at": "2016-04-06 14:07:25", "all_ids":
+        ["ILC000317"], "updated_at": "2017-06-02 11:46:54", "id": "ILC000317", "parent_id":
+        "ILC000153", "state": "il", "subcommittee": "Special Matters Subcommittee",
+        "committee": "Public Utilities", "chamber": "lower", "+code": "HPUB-MATT"},
+        {"created_at": "2016-04-07 14:14:54", "all_ids": ["ILC000318"], "updated_at":
+        "2016-09-24 08:11:02", "id": "ILC000318", "parent_id": "ILC000157", "state":
+        "il", "subcommittee": "Substance Abuse Special", "committee": "State Government
+        Administration", "chamber": "lower", "+code": "HSSA"}, {"created_at": "2016-04-15
+        14:21:38", "all_ids": ["ILC000322"], "updated_at": "2016-09-24 08:11:02",
+        "id": "ILC000322", "parent_id": "ILC000131", "state": "il", "subcommittee":
+        "Public Health Subcommittee", "committee": "Consumer Protection", "chamber":
+        "lower", "+code": "HCON-PUHE"}, {"created_at": "2017-03-03 09:58:03", "all_ids":
+        ["ILC000325"], "updated_at": "2017-06-02 11:46:57", "id": "ILC000325", "parent_id":
+        "ILC000157", "state": "il", "subcommittee": "State Government Subcommittee",
+        "committee": "State Government Administration", "chamber": "lower", "+code":
+        "HSGA-SGAS"}, {"created_at": "2017-03-03 09:58:03", "all_ids": ["ILC000326"],
+        "updated_at": "2017-06-02 11:46:57", "id": "ILC000326", "parent_id": "ILC000257",
+        "state": "il", "subcommittee": "Real & Personal Property Law Subcom", "committee":
+        "Judiciary - Civil", "chamber": "lower", "+code": "HJUA-RPPL"}, {"created_at":
+        "2017-03-03 09:58:03", "all_ids": ["ILC000327"], "updated_at": "2017-06-02
+        11:46:54", "id": "ILC000327", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Criminal Admin and Enforcement", "chamber": "lower", "+code":
+        "HJUC-CRIM"}, {"created_at": "2017-03-03 09:58:03", "all_ids": ["ILC000328"],
+        "updated_at": "2017-12-27 06:10:43", "id": "ILC000328", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Tourism, Hospitality &
+        Craft Ind.", "chamber": "lower", "+code": "HTHC"}, {"created_at": "2017-03-03
+        09:58:03", "all_ids": ["ILC000329"], "updated_at": "2017-06-02 11:46:56",
+        "id": "ILC000329", "parent_id": "ILC000126", "state": "il", "subcommittee":
+        "Medicaid Subcommittee", "committee": "Appropriations-Human Services", "chamber":
+        "lower", "+code": "HAPH-MEDI"}, {"created_at": "2017-03-03 09:58:03", "all_ids":
+        ["ILC000330"], "updated_at": "2017-04-04 10:18:06", "id": "ILC000330", "parent_id":
+        "ILC000377", "state": "il", "subcommittee": "Ballott Access Subcommittee",
+        "committee": "Elections & Campaign Finance", "chamber": "lower", "+code":
+        "HELE-BALL"}, {"created_at": "2017-03-03 09:58:03", "all_ids": ["ILC000331"],
+        "updated_at": "2017-06-02 11:46:57", "id": "ILC000331", "parent_id": "ILC000365",
+        "state": "il", "subcommittee": "Special Issues Subcommittee", "committee":
+        "Elem Sec Ed: Licensing, Admin.", "chamber": "lower", "+code": "HELO-ISSU"},
+        {"created_at": "2017-03-03 09:58:03", "all_ids": ["ILC000332"], "updated_at":
+        "2017-06-02 11:46:55", "id": "ILC000332", "parent_id": "ILC000137", "state":
+        "il", "subcommittee": "Gaming Subcommittee", "committee": "Executive", "chamber":
+        "lower", "+code": "HEXC-GAME"}, {"created_at": "2017-03-03 09:58:03", "all_ids":
+        ["ILC000333"], "updated_at": "2017-06-02 11:46:57", "id": "ILC000333", "parent_id":
+        "ILC000327", "state": "il", "subcommittee": "Firearms and Firearm Safety Subcomm",
+        "committee": "Criminal Admin and Enforcement", "chamber": "lower", "+code":
+        "HJUC-FIRE"}, {"created_at": "2017-03-03 09:58:03", "all_ids": ["ILC000334"],
+        "updated_at": "2017-06-02 11:46:54", "id": "ILC000334", "parent_id": "ILC000257",
+        "state": "il", "subcommittee": "Commercial Law Subcommittee", "committee":
+        "Judiciary - Civil", "chamber": "lower", "+code": "HJUA-COLS"}, {"created_at":
+        "2017-03-03 09:58:03", "all_ids": ["ILC000335"], "updated_at": "2017-12-27
+        06:10:45", "id": "ILC000335", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Elem Sec Ed:  Charter School Policy", "chamber": "lower",
+        "+code": "HELC"}, {"created_at": "2017-03-03 09:58:03", "all_ids": ["ILC000336"],
+        "updated_at": "2017-06-02 11:46:54", "id": "ILC000336", "parent_id": "ILC000257",
+        "state": "il", "subcommittee": "Civil Procedure Subcommittee", "committee":
+        "Judiciary - Civil", "chamber": "lower", "+code": "HJUA-CIPS"}, {"created_at":
+        "2017-03-03 09:58:04", "all_ids": ["ILC000338"], "updated_at": "2017-06-02
+        11:46:56", "id": "ILC000338", "parent_id": "ILC000377", "state": "il", "subcommittee":
+        "Election Administration Subcommitte", "committee": "Elections & Campaign
+        Finance", "chamber": "lower", "+code": "HELE-ELEC"}, {"created_at": "2017-03-03
+        09:58:04", "all_ids": ["ILC000339"], "updated_at": "2017-12-27 06:10:43",
+        "id": "ILC000339", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Health Care Availability & Access", "chamber": "lower", "+code":
+        "HHCA"}, {"created_at": "2017-03-03 09:58:04", "all_ids": ["ILC000341"], "updated_at":
+        "2017-06-02 11:46:57", "id": "ILC000341", "parent_id": "ILC000377", "state":
+        "il", "subcommittee": "Voter Education & Registration Sub", "committee": "Elections
+        & Campaign Finance", "chamber": "lower", "+code": "HELE-VERS"}, {"created_at":
+        "2017-03-03 09:58:04", "all_ids": ["ILC000343"], "updated_at": "2017-03-15
+        10:01:16", "id": "ILC000343", "parent_id": "ILC000144", "state": "il", "subcommittee":
+        "Medicaid Subcommittee", "committee": "Human Services", "chamber": "lower",
+        "+code": "HHSV-MEDI"}, {"created_at": "2017-03-03 09:58:04", "all_ids": ["ILC000344"],
+        "updated_at": "2017-06-02 11:46:55", "id": "ILC000344", "parent_id": "ILC000144",
+        "state": "il", "subcommittee": "Informed Consent Subcommitee", "committee":
+        "Human Services", "chamber": "lower", "+code": "HHSV-INFO"}, {"created_at":
+        "2017-03-03 09:58:04", "all_ids": ["ILC000345"], "updated_at": "2017-06-02
+        11:46:55", "id": "ILC000345", "parent_id": "ILC000155", "state": "il", "subcommittee":
+        "Growth, Reform & Fairness Subcommit", "committee": "Revenue & Finance", "chamber":
+        "lower", "+code": "HREF-GRFS"}, {"created_at": "2017-03-03 09:58:04", "all_ids":
+        ["ILC000346"], "updated_at": "2017-12-27 06:10:45", "id": "ILC000346", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Aging", "chamber":
+        "lower", "+code": "HAGI"}, {"created_at": "2017-03-03 09:58:04", "all_ids":
+        ["ILC000347"], "updated_at": "2017-06-02 11:46:57", "id": "ILC000347", "parent_id":
+        "ILC000387", "state": "il", "subcommittee": "Fire Service Subcommittee", "committee":
+        "Fire & Emergency Services", "chamber": "lower", "+code": "HFES-FISE"}, {"created_at":
+        "2017-03-03 09:58:04", "all_ids": ["ILC000350"], "updated_at": "2017-12-27
+        06:10:43", "id": "ILC000350", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Mental Health", "chamber": "lower", "+code": "HMEH"},
+        {"created_at": "2017-03-03 09:58:04", "all_ids": ["ILC000351"], "updated_at":
+        "2017-12-27 06:10:42", "id": "ILC000351", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Cost Benefit Analysis", "chamber": "lower",
+        "+code": "HCBA"}, {"created_at": "2017-03-03 09:58:05", "all_ids": ["ILC000353"],
+        "updated_at": "2017-06-02 11:46:56", "id": "ILC000353", "parent_id": "ILC000136",
+        "state": "il", "subcommittee": "Environment Subcommittee", "committee": "Environment",
+        "chamber": "lower", "+code": "HENE-ENVI"}, {"created_at": "2017-03-03 09:58:05",
+        "all_ids": ["ILC000354"], "updated_at": "2017-06-02 11:46:55", "id": "ILC000354",
+        "parent_id": "ILC000142", "state": "il", "subcommittee": "Higher Education
+        Analysis Subcommit", "committee": "Higher Education", "chamber": "lower",
+        "+code": "HHED-HEAS"}, {"created_at": "2017-03-03 09:58:05", "all_ids": ["ILC000355"],
+        "updated_at": "2017-06-02 11:46:57", "id": "ILC000355", "parent_id": "ILC000377",
+        "state": "il", "subcommittee": "Campaign Finance Subcommittee", "committee":
+        "Elections & Campaign Finance", "chamber": "lower", "+code": "HELE-CAFI"},
+        {"created_at": "2017-03-03 09:58:05", "all_ids": ["ILC000357"], "updated_at":
+        "2017-06-02 11:46:56", "id": "ILC000357", "parent_id": "ILC000257", "state":
+        "il", "subcommittee": "Domestic Relations Law Subcommittee", "committee":
+        "Judiciary - Civil", "chamber": "lower", "+code": "HJUA-DRLS"}, {"created_at":
+        "2017-03-03 09:58:05", "all_ids": ["ILC000359"], "updated_at": "2017-12-27
+        06:10:43", "id": "ILC000359", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Economic Opportunity", "chamber": "lower", "+code": "HECO"},
+        {"created_at": "2017-03-03 09:58:05", "all_ids": ["ILC000360"], "updated_at":
+        "2017-12-27 06:10:45", "id": "ILC000360", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Business Incentives for Local Comm.",
+        "chamber": "lower", "+code": "HBIL"}, {"created_at": "2017-03-03 09:58:05",
+        "all_ids": ["ILC000361"], "updated_at": "2017-12-27 06:10:43", "id": "ILC000361",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Economic
+        Justice & Equity", "chamber": "lower", "+code": "HEJE"}, {"created_at": "2017-03-03
+        09:58:05", "all_ids": ["ILC000362"], "updated_at": "2017-12-27 06:10:44",
+        "id": "ILC000362", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Transportation: Regulation, Roads", "chamber": "lower", "+code":
+        "HTRR"}, {"created_at": "2017-03-03 09:58:05", "all_ids": ["ILC000364"], "updated_at":
+        "2017-06-02 11:46:55", "id": "ILC000364", "parent_id": "ILC000161", "state":
+        "il", "subcommittee": "Special License Plates Subcommittee", "committee":
+        "Transportation: Vehicles & Safety", "chamber": "lower", "+code": "HVES-SLPD"},
+        {"created_at": "2017-03-03 09:58:05", "all_ids": ["ILC000365"], "updated_at":
+        "2017-12-27 06:10:43", "id": "ILC000365", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Elem Sec Ed: Licensing, Admin.", "chamber":
+        "lower", "+code": "HELO"}, {"created_at": "2017-03-03 09:58:05", "all_ids":
+        ["ILC000366"], "updated_at": "2017-06-02 11:46:54", "id": "ILC000366", "parent_id":
+        "ILC000132", "state": "il", "subcommittee": "Consolidated Subcommittee", "committee":
+        "Counties & Townships", "chamber": "lower", "+code": "HCOT-CONS"}, {"created_at":
+        "2017-03-03 09:58:05", "all_ids": ["ILC000367"], "updated_at": "2017-12-27
+        06:10:45", "id": "ILC000367", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Insurance: Health & Life", "chamber": "lower", "+code":
+        "HINS"}, {"created_at": "2017-03-03 09:58:06", "all_ids": ["ILC000368"], "updated_at":
+        "2017-06-02 11:46:55", "id": "ILC000368", "parent_id": "ILC000257", "state":
+        "il", "subcommittee": "Tort Liability Law Subcommittee", "committee": "Judiciary
+        - Civil", "chamber": "lower", "+code": "HJUA-TLLS"}, {"created_at": "2017-03-03
+        09:58:06", "all_ids": ["ILC000369"], "updated_at": "2017-12-27 06:10:44",
+        "id": "ILC000369", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Insurance: Property & Casualty", "chamber": "lower", "+code":
+        "HIPC"}, {"created_at": "2017-03-03 09:58:06", "all_ids": ["ILC000371"], "updated_at":
+        "2017-12-27 06:10:45", "id": "ILC000371", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Cybersecurity, Data Analytics, & IT",
+        "chamber": "lower", "+code": "HCDA"}, {"created_at": "2017-03-03 09:58:06",
+        "all_ids": ["ILC000372"], "updated_at": "2017-12-27 06:10:42", "id": "ILC000372",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Government
+        Consolidation &  Modern", "chamber": "lower", "+code": "HGCM"}, {"created_at":
+        "2017-03-03 09:58:06", "all_ids": ["ILC000373"], "updated_at": "2017-12-27
+        06:10:45", "id": "ILC000373", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Elem Sec Ed: School Curric Policies", "chamber": "lower",
+        "+code": "HELM"}, {"created_at": "2017-03-03 09:58:06", "all_ids": ["ILC000375"],
+        "updated_at": "2017-06-02 11:46:56", "id": "ILC000375", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Sentencing, Penalties and
+        Criminal", "chamber": "lower", "+code": "HJUC-SPCP"}, {"created_at": "2017-03-03
+        09:58:06", "all_ids": ["ILC000376"], "updated_at": "2017-06-02 11:46:54",
+        "id": "ILC000376", "parent_id": "ILC000383", "state": "il", "subcommittee":
+        "Business Licenses Subcommittee", "committee": "Business & Occupational Licenses",
+        "chamber": "lower", "+code": "HBOL-BULI"}, {"created_at": "2017-03-03 09:58:06",
+        "all_ids": ["ILC000377"], "updated_at": "2017-12-27 06:10:44", "id": "ILC000377",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Elections
+        & Campaign Finance", "chamber": "lower", "+code": "HELE"}, {"created_at":
+        "2017-03-03 09:58:06", "all_ids": ["ILC000378"], "updated_at": "2017-06-02
+        11:46:54", "id": "ILC000378", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Juvenile Justice and System Involve", "chamber": "lower",
+        "+code": "HJUC-JUVE"}, {"created_at": "2017-03-03 09:58:06", "all_ids": ["ILC000379"],
+        "updated_at": "2017-12-27 06:10:44", "id": "ILC000379", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Mass Transit", "chamber":
+        "lower", "+code": "HMAS"}, {"created_at": "2017-03-03 09:58:06", "all_ids":
+        ["ILC000380"], "updated_at": "2017-12-27 06:10:43", "id": "ILC000380", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Construction Industry
+        & Code Enforc", "chamber": "lower", "+code": "HCIC"}, {"created_at": "2017-03-03
+        09:58:07", "all_ids": ["ILC000381"], "updated_at": "2017-12-27 06:10:45",
+        "id": "ILC000381", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Police & First Responders", "chamber": "lower", "+code": "HPFR"},
+        {"created_at": "2017-03-03 09:58:07", "all_ids": ["ILC000382"], "updated_at":
+        "2017-12-27 06:10:45", "id": "ILC000382", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Government Transparency", "chamber": "lower",
+        "+code": "HGOT"}, {"created_at": "2017-03-03 09:58:07", "all_ids": ["ILC000383"],
+        "updated_at": "2017-12-27 06:10:45", "id": "ILC000383", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Business & Occupational
+        Licenses", "chamber": "lower", "+code": "HBOL"}, {"created_at": "2017-03-03
+        09:58:07", "all_ids": ["ILC000384"], "updated_at": "2017-06-02 11:46:54",
+        "id": "ILC000384", "parent_id": "ILC000257", "state": "il", "subcommittee":
+        "Trusts & Estates Law Subcommittee", "committee": "Judiciary - Civil", "chamber":
+        "lower", "+code": "HJUA-TELS"}, {"created_at": "2017-03-03 09:58:07", "all_ids":
+        ["ILC000386"], "updated_at": "2017-06-02 11:46:54", "id": "ILC000386", "parent_id":
+        "ILC000132", "state": "il", "subcommittee": "Transparency Subcommittee", "committee":
+        "Counties & Townships", "chamber": "lower", "+code": "HCOT-TRAN"}, {"created_at":
+        "2017-03-03 09:58:07", "all_ids": ["ILC000387"], "updated_at": "2017-12-27
+        06:10:44", "id": "ILC000387", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Fire & Emergency Services", "chamber": "lower", "+code":
+        "HFES"}, {"created_at": "2017-03-03 09:58:07", "all_ids": ["ILC000388"], "updated_at":
+        "2017-06-02 11:46:57", "id": "ILC000388", "parent_id": "ILC000351", "state":
+        "il", "subcommittee": "Analytics Subcommittee", "committee": "Cost Benefit
+        Analysis", "chamber": "lower", "+code": "HCBA-ALYT"}, {"created_at": "2017-03-03
+        09:58:07", "all_ids": ["ILC000389"], "updated_at": "2017-06-02 11:46:55",
+        "id": "ILC000389", "parent_id": "ILC000161", "state": "il", "subcommittee":
+        "Red Light Camera Subcommittee", "committee": "Transportation: Vehicles &
+        Safety", "chamber": "lower", "+code": "HVES-REDL"}, {"created_at": "2017-03-03
+        09:58:07", "all_ids": ["ILC000392"], "updated_at": "2017-06-02 11:46:55",
+        "id": "ILC000392", "parent_id": "ILC000373", "state": "il", "subcommittee":
+        "Special Issues Subcommittee", "committee": "Elem Sec Ed: School Curric Policies",
+        "chamber": "lower", "+code": "HELM-SPEC"}, {"created_at": "2017-03-08 09:58:40",
+        "all_ids": ["ILC000394"], "updated_at": "2017-06-02 11:46:56", "id": "ILC000394",
+        "parent_id": "ILC000136", "state": "il", "subcommittee": "Environmental Regulations
+        Subcommit", "committee": "Environment", "chamber": "lower", "+code": "HENE-ENRE"},
+        {"created_at": "2017-03-10 10:00:11", "all_ids": ["ILC000396"], "updated_at":
+        "2017-06-02 11:46:56", "id": "ILC000396", "parent_id": "ILC000135", "state":
+        "il", "subcommittee": "Resources and Management Subcommitt", "committee":
+        "Energy", "chamber": "lower", "+code": "HENG-RESO"}, {"created_at": "2017-03-10
+        10:00:11", "all_ids": ["ILC000397"], "updated_at": "2017-06-02 11:46:55",
+        "id": "ILC000397", "parent_id": "ILC000132", "state": "il", "subcommittee":
+        "Compensation Subcommittee", "committee": "Counties & Townships", "chamber":
+        "lower", "+code": "HCOT-COMP"}, {"created_at": "2017-03-11 10:00:29", "all_ids":
+        ["ILC000398"], "updated_at": "2017-06-02 11:46:55", "id": "ILC000398", "parent_id":
+        "ILC000350", "state": "il", "subcommittee": "Justice System Subcommittee",
+        "committee": "Mental Health", "chamber": "lower", "+code": "HMEH-JUST"}, {"created_at":
+        "2017-03-11 10:00:29", "all_ids": ["ILC000399"], "updated_at": "2017-06-02
+        11:46:56", "id": "ILC000399", "parent_id": "ILC000350", "state": "il", "subcommittee":
+        "Childhood and Young Adult Onset Sub", "committee": "Mental Health", "chamber":
+        "lower", "+code": "HMEH-CHIL"}, {"created_at": "2017-03-11 10:00:30", "all_ids":
+        ["ILC000400"], "updated_at": "2017-06-02 11:46:54", "id": "ILC000400", "parent_id":
+        "ILC000350", "state": "il", "subcommittee": "Substance Abuse Subcommittee",
+        "committee": "Mental Health", "chamber": "lower", "+code": "HMEH-ABUS"}, {"created_at":
+        "2017-03-15 10:01:15", "all_ids": ["ILC000401"], "updated_at": "2017-06-02
+        11:46:54", "id": "ILC000401", "parent_id": "ILC000122", "state": "il", "subcommittee":
+        "Negotiations Subcommittee", "committee": "Agriculture & Conservation", "chamber":
+        "lower", "+code": "HAGC-NEGO"}, {"created_at": "2017-03-15 10:01:17", "all_ids":
+        ["ILC000402"], "updated_at": "2017-03-21 10:07:15", "id": "ILC000402", "parent_id":
+        "ILC000404", "state": "il", "subcommittee": "Roads, Ports & Aviation Subcommitte",
+        "committee": "Future Roads: Growth & Improvement", "chamber": "lower", "+code":
+        "HTRR-RPAV"}, {"created_at": "2017-03-15 10:01:18", "all_ids": ["ILC000403"],
+        "updated_at": "2017-06-02 11:46:54", "id": "ILC000403", "parent_id": "ILC000404",
+        "state": "il", "subcommittee": "Highways & Transit Subcommittee", "committee":
+        "Future Roads: Growth & Improvement", "chamber": "lower", "+code": "HTRR-HITR"},
+        {"created_at": "2017-03-15 10:01:18", "all_ids": ["ILC000404"], "updated_at":
+        "2017-06-02 11:46:55", "id": "ILC000404", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Future Roads: Growth & Improvement", "chamber":
+        "lower", "+code": "HTRR-FRGI"}, {"created_at": "2017-03-15 10:01:18", "all_ids":
+        ["ILC000405"], "updated_at": "2017-06-02 11:46:56", "id": "ILC000405", "parent_id":
+        "ILC000404", "state": "il", "subcommittee": "Motor Fuel Analysis Subcommittee",
+        "committee": "Future Roads: Growth & Improvement", "chamber": "lower", "+code":
+        "HTRR-MOFA"}, {"created_at": "2017-03-15 10:01:19", "all_ids": ["ILC000406"],
+        "updated_at": "2017-06-02 11:46:57", "id": "ILC000406", "parent_id": "ILC000346",
+        "state": "il", "subcommittee": "Community Care Program Subcommittee", "committee":
+        "Aging", "chamber": "lower", "+code": "HAGI-CARE"}, {"created_at": "2017-03-16
+        10:03:59", "all_ids": ["ILC000407"], "updated_at": "2017-06-02 11:46:56",
+        "id": "ILC000407", "parent_id": "ILC000161", "state": "il", "subcommittee":
+        "School Buses Subcommittee", "committee": "Transportation: Vehicles & Safety",
+        "chamber": "lower", "+code": "HVES-BUSE"}, {"created_at": "2017-03-16 10:03:59",
+        "all_ids": ["ILC000408"], "updated_at": "2017-06-02 11:46:56", "id": "ILC000408",
+        "parent_id": "ILC000144", "state": "il", "subcommittee": "HS Medicaid Subcommittee",
+        "committee": "Human Services", "chamber": "lower", "+code": "HHSV-MEDI"},
+        {"created_at": "2017-03-16 10:04:02", "all_ids": ["ILC000409"], "updated_at":
+        "2017-06-02 11:46:57", "id": "ILC000409", "parent_id": "ILC000141", "state":
+        "il", "subcommittee": "Negotiations Subcommittee", "committee": "Health Care
+        Licenses", "chamber": "lower", "+code": "HHCL-NEGO"}, {"created_at": "2017-03-22
+        10:07:37", "all_ids": ["ILC000412"], "updated_at": "2017-06-02 11:46:55",
+        "id": "ILC000412", "parent_id": "ILC000404", "state": "il", "subcommittee":
+        "Railroads, Ports and Aviation Subco", "committee": "Future Roads: Growth
+        & Improvement", "chamber": "lower", "+code": "HTRR-RPAV"}, {"created_at":
+        "2017-03-24 10:10:07", "all_ids": ["ILC000413"], "updated_at": "2017-06-02
+        11:46:54", "id": "ILC000413", "parent_id": "ILC000125", "state": "il", "subcommittee":
+        "Cost Analysis Subcommittee", "committee": "Appropriations-Higher Education",
+        "chamber": "lower", "+code": "HAPI-COST"}, {"created_at": "2017-03-29 10:12:03",
+        "all_ids": ["ILC000414"], "updated_at": "2017-06-02 11:46:54", "id": "ILC000414",
+        "parent_id": "ILC000122", "state": "il", "subcommittee": "Animal Baiting Subcommittee",
+        "committee": "Agriculture & Conservation", "chamber": "lower", "+code": "HAGC-ANIM"},
+        {"created_at": "2017-04-05 10:26:05", "all_ids": ["ILC000418"], "updated_at":
+        "2017-06-02 11:46:57", "id": "ILC000418", "parent_id": "ILC000377", "state":
+        "il", "subcommittee": "Ballot Access Subcommittee", "committee": "Elections
+        & Campaign Finance", "chamber": "lower", "+code": "HELE-BALL"}, {"created_at":
+        "2017-04-06 10:22:49", "all_ids": ["ILC000419"], "updated_at": "2017-06-02
+        11:46:54", "id": "ILC000419", "parent_id": "ILC000127", "state": "il", "subcommittee":
+        "Transportation Subcommittee", "committee": "Appropriations-Public Safety",
+        "chamber": "lower", "+code": "HAPP-STRA"}, {"created_at": "2017-04-06 10:22:52",
+        "all_ids": ["ILC000421"], "updated_at": "2017-06-02 11:46:56", "id": "ILC000421",
+        "parent_id": "ILC000154", "state": "il", "subcommittee": "Social Change Subcommittee",
+        "committee": "Restorative Justice", "chamber": "lower", "+code": "HREJ-SOCH"},
+        {"created_at": "2017-06-06 14:20:14", "updated_at": "2017-06-20 14:21:35",
+        "all_ids": ["ILC000428"], "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "State Government Subcommittee", "chamber": "lower", "id":
+        "ILC000428"}, {"created_at": "2017-06-06 14:20:16", "updated_at": "2017-06-06
+        14:20:16", "all_ids": ["ILC000429"], "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Committee of the Whole", "chamber": "lower", "id": "ILC000429"},
+        {"created_at": "2017-11-15 06:10:13", "updated_at": "2017-12-27 06:10:45",
+        "all_ids": ["ILC000431"], "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "House Sexual Discrimination and Harassment Task Force",
+        "chamber": "lower", "id": "ILC000431"}, {"country": "us", "created_at": "2012-06-29
+        19:55:27", "level": "state", "all_ids": ["ILC000097"], "updated_at": "2017-12-27
+        06:10:44", "id": "ILC000097", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Assignments", "chamber": "upper", "+code": "SCOA"}, {"created_at":
+        "2013-01-25 01:25:59", "all_ids": ["ILC000099"], "updated_at": "2017-12-27
+        06:10:43", "id": "ILC000099", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "Appropriations I", "chamber": "upper", "+code": "SAPA"},
+        {"created_at": "2013-01-25 01:25:59", "all_ids": ["ILC000100"], "updated_at":
+        "2017-12-27 06:10:42", "id": "ILC000100", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Appropriations II", "chamber": "upper",
+        "+code": "SAPB"}, {"created_at": "2013-01-25 01:25:59", "all_ids": ["ILC000101"],
+        "updated_at": "2017-12-27 06:10:44", "id": "ILC000101", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Committee of the Whole",
+        "chamber": "upper", "+code": "SCWL"}, {"created_at": "2013-01-25 01:25:59",
+        "all_ids": ["ILC000102"], "updated_at": "2017-12-27 06:10:43", "id": "ILC000102",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Criminal
+        Law", "chamber": "upper", "+code": "SCCL"}, {"created_at": "2013-01-25 01:25:59",
+        "all_ids": ["ILC000103"], "updated_at": "2017-12-27 06:10:42", "id": "ILC000103",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Education",
+        "chamber": "upper", "+code": "SESE"}, {"created_at": "2013-01-25 01:26:00",
+        "all_ids": ["ILC000106"], "updated_at": "2017-12-27 06:10:45", "id": "ILC000106",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Executive",
+        "chamber": "upper", "+code": "SEXC"}, {"created_at": "2013-01-25 01:26:00",
+        "all_ids": ["ILC000107"], "updated_at": "2017-12-27 06:10:45", "id": "ILC000107",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Executive
+        Appointments", "chamber": "upper", "+code": "SEXA"}, {"created_at": "2013-01-25
+        01:26:00", "all_ids": ["ILC000108"], "updated_at": "2017-12-27 06:10:44",
+        "id": "ILC000108", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Financial Institutions", "chamber": "upper", "+code": "SFIC"},
+        {"created_at": "2013-01-25 01:26:00", "all_ids": ["ILC000109"], "updated_at":
+        "2017-12-27 06:10:45", "id": "ILC000109", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Higher Education", "chamber": "upper",
+        "+code": "SCHE"}, {"created_at": "2013-01-25 01:26:00", "all_ids": ["ILC000110"],
+        "updated_at": "2017-12-27 06:10:43", "id": "ILC000110", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Human Services", "chamber":
+        "upper", "+code": "SHHS"}, {"created_at": "2013-01-25 01:26:00", "all_ids":
+        ["ILC000111"], "updated_at": "2017-12-27 06:10:44", "id": "ILC000111", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Insurance", "chamber":
+        "upper", "+code": "SINS"}, {"created_at": "2013-01-25 01:26:00", "all_ids":
+        ["ILC000112"], "updated_at": "2017-12-27 06:10:43", "id": "ILC000112", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Judiciary", "chamber":
+        "upper", "+code": "SJUD"}, {"created_at": "2013-01-25 01:26:00", "all_ids":
+        ["ILC000115"], "updated_at": "2017-12-27 06:10:44", "id": "ILC000115", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Local Government",
+        "chamber": "upper", "+code": "SLGV"}, {"created_at": "2013-01-25 01:26:00",
+        "all_ids": ["ILC000116"], "updated_at": "2017-12-27 06:10:44", "id": "ILC000116",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "Public
+        Health", "chamber": "upper", "+code": "SPHL"}, {"created_at": "2013-01-25
+        01:26:00", "all_ids": ["ILC000117"], "updated_at": "2017-12-27 06:10:43",
+        "id": "ILC000117", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Revenue", "chamber": "upper", "+code": "SREV"}, {"created_at":
+        "2013-01-25 01:26:00", "all_ids": ["ILC000118"], "updated_at": "2016-09-24
+        08:11:03", "id": "ILC000118", "parent_id": null, "state": "il", "subcommittee":
+        null, "committee": "State Government & Veterans Affairs", "chamber": "upper",
+        "+code": "SGOA"}, {"created_at": "2013-01-25 01:26:00", "all_ids": ["ILC000119"],
+        "updated_at": "2017-12-27 06:10:45", "id": "ILC000119", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Transportation", "chamber":
+        "upper", "+code": "STRN"}, {"created_at": "2013-02-12 02:08:14", "all_ids":
+        ["ILC000171"], "updated_at": "2017-12-27 06:10:43", "id": "ILC000171", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Licensed Activities
+        and Pensions", "chamber": "upper", "+code": "SLIC"}, {"created_at": "2013-03-14
+        04:21:14", "all_ids": ["ILC000185"], "updated_at": "2017-06-02 11:46:55",
+        "id": "ILC000185", "parent_id": "ILC000102", "state": "il", "subcommittee":
+        "Subcommittee on CLEAR Compliance", "committee": "Criminal Law", "chamber":
+        "upper", "+code": "SCCL-SCCC"}, {"created_at": "2013-03-14 04:21:14", "all_ids":
+        ["ILC000186"], "updated_at": "2017-06-02 11:46:55", "id": "ILC000186", "parent_id":
+        "ILC000102", "state": "il", "subcommittee": "Subcommittee on Special Issues
+        (CL)", "committee": "Criminal Law", "chamber": "upper", "+code": "SCCL-SCSI"},
+        {"created_at": "2013-03-14 04:21:15", "all_ids": ["ILC000187"], "updated_at":
+        "2017-06-02 11:46:57", "id": "ILC000187", "parent_id": "ILC000103", "state":
+        "il", "subcommittee": "Subcommittee on Charter Schools", "committee": "Education",
+        "chamber": "upper", "+code": "SESE-SECS"}, {"created_at": "2013-03-14 04:21:15",
+        "all_ids": ["ILC000188"], "updated_at": "2017-06-02 11:46:54", "id": "ILC000188",
+        "parent_id": "ILC000103", "state": "il", "subcommittee": "Subcommittee on
+        Special Issues (ED)", "committee": "Education", "chamber": "upper", "+code":
+        "SESE-SESI"}, {"created_at": "2013-03-14 04:21:15", "all_ids": ["ILC000189"],
+        "updated_at": "2016-09-24 08:11:04", "id": "ILC000189", "parent_id": "ILC000106",
+        "state": "il", "subcommittee": "Sub on Constitutional Amendments", "committee":
+        "Executive", "chamber": "upper", "+code": "SEXC-SSCA"}, {"created_at": "2013-03-14
+        04:21:15", "all_ids": ["ILC000190"], "updated_at": "2016-09-24 08:11:02",
+        "id": "ILC000190", "parent_id": "ILC000106", "state": "il", "subcommittee":
+        "Sub on Governmental Operations", "committee": "Executive", "chamber": "upper",
+        "+code": "SEXC-SSGO"}, {"created_at": "2013-03-14 04:21:15", "all_ids": ["ILC000191"],
+        "updated_at": "2016-09-24 08:11:05", "id": "ILC000191", "parent_id": "ILC000106",
+        "state": "il", "subcommittee": "Subcommittee on Civil Rights", "committee":
+        "Executive", "chamber": "upper", "+code": "SEXC-SSCR"}, {"created_at": "2013-03-14
+        04:21:15", "all_ids": ["ILC000192"], "updated_at": "2017-06-02 11:46:55",
+        "id": "ILC000192", "parent_id": "ILC000106", "state": "il", "subcommittee":
+        "Subcommittee on Election Law", "committee": "Executive", "chamber": "upper",
+        "+code": "SEXC-SEEL"}, {"created_at": "2013-03-14 04:21:15", "all_ids": ["ILC000193"],
+        "updated_at": "2016-09-24 08:11:02", "id": "ILC000193", "parent_id": "ILC000106",
+        "state": "il", "subcommittee": "Subcommittee on Gaming", "committee": "Executive",
+        "chamber": "upper", "+code": "SEXC-SSGA"}, {"created_at": "2013-03-14 04:21:15",
+        "all_ids": ["ILC000195"], "updated_at": "2017-06-02 11:46:56", "id": "ILC000195",
+        "parent_id": "ILC000106", "state": "il", "subcommittee": "Subcommittee on
+        Special Issues (EX)", "committee": "Executive", "chamber": "upper", "+code":
+        "SEXC-SESI"}, {"created_at": "2013-03-14 04:21:16", "all_ids": ["ILC000196"],
+        "updated_at": "2017-06-02 11:46:54", "id": "ILC000196", "parent_id": "ILC000110",
+        "state": "il", "subcommittee": "Subcommittee on Special Issues (HS)", "committee":
+        "Human Services", "chamber": "upper", "+code": "SHHS-HSSI"}, {"created_at":
+        "2013-03-14 04:21:16", "all_ids": ["ILC000197"], "updated_at": "2016-09-24
+        08:11:02", "id": "ILC000197", "parent_id": "ILC000116", "state": "il", "subcommittee":
+        "Subcommittee on Amendments", "committee": "Public Health", "chamber": "upper",
+        "+code": "SPHL-SPOA"}, {"created_at": "2013-03-14 04:21:16", "all_ids": ["ILC000198"],
+        "updated_at": "2016-09-24 08:11:02", "id": "ILC000198", "parent_id": "ILC000116",
+        "state": "il", "subcommittee": "Subcommittee on Special Issues (PH)", "committee":
+        "Public Health", "chamber": "upper", "+code": "SPHL-SPHI"}, {"created_at":
+        "2013-03-21 04:23:34", "all_ids": ["ILC000209"], "updated_at": "2017-06-02
+        11:46:57", "id": "ILC000209", "parent_id": "ILC000115", "state": "il", "subcommittee":
+        "Subcommittee on Special Issues (LG)", "committee": "Local Government", "chamber":
+        "upper", "+code": "SLGV-SLCS"}, {"created_at": "2013-05-29 05:28:50", "all_ids":
+        ["ILC000214"], "updated_at": "2016-09-24 08:11:04", "id": "ILC000214", "parent_id":
+        "ILC000106", "state": "il", "subcommittee": "Subcommittee on Procurement",
+        "committee": "Executive", "chamber": "upper", "+code": "SEXC-SSOP"}, {"created_at":
+        "2013-05-30 22:27:32", "all_ids": ["ILC000215"], "updated_at": "2016-09-24
+        08:11:04", "id": "ILC000215", "parent_id": "ILC000110", "state": "il", "subcommittee":
+        "Sub on Issues Relating to DCFS", "committee": "Human Services", "chamber":
+        "upper", "+code": "SHHS-SSDC"}, {"created_at": "2014-03-07 08:28:03", "all_ids":
+        ["ILC000235"], "updated_at": "2016-09-24 08:11:02", "id": "ILC000235", "parent_id":
+        "ILC000117", "state": "il", "subcommittee": "Subcommittee on Special Issues
+        (RV)", "committee": "Revenue", "chamber": "upper", "+code": "SREV-SSSI"},
+        {"created_at": "2014-03-07 08:28:05", "all_ids": ["ILC000236"], "updated_at":
+        "2016-09-24 08:11:02", "id": "ILC000236", "parent_id": "ILC000117", "state":
+        "il", "subcommittee": "Subcommittee on Tax Credits", "committee": "Revenue",
+        "chamber": "upper", "+code": "SREV-SRTC"}, {"created_at": "2014-03-07 08:28:10",
+        "all_ids": ["ILC000237"], "updated_at": "2016-09-24 08:11:03", "id": "ILC000237",
+        "parent_id": "ILC000117", "state": "il", "subcommittee": "Subcommittee on
+        Property Tax", "committee": "Revenue", "chamber": "upper", "+code": "SREV-SUPT"},
+        {"created_at": "2015-01-30 01:07:25", "all_ids": ["ILC000258"], "updated_at":
+        "2017-12-27 06:10:45", "id": "ILC000258", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Energy and Public Utilities", "chamber":
+        "upper", "+code": "SENE"}, {"created_at": "2015-01-30 01:07:26", "all_ids":
+        ["ILC000259"], "updated_at": "2017-12-27 06:10:45", "id": "ILC000259", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Commerce and Economic
+        Development", "chamber": "upper", "+code": "SCED"}, {"created_at": "2015-01-30
+        01:07:26", "all_ids": ["ILC000260"], "updated_at": "2017-12-27 06:10:44",
+        "id": "ILC000260", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Environment and Conservation", "chamber": "upper", "+code":
+        "SNVR"}, {"created_at": "2015-01-30 01:07:26", "all_ids": ["ILC000261"], "updated_at":
+        "2017-12-27 06:10:43", "id": "ILC000261", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Labor", "chamber": "upper", "+code": "SLAB"},
+        {"created_at": "2015-01-30 01:07:26", "all_ids": ["ILC000262"], "updated_at":
+        "2017-12-27 06:10:45", "id": "ILC000262", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Agriculture", "chamber": "upper", "+code":
+        "SAGR"}, {"created_at": "2015-02-10 01:52:16", "all_ids": ["ILC000263"], "updated_at":
+        "2016-09-24 08:11:02", "id": "ILC000263", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Committee on Restorative Justice", "chamber":
+        "upper", "+code": "SCRJ"}, {"created_at": "2015-02-19 02:47:53", "all_ids":
+        ["ILC000266"], "updated_at": "2016-09-24 08:11:04", "id": "ILC000266", "parent_id":
+        "ILC000109", "state": "il", "subcommittee": "Sub. Public Higher Edu. Exec.
+        Comp.", "committee": "Higher Education", "chamber": "upper", "+code": "SCHE-SPHC"},
+        {"created_at": "2015-02-24 03:25:38", "all_ids": ["ILC000275"], "updated_at":
+        "2016-09-24 08:11:02", "id": "ILC000275", "parent_id": "ILC000116", "state":
+        "il", "subcommittee": "Subcommittee on Immunization", "committee": "Public
+        Health", "chamber": "upper", "+code": "SPHL-SPOI"}, {"created_at": "2015-03-06
+        04:17:01", "all_ids": ["ILC000288"], "updated_at": "2016-09-24 08:11:03",
+        "id": "ILC000288", "parent_id": "ILC000260", "state": "il", "subcommittee":
+        "Sub on EPA 111(d) Requirements", "committee": "Environment and Conservation",
+        "chamber": "upper", "+code": "SNVR-SECE"}, {"created_at": "2015-03-13 03:16:29",
+        "all_ids": ["ILC000295"], "updated_at": "2016-09-24 08:11:04", "id": "ILC000295",
+        "parent_id": "ILC000258", "state": "il", "subcommittee": "Sub. on Generation,
+        Util, & Telecom", "committee": "Energy and Public Utilities", "chamber": "upper",
+        "+code": "SENE-SEGU"}, {"created_at": "2015-03-28 03:44:22", "all_ids": ["ILC000299"],
+        "updated_at": "2016-09-24 08:11:03", "id": "ILC000299", "parent_id": "ILC000112",
+        "state": "il", "subcommittee": "Subcommittee on Firearms (JU)", "committee":
+        "Judiciary", "chamber": "upper", "+code": "SJUD-SSFA"}, {"created_at": "2015-03-28
+        03:44:23", "all_ids": ["ILC000300"], "updated_at": "2016-09-24 08:11:02",
+        "id": "ILC000300", "parent_id": "ILC000102", "state": "il", "subcommittee":
+        "Subcommittee on Firearms (CL)", "committee": "Criminal Law", "chamber": "upper",
+        "+code": "SCCL-SCFA"}, {"created_at": "2015-03-28 03:44:28", "all_ids": ["ILC000301"],
+        "updated_at": "2016-09-24 08:11:03", "id": "ILC000301", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Committee on Pension Investments",
+        "chamber": "upper", "+code": "SSCP"}, {"created_at": "2015-04-23 04:17:15",
+        "all_ids": ["ILC000304"], "updated_at": "2016-09-24 08:11:03", "id": "ILC000304",
+        "parent_id": "ILC000118", "state": "il", "subcommittee": "Subcommittee on
+        Prison Operation", "committee": "State Government & Veterans Affairs", "chamber":
+        "upper", "+code": "SGOA-SCPO"}, {"created_at": "2015-04-23 04:17:16", "all_ids":
+        ["ILC000305"], "updated_at": "2016-09-24 08:11:03", "id": "ILC000305", "parent_id":
+        "ILC000112", "state": "il", "subcommittee": "Subcommittee on Special Issues
+        (JU)", "committee": "Judiciary", "chamber": "upper", "+code": "SJUD-SSSI"},
+        {"created_at": "2015-05-01 04:42:57", "all_ids": ["ILC000306"], "updated_at":
+        "2017-04-20 10:34:17", "id": "ILC000306", "parent_id": null, "state": "il",
+        "subcommittee": null, "committee": "Com. Oversight Medicaid Mang. Care", "chamber":
+        "upper", "+code": "SOMM"}, {"created_at": "2015-11-11 12:45:40", "all_ids":
+        ["ILC000309"], "updated_at": "2016-09-24 08:11:04", "id": "ILC000309", "parent_id":
+        "ILC000119", "state": "il", "subcommittee": "Sub on Transportation Innovation",
+        "committee": "Transportation", "chamber": "upper", "+code": "STRN-STRI"},
+        {"created_at": "2015-11-11 12:45:42", "all_ids": ["ILC000310"], "updated_at":
+        "2016-09-24 08:11:04", "id": "ILC000310", "parent_id": "ILC000119", "state":
+        "il", "subcommittee": "Subcommittee on Amtrak", "committee": "Transportation",
+        "chamber": "upper", "+code": "STRN-STAK"}, {"created_at": "2016-02-19 14:39:05",
+        "all_ids": ["ILC000311"], "updated_at": "2016-09-24 08:11:02", "id": "ILC000311",
+        "parent_id": "ILC000109", "state": "il", "subcommittee": "Sub. on the Monetary
+        Award Program", "committee": "Higher Education", "chamber": "upper", "+code":
+        "SCHE-SMAP"}, {"created_at": "2016-03-03 14:54:50", "all_ids": ["ILC000313"],
+        "updated_at": "2016-09-24 08:11:03", "id": "ILC000313", "parent_id": "ILC000106",
+        "state": "il", "subcommittee": "Sub. on Police Professionalism", "committee":
+        "Executive", "chamber": "upper", "+code": "SEXC-SCPP"}, {"created_at": "2016-03-17
+        13:56:00", "all_ids": ["ILC000314"], "updated_at": "2016-09-24 08:11:03",
+        "id": "ILC000314", "parent_id": "ILC000112", "state": "il", "subcommittee":
+        "Subcommittee on Court Fees & Fines", "committee": "Judiciary", "chamber":
+        "upper", "+code": "SJUD-SCFF"}, {"created_at": "2016-04-07 14:15:00", "all_ids":
+        ["ILC000319"], "updated_at": "2016-09-24 08:11:04", "id": "ILC000319", "parent_id":
+        "ILC000110", "state": "il", "subcommittee": "Sub. on Issues Impacting IL Youth",
+        "committee": "Human Services", "chamber": "upper", "+code": "SHHS-SIIY"},
+        {"created_at": "2016-04-08 14:13:28", "all_ids": ["ILC000320"], "updated_at":
+        "2016-09-24 08:11:04", "id": "ILC000320", "parent_id": "ILC000115", "state":
+        "il", "subcommittee": "Subcommittee on Consolidation", "committee": "Local
+        Government", "chamber": "upper", "+code": "SLGV-SLCC"}, {"created_at": "2016-04-13
+        14:20:39", "all_ids": ["ILC000321"], "updated_at": "2016-09-24 08:11:02",
+        "id": "ILC000321", "parent_id": "ILC000117", "state": "il", "subcommittee":
+        "Subcommittee on Information Sharing", "committee": "Revenue", "chamber":
+        "upper", "+code": "SREV-SSIS"}, {"created_at": "2016-05-05 08:37:07", "all_ids":
+        ["ILC000323"], "updated_at": "2016-09-24 08:11:02", "id": "ILC000323", "parent_id":
+        "ILC000112", "state": "il", "subcommittee": "Sub Com on CA Affecting the Jud",
+        "committee": "Judiciary", "chamber": "upper", "+code": "SJUD-SJCA"}, {"created_at":
+        "2016-05-13 08:25:44", "all_ids": ["ILC000324"], "updated_at": "2016-09-24
+        08:11:04", "id": "ILC000324", "parent_id": "ILC000102", "state": "il", "subcommittee":
+        "Sub. Comm on Statues of Limiatation", "committee": "Criminal Law", "chamber":
+        "upper", "+code": "SCCL-SCSL"}, {"created_at": "2017-03-03 09:58:03", "all_ids":
+        ["ILC000337"], "updated_at": "2017-12-27 06:10:44", "id": "ILC000337", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Government Reform",
+        "chamber": "upper", "+code": "SGRM"}, {"created_at": "2017-03-03 09:58:04",
+        "all_ids": ["ILC000340"], "updated_at": "2017-03-16 10:04:00", "id": "ILC000340",
+        "parent_id": "ILC000171", "state": "il", "subcommittee": "Subcommitee on Special
+        Issues (LA)", "committee": "Licensed Activities and Pensions", "chamber":
+        "upper", "+code": "SLIC-SLSI"}, {"created_at": "2017-03-03 09:58:04", "all_ids":
+        ["ILC000342"], "updated_at": "2017-06-02 11:46:56", "id": "ILC000342", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Pub. High. Ed. Adm.
+        Cost. Tui. Fees", "chamber": "upper", "+code": "SCHE-SPHE"}, {"created_at":
+        "2017-03-03 09:58:04", "all_ids": ["ILC000348"], "updated_at": "2017-06-02
+        11:46:55", "id": "ILC000348", "parent_id": "ILC000112", "state": "il", "subcommittee":
+        "Subcommittee on Firearms", "committee": "Judiciary", "chamber": "upper",
+        "+code": "SJUD-SJFA"}, {"created_at": "2017-03-03 09:58:04", "all_ids": ["ILC000349"],
+        "updated_at": "2017-06-02 11:46:54", "id": "ILC000349", "parent_id": "ILC000112",
+        "state": "il", "subcommittee": "Subcommittee on Tort Reform", "committee":
+        "Judiciary", "chamber": "upper", "+code": "SJUD-SJTR"}, {"created_at": "2017-03-03
+        09:58:04", "all_ids": ["ILC000352"], "updated_at": "2017-12-27 06:10:45",
+        "id": "ILC000352", "parent_id": null, "state": "il", "subcommittee": null,
+        "committee": "Veterans Affairs", "chamber": "upper", "+code": "SVET"}, {"created_at":
+        "2017-03-03 09:58:05", "all_ids": ["ILC000356"], "updated_at": "2017-06-02
+        11:46:54", "id": "ILC000356", "parent_id": "ILC000106", "state": "il", "subcommittee":
+        "Subcommittee on Gov. Operations", "committee": "Executive", "chamber": "upper",
+        "+code": "SEXC-SEGO"}, {"created_at": "2017-03-03 09:58:05", "all_ids": ["ILC000358"],
+        "updated_at": "2017-12-27 06:10:43", "id": "ILC000358", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Gaming", "chamber": "upper",
+        "+code": "SGAM"}, {"created_at": "2017-03-03 09:58:05", "all_ids": ["ILC000363"],
+        "updated_at": "2017-06-02 11:46:55", "id": "ILC000363", "parent_id": "ILC000391",
+        "state": "il", "subcommittee": "Subcommittee on State Designations", "committee":
+        "State Government", "chamber": "upper", "+code": "SGOA-SGSD"}, {"created_at":
+        "2017-03-03 09:58:06", "all_ids": ["ILC000370"], "updated_at": "2017-06-02
+        11:46:56", "id": "ILC000370", "parent_id": "ILC000112", "state": "il", "subcommittee":
+        "Subcommittee on Civil Rights", "committee": "Judiciary", "chamber": "upper",
+        "+code": "SJUD-SJCR"}, {"created_at": "2017-03-03 09:58:06", "all_ids": ["ILC000374"],
+        "updated_at": "2017-06-02 11:46:55", "id": "ILC000374", "parent_id": "ILC000106",
+        "state": "il", "subcommittee": "Subcommittee on Const. Amendments", "committee":
+        "Executive", "chamber": "upper", "+code": "SEXC-SECA"}, {"created_at": "2017-03-03
+        09:58:07", "all_ids": ["ILC000385"], "updated_at": "2017-06-02 11:46:56",
+        "id": "ILC000385", "parent_id": "ILC000106", "state": "il", "subcommittee":
+        "Subcommittee on Pensions", "committee": "Executive", "chamber": "upper",
+        "+code": "SEXC-SEPE"}, {"created_at": "2017-03-03 09:58:07", "all_ids": ["ILC000390"],
+        "updated_at": "2017-12-27 06:10:44", "id": "ILC000390", "parent_id": null,
+        "state": "il", "subcommittee": null, "committee": "Telecommunications & InfoTechnology",
+        "chamber": "upper", "+code": "STIT"}, {"created_at": "2017-03-03 09:58:07",
+        "all_ids": ["ILC000391"], "updated_at": "2017-12-27 06:10:43", "id": "ILC000391",
+        "parent_id": null, "state": "il", "subcommittee": null, "committee": "State
+        Government", "chamber": "upper", "+code": "SGOA"}, {"created_at": "2017-03-04
+        09:57:03", "all_ids": ["ILC000393"], "updated_at": "2017-06-02 11:46:55",
+        "id": "ILC000393", "parent_id": "ILC000337", "state": "il", "subcommittee":
+        "Subcommittee on Special Issues (GR)", "committee": "Government Reform", "chamber":
+        "upper", "+code": "SGRM-SGRS"}, {"created_at": "2017-03-09 09:58:47", "all_ids":
+        ["ILC000395"], "updated_at": "2017-06-02 11:46:55", "id": "ILC000395", "parent_id":
+        "ILC000103", "state": "il", "subcommittee": "Sub. on Interscholastic Athletics",
+        "committee": "Education", "chamber": "upper", "+code": "SESE-SEIA"}, {"created_at":
+        "2017-03-17 10:06:42", "all_ids": ["ILC000410"], "updated_at": "2017-06-02
+        11:46:57", "id": "ILC000410", "parent_id": "ILC000390", "state": "il", "subcommittee":
+        "Subcommittee on Cybersecurity", "committee": "Telecommunications & InfoTechnology",
+        "chamber": "upper", "+code": "STIT-STIC"}, {"created_at": "2017-03-17 10:06:42",
+        "all_ids": ["ILC000411"], "updated_at": "2017-06-02 11:46:55", "id": "ILC000411",
+        "parent_id": "ILC000171", "state": "il", "subcommittee": "Subcommittee on
+        Special Issues (LA)", "committee": "Licensed Activities and Pensions", "chamber":
+        "upper", "+code": "SLIC-SLSI"}, {"created_at": "2017-03-29 10:12:04", "all_ids":
+        ["ILC000415"], "updated_at": "2017-06-02 11:46:55", "id": "ILC000415", "parent_id":
+        "ILC000116", "state": "il", "subcommittee": "Subcommittee on Long Term Care",
+        "committee": "Public Health", "chamber": "upper", "+code": "SPHL-SPLT"}, {"created_at":
+        "2017-03-29 10:12:04", "all_ids": ["ILC000416"], "updated_at": "2017-06-02
+        11:46:57", "id": "ILC000416", "parent_id": "ILC000110", "state": "il", "subcommittee":
+        "Sub. on Consequences of Fed.Policy", "committee": "Human Services", "chamber":
+        "upper", "+code": "SHHS-SHFP"}, {"created_at": "2017-03-31 10:18:15", "all_ids":
+        ["ILC000417"], "updated_at": "2017-06-02 11:46:54", "id": "ILC000417", "parent_id":
+        "ILC000102", "state": "il", "subcommittee": "Subcommittee on Bail Reform",
+        "committee": "Criminal Law", "chamber": "upper", "+code": "SCCL-SCBR"}, {"created_at":
+        "2017-04-06 10:22:50", "all_ids": ["ILC000420"], "updated_at": "2017-06-02
+        11:46:56", "id": "ILC000420", "parent_id": "ILC000112", "state": "il", "subcommittee":
+        "Sub. On The Const.and Redist Issues", "committee": "Judiciary", "chamber":
+        "upper", "+code": "SJUD-SCRI"}, {"created_at": "2017-04-21 10:27:19", "all_ids":
+        ["ILC000422"], "updated_at": "2017-12-27 06:10:43", "id": "ILC000422", "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Oversight Medicaid
+        Mang. Care", "chamber": "upper", "+code": "SOMM"}, {"created_at": "2017-05-05
+        11:04:48", "all_ids": ["ILC000423"], "updated_at": "2017-06-02 11:46:56",
+        "id": "ILC000423", "parent_id": "ILC000106", "state": "il", "subcommittee":
+        "Subcommittee on Regulatory Reform", "committee": "Executive", "chamber":
+        "upper", "+code": "SEXC-SERR"}, {"created_at": "2017-05-12 11:13:59", "all_ids":
+        ["ILC000424"], "updated_at": "2017-05-25 11:26:03", "id": "ILC000424", "parent_id":
+        "ILC000111", "state": "il", "subcommittee": "Subcommittee on Insurance Rates",
+        "committee": "Insurance", "chamber": "upper", "+code": "SINS-SIAR"}, {"created_at":
+        "2017-05-17 11:15:28", "all_ids": ["ILC000425"], "updated_at": "2017-06-02
+        11:46:55", "id": "ILC000425", "parent_id": "ILC000262", "state": "il", "subcommittee":
+        "Sub. Confined Animal Feeding Ops.", "committee": "Agriculture", "chamber":
+        "upper", "+code": "SAGR-SCFO"}, {"created_at": "2017-05-26 11:29:45", "all_ids":
+        ["ILC000426"], "updated_at": "2017-06-02 11:46:54", "id": "ILC000426", "parent_id":
+        "ILC000111", "state": "il", "subcommittee": "Sub. on Auto Insurance Rates",
+        "committee": "Insurance", "chamber": "upper", "+code": "SINS-SIAR"}, {"created_at":
+        "2017-06-01 11:46:06", "all_ids": ["ILC000427"], "updated_at": "2017-06-02
+        11:46:55", "id": "ILC000427", "parent_id": "ILC000260", "state": "il", "subcommittee":
+        "Subcommittee on Fracking", "committee": "Environment and Conservation", "chamber":
+        "upper", "+code": "SNVR-SESF"}, {"created_at": "2017-07-22 06:11:16", "updated_at":
+        "2017-12-27 06:10:45", "all_ids": ["ILC000430"], "parent_id": null, "state":
+        "il", "subcommittee": null, "committee": "Comm. On State & Pension Fund Inves",
+        "chamber": "upper", "id": "ILC000430"}, {"created_at": "2017-11-23 06:10:25",
+        "updated_at": "2017-12-27 06:10:44", "all_ids": ["ILC000432"], "parent_id":
+        null, "state": "il", "subcommittee": null, "committee": "Senate Sexual Discrimination
+        and Harassment Awareness and Prevention", "chamber": "upper", "id": "ILC000432"}]'
+    http_version: 
+  recorded_at: Wed, 14 Mar 2018 00:25:37 GMT
+recorded_with: VCR 4.0.0

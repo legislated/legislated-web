@@ -1,28 +1,46 @@
 describe Bill do
   subject { build(:bill, :with_documents) }
 
-  describe 'scopes' do
-    describe '#by_date' do
-      let!(:date) { Time.current }
-      let!(:bill2) { create_bill(date) }
-      let!(:bill3) { create_bill(date + 1.day) }
-      let!(:bill1) { create_bill(date - 1.day) }
+  describe '.by_hearing_date' do
+    let!(:date) { Time.current }
+    let!(:bill2) { create(:bill, hearing_date: date) }
+    let!(:bill3) { create(:bill, hearing_date: date + 1.day) }
+    let!(:bill1) { create(:bill, hearing_date: date - 1.day) }
 
-      def create_bill(date)
-        create(:bill, :with_documents, hearing: create(:hearing, :with_any_committee, date: date))
+    it 'sorts the bills by ascending hearing date' do
+      expect(Bill.by_hearing_date).to eq([bill1, bill2, bill3])
+    end
+
+    it 'finds bills with hearings at or after the start date' do
+      expect(Bill.by_hearing_date(start: date)).to eq([bill2, bill3])
+    end
+
+    it 'finds bills with hearings at or before the end date' do
+      expect(Bill.by_hearing_date(end: date)).to eq([bill1, bill2])
+    end
+  end
+
+  describe '.by_last_action_date' do
+    it 'sorts bills by descending last action date' do
+      bill1 = create(:bill, actions: [{ date: 3.days.ago }])
+      bill2 = create(:bill, actions: [])
+      bill3 = create(:bill, actions: [{ date: 1.days.ago }])
+      expect(Bill.by_last_action_date).to eq([bill3, bill1, bill2])
+    end
+  end
+
+  describe '.with_actor' do
+    it 'finds bills whose last step matches any of the actors' do
+      actors = [
+        Step::Actors::LOWER,
+        Step::Actors::LOWER_COMMITTEE
+      ]
+
+      bills = actors.map do |actor|
+        create(:bill, steps: attributes_for_list(:step, 1, actor: actor))
       end
 
-      it 'sorts the bills by ascending hearing date' do
-        expect(Bill.by_date).to eq([bill1, bill2, bill3])
-      end
-
-      it 'only returns bills at or after the start date' do
-        expect(Bill.by_date(start: date)).to eq([bill2, bill3])
-      end
-
-      it 'only returns bills at or before the end date' do
-        expect(Bill.by_date(end: date)).to eq([bill1, bill2])
-      end
+      expect(Bill.with_actor(Step::Actors::LOWER)).to eq([bills.first])
     end
   end
 

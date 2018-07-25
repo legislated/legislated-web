@@ -1,0 +1,789 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://openstates.org/api/v1/committees?fields=id,parent_id,committee,subcommittee,chamber,sources&state=il
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<OPENSTATES_API_KEY>"
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Wed, 18 Apr 2018 01:41:23 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Location:
+      - "/api/v1/committees/?state=il&fields=id%2Cparent_id%2Ccommittee%2Csubcommittee%2Cchamber%2Csources"
+      Expires:
+      - Wed, 18 Apr 2018 03:41:23 GMT
+      Cache-Control:
+      - max-age=7200
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Cache-Status:
+      - MISS
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 18 Apr 2018 01:41:23 GMT
+- request:
+    method: get
+    uri: https://openstates.org/api/v1/committees/?fields=id,parent_id,committee,subcommittee,chamber,sources&state=il
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<OPENSTATES_API_KEY>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Wed, 18 Apr 2018 01:41:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Authorization
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Wed, 18 Apr 2018 03:41:24 GMT
+      Cache-Control:
+      - max-age=7200
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Cache-Status:
+      - MISS
+    body:
+      encoding: UTF-8
+      string: '[{"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1910&GA=100"}],
+        "subcommittee": null, "committee": "Rules", "id": "ILC000066"}, {"parent_id":
+        null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1590&GA=99"}],
+        "subcommittee": null, "committee": "Adoption Reform", "id": "ILC000121"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1929&GA=100"}],
+        "subcommittee": null, "committee": "Agriculture & Conservation", "id": "ILC000122"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1891&GA=100"}],
+        "subcommittee": null, "committee": "Approp-Elementary & Secondary Educ", "id":
+        "ILC000123"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1892&GA=100"}],
+        "subcommittee": null, "committee": "Appropriations-General Service", "id":
+        "ILC000124"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1894&GA=100"}],
+        "subcommittee": null, "committee": "Appropriations-Higher Education", "id":
+        "ILC000125"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1893&GA=100"}],
+        "subcommittee": null, "committee": "Appropriations-Human Services", "id":
+        "ILC000126"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1895&GA=100"}],
+        "subcommittee": null, "committee": "Appropriations-Public Safety", "id": "ILC000127"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1985&GA=100"}],
+        "subcommittee": null, "committee": "Business Growth & Incentives", "id": "ILC000128"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1599&GA=99"}],
+        "subcommittee": null, "committee": "Business Occupational Licenses", "id":
+        "ILC000129"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1946&GA=100"}],
+        "subcommittee": null, "committee": "Cities & Villages", "id": "ILC000130"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1896&GA=100"}],
+        "subcommittee": null, "committee": "Consumer Protection", "id": "ILC000131"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1947&GA=100"}],
+        "subcommittee": null, "committee": "Counties & Townships", "id": "ILC000132"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1955&GA=100"}],
+        "subcommittee": null, "committee": "Energy", "id": "ILC000135"}, {"parent_id":
+        null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1899&GA=100"}],
+        "subcommittee": null, "committee": "Environment", "id": "ILC000136"}, {"parent_id":
+        null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1900&GA=100"}],
+        "subcommittee": null, "committee": "Executive", "id": "ILC000137"}, {"parent_id":
+        null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1901&GA=100"}],
+        "subcommittee": null, "committee": "Financial Institutions", "id": "ILC000138"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1937&GA=100"}],
+        "subcommittee": null, "committee": "Health & Healthcare Disparities", "id":
+        "ILC000139"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1548&GA=99"}], "subcommittee":
+        null, "committee": "Health Care Availability  Access", "id": "ILC000140"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1948&GA=100"}],
+        "subcommittee": null, "committee": "Health Care Licenses", "id": "ILC000141"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1903&GA=100"}],
+        "subcommittee": null, "committee": "Higher Education", "id": "ILC000142"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1904&GA=100"}],
+        "subcommittee": null, "committee": "Human Services", "id": "ILC000144"}, {"parent_id":
+        null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1551&GA=99"}],
+        "subcommittee": null, "committee": "Insurance", "id": "ILC000145"}, {"parent_id":
+        null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1933&GA=100"}],
+        "subcommittee": null, "committee": "International Trade & Commerce", "id":
+        "ILC000146"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1907&GA=100"}],
+        "subcommittee": null, "committee": "Labor & Commerce Committee", "id": "ILC000148"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1958&GA=100"}],
+        "subcommittee": null, "committee": "Museums, Arts, & Cultural Enhanceme",
+        "id": "ILC000150"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1908&GA=100"}],
+        "subcommittee": null, "committee": "Personnel & Pensions", "id": "ILC000151"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1909&GA=100"}],
+        "subcommittee": null, "committee": "Public Utilities", "id": "ILC000153"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1960&GA=100"}],
+        "subcommittee": null, "committee": "Restorative Justice", "id": "ILC000154"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1951&GA=100"}],
+        "subcommittee": null, "committee": "Revenue & Finance", "id": "ILC000155"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1911&GA=100"}],
+        "subcommittee": null, "committee": "State Government Administration", "id":
+        "ILC000157"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1938&GA=100"}],
+        "subcommittee": null, "committee": "Tollway Oversight", "id": "ILC000158"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1559&GA=99"}],
+        "subcommittee": null, "committee": "Tourism & Conventions", "id": "ILC000159"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1603&GA=99"}],
+        "subcommittee": null, "committee": "Transportation, Regulation, Roads", "id":
+        "ILC000160"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1950&GA=100"}],
+        "subcommittee": null, "committee": "Transportation: Vehicles & Safety", "id":
+        "ILC000161"}, {"parent_id": "ILC000144", "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2174&GA=100"}],
+        "subcommittee": "Facilities Subcommittee", "committee": "Human Services",
+        "id": "ILC000162"}, {"parent_id": "ILC000144", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2175&GA=100"}],
+        "subcommittee": "Public Benefits Subcommittee", "committee": "Human Services",
+        "id": "ILC000163"}, {"parent_id": "ILC000148", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2178&GA=100"}],
+        "subcommittee": "Unemployment Insurance Subcommittee", "committee": "Labor
+        & Commerce Committee", "id": "ILC000174"}, {"parent_id": "ILC000155", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2209&GA=100"}],
+        "subcommittee": "Finance Subcommittee", "committee": "Revenue & Finance",
+        "id": "ILC000176"}, {"parent_id": "ILC000155", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2201&GA=100"}],
+        "subcommittee": "Income Tax Subcommittee", "committee": "Revenue & Finance",
+        "id": "ILC000177"}, {"parent_id": "ILC000155", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2202&GA=100"}],
+        "subcommittee": "Property Tax Subcommittee", "committee": "Revenue & Finance",
+        "id": "ILC000178"}, {"parent_id": "ILC000155", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2203&GA=100"}],
+        "subcommittee": "Sales and Other Taxes Subcommittee", "committee": "Revenue
+        & Finance", "id": "ILC000179"}, {"parent_id": null, "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1913&GA=100"}],
+        "subcommittee": null, "committee": "Veterans'' Affairs", "id": "ILC000181"},
+        {"parent_id": "ILC000129", "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1822&GA=99"}],
+        "subcommittee": "Business Licenses Subcommittee", "committee": "Business Occupational
+        Licenses", "id": "ILC000201"}, {"parent_id": "ILC000130", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2181&GA=100"}],
+        "subcommittee": "Local Government Subcommittee", "committee": "Cities & Villages",
+        "id": "ILC000202"}, {"parent_id": "ILC000148", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2177&GA=100"}],
+        "subcommittee": "Workforce Reconciliation Subcommitt", "committee": "Labor
+        & Commerce Committee", "id": "ILC000207"}, {"parent_id": "ILC000144", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1835&GA=99"}],
+        "subcommittee": "Informed Consent Subcommittee", "committee": "Human Services",
+        "id": "ILC000224"}, {"parent_id": "ILC000155", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1827&GA=99"}],
+        "subcommittee": "Towing Oversight Subcommittee", "committee": "Revenue & Finance",
+        "id": "ILC000228"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1797&GA=99"}], "subcommittee":
+        null, "committee": "Renewable Energy & Sustainability", "id": "ILC000247"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1977&GA=100"}],
+        "subcommittee": null, "committee": "Special Needs Services", "id": "ILC000248"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1800&GA=99"}],
+        "subcommittee": null, "committee": "Juvenile Justice & System-Involved", "id":
+        "ILC000249"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1799&GA=99"}], "subcommittee":
+        null, "committee": "Youth & Young Adults", "id": "ILC000250"}, {"parent_id":
+        null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1796&GA=99"}],
+        "subcommittee": null, "committee": "Intermodal Infrastructure", "id": "ILC000252"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1971&GA=100"}],
+        "subcommittee": null, "committee": "Community College Access & Afford.", "id":
+        "ILC000253"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1616&GA=99"}], "subcommittee":
+        null, "committee": "Economic Development & Housing", "id": "ILC000254"}, {"parent_id":
+        null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1974&GA=100"}],
+        "subcommittee": null, "committee": "Judiciary - Criminal", "id": "ILC000256"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1906&GA=100"}],
+        "subcommittee": null, "committee": "Judiciary - Civil", "id": "ILC000257"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2208&GA=100"}],
+        "subcommittee": null, "committee": "Sex Offenses and Sex Offender Regis",
+        "id": "ILC000264"}, {"parent_id": "ILC000256", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1808&GA=99"}],
+        "subcommittee": "Firearms and Firearm Safety Subcomm", "committee": "Judiciary
+        - Criminal", "id": "ILC000265"}, {"parent_id": null, "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1809&GA=99"}],
+        "subcommittee": null, "committee": "Sentencing, Penalties, and Criminal",
+        "id": "ILC000268"}, {"parent_id": "ILC000161", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1828&GA=99"}],
+        "subcommittee": "Transportation: License Plates Subc", "committee": "Transportation:
+        Vehicles & Safety", "id": "ILC000269"}, {"parent_id": "ILC000161", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1829&GA=99"}],
+        "subcommittee": "Transportation: Signs & Signals Sub", "committee": "Transportation:
+        Vehicles & Safety", "id": "ILC000270"}, {"parent_id": "ILC000160", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1831&GA=99"}],
+        "subcommittee": "Transportation: Reg. & Reg. Sub.", "committee": "Transportation,
+        Regulation, Roads", "id": "ILC000272"}, {"parent_id": "ILC000160", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1830&GA=99"}],
+        "subcommittee": "Transportation: Railroad & Air Subc", "committee": "Transportation,
+        Regulation, Roads", "id": "ILC000273"}, {"parent_id": "ILC000148", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2179&GA=100"}],
+        "subcommittee": "Workers Compensation Subcommittee", "committee": "Labor &
+        Commerce Committee", "id": "ILC000274"}, {"parent_id": null, "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1843&GA=99"}],
+        "subcommittee": null, "committee": "Single Family Homeownership Stabili",
+        "id": "ILC000276"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/TaskForcemembers.asp?CommitteeID=Violence
+        Prevention&GA=99"}], "subcommittee": null, "committee": "Violence Prevention
+        Task Force", "id": "ILC000277"}, {"parent_id": "ILC000254", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1842&GA=99"}],
+        "subcommittee": "Economic Growth and Mod. Sub.", "committee": "Economic Development
+        & Housing", "id": "ILC000278"}, {"parent_id": null, "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1841&GA=99"}],
+        "subcommittee": null, "committee": "Senior and Veterans Housing Sustain",
+        "id": "ILC000279"}, {"parent_id": "ILC000141", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1844&GA=99"}],
+        "subcommittee": "Practice Acts Subcommittee", "committee": "Health Care Licenses",
+        "id": "ILC000280"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1608&GA=99"}], "subcommittee":
+        null, "committee": "Sm Bus Empowerment Wkforce Develop", "id": "ILC000281"},
+        {"parent_id": "ILC000132", "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1852&GA=99"}],
+        "subcommittee": "Local Government Efficiency Subcomm", "committee": "Counties
+        & Townships", "id": "ILC000282"}, {"parent_id": "ILC000284", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1853&GA=99"}],
+        "subcommittee": "Special Issues Subcommittee", "committee": "Elem Sec Ed School
+        Curricu Policies", "id": "ILC000283"}, {"parent_id": null, "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1544&GA=99"}],
+        "subcommittee": null, "committee": "Elem Sec Ed School Curricu Policies",
+        "id": "ILC000284"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1794&GA=99"}], "subcommittee":
+        null, "committee": "Elem Sec Ed: Licensing Oversight", "id": "ILC000285"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1793&GA=99"}],
+        "subcommittee": null, "committee": "Elem Sec Ed  Charter School Policy", "id":
+        "ILC000289"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/TaskForcemembers.asp?CommitteeID=House+Education&GA=100"}],
+        "subcommittee": null, "committee": "House Education Task Force", "id": "ILC000290"},
+        {"parent_id": "ILC000154", "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1857&GA=99"}],
+        "subcommittee": "Criminal Justice Reform Subcommitte", "committee": "Restorative
+        Justice", "id": "ILC000291"}, {"parent_id": "ILC000257", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1854&GA=99"}],
+        "subcommittee": "Civil Process Subcommittee", "committee": "Judiciary - Civil",
+        "id": "ILC000293"}, {"parent_id": "ILC000257", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1855&GA=99"}],
+        "subcommittee": "General Law Subcommittee", "committee": "Judiciary - Civil",
+        "id": "ILC000294"}, {"parent_id": "ILC000157", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1866&GA=99"}],
+        "subcommittee": "Agency Operations Subcommittee", "committee": "State Government
+        Administration", "id": "ILC000297"}, {"parent_id": "ILC000157", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1867&GA=99"}],
+        "subcommittee": "Special Bills Subcommittee", "committee": "State Government
+        Administration", "id": "ILC000298"}, {"parent_id": "ILC000157", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1865&GA=99"}],
+        "subcommittee": "Government Process Subcommittee", "committee": "State Government
+        Administration", "id": "ILC000302"}, {"parent_id": null, "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1868&GA=99"}],
+        "subcommittee": null, "committee": "House Budget Oversight Panel", "id": "ILC000303"},
+        {"parent_id": "ILC000155", "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1873&GA=99"}],
+        "subcommittee": "Coal Finance Subcommittee", "committee": "Revenue & Finance",
+        "id": "ILC000307"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1856&GA=99"}], "subcommittee":
+        null, "committee": "Real Estate, Prop. Probate & Trust", "id": "ILC000308"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1878&GA=99"}],
+        "subcommittee": null, "committee": "Public Private Partnerships", "id": "ILC000312"},
+        {"parent_id": "ILC000142", "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1882&GA=99"}],
+        "subcommittee": "Higher Education Issues Subcommitte", "committee": "Higher
+        Education", "id": "ILC000315"}, {"parent_id": "ILC000151", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1881&GA=99"}],
+        "subcommittee": "End of Career Compensation Sub", "committee": "Personnel
+        & Pensions", "id": "ILC000316"}, {"parent_id": "ILC000153", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2241&GA=100"}],
+        "subcommittee": "Special Matters Subcommittee", "committee": "Public Utilities",
+        "id": "ILC000317"}, {"parent_id": "ILC000157", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1811&GA=99"}],
+        "subcommittee": "Substance Abuse Special", "committee": "State Government
+        Administration", "id": "ILC000318"}, {"parent_id": "ILC000131", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1887&GA=99"}],
+        "subcommittee": "Public Health Subcommittee", "committee": "Consumer Protection",
+        "id": "ILC000322"}, {"parent_id": "ILC000157", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2232&GA=100"}],
+        "subcommittee": "State Government Subcommittee", "committee": "State Government
+        Administration", "id": "ILC000325"}, {"parent_id": "ILC000257", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2227&GA=100"}],
+        "subcommittee": "Real & Personal Property Law Subcom", "committee": "Judiciary
+        - Civil", "id": "ILC000326"}, {"parent_id": null, "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2204&GA=100"}],
+        "subcommittee": null, "committee": "Criminal Admin and Enforcement", "id":
+        "ILC000327"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2168&GA=100"}],
+        "subcommittee": null, "committee": "Tourism, Hospitality & Craft Ind.", "id":
+        "ILC000328"}, {"parent_id": "ILC000126", "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2231&GA=100"}],
+        "subcommittee": "Medicaid Subcommittee", "committee": "Appropriations-Human
+        Services", "id": "ILC000329"}, {"parent_id": "ILC000377", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2220&GA=100"}],
+        "subcommittee": "Ballott Access Subcommittee", "committee": "Elections & Campaign
+        Finance", "id": "ILC000330"}, {"parent_id": "ILC000365", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2176&GA=100"}],
+        "subcommittee": "Special Issues Subcommittee", "committee": "Elem Sec Ed:
+        Licensing, Admin.", "id": "ILC000331"}, {"parent_id": "ILC000137", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2184&GA=100"}],
+        "subcommittee": "Gaming Subcommittee", "committee": "Executive", "id": "ILC000332"},
+        {"parent_id": "ILC000327", "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2205&GA=100"}],
+        "subcommittee": "Firearms and Firearm Safety Subcomm", "committee": "Criminal
+        Admin and Enforcement", "id": "ILC000333"}, {"parent_id": "ILC000257", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2226&GA=100"}],
+        "subcommittee": "Commercial Law Subcommittee", "committee": "Judiciary - Civil",
+        "id": "ILC000334"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1972&GA=100"}],
+        "subcommittee": null, "committee": "Elem Sec Ed:  Charter School Policy",
+        "id": "ILC000335"}, {"parent_id": "ILC000257", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2229&GA=100"}],
+        "subcommittee": "Civil Procedure Subcommittee", "committee": "Judiciary -
+        Civil", "id": "ILC000336"}, {"parent_id": "ILC000377", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2223&GA=100"}],
+        "subcommittee": "Election Administration Subcommitte", "committee": "Elections
+        & Campaign Finance", "id": "ILC000338"}, {"parent_id": null, "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1902&GA=100"}],
+        "subcommittee": null, "committee": "Health Care Availability & Access", "id":
+        "ILC000339"}, {"parent_id": "ILC000377", "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2221&GA=100"}],
+        "subcommittee": "Voter Education & Registration Sub", "committee": "Elections
+        & Campaign Finance", "id": "ILC000341"}, {"parent_id": "ILC000144", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2240&GA=100"}],
+        "subcommittee": "Medicaid Subcommittee", "committee": "Human Services", "id":
+        "ILC000343"}, {"parent_id": "ILC000144", "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2173&GA=100"}],
+        "subcommittee": "Informed Consent Subcommitee", "committee": "Human Services",
+        "id": "ILC000344"}, {"parent_id": "ILC000155", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2210&GA=100"}],
+        "subcommittee": "Growth, Reform & Fairness Subcommit", "committee": "Revenue
+        & Finance", "id": "ILC000345"}, {"parent_id": null, "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2169&GA=100"}],
+        "subcommittee": null, "committee": "Aging", "id": "ILC000346"}, {"parent_id":
+        "ILC000387", "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2211&GA=100"}],
+        "subcommittee": "Fire Service Subcommittee", "committee": "Fire & Emergency
+        Services", "id": "ILC000347"}, {"parent_id": null, "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2170&GA=100"}],
+        "subcommittee": null, "committee": "Mental Health", "id": "ILC000350"}, {"parent_id":
+        null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2159&GA=100"}],
+        "subcommittee": null, "committee": "Cost Benefit Analysis", "id": "ILC000351"},
+        {"parent_id": "ILC000136", "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2180&GA=100"}],
+        "subcommittee": "Environment Subcommittee", "committee": "Environment", "id":
+        "ILC000353"}, {"parent_id": "ILC000142", "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2230&GA=100"}],
+        "subcommittee": "Higher Education Analysis Subcommit", "committee": "Higher
+        Education", "id": "ILC000354"}, {"parent_id": "ILC000377", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2222&GA=100"}],
+        "subcommittee": "Campaign Finance Subcommittee", "committee": "Elections &
+        Campaign Finance", "id": "ILC000355"}, {"parent_id": "ILC000257", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2224&GA=100"}],
+        "subcommittee": "Domestic Relations Law Subcommittee", "committee": "Judiciary
+        - Civil", "id": "ILC000357"}, {"parent_id": null, "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2162&GA=100"}],
+        "subcommittee": null, "committee": "Economic Opportunity", "id": "ILC000359"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2157&GA=100"}],
+        "subcommittee": null, "committee": "Business Incentives for Local Comm.",
+        "id": "ILC000360"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2161&GA=100"}],
+        "subcommittee": null, "committee": "Economic Justice & Equity", "id": "ILC000361"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1949&GA=100"}],
+        "subcommittee": null, "committee": "Transportation: Regulation, Roads", "id":
+        "ILC000362"}, {"parent_id": "ILC000161", "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2197&GA=100"}],
+        "subcommittee": "Special License Plates Subcommittee", "committee": "Transportation:
+        Vehicles & Safety", "id": "ILC000364"}, {"parent_id": null, "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1973&GA=100"}],
+        "subcommittee": null, "committee": "Elem Sec Ed: Licensing, Admin.", "id":
+        "ILC000365"}, {"parent_id": "ILC000132", "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2213&GA=100"}],
+        "subcommittee": "Consolidated Subcommittee", "committee": "Counties & Townships",
+        "id": "ILC000366"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1905&GA=100"}],
+        "subcommittee": null, "committee": "Insurance: Health & Life", "id": "ILC000367"},
+        {"parent_id": "ILC000257", "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2225&GA=100"}],
+        "subcommittee": "Tort Liability Law Subcommittee", "committee": "Judiciary
+        - Civil", "id": "ILC000368"}, {"parent_id": null, "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2166&GA=100"}],
+        "subcommittee": null, "committee": "Insurance: Property & Casualty", "id":
+        "ILC000369"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2160&GA=100"}],
+        "subcommittee": null, "committee": "Cybersecurity, Data Analytics, & IT",
+        "id": "ILC000371"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2164&GA=100"}],
+        "subcommittee": null, "committee": "Government Consolidation &  Modern", "id":
+        "ILC000372"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1898&GA=100"}],
+        "subcommittee": null, "committee": "Elem Sec Ed: School Curric Policies",
+        "id": "ILC000373"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2207&GA=100"}],
+        "subcommittee": null, "committee": "Sentencing, Penalties and Criminal", "id":
+        "ILC000375"}, {"parent_id": "ILC000383", "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2212&GA=100"}],
+        "subcommittee": "Business Licenses Subcommittee", "committee": "Business &
+        Occupational Licenses", "id": "ILC000376"}, {"parent_id": null, "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2172&GA=100"}],
+        "subcommittee": null, "committee": "Elections & Campaign Finance", "id": "ILC000377"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2206&GA=100"}],
+        "subcommittee": null, "committee": "Juvenile Justice and System Involve",
+        "id": "ILC000378"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2167&GA=100"}],
+        "subcommittee": null, "committee": "Mass Transit", "id": "ILC000379"}, {"parent_id":
+        null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2158&GA=100"}],
+        "subcommittee": null, "committee": "Construction Industry & Code Enforc",
+        "id": "ILC000380"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2171&GA=100"}],
+        "subcommittee": null, "committee": "Police & First Responders", "id": "ILC000381"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2165&GA=100"}],
+        "subcommittee": null, "committee": "Government Transparency", "id": "ILC000382"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=1945&GA=100"}],
+        "subcommittee": null, "committee": "Business & Occupational Licenses", "id":
+        "ILC000383"}, {"parent_id": "ILC000257", "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2228&GA=100"}],
+        "subcommittee": "Trusts & Estates Law Subcommittee", "committee": "Judiciary
+        - Civil", "id": "ILC000384"}, {"parent_id": "ILC000132", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2214&GA=100"}],
+        "subcommittee": "Transparency Subcommittee", "committee": "Counties & Townships",
+        "id": "ILC000386"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2163&GA=100"}],
+        "subcommittee": null, "committee": "Fire & Emergency Services", "id": "ILC000387"},
+        {"parent_id": "ILC000351", "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2183&GA=100"}],
+        "subcommittee": "Analytics Subcommittee", "committee": "Cost Benefit Analysis",
+        "id": "ILC000388"}, {"parent_id": "ILC000161", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2198&GA=100"}],
+        "subcommittee": "Red Light Camera Subcommittee", "committee": "Transportation:
+        Vehicles & Safety", "id": "ILC000389"}, {"parent_id": "ILC000373", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2182&GA=100"}],
+        "subcommittee": "Special Issues Subcommittee", "committee": "Elem Sec Ed:
+        School Curric Policies", "id": "ILC000392"}, {"parent_id": "ILC000136", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2242&GA=100"}],
+        "subcommittee": "Environmental Regulations Subcommit", "committee": "Environment",
+        "id": "ILC000394"}, {"parent_id": "ILC000135", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2246&GA=100"}],
+        "subcommittee": "Resources and Management Subcommitt", "committee": "Energy",
+        "id": "ILC000396"}, {"parent_id": "ILC000132", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2245&GA=100"}],
+        "subcommittee": "Compensation Subcommittee", "committee": "Counties & Townships",
+        "id": "ILC000397"}, {"parent_id": "ILC000350", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2248&GA=100"}],
+        "subcommittee": "Justice System Subcommittee", "committee": "Mental Health",
+        "id": "ILC000398"}, {"parent_id": "ILC000350", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2250&GA=100"}],
+        "subcommittee": "Childhood and Young Adult Onset Sub", "committee": "Mental
+        Health", "id": "ILC000399"}, {"parent_id": "ILC000350", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2249&GA=100"}],
+        "subcommittee": "Substance Abuse Subcommittee", "committee": "Mental Health",
+        "id": "ILC000400"}, {"parent_id": "ILC000122", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2252&GA=100"}],
+        "subcommittee": "Negotiations Subcommittee", "committee": "Agriculture & Conservation",
+        "id": "ILC000401"}, {"parent_id": "ILC000404", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2256&GA=100"}],
+        "subcommittee": "Roads, Ports & Aviation Subcommitte", "committee": "Future
+        Roads: Growth & Improvement", "id": "ILC000402"}, {"parent_id": "ILC000404",
+        "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2255&GA=100"}],
+        "subcommittee": "Highways & Transit Subcommittee", "committee": "Future Roads:
+        Growth & Improvement", "id": "ILC000403"}, {"parent_id": null, "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2253&GA=100"}],
+        "subcommittee": null, "committee": "Future Roads: Growth & Improvement", "id":
+        "ILC000404"}, {"parent_id": "ILC000404", "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2254&GA=100"}],
+        "subcommittee": "Motor Fuel Analysis Subcommittee", "committee": "Future Roads:
+        Growth & Improvement", "id": "ILC000405"}, {"parent_id": "ILC000346", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2251&GA=100"}],
+        "subcommittee": "Community Care Program Subcommittee", "committee": "Aging",
+        "id": "ILC000406"}, {"parent_id": "ILC000161", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2259&GA=100"}],
+        "subcommittee": "School Buses Subcommittee", "committee": "Transportation:
+        Vehicles & Safety", "id": "ILC000407"}, {"parent_id": "ILC000144", "chamber":
+        "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2240&GA=100"}],
+        "subcommittee": "HS Medicaid Subcommittee", "committee": "Human Services",
+        "id": "ILC000408"}, {"parent_id": "ILC000141", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2258&GA=100"}],
+        "subcommittee": "Negotiations Subcommittee", "committee": "Health Care Licenses",
+        "id": "ILC000409"}, {"parent_id": "ILC000404", "chamber": "lower", "sources":
+        [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2256&GA=100"}],
+        "subcommittee": "Railroads, Ports and Aviation Subco", "committee": "Future
+        Roads: Growth & Improvement", "id": "ILC000412"}, {"parent_id": "ILC000125",
+        "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2261&GA=100"}],
+        "subcommittee": "Cost Analysis Subcommittee", "committee": "Appropriations-Higher
+        Education", "id": "ILC000413"}, {"parent_id": "ILC000122", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2262&GA=100"}],
+        "subcommittee": "Animal Baiting Subcommittee", "committee": "Agriculture &
+        Conservation", "id": "ILC000414"}, {"parent_id": "ILC000377", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2220&GA=100"}],
+        "subcommittee": "Ballot Access Subcommittee", "committee": "Elections & Campaign
+        Finance", "id": "ILC000418"}, {"parent_id": "ILC000127", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2268&GA=100"}],
+        "subcommittee": "Transportation Subcommittee", "committee": "Appropriations-Public
+        Safety", "id": "ILC000419"}, {"parent_id": "ILC000154", "chamber": "lower",
+        "sources": [{"url": "http://ilga.gov/house/committees/members.asp?CommitteeID=2269&GA=100"}],
+        "subcommittee": "Social Change Subcommittee", "committee": "Restorative Justice",
+        "id": "ILC000421"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=2232&GA=100"}, {"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1911&GA=100"}],
+        "subcommittee": null, "committee": "State Government Subcommittee", "id":
+        "ILC000428"}, {"parent_id": null, "chamber": "lower", "sources": [{"url":
+        "http://ilga.gov/house/committees/members.asp?CommitteeID=1897&GA=100"}],
+        "subcommittee": null, "committee": "Committee of the Whole", "id": "ILC000429"},
+        {"parent_id": null, "chamber": "lower", "sources": [{"url": "http://ilga.gov/house/committees/TaskForcemembers.asp?CommitteeID=HR687&GA=100"}],
+        "subcommittee": null, "committee": "House Sexual Discrimination and Harassment
+        Task Force", "id": "ILC000431"}, {"parent_id": null, "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1940&GA=100"}],
+        "subcommittee": null, "committee": "Assignments", "id": "ILC000097"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1915&GA=100"}],
+        "subcommittee": null, "committee": "Appropriations I", "id": "ILC000099"},
+        {"parent_id": null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1927&GA=100"}],
+        "subcommittee": null, "committee": "Appropriations II", "id": "ILC000100"},
+        {"parent_id": null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1930&GA=100"}],
+        "subcommittee": null, "committee": "Committee of the Whole", "id": "ILC000101"},
+        {"parent_id": null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1941&GA=100"}],
+        "subcommittee": null, "committee": "Criminal Law", "id": "ILC000102"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1916&GA=100"}],
+        "subcommittee": null, "committee": "Education", "id": "ILC000103"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1918&GA=100"}],
+        "subcommittee": null, "committee": "Executive", "id": "ILC000106"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1917&GA=100"}],
+        "subcommittee": null, "committee": "Executive Appointments", "id": "ILC000107"},
+        {"parent_id": null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1919&GA=100"}],
+        "subcommittee": null, "committee": "Financial Institutions", "id": "ILC000108"},
+        {"parent_id": null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1931&GA=100"}],
+        "subcommittee": null, "committee": "Higher Education", "id": "ILC000109"},
+        {"parent_id": null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1928&GA=100"}],
+        "subcommittee": null, "committee": "Human Services", "id": "ILC000110"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1921&GA=100"}],
+        "subcommittee": null, "committee": "Insurance", "id": "ILC000111"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1944&GA=100"}],
+        "subcommittee": null, "committee": "Judiciary", "id": "ILC000112"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1922&GA=100"}],
+        "subcommittee": null, "committee": "Local Government", "id": "ILC000115"},
+        {"parent_id": null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1936&GA=100"}],
+        "subcommittee": null, "committee": "Public Health", "id": "ILC000116"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1924&GA=100"}],
+        "subcommittee": null, "committee": "Revenue", "id": "ILC000117"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1567"}],
+        "subcommittee": null, "committee": "State Government & Veterans Affairs",
+        "id": "ILC000118"}, {"parent_id": null, "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=1925&GA=100"}],
+        "subcommittee": null, "committee": "Transportation", "id": "ILC000119"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1923&GA=100"}],
+        "subcommittee": null, "committee": "Licensed Activities and Pensions", "id":
+        "ILC000171"}, {"parent_id": "ILC000102", "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=2233"}], "subcommittee":
+        "Subcommittee on CLEAR Compliance", "committee": "Criminal Law", "id": "ILC000185"},
+        {"parent_id": "ILC000102", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2234"}],
+        "subcommittee": "Subcommittee on Special Issues (CL)", "committee": "Criminal
+        Law", "id": "ILC000186"}, {"parent_id": "ILC000103", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2200"}],
+        "subcommittee": "Subcommittee on Charter Schools", "committee": "Education",
+        "id": "ILC000187"}, {"parent_id": "ILC000103", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2199"}],
+        "subcommittee": "Subcommittee on Special Issues (ED)", "committee": "Education",
+        "id": "ILC000188"}, {"parent_id": "ILC000106", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1813"}],
+        "subcommittee": "Sub on Constitutional Amendments", "committee": "Executive",
+        "id": "ILC000189"}, {"parent_id": "ILC000106", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1816"}],
+        "subcommittee": "Sub on Governmental Operations", "committee": "Executive",
+        "id": "ILC000190"}, {"parent_id": "ILC000106", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1812"}],
+        "subcommittee": "Subcommittee on Civil Rights", "committee": "Executive",
+        "id": "ILC000191"}, {"parent_id": "ILC000106", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2187"}],
+        "subcommittee": "Subcommittee on Election Law", "committee": "Executive",
+        "id": "ILC000192"}, {"parent_id": "ILC000106", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1815"}],
+        "subcommittee": "Subcommittee on Gaming", "committee": "Executive", "id":
+        "ILC000193"}, {"parent_id": "ILC000106", "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=2190"}], "subcommittee":
+        "Subcommittee on Special Issues (EX)", "committee": "Executive", "id": "ILC000195"},
+        {"parent_id": "ILC000110", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2235"}],
+        "subcommittee": "Subcommittee on Special Issues (HS)", "committee": "Human
+        Services", "id": "ILC000196"}, {"parent_id": "ILC000116", "chamber": "upper",
+        "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1838"}],
+        "subcommittee": "Subcommittee on Amendments", "committee": "Public Health",
+        "id": "ILC000197"}, {"parent_id": "ILC000116", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1840"}],
+        "subcommittee": "Subcommittee on Special Issues (PH)", "committee": "Public
+        Health", "id": "ILC000198"}, {"parent_id": "ILC000115", "chamber": "upper",
+        "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2243"}],
+        "subcommittee": "Subcommittee on Special Issues (LG)", "committee": "Local
+        Government", "id": "ILC000209"}, {"parent_id": "ILC000106", "chamber": "upper",
+        "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1817"}],
+        "subcommittee": "Subcommittee on Procurement", "committee": "Executive", "id":
+        "ILC000214"}, {"parent_id": "ILC000110", "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=1807"}], "subcommittee":
+        "Sub on Issues Relating to DCFS", "committee": "Human Services", "id": "ILC000215"},
+        {"parent_id": "ILC000117", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1851"}],
+        "subcommittee": "Subcommittee on Special Issues (RV)", "committee": "Revenue",
+        "id": "ILC000235"}, {"parent_id": "ILC000117", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1849"}],
+        "subcommittee": "Subcommittee on Tax Credits", "committee": "Revenue", "id":
+        "ILC000236"}, {"parent_id": "ILC000117", "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=1850"}], "subcommittee":
+        "Subcommittee on Property Tax", "committee": "Revenue", "id": "ILC000237"},
+        {"parent_id": null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1942&GA=100"}],
+        "subcommittee": null, "committee": "Energy and Public Utilities", "id": "ILC000258"},
+        {"parent_id": null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1970&GA=100"}],
+        "subcommittee": null, "committee": "Commerce and Economic Development", "id":
+        "ILC000259"}, {"parent_id": null, "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=1943&GA=100"}],
+        "subcommittee": null, "committee": "Environment and Conservation", "id": "ILC000260"},
+        {"parent_id": null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1932&GA=100"}],
+        "subcommittee": null, "committee": "Labor", "id": "ILC000261"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1914&GA=100"}],
+        "subcommittee": null, "committee": "Agriculture", "id": "ILC000262"}, {"parent_id":
+        null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1801"}],
+        "subcommittee": null, "committee": "Committee on Restorative Justice", "id":
+        "ILC000263"}, {"parent_id": "ILC000109", "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=1804"}], "subcommittee":
+        "Sub. Public Higher Edu. Exec. Comp.", "committee": "Higher Education", "id":
+        "ILC000266"}, {"parent_id": "ILC000116", "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=1839"}], "subcommittee":
+        "Subcommittee on Immunization", "committee": "Public Health", "id": "ILC000275"},
+        {"parent_id": "ILC000260", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1821"}],
+        "subcommittee": "Sub on EPA 111(d) Requirements", "committee": "Environment
+        and Conservation", "id": "ILC000288"}, {"parent_id": "ILC000258", "chamber":
+        "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1860"}],
+        "subcommittee": "Sub. on Generation, Util, & Telecom", "committee": "Energy
+        and Public Utilities", "id": "ILC000295"}, {"parent_id": "ILC000112", "chamber":
+        "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1805"}],
+        "subcommittee": "Subcommittee on Firearms (JU)", "committee": "Judiciary",
+        "id": "ILC000299"}, {"parent_id": "ILC000102", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1847"}],
+        "subcommittee": "Subcommittee on Firearms (CL)", "committee": "Criminal Law",
+        "id": "ILC000300"}, {"parent_id": null, "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=1864"}], "subcommittee":
+        null, "committee": "Committee on Pension Investments", "id": "ILC000301"},
+        {"parent_id": "ILC000118", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1869"}],
+        "subcommittee": "Subcommittee on Prison Operation", "committee": "State Government
+        & Veterans Affairs", "id": "ILC000304"}, {"parent_id": "ILC000112", "chamber":
+        "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1806"}],
+        "subcommittee": "Subcommittee on Special Issues (JU)", "committee": "Judiciary",
+        "id": "ILC000305"}, {"parent_id": null, "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=2196"}], "subcommittee":
+        null, "committee": "Com. Oversight Medicaid Mang. Care", "id": "ILC000306"},
+        {"parent_id": "ILC000119", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1875"}],
+        "subcommittee": "Sub on Transportation Innovation", "committee": "Transportation",
+        "id": "ILC000309"}, {"parent_id": "ILC000119", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1876"}],
+        "subcommittee": "Subcommittee on Amtrak", "committee": "Transportation", "id":
+        "ILC000310"}, {"parent_id": "ILC000109", "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=1877"}], "subcommittee":
+        "Sub. on the Monetary Award Program", "committee": "Higher Education", "id":
+        "ILC000311"}, {"parent_id": "ILC000106", "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=1879"}], "subcommittee":
+        "Sub. on Police Professionalism", "committee": "Executive", "id": "ILC000313"},
+        {"parent_id": "ILC000112", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1880"}],
+        "subcommittee": "Subcommittee on Court Fees & Fines", "committee": "Judiciary",
+        "id": "ILC000314"}, {"parent_id": "ILC000110", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1884"}],
+        "subcommittee": "Sub. on Issues Impacting IL Youth", "committee": "Human Services",
+        "id": "ILC000319"}, {"parent_id": "ILC000115", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1885"}],
+        "subcommittee": "Subcommittee on Consolidation", "committee": "Local Government",
+        "id": "ILC000320"}, {"parent_id": "ILC000117", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1886"}],
+        "subcommittee": "Subcommittee on Information Sharing", "committee": "Revenue",
+        "id": "ILC000321"}, {"parent_id": "ILC000112", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1888"}],
+        "subcommittee": "Sub Com on CA Affecting the Jud", "committee": "Judiciary",
+        "id": "ILC000323"}, {"parent_id": "ILC000102", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=1890"}],
+        "subcommittee": "Sub. Comm on Statues of Limiatation", "committee": "Criminal
+        Law", "id": "ILC000324"}, {"parent_id": null, "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2154&GA=100"}],
+        "subcommittee": null, "committee": "Government Reform", "id": "ILC000337"},
+        {"parent_id": "ILC000171", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2185"}],
+        "subcommittee": "Subcommitee on Special Issues (LA)", "committee": "Licensed
+        Activities and Pensions", "id": "ILC000340"}, {"parent_id": null, "chamber":
+        "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2194"}],
+        "subcommittee": null, "committee": "Pub. High. Ed. Adm. Cost. Tui. Fees",
+        "id": "ILC000342"}, {"parent_id": "ILC000112", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2192"}],
+        "subcommittee": "Subcommittee on Firearms", "committee": "Judiciary", "id":
+        "ILC000348"}, {"parent_id": "ILC000112", "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=2193"}], "subcommittee":
+        "Subcommittee on Tort Reform", "committee": "Judiciary", "id": "ILC000349"},
+        {"parent_id": null, "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2155&GA=100"}],
+        "subcommittee": null, "committee": "Veterans Affairs", "id": "ILC000352"},
+        {"parent_id": "ILC000106", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2188"}],
+        "subcommittee": "Subcommittee on Gov. Operations", "committee": "Executive",
+        "id": "ILC000356"}, {"parent_id": null, "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=2153&GA=100"}],
+        "subcommittee": null, "committee": "Gaming", "id": "ILC000358"}, {"parent_id":
+        "ILC000391", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2195"}],
+        "subcommittee": "Subcommittee on State Designations", "committee": "State
+        Government", "id": "ILC000363"}, {"parent_id": "ILC000112", "chamber": "upper",
+        "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2191"}],
+        "subcommittee": "Subcommittee on Civil Rights", "committee": "Judiciary",
+        "id": "ILC000370"}, {"parent_id": "ILC000106", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2186"}],
+        "subcommittee": "Subcommittee on Const. Amendments", "committee": "Executive",
+        "id": "ILC000374"}, {"parent_id": "ILC000106", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2189"}],
+        "subcommittee": "Subcommittee on Pensions", "committee": "Executive", "id":
+        "ILC000385"}, {"parent_id": null, "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=2156&GA=100"}],
+        "subcommittee": null, "committee": "Telecommunications & InfoTechnology",
+        "id": "ILC000390"}, {"parent_id": null, "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=1920&GA=100"}],
+        "subcommittee": null, "committee": "State Government", "id": "ILC000391"},
+        {"parent_id": "ILC000337", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2237"}],
+        "subcommittee": "Subcommittee on Special Issues (GR)", "committee": "Government
+        Reform", "id": "ILC000393"}, {"parent_id": "ILC000103", "chamber": "upper",
+        "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2244"}],
+        "subcommittee": "Sub. on Interscholastic Athletics", "committee": "Education",
+        "id": "ILC000395"}, {"parent_id": "ILC000390", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2260"}],
+        "subcommittee": "Subcommittee on Cybersecurity", "committee": "Telecommunications
+        & InfoTechnology", "id": "ILC000410"}, {"parent_id": "ILC000171", "chamber":
+        "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2185"}],
+        "subcommittee": "Subcommittee on Special Issues (LA)", "committee": "Licensed
+        Activities and Pensions", "id": "ILC000411"}, {"parent_id": "ILC000116", "chamber":
+        "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2263"}],
+        "subcommittee": "Subcommittee on Long Term Care", "committee": "Public Health",
+        "id": "ILC000415"}, {"parent_id": "ILC000110", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2264"}],
+        "subcommittee": "Sub. on Consequences of Fed.Policy", "committee": "Human
+        Services", "id": "ILC000416"}, {"parent_id": "ILC000102", "chamber": "upper",
+        "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2266"}],
+        "subcommittee": "Subcommittee on Bail Reform", "committee": "Criminal Law",
+        "id": "ILC000417"}, {"parent_id": "ILC000112", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2265"}],
+        "subcommittee": "Sub. On The Const.and Redist Issues", "committee": "Judiciary",
+        "id": "ILC000420"}, {"parent_id": null, "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=2196&GA=100"}],
+        "subcommittee": null, "committee": "Oversight Medicaid Mang. Care", "id":
+        "ILC000422"}, {"parent_id": "ILC000106", "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/members.asp?CommitteeID=2270"}], "subcommittee":
+        "Subcommittee on Regulatory Reform", "committee": "Executive", "id": "ILC000423"},
+        {"parent_id": "ILC000111", "chamber": "upper", "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2271"}],
+        "subcommittee": "Subcommittee on Insurance Rates", "committee": "Insurance",
+        "id": "ILC000424"}, {"parent_id": "ILC000262", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2272"}],
+        "subcommittee": "Sub. Confined Animal Feeding Ops.", "committee": "Agriculture",
+        "id": "ILC000425"}, {"parent_id": "ILC000111", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2271"}],
+        "subcommittee": "Sub. on Auto Insurance Rates", "committee": "Insurance",
+        "id": "ILC000426"}, {"parent_id": "ILC000260", "chamber": "upper", "sources":
+        [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2273"}],
+        "subcommittee": "Subcommittee on Fracking", "committee": "Environment and
+        Conservation", "id": "ILC000427"}, {"parent_id": null, "chamber": "upper",
+        "sources": [{"url": "http://ilga.gov/senate/committees/members.asp?CommitteeID=2274&GA=100"}],
+        "subcommittee": null, "committee": "Comm. On State & Pension Fund Inves",
+        "id": "ILC000430"}, {"parent_id": null, "chamber": "upper", "sources": [{"url":
+        "http://ilga.gov/senate/committees/TaskForcemembers.asp?CommitteeID=SDHA&GA=100"}],
+        "subcommittee": null, "committee": "Senate Sexual Discrimination and Harassment
+        Awareness and Prevention", "id": "ILC000432"}]'
+    http_version: 
+  recorded_at: Wed, 18 Apr 2018 01:41:24 GMT
+recorded_with: VCR 4.0.0

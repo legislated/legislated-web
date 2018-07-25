@@ -1,0 +1,18 @@
+// @flow
+export const white = '#ffffff'
+export const black = '#1a1a1a'
+export const gray1 = '#4a4a4a'
+export const gray2 = '#5c5c5c'
+export const gray3 = '#979797'
+export const gray4 = '#c9c9c9'
+export const gray5 = '#d1d1d1'
+export const gray6 = '#f0f0f0'
+export const primary = '#ee5d45'
+export const secondary = '#92cbe2'
+
+export const background = '#f9fdff'
+export const backgroundAccent = '#ebf5ff'
+export const neutral = '#ffffff'
+export const neutralShadow = '#def0fb'
+export const primaryShadow = '#457dcb'
+export const primaryHighlight = '#6ba8ff'

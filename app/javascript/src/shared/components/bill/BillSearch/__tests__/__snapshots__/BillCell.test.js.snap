@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render hides the summary when missing 1`] = `
+<div>
+  <Cell>
+    <BillTitle
+      bill={
+        Object {
+          "detailsUrl": "http://www.test.com/details",
+          "documentNumber": "HB1234",
+          "fullTextUrl": "http://www.test.com/text",
+          "hearing": Object {
+            "date": "2010-01-01T00:00:00-06:00",
+          },
+          "id": "1234",
+          "summary": "",
+          "title": "Foo",
+          "witnessSlipUrl": "http://www.test.com/slip",
+        }
+      }
+    />
+    <BillStatus
+      bill={
+        Object {
+          "detailsUrl": "http://www.test.com/details",
+          "documentNumber": "HB1234",
+          "fullTextUrl": "http://www.test.com/text",
+          "hearing": Object {
+            "date": "2010-01-01T00:00:00-06:00",
+          },
+          "id": "1234",
+          "summary": "",
+          "title": "Foo",
+          "witnessSlipUrl": "http://www.test.com/slip",
+        }
+      }
+    />
+    <p />
+    <Button
+      isSmall={true}
+      to="/bill/1234"
+    >
+      More Info
+    </Button>
+  </Cell>
+</div>
+`;
+
+exports[`#render renders properly 1`] = `
+<div>
+  <Cell>
+    <BillTitle
+      bill={
+        Object {
+          "detailsUrl": "http://www.test.com/details",
+          "documentNumber": "HB1234",
+          "fullTextUrl": "http://www.test.com/text",
+          "hearing": Object {
+            "date": "2010-01-01T00:00:00-06:00",
+          },
+          "id": "1234",
+          "summary": "A bill, fantastic",
+          "title": "Foo",
+          "witnessSlipUrl": "http://www.test.com/slip",
+        }
+      }
+    />
+    <BillStatus
+      bill={
+        Object {
+          "detailsUrl": "http://www.test.com/details",
+          "documentNumber": "HB1234",
+          "fullTextUrl": "http://www.test.com/text",
+          "hearing": Object {
+            "date": "2010-01-01T00:00:00-06:00",
+          },
+          "id": "1234",
+          "summary": "A bill, fantastic",
+          "title": "Foo",
+          "witnessSlipUrl": "http://www.test.com/slip",
+        }
+      }
+    />
+    <p>
+      A bill, fantastic
+    </p>
+    <Button
+      isSmall={true}
+      to="/bill/1234"
+    >
+      More Info
+    </Button>
+  </Cell>
+</div>
+`;

@@ -1,19 +1,14 @@
-describe 'requesting hearings', graphql: :request do
+describe 'requesting hearings', :graph_request do
   it 'fetches a single hearing' do
-    hearing = create(:hearing, :with_any_committee)
-
-    fields = %w[
-      id
-      externalId
-      location
-      date
-    ]
+    hearing = create(:hearing)
 
     query = <<-QUERY
       query {
         viewer {
           hearing(id: "#{hearing.id}") {
-            #{fields.join("\n")}
+            id
+            location
+            date
           }
         }
       }
@@ -21,9 +16,7 @@ describe 'requesting hearings', graphql: :request do
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
-
-    data = body.dig(:data, :viewer, :hearing)
-    expect(data.keys).to eq(fields)
+    expect(body.dig(:data, :viewer, :hearing)).to be_present
   end
 
   it 'fetches multiple hearings' do
@@ -41,10 +34,9 @@ describe 'requesting hearings', graphql: :request do
       }
     QUERY
 
+    create_list(:hearing, 2)
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
-
-    nodes = body.dig(:data, :viewer, :hearings, :edges)
-    expect(nodes.length).to eq(2)
+    expect(body.dig(:data, :viewer, :hearings, :edges).length).to eq(2)
   end
 end

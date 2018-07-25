@@ -6,16 +6,25 @@ AllCops:
     - Guardfile
     - config.ru
   Exclude:
+    - bin/**/*
     - tmp/**/*
     - db/**/*
     - vendor/**/*
     - spec/**/*
+    - node_modules/**/*
 
 # rails
 Rails:
   Enabled: true
 
 Rails/Output:
+  Enabled: false
+
+Rails/Delegate:
+  Enabled: false
+
+# targets non-AR subclasses in the models folder
+Rails/FindEach:
   Enabled: false
 
 # relaxed ruby style
@@ -131,7 +140,11 @@ Style/TrailingCommaInArguments:
   Enabled: false
   StyleGuide: http://relaxed.ruby.style/#styletrailingcommainarguments
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+  StyleGuide: http://relaxed.ruby.style/#styletrailingcommainliteral
+
+Style/TrailingCommaInHashLiteral:
   Enabled: false
   StyleGuide: http://relaxed.ruby.style/#styletrailingcommainliteral
 
@@ -200,6 +213,12 @@ Style/BracesAroundHashParameters:
 Style/TrailingUnderscoreVariable:
   Enabled: false
 
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
+
 Layout/SpaceInLambdaLiteral:
   EnforcedStyle: require_space
 
@@ -208,6 +227,9 @@ Layout/IndentHash:
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
+
+Layout/EmptyLinesAroundArguments:
+  Enabled: false
 
 Layout/FirstParameterIndentation:
   Enabled: false

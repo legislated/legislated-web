@@ -1,25 +1,24 @@
-describe 'requesting bills', graphql: :request do
+describe 'requesting bills', :graph_request do
   it 'fetches a single bill' do
-    bill = create(:bill, :with_any_hearing, :with_documents, :with_steps)
+    bill = create(:bill, :with_documents, :with_steps)
 
     query = <<-QUERY
       query {
         viewer {
           bill(id: "#{bill.id}") {
             id
-            externalId
-            documentNumber
+            number
             title
             summary
             humanSummary
             sponsorName
             detailsUrl
+            slipUrl
+            slipResultsUrl
             documents {
               id
               number
               fullTextUrl
-              slipUrl
-              slipResultsUrl
               isAmendment
             }
             steps {
@@ -35,13 +34,11 @@ describe 'requesting bills', graphql: :request do
 
     body = request_graph_query(query)
     expect(body[:errors]).to be_blank
-
-    data = body.dig(:data, :viewer, :bill)
-    expect(data).to be_present
+    expect(body.dig(:data, :viewer, :bill)).to be_present
   end
 
   it 'fetches multiple bills' do
-    create_list(:bill, 3, :with_any_hearing)
+    create_list(:bill, 3)
 
     query = <<-QUERY
       query {

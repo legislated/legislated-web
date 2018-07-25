@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the link as active when the page matches 1`] = `
+<Container
+  aria-current="page"
+>
+  <Link
+    className="css-1c936fo-linkClass test-class"
+    to="test-url-1"
+  />
+</Container>
+`;
+
+exports[`#render shows the link as inactive 1`] = `
+<Container
+  aria-current={false}
+>
+  <Link
+    className="css-1c936fo-linkClass test-class"
+    to="test-url-1"
+  />
+</Container>
+`;

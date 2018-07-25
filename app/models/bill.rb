@@ -3,28 +3,43 @@ class Bill < ApplicationRecord
 
   # relationships
   has_many :documents, dependent: :destroy
-  belongs_to :hearing
+  belongs_to :hearing, optional: true
 
   # scopes
-  pg_search_scope :by_keyword, {
-    against: %i[title summary],
+  pg_search_scope :with_keyword, {
+    against: %i[
+      title
+    ],
     using: {
-      tsearch: { prefix: true }
+      tsearch: {
+        prefix: true,
+        dictionary: 'english',
+        tsvector_column: 'search_vector'
+      },
+      trigram: {
+        threshold: 0.1
+      }
     }
   }
 
-  pg_search_scope :by_fuzzy_title, {
-    against: :title,
-    using: {
-      trigram: { threshold: 0.1 }
-    }
-  }
+  scope :by_hearing_date, (-> (range = {}) do
+    q = includes(:hearing).references(:hearings)
+    q = q.order('hearings.date ASC')
+    q = q.where('hearings.date >= ?', range[:start]) if range[:start].present?
+    q = q.where('hearings.date <= ?', range[:end]) if range[:end].present?
+    q
+  end)
 
-  scope :by_date, (-> (range = {}) do
-    query = includes(:hearing).references(:hearings).order('hearings.date ASC')
-    query = query.where('hearings.date >= ?', range[:start]) if range[:start]
-    query = query.where('hearings.date <= ?', range[:end]) if range[:end]
-    query
+  scope :by_last_action_date, (-> do
+    order(Arel.sql("actions->-1->>'date' DESC NULLS LAST"))
+  end)
+
+  scope :with_number, (-> (number) do
+    where('number ILIKE ?', "%#{number}%")
+  end)
+
+  scope :with_actor, (-> (actor) do
+    where("steps->-1->>'actor' = any(array[?])", [*actor])
   end)
 
   # accessors

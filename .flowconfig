@@ -1,0 +1,19 @@
+[ignore]
+.*/node_modules/iterall/.*
+
+[include]
+./app/javascript
+
+[libs]
+./flow-typed
+
+[options]
+emoji=true
+
+suppress_type=$FlowIssue
+suppress_type=$FlowFixMe
+suppress_type=$FixMe
+
+; mappers
+module.name_mapper='^&\/\(.*\)$' -> '<PROJECT_ROOT>/app/javascript/assets/\1'
+module.name_mapper='^@\/\(.*\)$' -> '<PROJECT_ROOT>/app/javascript/src/shared/\1'

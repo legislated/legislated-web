@@ -1,0 +1,100 @@
+---
+:scope: 
+:url: http://www.ilga.gov/style/print.css
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Content-Type: text/css
+  Last-Modified: Tue, 18 Jan 2005 17:27:15 GMT
+  Accept-Ranges: bytes
+  ETag: '"febafcf382fdc41:0"'
+  Server: Microsoft-IIS/8.5
+  X-Powered-By: ASP.NET
+  Date: Tue, 06 Mar 2018 05:00:14 GMT
+  Connection: close
+  Content-Length: '6692'
+:content: "BODY\r\n{\r\n    FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY:
+  Arial\r\n}\r\nP\r\n{\r\n    FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY:
+  Arial\r\n}\r\nP.sidemenu\r\n{\r\n    FONT-WEIGHT: bold;\r\n    FONT-SIZE: 9pt;\r\n
+  \   COLOR: navy;\r\n    TEXT-INDENT: 2px;\r\n    FONT-FAMILY: Arial;\r\n    TEXT-DECORATION:
+  none\r\n}\r\nHEADINGLINK\r\n{\r\n    FONT-WEIGHT: bolder;\r\n    FONT-SIZE: 10pt;\r\n
+  \   COLOR: navy;\r\n    LINE-HEIGHT: 20px;\r\n    FONT-FAMILY: Arial;\r\n    TEXT-DECORATION:
+  underline\r\n}\r\nCONTENTLINK\r\n{\r\n    FONT-WEIGHT: normal;\r\n    FONT-SIZE:
+  10pt;\r\n    FONT-FAMILY: Arial\r\n}\r\nTEXTHEADING\r\n{\r\n    FONT-WEIGHT: bolder;\r\n
+  \   FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY: Arial\r\n}\r\nTEXTCONTENT\r\n{\r\n
+  \   FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY: Arial\r\n}\r\nGROUPLISTING\r\n{\r\n
+  \   FONT-SIZE: 10pt;\r\n    TEXT-INDENT: 10px;\r\n    LINE-HEIGHT: 16pt;\r\n    FONT-FAMILY:
+  Arial\r\n}\r\nA\r\n{\r\n    FONT-SIZE: 10pt;\r\n    FONT-FAMILY: Arial\r\n}\r\nA.footer\r\n{\r\n
+  \   FONT-WEIGHT: normal;\r\n    FONT-SIZE: 10pt;\r\n    COLOR: navy;\r\n    FONT-FAMILY:
+  Arial;\r\n    TEXT-DECORATION: none\r\n}\r\nA.mainmenu\r\n{\r\n    FONT-WEIGHT:
+  bold;\r\n    FONT-SIZE: 8pt;\r\n    COLOR: white;\r\n    FONT-FAMILY: Arial;\r\n
+  \   TEXT-DECORATION: none\r\n}\r\nA.sidemenu\r\n{\r\n    FONT-SIZE: 9pt;\r\n    COLOR:
+  navy;\r\n    TEXT-INDENT: 2px;\r\n    FONT-FAMILY: Arial;\r\n    TEXT-ALIGN: left;\r\n
+  \   TEXT-DECORATION: none\r\n}\r\nA.homemenu\r\n{\r\n    FONT-WEIGHT: bold;\r\n
+  \   FONT-SIZE: 10pt;\r\n    COLOR: navy;\r\n    FONT-FAMILY: Arial;\r\n    TEXT-DECORATION:
+  none\r\n}\r\nA.filetab\r\n{\r\n    COLOR: white;\r\n    FONT-FAMILY: Arial\r\n}\r\nA.listing\r\n{\r\n
+  \   FONT-WEIGHT: normal;\r\n    FONT-SIZE: 10pt;\r\n    COLOR: navy;\r\n    LINE-HEIGHT:
+  16pt;\r\n    FONT-FAMILY: Arial\r\n}\r\n}\r\nTABLE.mainmenu\r\n{\r\n    FONT-WEIGHT:
+  bold;\r\n    FONT-SIZE: 8pt;\r\n    COLOR: navy;\r\n    FONT-FAMILY: Arial;\r\n
+  \   BACKGROUND-COLOR: navy;\r\n    TEXT-DECORATION: none\r\n}\r\nTABLE.sidemenu\r\n{\r\n
+  \   MARGIN-TOP: 0px;\r\n    MARGIN-LEFT: 0px;\r\n    TEXT-INDENT: 2px\r\n}\r\nTABLE.footer\r\n{\r\n
+  \   FONT-WEIGHT: normal;\r\n    FONT-SIZE: 10pt;\r\n    FONT-FAMILY: Arial\r\n}\r\nTH\r\n{\r\n
+  \   FONT-WEIGHT: bold;\r\n    FONT-SIZE: 12pt;\r\n    COLOR: black;\r\n    FONT-FAMILY:
+  Arial;\r\n    FONT-VARIANT: small-caps\r\n}\r\nTD.home\r\n{\r\n    PADDING-LEFT:
+  2px;\r\n    TEXT-INDENT: 2px\r\n}\r\nTD.tabcontrol\r\n{\r\n    BORDER-RIGHT: white
+  thin solid;\r\n    FONT-FAMILY: Arial\r\n}\r\nTD.tabbottom\r\n{\r\n    BORDER-TOP:
+  navy thin solid;\r\n    BACKGROUND-COLOR: white\r\n}\r\nTD.sidemenu\r\n{\r\n    BORDER-RIGHT:
+  black 1px;\r\n    BORDER-TOP: black 1px;\r\n    PADDING-LEFT: 0px;\r\n    PADDING-BOTTOM:
+  5px;\r\n    MARGIN-LEFT: 1pt;\r\n    BORDER-LEFT: black 1px;\r\n    TEXT-INDENT:
+  2px;\r\n    PADDING-TOP: 5px;\r\n    BORDER-BOTTOM: black 1px\r\n}\r\nTD.sidemenusub\r\n{\r\n
+  \   PADDING-LEFT: 5px;\r\n    PADDING-BOTTOM: 5px;\r\n    PADDING-TOP: 5px\r\n}\r\nTD.padding\r\n{\r\n
+  \   PADDING-LEFT: 2px;\r\n    TEXT-INDENT: 2px\r\n}\r\nLI\r\n{\r\n    FONT-SIZE:
+  10pt;\r\n    COLOR: black\r\n}\r\n.verticalline\r\n{\r\n    BACKGROUND-COLOR: navy\r\n}\r\n.legislinks\r\n{\r\n
+  \   FONT-WEIGHT: bold;\r\n    FONT-SIZE: 10pt;\r\n    COLOR: navy;\r\n    LINE-HEIGHT:
+  20px;\r\n    FONT-FAMILY: Arial;\r\n    TEXT-DECORATION: underline\r\n}\r\nP.boldblue\r\n{\r\n
+  \   COLOR: navy;\r\n    FONT-FAMILY: Arial;\r\n    TEXT-ALIGN: center\r\n}\r\nTD.header\r\n{\r\n
+  \   FONT-SIZE: 10pt;\r\n    COLOR: white;\r\n    FONT-FAMILY: Arial;\r\n    BACKGROUND-COLOR:
+  navy\r\n}\r\nP.summary\r\n{\r\n    FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-STYLE:
+  italic;\r\n    FONT-FAMILY: Arial;\r\n    TEXT-ALIGN: center\r\n}\r\nTD.detail\r\n{\r\n
+  \   FONT-SIZE: 10pt;\r\n    FONT-FAMILY: Arial\r\n}\r\nTD.Member\r\n{\r\n    FONT-SIZE:
+  10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY: Arial;\r\n    TEXT-ALIGN: left\r\n}\r\nTD.content\r\n{\r\n
+  \   FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY: Arial\r\n}\r\nTD.heading\r\n{\r\n
+  \   FONT-WEIGHT: bolder;\r\n    FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY:
+  Arial\r\n}\r\nP.heading\r\n{\r\n    FONT-WEIGHT: bolder;\r\n    FONT-SIZE: 10pt;\r\n
+  \   COLOR: black;\r\n    FONT-FAMILY: Arial\r\n}\r\nP.Link\r\n{\r\n    FONT-SIZE:
+  10pt;\r\n    FONT-FAMILY: Arial\r\n}\r\nTD.whiteheading\r\n{\r\n    FONT-WEIGHT:
+  bolder;\r\n    FONT-SIZE: 10pt;\r\n    COLOR: white;\r\n    FONT-FAMILY: Arial\r\n}\r\nTD.billlist\r\n{\r\n
+  \   FONT-SIZE: 8pt;\r\n    COLOR: black;\r\n    FONT-FAMILY: Arial\r\n}\r\nA.billlist\r\n{\r\n
+  \   FONT-SIZE: 8pt;\r\n    FONT-FAMILY: Arial;\r\n    TEXT-DECORATION: underline\r\n}\r\nA.header\r\n{\r\n
+  \   FONT-WEIGHT: bold;\r\n    FONT-SIZE: 12pt;\r\n    COLOR: black;\r\n    FONT-FAMILY:
+  Arial;\r\n    TEXT-DECORATION: none\r\n}\r\nDIV.heading\r\n{\r\n    FONT-WEIGHT:
+  bolder;\r\n    FONT-SIZE: 12pt;\r\n    COLOR: black;\r\n    FONT-FAMILY: Arial\r\n}\r\nDIV.content\r\n{\r\n
+  \   FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY: Arial\r\n}\r\nSPAN.heading\r\n{\r\n
+  \   FONT-WEIGHT: bolder;\r\n    FONT-SIZE: 12pt;\r\n    COLOR: black;\r\n    FONT-FAMILY:
+  Arial\r\n}\r\nSPAN.content\r\n{\r\n    FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n
+  \   FONT-FAMILY: Arial\r\n}\r\nSPAN.italics\r\n{\r\n    FONT-SIZE: 10pt;\r\n    COLOR:
+  black;\r\n    FONT-STYLE: italic;\r\n    FONT-FAMILY: Arial\r\n}\r\nP.disclaimer\r\n{\r\n
+  \   FONT-SIZE: 8pt;\r\n    COLOR: black;\r\n    FONT-STYLE: italic;\r\n    FONT-FAMILY:
+  Arial\r\n}\r\nSPAN.8pt\r\n{\r\n    FONT-SIZE: 8pt;\r\n    COLOR: black;\r\n    FONT-FAMILY:
+  Arial\r\n}\r\nTD.tabmiddlerow\r\n{\r\n    BORDER-RIGHT: thin solid;\r\n    BORDER-BOTTOM:
+  white thin solid;\r\n    FONT-FAMILY: Arial\r\n}\r\nA.heading\r\n{\r\n    FONT-WEIGHT:
+  bolder;\r\n    FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY: Arial\r\n}\r\nSPAN.heading2\r\n{\r\n
+  \   FONT-WEIGHT: bolder;\r\n    FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY:
+  Arial\r\n}\r\n.ErrorText\r\n{\r\n    FONT-SIZE: 10pt;\r\n    COLOR: red;\r\n    FONT-FAMILY:
+  Arial\r\n}\r\nDEL\r\n{\r\n    DISPLAY: none;\r\n    VISIBILITY: hidden\r\n}\r\nLI.content\r\n{\r\n
+  \   FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY: Arial, Verdana\r\n}\r\nTD.footer\r\n{\r\n
+  \   FONT-SIZE: 8pt;\r\n    COLOR: black;\r\n    FONT-FAMILY: Arial, Verdana;\r\n
+  \   FONT-VARIANT: normal\r\n}\r\n.8pt\r\n{\r\n    FONT-SIZE: 8pt;\r\n    COLOR:
+  black;\r\n    FONT-FAMILY: Arial, Verdana;\r\n    FONT-VARIANT: normal\r\n}\r\n.black8ptbold\r\n{\r\n
+  \   FONT-WEIGHT: bolder;\r\n    FONT-SIZE: 8pt;\r\n    COLOR: black;\r\n    FONT-FAMILY:
+  Arial\r\n}\r\n.navy10pt\r\n{\r\n    FONT-SIZE: 10pt;\r\n    TEXT-TRANSFORM: none;\r\n
+  \   COLOR: navy;\r\n    FONT-STYLE: normal;\r\n    FONT-FAMILY: Arial, Verdana;\r\n
+  \   FONT-VARIANT: normal;\r\n    TEXT-DECORATION: underline\r\n}\r\n.sitemap\r\n{\r\n
+  \   FONT-SIZE: smaller;\r\n    COLOR: navy;\r\n    FONT-FAMILY: Arial, Verdana\r\n}\r\n.black8pt\r\n{\r\n
+  \   FONT-SIZE: 8pt;\r\n    FONT-FAMILY: Arial\r\n}\r\nTD.headingU\r\n{\r\n    FONT-WEIGHT:
+  bolder;\r\n    FONT-SIZE: 10pt;\r\n    COLOR: black;\r\n    FONT-FAMILY: Arial;\r\n
+  \   TEXT-DECORATION: underline\r\n}\r\nTD.LEGHEADING\r\n{\r\n    FONT-WEIGHT: bolder;\r\n
+  \   FONT-SIZE: 12pt;\r\n    COLOR: white;\r\n    FONT-STYLE: normal;\r\n    FONT-FAMILY:
+  Arial;\r\n    FONT-VARIANT: normal;\r\n    TEXT-DECORATION: underline\r\n}\r\n#toplinks,
+  #Legislation, #PreviousGA,\r\n{\r\n\t display: none; \r\n}\r\n"

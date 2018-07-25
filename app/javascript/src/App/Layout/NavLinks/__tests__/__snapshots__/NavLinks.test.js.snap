@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#render shows the nav links 1`] = `
+<Nav
+  className="test-class"
+>
+  <NavLink
+    onClick={[MockFunction]}
+    to="/"
+  >
+    Home
+  </NavLink>
+  <NavLink
+    onClick={[MockFunction]}
+    to="/bills"
+  >
+    Bills
+  </NavLink>
+  <NavLink
+    onClick={[MockFunction]}
+    to="/faq"
+  >
+    FAQ
+  </NavLink>
+  <NavLink
+    onClick={[MockFunction]}
+    to="/about"
+  >
+    About Us
+  </NavLink>
+</Nav>
+`;

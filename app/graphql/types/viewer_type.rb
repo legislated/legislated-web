@@ -13,12 +13,6 @@ module Types
     end
 
     # entities
-    field :chamber do
-      type ChamberType
-      argument :id, !types.ID, 'The graph id of the chamber'
-      resolve -> (_obj, args, _ctx) { Chamber.find(args['id']) }
-    end
-
     field :committee do
       type CommitteeType
       argument :id, !types.ID, 'The graph id of the committee'
@@ -44,11 +38,6 @@ module Types
     end
 
     # connections
-    connection :chambers, ChamberType.connection_type do
-      description 'All chambers'
-      resolve -> (_obj, _args, _ctx) { Chamber.all }
-    end
-
     connection :committees, CommitteeType.connection_type do
       description 'All committees'
       resolve -> (_obj, _args, _ctx) { Committee.all }
@@ -59,33 +48,20 @@ module Types
       resolve -> (_obj, _args, _ctx) { Hearing.all }
     end
 
-    BillSearchConnectionType = BillType.define_connection do
-      name 'BillSearchConnection'
-
-      field :count do
-        description 'The total number of bills in the search results'
-        type !types.Int
-        resolve -> (obj, _args, _ctx) { obj.nodes.count }
-      end
-    end
-
-    connection :bills, BillSearchConnectionType do
+    connection :bills, BillsSearchType do
       description 'All bills'
 
-      argument :query, types.String, 'Returns bills whose title or summary match the query'
-      argument :from, DateTimeType, 'Returns bills whose hearing is on or after the date-time'
-      argument :to, DateTimeType, 'Returns bills whose hearings is on or before the date-time'
+      argument :params, BillsSearchParamsType
 
       resolve -> (_obj, args, _ctx) do
-        bills_query = Bill.by_date(start: args[:from], end: args[:to])
-        bills_query = BillsSearchService.filter(bills_query, args[:query]) if args[:query].present?
-        bills_query
+        args = args.parse_graphql_data
+        Bills::Search.new.call(args[:params] || {})
       end
     end
 
     connection :legislators, LegislatorType.connection_type do
       description 'All legislators'
-      resolve -> (_obj, _args, _ctx) { Chamber.all }
+      resolve -> (_obj, _args, _ctx) { Legislator.all }
     end
   end
 end
