@@ -66,6 +66,15 @@ Create the database user for the Rails app:
 $ sudo createuser -s postgres
 ```
 
+If rais is using the OS user (check config/database.yml) you'll need to add
+permissions to your user in the postgres user roles:
+
+```sh
+$ sudo su - postgres
+$ psql
+# alter user os_user superuser
+```
+
 ## Redis
 
 You can install Redis as a gem (requires you have the correct ruby installed):
