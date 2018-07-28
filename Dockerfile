@@ -2,7 +2,10 @@
 FROM ruby:2.3.0
 
 # set environment variables
-ENV APP_HOME /legislated
+ENV \
+  APP_HOME=/legislated \
+  PG_VERISON=9.6 \
+  PHANTOM_JS_VERSION=phantomjs-2.1.1-linux-x86_64
 
 # install core packages
 # - build-essential: build tools for gems with native extensions
@@ -24,7 +27,7 @@ RUN \
     | apt-key add - && \
   apt-get update -qq && \
   apt-get install -y \
-    postgresql-client-9.6
+    postgresql-client-$PG_VERSION
 
 # install node (add repo)
 # - nodejs: node
@@ -41,6 +44,19 @@ RUN \
   apt-get update -qq && \
   apt-get install -y \
     nodejs yarn
+
+# install phantomjs
+RUN \
+  apt-get install -y --no-install-recommends \
+    ca-certificates \
+    bzip2 \
+    libfontconfig && \
+  curl -L \
+    https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS_VERSION.tar.bz2 \
+    | tar -xj -C /tmp && \
+  mv \
+    /tmp/$PHANTOM_JS_VERSION/bin/phantomjs \
+    /usr/local/bin
 
 # install nano for developement
 RUN \

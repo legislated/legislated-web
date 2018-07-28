@@ -40,7 +40,7 @@ $ yarn
 Copy over the development .env file:
 
 ```sh
-$ cp .env.sample .env
+$ cp config/dotenvs/sample.env .env
 ```
 
 Make **sure** Postgres is started, and then setup the local database:
