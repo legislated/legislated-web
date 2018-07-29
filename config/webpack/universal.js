@@ -10,7 +10,7 @@ const { stringify } = JSON
 // env plugin
 const env = {
   IS_SERVER: null,
-  GRAPH_URL: stringify(process.env.GRAPH_URL)
+  GRAPH_URL: stringify(process.env.LEGISLATED_GRAPH_URL)
 }
 
 const envPlugin = (extras) => new webpack.DefinePlugin({

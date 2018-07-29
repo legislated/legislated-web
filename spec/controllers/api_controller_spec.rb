@@ -6,7 +6,7 @@ describe ApiController do
     before do
       allow(GraphSchema).to receive(:execute)
       allow(ENV).to receive(:[]).and_call_original
-      allow(ENV).to receive(:[]).with('ADMIN_CREDENTIALS').and_return(env_credentials)
+      allow(ENV).to receive(:[]).with('LEGISLATED_ADMIN_CREDENTIALS').and_return(env_credentials)
 
       # rspec-rails is broke https://github.com/rspec/rspec-rails/issues/1655
       request.headers['Authorization'] = credentials

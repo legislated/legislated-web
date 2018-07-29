@@ -25,6 +25,6 @@ class ApiController < ActionController::API
   end
 
   def parse_context
-    { is_admin: request.headers['Authorization'] == ENV['ADMIN_CREDENTIALS'] }
+    { is_admin: request.headers['Authorization'] == ENV['LEGISLATED_ADMIN_CREDENTIALS'] }
   end
 end

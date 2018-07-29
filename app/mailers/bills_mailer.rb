@@ -2,7 +2,7 @@ class BillsMailer < ApplicationMailer
   default from: 'noreply@billtracking.org'
 
   # sends a weekly export of bill data to a list of recipients stored in the
-  # EXPORT_MAILER_RECIPIENTS environment variable
+  # LEGISLATED_EXPORT_RECIPIENTS environment variable
   def weekly_export_email(serialize_csv = Bills::SerializeCsv.new)
     start = Time.current.next_week
     dates = {
@@ -40,7 +40,7 @@ class BillsMailer < ApplicationMailer
 
   # destination
   def build_recipients
-    recipient_string = ENV['EXPORT_MAILER_RECIPIENTS']
+    recipient_string = ENV['LEGISLATED_EXPORT_RECIPIENTS']
     recipient_string.split(',')
   end
 end

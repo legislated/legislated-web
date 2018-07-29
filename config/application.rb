@@ -12,8 +12,8 @@ module Legislated
     config.autoload_paths << Rails.root.join('app', '**', 'concerns')
     config.active_record.schema_format = :sql
 
-    if ENV['ADMIN_CREDENTIALS'].blank?
-      raise 'ADMIN_CREDENTIALS environment variable required to run the server. Maybe you forgot to copy the .env.sample to .env?'
+    if ENV['LEGISLATED_ADMIN_CREDENTIALS'].blank?
+      raise 'LEGISLATED_ADMIN_CREDENTIALS environment variable required to run the server. Maybe you forgot to copy the .env.sample to .env?'
     end
   end
 end

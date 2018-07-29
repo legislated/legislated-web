@@ -10,7 +10,7 @@ module Request
       )
 
       headers({
-        'X-API-KEY': ENV['OPEN_STATES_KEY']
+        'X-API-KEY': ENV['LEGISLATED_OPENSTATES_API_KEY']
       })
     end
 

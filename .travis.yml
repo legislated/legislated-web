@@ -5,7 +5,7 @@ rvm:
 services:
   - postgresql
 env:
-  - ADMIN_CREDENTIALS="Basic YWRtaW46cGFzc3dvcmTCow==" TZ=America/Chicago
+  - LEGISLATED_ADMIN_CREDENTIALS="Basic YWRtaW46cGFzc3dvcmTCow==" TZ=America/Chicago
 cache:
   bundler: true
   yarn: true

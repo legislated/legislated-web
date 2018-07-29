@@ -12,7 +12,7 @@ describe BillsMailer, type: :mailer do
     before do
       allow(serializer).to receive(:call).and_return(csv)
       allow(ENV).to receive(:[]).and_call_original
-      allow(ENV).to receive(:[]).with('EXPORT_MAILER_RECIPIENTS').and_return(recipients)
+      allow(ENV).to receive(:[]).with('LEGISLATED_EXPORT_RECIPIENTS').and_return(recipients)
 
       Timecop.freeze(date)
     end
