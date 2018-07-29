@@ -10,97 +10,63 @@
 
 ## Setup [↑](#table-of-contents)
 
-A quick foreword:
-- If you don't use a tool to manage multiple ruby versions, please [install rbenv](https://github.com/rbenv/rbenv)
-- Some packages must be installed using your system's package manager
-- You can find some platform-specific documentation for [Mac](wiki/osx.md) and [Ubuntu](wiki/ubuntu.md)
+### Install Docker
 
-Install the global dependencies:
-- ruby (2.3.0) -> [installation](https://github.com/rbenv/rbenv)
-- bundler -> `gem install bundler`
-- postgresql
-- yarn -> [installation](https://yarnpkg.com/en/docs/install)
+We run the app locally using docker. Please see the-system specific guide for getting
+it up and running on your machine:
 
-Install the *optional* global dependencies (to get going faster, skip this for now):
-- phantomjs (intially optional, needed for specs / scraping)
-- redis (intially optional, needed for background jobs)
+- Install Docker on [Mac](setup/macos.md)
+- Install Docker on [Ubuntu](setup/ubuntu.md)
 
-Install local ruby dependencies with bundler:
+### Bootstrap the app
 
-```sh
-$ bundle
-```
+Once you have [Docker](#install-docker) running, you can perform these additional setup steps.
 
-Install local JS dependencies with yarn:
-
-```sh
-$ yarn
-```
-
-Copy over the development .env file:
+Since we git-ignore `.env`, first copy the sample development `.env` file. Some env vars in the sample may be placeholders, so ask a team member if you need them:
 
 ```sh
 $ cp config/dotenvs/sample.env .env
 ```
 
-Make **sure** Postgres is started, and then setup the local database:
+Build and run the app using `docker-compose`:
 
 ```sh
-$ rails db:reset
+$ docker-compose up --build
 ```
+
+Create the development database and seed it with data:
+
+```sh
+$ docker-compose exec web rails db:reset
+```
+
+At this point, you *should* be able to hit the app at http://localhost:3000. Congrats!
 
 ## Development [↑](#table-of-contents)
 
-### Rails
+See [workflow](wiki/dev/workflow.md) for workflow tips when working with Rails, JavaScript, and Docker.
 
-Start the server with:
+See [commands](wiki/dev/commands.md) for a more complete list of development commands.
 
-```sh
-$ rails s
-```
-
-You can re-seed the database to get fresh (fake) data at any time using:
+However, to get started, run the server with:
 
 ```sh
-$ rails db:reset
+$ docker-compose up
 ```
 
-If you're working on a background job and want it to actually run, make **sure** redis is is started and then run:
+You can stop the server (gently) using `ctrl-c` once.
+
+You can use the rails console to explore the database through using [ActiveRecord](http://guides.rubyonrails.org/active_record_querying.html) by running:
 
 ```sh
-$ bundle exec sidekiq
+$ docker-compose exec web rails console
 ```
 
-You can use the rails console to explore the database through using [ActiveRecord](http://guides.rubyonrails.org/active_record_querying.html):
+Run the linter & tests using `rake`. Please do this frequently! (especially before pushing)
 
 ```sh
-$ rails console
+$ docker-compose exec web rake
 ```
-
-You can use the interactive debugger [pry](http://pryrepl.org/) to set breakpoints and explore the code at runtime:
-
-```ruby
-def method
-  binding.pry # <- breakpoint, like 'debugger' in javascript
-end
-```
-
-Before pushing anything, please make sure to run the linter and tests using `rake`.
-
-```sh
-$ rake
-$ rubocop -a # if rubocop fails, this fixes any possible linter issues
-```
-
-### Client
-
-Make sure the Rails server is started. Then start the [webpack dev server](https://webpack.js.org/configuration/dev-server/) to serve the javascript app on http://localhost:8080/:
-
-```sh
-$ yarn start
-```
-
-We use [flow](https://flow.org/en/docs/getting-started/) to statically type-check our javascript. It's recommended that you use an editor that integrates with nicely with flow to get real time errors. Atom (with the Nuclide plugin) is a [good candidate](https://nuclide.io/docs/languages/flow/).
 
 ## Testing [↑](#table-of-contents)
 
