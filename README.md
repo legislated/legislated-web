@@ -6,11 +6,11 @@ A Rails/React/Relay app providing access to legislative data for the Illinois st
 
 ## Setup
 
-Check out [HACKING.md](HACKING.md)!
+Check out the [setup](wiki/setup.md) document!
 
 ## Contributing
 
-We'd love your help! See the [HACKING](HACKING.md) document for information on getting your environment up and running.
+We'd love your help! See the [setup](wiki/setup.md) document for information on getting your environment up and running.
 
 - You can find our current set of user stories on [Trello](https://trello.com/b/4sgWSozE/website)
 - You can find us on the [Chi Hack Night Slack](http://slackme.chihacknight.org/)

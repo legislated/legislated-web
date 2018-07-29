@@ -1,4 +1,4 @@
-# Hacking
+# Setup
 
 ## Table of Contents
 
