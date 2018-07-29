@@ -6,7 +6,7 @@ class ApiController < ActionController::API
       only: GraphWhitelist
     })
 
-    render json: result
+    render(json: result)
   end
 
   private

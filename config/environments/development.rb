@@ -21,7 +21,8 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.active_support.deprecation = :log
 
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  # the evented file watcher does not work w/ docker
+  config.file_watcher = ActiveSupport::FileUpdateChecker
 
   # profiling
   Bullet.tap do |b|

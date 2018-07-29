@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-# api
+# core / api
 gem 'graphql'
 gem 'graphql-batch'
 gem 'graphql-preload'
@@ -26,13 +26,9 @@ gem 'hypernova'
 gem 'webpacker'
 
 # development
-group :development do
-  gem 'bullet'
-  gem 'listen', '~> 3.0.5'
-end
-
 group :development, :test do
   gem 'awesome_print'
+  gem 'bullet'
   gem 'database_cleaner'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
@@ -45,7 +41,6 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
   gem 'puffing-billy', git: 'https://github.com/wzrad/puffing-billy.git', branch: 'develop'
-  gem 'rb-readline'
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'timecop'
