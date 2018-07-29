@@ -7,18 +7,18 @@ ENV \
   PG_VERISON=9.6 \
   PHANTOM_JS_VERSION=phantomjs-2.1.1-linux-x86_64
 
-# install core packages
-# - build-essential: build tools for gems with native extensions
-# - libpq-dev:       postgres c interfaces
 RUN \
+  # logging which commands actually runs
+  set -x && \
+  # install core packages
+  # - build-essential: build tools for gems with native extensions
+  # - libpq-dev:       postgres c interfaces
   apt-get update -qq && \
-  apt-get install -y \
+  apt-get install -y --no-install-recommends \
     build-essential \
-    libpq-dev
-
-# install postgres (add repo)
-# - postgresql-client-9.6: provides pgdump
-RUN \
+    libpq-dev && \
+  # install postgres
+  # - postgresql-client-9.6: provides pgdump
   echo \
     "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" \
     >> /etc/apt/sources.list && \
@@ -27,12 +27,10 @@ RUN \
     | apt-key add - && \
   apt-get update -qq && \
   apt-get install -y \
-    postgresql-client-$PG_VERSION
-
-# install node (add repo)
-# - nodejs: node
-# - yarn:   package manager
-RUN \
+    postgresql-client-$PG_VERSION && \
+  # install node
+  # - nodejs: node
+  # - yarn:   package manager
   curl -sS \
     https://dl.yarnpkg.com/debian/pubkey.gpg \
     | apt-key add - && \
@@ -43,10 +41,10 @@ RUN \
     >> /etc/apt/sources.list && \
   apt-get update -qq && \
   apt-get install -y \
-    nodejs yarn
-
-# install phantomjs
-RUN \
+    nodejs yarn && \
+  # install phantomjs
+  # - phantomjs: headless browser
+  # - ...rest:   phantomjs runtime deps
   apt-get install -y --no-install-recommends \
     ca-certificates \
     bzip2 \
@@ -56,22 +54,20 @@ RUN \
     | tar -xj -C /tmp && \
   mv \
     /tmp/$PHANTOM_JS_VERSION/bin/phantomjs \
-    /usr/local/bin
-
-# install nano for developement
-RUN \
-  apt-get install -y \
-    nano
-
-# trim image size, remove package dbs, logs, etc
-RUN \
+    /usr/local/bin && \
+  # clean up unnecessary files to trim image size
+  # - /var/lib/apt:  package manager data
+  # - /var/lib/dpkg: packager installer data
+  # - ...rest:       self-explanatory
   apt-get clean autoclean && \
   apt-get autoremove -y && \
   rm -rf \
     /var/lib/apt \
     /var/lib/dpkg \
     /var/lib/cache \
-    /var/lib/log
+    /var/lib/log && \
+  # stop logging executed commands
+  set +x
 
 # setup app's working directory
 RUN mkdir $APP_HOME
