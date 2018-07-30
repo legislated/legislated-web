@@ -25,7 +25,7 @@ $ docker attach $(docker ps | grep 'web_web' | cut -d ' ' -f1)
 
 When the breakpoint is reached, a Rails console will pop up in the attached session.
 
-When you're finished, detach the session using `ctrl-p, ctrl-q`. Using `ctrl-c` will shut down the `web` service.
+Close the session by hitting `ctrl-p, ctrl-q`. Using `ctrl-c` will shut down the Rails server completely.
 
 ## Adding a Gem
 
