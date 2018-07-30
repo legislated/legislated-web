@@ -1,5 +1,5 @@
 // @flow
-class Config {
+export class Config {
   isServer = process.env.IS_SERVER != null
   graphUrl = process.env.GRAPH_URL || ''
 

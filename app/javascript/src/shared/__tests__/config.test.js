@@ -1,24 +1,8 @@
 /* eslint-env jest */
-import { loadConfig } from '../config'
-
-// subject
-let subject
+import { Config } from '../config'
 
 // specs
-it('loads a different config per environment', () => {
-  process.env.ENVIRONMENT = 'development'
-  subject = loadConfig()
-
-  process.env.ENVIRONMENT = 'staging'
-  expect(subject).not.toEqual(loadConfig())
-})
-
-it('raises an error when there is no environment', () => {
-  delete process.env.ENVIRONMENT
-  expect(loadConfig).toThrow('Invalid environment specified: null')
-})
-
-it('raises an error when there is no matching config', () => {
-  process.env.ENVIRONMENT = 'foo'
-  expect(loadConfig).toThrow('Invalid environment specified: foo')
+it('raises an error when there is no graph url', () => {
+  process.env.GRAPH_URL = ''
+  expect(() => new Config()).toThrow('GRAPH_URL environment variable was blank')
 })
