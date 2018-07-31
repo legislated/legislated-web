@@ -4,7 +4,7 @@ FROM ruby:2.3.0
 # set environment variables
 ENV \
   APP_HOME=/legislated \
-  PG_VERISON=9.6 \
+  PG_VERSION=9.6 \
   PHANTOM_JS_VERSION=phantomjs-2.1.1-linux-x86_64
 
 RUN \
@@ -26,7 +26,7 @@ RUN \
     https://www.postgresql.org/media/keys/ACCC4CF8.asc \
     | apt-key add - && \
   apt-get update -qq && \
-  apt-get install -y \
+  apt-get install -y --no-install-recommends \
     postgresql-client-$PG_VERSION && \
   # install node
   # - nodejs: node
@@ -40,8 +40,9 @@ RUN \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" \
     >> /etc/apt/sources.list && \
   apt-get update -qq && \
-  apt-get install -y \
-    nodejs yarn && \
+  apt-get install -y --no-install-recommends \
+    nodejs \
+    yarn && \
   # install phantomjs
   # - phantomjs: headless browser
   # - ...rest:   phantomjs runtime deps
