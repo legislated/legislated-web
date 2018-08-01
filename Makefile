@@ -27,7 +27,7 @@ db/reset:
 
 # -- test --
 ## runs all the tests
-test: test-rails test-js
+test: test/rails test/js
 ## runs the rails tests
 test/rails: .is-up
 	$(exec) web rspec $(ONLY)
@@ -95,7 +95,7 @@ js/relay: .is-up
 js/relay/watch: .is-up
 	$(exec) web $(relay)/watch
 
-.PHONY = js/flow js/flow/restart js/relay js/relay/watch
+.PHONY = js/flow js/flow/restart js/flow/quiet js/relay js/relay/watch
 
 # -- verify --
 # verifies the code is correct
@@ -103,7 +103,9 @@ verifiy: verify/rails verify/js
 # verifies the rails code is correct
 verify/rails: lint/rails test/rails
 # verifies the rails code is correct
-verify/js: lint/js test/js js/flow
+verify/js: lint/js test/js js/flow/quiet
+
+.PHONY = verify verify/rails verify/js
 
 # -- private --
 .env:
