@@ -131,7 +131,7 @@ BEGIN {
 	$$1=""; docs=$$0;
 	getline;
 	sub(/:/, "", $$1);
-	printf "  \033[36m%-15s\033[0m %s\n", $$1, docs;
+	printf "  \033[36m%-16s\033[0m %s\n", $$1, docs;
 }
 endef
 export HELP
