@@ -8,30 +8,6 @@
   "engines": {
     "node": "8.x"
   },
-  "scripts": {
-    "start": "run-p wds hypernova",
-    "start:debug": "DEBUG=true yarn start",
-    "start:prod": "NODE_ENV=production yarn hypernova",
-    "wds": "./bin/webpack-dev-server",
-    "hypernova": "DEBUG=true node hypernova",
-    "hypernova:prod": "NODE_ENV=production node hypernova",
-    "hypernova:inspect": "DEBUG=true node inspect hypernova",
-    "build:staging": "RAILS_ENV=staging rails assets:precompile",
-    "build:prod": "RAILS_ENV=production rails assets:precompile",
-    "test": "TZ=America/Chicago jest",
-    "test:watch": "yarn test --watch",
-    "test:snapshot": "yarn test -u",
-    "test:debug": "node --inspect --debug-brk ./node_modules/.bin/jest --runInBand",
-    "lint": "yarn lint:bare | snazzy",
-    "lint:fix": "yarn lint:bare --fix | snazzy",
-    "lint:bare": "standard './app/javascript/**/*.js'",
-    "flow": "flow",
-    "flow:restart": "flow stop && flow",
-    "relay": "relay-compiler --src ./app/javascript/src --schema schema.json",
-    "relay:watch": "yarn relay --watch",
-    "verify": "yarn lint && yarn flow && yarn test",
-    "verify:quiet": "yarn lint && yarn flow --quiet && yarn test"
-  },
   "dependencies": {
     "@rails/webpacker": "^3.2.2",
     "babel-runtime": "^6.26.0",
