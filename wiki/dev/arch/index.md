@@ -6,11 +6,11 @@ If you've never worked with some of the technologies on this project, it may be 
 
 ### [Rails](http://guides.rubyonrails.org/)
 
-Rails is a web-application framework, and we use it to serve our API, interact with the database, etc. If you've never worked with it, their [documentation](http://guides.rubyonrails.org/) is a good place to start.
+Rails is a web-application framework, and we use it to serve our API, interact with the database, etc. If you've never worked with it, the [official documentation](http://guides.rubyonrails.org/) is a good place to start.
 
 ### [GraphQL](api.md)
 
-Our API is defined using GraphQL, a query language that is an alternative to REST. It offers a lot of flexibility to clients by allowing them to specify the exact data fields of the response. It's also simple to implement on Rails side. See the link for more info.
+Our API is defined using GraphQL, a query language that is an alternative to REST. It offers a lot of flexibility to clients by allowing them to specify the exact data fields of the response. It's also simple to implement on the Rails side. See the link for more info.
 
 ### [Sidekiq, Capybara](import.md)
 
