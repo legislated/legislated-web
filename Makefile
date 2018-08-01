@@ -30,7 +30,7 @@ db/reset:
 test: test-rails test-js
 ## runs the rails tests
 test/rails: .is-up
-	$(exec) web rspec
+	$(exec) web rspec $(ONLY)
 ## runs the javascript tests
 test/js: .is-up
 	$(exec) web $(jsbin)/jest
@@ -52,39 +52,47 @@ lint: lint/rails lint/js
 lint/fix: lint/rails/fix lint/js/fix
 
 ## lints the rails code
-lint/rails:
+lint/rails: .is-up
 	$(exec) web rubocop
 ## lints the rails code and fixes errors
-lint/rails/fix:
+lint/rails/fix: .is-up
 	$(exec) web rubocop -a
 
 ## lints the js code
-lint/js:
+lint/js: .is-up
 	$(exec) -T web $(jslint) | $(jsbin)/snazzy
 ## lints the js code and fixes any errors it can
-lint/js/fix:
+lint/js/fix: .is-up
 	$(exec) -T web $(jslint) --fix | $(jsbin)/snazzy
 
 .PHONY: lint lint/fix lint/rails lint/rails/fix lint/js lint/js/fix
+
+# -- rails --
+## connects a rails console
+rails/console: .is-up
+	$(exec) web rails console
+## attaches a terminal session to the rails container
+rails/attach: .is-up
+	docker attach $(docker ps | grep 'web_web' | cut -d ' ' -f1)
 
 # -- js --
 relay = $(jsbin)/relay-compiler --src ./app/javascript/src --schema schema.json
 
 ## type-checks the js code
-js/flow:
+js/flow: .is-up
 	$(exec) web $(jsbin)/flow
 ## type-checks the js code; restarting the server
-js/flow/restart:
+js/flow/restart: .is-up
 	$(exec) web $(jsbin)/flow stop && $(jsbin)/flow
 ## type-checks the js code with minimal logging
-js/flow/quiet:
+js/flow/quiet: .is-up
 	$(exec) web $(jsbin)/flow --quiet
 
 ## compiles relay queries
-js/relay:
+js/relay: .is-up
 	$(exec) web $(relay)
 ## compiles relay queries whenever they change
-js/relay/watch:
+js/relay/watch: .is-up
 	$(exec) web $(relay)/watch
 
 .PHONY = js/flow js/flow/restart js/relay js/relay/watch

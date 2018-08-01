@@ -21,22 +21,16 @@ it up and running on your machine:
 
 Once you have [Docker](#install-docker) running, you can perform these additional setup steps.
 
-Since we git-ignore `.env`, first copy the sample development `.env` file. Some env vars in the sample may be placeholders, so ask a team member if you need them:
+Build and run the app:
 
 ```sh
-$ cp config/dotenvs/sample.env .env
-```
-
-Build and run the app using `docker-compose`:
-
-```sh
-$ docker-compose up --build
+$ make start
 ```
 
 Create the development database and seed it with data:
 
 ```sh
-$ docker-compose exec web rails db:reset
+$ make db/reset
 ```
 
 At this point, you *should* be able to hit the app at http://localhost:3000. Congrats!
@@ -45,23 +39,26 @@ At this point, you *should* be able to hit the app at http://localhost:3000. Con
 
 ### Getting Started
 
+We use [make](https://www.gnu.org/software/make/manual/make.html) as our task runner (it should already be installed on your system!). You can see a list of available tasks by running `make` or `make help`. All subsequent commands will go through make.
+
 To get started, run the server:
 
 ```sh
 # you can stop the server (gently) using `ctrl-c`
-$ docker-compose up
+$ make start
 ```
 
-Once the server is running, you can use the `rails console` to explore the database through using [ActiveRecord](http://guides.rubyonrails.org/active_record_querying.html) by running:
+Once the server is running, you can use the rails console to explore the database through using [ActiveRecord](http://guides.rubyonrails.org/active_record_querying.html) by running:
 
 ```sh
-$ docker-compose exec web rails console
+$ make rails/console
 ```
 
-You can run the linter & tests using `rake`. Please do this frequently! (especially before pushing):
+You can also run the linter & tests. Please do this frequently (especially before pushing!):
 
 ```sh
-$ docker-compose exec web rake
+$ make test
+$ make lint
 ```
 
 ## Testing [↑](#table-of-contents)
@@ -75,24 +72,24 @@ Rails tests are written using [rspec](http://www.relishapp.com/rspec/rspec-expec
 You can run all the specs using:
 
 ```sh
-$ docker-compose exec web rspec
+$ make test/rails
 ```
 
-If you want to run individual specs, `rspec` provides many filtering options:
+If you want to run individual specs, you can filter to a specific path:
 
 ```sh
-$ docker-compose exec web rspec spec/jobs/import_ilga_hearings_job_spec.rb
+$ make test/rails ONLY=spec/models/bill_spec.rb
 ```
 
 ### Client
 
-Client tests are written using [Jest](https://facebook.github.io/jest/docs/api.html), and live in `__tests__` directories adjacent to the files under test. Please add specs for any new features.
+Client tests are written using [jest](https://facebook.github.io/jest/docs/api.html), and live in `__tests__` directories adjacent to the files under test. Please add specs for any new features.
 
 Run all the tests using the yarn script:
 
 ```sh
-$ docker-compose exec yarn test
-$ docker-compose exec yarn test:watch # re-runs as files change
+$ make test/js
+$ make test/js/watch # re-runs as files change
 ```
 
 Running individual specs is easiest running jest in watch mode and hitting `p` to filter by filepath.
@@ -100,5 +97,4 @@ Running individual specs is easiest running jest in watch mode and hitting `p` t
 ## Additional Resources [↑](#table-of-contents)
 
 - [workflow](dev/workflow.md): workflow tips for Rails, JavaScript, and Docker.
-- [commands](dev/commands.md): a more complete list of development commands.
-- [architecture](arch/index.md): a high-level description of our technologies & architecture
+- [architecture](dev/arch/index.md): a high-level description of our technologies & architecture

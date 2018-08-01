@@ -15,12 +15,7 @@ end
 To debug at the breakpoint, open up a new terminal and attach to the `web` service:
 
 ```sh
-# in two steps
-$ docker ps # get container id of web_web
-$ docker attach <container_id>
-
-# in one step
-$ docker attach $(docker ps | grep 'web_web' | cut -d ' ' -f1)
+$ make rails/attach
 ```
 
 When the breakpoint is reached, a Rails console will pop up in the attached session.
@@ -38,7 +33,7 @@ $ bundle lock
 This will update `Gemfile.lock` with appropriate dependency versions. Then stop the server, rebuild the containers so that they pick up the correct versions:
 
 ```sh
-$ docker-compose up --build
+$ make start/rebuild
 ```
 
 ## Flowtype
