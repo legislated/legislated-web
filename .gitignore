@@ -1,10 +1,10 @@
 /.env
 /latest.dump
 
-# Ignore bundler config.
+# ignore bundler config
 /.bundle
 
-# Ignore all logfiles and tempfiles.
+# ignore all logfiles and tempfiles
 /log/*
 /tmp/*
 !/log/.keep
@@ -15,9 +15,11 @@
 /public/assets
 /public/packs
 /public/packs-test
+
+# dependencies
+/bundle
 /node_modules
 
-# Ignore Byebug command history file.
+# ignore byebug command history file
 .byebug_history
 
-.vscode
