@@ -76,7 +76,11 @@ WORKDIR $APP_HOME
 
 # install gems
 ADD Gemfile* $APP_HOME/
-RUN bundle install
+RUN bundle install --path bundle/
+
+# install node_modules
+ADD package.json yarn.lock $APP_HOME/
+RUN yarn install
 
 # add the app to the image
 ADD . $APP_HOME

@@ -1,10 +1,6 @@
 .DEFAULT_GOAL := help
 
 # -- context --
-# prefix for running commands on on-demand web container
-run = docker-compose run
-# prefix for running commands on running web container
-exec = docker-compose exec
 # location for js binaries
 jsbin = ./node_modules/.bin
 
@@ -26,6 +22,8 @@ db/reset:
 .PHONY: db/reset
 
 # -- test --
+jsjest = $(jsbin)/jest --maxWorkers=1
+
 ## runs all the tests
 test: test/rails test/js
 ## runs the rails tests
@@ -33,15 +31,15 @@ test/rails: .is-up
 	$(exec) web rspec $(ONLY)
 ## runs the javascript tests
 test/js: .is-up
-	$(exec) web $(jsbin)/jest
+	$(exec) web $(jsjest)
 ## runs the javascript tests and updates all snapshots
 test/js/snapshot: .is-up
-	$(exec) web $(jsbin)/jest -u
+	$(exec) web $(jsjest) -u
 ## runs the javascript tests in watch mode
 test/js/watch: .is-up
-	$(exec) web $(jsbin)/jest --watch
+	$(exec) web $(jsjest) --watch
 
-.PHONY: test test/rails test/js test/js/watch
+.PHONY: test test/rails test/js test/js/snapshot test/js/watch
 
 # -- lint --
 jslint = $(jsbin)/standard './app/javascript/**/*.js'
@@ -75,8 +73,10 @@ rails/console: .is-up
 rails/attach: .is-up
 	docker attach $(docker ps | grep 'web_web' | cut -d ' ' -f1)
 
+.PHONY = rails/console rails/attach
+
 # -- js --
-relay = $(jsbin)/relay-compiler --src ./app/javascript/src --schema schema.json
+jsrelay = $(jsbin)/relay-compiler --src ./app/javascript/src --schema schema.json
 
 ## type-checks the js code
 js/flow: .is-up
@@ -90,10 +90,10 @@ js/flow/quiet: .is-up
 
 ## compiles relay queries
 js/relay: .is-up
-	$(exec) web $(relay)
+	$(exec) web $(jsrelay)
 ## compiles relay queries whenever they change
 js/relay/watch: .is-up
-	$(exec) web $(relay)/watch
+	$(exec) web $(jsrelay)/watch
 
 .PHONY = js/flow js/flow/restart js/flow/quiet js/relay js/relay/watch
 
@@ -106,6 +106,14 @@ verify/rails: lint/rails test/rails
 verify/js: lint/js test/js js/flow/quiet
 
 .PHONY = verify verify/rails verify/js
+
+# -- aliases --
+# alias for docker-compose
+dc = docker-compose
+# prefix for running commands on an on-demand container
+run = $(dc) run
+# prefix for running commands on a running container
+exec = $(dc) exec
 
 # -- private --
 .env:
