@@ -32,17 +32,17 @@ jsjest = $(jsbin)/jest --maxWorkers=1
 ## runs all the tests
 test: test/rails test/js
 ## runs the rails tests
-test/rails: .is-up
-	$(exec) web rspec $(ONLY)
+test/rails:
+	$(run) web rspec $(ONLY)
 ## runs the javascript tests
-test/js: .is-up
-	$(exec) web $(jsjest)
+test/js:
+	$(run) web $(jsjest)
 ## runs the javascript tests and updates all snapshots
-test/js/snapshot: .is-up
-	$(exec) web $(jsjest) -u
+test/js/snapshot:
+	$(run) web $(jsjest) -u
 ## runs the javascript tests in watch mode
-test/js/watch: .is-up
-	$(exec) web $(jsjest) --watch
+test/js/watch:
+	$(run) web $(jsjest) --watch
 
 .PHONY: test test/rails test/js test/js/snapshot test/js/watch
 
@@ -55,27 +55,27 @@ lint: lint/rails lint/js
 lint/fix: lint/rails/fix lint/js/fix
 
 ## lints the rails code
-lint/rails: .is-up
-	$(exec) web rubocop
+lint/rails:
+	$(run) web rubocop
 ## lints the rails code and fixes errors
-lint/rails/fix: .is-up
-	$(exec) web rubocop -a
+lint/rails/fix:
+	$(run) web rubocop -a
 
 ## lints the js code
-lint/js: .is-up
-	$(exec) -T web $(jslint) | $(jsbin)/snazzy
+lint/js:
+	$(run) -T web $(jslint) | $(jsbin)/snazzy
 ## lints the js code and fixes any errors it can
-lint/js/fix: .is-up
-	$(exec) -T web $(jslint) --fix | $(jsbin)/snazzy
+lint/js/fix:
+	$(run) -T web $(jslint) --fix | $(jsbin)/snazzy
 
 .PHONY: lint lint/fix lint/rails lint/rails/fix lint/js lint/js/fix
 
 # -- rails --
 ## connects a rails console
-rails/console: .is-up
-	$(exec) web rails console
+rails/console:
+	$(run) web rails console
 ## attaches a terminal session to the rails container
-rails/attach: .is-up
+rails/attach:
 	docker attach $(docker ps | grep 'web_web' | cut -d ' ' -f1)
 
 .PHONY: rails/console rails/attach
@@ -84,30 +84,30 @@ rails/attach: .is-up
 jsrelay = $(jsbin)/relay-compiler --src ./app/javascript/src --schema schema.json
 
 ## type-checks the js code
-js/flow: .is-up
-	$(exec) web $(jsbin)/flow
+js/flow:
+	$(run) web $(jsbin)/flow
 ## type-checks the js code; restarting the server
-js/flow/restart: .is-up
-	$(exec) web $(jsbin)/flow stop && $(jsbin)/flow
+js/flow/restart:
+	$(run) web $(jsbin)/flow stop && $(jsbin)/flow
 ## type-checks the js code with minimal logging
-js/flow/quiet: .is-up
-	$(exec) web $(jsbin)/flow --quiet
+js/flow/quiet:
+	$(run) web $(jsbin)/flow --quiet
 
 ## compiles relay queries
-js/relay: .is-up
-	$(exec) web $(jsrelay)
+js/relay:
+	$(run) web $(jsrelay)
 ## compiles relay queries whenever they change
-js/relay/watch: .is-up
-	$(exec) web $(jsrelay)/watch
+js/relay/watch:
+	$(run) web $(jsrelay)/watch
 
 .PHONY = js/flow js/flow/restart js/flow/quiet js/relay js/relay/watch
 
 # -- verify --
-# verifies the code is correct
-verifiy: verify/rails verify/js
-# verifies the rails code is correct
+## verifies the code is correct
+verify: verify/rails verify/js
+## verifies the rails code is correct
 verify/rails: lint/rails test/rails
-# verifies the rails code is correct
+## verifies the rails code is correct
 verify/js: lint/js test/js js/flow/quiet
 
 .PHONY = verify verify/rails verify/js
@@ -117,20 +117,11 @@ verify/js: lint/js test/js js/flow/quiet
 dc = docker-compose
 # prefix for running commands on an on-demand container
 run = $(dc) run
-# prefix for running commands on a running container
-exec = $(dc) exec
 
 # -- private --
 .env:
 	@echo "missing .env, copying over the sample"
 	@cp config/dotenvs/sample.env .env
-
-.is-up:
-ifneq ($(strip $(docker ps | grep web_web)),)
-	$(error the app is not running; run 'make start')
-endif
-
-.PHONY = .is-up
 
 # -- help --
 help:
