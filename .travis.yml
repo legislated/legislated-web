@@ -1,35 +1,11 @@
 sudo: required
-language: ruby
-rvm:
-  - 2.3.0
 services:
-  - postgresql
-env:
-  - LEGISLATED_ADMIN_CREDENTIALS="Basic YWRtaW46cGFzc3dvcmTCow==" TZ=America/Chicago
-cache:
-  bundler: true
-  yarn: true
-  directories:
-    - node_modules
+  - docker
 branches:
   only:
     - master
     - production
 install:
-  - bundle --deployment
-  - nvm install 8
-  - node -v
-  - npm i -g yarn
-  - yarn
-before_script:
-  - psql -c 'create database legislated_test;' -U postgres
-deploy:
-  provider: heroku
-  run: rake db:migrate
-  api_key:
-    secure: eA7ZQ67rS6pdwPSsGJHffUb01j5sKXU+VCtUG3XvehIA8mN9OzX9duJUV7xayTkRWYB0RAzQlc/DHpBDfN5Tkp3pJoTdC61EFVEE7PAy5lXi7QupYoBRGlFQB97AY300uNi2X71Fpf2/8XZ5xgp5rGQ3IWCvF52no23Rpy+KlqrdQ4HNqHOOMST7XKrkUxP0hTQqO5iNC2DJdlD7S5exDXboO1XwtpK45VOewUccho66XfjZQoHKmMxSWePvTeC/KveSXcBz+5V2w0Dcem5HKb85vACPmPy+HhZrM6bAP7mIC/aa2hHWlaKyEPtRsk0lNgLcA82LfozedVi6cYEjIDpoB8WnC13Y1Y9YtSMBML72nugqbcVtOwfXIcVNpo7Ylci3D7s0NbtrjjdsDD9IMkW+Ip+9ZO/C0jlPjehKLM3HdQ6cGhkepnVN2cTyJe9yyQEv26X/cpp8UTl16mUJjwaxdjryZIdHeg8kFcToN8QOQoVeOn/R0IFqldf7z9sNV/bRYkZGgA/tGJsvEP0IKvxZCJmIpwRd6ENqDxS9IMAmsqQ1GU/GyGCnHGZGQkweNLbmMFNedmd8qyywGlxAqnhkHXvKBKCn3GYJ6Jp0ulVknIMJX73hmG7CTIszjcr6BjNtnIVo9S286E5HHf/esRcLHNZ1wSYq05ZBzhsK4qE=
-  app:
-    master: legislated-staging
-    production: legislated
-addons:
-  postgresql: '9.6'
+  - make build
+script:
+  - make verify

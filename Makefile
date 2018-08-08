@@ -13,10 +13,15 @@ jsbin = ./node_modules/.bin
 start: .env
 	@docker-compose up
 ## starts the docker app, rebuilds stale images
-start/rebuild:
+start/rebuild: .env
 	@docker-compose up --build
 
 .PHONY: start start/rebuild
+
+# -- build --
+## builds the docker images
+build:
+	@docker-compose build
 
 # -- db --
 ## resets the dev database
@@ -74,6 +79,8 @@ rails/console: .is-up
 ## attaches a terminal session to the rails container
 rails/attach: .is-up
 	docker attach $(docker ps | grep 'web_web' | cut -d ' ' -f1)
+
+.PHONY: rails/console rails/attach
 
 # -- js --
 relay = $(jsbin)/relay-compiler --src ./app/javascript/src --schema schema.json
