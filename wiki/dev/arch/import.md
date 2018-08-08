@@ -1,6 +1,6 @@
 # Data Import
 
-Data import happen nightly (on Heroku) via a collection of import jobs. There's a one-to-one correspondence between an import job, a scraper task, and a page to be scraped. You can find all the import jobs in the `jobs` directory, and the scraper tasks in the `scraper` subdirectory.
+Data import happens nightly (on Heroku) via a collection of import jobs. There's a one-to-one correspondence between an import job, a scraper task, and a page to be scraped. You can find all the import jobs in the `jobs` directory, and the scraper tasks in the `scraper` subdirectory.
 
 ## Components
 

@@ -3,6 +3,8 @@ x-app: &app
   build: .
   volumes:
     - .:/legislated
+    - /legislated/bundle
+    - /legislated/node_modules
   env_file:
     - ./config/dotenvs/docker.env
 services:

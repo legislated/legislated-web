@@ -12,7 +12,7 @@
 ### Install Docker
 
 We run the app locally using docker. Please see the-system specific guide for getting
-it up and running on your machine:
+it up and running on your machine. You will need to create a docker account if you do not have one:
 
 - Install Docker on [Mac](setup/macos.md)
 - Install Docker on [Ubuntu](setup/ubuntu.md)
