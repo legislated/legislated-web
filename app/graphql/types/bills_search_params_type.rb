@@ -13,6 +13,8 @@ module Types
       value 'LOWER', 'Bills in the house', value: :lower
       value 'UPPER', 'Bills in the senate', value: :upper
       value 'GOVERNOR', 'Bills on the governor\'s desk', value: :governor
+      value 'SIGNED', 'Bills signed into law', value: :signed
+      value 'VETOED', 'Bills vetoed by the governor', value: :vetoed
     end)
   end
 end

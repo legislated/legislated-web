@@ -1,5 +1,6 @@
 # note: you must restart bin/webpack-dev-server for changes to take effect
 default: &default
+  compile: false
   source_path: app/javascript
   source_entry_path: packs
   public_output_path: packs
@@ -16,7 +17,6 @@ default: &default
 
 development:
   <<: *default
-  compile: true
   dev_server:
     https: false
     host: localhost
@@ -30,10 +30,8 @@ development:
 
 test:
   <<: *default
-  compile: true
   public_output_path: packs-test
 
 production:
   <<: *default
-  compile: false
   cache_manifest: true

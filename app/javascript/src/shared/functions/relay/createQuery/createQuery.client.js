@@ -47,7 +47,7 @@ export function createQuery (extraHeaders: Object): FetchFunction {
   // async portion of query
   async function remoteQuery (operation, variables) {
     // fetch data from network
-    const response = await global.fetch(config.graphUrl, {
+    const response = await global.fetch(config.graphEndpoint, {
       method: 'POST',
       headers,
       body: JSON.stringify({

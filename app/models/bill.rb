@@ -42,6 +42,14 @@ class Bill < ApplicationRecord
     where("steps->-1->>'actor' = any(array[?])", [*actor])
   end)
 
+  scope :with_action, (-> (action) do
+    where("steps->-1->>'action' = any(array[?])", [*action])
+  end)
+
+  scope :with_resolution, (-> (resolution) do
+    where("steps->-1->>'resolution' = any(array[?])", [*resolution])
+  end)
+
   # accessors
   def document
     documents.first

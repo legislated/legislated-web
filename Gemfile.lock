@@ -61,6 +61,8 @@ GEM
     arel (9.0.0)
     ast (2.4.0)
     awesome_print (1.8.0)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
     builder (3.2.3)
     bullet (5.7.5)
       activesupport (>= 3.0.0)
@@ -82,6 +84,7 @@ GEM
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
     database_cleaner (1.7.0)
+    debug_inspector (0.0.3)
     diff-lcs (1.3)
     dotenv (2.4.0)
     dotenv-rails (2.4.0)
@@ -109,8 +112,6 @@ GEM
       i18n (>= 0.7)
     faraday (0.15.0)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.23)
-    formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     graphiql-rails (1.4.10)
@@ -125,20 +126,6 @@ GEM
       graphql (>= 1.5, < 2)
       graphql-batch (~> 0.3)
       promise.rb (~> 0.7)
-    guard (2.14.2)
-      formatador (>= 0.2.4)
-      listen (>= 2.7, < 4.0)
-      lumberjack (>= 1.0.12, < 2.0)
-      nenv (~> 0.1)
-      notiffany (~> 0.0)
-      pry (>= 0.9.12)
-      shellany (~> 0.0)
-      thor (>= 0.18.1)
-    guard-compat (1.2.1)
-    guard-rspec (4.7.3)
-      guard (~> 2.1)
-      guard-compat (~> 1.1)
-      rspec (>= 2.99.0, < 4.0)
     hashdiff (0.3.7)
     honeybadger (3.3.0)
     http_parser.rb (0.6.0)
@@ -148,6 +135,7 @@ GEM
       faraday (~> 0.8)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    interception (0.5)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.6.0)
@@ -156,9 +144,6 @@ GEM
       actionmailer (>= 3.2)
       letter_opener (~> 1.0)
       railties (>= 3.2)
-    listen (3.0.8)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
     lograge (0.10.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -167,7 +152,6 @@ GEM
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lumberjack (1.0.13)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
     marcel (0.3.2)
@@ -180,13 +164,9 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    nenv (0.3.0)
     nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
-    notiffany (0.1.1)
-      nenv (~> 0.1)
-      shellany (~> 0.0)
     parallel (1.12.1)
     parser (2.5.1.0)
       ast (~> 2.4.0)
@@ -209,6 +189,12 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
+    pry-rescue (1.4.5)
+      interception (>= 0.5)
+      pry
+    pry-stack_explorer (0.4.9.2)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
@@ -245,17 +231,9 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (3.0.0)
     rake (12.3.1)
-    rb-fsevent (0.10.3)
-    rb-inotify (0.9.10)
-      ffi (>= 0.5.0, < 2)
-    rb-readline (0.5.5)
     redis (4.0.1)
     request_store (1.4.1)
       rack (>= 1.4)
-    rspec (3.7.0)
-      rspec-core (~> 3.7.0)
-      rspec-expectations (~> 3.7.0)
-      rspec-mocks (~> 3.7.0)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -282,7 +260,6 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.9.0)
     safe_yaml (1.0.4)
-    shellany (0.0.1)
     sidekiq (5.1.3)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -292,11 +269,6 @@ GEM
       skylight-core (= 2.0.0)
     skylight-core (2.0.0)
       activesupport (>= 4.2.0)
-    spring (2.0.2)
-      activesupport (>= 4.2)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -341,12 +313,10 @@ DEPENDENCIES
   graphql
   graphql-batch
   graphql-preload
-  guard-rspec
   honeybadger
   httparty
   hypernova
   letter_opener_web
-  listen (~> 3.0.5)
   lograge
   pg
   pg_search
@@ -354,25 +324,21 @@ DEPENDENCIES
   pry
   pry-byebug
   pry-rails
+  pry-rescue
+  pry-stack_explorer
   puffing-billy!
   puma (~> 3.0)
   rack-cors
   rails (~> 5.2.0.rc1)
-  rb-readline
   redis
   rspec-rails
   rubocop
   sidekiq
   skylight
-  spring
-  spring-watcher-listen (~> 2.0.0)
   timecop
   vcr
   webmock
   webpacker
-
-RUBY VERSION
-   ruby 2.3.0p0
 
 BUNDLED WITH
    1.16.1

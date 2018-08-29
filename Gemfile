@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-# api
+# core / api
 gem 'graphql'
 gem 'graphql-batch'
 gem 'graphql-preload'
@@ -26,27 +26,21 @@ gem 'hypernova'
 gem 'webpacker'
 
 # development
-group :development do
-  gem 'bullet'
-  gem 'listen', '~> 3.0.5'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-end
-
 group :development, :test do
   gem 'awesome_print'
+  gem 'bullet'
   gem 'database_cleaner'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'graphiql-rails'
-  gem 'guard-rspec'
   gem 'letter_opener_web'
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
   gem 'puffing-billy', git: 'https://github.com/wzrad/puffing-billy.git', branch: 'develop'
-  gem 'rb-readline'
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'timecop'

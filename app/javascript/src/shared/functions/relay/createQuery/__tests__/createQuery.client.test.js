@@ -6,11 +6,6 @@ const { anything, objectContaining } = expect
 
 // mocks
 jest.mock('relay-runtime')
-jest.mock('@/config', () => ({
-  config: {
-    graphUrl: 'http://test.com/graphql'
-  }
-}))
 
 // subject
 let subject
@@ -53,7 +48,7 @@ describe('on a cache miss', () => {
 
   it('fetches the request from the graph endpoint', () => {
     execute()
-    expect(global.fetch).toHaveBeenCalledWith('http://test.com/graphql', anything())
+    expect(global.fetch).toHaveBeenCalledWith('http://localhost:3000/api/graphql', anything())
   })
 
   it('fetches the reqeust with the correct headers', () => {

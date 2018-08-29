@@ -6,7 +6,7 @@ You can find our type definitions under the `graph` subdirectory.
 
 ## GraphQL
 
-GraphQL is a technology that eschews traditional REST API patterns in favor of defining the resources the client can request as *nodes*. For instance, in this project a `Bill` ActiveRecord model is a resource that has a corresponding GraphQL *node*. The bill node's *type* says what fields the client can query on the bill.
+GraphQL is a technology that eschews traditional REST API patterns in favor of defining resources the client can request as *nodes*. For instance, in this project a `Bill` ActiveRecord model is a resource that has a corresponding GraphQL *node*. The bill node's *type* says what fields the client can query on the bill.
 
 An example is worth a thousand words. Using a REST API a client might request a bill by issuing a GET request to a URL like `https://www.api.com/bill/1` and receive a server-defined response in return.
 

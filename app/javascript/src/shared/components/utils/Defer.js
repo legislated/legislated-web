@@ -2,6 +2,12 @@
 import * as React from 'react'
 import { config } from '@/config'
 
-export function Defer ({ children }: { children: ?React.Node }) {
-  return config.env === 'server' ? null : children
+type Props = {
+  children: ?React.Node
+}
+
+export function Defer ({
+  children
+}: Props) {
+  return config.isServer ? null : children
 }

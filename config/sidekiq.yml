@@ -2,6 +2,5 @@
 :queues:
   - default
   - [high_priority, 2]
-
 development:
   :logfile: ./log/sidekiq.log

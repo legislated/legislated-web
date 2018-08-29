@@ -22,6 +22,12 @@ const SUBSET_ENTRIES = [{
 }, {
   label: 'governor',
   value: 'GOVERNOR'
+}, {
+  label: 'signed',
+  value: 'SIGNED'
+}, {
+  label: 'vetoed',
+  value: 'VETOED'
 }]
 
 export class SearchFilters extends React.Component<Props> {
@@ -74,5 +80,5 @@ const Subsets = styled.div`
   flex: 1;
   justify-content: space-between;
   align-items: center;
-  max-width: 500px;
+  max-width: 700px;
 `

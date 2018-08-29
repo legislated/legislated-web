@@ -1,0 +1,40 @@
+version: '3.4'
+x-app: &app
+  build: .
+  volumes:
+    - .:/legislated
+    - /legislated/bundle
+    - /legislated/node_modules
+  env_file:
+    - ./config/dotenvs/docker.env
+services:
+  db:
+    image: postgres:9.6
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  rds:
+    image: redis:4.0.10
+  wpk:
+    <<: *app
+    command: ./bin/webpack-dev-server
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+  web:
+    <<: *app
+    command: './bin/puma -C config/puma.rb'
+    ports:
+      - '3000:3000'
+    tty: true
+    stdin_open: true
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: wpk
+    depends_on:
+      - db
+      - rds
+      - wpk
+  wrk:
+    <<: *app
+    command: ./bin/sidekiq
+    depends_on:
+      - db
+      - rds
