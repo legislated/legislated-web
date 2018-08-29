@@ -88,6 +88,8 @@ export type SearchParamsSubset
   | 'LOWER'
   | 'UPPER'
   | 'GOVERNOR'
+  | 'SIGNED'
+  | 'VETOED'
 
 export type SearchParams = {
   query?: string,

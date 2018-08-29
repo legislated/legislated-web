@@ -13,7 +13,14 @@ module Bills
       elsif subset == :slips
         bills.by_hearing_date(start: Time.current, end: 1.week.from_now)
       else # subset == <some_actor>
-        bills.with_actor(actors_from_subset(subset)).by_last_action_date
+        case subset
+        when :lower, :upper
+          bills.with_actor(actors_from_subset(subset)).by_last_action_date
+        when :governor
+          bills.with_actor(actors_from_subset(subset)).with_action(actions_from_subset(subset)).by_last_action_date
+        when :signed, :vetoed
+          bills.with_actor(actors_from_subset(subset)).with_action(actions_from_subset(subset)).with_resolution(resolutions_from_subset(subset)).by_last_action_date
+        end
       end
     end
 
@@ -33,8 +40,30 @@ module Bills
         [Step::Actors::LOWER, Step::Actors::LOWER_COMMITTEE]
       when :upper
         [Step::Actors::UPPER, Step::Actors::UPPER_COMMITTEE]
-      when :governor
+      when :governor, :signed, :vetoed
         [Step::Actors::GOVERNOR]
+      end
+    end
+
+    def actions_from_subset(subset)
+      case subset
+      when :governor
+        [Step::Actions::INTRODUCED]
+      when :signed, :vetoed
+        [Step::Actions::RESOLVED]
+      else
+        subset
+      end
+    end
+
+    def resolutions_from_subset(subset)
+      case subset
+      when :signed
+        [Step::Resolutions::SIGNED]
+      when :vetoed
+        [Step::Resolutions::VETOED]
+      else
+        subset
       end
     end
 
