@@ -145,7 +145,7 @@ CREATE TABLE public.hearings (
 
 CREATE TABLE public.legislators (
     id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
-    os_id character varying NOT NULL,
+    os_id character varying,
     first_name character varying NOT NULL,
     last_name character varying NOT NULL,
     email character varying,
@@ -256,13 +256,6 @@ CREATE INDEX index_bills_on_last_actor ON public.bills USING btree ((((steps -> 
 
 
 --
--- Name: index_bills_on_os_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_bills_on_os_id ON public.bills USING btree (os_id);
-
-
---
 -- Name: index_bills_on_search_vector; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -298,13 +291,6 @@ CREATE UNIQUE INDEX index_hearings_on_ilga_id ON public.hearings USING btree (il
 
 
 --
--- Name: index_legislators_on_os_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_legislators_on_os_id ON public.legislators USING btree (os_id);
-
-
---
 -- Name: title_on_bills_trgm_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -333,6 +319,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180308005925'),
 ('20180311040929'),
 ('20180426003320'),
-('20180429152115');
+('20180429152115'),
+('20190216063138');
 
 
