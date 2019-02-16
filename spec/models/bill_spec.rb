@@ -61,8 +61,8 @@ describe Bill do
 
       expect(url).to match("DocNum=#{number}")
       expect(url).to match("DocTypeID=#{type}")
-      expect(url).to match('GAID=14')
-      expect(url).to match('SessionID=91')
+      expect(url).to match('GAID=15')
+      expect(url).to match('SessionID=108')
     end
   end
 end
