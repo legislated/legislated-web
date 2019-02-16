@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import styled, { css } from 'react-emotion'
-import { isAfter } from 'date-fns'
+import { format, isAfter } from 'date-fns'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { BillHead } from './BillHead'
 import { BillTitle, BillStatus, Button, Link, CopyLink } from '@/components'
@@ -36,10 +36,18 @@ let BillDetail = function BillDetail ({ bill }: Props) {
             />
           </Links>
         </Element>
-        <Element>
-          <h6>Committee</h6>
-          <p>{hearing && hearing.committee.name}</p>
-        </Element>
+        {hearing && hearing.committee && (
+          <Element>
+            <h6>Committee</h6>
+            <p>{hearing.committee.name}</p>
+          </Element>
+        )}
+        {hearing && isAfter(hearing.date, now()) && (
+          <Element>
+            <h6>Next Hearing</h6>
+            <p>{format(hearing.date, 'MM/DD/YYYY HH:mm')}</p>
+          </Element>
+        )}
         <Element>
           <h6>Primary Sponsor</h6>
           <p>{bill.sponsorName}</p>
