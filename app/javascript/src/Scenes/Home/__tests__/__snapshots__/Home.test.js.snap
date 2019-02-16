@@ -8,6 +8,7 @@ exports[`#render shows the home scene 1`] = `
     params={
       Object {
         "query": "",
+        "subset": "SLIPS",
       }
     }
     viewer="test-viewer"
