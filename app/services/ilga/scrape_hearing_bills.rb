@@ -56,7 +56,7 @@ module Ilga
       slip_results_link = row.first('.viewiconbutton')&.[](:href)
 
       if slip_link.blank?
-        debug("  - bill w/o slip link: #{ilga_id} - #{document_number}")
+        debug("  - bill w/o slip link: #{ilga_id}")
       end
 
       # build bill

@@ -57,6 +57,6 @@ class Bill < ApplicationRecord
     document_number = document&.number
     return nil unless document_number
     document_type, document_index = document_number.match(/(\D+)(\d+)/).captures
-    "http://www.ilga.gov/#{page}?DocNum=#{document_index}&GAID=14&DocTypeID=#{document_type}&SessionID=91"
+    "http://www.ilga.gov/#{page}?DocNum=#{document_index}&GAID=15&DocTypeID=#{document_type}&SessionID=108"
   end
 end
