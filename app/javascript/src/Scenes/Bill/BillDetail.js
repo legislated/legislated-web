@@ -45,7 +45,7 @@ let BillDetail = function BillDetail ({ bill }: Props) {
         {hearing && isAfter(hearing.date, now()) && (
           <Element>
             <h6>Next Hearing</h6>
-            <p>{format(hearing.date, 'MM/DD/YYYY HH:mm')}</p>
+            <p>{format(hearing.date, 'MM/DD/YYYY hh:mm a')}</p>
           </Element>
         )}
         <Element>
