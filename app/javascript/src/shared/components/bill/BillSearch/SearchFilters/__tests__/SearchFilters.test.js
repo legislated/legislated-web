@@ -9,8 +9,8 @@ let subject
 
 const defaults = {
   params: {
-    subset: 'test-subset',
-    other: 'test-other'
+    query: 'test-query',
+    subset: 'test-subset'
   },
   onChange: jest.fn()
 }
